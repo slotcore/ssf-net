@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="FgProEmp1.StyleInfo" xml:space="preserve">
+    <value>Normal{Font:Microsoft Sans Serif, 8.25pt;BackColor:255, 224, 192;ForeColor:Black;}	Alternate{}	Fixed{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;}	Focus{}	Editor{}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	FirstCustomStyle{}	</value>
+  </data>
+  <data name="FgIntEmp1.StyleInfo" xml:space="preserve">
+    <value>Normal{Font:Microsoft Sans Serif, 8.25pt;BackColor:255, 192, 192;ForeColor:Black;}	Alternate{}	Fixed{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;}	Focus{}	Editor{}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	FirstCustomStyle{}	</value>
+  </data>
+  <data name="FgProEmp2.StyleInfo" xml:space="preserve">
+    <value>Normal{Font:Microsoft Sans Serif, 8.25pt;BackColor:255, 224, 192;ForeColor:Black;}	Alternate{}	Fixed{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;}	Focus{}	Editor{}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	FirstCustomStyle{}	</value>
+  </data>
+  <data name="FgIntEmp2.StyleInfo" xml:space="preserve">
+    <value>Normal{Font:Microsoft Sans Serif, 8.25pt;BackColor:255, 192, 192;ForeColor:Black;}	Alternate{}	Fixed{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;}	Focus{}	Editor{}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	FirstCustomStyle{}	</value>
+  </data>
+  <data name="FgProEmp3.StyleInfo" xml:space="preserve">
+    <value>Normal{Font:Microsoft Sans Serif, 8.25pt;BackColor:255, 224, 192;ForeColor:Black;}	Alternate{}	Fixed{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;}	Focus{}	Editor{}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	FirstCustomStyle{}	</value>
+  </data>
+  <data name="FgIntEmp3.StyleInfo" xml:space="preserve">
+    <value>Normal{Font:Microsoft Sans Serif, 8.25pt;BackColor:255, 192, 192;ForeColor:Black;}	Alternate{}	Fixed{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;}	Focus{}	Editor{}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	FirstCustomStyle{}	</value>
+  </data>
+  <data name="FgProEmp4.StyleInfo" xml:space="preserve">
+    <value>Normal{Font:Microsoft Sans Serif, 8.25pt;BackColor:255, 224, 192;ForeColor:Black;}	Alternate{}	Fixed{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;}	Focus{}	Editor{}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	FirstCustomStyle{}	</value>
+  </data>
+  <data name="FgIntEmp4.StyleInfo" xml:space="preserve">
+    <value>Normal{Font:Microsoft Sans Serif, 8.25pt;BackColor:255, 192, 192;ForeColor:Black;}	Alternate{}	Fixed{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;}	Focus{}	Editor{}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	FirstCustomStyle{}	</value>
+  </data>
+  <data name="FgProEmp5.StyleInfo" xml:space="preserve">
+    <value>Normal{Font:Microsoft Sans Serif, 8.25pt;BackColor:255, 224, 192;ForeColor:Black;}	Alternate{}	Fixed{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;}	Focus{}	Editor{}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	FirstCustomStyle{}	</value>
+  </data>
+  <data name="FgIntEmp5.StyleInfo" xml:space="preserve">
+    <value>Normal{Font:Microsoft Sans Serif, 8.25pt;BackColor:255, 192, 192;ForeColor:Black;}	Alternate{}	Fixed{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;}	Focus{}	Editor{}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	FirstCustomStyle{}	</value>
+  </data>
+  <data name="FgProEmp6.StyleInfo" xml:space="preserve">
+    <value>Normal{Font:Microsoft Sans Serif, 8.25pt;BackColor:255, 224, 192;ForeColor:Black;}	Alternate{}	Fixed{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;}	Focus{}	Editor{}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	FirstCustomStyle{}	</value>
+  </data>
+  <data name="FgIntEmp6.StyleInfo" xml:space="preserve">
+    <value>Normal{Font:Microsoft Sans Serif, 8.25pt;BackColor:255, 192, 192;ForeColor:Black;}	Alternate{}	Fixed{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;}	Focus{}	Editor{}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	FirstCustomStyle{}	</value>
+  </data>
+  <data name="FgProEmp7.StyleInfo" xml:space="preserve">
+    <value>Normal{Font:Microsoft Sans Serif, 8.25pt;BackColor:255, 224, 192;ForeColor:Black;}	Alternate{}	Fixed{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;}	Focus{}	Editor{}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	FirstCustomStyle{}	</value>
+  </data>
+  <data name="FgIntEmp7.StyleInfo" xml:space="preserve">
+    <value>Normal{Font:Microsoft Sans Serif, 8.25pt;BackColor:255, 192, 192;ForeColor:Black;}	Alternate{}	Fixed{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;}	Focus{}	Editor{}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	FirstCustomStyle{}	</value>
+  </data>
+  <data name="FgProEmp8.StyleInfo" xml:space="preserve">
+    <value>Normal{Font:Microsoft Sans Serif, 8.25pt;BackColor:255, 224, 192;ForeColor:Black;}	Alternate{}	Fixed{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;}	Focus{}	Editor{}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	FirstCustomStyle{}	</value>
+  </data>
+  <data name="FgIntEmp8.StyleInfo" xml:space="preserve">
+    <value>Normal{Font:Microsoft Sans Serif, 8.25pt;BackColor:255, 192, 192;ForeColor:Black;}	Alternate{}	Fixed{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;}	Focus{}	Editor{}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	FirstCustomStyle{}	</value>
+  </data>
+  <metadata name="ToolHerramientas.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ToolImprimir.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQpSURBVFhH7ZdtTFNXGMeJ3xa/olho615qxtwi84MGoUS5
+        rbx0amS+BImODWw1G9p7W9hQi4w4NgLCxnAFMipzNQ5FGWi7gaFAMgvzJVunoozpsNASsy1mOIPbwP53
+        7sl6g1JKwTbZsp3kl5ykvef5n+flnPOEhf0/ZuGBCP3quVGcMlbCMjslHFMrZpn2WSwT2CfzdzMREjYx
+        iRh6S6pVfEaMXpdyzPhCnRJeJNrEXwNbzf+/5oi5lTKpjtkk5RTFEp3CKmUZN5l7JhrzNSfiRuapFi+g
+        ZC6bloitS+Y+JEXKKdUSHTMynaGpfidCMS/tRUpkdhyiNHK/iNTyUdH2uARBBNmlYbbG+e8W5abCarXi
+        jNWC73/ox61Bp19e+SAXkZp4Q9AEyPQpqDGbUG2uwxd2Gzq/6YbL7UL7pa9gm4Cj7yqGh4fxauWbwRXg
+        DcH8l5fSEDynTcGA8xZvBOIdCQIFRyv+5QKi89dgacEGofy8efOMPhnv1lSguKYcR75sRGOXBS6XC8ds
+        zTjW0SJg/+5CYB54fs86tF05B1vv13hKv5oaNNoa4PF4UGo1TRLwJKeE/PU0Surbr2FjaQ6cg4NQvbMd
+        a4rVAkaLOTABpCpgcXSBH1l1BizesxYjo7/hp7t3EJ3/0iQBj+bAs7uTHj8Hkss0dMcd186jqNlIxRQ2
+        HZpknPcO74EEsnseVVEWNpXtoh7gd7+2WCNQHagH+EV5L7RdsWP8wQMM/OyC685tyPJSfAqQkRyoMH2E
+        ctMhNHacgaW7neZA87k2tEzgwtVvAwuBN7k2fKilO+fH/lNVPo1TsX+fhN4yDEoI+IVLrYdpGMbGx3CW
+        eIP3iq8TMyQCYgxpuDt6Dw5nH9p7e6iQ9ZW7pgzB+4eNNAwnOyyw9thoCFrsZ3F6Ahd7ZxCC2s4T1PVv
+        fHoAGdV5dN5zw+HbCyQJl6lVlFX7MqA6kE3vgsT9W8EUbhOobKkPLAdii9Lx+59/wPnLMDkHkuiur7lv
+        UhHbavOnLUNZjvLxyvCFveugKt+JVe9lCsY2VrGo6ThOS/HRXODLMJnNIGzB5pIcZFbmwTk0iPSDWmwp
+        ZwVMrccD88BMr+andUngygoIBpQ0GFF1+giGXEM42PQxypvqBFrPd4ZGwD/iNgxPi0E4eRGJslYgWptM
+        c2CBOo5eyV4M5hBdx4tyU3Cq5XOcbG6Co/cy+m72w+124/qN/of40TkQmhDIiIBPGo6ivsGMrot2dF++
+        5Bf+rohUy/cJTzIJq9wsZhW9UlY5NtMEpEexlvGEr4+5zyPKXnE/cke8X0Sa+KGobPmSSY90MRf7hJhj
+        lktZhYZglHDKbpJg96YTFay+wHfXUBg2R5SzMpoISyeiSkhT0irhFLcXTugXQitgimZGyiaIovRMKumU
+        9hJh9cHojP6ba/wF9mMIKVLeSpAAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="ToolSalir.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="ToolAbastecimiento.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+</root>

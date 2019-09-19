@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{61F4663C-64A7-4D8B-9CFB-EDB4FFE7AEF9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SSF_NET_Contabilidad</RootNamespace>
+    <AssemblyName>SSF-NET-Contabilidad</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\..\..\..\..\SSF-NET\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="C1.C1Excel.2, Version=2.1.20101.145, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\SSF-NET\C1.C1Excel.2.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Win.C1Command.2, Version=2.0.20101.19448, Culture=neutral, PublicKeyToken=e808566f358766d8, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1FlexGrid.2, Version=2.6.20101.528, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1FlexGrid.Classic.2, Version=2.6.20101.528, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\SSF-NET\C1.Win.C1FlexGrid.Classic.2.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Win.C1Sizer.2, Version=2.1.20101.49, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1TrueDBGrid.2, Version=2.0.20101.61177, Culture=neutral, PublicKeyToken=75ae3fb0e2b1e0da, processorArchitecture=MSIL" />
+    <Reference Include="Helper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\SSF-NET\Helper.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\SSF-NET\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="SIAC-DATOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\SSF-NET\SIAC-DATOS.dll</HintPath>
+    </Reference>
+    <Reference Include="SIAC-Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\SSF-NET\SIAC-Entidades.dll</HintPath>
+    </Reference>
+    <Reference Include="SIAC-Negocio, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\SSF-NET\SIAC-Negocio.dll</HintPath>
+    </Reference>
+    <Reference Include="SIAC-Objetos, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\SSF-NET\SIAC-Objetos.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CLS_Contabilidad.cs" />
+    <Compile Include="Formularios\FrmAsigCtaConItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmAsigCtaConItems.Designer.cs">
+      <DependentUpon>FrmAsigCtaConItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmBalanceComprobacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmBalanceComprobacion.Designer.cs">
+      <DependentUpon>FrmBalanceComprobacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmCerrarModulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmCerrarModulo.Designer.cs">
+      <DependentUpon>FrmCerrarModulo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmLibroDiario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmLibroDiario.Designer.cs">
+      <DependentUpon>FrmLibroDiario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmLibroMayor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmLibroMayor.Designer.cs">
+      <DependentUpon>FrmLibroMayor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManAsiCtaConDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManAsiCtaConDoc.Designer.cs">
+      <DependentUpon>FrmManAsiCtaConDoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManAsientosDiv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManAsientosDiv.Designer.cs">
+      <DependentUpon>FrmManAsientosDiv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmMandetraccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmMandetraccion.Designer.cs">
+      <DependentUpon>FrmMandetraccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManImpuestos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManImpuestos.Designer.cs">
+      <DependentUpon>FrmManImpuestos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManImpuestosDocumentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManImpuestosDocumentos.designer.cs">
+      <DependentUpon>FrmManImpuestosDocumentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManPC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManPC.Designer.cs">
+      <DependentUpon>FrmManPC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManPercepcion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManPercepcion.Designer.cs">
+      <DependentUpon>FrmManPercepcion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManRetencion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManRetencion.Designer.cs">
+      <DependentUpon>FrmManRetencion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManTC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManTC.Designer.cs">
+      <DependentUpon>FrmManTC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManTipDocCom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManTipDocCom.Designer.cs">
+      <DependentUpon>FrmManTipDocCom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmRegCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmRegCompras.Designer.cs">
+      <DependentUpon>FrmRegCompras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmRegDetraCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmRegDetraCompras.Designer.cs">
+      <DependentUpon>FrmRegDetraCompras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmregPercepciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmregPercepciones.Designer.cs">
+      <DependentUpon>FrmregPercepciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmRegRetenciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmRegRetenciones.Designer.cs">
+      <DependentUpon>FrmRegRetenciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmVerAsiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmVerAsiento.Designer.cs">
+      <DependentUpon>FrmVerAsiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Reportes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Formularios\FrmAsigCtaConItems.resx">
+      <DependentUpon>FrmAsigCtaConItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmBalanceComprobacion.resx">
+      <DependentUpon>FrmBalanceComprobacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmCerrarModulo.resx">
+      <DependentUpon>FrmCerrarModulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmLibroDiario.resx">
+      <DependentUpon>FrmLibroDiario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmLibroMayor.resx">
+      <DependentUpon>FrmLibroMayor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManAsiCtaConDoc.resx">
+      <DependentUpon>FrmManAsiCtaConDoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManAsientosDiv.resx">
+      <DependentUpon>FrmManAsientosDiv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmMandetraccion.resx">
+      <DependentUpon>FrmMandetraccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManImpuestos.resx">
+      <DependentUpon>FrmManImpuestos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManImpuestosDocumentos.resx">
+      <DependentUpon>FrmManImpuestosDocumentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManPC.resx">
+      <DependentUpon>FrmManPC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManPercepcion.resx">
+      <DependentUpon>FrmManPercepcion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManRetencion.resx">
+      <DependentUpon>FrmManRetencion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManTC.resx">
+      <DependentUpon>FrmManTC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManTipDocCom.resx">
+      <DependentUpon>FrmManTipDocCom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmRegCompras.resx">
+      <DependentUpon>FrmRegCompras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmRegDetraCompras.resx">
+      <DependentUpon>FrmRegDetraCompras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmregPercepciones.resx">
+      <DependentUpon>FrmregPercepciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmRegRetenciones.resx">
+      <DependentUpon>FrmRegRetenciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmVerAsiento.resx">
+      <DependentUpon>FrmVerAsiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

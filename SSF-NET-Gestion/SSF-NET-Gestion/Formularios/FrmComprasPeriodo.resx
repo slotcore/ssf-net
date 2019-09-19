@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="FgUni.StyleInfo" xml:space="preserve">
+    <value>Normal{Font:Microsoft Sans Serif, 8.25pt;BackColor:White;ForeColor:Black;}	Alternate{}	Fixed{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;}	Focus{}	Editor{}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	FirstCustomStyle{}	</value>
+  </data>
+  <data name="FgImp.StyleInfo" xml:space="preserve">
+    <value>Normal{Font:Microsoft Sans Serif, 8.25pt;BackColor:White;ForeColor:Black;}	Alternate{}	Fixed{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;}	Focus{}	Editor{}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	FirstCustomStyle{}	</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="CmdSalir.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="FgCanReq.StyleInfo" xml:space="preserve">
+    <value>Normal{Font:Microsoft Sans Serif, 8.25pt;BackColor:White;ForeColor:Black;}	Alternate{}	Fixed{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;}	Focus{}	Editor{}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	FirstCustomStyle{}	</value>
+  </data>
+</root>

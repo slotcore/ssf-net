@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0594A020-C9A1-47CB-B74A-495F598DBFC7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SSF_NET_Gestion</RootNamespace>
+    <AssemblyName>SSF-NET-Gestion</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\..\..\..\..\SSF-NET\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="C1.Win.C1Command.2">
+      <HintPath>..\..\..\librerias\C1.Win.C1Command.2.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Win.C1FlexGrid.2">
+      <HintPath>..\..\..\SIAC-NET\SIAC-Negocio\SIAC-Negocio\bin\Debug\C1.Win.C1FlexGrid.2.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Win.C1Sizer.2">
+      <HintPath>..\..\..\librerias\C1.Win.C1Sizer.2.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Win.C1TrueDBGrid.2">
+      <HintPath>..\..\..\SIAC-NET\SIAC-Negocio\SIAC-Negocio\bin\Debug\C1.Win.C1TrueDBGrid.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Helper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\SSF-NET\Helper.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\SSF-NET\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="SIAC-DATOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\SSF-NET\SIAC-DATOS.dll</HintPath>
+    </Reference>
+    <Reference Include="SIAC-Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\SSF-NET\SIAC-Entidades.dll</HintPath>
+    </Reference>
+    <Reference Include="SIAC-Negocio, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\SSF-NET\SIAC-Negocio.dll</HintPath>
+    </Reference>
+    <Reference Include="SIAC-Objetos, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\SSF-NET\SIAC-Objetos.dll</HintPath>
+    </Reference>
+    <Reference Include="SSF-NET-Produccion, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\SSF-NET\SSF-NET-Produccion.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CLS_Gestion.cs" />
+    <Compile Include="Formularios\FrmAnalisisCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmAnalisisCompra.Designer.cs">
+      <DependentUpon>FrmAnalisisCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmAnalisisProduccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmAnalisisProduccion.Designer.cs">
+      <DependentUpon>FrmAnalisisProduccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmAnalisisVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmAnalisisVentas.Designer.cs">
+      <DependentUpon>FrmAnalisisVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmComprasPeriodo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmComprasPeriodo.Designer.cs">
+      <DependentUpon>FrmComprasPeriodo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmConsultarProduccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmConsultarProduccion.Designer.cs">
+      <DependentUpon>FrmConsultarProduccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManPlanProduccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManPlanProduccion.Designer.cs">
+      <DependentUpon>FrmManPlanProduccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManPlanVentas2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManPlanVentas2.Designer.cs">
+      <DependentUpon>FrmManPlanVentas2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManPlanVentasHistorico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManPlanVentasHistorico.Designer.cs">
+      <DependentUpon>FrmManPlanVentasHistorico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmPlanAbastecimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmPlanAbastecimiento.Designer.cs">
+      <DependentUpon>FrmPlanAbastecimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmPlanAbastecimientoUni.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmPlanAbastecimientoUni.Designer.cs">
+      <DependentUpon>FrmPlanAbastecimientoUni.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmPlanProduccionUnificado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmPlanProduccionUnificado.Designer.cs">
+      <DependentUpon>FrmPlanProduccionUnificado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmPlanVentasUni.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmPlanVentasUni.Designer.cs">
+      <DependentUpon>FrmPlanVentasUni.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Reportes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Formularios\FrmAnalisisCompra.resx">
+      <DependentUpon>FrmAnalisisCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmAnalisisProduccion.resx">
+      <DependentUpon>FrmAnalisisProduccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmAnalisisVentas.resx">
+      <DependentUpon>FrmAnalisisVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmComprasPeriodo.resx">
+      <DependentUpon>FrmComprasPeriodo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmConsultarProduccion.resx">
+      <DependentUpon>FrmConsultarProduccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManPlanProduccion.resx">
+      <DependentUpon>FrmManPlanProduccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManPlanVentas2.resx">
+      <DependentUpon>FrmManPlanVentas2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManPlanVentasHistorico.resx">
+      <DependentUpon>FrmManPlanVentasHistorico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmPlanAbastecimiento.resx">
+      <DependentUpon>FrmPlanAbastecimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmPlanAbastecimientoUni.resx">
+      <DependentUpon>FrmPlanAbastecimientoUni.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmPlanProduccionUnificado.resx">
+      <DependentUpon>FrmPlanProduccionUnificado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmPlanVentasUni.resx">
+      <DependentUpon>FrmPlanVentasUni.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
