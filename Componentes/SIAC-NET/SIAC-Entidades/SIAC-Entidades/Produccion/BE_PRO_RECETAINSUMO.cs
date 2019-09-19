@@ -1,0 +1,37 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SIAC_Entidades.Produccion
+{
+    public class BE_PRO_RECETAINSUMO
+    {
+        private int _n_idrec;
+        private int _n_idite;
+        private int _n_idunimed;
+        private double _n_can;
+
+        public int n_idrec
+        {
+            get { return _n_idrec; }
+            set { _n_idrec = value; }
+        }
+        public int n_idite
+        {
+            get { return _n_idite; }
+            set { _n_idite = value; }
+        }
+        public int n_idunimed
+        {
+            get { return _n_idunimed; }
+            set { _n_idunimed = value; }
+        }
+        public double n_can
+        {
+            get { return _n_can; }
+            set { _n_can = value; }
+        }
+    }
+}

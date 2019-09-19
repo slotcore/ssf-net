@@ -1,0 +1,52 @@
+﻿
+tabla.TablaFormulario {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif; 
+    font-size: 9px; 
+    /*margin: 45px;*/ 
+    width: 600px;
+    text-align: center; 
+    /*border-collapse: collapse;*/ 
+}
+
+td.tdcol1 { 
+    width:15%;             /*Ancho de la columna*/
+    text-align:left;        /*Alineacion de la columna*/
+    background:#deffc4;     /*ALINEAMOS A LA IZQUIERDA*/
+    /*color: #669;*/ 
+    /*border-top: 1px solid transparent; */
+    height:25px;
+}
+
+td.tdcol2 { 
+    width:9%;             /*Ancho de la columna*/
+    text-align:left;        /*Alineacion de la columna*/
+    background:#deffc4;     /*ALINEAMOS A LA IZQUIERDA*/
+    height:25px;
+}
+
+td.tdcol3 { 
+    width:45%;             /*Ancho de la columna*/
+    text-align:left;        /*Alineacion de la columna*/
+    background:#deffc4;     /*ALINEAMOS A LA IZQUIERDA*/
+    height:25px;
+}
+
+td.tdcol4 { 
+    width:1%;             /*Ancho de la columna*/
+    text-align:left;        /*Alineacion de la columna*/
+    background:#deffc4;     /*ALINEAMOS A LA IZQUIERDA*/
+    height:25px;
+}
+
+td.tdcol5 { 
+    width:30%;             /*Ancho de la columna*/
+    text-align:left;        /*Alineacion de la columna*/
+    background:#deffc4;     /*ALINEAMOS A LA IZQUIERDA*/
+    height:25px;
+}
+
+.tablaunidad {
+    width: 100%;
+}
+
+

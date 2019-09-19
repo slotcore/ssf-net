@@ -1,0 +1,47 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="principal.master.cs" Inherits="SIAC_WEB.publico.principal" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>SIAC - Sistema Informatico de Administracion y Contabilidad</title>
+    <link href="estilos/principal.css" rel ="stylesheet" type ="text/css"/>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id ="form1" runat="server">
+    <div id="principal">
+        <div id ="cabecera">
+            <div id="logo">
+                <img src="../imagenes/siac logo.png" alt="logo MTW"/>
+            </div>
+            <div id="barraherramietas">
+            </div>
+            <div id="usuario">
+            </div>
+        </div>
+
+        <div id="cuerpo">
+            <div id="izquierda">
+                   <ul id="menu">
+                        <li><a href ="/almacen/frmlistaitems.aspx">Almacen</a></li>
+                        <li><a href ="/compras/Index.aspx">Compras</a></li>
+                        <li><a href ="/ventas/Index.aspx">Ventas</a></li>
+                        <li><a href ="/tesoreria/Index.aspx">Tesoreria</a></li>
+                        <li><a href ="/contabilidad/Index.aspx">Contabilidad</a></li>
+                        <li><a href ="/maestros/Index.aspx">Maestros</a></li>
+                        <li><a href ="/configuracion/Index.aspx">Configuracion</a></li>
+                    </ul>
+            </div>
+            <div id="derecha">
+                <asp:ContentPlaceHolder ID="contenedorprincipal" runat="server">
+                <h2>hola</h2>
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

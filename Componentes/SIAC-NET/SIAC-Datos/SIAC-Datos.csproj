@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5B96FD36-691A-4ADF-A4BD-0B5888085E7C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SIAC_DATOS</RootNamespace>
+    <AssemblyName>SIAC-DATOS</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\..\..\..\SSF-NET\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Helper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\SSF-NET\Helper.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\SSF-NET\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Almacen\CD_ACC_movimientoAlmacen.cs" />
+    <Compile Include="Almacen\CD_ACC_pro_producciondet.cs" />
+    <Compile Include="Almacen\CD_ACC_pro_solicitudmat.cs" />
+    <Compile Include="Almacen\CD_alm_almacenes.cs" />
+    <Compile Include="Almacen\CD_alm_almacenesdoc.cs" />
+    <Compile Include="Almacen\CD_alm_inventario.cs" />
+    <Compile Include="Almacen\CD_alm_inventarioimagen.cs" />
+    <Compile Include="Almacen\CD_alm_inventariolotes.cs" />
+    <Compile Include="Almacen\CD_alm_inventariounimed.cs" />
+    <Compile Include="Almacen\CD_alm_movimientos.cs" />
+    <Compile Include="Almacen\CD_alm_responsable.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="Contabilidad\CD_con_cerrarmes.cs" />
+    <Compile Include="Contabilidad\CD_con_destinoinforme.cs" />
+    <Compile Include="Contabilidad\CD_con_detraccion.cs" />
+    <Compile Include="Contabilidad\CD_con_diario.cs" />
+    <Compile Include="Contabilidad\CD_con_doccomimp.cs" />
+    <Compile Include="Contabilidad\CD_con_impuestos.cs" />
+    <Compile Include="Contabilidad\CD_con_le.cs" />
+    <Compile Include="Contabilidad\CD_con_pc.cs" />
+    <Compile Include="Contabilidad\CD_con_pcdestinos.cs" />
+    <Compile Include="Contabilidad\CD_con_pcitems.cs" />
+    <Compile Include="Contabilidad\CD_con_percepcion.cs" />
+    <Compile Include="Contabilidad\CD_con_proviciones.cs" />
+    <Compile Include="Contabilidad\CD_con_regdetracciones.cs" />
+    <Compile Include="Contabilidad\CD_con_regpercepcion.cs" />
+    <Compile Include="Contabilidad\CD_con_regretencion.cs" />
+    <Compile Include="Contabilidad\CD_con_retencion.cs" />
+    <Compile Include="Contabilidad\CD_con_tc.cs" />
+    <Compile Include="Contabilidad\CD_con_tipdoccomcue.cs" />
+    <Compile Include="Cooperativa\CD_coo_cargos.cs" />
+    <Compile Include="Cooperativa\CD_coo_cargoscab.cs" />
+    <Compile Include="Cooperativa\CD_coo_conceptos.cs" />
+    <Compile Include="Cooperativa\CD_coo_puestos.cs" />
+    <Compile Include="Cooperativa\CD_coo_puestostipo.cs" />
+    <Compile Include="Cooperativa\CD_coo_servicios.cs" />
+    <Compile Include="Cooperativa\CD_coo_socios.cs" />
+    <Compile Include="Cooperativa\CD_coo_sociospuestos.cs" />
+    <Compile Include="Cooperativa\CD_coo_tiposervicio.cs" />
+    <Compile Include="Cooperativa\CD_coo_tiposocio.cs" />
+    <Compile Include="Estacionamiento\CD_est_cajeros.cs" />
+    <Compile Include="Estacionamiento\CD_est_cargos.cs" />
+    <Compile Include="Estacionamiento\CD_est_clientes.cs" />
+    <Compile Include="Estacionamiento\CD_est_conecta.cs" />
+    <Compile Include="Estacionamiento\CD_est_liquidacion.cs" />
+    <Compile Include="Estacionamiento\CD_est_localsetup.cs" />
+    <Compile Include="Estacionamiento\CD_est_movimientos.cs" />
+    <Compile Include="Estacionamiento\CD_est_otrocargoscab.cs" />
+    <Compile Include="Estacionamiento\CD_est_servicios.cs" />
+    <Compile Include="Estacionamiento\CD_est_tipocliente.cs" />
+    <Compile Include="Gestion\CD_ges_planabastecimiento.cs" />
+    <Compile Include="Gestion\CD_ges_plancompras.cs" />
+    <Compile Include="Gestion\CD_ges_planproduccion.cs" />
+    <Compile Include="Gestion\CD_ges_planventas.cs" />
+    <Compile Include="Logistica\CD_log_compras.cs" />
+    <Compile Include="Logistica\CD_log_ordencompra.cs" />
+    <Compile Include="Logistica\CD_log_ordenrequerimiento.cs" />
+    <Compile Include="Logistica\CD_log_personal.cs" />
+    <Compile Include="Maestros\CD_mae_almacenes.cs" />
+    <Compile Include="Maestros\CD_mae_area.cs" />
+    <Compile Include="Maestros\CD_mae_clase.cs" />
+    <Compile Include="Maestros\CD_mae_clipro.cs" />
+    <Compile Include="Maestros\CD_mae_cliproitems.cs" />
+    <Compile Include="Maestros\CD_mae_condpago.cs" />
+    <Compile Include="Maestros\CD_mae_estados.cs" />
+    <Compile Include="Maestros\CD_mae_familia.cs" />
+    <Compile Include="Maestros\CD_mae_meses.cs" />
+    <Compile Include="Maestros\CD_mae_motivos.cs" />
+    <Compile Include="Maestros\CD_mae_retencion.cs" />
+    <Compile Include="Maestros\CD_mae_sexo.cs" />
+    <Compile Include="Maestros\CD_mae_subclase.cs" />
+    <Compile Include="Maestros\CD_mae_prioridad.cs" />
+    <Compile Include="Maestros\CD_mae_tipoclipro.cs" />
+    <Compile Include="Mantenimiento\CD_man_equipos.cs" />
+    <Compile Include="Planilla\CD_pla_destajo.cs" />
+    <Compile Include="Planilla\CD_pla_destajouni.cs" />
+    <Compile Include="Planilla\CD_pla_empleados.cs" />
+    <Compile Include="Planilla\CD_pla_marcacion2.cs" />
+    <Compile Include="Planilla\CD_pla_personal.cs" />
+    <Compile Include="Planilla\CD_pla_setup.cs" />
+    <Compile Include="Planilla\CD_TEMPUS_marcacion.cs" />
+    <Compile Include="Planilla\CD_TEMPUS_MARCACIONES.cs" />
+    <Compile Include="Planilla\CD_TEMPUS_mostrar.cs" />
+    <Compile Include="Produccion\CD_pro_estacionalidad.cs" />
+    <Compile Include="Produccion\CD_pro_lineas2017.cs" />
+    <Compile Include="Produccion\CD_pro_ordenproduccion.cs" />
+    <Compile Include="Produccion\CD_pro_produccion.cs" />
+    <Compile Include="Produccion\CD_pro_productos.cs" />
+    <Compile Include="Produccion\CD_pro_productosrecetas.cs" />
+    <Compile Include="Produccion\CD_pro_productosrecetasinsumos.cs" />
+    <Compile Include="Produccion\CD_pro_productosrecetaslineas.cs" />
+    <Compile Include="Produccion\CD_pro_productosrecetaslineastareas.cs" />
+    <Compile Include="Produccion\CD_pro_productosubiloc.cs" />
+    <Compile Include="Produccion\CD_pro_productosubilocalm.cs" />
+    <Compile Include="Produccion\CD_pro_programa.cs" />
+    <Compile Include="Produccion\CD_pro_rendimiento.cs" />
+    <Compile Include="Produccion\CD_pro_revision.cs" />
+    <Compile Include="Produccion\CD_pro_solicitudamateriales.cs" />
+    <Compile Include="Produccion\CD_pro_solicitudtareas.cs" />
+    <Compile Include="Produccion\CD_pro_solicitudtareasdiversas.cs" />
+    <Compile Include="Produccion\CD_pro_tareas.cs" />
+    <Compile Include="Produccion\CD_pro_tipoproducto.cs" />
+    <Compile Include="Produccion\CD_pro_personal.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\CD_sys_auditoria.cs" />
+    <Compile Include="Sistema\CD_sys_docnum.cs" />
+    <Compile Include="Sistema\CD_sys_empresa.cs" />
+    <Compile Include="Sistema\CD_sys_empresalocal.cs" />
+    <Compile Include="Sistema\CD_sys_formulario.cs" />
+    <Compile Include="Sistema\CD_sys_formulariovista.cs" />
+    <Compile Include="Sistema\CD_sys_modulos.cs" />
+    <Compile Include="Sistema\CD_sys_perfil.cs" />
+    <Compile Include="Sistema\CD_sys_personaladjunto.cs" />
+    <Compile Include="Sistema\CD_sys_personalmodulo.cs" />
+    <Compile Include="Sistema\CD_sys_setup.cs" />
+    <Compile Include="Sistema\CD_sys_usuarios.cs" />
+    <Compile Include="Sistema\CD_sys_usuariosingresos.cs" />
+    <Compile Include="Sunat\CD_mae_motivotraslado.cs" />
+    <Compile Include="Sunat\CD_sun_catempresa.cs" />
+    <Compile Include="Sunat\CD_sun_conceptonc.cs" />
+    <Compile Include="Sunat\CD_sun_departamentos.cs" />
+    <Compile Include="Sunat\CD_sun_distritos.cs" />
+    <Compile Include="Sunat\CD_sun_fe_catalogo07.cs" />
+    <Compile Include="Sunat\CD_sun_fe_catalogo09.cs" />
+    <Compile Include="Sunat\CD_sun_fe_catalogo10.cs" />
+    <Compile Include="Sunat\CD_sun_fe_catalogo17.cs" />
+    <Compile Include="Sunat\CD_sun_fe_catalogo51.cs" />
+    <Compile Include="Sunat\CD_sun_libro.cs" />
+    <Compile Include="Sunat\CD_sun_librosub.cs" />
+    <Compile Include="Sunat\CD_sun_provincia.cs" />
+    <Compile Include="Sunat\CD_sun_tipcam.cs" />
+    <Compile Include="Sunat\CD_sun_tipcontribuyente.cs" />
+    <Compile Include="Sunat\CD_sun_tipdoccom.cs" />
+    <Compile Include="Sunat\CD_sun_tipdocide.cs" />
+    <Compile Include="Sunat\CD_sun_tipexi.cs" />
+    <Compile Include="Sunat\CD_sun_tipmon.cs" />
+    <Compile Include="Sunat\CD_sun_tipope.cs" />
+    <Compile Include="Sunat\CD_sun_unimed.cs" />
+    <Compile Include="Tesoreria\CD_tes_bancos.cs" />
+    <Compile Include="Tesoreria\CD_tes_canje.cs" />
+    <Compile Include="Tesoreria\CD_tes_conciliacion.cs" />
+    <Compile Include="Tesoreria\CD_tes_ctacte.cs" />
+    <Compile Include="Tesoreria\CD_tes_cuentabanco.cs" />
+    <Compile Include="Tesoreria\CD_tes_destino.cs" />
+    <Compile Include="Tesoreria\CD_tes_documentos.cs" />
+    <Compile Include="Tesoreria\CD_tes_letras.cs" />
+    <Compile Include="Tesoreria\CD_tes_lettippla.cs" />
+    <Compile Include="Tesoreria\CD_tes_mediopago.cs" />
+    <Compile Include="Tesoreria\CD_tes_origen.cs" />
+    <Compile Include="Tesoreria\CD_tes_tesoreria.cs" />
+    <Compile Include="Ventas\CD_vta_guias.cs" />
+    <Compile Include="Ventas\CD_vta_pedidocli.cs" />
+    <Compile Include="Ventas\CD_vta_pedidocen.cs" />
+    <Compile Include="Ventas\CD_vta_chofer.cs" />
+    <Compile Include="Ventas\CD_vta_emptra.cs" />
+    <Compile Include="Ventas\CD_vta_itemcen.cs" />
+    <Compile Include="Ventas\CD_vta_pedidoclidet.cs" />
+    <Compile Include="Ventas\CD_vta_personal.cs" />
+    <Compile Include="Ventas\CD_vta_punvencli.cs" />
+    <Compile Include="Ventas\CD_vta_tipexivender.cs" />
+    <Compile Include="Ventas\CD_vta_vehiculo.cs" />
+    <Compile Include="Ventas\CD_vta_vendedor.cs" />
+    <Compile Include="Ventas\CD_vta_ventas.cs" />
+    <Compile Include="Ventas\CD_vta_ventasbaja.cs" />
+    <Compile Include="Ventas\CD_vta_boletaresumen.cs" />
+    <Compile Include="Web References\ws_sys_usuarios\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BI\" />
+    <Folder Include="Caja\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SIAC-Entidades\SIAC-Entidades\SIAC-Entidades.csproj">
+      <Project>{fc396209-1d34-4316-bed1-10f6c34167c4}</Project>
+      <Name>SIAC-Entidades</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ws_sys_usuarios\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ws_sys_usuarios\sys_usuarios.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:8412/webservice/sistema/sys_usuarios.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ws_sys_usuarios\</RelPath>
+      <UpdateFromURL>http://localhost:8412/webservice/sistema/sys_usuarios.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SIAC_DATOS_ws_sys_usuarios_sys_usuarios</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\ws_sys_usuarios\sys_usuarios.disco" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

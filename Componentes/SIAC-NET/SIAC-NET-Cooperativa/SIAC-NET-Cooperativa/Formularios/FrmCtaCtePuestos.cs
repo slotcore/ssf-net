@@ -1,0 +1,791 @@
+﻿using Helper;
+using Helper.Comunes;
+using MySql.Data.MySqlClient;
+using SIAC_Entidades.Ventas;
+using SIAC_Entidades.Cooperativa;
+using SIAC_Negocio.Cooperativa;
+using SIAC_Negocio.Sistema;
+using SIAC_Negocio.Ventas;
+using SIAC_Negocio.Maestros;
+using SIAC_Objetos.Sistema;
+using SIAC_Negocio.Sunat;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using C1.Win.C1FlexGrid;
+
+namespace SIAC_NET_Cooperativa.Formularios
+{
+    public partial class FrmCtaCtePuestos : Form
+    {
+        // VARIABLES PUBLICAS
+        public MySqlConnection mysConec = new MySqlConnection();
+        public Sistema.STU_SISTEMA STU_SISTEMA = new Sistema.STU_SISTEMA();
+
+        // OBJETOS LOCALES
+        CN_coo_socios objRegistros = new CN_coo_socios();
+        CN_sys_formulariovista objFormVis = new CN_sys_formulariovista();
+        CN_sys_formulario objForm = new CN_sys_formulario();
+        CN_coo_tiposocio objTipSoc = new CN_coo_tiposocio();
+        CN_coo_sociospuestos oboPuestoSocio = new CN_coo_sociospuestos();
+        CN_coo_socios objSocios = new CN_coo_socios();
+        CN_coo_cargoscab objCargosCab = new CN_coo_cargoscab();
+        CN_coo_cargos objCargos = new CN_coo_cargos();
+        CN_sun_tipdoccom objTipDocCom = new CN_sun_tipdoccom();
+
+        // OBJETOS DE ACCESO A DATOS
+        Cls_FlexGrid funFlex = new Cls_FlexGrid();
+        Funciones funFunciones = new Funciones();
+        Genericas funDatos = new Genericas();
+        Cls_DBGrid funDbGrid = new Cls_DBGrid();
+        Cls_Controles funControl = new Cls_Controles();
+
+        // ENTIDADES LOCALES
+        BE_COO_SOCIOS BE_ListaReg = new BE_COO_SOCIOS();
+        BE_COO_SOCIOS BE_Registro = new BE_COO_SOCIOS();
+
+        // DATATABLE LOCALES
+        DataTable dtRegistros = new DataTable();
+        DataTable dtTipDocIde = new DataTable();
+        DataTable dtForm = new DataTable();
+        DataTable dtPuestoSocio = new DataTable();
+        DataTable dtTipSoc = new DataTable();
+        DataTable dtSocios = new DataTable();
+
+        // VARIABLES LOCALES
+        int n_QueHace = 3;                                                              // INDICA EN QUE ESTADO SE ENCUENTRA EL FORMULARIO
+        string[,] arrCabeceraDg1 = new string[5, 4];                                    // ARRAY PARA MOSTRAR LAS COLUMNAS DEL DATAGRID PRINCIPAL
+        string[,] arrCabeceraFlex = new string[15, 5];
+        bool booSeEjecuto = false;
+
+        string strNumerovalidos = "1234567890." + (char)8;                                        // + (char)8;
+        string strCaracteres = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ1234567890-()º.,/$' !!·%/()=?¿*^" + (char)8;
+
+        public FrmCtaCtePuestos()
+        {
+            InitializeComponent();
+        }
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void CmdMostrarDeuda_Click(object sender, EventArgs e)
+        {
+            int n_row = 0;
+            DataTable dtResult = new DataTable();
+            CN_coo_cargos objCargos = new CN_coo_cargos();
+            string c_dato = "";
+
+            TxtNomSoc.Text = "";
+            TxtSer.Text = "";
+            TxtTotal.Text = "";
+            funControl.dtpBlanquea(TxtFchIng);
+            FgDeuda.Rows.Count = 2;
+            
+            LblIdPuesto.Text = "";
+            LblIdPuesto.Text = funDatos.DataTableBuscar(dtPuestoSocio, "c_puesto", "n_id", TxtCodPue.Text, "C").ToString();
+            LblIdSoc.Text = funDatos.DataTableBuscar(dtPuestoSocio, "c_puesto", "n_idsoc", TxtCodPue.Text, "C").ToString();
+            if (LblIdPuesto.Text != "0")
+            {
+                MostrarDatosSocio(Convert.ToInt32(LblIdSoc.Text));
+            }
+            else
+            {
+                MessageBox.Show("¡ No se ha encontrado el puesto indicado !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                TxtCodPue.Text = "";
+                LblIdPuesto.Text = "";
+                LblIdSoc.Text = "";
+                TxtCodPue.Focus();
+                return;
+            }
+
+            // MOSTRAMOS LA DEUDA DEL PUESTO
+            DataTable dtCargosSocio = new DataTable();
+            objCargos.mysConec = mysConec;
+            objCargos.Consulta1(Convert.ToInt32(LblIdPuesto.Text));
+            dtCargosSocio = objCargos.dtLista;
+
+            dtResult = funDatos.DataTableFiltrar(dtCargosSocio, "n_impsal <> 0");           //  FILTRAMOS PARA SABER SI TIENE DOCUMENTOS PENDIENTES DE PAGO
+
+            if (dtCargosSocio.Rows.Count == 0)
+            {
+                MessageBox.Show("¡ EL puesto indicado no tiene cargos generados  !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                TxtCodPue.Text = "";
+                TxtNomSoc.Text = "";
+                TxtSer.Text = "";
+                TxtTotal.Text = "";
+                FgDeuda.Rows.Count = 2;
+                LblIdPuesto.Text = "";
+                LblIdSoc.Text = "";
+                funControl.dtpBlanquea(TxtFchIng);
+                return;
+            }
+
+            if (dtResult.Rows.Count == 0)
+            {
+                // SI NO HAY DOCUMENTOS PENDIENTES DE PAGO MOSTRAMOS LOS DOCUMENTOS PAGADOS
+                dtResult = dtCargosSocio;
+                OptTod.Checked = true;
+            }
+
+            FgDeuda.Rows.Count = 2;
+            if (objCargos.booOcurrioError == false)
+            {
+                if (OptSolDeu.Checked == true)
+                {
+                    dtResult = funDatos.DataTableFiltrar(dtResult, "n_impsal <> 0");
+                }
+                else
+                {
+                    dtResult = dtCargosSocio;
+                }
+
+                for (n_row = 0; n_row <= dtResult.Rows.Count - 1; n_row++)
+                {
+                    FgDeuda.Rows.Count = FgDeuda.Rows.Count + 1;
+
+                    c_dato = dtResult.Rows[n_row]["n_anotra"].ToString();
+                    FgDeuda.SetData(FgDeuda.Rows.Count - 1, 1, c_dato);
+
+                    c_dato = dtResult.Rows[n_row]["c_mesdes"].ToString();
+                    FgDeuda.SetData(FgDeuda.Rows.Count - 1, 2, c_dato);
+
+                    c_dato = dtResult.Rows[n_row]["c_tipdocdes"].ToString();
+                    FgDeuda.SetData(FgDeuda.Rows.Count - 1, 3, c_dato);
+
+                    c_dato = dtResult.Rows[n_row]["c_numdoc"].ToString();
+                    FgDeuda.SetData(FgDeuda.Rows.Count - 1, 4, c_dato);
+
+                    c_dato = dtResult.Rows[n_row]["d_fchdoc"].ToString();
+                    FgDeuda.SetData(FgDeuda.Rows.Count - 1, 5, c_dato);
+
+                    c_dato = dtResult.Rows[n_row]["d_fchven"].ToString();
+                    FgDeuda.SetData(FgDeuda.Rows.Count - 1, 6, c_dato);
+
+                    c_dato = Convert.ToDouble(dtResult.Rows[n_row]["n_imptotven"]).ToString("0.00");
+                    FgDeuda.SetData(FgDeuda.Rows.Count - 1, 7, c_dato);
+
+                    c_dato = Convert.ToDouble(dtResult.Rows[n_row]["n_impsal"]).ToString("0.00");
+                    FgDeuda.SetData(FgDeuda.Rows.Count - 1, 8, c_dato);
+
+                    c_dato = dtResult.Rows[n_row]["c_pagfchdoc"].ToString();
+                    if (c_dato == "")
+                    {
+                        FgDeuda.SetData(FgDeuda.Rows.Count - 1, 9, null);
+                    }
+                    else
+                    {
+                        FgDeuda.SetData(FgDeuda.Rows.Count - 1, 9, c_dato);
+                    }
+                    c_dato = dtResult.Rows[n_row]["c_pagtipdoc"].ToString();
+                    FgDeuda.SetData(FgDeuda.Rows.Count - 1, 10, c_dato);
+
+                    c_dato = dtResult.Rows[n_row]["c_pagnumdoc"].ToString();
+                    FgDeuda.SetData(FgDeuda.Rows.Count - 1, 11, c_dato);
+
+                    c_dato = dtResult.Rows[n_row]["n_impbru"].ToString();
+                    FgDeuda.SetData(FgDeuda.Rows.Count - 1, 13, c_dato);
+
+                    c_dato = dtResult.Rows[n_row]["n_impigv"].ToString();
+                    FgDeuda.SetData(FgDeuda.Rows.Count - 1, 14, c_dato);
+
+                    c_dato = dtResult.Rows[n_row]["n_id"].ToString();
+                    FgDeuda.SetData(FgDeuda.Rows.Count - 1, 15, c_dato);
+
+                    if (Convert.ToDouble(dtResult.Rows[n_row]["n_impsal"]) == 0)
+                    {
+                        PintarCelda(FgDeuda, FgDeuda.Rows.Count - 1, 1, FgDeuda.Rows.Count - 1, 11, Color.Blue);
+                    }
+                    else
+                    {
+                        PintarCelda(FgDeuda, FgDeuda.Rows.Count - 1, 1, FgDeuda.Rows.Count - 1, 11, Color.Red);
+                    }
+                }
+            }
+
+            double n_Valor = 0;
+            n_Valor = funFlex.FlexSumarCol(FgDeuda, 8, 2, FgDeuda.Rows.Count - 1);
+            TxtTotal.Text = n_Valor.ToString("0.00");
+        }
+        void PintarCelda(C1.Win.C1FlexGrid.C1FlexGrid Objeto, int n_Fila1, int n_Columna1, int n_Fila2, int n_Columna2, Color n_Color)
+        {
+            CellRange rg = Objeto.GetCellRange(n_Fila1, n_Columna1, n_Fila2, n_Columna2);
+            rg.StyleNew.ForeColor = n_Color;
+        }
+        private void FrmCtaCtePuestos_Load(object sender, EventArgs e)
+        {
+            DataTableCargar();
+            ConfigurarFormulario();
+        }
+        void DataTableCargar()
+        {
+            objForm.mysConec = mysConec;                                    // CARGAMOS LOS DATOS DEL FORMULARIO
+            dtForm = objForm.TraerRegistro(52);
+            
+            oboPuestoSocio.mysConec = mysConec;
+            oboPuestoSocio.Consulta1(STU_SISTEMA.EMPRESAID, 1);
+            dtPuestoSocio = oboPuestoSocio.dtPuestosSocios;
+
+            objSocios.mysConec = mysConec;
+            dtSocios = objSocios.Listar(STU_SISTEMA.EMPRESAID);
+
+            objTipSoc.mysConec = mysConec;
+            dtTipSoc =  objTipSoc.Listar(STU_SISTEMA.EMPRESAID);
+        }
+        void ConfigurarFormulario()
+        {
+            this.Text = dtForm.Rows[0]["c_titfor"].ToString();
+
+            this.Height = 540;
+            this.Width = 954;
+
+            c1Sizer1.Width = this.Width - 14;
+            c1Sizer1.Height = this.Height - 78;
+
+            TxtCodPue.Text = "";
+            TxtNomSoc.Text = "";
+            TxtSer.Text = "";
+            TxtTotal.Text = "";
+            LblIdPuesto.Text = "";
+            LblIdSoc.Text = "";
+            funControl.dtpBlanquea(TxtFchIng);
+            FgDeuda.Rows.Count = 2;
+
+            OptSolDeu.Checked = true;
+
+            arrCabeceraFlex[0, 0] = "Año Trabajo";
+            arrCabeceraFlex[0, 1] = "50";
+            arrCabeceraFlex[0, 2] = "C";
+            arrCabeceraFlex[0, 3] = "";
+            arrCabeceraFlex[0, 4] = "";
+
+            arrCabeceraFlex[1, 0] = "Mes Trabajo";
+            arrCabeceraFlex[1, 1] = "100";
+            arrCabeceraFlex[1, 2] = "C";
+            arrCabeceraFlex[1, 3] = "";
+            arrCabeceraFlex[1, 4] = "";
+
+            arrCabeceraFlex[2, 0] = "Tipo Doc.";
+            arrCabeceraFlex[2, 1] = "50";
+            arrCabeceraFlex[2, 2] = "C";
+            arrCabeceraFlex[2, 3] = "";
+            arrCabeceraFlex[2, 4] = "";
+
+            arrCabeceraFlex[3, 0] = "Nº Documento";
+            arrCabeceraFlex[3, 1] = "100";
+            arrCabeceraFlex[3, 2] = "C";
+            arrCabeceraFlex[3, 3] = "";
+            arrCabeceraFlex[3, 4] = "";
+
+            arrCabeceraFlex[4, 0] = "Fch. Emision";
+            arrCabeceraFlex[4, 1] = "75";
+            arrCabeceraFlex[4, 2] = "F";
+            arrCabeceraFlex[4, 3] = "";
+            arrCabeceraFlex[4, 4] = "";
+
+            arrCabeceraFlex[5, 0] = "Fch. Vencimiento";
+            arrCabeceraFlex[5, 1] = "75";
+            arrCabeceraFlex[5, 2] = "F";
+            arrCabeceraFlex[5, 3] = "";
+            arrCabeceraFlex[5, 4] = "";
+
+            arrCabeceraFlex[6, 0] = "Importe";
+            arrCabeceraFlex[6, 1] = "80";
+            arrCabeceraFlex[6, 2] = "D";
+            arrCabeceraFlex[6, 3] = "";
+            arrCabeceraFlex[6, 4] = "";
+
+            arrCabeceraFlex[7, 0] = "Saldo";
+            arrCabeceraFlex[7, 1] = "80";
+            arrCabeceraFlex[7, 2] = "D";
+            arrCabeceraFlex[7, 3] = "";
+            arrCabeceraFlex[7, 4] = "";
+
+            arrCabeceraFlex[8, 0] = "Fch. Pago";
+            arrCabeceraFlex[8, 1] = "75";
+            arrCabeceraFlex[8, 2] = "F";
+            arrCabeceraFlex[8, 3] = "";
+            arrCabeceraFlex[8, 4] = "";
+
+            arrCabeceraFlex[9, 0] = "Tip. Doc. Pago";
+            arrCabeceraFlex[9, 1] = "50";
+            arrCabeceraFlex[9, 2] = "C";
+            arrCabeceraFlex[9, 3] = "";
+            arrCabeceraFlex[9, 4] = "";
+
+            arrCabeceraFlex[10, 0] = "Nº Doc. Pago";
+            arrCabeceraFlex[10, 1] = "100";
+            arrCabeceraFlex[10, 2] = "C";
+            arrCabeceraFlex[10, 3] = "";
+            arrCabeceraFlex[10, 4] = "";
+
+            arrCabeceraFlex[11, 0] = "Marcar Pago";
+            arrCabeceraFlex[11, 1] = "50";
+            arrCabeceraFlex[11, 2] = "B";
+            arrCabeceraFlex[11, 3] = "";
+            arrCabeceraFlex[11, 4] = "";
+
+            arrCabeceraFlex[12, 0] = "Imp. Bruto";
+            arrCabeceraFlex[12, 1] = "0";
+            arrCabeceraFlex[12, 2] = "D";
+            arrCabeceraFlex[12, 3] = "";
+            arrCabeceraFlex[12, 4] = "";
+
+            arrCabeceraFlex[13, 0] = "Importe IGV";
+            arrCabeceraFlex[13, 1] = "0";
+            arrCabeceraFlex[13, 2] = "D";
+            arrCabeceraFlex[13, 3] = "";
+            arrCabeceraFlex[13, 4] = "";
+
+            arrCabeceraFlex[14, 0] = "id";
+            arrCabeceraFlex[14, 1] = "0";
+            arrCabeceraFlex[14, 2] = "N";
+            arrCabeceraFlex[14, 3] = "";
+            arrCabeceraFlex[14, 4] = "";
+
+            funFlex.FlexMostrarDatos(FgDeuda, arrCabeceraFlex, dtRegistros, 2, false);
+        }
+        private void FrmCtaCtePuestos_Activated(object sender, EventArgs e)
+        {
+            if (booSeEjecuto == false)
+            {
+                booSeEjecuto = true;               
+            }
+        }
+        private void TxtCodPue_Validated(object sender, EventArgs e)
+        {
+            if (TxtCodPue.Text == "") { return; }
+            OptSolDeu.Checked = true;
+            CmdMostrarDeuda_Click(sender, e);
+        }
+        void MostrarDatosSocio(int n_IdSocio)
+        { 
+            DataTable dtResul = new DataTable();
+            string c_dato = "";
+
+            dtResul = funDatos.DataTableFiltrar(dtSocios, "n_id = "+ n_IdSocio.ToString() +"");
+            if (dtResul.Rows.Count != 0)
+            {
+                TxtNomSoc.Text = dtResul.Rows[0]["c_apenom"].ToString();
+
+                c_dato = funDatos.DataTableBuscar(dtTipSoc, "n_id", "c_des", dtResul.Rows[0]["n_idtipsoc"].ToString(), "N").ToString();
+                TxtSer.Text = c_dato;
+                TxtFchIng.Text = "";//dtResul.Rows[0]["c_apenom"].ToString();
+            }
+        }
+        private void TxtCodPue_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void TxtCodPue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Convert.ToInt32(e.KeyChar) == 13)
+            {
+                e.Handled = true;
+                SendKeys.Send("{TAB}");
+            }
+            else
+            {
+                if (!strCaracteres.Contains(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+            }
+        }
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Convert.ToInt32(e.KeyChar) == 13)
+            {
+                SendKeys.Send("{TAB}");
+            }
+            else
+            {
+                if (!strCaracteres.Contains(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+            }
+        }
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Convert.ToInt32(e.KeyChar) == 13)
+            {
+                SendKeys.Send("{TAB}");
+            }
+            else
+            {
+                if (!strCaracteres.Contains(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+            }
+        }
+        private void dateTimePicker1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Convert.ToInt32(e.KeyChar) == 13)
+            {
+                SendKeys.Send("{TAB}");
+            }
+            else
+            {
+                if (!strCaracteres.Contains(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+            }
+        }
+        private void CmdProPen_Click(object sender, EventArgs e)
+        {
+            string[,] arrCabeceraDg1 = new string[4, 4];
+            DataTable dtResult = new DataTable();
+            CN_coo_sociospuestos objPuestos = new CN_coo_sociospuestos();
+
+            OptSolDeu.Checked = true;
+
+            objPuestos.mysConec = mysConec;
+            objPuestos.Consulta1(STU_SISTEMA.EMPRESAID, 1);
+            if (objPuestos.booOcurrioError == true)
+            {
+                return;
+            }
+
+            dtResult = objPuestos.dtPuestosSocios;
+            
+            arrCabeceraDg1[0, 0] = "Nº Puesto";
+            arrCabeceraDg1[0, 1] = "60";
+            arrCabeceraDg1[0, 2] = "C";
+            arrCabeceraDg1[0, 3] = "c_puesto";
+
+            arrCabeceraDg1[1, 0] = "Nombre Socio";
+            arrCabeceraDg1[1, 1] = "350";
+            arrCabeceraDg1[1, 2] = "C";
+            arrCabeceraDg1[1, 3] = "c_apenom";
+
+            arrCabeceraDg1[2, 0] = "Tipo Puesto";
+            arrCabeceraDg1[2, 1] = "150";
+            arrCabeceraDg1[2, 2] = "C";
+            arrCabeceraDg1[2, 3] = "c_tippuedes";
+
+            arrCabeceraDg1[3, 0] = "IdPuesto";
+            arrCabeceraDg1[3, 1] = "0";
+            arrCabeceraDg1[3, 2] = "N";
+            arrCabeceraDg1[3, 3] = "n_id";
+
+            Genericas xFun = new Genericas();
+            xFun.Buscar_CampoBusqueda = "n_id";
+            xFun.Buscar_CadFiltro = "";
+            xFun.Buscar_CampoOrden = "c_puesto";
+            dtResult = xFun.Buscar(arrCabeceraDg1, dtResult);
+
+            if (dtResult == null) { return; }
+            if (dtResult.Rows.Count == 0) { return; }
+
+            TxtCodPue.Text = dtResult.Rows[0]["c_puesto"].ToString();
+            LblIdPuesto.Text = dtResult.Rows[0]["n_id"].ToString();
+
+            CmdMostrarDeuda_Click(sender, e);
+        }
+        private void FrmCtaCtePuestos_Resize(object sender, EventArgs e)
+        {
+            c1Sizer1.Width = this.Width - 14;
+            c1Sizer1.Height = this.Height - 78;
+        }
+        private void ToolSalir_Click(object sender, EventArgs e)
+        {
+            objRegistros = null;
+            objFormVis = null;
+            objTipSoc = null;
+            oboPuestoSocio = null;
+            objSocios = null;
+            mysConec = null;
+            this.Close();
+        }
+        private void CmdGenPag_Click(object sender, EventArgs e)
+        {
+            int n_idtipdoc = 0;
+            string c_numser = "";
+            string c_numdoc = "";
+            double n_imptc = 0;
+            double n_tasaigv = 18;
+            double n_imppagar = 0;
+            double n_impigv = 0;
+            double n_impbru = 0;
+            double n_valor = 0;
+            int n_row = 2;
+            double n_IdGenerado = 0;
+            string c_dato = "";
+
+            for (n_row = 2; n_row <= (FgDeuda.Rows.Count - 1); n_row++)
+            {
+                if (funFunciones.NulosC(FgDeuda.GetData(n_row, 12)).ToString() == "True")
+                {
+                    n_valor = n_valor + 1;
+                }
+            }
+
+            if (n_valor == 0)
+            {
+                MessageBox.Show("¡ No ha indicado que cargos son los que se van a pagar !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                return;
+            }
+
+            c_dato = funDatos.DataTableBuscar(dtTipSoc,"c_des","n_idtipdocfac",TxtSer.Text,"C").ToString();
+            n_idtipdoc = Convert.ToInt32(c_dato);
+            c_numser = "0001";
+            objTipDocCom.mysConec = mysConec;
+            c_numdoc = objTipDocCom.UltimoNumero(STU_SISTEMA.EMPRESAID, n_idtipdoc, c_numser);
+
+            // ACUMULAMOS EL IMPORTE DE LO QUE SE VA A PAGAR (SOLO LO QUE ESTA CON CHECK)
+            for (n_row = 2; n_row <= (FgDeuda.Rows.Count - 1); n_row++)
+            {
+                if (funFunciones.NulosC(FgDeuda.GetData(n_row, 12)).ToString() == "True")
+                { 
+                    n_valor =Convert.ToDouble(FgDeuda.GetData(n_row, 13));
+                    n_impbru = n_impbru + n_valor;
+
+                    n_valor = Convert.ToDouble(FgDeuda.GetData(n_row, 14));
+                    n_impigv = n_impigv + n_valor;
+
+                    n_valor = Convert.ToDouble(FgDeuda.GetData(n_row, 8));
+                    n_imppagar = n_imppagar + n_valor;
+                }
+            }
+            
+            CN_vta_ventas objVentas = new CN_vta_ventas();
+            BE_VTA_VENTAS entVentas = new BE_VTA_VENTAS();
+            List<BE_VTA_VENTASDET> lstVentasDet = new List<BE_VTA_VENTASDET>();
+
+            entVentas.n_idemp = STU_SISTEMA.EMPRESAID;
+            entVentas.n_id = 0;
+            entVentas.n_anotra= STU_SISTEMA.ANOTRABAJO;
+            entVentas.n_idmes =  STU_SISTEMA.MESTRABAJO;
+            entVentas.n_idlib = 2;
+            entVentas.c_numreg = "";
+            entVentas.n_idtippro = 23;
+            entVentas.n_idcli = Convert.ToInt32(LblIdSoc.Text);
+            entVentas.n_idpunvencli = 0;
+            entVentas.n_idtipdoc = n_idtipdoc;
+            entVentas.c_numser = c_numser;
+            entVentas.c_numdoc = c_numdoc;
+            entVentas.d_fchreg = Convert.ToDateTime("01/" + STU_SISTEMA.MESTRABAJO.ToString() + "/" + STU_SISTEMA.ANOTRABAJO.ToString());
+            entVentas.d_fchdoc = DateTime.Now;
+            entVentas.d_fchven = DateTime.Now;
+            entVentas.n_idconpag = 1;                                   // INDICAMOS QUE ELPAGO ES AL CONTADO
+            entVentas.n_idmon = 115;                                    // INDICAMOS QUE LA MONEDA ES SOLES
+            if (TxtSer.Text == "INQUILINO" )
+            {
+                entVentas.n_impinaf = 0;
+                entVentas.n_impbru = n_impbru;
+                entVentas.n_impigv = n_impigv;
+                entVentas.n_imptotven = n_imppagar;
+                entVentas.n_idtipven = 1;                               // INDICAMOS QUE LA VENTA ES AFECTA AL IGV
+            }
+            
+            entVentas.n_impbru2 = 0;
+            entVentas.n_impbru3 = 0;
+
+            if (TxtSer.Text == "SOCIO" )
+            {
+                entVentas.n_impbru = 0;
+                entVentas.n_impinaf = n_imppagar;
+                entVentas.n_impigv = 0;
+                entVentas.n_imptotven = n_imppagar;
+                entVentas.n_idtipven = 3;                               // INDICAMOS QUE LA VENTA ES INAAFECTA AL IGV
+            }
+
+            entVentas.n_impisc = 0;
+            entVentas.n_impotr = 0;
+            entVentas.n_tc = n_imptc; 
+            entVentas.n_impsal = 0;
+            entVentas.n_idven = 0;
+            entVentas.n_tasaigv = n_tasaigv;
+            entVentas.c_glosa= "";
+            entVentas.n_oriitem = 1;
+            entVentas.n_anulado = 1;
+            
+            entVentas.n_idtipdocref = 0;
+            entVentas.n_iddocref = 0;
+            entVentas.c_serdocref = "";
+            entVentas.c_numdocref = "";
+            entVentas.n_idtipdes = 1;
+            entVentas.n_impdes = 0;
+            entVentas.c_nomcli = TxtNomSoc.Text;
+            entVentas.c_dircli = "";
+            entVentas.n_idpue = Convert.ToInt32(LblIdPuesto.Text);
+
+            string c_cadena = "";
+
+            // CARGAMOS LOS ITEMS DE LA VENTA
+            for (n_row = 2; n_row <= (FgDeuda.Rows.Count - 1); n_row++)
+            {
+                if (funFunciones.NulosC(FgDeuda.GetData(n_row, 12)).ToString() == "True")
+                {
+                    if (n_row > 2) { c_cadena = c_cadena + ","; }
+                    c_cadena = c_cadena + FgDeuda.GetData(n_row, 15).ToString();                   // ARMAMOS LA CADENA IN PARA TRAER EL DETALLE DEL DOCUMENTO
+                }
+            }
+
+            DataTable dtDetalle = new DataTable();
+            objCargos.mysConec = mysConec;
+            objCargos.Consulta2(c_cadena);
+
+            if (objCargos.booOcurrioError == true)
+            {
+                MessageBox.Show("¡ No se pudo realizar el pago de los cargos por el siguiente motivo :" + objCargos.StrErrorMensaje + " !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                return;
+            }
+
+            dtDetalle = objCargos.dtLista;
+
+            for (n_row = 0; n_row <= (dtDetalle.Rows.Count - 1); n_row++)
+            {
+                BE_VTA_VENTASDET entVtaDet = new BE_VTA_VENTASDET();
+
+                entVtaDet.n_idvta = 0;
+                entVtaDet.n_iditem = Convert.ToInt32(dtDetalle.Rows[n_row]["n_idcon"]);
+                entVtaDet.c_desusu = dtDetalle.Rows[n_row]["c_descon"].ToString();
+                entVtaDet.n_idunimed = 726;
+                entVtaDet.n_canpro = 1;
+                entVtaDet.n_preunibru = Convert.ToDouble(dtDetalle.Rows[n_row]["n_impbru"]);
+                entVtaDet.n_impdes = 0;
+                entVtaDet.n_preuninet = Convert.ToDouble(dtDetalle.Rows[n_row]["n_impbru"]);
+                entVtaDet.n_imptot = Convert.ToDouble(dtDetalle.Rows[n_row]["n_imptotnet"]);
+
+                lstVentasDet.Add(entVtaDet);
+            }
+
+            objVentas.mysConec = mysConec;
+            objVentas.LstDetalle = lstVentasDet;
+            if (objVentas.Insertar(entVentas) == false)                             // GRABAMOS EL DOCUMENTO DE PAGO
+            {
+                MessageBox.Show("¡ No se pudo realizar el pago de los cargos por el siguiente motivo :" + objVentas.StrErrorMensaje + " !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+            }
+            else
+            {
+                n_IdGenerado = objVentas.n_IdGenerado;
+                int n_idCargo = 0;
+                
+                // ACTUALIZAMOS LOS CARGOS PAGADO
+                for (n_row = 2; n_row <= (FgDeuda.Rows.Count - 1); n_row++)
+                {
+                    if (funFunciones.NulosC(FgDeuda.GetData(n_row, 12)).ToString() == "True")
+                    { 
+                        n_idCargo = Convert.ToInt32(FgDeuda.GetData(n_row, 15).ToString());
+                        
+                        objCargosCab.mysConec = mysConec;
+                        //objCargosCab.ActualizarCargo(n_idCargo, n_IdGenerado);
+                        if (objCargosCab.booOcurrioError == true)
+                        {
+                            MessageBox.Show("¡ ocurrio un error :" + objCargosCab.StrErrorMensaje + " !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                        }
+                    }
+                }
+
+                // MOSTRAMOS LA IMPRESION DE LA VENTA
+                objVentas.STU_SISTEMA = STU_SISTEMA;
+                objVentas.ReportImprimirDocumento(n_IdGenerado, n_idtipdoc,false,"", false); 
+
+                // MOSTRAMOS NUEVAMENTE TODA LA DEUDA DEL PUESTO
+                CmdMostrarDeuda_Click(sender, e);
+            }
+        }
+        private void FgDeuda_CellChanged(object sender, RowColEventArgs e)
+        {
+         
+        }
+        private void FgDeuda_EnterCell(object sender, EventArgs e)
+        {
+            if (FgDeuda.Rows.Count == 2) { return; }
+            FgDeuda.AllowEditing = false;
+
+            if (FgDeuda.Col == 12)
+            {
+                double n_Saldo = Convert.ToDouble(FgDeuda.GetData(FgDeuda.Row, 8));
+                if (n_Saldo > 0)
+                {
+                    FgDeuda.AllowEditing = true;
+                }
+            }
+        }
+        private void FgDeuda_CellChecked(object sender, RowColEventArgs e)
+        {
+            if (FgDeuda.Col == 12)
+            {
+                double n_Saldo = Convert.ToDouble(FgDeuda.GetData(FgDeuda.Row, 8));
+                if (n_Saldo == 0)
+                {
+                    FgDeuda.SetData(FgDeuda.Row, 12, false);
+                }
+            }
+        }
+        private void ToolNuevo_Click(object sender, EventArgs e)
+        {
+            //int n_IdCargoApertura = 0;
+            //int n_idtipdoc = 83;
+            //string c_numser = "";
+            //string c_numdoc = "";
+            ////BE_COO_CARGOS entCargo = new BE_COO_CARGOS();
+            //BE_COO_CARGOSCAB entCargoCab = new BE_COO_CARGOSCAB();
+            //List<BE_COO_CARGOSDET> entCargoDet = new List<BE_COO_CARGOSDET>();
+                       
+            
+            //c_numser = "0001";
+            //objTipDocCom.mysConec = mysConec;
+            //c_numdoc = objTipDocCom.UltimoNumero(STU_SISTEMA.EMPRESAID, n_idtipdoc, c_numser);
+
+
+            //entCargoCab.n_idemp = STU_SISTEMA.EMPRESAID;
+            //entCargoCab.n_idcar = n_IdCargoApertura;
+            //entCargoCab.n_idsoc = Convert.ToInt32(LblIdSoc.Text);
+            //entCargoCab.n_idsocpue = Convert.ToInt32(LblIdPuesto.Text);
+            //entCargoCab.n_idtipdoc = n_idtipdoc;
+            //entCargoCab.c_numser = c_numser;
+            //entCargoCab.c_numdoc = c_numdoc;
+            //entCargoCab.d_fchemi = DateTime.Now;
+            //entCargoCab.d_fchven = DateTime.Now;
+            //entCargoCab.n_impbru
+            //entCargoCab.n_impigv
+            //entCargoCab.n_imptot
+            //entCargoCab.c_glosa
+            //entCargoCab.n_impsal
+            //entCargoCab.n_anotra
+            //entCargoCab.n_mestra
+            //entCargoCab.n_iddocpag
+            //entCargoCab.n_id
+        }
+
+        private void CmdExtPag_Click(object sender, EventArgs e)
+        {
+            DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el pago de este documento", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+
+            if (DialogResult.Yes == Rpta)
+            {
+                //if (objRegistros.Eliminar(intIdRegistro) == true)
+                //{
+                //    booResult = true;
+                //    MessageBox.Show("¡ El registro se elimino con exito !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+
+                //    // VOLVEMOS A CARGAR EL DATATABLE dtItems CON LOS DATOS DEL SERVIDOR
+                //    objRegistros.mysConec = mysConec;
+                //    dtRegistros = objRegistros.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO);
+                //    // MOSTRAMOS LOS DATOS EN LA GRILLA
+                //    ListarItems();
+                //}
+                //else
+                //{
+                //    MessageBox.Show("¡ No se pudo eliminar el registro por el siguiente motivo ! " + objRegistros.StrErrorMensaje, "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                //}
+            }
+        }
+    }
+}

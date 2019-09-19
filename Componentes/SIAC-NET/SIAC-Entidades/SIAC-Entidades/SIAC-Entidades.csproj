@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FC396209-1D34-4316-BED1-10F6C34167C4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SIAC_Entidades</RootNamespace>
+    <AssemblyName>SIAC-Entidades</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\..\..\..\..\SSF-NET\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Almacen\BE_ALM_ALMACENES.cs" />
+    <Compile Include="Almacen\BE_ALM_ALMACENESDOC.cs" />
+    <Compile Include="Almacen\BE_ALM_ALMACENES_CONSULTA.cs" />
+    <Compile Include="Almacen\BE_ALM_INVENTARIO.cs" />
+    <Compile Include="Almacen\BE_ALM_INVENTARIOIMAGEN.cs" />
+    <Compile Include="Almacen\BE_ALM_INVENTARIOLOTE.cs" />
+    <Compile Include="Almacen\BE_ALM_INVENTARIOUNIMED.cs" />
+    <Compile Include="Almacen\BE_ALM_INVENTARIOUNIMED_CONSULTA.cs" />
+    <Compile Include="Almacen\BE_ALM_INVENTARIO_CONSULTA.cs" />
+    <Compile Include="Almacen\BE_ALM_MOVIMIENTOS.cs" />
+    <Compile Include="Almacen\BE_ALM_MOVIMIENTOSDET.cs" />
+    <Compile Include="Almacen\BE_ALM_MOVIMIENTOSDET_CONSULTA.cs" />
+    <Compile Include="Almacen\BE_ALM_MOVIMIENTOS_CONSULTA.cs" />
+    <Compile Include="Contabilidad\BE_CON_CERRARMES.cs" />
+    <Compile Include="Contabilidad\BE_CON_DETRACCION.cs" />
+    <Compile Include="Contabilidad\BE_CON_DIARIO.cs" />
+    <Compile Include="Contabilidad\BE_CON_DOCCOMIMP.cs" />
+    <Compile Include="Contabilidad\BE_CON_IMPUESTOS.cs" />
+    <Compile Include="Contabilidad\BE_CON_PC.cs" />
+    <Compile Include="Contabilidad\BE_CON_PCITEMS.cs" />
+    <Compile Include="Contabilidad\BE_CON_PERCEPCION.cs" />
+    <Compile Include="Contabilidad\BE_CON_PROVICIONES.cs" />
+    <Compile Include="Contabilidad\BE_CON_PROVICIONESDET.cs" />
+    <Compile Include="Contabilidad\BE_CON_REGDETRACCIONES.cs" />
+    <Compile Include="Contabilidad\BE_CON_REGPERCEPCION.cs" />
+    <Compile Include="Contabilidad\BE_CON_REGPERCEPCIONDET.cs" />
+    <Compile Include="Contabilidad\BE_CON_REGRETENCION.cs" />
+    <Compile Include="Contabilidad\BE_CON_REGRETENCIONDET.cs" />
+    <Compile Include="Contabilidad\BE_CON_RETENCION.cs" />
+    <Compile Include="Contabilidad\BE_CON_TC.cs" />
+    <Compile Include="Contabilidad\BE_CON_TIPDOCCOMCUE.cs" />
+    <Compile Include="Cooperativa\BE_COO_CARGOS.cs" />
+    <Compile Include="Cooperativa\BE_COO_CARGOSCAB.cs" />
+    <Compile Include="Cooperativa\BE_COO_CARGOSDET.cs" />
+    <Compile Include="Cooperativa\BE_COO_CONCEPTOS.cs" />
+    <Compile Include="Cooperativa\BE_COO_PUESTOS.cs" />
+    <Compile Include="Cooperativa\BE_COO_PUESTOSTIPO.cs" />
+    <Compile Include="Cooperativa\BE_COO_SERVICIOS.cs" />
+    <Compile Include="Cooperativa\BE_COO_SERVICIOSDET.cs" />
+    <Compile Include="Cooperativa\BE_COO_SOCIOS.cs" />
+    <Compile Include="Cooperativa\BE_COO_SOCIOSPUESTOS.cs" />
+    <Compile Include="Cooperativa\BE_COO_TIPOSERVICIO.cs" />
+    <Compile Include="Estacionamiento\BE_EST_CAJEROS.cs" />
+    <Compile Include="Estacionamiento\BE_EST_CARGOS.cs" />
+    <Compile Include="Estacionamiento\BE_EST_CARGOSCAB.cs" />
+    <Compile Include="Estacionamiento\BE_EST_CARGOSDET.cs" />
+    <Compile Include="Estacionamiento\BE_EST_CLIENTES.cs" />
+    <Compile Include="Estacionamiento\BE_EST_CLIENTESPLACAS.cs" />
+    <Compile Include="Estacionamiento\BE_EST_LIQUIDACION.cs" />
+    <Compile Include="Estacionamiento\BE_EST_LIQUIDACIONDET.cs" />
+    <Compile Include="Estacionamiento\BE_EST_LOCALSETUP.cs" />
+    <Compile Include="Estacionamiento\BE_EST_MOVIMIENTOS.cs" />
+    <Compile Include="Estacionamiento\BE_EST_MOVIMIENTOSDET.cs" />
+    <Compile Include="Estacionamiento\BE_EST_OTROCARGOSCAB.cs" />
+    <Compile Include="Estacionamiento\BE_EST_OTROCARGOSDET.cs" />
+    <Compile Include="Estacionamiento\BE_EST_SERVICIOS.cs" />
+    <Compile Include="Gestion\BE_GES_PLANABASTECIMIENTO.cs" />
+    <Compile Include="Gestion\BE_GES_PLANABASTECIMIENTODET.cs" />
+    <Compile Include="Gestion\BE_GES_PLANPRODUCCION.cs" />
+    <Compile Include="Gestion\BE_GES_PLANPRODUCCIONDET.cs" />
+    <Compile Include="Gestion\BE_GES_PLANVENTAS.cs" />
+    <Compile Include="Gestion\BE_GES_PLANVENTASANOS.cs" />
+    <Compile Include="Gestion\BE_GES_PLANVENTASDET.cs" />
+    <Compile Include="Logistica\BE_LOG_COMPRAS.cs" />
+    <Compile Include="Logistica\BE_LOG_COMPRASDET.cs" />
+    <Compile Include="Logistica\BE_LOG_COMPRASDOC.cs" />
+    <Compile Include="Logistica\BE_LOG_ORDENCOMPRA.cs" />
+    <Compile Include="Logistica\BE_LOG_ORDENCOMPRADET.cs" />
+    <Compile Include="Logistica\BE_LOG_ORDENREQUERIMIENTODET.cs" />
+    <Compile Include="Logistica\BE_LOG_ORDENREQUERIMIENTO.cs" />
+    <Compile Include="Logistica\BE_LOG_PERSONAL.cs" />
+    <Compile Include="Maestros\BE_MAE_ALMDOC.cs" />
+    <Compile Include="Maestros\BE_MAE_ALMDOC_CONSULTA.cs" />
+    <Compile Include="Maestros\BE_MAE_AREA.cs" />
+    <Compile Include="Maestros\BE_MAE_CLASE.cs" />
+    <Compile Include="Maestros\BE_MAE_FAMILIA.cs" />
+    <Compile Include="Maestros\BE_MAE_MESES.cs" />
+    <Compile Include="Maestros\BE_MAE_MOTIVOS.cs" />
+    <Compile Include="Maestros\BE_MAE_PRIORIDAD.cs" />
+    <Compile Include="Maestros\BE_MAE_RETENCION.cs" />
+    <Compile Include="Maestros\BE_MAE_SUBCLASE.cs" />
+    <Compile Include="Maestros\BE_MAE_CLIPRO.cs" />
+    <Compile Include="Maestros\BE_MAE_CLIPROITEMS.cs" />
+    <Compile Include="Mantenimiento\BE_MAN_EQUIPOS.cs" />
+    <Compile Include="Planillas\BE_PLA_DESTAJO.cs" />
+    <Compile Include="Planillas\BE_PLA_DESTAJODET.cs" />
+    <Compile Include="Planillas\BE_PLA_DESTAJOUNI.cs" />
+    <Compile Include="Planillas\BE_PLA_DESTAJOUNIDET.cs" />
+    <Compile Include="Planillas\BE_PLA_DESTAJOUNIPLA.cs" />
+    <Compile Include="Planillas\BE_PLA_EMPLEADOS.cs" />
+    <Compile Include="Planillas\BE_PLA_MARCACION2.cs" />
+    <Compile Include="Planillas\BE_PLA_MARCACIONDET.cs" />
+    <Compile Include="Planillas\BE_PLA_PERSONAL.cs" />
+    <Compile Include="Planillas\BE_TEMPUS_MOSTRAR.cs" />
+    <Compile Include="Produccion\BE_ PRO_PRODUCCIONTAREASDET.cs" />
+    <Compile Include="Produccion\BE_PRO_ESTACIONALIDAD.cs" />
+    <Compile Include="Produccion\BE_PRO_LINEA2017.cs" />
+    <Compile Include="Produccion\BE_PRO_LINEADET2017.cs" />
+    <Compile Include="Produccion\BE_PRO_ORDENPRODUCCION.cs" />
+    <Compile Include="Produccion\BE_PRO_ORDENPRODUCCIONDET.cs" />
+    <Compile Include="Produccion\BE_PRO_PRODUCCION.cs" />
+    <Compile Include="Produccion\BE_PRO_PRODUCCIONINS.cs" />
+    <Compile Include="Produccion\BE_PRO_PRODUCTOSUBILOC.cs" />
+    <Compile Include="Produccion\BE_PRO_PRODUCTOSUBILOCALM.cs" />
+    <Compile Include="Produccion\BE_PRO_PRODUCTOS.cs" />
+    <Compile Include="Produccion\BE_PRO_PRODUCTOSRECETAS.cs" />
+    <Compile Include="Produccion\BE_PRO_PRODUCTOSRECETASINSUMOS.cs" />
+    <Compile Include="Produccion\BE_PRO_PRODUCTOSRECETASLINEASTAREAS.cs" />
+    <Compile Include="Produccion\BE_PRO_PRODUCTOSRECETASLINEAS.cs" />
+    <Compile Include="Produccion\BE_PRO_PROGRAMA.cs" />
+    <Compile Include="Produccion\BE_PRO_PROGRAMADET.cs" />
+    <Compile Include="Produccion\BE_PRO_PROGRAMADETPRO.cs" />
+    <Compile Include="Produccion\BE_PRO_PROGRAMADETPROCRON.cs" />
+    <Compile Include="Produccion\BE_PRO_PROGRAMADETPROLINDET.cs" />
+    <Compile Include="Produccion\BE_PRO_PROGRAMADETPROLIN.cs" />
+    <Compile Include="Produccion\BE_PRO_RENDIMIENTO.cs" />
+    <Compile Include="Produccion\BE_PRO_SOLICITUDMATERIALES.cs" />
+    <Compile Include="Produccion\BE_PRO_SOLICITUDMATERIALESDET.cs" />
+    <Compile Include="Produccion\BE_PRO_SOLICITUDTAREAS.cs" />
+    <Compile Include="Produccion\BE_PRO_SOLICITUDTAREASCAB.cs" />
+    <Compile Include="Produccion\BE_PRO_SOLICITUDTAREASDET.cs" />
+    <Compile Include="Produccion\BE_PRO_SOLICITUDTAREASDIVERSAS.cs" />
+    <Compile Include="Produccion\BE_PRO_SOLICITUDTAREASDIVERSASCAB.cs" />
+    <Compile Include="Produccion\BE_PRO_SOLICITUDTAREASDIVERSASDET.cs" />
+    <Compile Include="Produccion\BE_PRO_TAREA.cs" />
+    <Compile Include="Produccion\BE_PRO_FORMAPAGO.cs" />
+    <Compile Include="Produccion\BE_PRO_REVISION.cs" />
+    <Compile Include="Produccion\BE_PRO_TIPOPRODUCTO.cs" />
+    <Compile Include="Produccion\BE_PRO_TIPOTRABAJO.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sistema\BE_SYS_AUDITORIA.cs" />
+    <Compile Include="Sistema\BE_SYS_EMPRESA.cs" />
+    <Compile Include="Sistema\BE_SYS_PERSONALADJUNTO.cs" />
+    <Compile Include="Sistema\BE_SYS_USUARIOS.cs" />
+    <Compile Include="Sistema\BE_SYS_USUARIOSINGRESOS.cs" />
+    <Compile Include="Sunat\BE_SUN_CATEMPRESA.cs" />
+    <Compile Include="Sunat\BE_SUN_CONCEPTONC.cs" />
+    <Compile Include="Sunat\BE_SUN_DEPARTAMENTOS.cs" />
+    <Compile Include="Sunat\BE_SUN_DISTRITOS.cs" />
+    <Compile Include="Sunat\BE_SUN_FE_CATALOGO07.cs" />
+    <Compile Include="Sunat\BE_SUN_LIBRO.cs" />
+    <Compile Include="Sunat\BE_SUN_LIBROSUB.cs" />
+    <Compile Include="Sunat\BE_SUN_MOTIVOTRASLADO.cs" />
+    <Compile Include="Sunat\BE_SUN_PROVINCIA.cs" />
+    <Compile Include="Sunat\BE_SUN_TIPCONTRIBUYENTE.cs" />
+    <Compile Include="Sunat\BE_SUN_TIPDOCCOM.cs" />
+    <Compile Include="Sunat\BE_SUN_TIPDOCIDE.cs" />
+    <Compile Include="Sunat\BE_SUN_TIPEXI.cs" />
+    <Compile Include="Sunat\BE_SUN_TIPOPE.cs" />
+    <Compile Include="Sunat\BE_SUN_UNIMED.cs" />
+    <Compile Include="Tesoreria\BE_TES_BANCOS.cs" />
+    <Compile Include="Tesoreria\BE_TES_CANJE.cs" />
+    <Compile Include="Tesoreria\BE_TES_CANJEDET.cs" />
+    <Compile Include="Tesoreria\BE_TES_CONCILIACION.cs" />
+    <Compile Include="Tesoreria\BE_TES_CONCILIACIONDET.cs" />
+    <Compile Include="Tesoreria\BE_TES_CUENTABANCO.cs" />
+    <Compile Include="Tesoreria\BE_TES_DESTINO.cs" />
+    <Compile Include="Tesoreria\BE_TES_DOCUMENTOS.cs" />
+    <Compile Include="Tesoreria\BE_TES_LETRAS.cs" />
+    <Compile Include="Tesoreria\BE_TES_LETRASDET.cs" />
+    <Compile Include="Tesoreria\BE_TES_LETRASDOC.cs" />
+    <Compile Include="Tesoreria\BE_TES_LETTIPPLA.cs" />
+    <Compile Include="Tesoreria\BE_TES_MEDIOPAGO.cs" />
+    <Compile Include="Tesoreria\BE_TES_ORIGEN.cs" />
+    <Compile Include="Tesoreria\BE_TES_TESORERIA.cs" />
+    <Compile Include="Tesoreria\BE_TES_TESORERIADES.cs" />
+    <Compile Include="Tesoreria\BE_TES_TESORERIADESDET.cs" />
+    <Compile Include="Tesoreria\BE_TES_TESORERIAORI.cs" />
+    <Compile Include="Tesoreria\BE_TES_TESORERIAORIDET.cs.cs" />
+    <Compile Include="Ventas\BE_VTA_BOLETARESUMEN.cs" />
+    <Compile Include="Ventas\BE_VTA_BOLETARESUMENDET.cs" />
+    <Compile Include="Ventas\BE_VTA_TIPEXIVENDER.cs" />
+    <Compile Include="Ventas\BE_VTA_CHOFER.cs" />
+    <Compile Include="Ventas\BE_VTA_EMPTRA.cs" />
+    <Compile Include="Ventas\BE_VTA_GUIAS.cs" />
+    <Compile Include="Ventas\BE_VTA_GUIASDATOS.cs" />
+    <Compile Include="Ventas\BE_VTA_GUIASDET.cs" />
+    <Compile Include="Ventas\BE_VTA_GUIASDOC.cs" />
+    <Compile Include="Ventas\BE_VTA_ITEMCEN.cs" />
+    <Compile Include="Ventas\BE_VTA_PEDIDOCEN.cs" />
+    <Compile Include="Ventas\BE_VTA_PEDIDOCENDET.cs" />
+    <Compile Include="Ventas\BE_VTA_VENTASBAJA.cs" />
+    <Compile Include="Ventas\BE_VTA_VENTASDAT.cs" />
+    <Compile Include="Ventas\BE_VTA_VENTASNCDOC.cs" />
+    <Compile Include="Ventas\XXXBE_VTA_PEDIDOCEN.cs" />
+    <Compile Include="Ventas\XXXBE_VTA_PEDIDOCENDET.cs" />
+    <Compile Include="Ventas\BE_VTA_PEDIDOCLI.cs" />
+    <Compile Include="Ventas\BE_VTA_PUNVENCLI.cs" />
+    <Compile Include="Ventas\BE_VTA_VEHICULO.cs" />
+    <Compile Include="Ventas\BE_VTA_VENDEDOR.cs" />
+    <Compile Include="Ventas\BE_VTA_VENTAS.cs" />
+    <Compile Include="Ventas\BE_VTA_VENTASDET.cs" />
+    <Compile Include="Ventas\BE_VTA_PEDIDOCLIDET.cs" />
+    <Compile Include="Ventas\BE_VTA_VENTASDOC.cs" />
+    <Compile Include="Ventas\BE_VTA_VENTASOCT.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BI\" />
+    <Folder Include="Caja\" />
+    <Folder Include="Compras\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

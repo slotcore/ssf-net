@@ -1,0 +1,167 @@
+﻿
+#principal{
+	width:1000px;
+    height:850px;
+    margin: 0 auto;         /* centra el div principal */
+    -webkit-box-shadow: 3px 3px 5px 6px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+    -moz-box-shadow:    3px 3px 5px 6px #ccc;  /* Firefox 3.5 - 3.6 */
+    box-shadow:         3px 3px 5px 6px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+}
+
+/*******************************************/
+/*para alinear la cabecera del master page */
+/*la cabecera esta compuesta por 3 div     */
+/*******************************************/
+#cabecera{
+    height:50px;
+    /*width:900px;*/
+    background-color:#4800ff;
+    color:white;
+    border:0px;
+    /*box-shadow:0px 0px 10px #000;*/
+    position:relative;
+    z-index:2;
+}
+
+#logo {
+    width:5%;
+    height:46px;
+    border:0px;
+    float:left;
+    margin-top:1px;
+    background-color:#4800ff;
+    margin-top:5px;
+    margin-left:4px;
+}
+    #logo > img {
+        box-shadow:0px 0px 10px #000;
+        height:40px; 
+        width:40px;
+    }
+
+#barraherramietas{
+    width:65%;
+    height:50px;
+    border:0px;
+    float:left;
+    margin-top:0px;
+    background-color:#0094ff;
+}
+
+#usuario{
+    width:29%;
+    height:50px;
+    border:0px;
+    float:right;
+    margin-top:0px;
+    background-color:#0094ff;
+}
+
+
+
+/*******************************************/
+/*para alinear el cuerpo del master page   */
+/*la cuerpo esta compuesta por 2 div       */
+/*******************************************/
+#cuerpo{
+    height:800px;
+    /*width:900px;*/
+    background-color:#808080;
+    color:white;
+    border:0px;
+    /*box-shadow:0px 0px 10px #000;*/
+    position:relative;
+    z-index:2;
+}
+
+#izquierda{
+    width:20%;
+    height:800px;
+    border:0px;
+    float:left;
+    margin-top:0px;
+    background-color:#808080;
+    clear:both;
+}
+
+#derecha{
+    width:80%;
+    height:800px;
+    border:0px;
+    float:left;
+    margin-top:0px;
+    background-color:white;
+}
+
+
+/*******************************************/
+/*para formatear el menu del page master   */
+/*******************************************/
+#menu{
+    list-style-type:none;
+    padding:0;
+    margin:30px 0;
+}
+    #menu > li {
+        padding:7px;
+        text-align:center;
+        background-color:#a8969b;
+        border:1px outset #808080;
+        box-shadow:0px 0px #000 inset;
+    }
+        #menu > li > a {
+            text-decoration:none;
+            color:#e8dcdc;
+        }
+
+
+/*******************************************/
+/*para formatear los formularios           */
+/*******************************************/
+#lista{
+    background-color:white
+}
+
+#cabeceraform{
+    height:80px;
+    -moz-box-shadow:    inset 0 0 5px #000000;
+    -webkit-box-shadow: inset 0 0 5px #000000;
+    box-shadow:         inset 0 0 5px #000000;
+    /*clear:both;*/
+    background-color:#dddddd;
+}
+
+#tituloform{
+    width:794px;
+    height:30px;
+    font-family: Arial, Helvetica, sans-serif;
+    color:black;
+    /*background-color:aqua;*/
+    /*border-color:#0094ff;*/
+    margin-left:3px;  
+}
+
+#toobarform{
+    width:794px;
+    height:40px;
+    font-family: Arial, Helvetica, sans-serif;
+    color:black;
+    /*background-color:blue;*/
+    margin-left:3px;
+}
+
+
+#cuerpoform{
+    height:680px;
+    -moz-box-shadow:    inset 0 0 5px #000000;
+    -webkit-box-shadow: inset 0 0 5px #000000;
+    box-shadow:         inset 0 0 5px #000000;
+}
+
+#pieform{
+    height:40px;
+    -moz-box-shadow:    inset 0 0 5px #000000;
+    -webkit-box-shadow: inset 0 0 5px #000000;
+    box-shadow:         inset 0 0 5px #000000;
+    background-color:white;
+}
