@@ -61,7 +61,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="C1.C1Excel.2, Version=2.1.20101.145, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL">
@@ -83,7 +83,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\SSF-NET\Helper.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Dlls\Microsoft.QualityTools.Testing.Fakes.dll</HintPath>
+    </Reference>
     <Reference Include="MsgPack">
       <HintPath>..\packages\MsgPack.Cli.0.6.8\lib\net45\MsgPack.dll</HintPath>
     </Reference>
@@ -102,7 +104,7 @@
       <HintPath>..\packages\Tesseract.Net.SDK.1.15.342\lib\net45\Patagames.Ocr.dll</HintPath>
     </Reference>
     <Reference Include="SIAC-API">
-      <HintPath>..\..\..\..\SIAC-API\SIAC-API\SIAC-API\bin\SIAC-API.dll</HintPath>
+      <HintPath>..\..\..\Dlls\SIAC-API.dll</HintPath>
     </Reference>
     <Reference Include="SIAC-DATOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -118,31 +120,7 @@
     </Reference>
     <Reference Include="SIAC-NET-Estacionamientos, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\SSF-NET\SIAC-NET-Estacionamientos.dll</HintPath>
-    </Reference>
-    <Reference Include="SIAC-Objetos, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\SSF-NET\SIAC-Objetos.dll</HintPath>
-    </Reference>
-    <Reference Include="SSF-NET-Almacen, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\SSF-NET\SSF-NET-Almacen.dll</HintPath>
-    </Reference>
-    <Reference Include="SSF-NET-Gestion, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\SSF-NET\SSF-NET-Gestion.dll</HintPath>
-    </Reference>
-    <Reference Include="SSF-NET-Planillas, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\SSF-NET\SSF-NET-Planillas.dll</HintPath>
-    </Reference>
-    <Reference Include="SSF-NET-Produccion, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\SSF-NET\SSF-NET-Produccion.dll</HintPath>
-    </Reference>
-    <Reference Include="SSF-NET-Ventas, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\SSF-NET\SSF-NET-Ventas.dll</HintPath>
+      <HintPath>..\..\..\..\..\SSF-NET\SIAC-NET-Estacionamientos.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -270,13 +248,25 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\SIAC-NET\SIAC-NET-Cooperativa\SIAC-NET-Cooperativa\SIAC-NET-Cooperativa.csproj">
+    <ProjectReference Include="..\..\..\Componentes\SIAC-NET\SIAC-NET-Cooperativa\SIAC-NET-Cooperativa\SIAC-NET-Cooperativa.csproj">
       <Project>{34cff5ec-8357-43e3-8e12-44638dd17408}</Project>
       <Name>SIAC-NET-Cooperativa</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Componentes\SIAC-NET\SIAC-Objetos\SIAC-Objetos\SIAC-Objetos.csproj">
+      <Project>{f4f48912-7b4c-4e06-926b-2d98e2f45f07}</Project>
+      <Name>SIAC-Objetos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\SSF-NET-Almacen\SSF-NET-Almacen\SSF-NET-Almacen\SSF-NET-Almacen.csproj">
+      <Project>{4b792186-57a9-4b3c-bf02-7d0a3b60236d}</Project>
+      <Name>SSF-NET-Almacen</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\SSF-NET-Contabilidad\SSF-NET-Contabilidad\SSF-NET-Contabilidad.csproj">
       <Project>{61f4663c-64a7-4d8b-9cfb-edb4ffe7aef9}</Project>
       <Name>SSF-NET-Contabilidad</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\SSF-NET-Gestion\SSF-NET-Gestion\SSF-NET-Gestion.csproj">
+      <Project>{0594a020-c9a1-47cb-b74a-495f598dbfc7}</Project>
+      <Name>SSF-NET-Gestion</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\SSF-NET-Logistica\SSF-NET-Logistica\SSF-NET-Logistica\SSF-NET-Logistica.csproj">
       <Project>{e97542e7-1a13-4354-a1a1-432476f0d83c}</Project>
@@ -286,9 +276,21 @@
       <Project>{621a9554-4612-42b6-986c-cd13f067a122}</Project>
       <Name>SSF-NET-Mantenimiento</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\SSF-NET-Planillas\SSF-NET-Planillas\SSF-NET-Planillas.csproj">
+      <Project>{a44ab90f-b3cb-40c4-88b5-ef38004d67f8}</Project>
+      <Name>SSF-NET-Planillas</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\SSF-NET-Produccion\SSF-NET-Produccion\SSF-NET-Produccion.csproj">
+      <Project>{ef2af37b-3630-4456-9970-743880fc5607}</Project>
+      <Name>SSF-NET-Produccion</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\SSF-NET-Tesoreria\SSF-NET-Tesoreria\SSF-NET-Tesoreria.csproj">
       <Project>{eac0dc80-adba-4d99-ac16-c15b0adfd0c8}</Project>
       <Name>SSF-NET-Tesoreria</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\SSF-NET-Ventas\SSF-NET-Ventas\SSF-NET-Ventas.csproj">
+      <Project>{659e1171-a667-463e-abbc-bc581dce95c2}</Project>
+      <Name>SSF-NET-Ventas</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -310,26 +312,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="x64\liblept172.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="x64\libtesseract304.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="x64\tesseract.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="x86\liblept172.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="x86\libtesseract304.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="x86\tesseract.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\leptonica.net.1.75.0.6\build\leptonica.net.targets" Condition="Exists('..\packages\leptonica.net.1.75.0.6\build\leptonica.net.targets')" />

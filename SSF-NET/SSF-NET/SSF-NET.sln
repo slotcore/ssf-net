@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSF-NET", "SSF-NET\SSF-NET.csproj", "{9AF478DE-68DB-4C23-AFD9-AA64651A0AC2}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -17,13 +17,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSF-NET-Almacen", "..\..\SS
 		{DD73AEFB-D61D-46B9-8311-D36E29F02169} = {DD73AEFB-D61D-46B9-8311-D36E29F02169}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIAC-Negocio", "..\..\..\SIAC-NET\SIAC-Negocio\SIAC-Negocio\SIAC-Negocio.csproj", "{DD73AEFB-D61D-46B9-8311-D36E29F02169}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIAC-Negocio", "..\..\Componentes\SIAC-NET\SIAC-Negocio\SIAC-Negocio\SIAC-Negocio.csproj", "{DD73AEFB-D61D-46B9-8311-D36E29F02169}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIAC-Entidades", "..\..\..\SIAC-NET\SIAC-Entidades\SIAC-Entidades\SIAC-Entidades.csproj", "{FC396209-1D34-4316-BED1-10F6C34167C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIAC-Entidades", "..\..\Componentes\SIAC-NET\SIAC-Entidades\SIAC-Entidades\SIAC-Entidades.csproj", "{FC396209-1D34-4316-BED1-10F6C34167C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIAC-Datos", "..\..\..\SIAC-NET\SIAC-Datos\SIAC-Datos.csproj", "{5B96FD36-691A-4ADF-A4BD-0B5888085E7C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIAC-Datos", "..\..\Componentes\SIAC-NET\SIAC-Datos\SIAC-Datos.csproj", "{5B96FD36-691A-4ADF-A4BD-0B5888085E7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIAC-Objetos", "..\..\..\SIAC-NET\SIAC-Objetos\SIAC-Objetos\SIAC-Objetos.csproj", "{F4F48912-7B4C-4E06-926B-2D98E2F45F07}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIAC-Objetos", "..\..\Componentes\SIAC-NET\SIAC-Objetos\SIAC-Objetos\SIAC-Objetos.csproj", "{F4F48912-7B4C-4E06-926B-2D98E2F45F07}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSF-NET-Ventas", "..\..\SSF-NET-Ventas\SSF-NET-Ventas\SSF-NET-Ventas.csproj", "{659E1171-A667-463E-ABBC-BC581DCE95C2}"
 EndProject
@@ -37,15 +37,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSF-NET-Logistica", "..\..\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSF-NET-Mantenimiento", "..\..\SSF-NET-Mantenimiento\SSF-NET-Mantenimiento\SSF-NET-Mantenimiento.csproj", "{621A9554-4612-42B6-986C-CD13F067A122}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIAC-NET-Cooperativa", "..\..\..\SIAC-NET\SIAC-NET-Cooperativa\SIAC-NET-Cooperativa\SIAC-NET-Cooperativa.csproj", "{34CFF5EC-8357-43E3-8E12-44638DD17408}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIAC-NET-Cooperativa", "..\..\Componentes\SIAC-NET\SIAC-NET-Cooperativa\SIAC-NET-Cooperativa\SIAC-NET-Cooperativa.csproj", "{34CFF5EC-8357-43E3-8E12-44638DD17408}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSF-NET-Contabilidad", "..\..\SSF-NET-Contabilidad\SSF-NET-Contabilidad\SSF-NET-Contabilidad.csproj", "{61F4663C-64A7-4D8B-9CFB-EDB4FFE7AEF9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSF-NET-Tesoreria", "..\..\SSF-NET-Tesoreria\SSF-NET-Tesoreria\SSF-NET-Tesoreria.csproj", "{EAC0DC80-ADBA-4D99-AC16-C15B0ADFD0C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helper", "..\..\..\Helper\Helper\Helper.csproj", "{241F484B-CA5A-4E91-90B7-E3B22731E825}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helper", "..\..\Componentes\Helper\Helper\Helper.csproj", "{241F484B-CA5A-4E91-90B7-E3B22731E825}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIAC-NET-Estacionamientos", "..\..\..\SIAC-NET\SIAC-NET-Estacionamientos\SIAC-NET-Estacionamientos\SIAC-NET-Estacionamientos.csproj", "{6D040714-C152-445C-AE20-A2E08BE83E68}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIAC-NET-Estacionamientos", "..\..\Componentes\SIAC-NET\SIAC-NET-Estacionamientos\SIAC-NET-Estacionamientos\SIAC-NET-Estacionamientos.csproj", "{6D040714-C152-445C-AE20-A2E08BE83E68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -124,5 +124,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {56A41C40-E7B5-4148-A148-81221E29F88F}
 	EndGlobalSection
 EndGlobal

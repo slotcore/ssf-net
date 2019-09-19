@@ -51,26 +51,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\SSF-NET\MySql.Data.dll</HintPath>
     </Reference>
-    <Reference Include="SIAC-DATOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\SSF-NET\SIAC-DATOS.dll</HintPath>
-    </Reference>
-    <Reference Include="SIAC-Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\SSF-NET\SIAC-Entidades.dll</HintPath>
-    </Reference>
-    <Reference Include="SIAC-Negocio, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\SSF-NET\SIAC-Negocio.dll</HintPath>
-    </Reference>
-    <Reference Include="SIAC-Objetos, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\SSF-NET\SIAC-Objetos.dll</HintPath>
-    </Reference>
-    <Reference Include="SSF-NET-Produccion, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\SSF-NET\SSF-NET-Produccion.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -207,6 +187,28 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Componentes\SIAC-NET\SIAC-Datos\SIAC-Datos.csproj">
+      <Project>{5b96fd36-691a-4adf-a4bd-0b5888085e7c}</Project>
+      <Name>SIAC-Datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Componentes\SIAC-NET\SIAC-Entidades\SIAC-Entidades\SIAC-Entidades.csproj">
+      <Project>{fc396209-1d34-4316-bed1-10f6c34167c4}</Project>
+      <Name>SIAC-Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Componentes\SIAC-NET\SIAC-Negocio\SIAC-Negocio\SIAC-Negocio.csproj">
+      <Project>{dd73aefb-d61d-46b9-8311-d36e29f02169}</Project>
+      <Name>SIAC-Negocio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Componentes\SIAC-NET\SIAC-Objetos\SIAC-Objetos\SIAC-Objetos.csproj">
+      <Project>{f4f48912-7b4c-4e06-926b-2d98e2f45f07}</Project>
+      <Name>SIAC-Objetos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SSF-NET-Produccion\SSF-NET-Produccion\SSF-NET-Produccion.csproj">
+      <Project>{ef2af37b-3630-4456-9970-743880fc5607}</Project>
+      <Name>SSF-NET-Produccion</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

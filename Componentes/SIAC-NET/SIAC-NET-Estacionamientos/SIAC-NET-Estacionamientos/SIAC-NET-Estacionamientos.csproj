@@ -32,22 +32,30 @@
   <ItemGroup>
     <Reference Include="C1.C1Excel.2, Version=2.1.20101.145, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\SSF-NET\C1.C1Excel.2.dll</HintPath>
+      <HintPath>..\..\..\..\Dlls\C1.C1Excel.2.dll</HintPath>
     </Reference>
-    <Reference Include="C1.Win.C1Command.2, Version=2.0.20101.19448, Culture=neutral, PublicKeyToken=e808566f358766d8, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1FlexGrid.2, Version=2.6.20101.528, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Command.2, Version=2.0.20101.19448, Culture=neutral, PublicKeyToken=e808566f358766d8, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Dlls\C1.Win.C1Command.2.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Win.C1FlexGrid.2, Version=2.6.20101.528, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Dlls\C1.Win.C1FlexGrid.2.dll</HintPath>
+    </Reference>
     <Reference Include="C1.Win.C1FlexGrid.Classic.2, Version=2.6.20101.528, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\SSF-NET\C1.Win.C1FlexGrid.Classic.2.dll</HintPath>
+      <HintPath>..\..\..\..\Dlls\C1.Win.C1FlexGrid.Classic.2.dll</HintPath>
     </Reference>
-    <Reference Include="C1.Win.C1Sizer.2, Version=2.1.20101.49, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1TrueDBGrid.2, Version=2.0.20101.61177, Culture=neutral, PublicKeyToken=75ae3fb0e2b1e0da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Sizer.2, Version=2.1.20101.49, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Dlls\C1.Win.C1Sizer.2.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Win.C1TrueDBGrid.2, Version=2.0.20101.61177, Culture=neutral, PublicKeyToken=75ae3fb0e2b1e0da, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Dlls\C1.Win.C1TrueDBGrid.2.dll</HintPath>
+    </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Helper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\SSF-NET\Helper.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\SSF-NET\Helper.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data, Version=8.0.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -55,19 +63,19 @@
     </Reference>
     <Reference Include="SIAC-DATOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\SSF-NET\SIAC-DATOS.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\SSF-NET\SIAC-DATOS.dll</HintPath>
     </Reference>
     <Reference Include="SIAC-Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\SSF-NET\SIAC-Entidades.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\SSF-NET\SIAC-Entidades.dll</HintPath>
     </Reference>
     <Reference Include="SIAC-Negocio, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\SSF-NET\SIAC-Negocio.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\SSF-NET\SIAC-Negocio.dll</HintPath>
     </Reference>
     <Reference Include="SIAC-Objetos, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\SSF-NET\SIAC-Objetos.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\SSF-NET\SIAC-Objetos.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
