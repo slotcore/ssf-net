@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\..\..\..\..\..\SSF-NET\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -42,29 +42,9 @@
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="Helper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\SSF-NET\Helper.dll</HintPath>
-    </Reference>
     <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\SSF-NET\MySql.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="SIAC-DATOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\SSF-NET\SIAC-DATOS.dll</HintPath>
-    </Reference>
-    <Reference Include="SIAC-Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\SSF-NET\SIAC-Entidades.dll</HintPath>
-    </Reference>
-    <Reference Include="SIAC-Negocio, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\SSF-NET\SIAC-Negocio.dll</HintPath>
-    </Reference>
-    <Reference Include="SIAC-Objetos, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\SSF-NET\SIAC-Objetos.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -164,6 +144,26 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Componentes\Helper\Helper\Helper.csproj">
+      <Project>{241f484b-ca5a-4e91-90b7-e3b22731e825}</Project>
+      <Name>Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Componentes\SIAC-NET\SIAC-Datos\SIAC-Datos.csproj">
+      <Project>{5b96fd36-691a-4adf-a4bd-0b5888085e7c}</Project>
+      <Name>SIAC-Datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Componentes\SIAC-NET\SIAC-Entidades\SIAC-Entidades\SIAC-Entidades.csproj">
+      <Project>{fc396209-1d34-4316-bed1-10f6c34167c4}</Project>
+      <Name>SIAC-Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Componentes\SIAC-NET\SIAC-Negocio\SIAC-Negocio\SIAC-Negocio.csproj">
+      <Project>{dd73aefb-d61d-46b9-8311-d36e29f02169}</Project>
+      <Name>SIAC-Negocio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Componentes\SIAC-NET\SIAC-Objetos\SIAC-Objetos\SIAC-Objetos.csproj">
+      <Project>{f4f48912-7b4c-4e06-926b-2d98e2f45f07}</Project>
+      <Name>SIAC-Objetos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\SSF-NET-Almacen\SSF-NET-Almacen\SSF-NET-Almacen\SSF-NET-Almacen.csproj">
       <Project>{4b792186-57a9-4b3c-bf02-7d0a3b60236d}</Project>
       <Name>SSF-NET-Almacen</Name>
