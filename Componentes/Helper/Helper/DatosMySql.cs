@@ -75,8 +75,8 @@ namespace Helper
                 string connectionString = ConfigurationManager
                     .ConnectionStrings["DefaultConnection"]
                     .ConnectionString;
-                //MySqlConnection conectar = new MySqlConnection("server=" + strHostNombre + "; port=" + c_Puerto + "; database=" + strBDNombre + "; Uid=" + strUsuario + "; pwd=" + strPassword + "; default command timeout=120");
-                MySqlConnection conectar = new MySqlConnection(connectionString);
+                MySqlConnection conectar = new MySqlConnection("server=" + strHostNombre + "; port=" + c_Puerto + "; database=" + strBDNombre + "; Uid=" + strUsuario + "; pwd=" + strPassword + "; default command timeout=120");
+                //MySqlConnection conectar = new MySqlConnection(connectionString);
                 conectar.Open();
                 return conectar;
             }
