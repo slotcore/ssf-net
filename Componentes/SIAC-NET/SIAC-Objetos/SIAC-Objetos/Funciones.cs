@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Data;
 using SIAC_DATOS.Contabilidad;
 using MySql.Data.MySqlClient;
+using System.Configuration;
 
 namespace SIAC_Objetos
 {
@@ -58,7 +59,7 @@ namespace SIAC_Objetos
             Cls_Seguridad objSeg = new Cls_Seguridad();
             Helper.Genericas miFun = new Helper.Genericas();
 
-            string c_nomarc = @"C:\SSF-NET\ssf-net.ini";
+            string c_nomarc = ConfigurationManager.AppSettings["PathIniFile"];
             string c_serip = miFun.IniLeerSeccion(c_nomarc, "INFORMACION", "DATO1").ToString();
             string c_nombd = miFun.IniLeerSeccion(c_nomarc, "INFORMACION", "DATO2").ToString();
             string c_usu = miFun.IniLeerSeccion(c_nomarc, "INFORMACION", "DATO3").ToString();

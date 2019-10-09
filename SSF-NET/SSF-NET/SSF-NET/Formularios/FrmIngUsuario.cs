@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using Helper;
 using SIAC_Negocio.Sistema;
+using System.Configuration;
 //using SIAC_Negocio.Sistema;
 //using SIAC_Entidades.Sistema;
 //using SIAC_Negocio.Contabilidad;
@@ -145,7 +146,7 @@ namespace SSF_NET.Formularios
             string c_nomEmpresa = "";
             string c_rucEmpresa = "";
             CN_sys_empresa objEmpresa = new CN_sys_empresa();
-            string c_nomarc = @"C:\SSF-NET\ssf-net.ini";
+            string c_nomarc = ConfigurationManager.AppSettings["PathIniFile"];
             
             string c_nombd = miFun.IniLeerSeccion(c_nomarc, "INFORMACION", "DATO6").ToString();
             c_nombd = objSeg.Desencriptar(c_nombd);

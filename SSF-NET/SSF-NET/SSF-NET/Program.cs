@@ -6,6 +6,7 @@ using SIAC_Objetos.Sistema;
 using SSF_NET.Formularios;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.OleDb;
 using System.Data.SqlClient;
@@ -60,7 +61,7 @@ namespace SSF_NET
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            string c_nomarc = @"C:\SSF-NET\ssf-net.ini";
+            string c_nomarc = ConfigurationManager.AppSettings["PathIniFile"];
             string c_serip = miFun.IniLeerSeccion(c_nomarc, "INFORMACION", "DATO1").ToString();
             string c_nombd = miFun.IniLeerSeccion(c_nomarc, "INFORMACION", "DATO2").ToString();
             string c_usu = miFun.IniLeerSeccion(c_nomarc, "INFORMACION", "DATO3").ToString();
@@ -124,24 +125,30 @@ namespace SSF_NET
                 }
                 else
                 {
-                    if (IsExecutingApplication() == false)
+                    if (mysConeccion.State == ConnectionState.Open)
                     {
-                        if (mysConeccion.State == ConnectionState.Open)
-                        {
-                            FrmIngUsuario miForm = new FrmIngUsuario();
-                            miForm.mysConeccion = mysConeccion;
-                            miForm.ShowDialog();
-                        }
-                        //else
-                        //{
-                        //    MessageBox.Show("No se pudo abrir la BD ", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                        //}
+                        FrmIngUsuario miForm = new FrmIngUsuario();
+                        miForm.mysConeccion = mysConeccion;
+                        miForm.ShowDialog();
                     }
-                    else
-                    {
-                        MessageBox.Show("El sistema ya fue ejecutado", "Informacion Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                        Application.Exit();
-                    }
+                    //if (IsExecutingApplication() == false)
+                    //{
+                    //    if (mysConeccion.State == ConnectionState.Open)
+                    //    {
+                    //        FrmIngUsuario miForm = new FrmIngUsuario();
+                    //        miForm.mysConeccion = mysConeccion;
+                    //        miForm.ShowDialog();
+                    //    }
+                    //    //else
+                    //    //{
+                    //    //    MessageBox.Show("No se pudo abrir la BD ", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    //    //}
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show("El sistema ya fue ejecutado", "Informacion Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    //    Application.Exit();
+                    //}
                 }
             }
         }

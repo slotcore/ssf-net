@@ -19,6 +19,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SIAC_Entidades.Ventas;
 using SIAC_Negocio.Ventas;
+using System.Configuration;
 
 namespace SIAC_NET_Estacionamientos.Formularios
 {
@@ -180,7 +181,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
             //c_NUMSERBOL = dtLocSet.Rows[0]["c_numserbol"].ToString();
             //c_NUMSERTIC = dtLocSet.Rows[0]["c_numsertik"].ToString();
             
-            string c_nomarc2 = @"C:\SSF-NET\ssf-net.ini";
+            string c_nomarc2 = ConfigurationManager.AppSettings["PathIniFile"];
             c_NUMSERFAC = funGen.IniLeerSeccion(c_nomarc2, "SISTEMA", "SERFAC").ToString();
             c_NUMSERBOL = funGen.IniLeerSeccion(c_nomarc2, "SISTEMA", "SERBOL").ToString();
             c_NUMSERTIC = funGen.IniLeerSeccion(c_nomarc2, "SISTEMA", "SERVAL").ToString();

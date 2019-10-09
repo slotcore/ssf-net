@@ -19,6 +19,7 @@ using Helper.Comunes;
 using MySql.Data.MySqlClient;
 using Helper;
 using SIAC_Objetos.Sistema;
+using System.Configuration;
 
 namespace SSF_NET_Produccion.Formularios
 {
@@ -131,7 +132,7 @@ namespace SSF_NET_Produccion.Formularios
             Tab1.SelectedIndex = 0;
             LblTitulo2.Text = "DETALLE DEL REGISTRO";
 
-            string c_nomarc = @"C:\SSF-NET\ssf-net.ini";
+            string c_nomarc = ConfigurationManager.AppSettings["PathIniFile"];
             C_IDLOCAL = funDatos.IniLeerSeccion(c_nomarc, "SISTEMA", "LOCAL").ToString();
 
             this.Text = dtForm.Rows[0]["c_titfor"].ToString();

@@ -40,7 +40,7 @@ namespace SSF_NET_Almacen.Formularios
 
         int n_anccol = 70;
         bool booSeEjecuto = false;
-        string[,] arrCabeceraFlex1 = new string[17, 5];
+        string[,] arrCabeceraFlex1 = new string[18, 5];
 
         DataTable dtItems = new DataTable();
         DataTable DtTipExi = new DataTable();
@@ -150,14 +150,20 @@ namespace SSF_NET_Almacen.Formularios
             arrCabeceraFlex1[15, 1] = "150";
             arrCabeceraFlex1[15, 2] = "C";
             arrCabeceraFlex1[15, 3] = "";
-            arrCabeceraFlex1[15, 4] = "c_desalm";
+            arrCabeceraFlex1[15, 4] = "c_docreftipdoc";
 
-            arrCabeceraFlex1[16, 0] = "Nº DOC. REFERENCIA";
+            arrCabeceraFlex1[16, 0] = "Nº Doc. Referencia";
             arrCabeceraFlex1[16, 1] = "100";
             arrCabeceraFlex1[16, 2] = "C";
             arrCabeceraFlex1[16, 3] = "";
-            arrCabeceraFlex1[16, 4] = "c_desalm";
+            arrCabeceraFlex1[16, 4] = "c_docrefnumdoc";
             funFlex.FlexMostrarDatos(FgKar, arrCabeceraFlex1, dtItems, 2, false);
+
+            arrCabeceraFlex1[17, 0] = "Proveedor";
+            arrCabeceraFlex1[17, 1] = "150";
+            arrCabeceraFlex1[17, 2] = "C";
+            arrCabeceraFlex1[17, 3] = "";
+            arrCabeceraFlex1[17, 4] = "c_desnompro";
 
             funFlex.Flex_FixUniColumnas(FgKar, 0, 6, 8, "ENTRADAS", 1);
             funFlex.Flex_FixUniColumnas(FgKar, 0, 9, 11, "SALIDAS", 1);

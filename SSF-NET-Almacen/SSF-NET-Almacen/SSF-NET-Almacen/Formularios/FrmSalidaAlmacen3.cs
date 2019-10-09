@@ -22,6 +22,7 @@ using MySql.Data.MySqlClient;
 using Helper;
 using SIAC_Objetos.Sistema;
 using System.Data.OleDb;
+using System.Configuration;
 
 namespace SSF_NET_Almacen.Formularios
 {
@@ -141,7 +142,7 @@ namespace SSF_NET_Almacen.Formularios
             Tab_Posicionar(Tab1, 1, 41);
             Tab1.SelectedIndex = 0;
 
-            string c_nomarc = @"C:\SSF-NET\ssf-net.ini";
+            string c_nomarc = ConfigurationManager.AppSettings["PathIniFile"];
             //string c_idlocal = funDatos.IniLeerSeccion(c_nomarc, "SISTEMA", "LOCAL").ToString();
             N_IDALMACEN = Convert.ToInt16(funDatos.IniLeerSeccion(c_nomarc, "SISTEMA", "ALMACEN").ToString());
             //CboAlmacen.SelectedValue = Convert.ToInt16(c_idalmacen);

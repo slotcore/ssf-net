@@ -21,6 +21,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Configuration;
 
 namespace SSF_NET_Ventas.Formularios
 {
@@ -3480,7 +3481,7 @@ namespace SSF_NET_Ventas.Formularios
             string c_numdoc = "";
             Genericas funGen = new Genericas();
 
-            string c_nomarc2 = @"C:\SSF-NET\ssf-net.ini";
+            string c_nomarc2 = ConfigurationManager.AppSettings["PathIniFile"];
             //N_IDALMACEN = Convert.ToInt16(funDatos.IniLeerSeccion(c_nomarc, "SISTEMA", "ALMACEN").ToString());
             //c_NUMSERFAC = funGen.IniLeerSeccion(c_nomarc2, "SISTEMA", "SERFAC").ToString();
             //c_NUMSERBOL = funGen.IniLeerSeccion(c_nomarc2, "SISTEMA", "SERBOL").ToString();
