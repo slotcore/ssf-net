@@ -71,7 +71,7 @@ namespace SSF_NET_Planillas.Formularios
         // VARIABLES LOCALES
         //int n_NumFilasDocumento = 30;                                                   // LE INDICAMOS AL FORMULARIO EL NUMERO MAXIMO DE FILAS PARA EL DETALLE
         int n_QueHace = 3;                                                              // INDICA EN QUE ESTADO SE ENCUENTRA EL FORMULARIO
-        string[,] arrCabeceraDg1 = new string[8, 4];                                    // ARRAY PARA MOSTRAR LAS COLUMNAS DEL DATAGRID PRINCIPAL
+        string[,] arrCabeceraDg1 = new string[15, 4];                                    // ARRAY PARA MOSTRAR LAS COLUMNAS DEL DATAGRID PRINCIPAL
         string[,] arrCabeceraFlex1 = new string[4, 5];
 
         bool booSeEjecuto = false;

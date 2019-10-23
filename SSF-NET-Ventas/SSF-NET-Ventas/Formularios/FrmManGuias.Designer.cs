@@ -132,6 +132,8 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.label21 = new System.Windows.Forms.Label();
+            this.CboTipDocAdi = new System.Windows.Forms.ComboBox();
             this.CmdSalPan5 = new System.Windows.Forms.Button();
             this.CmdAcePan5 = new System.Windows.Forms.Button();
             this.TxtDANumDoc = new System.Windows.Forms.TextBox();
@@ -139,8 +141,6 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.CboTipDocAdi = new System.Windows.Forms.ComboBox();
             this.ToolHerramientas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Tab1)).BeginInit();
             this.Tab1.SuspendLayout();
@@ -1419,6 +1419,28 @@
             this.panel5.TabIndex = 77;
             this.panel5.Visible = false;
             // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.BackColor = System.Drawing.Color.Transparent;
+            this.label21.ForeColor = System.Drawing.Color.Black;
+            this.label21.Location = new System.Drawing.Point(6, 39);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(86, 13);
+            this.label21.TabIndex = 85;
+            this.label21.Text = "Tipo Documento";
+            // 
+            // CboTipDocAdi
+            // 
+            this.CboTipDocAdi.BackColor = System.Drawing.Color.White;
+            this.CboTipDocAdi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CboTipDocAdi.ForeColor = System.Drawing.Color.Black;
+            this.CboTipDocAdi.FormattingEnabled = true;
+            this.CboTipDocAdi.Location = new System.Drawing.Point(96, 36);
+            this.CboTipDocAdi.Name = "CboTipDocAdi";
+            this.CboTipDocAdi.Size = new System.Drawing.Size(341, 21);
+            this.CboTipDocAdi.TabIndex = 84;
+            // 
             // CmdSalPan5
             // 
             this.CmdSalPan5.ForeColor = System.Drawing.Color.Black;
@@ -1501,28 +1523,6 @@
             this.label24.Size = new System.Drawing.Size(443, 29);
             this.label24.TabIndex = 2;
             this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.BackColor = System.Drawing.Color.Transparent;
-            this.label21.ForeColor = System.Drawing.Color.Black;
-            this.label21.Location = new System.Drawing.Point(6, 39);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(86, 13);
-            this.label21.TabIndex = 85;
-            this.label21.Text = "Tipo Documento";
-            // 
-            // CboTipDocAdi
-            // 
-            this.CboTipDocAdi.BackColor = System.Drawing.Color.White;
-            this.CboTipDocAdi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CboTipDocAdi.ForeColor = System.Drawing.Color.Black;
-            this.CboTipDocAdi.FormattingEnabled = true;
-            this.CboTipDocAdi.Location = new System.Drawing.Point(96, 36);
-            this.CboTipDocAdi.Name = "CboTipDocAdi";
-            this.CboTipDocAdi.Size = new System.Drawing.Size(341, 21);
-            this.CboTipDocAdi.TabIndex = 84;
             // 
             // FrmManGuias
             // 
