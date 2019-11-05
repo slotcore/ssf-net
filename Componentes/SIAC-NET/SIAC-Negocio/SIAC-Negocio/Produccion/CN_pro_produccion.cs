@@ -226,7 +226,7 @@ namespace SIAC_Negocio.Produccion
 
             return b_result;
         }
-        public bool Insertar(BE_PRO_PRODUCCION entProduccion, List<BE_PRO_PRODUCCIONINS> LstInsumos)
+        public bool Insertar(ref BE_PRO_PRODUCCION entProduccion, List<BE_PRO_PRODUCCIONINS> LstInsumos)
         {
             bool b_result = false;
 
@@ -235,7 +235,7 @@ namespace SIAC_Negocio.Produccion
             mysConec = FunMysql.ReAbrirConeccion(mysConec);
             miFun.mysConec = mysConec;
 
-            b_result = miFun.Insertar(entProduccion, LstInsumos);
+            b_result = miFun.Insertar(ref entProduccion, LstInsumos);
 
             if (b_result == false)
             {

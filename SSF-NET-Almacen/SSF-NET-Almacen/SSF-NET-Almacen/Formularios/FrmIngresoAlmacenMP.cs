@@ -390,10 +390,10 @@ namespace SSF_NET_Almacen.Formularios
                     {
                         Nuevo();
                     }
-                    else
-                    {
-                        this.Close();
-                    }
+                    //else
+                    //{
+                    //    this.Close();
+                    //}
                 }
                 else
                 {
@@ -1472,10 +1472,25 @@ namespace SSF_NET_Almacen.Formularios
 
         private void ToolImprimir_Click(object sender, EventArgs e)
         {
-            CN_alm_movimientos objAlm = new CN_alm_movimientos();
-            objAlm.STU_SISTEMA = STU_SISTEMA;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
-            objAlm.ReportImprimirNotaIngreso(intIdRegistro, 1);
+            try
+            {
+                //CN_alm_movimientos objAlm = new CN_alm_movimientos();
+                //objAlm.STU_SISTEMA = STU_SISTEMA;
+                //int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                //objAlm.ReportImprimirNotaIngreso(intIdRegistro, 1);
+
+                if (DgLista.RowCount == 0)
+                {
+                    MessageBox.Show("¡ No hay datos para imprimir !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    return;
+                }
+                                
+                funDbGrid.DG_ExporExcel_2(DgLista, saveFileDialog1);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void CboDocRef_SelectedValueChanged(object sender, EventArgs e)

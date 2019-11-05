@@ -339,7 +339,9 @@ namespace SSF_NET_Tesoreria.Formularios
             }
             if (OptDet.Checked == true)
             {
-                functacte.ListarCtaCteProDetalle(STU_SISTEMA.EMPRESAID, TxtFchIni.Text.Substring(0, 10), TxtFchFin.Text.Substring(0, 10), n_idmon, n_tipsal, c_cadin);
+                var fechaInicio = TxtFchIni.Value.ToString("dd/MM/yyyy");
+                var fechaFin = TxtFchFin.Value.ToString("dd/MM/yyyy");
+                functacte.ListarCtaCteProDetalle(STU_SISTEMA.EMPRESAID, fechaInicio, fechaFin, n_idmon, n_tipsal, c_cadin);
                 dtLista = functacte.dtLista;
                 //dtLista = funDatos.DataTableOrdenar(dtLista, "c_dato");
                 //if (c_cadin != "") { dtLista = funDatos.DataTableFiltrar(dtLista, "n_idcli IN (" + c_cadin + ")"); }

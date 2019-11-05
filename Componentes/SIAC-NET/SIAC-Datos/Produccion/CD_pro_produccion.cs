@@ -170,7 +170,7 @@ namespace SIAC_DATOS.Produccion
             }
             return booResult;            
         }
-        public bool Insertar(BE_PRO_PRODUCCION entProduccion, List<BE_PRO_PRODUCCIONINS> LstInsumos)
+        public bool Insertar(ref BE_PRO_PRODUCCION entProduccion, List<BE_PRO_PRODUCCIONINS> LstInsumos)
         {
             bool booResult = false;
             DatosMySql xMiFuncion = new DatosMySql();
@@ -182,6 +182,7 @@ namespace SIAC_DATOS.Produccion
             {
                 if (xMiFuncion.StoreEjecutar("pro_produccion_insertar", entProduccion, mysConec, 1) == true)
                 {
+                    entProduccion.n_id = Convert.ToInt32(xMiFuncion.intIdGenerado);
                     for (n_row = 0; n_row <= LstInsumos.Count - 1;n_row++)
                     {
                         BE_PRO_PRODUCCIONINS entProIns = new BE_PRO_PRODUCCIONINS();

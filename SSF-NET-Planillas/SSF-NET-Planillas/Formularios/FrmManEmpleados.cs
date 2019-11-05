@@ -17,6 +17,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SIAC_Datos.Models.Planillas;
+using SIAC_Datos.Classes;
+using SIAC_DATOS.Data;
 
 namespace SSF_NET_Planillas.Formularios
 {
@@ -78,6 +81,10 @@ namespace SSF_NET_Planillas.Formularios
         bool booAgregando = false;
         string strNumerovalidos = "1234567890." + (char)8;                                        // + (char)8;
         string strCaracteres = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ1234567890()º.,/$' !!·%/()=?¿*^" + (char)8;
+        const int id_Formulario = 96;
+        
+        private ObservableListSource<PeriodoLaboral> PeriodoLaborals;
+
         public FrmManEmpleados()
         {
             InitializeComponent();
@@ -106,11 +113,11 @@ namespace SSF_NET_Planillas.Formularios
         }
         void ConfigurarFormulario()
         {
-            this.Height = 576;
-            this.Width = 873;
+            //this.Height = 576;
+            //this.Width = 873;
 
-            Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
-            Tab_Posicionar(Tab1, 1, 42);
+            //Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
+            //Tab_Posicionar(Tab1, 1, 42);
             Tab1.SelectedIndex = 0;
             LblTitulo2.Text = "DETALLE DEL REGISTRO";
 
@@ -122,17 +129,17 @@ namespace SSF_NET_Planillas.Formularios
             //objRegistros.mysConec = mysConec;                                    // CARGAMOS LOS DATOS DEL FORMULARIO
             CN_pla_empleados objRegistros = new CN_pla_empleados(STU_SISTEMA);
             objRegistros.STU_SISTEMA = STU_SISTEMA;
-            if (objRegistros.Listar(STU_SISTEMA.EMPRESAID) == true)
+            if (objRegistros.ListarDetallado(STU_SISTEMA.EMPRESAID) == true)
             {
                 dtLista = objRegistros.dtLista; 
             }
             objRegistros = null;
 
             objFormVis.mysConec = mysConec;                                      // CARGAMOS EL ARRAY CON LOS DATOS PARA LA VISTA DE DgLista
-            objFormVis.ObtenerCabeceraLista(47, ref arrCabeceraDg1);
+            objFormVis.ObtenerCabeceraLista(id_Formulario, ref arrCabeceraDg1);
 
             objForm.mysConec = mysConec;                                    // CARGAMOS LOS DATOS DEL FORMULARIO
-            dtForm = objForm.TraerRegistro(47);
+            dtForm = objForm.TraerRegistro(id_Formulario);
 
             objDocIde.mysConec = mysConec;
             dtDocIde = objDocIde.Listar();
@@ -165,13 +172,13 @@ namespace SSF_NET_Planillas.Formularios
         }
         void Tab_Dimensionar(C1.Win.C1Command.C1DockingTab dokTab, int intAlto, int intAncho)
         {
-            Tab1.Height = intAlto;
-            Tab1.Width = intAncho;
+            //Tab1.Height = intAlto;
+            //Tab1.Width = intAncho;
         }
         void Tab_Posicionar(C1.Win.C1Command.C1DockingTab dokTab, int intPosX, int intPosY)
         {
-            dokTab.Left = intPosX;
-            dokTab.Top = intPosY;
+            //dokTab.Left = intPosX;
+            //dokTab.Top = intPosY;
         }
         void VerRegistro(int n_IdRegistro)
         {
@@ -304,6 +311,9 @@ namespace SSF_NET_Planillas.Formularios
                 {
                     ChkDestacado.Checked = true;
                 }
+                //Carga detalles de periodo laboral
+                PeriodoLaborals = ApplicationDbContext.PeriodoLaborals(n_IdRegistro);
+                periodoLaboralBindingSource.DataSource = PeriodoLaborals;
             }
             objRegistros = null;
         }
@@ -318,6 +328,8 @@ namespace SSF_NET_Planillas.Formularios
             Tab1.SelectedIndex = 1;
             Tab2.SelectedIndex = 0;
             CboTipDoc.Focus();
+            PeriodoLaborals = new ObservableListSource<PeriodoLaboral>();
+            periodoLaboralBindingSource.DataSource = PeriodoLaborals;
         }
         void Blanquea()
         {
@@ -380,6 +392,31 @@ namespace SSF_NET_Planillas.Formularios
             ChkAsigFam.Enabled = !ChkAsigFam.Enabled;
             ChkDes.Enabled = !ChkDes.Enabled;
             ChkDestacado.Enabled = !ChkDestacado.Enabled;
+            //
+            if (BtnAgregarPeriodo.Enabled == ComponentFactory.Krypton.Toolkit.ButtonEnabled.False)
+            {
+                BtnAgregarPeriodo.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.True;
+            }
+            else
+            {
+                BtnAgregarPeriodo.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.False;
+            }
+            if (BtnModificarPeriodo.Enabled == ComponentFactory.Krypton.Toolkit.ButtonEnabled.False)
+            {
+                BtnModificarPeriodo.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.True;
+            }
+            else
+            {
+                BtnModificarPeriodo.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.False;
+            }
+            if (BtnQuitarPeriodo.Enabled == ComponentFactory.Krypton.Toolkit.ButtonEnabled.False)
+            {
+                BtnQuitarPeriodo.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.True;
+            }
+            else
+            {
+                BtnQuitarPeriodo.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.False;
+            }
         }
         void ActivarTool()
         {
@@ -402,6 +439,7 @@ namespace SSF_NET_Planillas.Formularios
             int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
+
             LblTitulo2.Text = "Modificando Registro";
             Tab1.SelectedIndex = 1;
             Tab2.SelectedIndex = 0;
@@ -479,6 +517,19 @@ namespace SSF_NET_Planillas.Formularios
             {
                 booResultado = objRegistros.Actualizar(entRegistro);
             }
+
+            //Se graban los detalles
+            foreach (var periodoLaboral in PeriodoLaborals)
+            {
+                periodoLaboral.n_idempleado = entRegistro.n_id;
+                periodoLaboral.Save();
+            }
+            //Se eliminan los detalles borrados
+            foreach (var periodoLaboral in PeriodoLaborals.GetRemoveItems())
+            {
+                periodoLaboral.Delete();
+            }
+
 
             if (booResultado == false)
             {
@@ -1047,7 +1098,7 @@ namespace SSF_NET_Planillas.Formularios
         }
         private void FrmManEmpleados_Resize(object sender, EventArgs e)
         {
-            Tab_Dimensionar(Tab1, this.Height - 82, this.Width - 18);
+            //Tab_Dimensionar(Tab1, this.Height - 82, this.Width - 18);
         }
         private void CboResDep_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -1268,6 +1319,117 @@ namespace SSF_NET_Planillas.Formularios
                 objRegistros = null;
                 CmdCan_Click(sender, e);
                 return;
+            }
+        }
+
+        private void CmdAddPer_Click(object sender, EventArgs e)
+        {
+            //if (n_QueHace == 3) { return; }
+
+            //FgTar.Rows.Count = FgTar.Rows.Count + 1;
+
+            //string c_dato = "";
+            //string[,] arrCabeceraDg1 = new string[3, 4];
+            //DataTable dtResult = new DataTable();
+            //DataTable dtresulpre = new DataTable();
+            //DataTable dtInsEnt = new DataTable();
+
+            //arrCabeceraDg1[0, 0] = "Tarea";
+            //arrCabeceraDg1[0, 1] = "450";
+            //arrCabeceraDg1[0, 2] = "C";
+            //arrCabeceraDg1[0, 3] = "c_des";
+
+            //arrCabeceraDg1[1, 0] = "Uni. Med.";
+            //arrCabeceraDg1[1, 1] = "40";
+            //arrCabeceraDg1[1, 2] = "C";
+            //arrCabeceraDg1[1, 3] = "c_unimedabr";
+
+            //arrCabeceraDg1[2, 0] = "Id";
+            //arrCabeceraDg1[2, 1] = "0";
+            //arrCabeceraDg1[2, 2] = "N";
+            //arrCabeceraDg1[2, 3] = "n_id";
+
+            //Genericas xFun = new Genericas();
+            //xFun.Buscar_CampoBusqueda = "n_id";
+            //xFun.Buscar_CadFiltro = "";
+            //xFun.Buscar_CampoOrden = "c_des";
+            //dtResult = xFun.Buscar(arrCabeceraDg1, dtTareas);
+
+            //if (dtResult == null) { return; }
+            //if (dtResult.Rows.Count == 0) { return; }
+
+            //c_dato = dtResult.Rows[0]["c_des"].ToString();
+            //FgTar.SetData(FgTar.Rows.Count - 1, 1, c_dato);
+
+            //c_dato = TxtFchReg.Text;
+            //FgTar.SetData(FgTar.Rows.Count - 1, 2, c_dato);
+
+            //c_dato = dtResult.Rows[0]["c_unimedabr"].ToString();
+            //FgTar.SetData(FgTar.Rows.Count - 1, 6, c_dato);
+
+            //c_dato = dtResult.Rows[0]["n_id"].ToString();
+            //FgTar.SetData(FgTar.Rows.Count - 1, 9, c_dato);
+        }
+
+        private void BtnAgregarPeriodo_Click(object sender, EventArgs e)
+        {
+            AgregarDetalle();
+        }
+
+        private void BtnModificarPeriodo_Click(object sender, EventArgs e)
+        {
+            ModificarDetalle();
+        }
+
+        private void BtnQuitarPeriodo_Click(object sender, EventArgs e)
+        {
+            EliminarDetalle();
+        }
+
+        private void AgregarDetalle()
+        {
+            try
+            {
+                var frm = new FrmManEmpleadoPeriodo(PeriodoLaborals);
+                frm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Ocurrió un error al agregar, mensaje de error: {0}", ex.Message)
+                    , "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ModificarDetalle()
+        {
+            try
+            {
+                var viewModel = (PeriodoLaboral)periodoLaboralBindingSource.Current;
+                var frm = new FrmManEmpleadoPeriodo(viewModel, PeriodoLaborals);
+                frm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Ocurrió un error al modificar, mensaje de error: {0}", ex.Message)
+                    , "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void EliminarDetalle()
+        {
+            try
+            {
+                if (MessageBox.Show("¿Seguro desea eliminar el registro?", "Eliminar"
+                    , MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    var viewModelDetail = (PeriodoLaboral)periodoLaboralBindingSource.Current;
+                    PeriodoLaborals.RemoveItem(viewModelDetail);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Ocurrió un error al eliminar el registro, mensaje de error: {0}", ex.Message)
+                    , "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

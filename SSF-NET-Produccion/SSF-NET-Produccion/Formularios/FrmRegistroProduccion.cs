@@ -22,6 +22,8 @@ using Helper;
 using SIAC_Objetos.Sistema;
 using System.Data.OleDb;
 using C1.Win.C1FlexGrid;
+using SIAC_Datos.Classes;
+using SIAC_DATOS.Models.Produccion;
 
 namespace SSF_NET_Produccion.Formularios
 {
@@ -96,6 +98,9 @@ namespace SSF_NET_Produccion.Formularios
         string strNumerovalidos = "1234567890." + (char)8;                                        // + (char)8;
         string strNumerovalidos2 = "1234567890-ABCDEF" + (char)8;                                        // + (char)8;
         string strCaracteres = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ1234567890-()º.,/$' !!·%/()=?¿*^" + (char)8;
+
+        ObservableListSource<ProduccionNotaIng> ProduccionNotaIngs;
+
         public FrmRegistroProduccion()
         {
             InitializeComponent();
@@ -107,6 +112,7 @@ namespace SSF_NET_Produccion.Formularios
             Tab1.SelectedIndex = 0;
             ConfigurarFormulario();
             booAgregando = false;
+            ProduccionNotaIngs = new ObservableListSource<ProduccionNotaIng>();
         }
         void CargarCombos()
         {
@@ -423,6 +429,10 @@ namespace SSF_NET_Produccion.Formularios
             {
                 CmdAddInsReal.Text = "Registrar Consumo Real de Insumos";
             }
+
+            //Detalles
+            ProduccionNotaIngs = ProduccionNotaIng.Fetch(n_IdRegistro);
+            produccionNotaIngBindingSource.DataSource = ProduccionNotaIngs;
         }
         void Nuevo()
         {
@@ -448,6 +458,10 @@ namespace SSF_NET_Produccion.Formularios
             TxtNumDoc.Text = c_numdoc;
             OptTipPro1.Checked = true;            
             TxtFchReg.Focus();
+
+            //Detalles
+            ProduccionNotaIngs = new ObservableListSource<ProduccionNotaIng>();
+            produccionNotaIngBindingSource.DataSource = ProduccionNotaIngs;
         }
         void Blanquea()
         {
@@ -550,6 +564,24 @@ namespace SSF_NET_Produccion.Formularios
             //CmdAddInsReal.Enabled = !CmdAddInsReal.Enabled;
             CmdBusProd.Enabled = !CmdBusProd.Enabled;
             CmdBusOrdPro.Enabled = !CmdBusOrdPro.Enabled;
+
+            //
+            if (BtnAgregarDetalle.Enabled == ComponentFactory.Krypton.Toolkit.ButtonEnabled.False)
+            {
+                BtnAgregarDetalle.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.True;
+            }
+            else
+            {
+                BtnAgregarDetalle.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.False;
+            }
+            if (BtnQuitarDetalle.Enabled == ComponentFactory.Krypton.Toolkit.ButtonEnabled.False)
+            {
+                BtnQuitarDetalle.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.True;
+            }
+            else
+            {
+                BtnQuitarDetalle.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.False;
+            }
         }
         void MostrarEstadoMes(int n_IdEmpresa, int n_IdMes)
         {
@@ -705,7 +737,7 @@ namespace SSF_NET_Produccion.Formularios
 
             if (n_QueHace == 1)
             {
-                booResultado = objRegistro.Insertar(entRegistro, lstInsumos);
+                booResultado = objRegistro.Insertar(ref entRegistro, lstInsumos);
             }
 
             if (n_QueHace == 2)
@@ -720,6 +752,19 @@ namespace SSF_NET_Produccion.Formularios
             else {
                 ListarItems();
             }
+            //Se graban los detalles
+            foreach (var produccionNotaIng in ProduccionNotaIngs)
+            {
+                produccionNotaIng.n_idproduccion = entRegistro.n_id;
+                produccionNotaIng.Save();
+            }
+            //Se eliminan los detalles borrados
+            foreach (var produccionNotaIng in ProduccionNotaIngs.GetRemoveItems())
+            {
+                produccionNotaIng.Delete();
+            }
+
+
             return booResultado;
         }
         void AsignarEntidad()
@@ -979,10 +1024,6 @@ namespace SSF_NET_Produccion.Formularios
                     if (DialogResult.Yes == Rpta)
                     {
                         Nuevo();
-                    }
-                    else
-                    {
-                        this.Close();
                     }
                 }
                 else
@@ -2362,6 +2403,59 @@ namespace SSF_NET_Produccion.Formularios
             dtResLin = funDatos.DataTableFiltrar(dtLineas, "n_idpro = " + Convert.ToInt32(LblIdIte.Text) + " AND n_idrec = " + n_idrec + "");
             funDatos.ComboBoxCargarDataTable(CboLin, dtResLin, "n_id", "c_deslin");
             booAgregando = false;
+        }
+
+        private void BtnAgregarDetalle_Click(object sender, EventArgs e)
+        {
+            DataTable dtResul = new DataTable();
+            CN_alm_movimientos objMov = new CN_alm_movimientos();
+            objMov.mysConec = mysConec;
+
+            dtResul = objMov.BuscarMovimientosMP(STU_SISTEMA.EMPRESAID, 0, "");
+
+            if (dtResul != null)
+            {
+                if (dtResul.Rows.Count != 0)
+                {
+                    ProduccionNotaIng produccionNotaIng = new ProduccionNotaIng();
+
+                    produccionNotaIng.n_idnoting = Convert.ToInt32(dtResul.Rows[0]["n_id"]);
+
+                    BE_ALM_MOVIMIENTOS_CONSULTA e_mov = new BE_ALM_MOVIMIENTOS_CONSULTA();
+                    objMov.mysConec = mysConec;
+
+                    e_mov = objMov.TraerRegistro(produccionNotaIng.n_idnoting);
+                    produccionNotaIng.numnoting = e_mov.c_numser + "-" + e_mov.c_numdoc;
+                    produccionNotaIng.cantidadmateriaprima = e_mov.lst_items[0].n_can;
+                    produccionNotaIng.materiaprima = funDatos.DataTableBuscar(dtItems, "n_id", "c_despro", e_mov.lst_items[0].n_idite.ToString(), "N").ToString();
+
+                    ProduccionNotaIngs.Add(produccionNotaIng);
+                }
+            }
+        }
+
+        private void BtnQuitarDetalle_Click(object sender, EventArgs e)
+        {
+            EliminarDetalle();
+
+        }
+
+        private void EliminarDetalle()
+        {
+            try
+            {
+                if (MessageBox.Show("¿Seguro desea eliminar el registro?", "Eliminar"
+                    , MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    var viewModelDetail = (ProduccionNotaIng)produccionNotaIngBindingSource.Current;
+                    ProduccionNotaIngs.RemoveItem(viewModelDetail);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Ocurrió un error al eliminar el registro, mensaje de error: {0}", ex.Message)
+                    , "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

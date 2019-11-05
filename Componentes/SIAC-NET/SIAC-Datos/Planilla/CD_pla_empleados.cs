@@ -101,6 +101,26 @@ namespace SIAC_DATOS.Planilla
             }
             return b_result;
         }
+        public bool ListarDetallado(int n_IdEmpresa)
+        {
+            bool b_result = false;
+            string[,] arrParametros = new string[1, 3] {
+                                            {"n_idemp", "System.INT32",n_IdEmpresa.ToString()},
+                                      };
+            dtLista = xMiFuncion.StoreDTLLenar("pla_empleados_jc_consulta", arrParametros, mysConec);
+
+            if (xMiFuncion.IntErrorNumber != 0)
+            {
+                b_OcurrioError = xMiFuncion.booOcurrioError;
+                c_ErrorMensaje = xMiFuncion.StrErrorMensaje;
+                n_ErrorNumber = xMiFuncion.IntErrorNumber;
+            }
+            else
+            {
+                b_result = true;
+            }
+            return b_result;
+        }
         public bool TraerRegistro(Int64 n_IdRegistro)
         {
             bool b_result = false;
@@ -148,6 +168,7 @@ namespace SIAC_DATOS.Planilla
 
             if (xMiFuncion.StoreEjecutar("pla_empleados_insertar", entPersonalU, mysConec, 1) == true)
             {
+                entPersonalU.n_id = Convert.ToInt32(xMiFuncion.intIdGenerado);
                 booOk = true;
             }
             else

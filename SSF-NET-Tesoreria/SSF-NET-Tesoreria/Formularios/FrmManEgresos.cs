@@ -2405,5 +2405,10 @@ namespace SSF_NET_Tesoreria.Formularios
                 FgOriIng.AllowEditing = true;
             }
         }
+
+        private void FgOriIng_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

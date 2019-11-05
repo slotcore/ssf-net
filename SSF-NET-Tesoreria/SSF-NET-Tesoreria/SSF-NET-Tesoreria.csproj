@@ -188,7 +188,9 @@
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Formularios\FrmCanjeDocumentos.resx">
       <DependentUpon>FrmCanjeDocumentos.cs</DependentUpon>

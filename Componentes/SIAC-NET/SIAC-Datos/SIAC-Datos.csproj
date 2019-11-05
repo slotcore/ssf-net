@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\SSF-NET\SSF-NET\packages\EntityFramework.6.3.0\build\EntityFramework.props" Condition="Exists('..\..\..\SSF-NET\SSF-NET\packages\EntityFramework.6.3.0\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -11,6 +12,8 @@
     <AssemblyName>SIAC-DATOS</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,11 +34,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\SSF-NET\SSF-NET\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\SSF-NET\SSF-NET\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\SSF-NET\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Runtime.Serialization" />
@@ -61,6 +72,8 @@
     <Compile Include="Almacen\CD_alm_movimientos.cs" />
     <Compile Include="Almacen\CD_alm_responsable.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Classes\ObjectBase.cs" />
+    <Compile Include="Classes\ObservableListSource.cs" />
     <Compile Include="Contabilidad\CD_con_cerrarmes.cs" />
     <Compile Include="Contabilidad\CD_con_destinoinforme.cs" />
     <Compile Include="Contabilidad\CD_con_detraccion.cs" />
@@ -89,6 +102,7 @@
     <Compile Include="Cooperativa\CD_coo_sociospuestos.cs" />
     <Compile Include="Cooperativa\CD_coo_tiposervicio.cs" />
     <Compile Include="Cooperativa\CD_coo_tiposocio.cs" />
+    <Compile Include="Data\ApplicationDbContext.cs" />
     <Compile Include="Estacionamiento\CD_est_cajeros.cs" />
     <Compile Include="Estacionamiento\CD_est_cargos.cs" />
     <Compile Include="Estacionamiento\CD_est_clientes.cs" />
@@ -123,6 +137,11 @@
     <Compile Include="Maestros\CD_mae_prioridad.cs" />
     <Compile Include="Maestros\CD_mae_tipoclipro.cs" />
     <Compile Include="Mantenimiento\CD_man_equipos.cs" />
+    <Compile Include="Models\Maestros\Categoria.cs" />
+    <Compile Include="Models\Maestros\FinPeriodo.cs" />
+    <Compile Include="Models\Planillas\Empleado.cs" />
+    <Compile Include="Models\Planillas\PeriodoLaboral.cs" />
+    <Compile Include="Models\Produccion\ProduccionNotaIng.cs" />
     <Compile Include="Planilla\CD_pla_destajo.cs" />
     <Compile Include="Planilla\CD_pla_destajouni.cs" />
     <Compile Include="Planilla\CD_pla_empleados.cs" />
@@ -153,6 +172,11 @@
     <Compile Include="Produccion\CD_pro_tipoproducto.cs" />
     <Compile Include="Produccion\CD_pro_personal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -244,6 +268,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -274,7 +299,21 @@
   <ItemGroup>
     <None Include="Web References\ws_sys_usuarios\sys_usuarios.disco" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\..\SSF-NET\SSF-NET\packages\EntityFramework.6.3.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\SSF-NET\SSF-NET\packages\EntityFramework.6.3.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\..\..\SSF-NET\SSF-NET\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\SSF-NET\SSF-NET\packages\EntityFramework.6.3.0\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\..\..\SSF-NET\SSF-NET\packages\EntityFramework.6.3.0\build\EntityFramework.targets" Condition="Exists('..\..\..\SSF-NET\SSF-NET\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

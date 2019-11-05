@@ -101,6 +101,24 @@ namespace SIAC_Negocio.Planilla
 
             return b_result;
         }
+        public bool ListarDetallado(int n_IdEmpresa)
+        {
+            bool b_result = false;
+
+            if (miFun.ListarDetallado(n_IdEmpresa) == true)
+            {
+                b_result = true;
+                dtLista = miFun.dtLista;
+            }
+            else
+            {
+                b_OcurrioError = miFun.b_OcurrioError;
+                c_ErrorMensaje = miFun.c_ErrorMensaje;
+                n_ErrorNumber = miFun.n_ErrorNumber;
+            }
+
+            return b_result;
+        }
         public bool TraerRegistro(int n_Idregistro)
         {
             bool b_result = false;

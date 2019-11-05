@@ -192,6 +192,7 @@ namespace Helper
 
                 MySqlCommand cmd = new MySqlCommand(StrNombreStore, mysConeccion);
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandTimeout = 1200000;
 
                 IntNumeroElementos = Convert.ToInt32(arrParametros.GetLongLength(0));
 

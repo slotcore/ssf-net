@@ -28,33 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmManEmpleados));
             this.ToolHerramientas = new System.Windows.Forms.ToolStrip();
-            this.ToolNuevo = new System.Windows.Forms.ToolStripButton();
-            this.ToolModificar2 = new System.Windows.Forms.ToolStripSplitButton();
-            this.modficarEmpleadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.activarEmpleadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolModificar = new System.Windows.Forms.ToolStripButton();
-            this.ToolEliminar2 = new System.Windows.Forms.ToolStripSplitButton();
-            this.eliminarPersonalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.desactivarPersonalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.darDeBajaEmpleadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolEliminar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolGrabar = new System.Windows.Forms.ToolStripButton();
-            this.ToolCancelar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolImprimir = new System.Windows.Forms.ToolStripSplitButton();
-            this.emitirGuiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.guiasDelMesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolExportar = new System.Windows.Forms.ToolStripSplitButton();
-            this.empleadosActivosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolSalir = new System.Windows.Forms.ToolStripButton();
             this.Tab1 = new C1.Win.C1Command.C1DockingTab();
             this.c1DockingTabPage1 = new C1.Win.C1Command.C1DockingTabPage();
-            this.Sc01 = new C1.Win.C1Sizer.C1Sizer();
             this.panel4 = new System.Windows.Forms.Panel();
             this.CboMeses = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -62,10 +42,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
-            this.DgLista = new C1.Win.C1TrueDBGrid.C1TrueDBGrid();
             this.c1DockingTabPage2 = new C1.Win.C1Command.C1DockingTabPage();
-            this.Sc02 = new C1.Win.C1Sizer.C1Sizer();
-            this.c1Sizer1 = new C1.Win.C1Sizer.C1Sizer();
             this.Tab2 = new C1.Win.C1Command.C1DockingTab();
             this.c1DockingTabPage3 = new C1.Win.C1Command.C1DockingTabPage();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -77,7 +54,6 @@
             this.label21 = new System.Windows.Forms.Label();
             this.TxtMail = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label15 = new System.Windows.Forms.Label();
             this.CboNacDis = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -108,6 +84,17 @@
             this.CmdBusImg = new System.Windows.Forms.Button();
             this.c1DockingTabPage4 = new C1.Win.C1Command.C1DockingTabPage();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.Pan1 = new System.Windows.Forms.Panel();
+            this.TxtFchBaj = new System.Windows.Forms.DateTimePicker();
+            this.TxtFchIng2 = new System.Windows.Forms.DateTimePicker();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.TxtApeNom2 = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.kryptonHeaderGroup1 = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
+            this.kryptonDataGridView1 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.TxtFchBaj2 = new System.Windows.Forms.DateTimePicker();
             this.label31 = new System.Windows.Forms.Label();
             this.ChkDestacado = new System.Windows.Forms.CheckBox();
@@ -125,46 +112,69 @@
             this.TxtBas = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.LblTitulo2 = new System.Windows.Forms.Label();
-            this.Pan1 = new System.Windows.Forms.Panel();
+            this.ToolNuevo = new System.Windows.Forms.ToolStripButton();
+            this.ToolModificar2 = new System.Windows.Forms.ToolStripSplitButton();
+            this.modficarEmpleadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.activarEmpleadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolModificar = new System.Windows.Forms.ToolStripButton();
+            this.ToolEliminar2 = new System.Windows.Forms.ToolStripSplitButton();
+            this.eliminarPersonalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.desactivarPersonalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.darDeBajaEmpleadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolEliminar = new System.Windows.Forms.ToolStripButton();
+            this.ToolGrabar = new System.Windows.Forms.ToolStripButton();
+            this.ToolCancelar = new System.Windows.Forms.ToolStripButton();
+            this.ToolImprimir = new System.Windows.Forms.ToolStripSplitButton();
+            this.emitirGuiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.guiasDelMesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolExportar = new System.Windows.Forms.ToolStripSplitButton();
+            this.empleadosActivosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolSalir = new System.Windows.Forms.ToolStripButton();
+            this.DgLista = new C1.Win.C1TrueDBGrid.C1TrueDBGrid();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.CmdAce = new System.Windows.Forms.Button();
             this.CmdCan = new System.Windows.Forms.Button();
-            this.TxtFchBaj = new System.Windows.Forms.DateTimePicker();
-            this.TxtFchIng2 = new System.Windows.Forms.DateTimePicker();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.TxtApeNom2 = new System.Windows.Forms.TextBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
+            this.BtnAgregarPeriodo = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
+            this.BtnModificarPeriodo = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
+            this.BtnQuitarPeriodo = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
+            this.ncorrDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoriaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finperiodoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dfchiniDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dfchfinDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.periodoLaboralBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ToolHerramientas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Tab1)).BeginInit();
             this.Tab1.SuspendLayout();
             this.c1DockingTabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Sc01)).BeginInit();
-            this.Sc01.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgLista)).BeginInit();
             this.c1DockingTabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Sc02)).BeginInit();
-            this.Sc02.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Sizer1)).BeginInit();
-            this.c1Sizer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Tab2)).BeginInit();
             this.Tab2.SuspendLayout();
             this.c1DockingTabPage3.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.c1DockingTabPage4.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.Pan1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup1.Panel)).BeginInit();
+            this.kryptonHeaderGroup1.Panel.SuspendLayout();
+            this.kryptonHeaderGroup1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView1)).BeginInit();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgLista)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.periodoLaboralBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // ToolHerramientas
             // 
             this.ToolHerramientas.BackColor = System.Drawing.Color.White;
+            this.ToolHerramientas.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ToolHerramientas.ForeColor = System.Drawing.Color.Black;
             this.ToolHerramientas.GripMargin = new System.Windows.Forms.Padding(0);
             this.ToolHerramientas.ImageScalingSize = new System.Drawing.Size(32, 32);
@@ -188,203 +198,15 @@
             this.ToolHerramientas.TabIndex = 36;
             this.ToolHerramientas.Text = "toolStrip1";
             // 
-            // ToolNuevo
-            // 
-            this.ToolNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ToolNuevo.Image = ((System.Drawing.Image)(resources.GetObject("ToolNuevo.Image")));
-            this.ToolNuevo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.ToolNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ToolNuevo.Name = "ToolNuevo";
-            this.ToolNuevo.Size = new System.Drawing.Size(36, 36);
-            this.ToolNuevo.Text = "toolStripButton1";
-            this.ToolNuevo.ToolTipText = "Agregar registro";
-            this.ToolNuevo.Click += new System.EventHandler(this.ToolNuevo_Click);
-            // 
-            // ToolModificar2
-            // 
-            this.ToolModificar2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ToolModificar2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.modficarEmpleadoToolStripMenuItem,
-            this.toolStripMenuItem2,
-            this.activarEmpleadoToolStripMenuItem});
-            this.ToolModificar2.Image = ((System.Drawing.Image)(resources.GetObject("ToolModificar2.Image")));
-            this.ToolModificar2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ToolModificar2.Name = "ToolModificar2";
-            this.ToolModificar2.Size = new System.Drawing.Size(48, 36);
-            this.ToolModificar2.Text = "toolStripSplitButton1";
-            this.ToolModificar2.ButtonClick += new System.EventHandler(this.ToolModificar2_ButtonClick);
-            // 
-            // modficarEmpleadoToolStripMenuItem
-            // 
-            this.modficarEmpleadoToolStripMenuItem.Name = "modficarEmpleadoToolStripMenuItem";
-            this.modficarEmpleadoToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.modficarEmpleadoToolStripMenuItem.Text = "Modficar Empleado";
-            this.modficarEmpleadoToolStripMenuItem.Click += new System.EventHandler(this.modficarEmpleadoToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(175, 6);
-            // 
-            // activarEmpleadoToolStripMenuItem
-            // 
-            this.activarEmpleadoToolStripMenuItem.Name = "activarEmpleadoToolStripMenuItem";
-            this.activarEmpleadoToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.activarEmpleadoToolStripMenuItem.Text = "Activar Empleado";
-            this.activarEmpleadoToolStripMenuItem.Click += new System.EventHandler(this.activarEmpleadoToolStripMenuItem_Click);
-            // 
-            // ToolModificar
-            // 
-            this.ToolModificar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ToolModificar.Image = ((System.Drawing.Image)(resources.GetObject("ToolModificar.Image")));
-            this.ToolModificar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ToolModificar.Name = "ToolModificar";
-            this.ToolModificar.Size = new System.Drawing.Size(36, 36);
-            this.ToolModificar.Text = "toolStripButton2";
-            this.ToolModificar.ToolTipText = "Editar registro";
-            this.ToolModificar.Visible = false;
-            this.ToolModificar.Click += new System.EventHandler(this.ToolModificar_Click);
-            // 
-            // ToolEliminar2
-            // 
-            this.ToolEliminar2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ToolEliminar2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.eliminarPersonalToolStripMenuItem,
-            this.toolStripMenuItem1,
-            this.desactivarPersonalToolStripMenuItem,
-            this.darDeBajaEmpleadoToolStripMenuItem});
-            this.ToolEliminar2.Image = ((System.Drawing.Image)(resources.GetObject("ToolEliminar2.Image")));
-            this.ToolEliminar2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ToolEliminar2.Name = "ToolEliminar2";
-            this.ToolEliminar2.Size = new System.Drawing.Size(48, 36);
-            this.ToolEliminar2.Text = "toolStripSplitButton1";
-            // 
-            // eliminarPersonalToolStripMenuItem
-            // 
-            this.eliminarPersonalToolStripMenuItem.Name = "eliminarPersonalToolStripMenuItem";
-            this.eliminarPersonalToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.eliminarPersonalToolStripMenuItem.Text = "Eliminar Empleado";
-            this.eliminarPersonalToolStripMenuItem.Click += new System.EventHandler(this.eliminarPersonalToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(186, 6);
-            // 
-            // desactivarPersonalToolStripMenuItem
-            // 
-            this.desactivarPersonalToolStripMenuItem.Name = "desactivarPersonalToolStripMenuItem";
-            this.desactivarPersonalToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.desactivarPersonalToolStripMenuItem.Text = "Desactivar Empleado";
-            this.desactivarPersonalToolStripMenuItem.Click += new System.EventHandler(this.desactivarPersonalToolStripMenuItem_Click);
-            // 
-            // darDeBajaEmpleadoToolStripMenuItem
-            // 
-            this.darDeBajaEmpleadoToolStripMenuItem.Name = "darDeBajaEmpleadoToolStripMenuItem";
-            this.darDeBajaEmpleadoToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.darDeBajaEmpleadoToolStripMenuItem.Text = "Dar de Baja Empleado";
-            this.darDeBajaEmpleadoToolStripMenuItem.Click += new System.EventHandler(this.darDeBajaEmpleadoToolStripMenuItem_Click);
-            // 
-            // ToolEliminar
-            // 
-            this.ToolEliminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ToolEliminar.Image = ((System.Drawing.Image)(resources.GetObject("ToolEliminar.Image")));
-            this.ToolEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ToolEliminar.Name = "ToolEliminar";
-            this.ToolEliminar.Size = new System.Drawing.Size(36, 36);
-            this.ToolEliminar.Text = "toolStripButton3";
-            this.ToolEliminar.ToolTipText = "Eliminar registro";
-            this.ToolEliminar.Visible = false;
-            this.ToolEliminar.Click += new System.EventHandler(this.ToolEliminar_Click);
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
             // 
-            // ToolGrabar
-            // 
-            this.ToolGrabar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ToolGrabar.Enabled = false;
-            this.ToolGrabar.Image = ((System.Drawing.Image)(resources.GetObject("ToolGrabar.Image")));
-            this.ToolGrabar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ToolGrabar.Name = "ToolGrabar";
-            this.ToolGrabar.Size = new System.Drawing.Size(36, 36);
-            this.ToolGrabar.Text = "toolStripButton4";
-            this.ToolGrabar.ToolTipText = "Grabar registro";
-            this.ToolGrabar.Click += new System.EventHandler(this.ToolGrabar_Click);
-            // 
-            // ToolCancelar
-            // 
-            this.ToolCancelar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ToolCancelar.Enabled = false;
-            this.ToolCancelar.Image = ((System.Drawing.Image)(resources.GetObject("ToolCancelar.Image")));
-            this.ToolCancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ToolCancelar.Name = "ToolCancelar";
-            this.ToolCancelar.Size = new System.Drawing.Size(36, 36);
-            this.ToolCancelar.Text = "toolStripButton5";
-            this.ToolCancelar.ToolTipText = "Cancelar";
-            this.ToolCancelar.Click += new System.EventHandler(this.ToolCancelar_Click);
-            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
-            // 
-            // ToolImprimir
-            // 
-            this.ToolImprimir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ToolImprimir.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.emitirGuiaToolStripMenuItem,
-            this.guiasDelMesToolStripMenuItem});
-            this.ToolImprimir.Image = ((System.Drawing.Image)(resources.GetObject("ToolImprimir.Image")));
-            this.ToolImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ToolImprimir.Name = "ToolImprimir";
-            this.ToolImprimir.Size = new System.Drawing.Size(48, 36);
-            this.ToolImprimir.Text = "toolStripSplitButton1";
-            // 
-            // emitirGuiaToolStripMenuItem
-            // 
-            this.emitirGuiaToolStripMenuItem.Name = "emitirGuiaToolStripMenuItem";
-            this.emitirGuiaToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
-            this.emitirGuiaToolStripMenuItem.Text = "Reporte Empleados Activos";
-            this.emitirGuiaToolStripMenuItem.Click += new System.EventHandler(this.emitirGuiaToolStripMenuItem_Click);
-            // 
-            // guiasDelMesToolStripMenuItem
-            // 
-            this.guiasDelMesToolStripMenuItem.Name = "guiasDelMesToolStripMenuItem";
-            this.guiasDelMesToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
-            this.guiasDelMesToolStripMenuItem.Text = "Lista de Cumpleaños";
-            this.guiasDelMesToolStripMenuItem.Click += new System.EventHandler(this.guiasDelMesToolStripMenuItem_Click);
-            // 
-            // ToolExportar
-            // 
-            this.ToolExportar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ToolExportar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.empleadosActivosToolStripMenuItem});
-            this.ToolExportar.Image = ((System.Drawing.Image)(resources.GetObject("ToolExportar.Image")));
-            this.ToolExportar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ToolExportar.Name = "ToolExportar";
-            this.ToolExportar.Size = new System.Drawing.Size(48, 36);
-            this.ToolExportar.Text = "toolStripSplitButton1";
-            // 
-            // empleadosActivosToolStripMenuItem
-            // 
-            this.empleadosActivosToolStripMenuItem.Name = "empleadosActivosToolStripMenuItem";
-            this.empleadosActivosToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
-            this.empleadosActivosToolStripMenuItem.Text = "Empleados Activos";
-            this.empleadosActivosToolStripMenuItem.Click += new System.EventHandler(this.empleadosActivosToolStripMenuItem_Click);
-            // 
-            // ToolSalir
-            // 
-            this.ToolSalir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ToolSalir.Image = ((System.Drawing.Image)(resources.GetObject("ToolSalir.Image")));
-            this.ToolSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ToolSalir.Name = "ToolSalir";
-            this.ToolSalir.Size = new System.Drawing.Size(36, 36);
-            this.ToolSalir.Text = "toolStripButton8";
-            this.ToolSalir.ToolTipText = "Salir";
-            this.ToolSalir.Click += new System.EventHandler(this.ToolSalir_Click);
             // 
             // Tab1
             // 
@@ -393,10 +215,10 @@
             this.Tab1.Controls.Add(this.c1DockingTabPage2);
             this.Tab1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tab1.ForeColor = System.Drawing.Color.Black;
-            this.Tab1.Location = new System.Drawing.Point(2, 42);
+            this.Tab1.Location = new System.Drawing.Point(3, 35);
             this.Tab1.Name = "Tab1";
             this.Tab1.SelectedIndex = 1;
-            this.Tab1.Size = new System.Drawing.Size(852, 493);
+            this.Tab1.Size = new System.Drawing.Size(852, 500);
             this.Tab1.TabAreaBackColor = System.Drawing.Color.White;
             this.Tab1.TabIndex = 37;
             this.Tab1.TabsSpacing = -10;
@@ -408,29 +230,16 @@
             // c1DockingTabPage1
             // 
             this.c1DockingTabPage1.BackColor = System.Drawing.Color.White;
-            this.c1DockingTabPage1.Controls.Add(this.Sc01);
+            this.c1DockingTabPage1.Controls.Add(this.panel4);
+            this.c1DockingTabPage1.Controls.Add(this.panel2);
+            this.c1DockingTabPage1.Controls.Add(this.DgLista);
             this.c1DockingTabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.c1DockingTabPage1.ForeColor = System.Drawing.Color.Black;
             this.c1DockingTabPage1.Location = new System.Drawing.Point(29, 1);
             this.c1DockingTabPage1.Name = "c1DockingTabPage1";
-            this.c1DockingTabPage1.Size = new System.Drawing.Size(822, 491);
+            this.c1DockingTabPage1.Size = new System.Drawing.Size(822, 498);
             this.c1DockingTabPage1.TabIndex = 0;
             this.c1DockingTabPage1.Text = "Consulta";
-            // 
-            // Sc01
-            // 
-            this.Sc01.Controls.Add(this.panel4);
-            this.Sc01.Controls.Add(this.panel2);
-            this.Sc01.Controls.Add(this.DgLista);
-            this.Sc01.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Sc01.ForeColor = System.Drawing.Color.Black;
-            this.Sc01.GridDefinition = "5.70264765784114:False:True;84.928716904277:False:False;6.10997963340122:False:Tr" +
-    "ue;\t99.0267639902676:False:False;";
-            this.Sc01.Location = new System.Drawing.Point(0, 0);
-            this.Sc01.Name = "Sc01";
-            this.Sc01.Size = new System.Drawing.Size(822, 491);
-            this.Sc01.TabIndex = 0;
-            this.Sc01.Text = "c1Sizer1";
             // 
             // panel4
             // 
@@ -440,9 +249,9 @@
             this.panel4.Controls.Add(this.LblNumReg);
             this.panel4.Controls.Add(this.label18);
             this.panel4.ForeColor = System.Drawing.Color.Black;
-            this.panel4.Location = new System.Drawing.Point(4, 457);
+            this.panel4.Location = new System.Drawing.Point(4, 463);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(814, 30);
+            this.panel4.Size = new System.Drawing.Size(818, 32);
             this.panel4.TabIndex = 2;
             // 
             // CboMeses
@@ -450,7 +259,7 @@
             this.CboMeses.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CboMeses.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CboMeses.FormattingEnabled = true;
-            this.CboMeses.Location = new System.Drawing.Point(505, 3);
+            this.CboMeses.Location = new System.Drawing.Point(505, 4);
             this.CboMeses.Name = "CboMeses";
             this.CboMeses.Size = new System.Drawing.Size(143, 24);
             this.CboMeses.TabIndex = 10;
@@ -501,7 +310,7 @@
             this.panel2.ForeColor = System.Drawing.Color.Black;
             this.panel2.Location = new System.Drawing.Point(4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(814, 28);
+            this.panel2.Size = new System.Drawing.Size(818, 23);
             this.panel2.TabIndex = 1;
             // 
             // label17
@@ -512,70 +321,22 @@
             this.label17.ForeColor = System.Drawing.Color.Black;
             this.label17.Location = new System.Drawing.Point(0, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(814, 28);
+            this.label17.Size = new System.Drawing.Size(818, 23);
             this.label17.TabIndex = 0;
             this.label17.Text = "CONSULTA";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // DgLista
-            // 
-            this.DgLista.BackColor = System.Drawing.Color.White;
-            this.DgLista.ForeColor = System.Drawing.Color.Black;
-            this.DgLista.GroupByCaption = "Drag a column header here to group by that column";
-            this.DgLista.Images.Add(((System.Drawing.Image)(resources.GetObject("DgLista.Images"))));
-            this.DgLista.Location = new System.Drawing.Point(4, 36);
-            this.DgLista.Name = "DgLista";
-            this.DgLista.PreviewInfo.Location = new System.Drawing.Point(0, 0);
-            this.DgLista.PreviewInfo.Size = new System.Drawing.Size(0, 0);
-            this.DgLista.PreviewInfo.ZoomFactor = 75D;
-            this.DgLista.PrintInfo.PageSettings = ((System.Drawing.Printing.PageSettings)(resources.GetObject("DgLista.PrintInfo.PageSettings")));
-            this.DgLista.Size = new System.Drawing.Size(814, 417);
-            this.DgLista.TabIndex = 0;
-            this.DgLista.Text = "c1TrueDBGrid1";
-            this.DgLista.DoubleClick += new System.EventHandler(this.DgLista_DoubleClick);
-            this.DgLista.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DgLista_KeyPress);
-            this.DgLista.PropBag = resources.GetString("DgLista.PropBag");
-            // 
             // c1DockingTabPage2
             // 
-            this.c1DockingTabPage2.Controls.Add(this.Sc02);
+            this.c1DockingTabPage2.Controls.Add(this.Tab2);
+            this.c1DockingTabPage2.Controls.Add(this.panel3);
             this.c1DockingTabPage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.c1DockingTabPage2.ForeColor = System.Drawing.Color.Black;
             this.c1DockingTabPage2.Location = new System.Drawing.Point(29, 1);
             this.c1DockingTabPage2.Name = "c1DockingTabPage2";
-            this.c1DockingTabPage2.Size = new System.Drawing.Size(822, 491);
+            this.c1DockingTabPage2.Size = new System.Drawing.Size(822, 498);
             this.c1DockingTabPage2.TabIndex = 1;
             this.c1DockingTabPage2.Text = "Detalle";
-            // 
-            // Sc02
-            // 
-            this.Sc02.Controls.Add(this.c1Sizer1);
-            this.Sc02.Controls.Add(this.panel3);
-            this.Sc02.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Sc02.ForeColor = System.Drawing.Color.Black;
-            this.Sc02.GridDefinition = "5.70264765784114:False:True;91.0386965376782:False:False;0:False:True;\t99.0267639" +
-    "902676:False:False;";
-            this.Sc02.Location = new System.Drawing.Point(0, 0);
-            this.Sc02.Name = "Sc02";
-            this.Sc02.Size = new System.Drawing.Size(822, 491);
-            this.Sc02.TabIndex = 0;
-            this.Sc02.Text = "c1Sizer2";
-            // 
-            // c1Sizer1
-            // 
-            this.c1Sizer1.Controls.Add(this.Tab2);
-            this.c1Sizer1.ForeColor = System.Drawing.Color.Black;
-            this.c1Sizer1.GridDefinition = "1.34228187919463:False:False;96.420581655481:False:True;1.34228187919463:False:Fa" +
-    "lse;\t0.614250614250614:False:False;98.2800982800983:False:True;0.614250614250614" +
-    ":False:False;";
-            this.c1Sizer1.Location = new System.Drawing.Point(4, 36);
-            this.c1Sizer1.Margin = new System.Windows.Forms.Padding(1);
-            this.c1Sizer1.Name = "c1Sizer1";
-            this.c1Sizer1.Padding = new System.Windows.Forms.Padding(1);
-            this.c1Sizer1.Size = new System.Drawing.Size(814, 447);
-            this.c1Sizer1.SplitterWidth = 1;
-            this.c1Sizer1.TabIndex = 10;
-            this.c1Sizer1.Text = "c1Sizer1";
             // 
             // Tab2
             // 
@@ -583,10 +344,10 @@
             this.Tab2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Tab2.Controls.Add(this.c1DockingTabPage3);
             this.Tab2.Controls.Add(this.c1DockingTabPage4);
-            this.Tab2.Location = new System.Drawing.Point(7, 8);
+            this.Tab2.Location = new System.Drawing.Point(4, 33);
             this.Tab2.Name = "Tab2";
             this.Tab2.SelectedIndex = 3;
-            this.Tab2.Size = new System.Drawing.Size(800, 431);
+            this.Tab2.Size = new System.Drawing.Size(818, 458);
             this.Tab2.TabIndex = 0;
             this.Tab2.TabsSpacing = -10;
             this.Tab2.TabStyle = C1.Win.C1Command.TabStyleEnum.Sloping;
@@ -599,7 +360,7 @@
             this.c1DockingTabPage3.Controls.Add(this.panel1);
             this.c1DockingTabPage3.Location = new System.Drawing.Point(1, 1);
             this.c1DockingTabPage3.Name = "c1DockingTabPage3";
-            this.c1DockingTabPage3.Size = new System.Drawing.Size(798, 406);
+            this.c1DockingTabPage3.Size = new System.Drawing.Size(816, 433);
             this.c1DockingTabPage3.TabIndex = 0;
             this.c1DockingTabPage3.Text = "Datos Personales";
             // 
@@ -642,11 +403,10 @@
             this.panel1.Controls.Add(this.TxtNumDoc);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.ForeColor = System.Drawing.Color.Black;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(798, 406);
+            this.panel1.Size = new System.Drawing.Size(812, 369);
             this.panel1.TabIndex = 1;
             // 
             // CboResDis
@@ -745,14 +505,6 @@
             this.label16.TabIndex = 99;
             this.label16.Text = "Correlo Electronico";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(543, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(237, 289);
-            this.pictureBox1.TabIndex = 98;
-            this.pictureBox1.TabStop = false;
             // 
             // label15
             // 
@@ -1070,12 +822,14 @@
             this.c1DockingTabPage4.Controls.Add(this.panel5);
             this.c1DockingTabPage4.Location = new System.Drawing.Point(1, 1);
             this.c1DockingTabPage4.Name = "c1DockingTabPage4";
-            this.c1DockingTabPage4.Size = new System.Drawing.Size(798, 406);
+            this.c1DockingTabPage4.Size = new System.Drawing.Size(816, 433);
             this.c1DockingTabPage4.TabIndex = 1;
             this.c1DockingTabPage4.Text = "Datos laborales";
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.Pan1);
+            this.panel5.Controls.Add(this.kryptonHeaderGroup1);
             this.panel5.Controls.Add(this.TxtFchBaj2);
             this.panel5.Controls.Add(this.label31);
             this.panel5.Controls.Add(this.ChkDestacado);
@@ -1091,11 +845,140 @@
             this.panel5.Controls.Add(this.TxtImpHorNor);
             this.panel5.Controls.Add(this.label23);
             this.panel5.Controls.Add(this.TxtBas);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(798, 406);
+            this.panel5.Size = new System.Drawing.Size(816, 432);
             this.panel5.TabIndex = 0;
+            // 
+            // Pan1
+            // 
+            this.Pan1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Pan1.Controls.Add(this.CmdAce);
+            this.Pan1.Controls.Add(this.CmdCan);
+            this.Pan1.Controls.Add(this.TxtFchBaj);
+            this.Pan1.Controls.Add(this.TxtFchIng2);
+            this.Pan1.Controls.Add(this.label30);
+            this.Pan1.Controls.Add(this.label29);
+            this.Pan1.Controls.Add(this.label28);
+            this.Pan1.Controls.Add(this.TxtApeNom2);
+            this.Pan1.Controls.Add(this.label27);
+            this.Pan1.Controls.Add(this.label26);
+            this.Pan1.Location = new System.Drawing.Point(739, 52);
+            this.Pan1.Name = "Pan1";
+            this.Pan1.Size = new System.Drawing.Size(388, 157);
+            this.Pan1.TabIndex = 38;
+            this.Pan1.Visible = false;
+            // 
+            // TxtFchBaj
+            // 
+            this.TxtFchBaj.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.TxtFchBaj.Location = new System.Drawing.Point(93, 84);
+            this.TxtFchBaj.Name = "TxtFchBaj";
+            this.TxtFchBaj.Size = new System.Drawing.Size(102, 20);
+            this.TxtFchBaj.TabIndex = 7;
+            // 
+            // TxtFchIng2
+            // 
+            this.TxtFchIng2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.TxtFchIng2.Location = new System.Drawing.Point(93, 61);
+            this.TxtFchIng2.Name = "TxtFchIng2";
+            this.TxtFchIng2.Size = new System.Drawing.Size(102, 20);
+            this.TxtFchIng2.TabIndex = 6;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(8, 86);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(52, 13);
+            this.label30.TabIndex = 5;
+            this.label30.Text = "Fch. Baja";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(8, 64);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(66, 13);
+            this.label29.TabIndex = 4;
+            this.label29.Text = "Fch. Ingreso";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(6, 41);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(82, 13);
+            this.label28.TabIndex = 3;
+            this.label28.Text = "Ape. y Nombres";
+            // 
+            // TxtApeNom2
+            // 
+            this.TxtApeNom2.Location = new System.Drawing.Point(93, 38);
+            this.TxtApeNom2.Name = "TxtApeNom2";
+            this.TxtApeNom2.Size = new System.Drawing.Size(285, 20);
+            this.TxtApeNom2.TabIndex = 2;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.Color.White;
+            this.label27.Location = new System.Drawing.Point(8, 6);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(115, 13);
+            this.label27.TabIndex = 1;
+            this.label27.Text = "Baja de Empleados";
+            // 
+            // label26
+            // 
+            this.label26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.label26.Location = new System.Drawing.Point(1, 1);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(384, 23);
+            this.label26.TabIndex = 0;
+            // 
+            // kryptonHeaderGroup1
+            // 
+            this.kryptonHeaderGroup1.ButtonSpecs.AddRange(new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup[] {
+            this.BtnAgregarPeriodo,
+            this.BtnModificarPeriodo,
+            this.BtnQuitarPeriodo});
+            this.kryptonHeaderGroup1.HeaderVisibleSecondary = false;
+            this.kryptonHeaderGroup1.Location = new System.Drawing.Point(3, 200);
+            this.kryptonHeaderGroup1.Name = "kryptonHeaderGroup1";
+            // 
+            // kryptonHeaderGroup1.Panel
+            // 
+            this.kryptonHeaderGroup1.Panel.Controls.Add(this.kryptonDataGridView1);
+            this.kryptonHeaderGroup1.Size = new System.Drawing.Size(810, 229);
+            this.kryptonHeaderGroup1.TabIndex = 103;
+            this.kryptonHeaderGroup1.ValuesPrimary.Heading = "Periodo Laboral";
+            this.kryptonHeaderGroup1.ValuesPrimary.Image = null;
+            // 
+            // kryptonDataGridView1
+            // 
+            this.kryptonDataGridView1.AllowUserToAddRows = false;
+            this.kryptonDataGridView1.AllowUserToDeleteRows = false;
+            this.kryptonDataGridView1.AllowUserToOrderColumns = true;
+            this.kryptonDataGridView1.AutoGenerateColumns = false;
+            this.kryptonDataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.kryptonDataGridView1.ColumnHeadersHeight = 30;
+            this.kryptonDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ncorrDataGridViewTextBoxColumn,
+            this.categoriaDataGridViewTextBoxColumn,
+            this.finperiodoDataGridViewTextBoxColumn,
+            this.dfchiniDataGridViewTextBoxColumn,
+            this.dfchfinDataGridViewTextBoxColumn});
+            this.kryptonDataGridView1.DataSource = this.periodoLaboralBindingSource;
+            this.kryptonDataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonDataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonDataGridView1.Name = "kryptonDataGridView1";
+            this.kryptonDataGridView1.ReadOnly = true;
+            this.kryptonDataGridView1.RowHeadersVisible = false;
+            this.kryptonDataGridView1.Size = new System.Drawing.Size(808, 197);
+            this.kryptonDataGridView1.TabIndex = 0;
             // 
             // TxtFchBaj2
             // 
@@ -1265,7 +1148,7 @@
             this.panel3.ForeColor = System.Drawing.Color.Black;
             this.panel3.Location = new System.Drawing.Point(4, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(814, 28);
+            this.panel3.Size = new System.Drawing.Size(818, 23);
             this.panel3.TabIndex = 8;
             // 
             // LblTitulo2
@@ -1276,29 +1159,227 @@
             this.LblTitulo2.ForeColor = System.Drawing.Color.Black;
             this.LblTitulo2.Location = new System.Drawing.Point(0, 0);
             this.LblTitulo2.Name = "LblTitulo2";
-            this.LblTitulo2.Size = new System.Drawing.Size(814, 28);
+            this.LblTitulo2.Size = new System.Drawing.Size(818, 23);
             this.LblTitulo2.TabIndex = 0;
             this.LblTitulo2.Text = "DETALLE DEL REGISTRO";
             this.LblTitulo2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Pan1
+            // ToolNuevo
             // 
-            this.Pan1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Pan1.Controls.Add(this.CmdAce);
-            this.Pan1.Controls.Add(this.CmdCan);
-            this.Pan1.Controls.Add(this.TxtFchBaj);
-            this.Pan1.Controls.Add(this.TxtFchIng2);
-            this.Pan1.Controls.Add(this.label30);
-            this.Pan1.Controls.Add(this.label29);
-            this.Pan1.Controls.Add(this.label28);
-            this.Pan1.Controls.Add(this.TxtApeNom2);
-            this.Pan1.Controls.Add(this.label27);
-            this.Pan1.Controls.Add(this.label26);
-            this.Pan1.Location = new System.Drawing.Point(776, 139);
-            this.Pan1.Name = "Pan1";
-            this.Pan1.Size = new System.Drawing.Size(388, 157);
-            this.Pan1.TabIndex = 38;
-            this.Pan1.Visible = false;
+            this.ToolNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ToolNuevo.Image = ((System.Drawing.Image)(resources.GetObject("ToolNuevo.Image")));
+            this.ToolNuevo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.ToolNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ToolNuevo.Name = "ToolNuevo";
+            this.ToolNuevo.Size = new System.Drawing.Size(36, 36);
+            this.ToolNuevo.Text = "toolStripButton1";
+            this.ToolNuevo.ToolTipText = "Agregar registro";
+            this.ToolNuevo.Click += new System.EventHandler(this.ToolNuevo_Click);
+            // 
+            // ToolModificar2
+            // 
+            this.ToolModificar2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ToolModificar2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.modficarEmpleadoToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.activarEmpleadoToolStripMenuItem});
+            this.ToolModificar2.Image = ((System.Drawing.Image)(resources.GetObject("ToolModificar2.Image")));
+            this.ToolModificar2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ToolModificar2.Name = "ToolModificar2";
+            this.ToolModificar2.Size = new System.Drawing.Size(48, 36);
+            this.ToolModificar2.Text = "toolStripSplitButton1";
+            this.ToolModificar2.ButtonClick += new System.EventHandler(this.ToolModificar2_ButtonClick);
+            // 
+            // modficarEmpleadoToolStripMenuItem
+            // 
+            this.modficarEmpleadoToolStripMenuItem.Name = "modficarEmpleadoToolStripMenuItem";
+            this.modficarEmpleadoToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.modficarEmpleadoToolStripMenuItem.Text = "Modficar Empleado";
+            this.modficarEmpleadoToolStripMenuItem.Click += new System.EventHandler(this.modficarEmpleadoToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(175, 6);
+            // 
+            // activarEmpleadoToolStripMenuItem
+            // 
+            this.activarEmpleadoToolStripMenuItem.Name = "activarEmpleadoToolStripMenuItem";
+            this.activarEmpleadoToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.activarEmpleadoToolStripMenuItem.Text = "Activar Empleado";
+            this.activarEmpleadoToolStripMenuItem.Click += new System.EventHandler(this.activarEmpleadoToolStripMenuItem_Click);
+            // 
+            // ToolModificar
+            // 
+            this.ToolModificar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ToolModificar.Image = ((System.Drawing.Image)(resources.GetObject("ToolModificar.Image")));
+            this.ToolModificar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ToolModificar.Name = "ToolModificar";
+            this.ToolModificar.Size = new System.Drawing.Size(36, 36);
+            this.ToolModificar.Text = "toolStripButton2";
+            this.ToolModificar.ToolTipText = "Editar registro";
+            this.ToolModificar.Visible = false;
+            this.ToolModificar.Click += new System.EventHandler(this.ToolModificar_Click);
+            // 
+            // ToolEliminar2
+            // 
+            this.ToolEliminar2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ToolEliminar2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.eliminarPersonalToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.desactivarPersonalToolStripMenuItem,
+            this.darDeBajaEmpleadoToolStripMenuItem});
+            this.ToolEliminar2.Image = ((System.Drawing.Image)(resources.GetObject("ToolEliminar2.Image")));
+            this.ToolEliminar2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ToolEliminar2.Name = "ToolEliminar2";
+            this.ToolEliminar2.Size = new System.Drawing.Size(48, 36);
+            this.ToolEliminar2.Text = "toolStripSplitButton1";
+            // 
+            // eliminarPersonalToolStripMenuItem
+            // 
+            this.eliminarPersonalToolStripMenuItem.Name = "eliminarPersonalToolStripMenuItem";
+            this.eliminarPersonalToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.eliminarPersonalToolStripMenuItem.Text = "Eliminar Empleado";
+            this.eliminarPersonalToolStripMenuItem.Click += new System.EventHandler(this.eliminarPersonalToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(186, 6);
+            // 
+            // desactivarPersonalToolStripMenuItem
+            // 
+            this.desactivarPersonalToolStripMenuItem.Name = "desactivarPersonalToolStripMenuItem";
+            this.desactivarPersonalToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.desactivarPersonalToolStripMenuItem.Text = "Desactivar Empleado";
+            this.desactivarPersonalToolStripMenuItem.Click += new System.EventHandler(this.desactivarPersonalToolStripMenuItem_Click);
+            // 
+            // darDeBajaEmpleadoToolStripMenuItem
+            // 
+            this.darDeBajaEmpleadoToolStripMenuItem.Name = "darDeBajaEmpleadoToolStripMenuItem";
+            this.darDeBajaEmpleadoToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.darDeBajaEmpleadoToolStripMenuItem.Text = "Dar de Baja Empleado";
+            this.darDeBajaEmpleadoToolStripMenuItem.Click += new System.EventHandler(this.darDeBajaEmpleadoToolStripMenuItem_Click);
+            // 
+            // ToolEliminar
+            // 
+            this.ToolEliminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ToolEliminar.Image = ((System.Drawing.Image)(resources.GetObject("ToolEliminar.Image")));
+            this.ToolEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ToolEliminar.Name = "ToolEliminar";
+            this.ToolEliminar.Size = new System.Drawing.Size(36, 36);
+            this.ToolEliminar.Text = "toolStripButton3";
+            this.ToolEliminar.ToolTipText = "Eliminar registro";
+            this.ToolEliminar.Visible = false;
+            this.ToolEliminar.Click += new System.EventHandler(this.ToolEliminar_Click);
+            // 
+            // ToolGrabar
+            // 
+            this.ToolGrabar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ToolGrabar.Enabled = false;
+            this.ToolGrabar.Image = ((System.Drawing.Image)(resources.GetObject("ToolGrabar.Image")));
+            this.ToolGrabar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ToolGrabar.Name = "ToolGrabar";
+            this.ToolGrabar.Size = new System.Drawing.Size(36, 36);
+            this.ToolGrabar.Text = "toolStripButton4";
+            this.ToolGrabar.ToolTipText = "Grabar registro";
+            this.ToolGrabar.Click += new System.EventHandler(this.ToolGrabar_Click);
+            // 
+            // ToolCancelar
+            // 
+            this.ToolCancelar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ToolCancelar.Enabled = false;
+            this.ToolCancelar.Image = ((System.Drawing.Image)(resources.GetObject("ToolCancelar.Image")));
+            this.ToolCancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ToolCancelar.Name = "ToolCancelar";
+            this.ToolCancelar.Size = new System.Drawing.Size(36, 36);
+            this.ToolCancelar.Text = "toolStripButton5";
+            this.ToolCancelar.ToolTipText = "Cancelar";
+            this.ToolCancelar.Click += new System.EventHandler(this.ToolCancelar_Click);
+            // 
+            // ToolImprimir
+            // 
+            this.ToolImprimir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ToolImprimir.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.emitirGuiaToolStripMenuItem,
+            this.guiasDelMesToolStripMenuItem});
+            this.ToolImprimir.Image = ((System.Drawing.Image)(resources.GetObject("ToolImprimir.Image")));
+            this.ToolImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ToolImprimir.Name = "ToolImprimir";
+            this.ToolImprimir.Size = new System.Drawing.Size(48, 36);
+            this.ToolImprimir.Text = "toolStripSplitButton1";
+            // 
+            // emitirGuiaToolStripMenuItem
+            // 
+            this.emitirGuiaToolStripMenuItem.Name = "emitirGuiaToolStripMenuItem";
+            this.emitirGuiaToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.emitirGuiaToolStripMenuItem.Text = "Reporte Empleados Activos";
+            this.emitirGuiaToolStripMenuItem.Click += new System.EventHandler(this.emitirGuiaToolStripMenuItem_Click);
+            // 
+            // guiasDelMesToolStripMenuItem
+            // 
+            this.guiasDelMesToolStripMenuItem.Name = "guiasDelMesToolStripMenuItem";
+            this.guiasDelMesToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.guiasDelMesToolStripMenuItem.Text = "Lista de Cumpleaños";
+            this.guiasDelMesToolStripMenuItem.Click += new System.EventHandler(this.guiasDelMesToolStripMenuItem_Click);
+            // 
+            // ToolExportar
+            // 
+            this.ToolExportar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ToolExportar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.empleadosActivosToolStripMenuItem});
+            this.ToolExportar.Image = ((System.Drawing.Image)(resources.GetObject("ToolExportar.Image")));
+            this.ToolExportar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ToolExportar.Name = "ToolExportar";
+            this.ToolExportar.Size = new System.Drawing.Size(48, 36);
+            this.ToolExportar.Text = "toolStripSplitButton1";
+            // 
+            // empleadosActivosToolStripMenuItem
+            // 
+            this.empleadosActivosToolStripMenuItem.Name = "empleadosActivosToolStripMenuItem";
+            this.empleadosActivosToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.empleadosActivosToolStripMenuItem.Text = "Empleados Activos";
+            this.empleadosActivosToolStripMenuItem.Click += new System.EventHandler(this.empleadosActivosToolStripMenuItem_Click);
+            // 
+            // ToolSalir
+            // 
+            this.ToolSalir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ToolSalir.Image = ((System.Drawing.Image)(resources.GetObject("ToolSalir.Image")));
+            this.ToolSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ToolSalir.Name = "ToolSalir";
+            this.ToolSalir.Size = new System.Drawing.Size(36, 36);
+            this.ToolSalir.Text = "toolStripButton8";
+            this.ToolSalir.ToolTipText = "Salir";
+            this.ToolSalir.Click += new System.EventHandler(this.ToolSalir_Click);
+            // 
+            // DgLista
+            // 
+            this.DgLista.BackColor = System.Drawing.Color.White;
+            this.DgLista.CaptionHeight = 19;
+            this.DgLista.ForeColor = System.Drawing.Color.Black;
+            this.DgLista.GroupByCaption = "Drag a column header here to group by that column";
+            this.DgLista.Images.Add(((System.Drawing.Image)(resources.GetObject("DgLista.Images"))));
+            this.DgLista.Location = new System.Drawing.Point(4, 30);
+            this.DgLista.Name = "DgLista";
+            this.DgLista.PreviewInfo.Location = new System.Drawing.Point(0, 0);
+            this.DgLista.PreviewInfo.Size = new System.Drawing.Size(0, 0);
+            this.DgLista.PreviewInfo.ZoomFactor = 75D;
+            this.DgLista.PrintInfo.PageSettings = ((System.Drawing.Printing.PageSettings)(resources.GetObject("DgLista.PrintInfo.PageSettings")));
+            this.DgLista.RowHeight = 17;
+            this.DgLista.Size = new System.Drawing.Size(818, 430);
+            this.DgLista.TabIndex = 0;
+            this.DgLista.Text = "c1TrueDBGrid1";
+            this.DgLista.DoubleClick += new System.EventHandler(this.DgLista_DoubleClick);
+            this.DgLista.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DgLista_KeyPress);
+            this.DgLista.PropBag = resources.GetString("DgLista.PropBag");
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(543, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(237, 289);
+            this.pictureBox1.TabIndex = 98;
+            this.pictureBox1.TabStop = false;
             // 
             // CmdAce
             // 
@@ -1328,82 +1409,74 @@
             this.CmdCan.UseVisualStyleBackColor = true;
             this.CmdCan.Click += new System.EventHandler(this.CmdCan_Click);
             // 
-            // TxtFchBaj
+            // BtnAgregarPeriodo
             // 
-            this.TxtFchBaj.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.TxtFchBaj.Location = new System.Drawing.Point(93, 84);
-            this.TxtFchBaj.Name = "TxtFchBaj";
-            this.TxtFchBaj.Size = new System.Drawing.Size(102, 20);
-            this.TxtFchBaj.TabIndex = 7;
+            this.BtnAgregarPeriodo.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.False;
+            this.BtnAgregarPeriodo.Image = global::SSF_NET_Planillas.Properties.Resources.add_16x16;
+            this.BtnAgregarPeriodo.Text = "Agregar";
+            this.BtnAgregarPeriodo.UniqueName = "369A5698B443467A2D9D09F23C250A42";
+            this.BtnAgregarPeriodo.Click += new System.EventHandler(this.BtnAgregarPeriodo_Click);
             // 
-            // TxtFchIng2
+            // BtnModificarPeriodo
             // 
-            this.TxtFchIng2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.TxtFchIng2.Location = new System.Drawing.Point(93, 61);
-            this.TxtFchIng2.Name = "TxtFchIng2";
-            this.TxtFchIng2.Size = new System.Drawing.Size(102, 20);
-            this.TxtFchIng2.TabIndex = 6;
+            this.BtnModificarPeriodo.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.False;
+            this.BtnModificarPeriodo.Image = global::SSF_NET_Planillas.Properties.Resources.edit_16x16;
+            this.BtnModificarPeriodo.Text = "Modificar";
+            this.BtnModificarPeriodo.UniqueName = "320B5148C31D4B5905AA22C4B31E0E55";
+            this.BtnModificarPeriodo.Click += new System.EventHandler(this.BtnModificarPeriodo_Click);
             // 
-            // label30
+            // BtnQuitarPeriodo
             // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(8, 86);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(52, 13);
-            this.label30.TabIndex = 5;
-            this.label30.Text = "Fch. Baja";
+            this.BtnQuitarPeriodo.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.False;
+            this.BtnQuitarPeriodo.Image = global::SSF_NET_Planillas.Properties.Resources.trash_16x16;
+            this.BtnQuitarPeriodo.Text = "Quitar";
+            this.BtnQuitarPeriodo.UniqueName = "6FB143F005EE4F2445AF3D74B7A81FB0";
+            this.BtnQuitarPeriodo.Click += new System.EventHandler(this.BtnQuitarPeriodo_Click);
             // 
-            // label29
+            // ncorrDataGridViewTextBoxColumn
             // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(8, 64);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(66, 13);
-            this.label29.TabIndex = 4;
-            this.label29.Text = "Fch. Ingreso";
+            this.ncorrDataGridViewTextBoxColumn.DataPropertyName = "n_corr";
+            this.ncorrDataGridViewTextBoxColumn.HeaderText = "#";
+            this.ncorrDataGridViewTextBoxColumn.Name = "ncorrDataGridViewTextBoxColumn";
+            this.ncorrDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // label28
+            // categoriaDataGridViewTextBoxColumn
             // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(6, 41);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(82, 13);
-            this.label28.TabIndex = 3;
-            this.label28.Text = "Ape. y Nombres";
+            this.categoriaDataGridViewTextBoxColumn.DataPropertyName = "categoria";
+            this.categoriaDataGridViewTextBoxColumn.HeaderText = "Categoria";
+            this.categoriaDataGridViewTextBoxColumn.Name = "categoriaDataGridViewTextBoxColumn";
+            this.categoriaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // TxtApeNom2
+            // finperiodoDataGridViewTextBoxColumn
             // 
-            this.TxtApeNom2.Location = new System.Drawing.Point(93, 38);
-            this.TxtApeNom2.Name = "TxtApeNom2";
-            this.TxtApeNom2.Size = new System.Drawing.Size(285, 20);
-            this.TxtApeNom2.TabIndex = 2;
+            this.finperiodoDataGridViewTextBoxColumn.DataPropertyName = "finperiodo";
+            this.finperiodoDataGridViewTextBoxColumn.HeaderText = "Tipo Extinción Contrato";
+            this.finperiodoDataGridViewTextBoxColumn.Name = "finperiodoDataGridViewTextBoxColumn";
+            this.finperiodoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // label27
+            // dfchiniDataGridViewTextBoxColumn
             // 
-            this.label27.AutoSize = true;
-            this.label27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.ForeColor = System.Drawing.Color.White;
-            this.label27.Location = new System.Drawing.Point(8, 6);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(115, 13);
-            this.label27.TabIndex = 1;
-            this.label27.Text = "Baja de Empleados";
+            this.dfchiniDataGridViewTextBoxColumn.DataPropertyName = "d_fchini";
+            this.dfchiniDataGridViewTextBoxColumn.HeaderText = "Fch. Inicio / Reinicio";
+            this.dfchiniDataGridViewTextBoxColumn.Name = "dfchiniDataGridViewTextBoxColumn";
+            this.dfchiniDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // label26
+            // dfchfinDataGridViewTextBoxColumn
             // 
-            this.label26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label26.Location = new System.Drawing.Point(1, 1);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(384, 23);
-            this.label26.TabIndex = 0;
+            this.dfchfinDataGridViewTextBoxColumn.DataPropertyName = "d_fchfin";
+            this.dfchfinDataGridViewTextBoxColumn.HeaderText = "Fch. Fin / Suspensión";
+            this.dfchfinDataGridViewTextBoxColumn.Name = "dfchfinDataGridViewTextBoxColumn";
+            this.dfchfinDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // periodoLaboralBindingSource
+            // 
+            this.periodoLaboralBindingSource.DataSource = typeof(SIAC_Datos.Models.Planillas.PeriodoLaboral);
             // 
             // FrmManEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(855, 538);
-            this.Controls.Add(this.Pan1);
             this.Controls.Add(this.ToolHerramientas);
             this.Controls.Add(this.Tab1);
             this.Name = "FrmManEmpleados";
@@ -1417,30 +1490,30 @@
             ((System.ComponentModel.ISupportInitialize)(this.Tab1)).EndInit();
             this.Tab1.ResumeLayout(false);
             this.c1DockingTabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Sc01)).EndInit();
-            this.Sc01.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DgLista)).EndInit();
             this.c1DockingTabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Sc02)).EndInit();
-            this.Sc02.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.c1Sizer1)).EndInit();
-            this.c1Sizer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Tab2)).EndInit();
             this.Tab2.ResumeLayout(false);
             this.c1DockingTabPage3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.c1DockingTabPage4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            this.panel3.ResumeLayout(false);
             this.Pan1.ResumeLayout(false);
             this.Pan1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup1.Panel)).EndInit();
+            this.kryptonHeaderGroup1.Panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup1)).EndInit();
+            this.kryptonHeaderGroup1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView1)).EndInit();
+            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DgLista)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.periodoLaboralBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1462,7 +1535,7 @@
         private System.Windows.Forms.ToolStripButton ToolSalir;
         private C1.Win.C1Command.C1DockingTab Tab1;
         private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage1;
-        private C1.Win.C1Sizer.C1Sizer Sc01;
+        //private C1.Win.C1Sizer.C1Sizer Sc01;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.ComboBox CboMeses;
         private System.Windows.Forms.Label label1;
@@ -1472,8 +1545,8 @@
         private System.Windows.Forms.Label label17;
         private C1.Win.C1TrueDBGrid.C1TrueDBGrid DgLista;
         private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage2;
-        private C1.Win.C1Sizer.C1Sizer Sc02;
-        private C1.Win.C1Sizer.C1Sizer c1Sizer1;
+        //private C1.Win.C1Sizer.C1Sizer Sc02;
+        //private C1.Win.C1Sizer.C1Sizer c1Sizer1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label LblTitulo2;
         private C1.Win.C1Command.C1DockingTab Tab2;
@@ -1555,5 +1628,16 @@
         private System.Windows.Forms.ToolStripMenuItem darDeBajaEmpleadoToolStripMenuItem;
         private System.Windows.Forms.DateTimePicker TxtFchBaj2;
         private System.Windows.Forms.Label label31;
+        private ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup kryptonHeaderGroup1;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView kryptonDataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ncorrDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn categoriaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn finperiodoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dfchiniDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dfchfinDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource periodoLaboralBindingSource;
+        private ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup BtnAgregarPeriodo;
+        private ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup BtnQuitarPeriodo;
+        private ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup BtnModificarPeriodo;
     }
 }

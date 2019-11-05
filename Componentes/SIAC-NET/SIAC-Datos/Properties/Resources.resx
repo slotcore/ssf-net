@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="q_pla_empleado_insert" xml:space="preserve">
+    <value>INSERT INTO pla_empleados
+	(
+	n_idemp,
+	n_id,
+	n_idtipdocide,
+	c_numdocide,
+	c_ape1,
+	c_ape2,
+	c_nom1,
+	c_nom2,
+	d_fchnac,
+	n_idsex,
+	c_numtel,
+	c_numesa,
+	d_fching,
+	n_asigfam,
+	n_suebas,
+	n_bon,
+	n_imphornor,
+	n_imphorext,
+	n_activo,
+	n_destajo,
+	c_dir,
+	c_email,
+	n_idnacpro,
+	n_idnacdep,
+	n_idnacdis,
+	n_idrespro,
+	n_idresdep,
+	n_idresdis,
+	n_destacado,
+	d_fchbaj
+	)
+VALUES 
+	(
+	@n_idemp,
+	@n_id,
+	@n_idtipdocide,
+	@c_numdocide,
+	@c_ape1,
+	@c_ape2,
+	@c_nom1,
+	@c_nom2,
+	@d_fchnac,
+	@n_idsex,
+	@c_numtel,
+	@c_numesa,
+	@d_fching,
+	@n_asigfam,
+	@n_suebas,
+	@n_bon,
+	@n_imphornor,
+	@n_imphorext,
+	@n_activo,
+	@n_destajo,
+	@c_dir,
+	@c_email,
+	@n_idnacpro,
+	@n_idnacdep,
+	@n_idnacdis,
+	@n_idrespro,
+	@n_idresdep,
+	@n_idresdis,
+	@n_destacado,
+	@d_fchbaj
+	)</value>
+  </data>
+  <data name="q_pla_empleado_update" xml:space="preserve">
+    <value>UPDATE pla_empleados
+SET n_idemp = @n_idemp,
+	n_idtipdocide = @n_idtipdocide,
+	c_numdocide = @c_numdocide,
+	c_ape1 = @c_ape1,
+	c_ape2 = @c_ape2,
+	c_nom1 = @c_nom1,
+	c_nom2 = @c_nom2,
+	d_fchnac = @d_fchnac,
+	n_idsex = @n_idsex,
+	c_numtel = @c_numtel,
+	c_numesa = @c_numesa,
+	d_fching = @d_fching,
+	n_asigfam = @n_asigfam,
+	n_suebas = @n_suebas,
+	n_bon = @n_bon,
+	n_imphornor = @n_imphornor,
+	n_imphorext = @n_imphorext,
+	n_activo = @n_activo,
+	n_destajo = @n_destajo,
+	c_dir = @c_dir,
+	c_email = @c_email,
+	n_idnacpro = @n_idnacpro,
+	n_idnacdep = @n_idnacdep,
+	n_idnacdis = @n_idnacdis,
+	n_idrespro = @n_idrespro,
+	n_idresdep = @n_idresdep,
+	n_idresdis = @n_idresdis,
+	n_destacado = @n_destacado,
+	d_fchbaj = @d_fchbaj
+WHERE n_id = @n_id</value>
+  </data>
+  <data name="q_pla_periodolaboral_delete" xml:space="preserve">
+    <value>DELETE FROM pla_periodolaboral
+WHERE n_idperiodolaboral = @n_idperiodolaboral</value>
+  </data>
+  <data name="q_pla_periodolaboral_get" xml:space="preserve">
+    <value>SELECT pla_periodolaboral.*
+, mae_categoria.c_descripcion categoria
+, mae_finperiodo.c_descripcion finperiodo
+FROM pla_periodolaboral 
+INNER JOIN mae_categoria ON mae_categoria.n_idcategoria = pla_periodolaboral.n_idcategoria 
+INNER JOIN mae_finperiodo ON mae_finperiodo.n_idfinperiodo = pla_periodolaboral.n_idfinperiodo 
+WHERE pla_periodolaboral.n_idempleado=@n_idempleado</value>
+  </data>
+  <data name="q_pla_periodolaboral_insert" xml:space="preserve">
+    <value>INSERT INTO pla_periodolaboral
+	(
+	n_idperiodolaboral,
+	n_idempleado,
+	n_idcategoria,
+	n_idfinperiodo,
+	n_corr,
+	d_fchini,
+	d_fchfin
+	)
+VALUES 
+	(
+	@n_idperiodolaboral,
+	@n_idempleado,
+	@n_idcategoria,
+	@n_idfinperiodo,
+	@n_corr,
+	@d_fchini,
+	@d_fchfin
+	)</value>
+  </data>
+  <data name="q_pla_periodolaboral_update" xml:space="preserve">
+    <value>UPDATE pla_periodolaboral
+SET n_idempleado = @n_idempleado,
+	n_idcategoria = @n_idcategoria,
+	n_idfinperiodo = @n_idfinperiodo,
+	n_corr = @n_corr,
+	d_fchini = @d_fchini,
+	d_fchfin = @d_fchfin
+WHERE n_idperiodolaboral = @n_idperiodolaboral</value>
+  </data>
+  <data name="q_pro_produccionnotaing_delete" xml:space="preserve">
+    <value>DELETE FROM pro_produccionnotaing
+WHERE c_idproduccionnotaing = @c_idproduccionnotaing</value>
+  </data>
+  <data name="q_pro_produccionnotaing_fetch" xml:space="preserve">
+    <value>SELECT 
+	pro_produccionnotaing.c_idproduccionnotaing,
+	pro_produccionnotaing.n_idproduccion,
+	pro_produccionnotaing.n_idnoting,
+	CONCAT(alm_movimientos.c_numser, ' - ', alm_movimientos.c_numdoc) numnoting,
+	alm_movimientosdet.n_can cantidadmateriaprima,
+	alm_inventario.c_despro materiaprima
+FROM pro_produccionnotaing 
+INNER JOIN alm_movimientos ON alm_movimientos.n_id = pro_produccionnotaing.n_idnoting 
+INNER JOIN alm_movimientosdet ON alm_movimientosdet.n_idmov = alm_movimientos.n_id 
+INNER JOIN alm_inventario ON alm_inventario.n_id = alm_movimientosdet.n_idite
+WHERE n_idproduccion = @n_idproduccion</value>
+  </data>
+  <data name="q_pro_produccionnotaing_insert" xml:space="preserve">
+    <value>INSERT INTO pro_produccionnotaing
+	(
+	c_idproduccionnotaing,
+	n_idproduccion,
+	n_idnoting
+	)
+VALUES 
+	(
+	@c_idproduccionnotaing,
+	@n_idproduccion,
+	@n_idnoting
+	)</value>
+  </data>
+  <data name="q_pro_produccionnotaing_update" xml:space="preserve">
+    <value>UPDATE pro_produccionnotaing
+SET n_idproduccion = @n_idproduccion,
+	n_idnoting = @n_idnoting
+WHERE c_idproduccionnotaing = @c_idproduccionnotaing</value>
+  </data>
+</root>
