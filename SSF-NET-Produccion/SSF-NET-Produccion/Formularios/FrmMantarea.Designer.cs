@@ -30,17 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMantarea));
             this.ToolHerramientas = new System.Windows.Forms.ToolStrip();
-            this.ToolNuevo = new System.Windows.Forms.ToolStripButton();
-            this.ToolModificar = new System.Windows.Forms.ToolStripButton();
-            this.ToolEliminar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolGrabar = new System.Windows.Forms.ToolStripButton();
-            this.ToolCancelar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolImprimir = new System.Windows.Forms.ToolStripSplitButton();
-            this.emitirGuiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.guiasDelMesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolSalir = new System.Windows.Forms.ToolStripButton();
             this.Tab1 = new C1.Win.C1Command.C1DockingTab();
             this.c1DockingTabPage1 = new C1.Win.C1Command.C1DockingTabPage();
             this.Sc01 = new C1.Win.C1Sizer.C1Sizer();
@@ -51,7 +42,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
-            this.DgLista = new C1.Win.C1TrueDBGrid.C1TrueDBGrid();
             this.c1DockingTabPage2 = new C1.Win.C1Command.C1DockingTabPage();
             this.Sc02 = new C1.Win.C1Sizer.C1Sizer();
             this.c1Sizer1 = new C1.Win.C1Sizer.C1Sizer();
@@ -73,6 +63,17 @@
             this.label11 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.LblTitulo2 = new System.Windows.Forms.Label();
+            this.ToolNuevo = new System.Windows.Forms.ToolStripButton();
+            this.ToolModificar = new System.Windows.Forms.ToolStripButton();
+            this.ToolEliminar = new System.Windows.Forms.ToolStripButton();
+            this.ToolGrabar = new System.Windows.Forms.ToolStripButton();
+            this.ToolCancelar = new System.Windows.Forms.ToolStripButton();
+            this.ToolImprimir = new System.Windows.Forms.ToolStripSplitButton();
+            this.emitirGuiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.guiasDelMesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolSalir = new System.Windows.Forms.ToolStripButton();
+            this.btnSubirRegistro = new System.Windows.Forms.ToolStripButton();
+            this.DgLista = new C1.Win.C1TrueDBGrid.C1TrueDBGrid();
             this.ToolHerramientas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Tab1)).BeginInit();
             this.Tab1.SuspendLayout();
@@ -81,7 +82,6 @@
             this.Sc01.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgLista)).BeginInit();
             this.c1DockingTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Sc02)).BeginInit();
             this.Sc02.SuspendLayout();
@@ -90,11 +90,13 @@
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgLista)).BeginInit();
             this.SuspendLayout();
             // 
             // ToolHerramientas
             // 
             this.ToolHerramientas.BackColor = System.Drawing.Color.White;
+            this.ToolHerramientas.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ToolHerramientas.ForeColor = System.Drawing.Color.Black;
             this.ToolHerramientas.GripMargin = new System.Windows.Forms.Padding(0);
             this.ToolHerramientas.ImageScalingSize = new System.Drawing.Size(32, 32);
@@ -107,6 +109,7 @@
             this.ToolCancelar,
             this.toolStripSeparator2,
             this.ToolImprimir,
+            this.btnSubirRegistro,
             this.ToolSalir});
             this.ToolHerramientas.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.ToolHerramientas.Location = new System.Drawing.Point(0, 0);
@@ -116,108 +119,15 @@
             this.ToolHerramientas.Text = "toolStrip1";
             this.ToolHerramientas.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ToolHerramientas_ItemClicked);
             // 
-            // ToolNuevo
-            // 
-            this.ToolNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ToolNuevo.Image = ((System.Drawing.Image)(resources.GetObject("ToolNuevo.Image")));
-            this.ToolNuevo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.ToolNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ToolNuevo.Name = "ToolNuevo";
-            this.ToolNuevo.Size = new System.Drawing.Size(36, 36);
-            this.ToolNuevo.Text = "toolStripButton1";
-            this.ToolNuevo.ToolTipText = "Agregar registro";
-            this.ToolNuevo.Click += new System.EventHandler(this.ToolNuevo_Click);
-            // 
-            // ToolModificar
-            // 
-            this.ToolModificar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ToolModificar.Image = ((System.Drawing.Image)(resources.GetObject("ToolModificar.Image")));
-            this.ToolModificar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ToolModificar.Name = "ToolModificar";
-            this.ToolModificar.Size = new System.Drawing.Size(36, 36);
-            this.ToolModificar.Text = "toolStripButton2";
-            this.ToolModificar.ToolTipText = "Editar registro";
-            this.ToolModificar.Click += new System.EventHandler(this.ToolModificar_Click);
-            // 
-            // ToolEliminar
-            // 
-            this.ToolEliminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ToolEliminar.Image = ((System.Drawing.Image)(resources.GetObject("ToolEliminar.Image")));
-            this.ToolEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ToolEliminar.Name = "ToolEliminar";
-            this.ToolEliminar.Size = new System.Drawing.Size(36, 36);
-            this.ToolEliminar.Text = "toolStripButton3";
-            this.ToolEliminar.ToolTipText = "Eliminar registro";
-            this.ToolEliminar.Click += new System.EventHandler(this.ToolEliminar_Click);
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
             // 
-            // ToolGrabar
-            // 
-            this.ToolGrabar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ToolGrabar.Enabled = false;
-            this.ToolGrabar.Image = ((System.Drawing.Image)(resources.GetObject("ToolGrabar.Image")));
-            this.ToolGrabar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ToolGrabar.Name = "ToolGrabar";
-            this.ToolGrabar.Size = new System.Drawing.Size(36, 36);
-            this.ToolGrabar.Text = "toolStripButton4";
-            this.ToolGrabar.ToolTipText = "Grabar registro";
-            this.ToolGrabar.Click += new System.EventHandler(this.ToolGrabar_Click);
-            // 
-            // ToolCancelar
-            // 
-            this.ToolCancelar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ToolCancelar.Enabled = false;
-            this.ToolCancelar.Image = ((System.Drawing.Image)(resources.GetObject("ToolCancelar.Image")));
-            this.ToolCancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ToolCancelar.Name = "ToolCancelar";
-            this.ToolCancelar.Size = new System.Drawing.Size(36, 36);
-            this.ToolCancelar.Text = "toolStripButton5";
-            this.ToolCancelar.ToolTipText = "Cancelar";
-            this.ToolCancelar.Click += new System.EventHandler(this.ToolCancelar_Click);
-            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
-            // 
-            // ToolImprimir
-            // 
-            this.ToolImprimir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ToolImprimir.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.emitirGuiaToolStripMenuItem,
-            this.guiasDelMesToolStripMenuItem});
-            this.ToolImprimir.Image = ((System.Drawing.Image)(resources.GetObject("ToolImprimir.Image")));
-            this.ToolImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ToolImprimir.Name = "ToolImprimir";
-            this.ToolImprimir.Size = new System.Drawing.Size(48, 36);
-            this.ToolImprimir.Text = "toolStripSplitButton1";
-            // 
-            // emitirGuiaToolStripMenuItem
-            // 
-            this.emitirGuiaToolStripMenuItem.Name = "emitirGuiaToolStripMenuItem";
-            this.emitirGuiaToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
-            this.emitirGuiaToolStripMenuItem.Text = "Imprimir Orden de Requerimiento";
-            // 
-            // guiasDelMesToolStripMenuItem
-            // 
-            this.guiasDelMesToolStripMenuItem.Name = "guiasDelMesToolStripMenuItem";
-            this.guiasDelMesToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
-            this.guiasDelMesToolStripMenuItem.Text = "Imprimir Ordenes del Mes";
-            // 
-            // ToolSalir
-            // 
-            this.ToolSalir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ToolSalir.Image = ((System.Drawing.Image)(resources.GetObject("ToolSalir.Image")));
-            this.ToolSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ToolSalir.Name = "ToolSalir";
-            this.ToolSalir.Size = new System.Drawing.Size(36, 36);
-            this.ToolSalir.Text = "toolStripButton8";
-            this.ToolSalir.ToolTipText = "Salir";
-            this.ToolSalir.Click += new System.EventHandler(this.ToolSalir_Click);
             // 
             // Tab1
             // 
@@ -350,25 +260,6 @@
             this.label17.TabIndex = 0;
             this.label17.Text = "CONSULTA";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // DgLista
-            // 
-            this.DgLista.BackColor = System.Drawing.Color.White;
-            this.DgLista.ForeColor = System.Drawing.Color.Black;
-            this.DgLista.GroupByCaption = "Drag a column header here to group by that column";
-            this.DgLista.Images.Add(((System.Drawing.Image)(resources.GetObject("DgLista.Images"))));
-            this.DgLista.Location = new System.Drawing.Point(4, 36);
-            this.DgLista.Name = "DgLista";
-            this.DgLista.PreviewInfo.Location = new System.Drawing.Point(0, 0);
-            this.DgLista.PreviewInfo.Size = new System.Drawing.Size(0, 0);
-            this.DgLista.PreviewInfo.ZoomFactor = 75D;
-            this.DgLista.PrintInfo.PageSettings = ((System.Drawing.Printing.PageSettings)(resources.GetObject("DgLista.PrintInfo.PageSettings")));
-            this.DgLista.Size = new System.Drawing.Size(662, 345);
-            this.DgLista.TabIndex = 0;
-            this.DgLista.Text = "c1TrueDBGrid1";
-            this.DgLista.DoubleClick += new System.EventHandler(this.DgLista_DoubleClick);
-            this.DgLista.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DgLista_KeyPress);
-            this.DgLista.PropBag = resources.GetString("DgLista.PropBag");
             // 
             // c1DockingTabPage2
             // 
@@ -614,6 +505,128 @@
             this.LblTitulo2.Text = "DETALLE DEL REGISTRO";
             this.LblTitulo2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // ToolNuevo
+            // 
+            this.ToolNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ToolNuevo.Image = ((System.Drawing.Image)(resources.GetObject("ToolNuevo.Image")));
+            this.ToolNuevo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.ToolNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ToolNuevo.Name = "ToolNuevo";
+            this.ToolNuevo.Size = new System.Drawing.Size(36, 36);
+            this.ToolNuevo.Text = "toolStripButton1";
+            this.ToolNuevo.ToolTipText = "Agregar registro";
+            this.ToolNuevo.Click += new System.EventHandler(this.ToolNuevo_Click);
+            // 
+            // ToolModificar
+            // 
+            this.ToolModificar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ToolModificar.Image = ((System.Drawing.Image)(resources.GetObject("ToolModificar.Image")));
+            this.ToolModificar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ToolModificar.Name = "ToolModificar";
+            this.ToolModificar.Size = new System.Drawing.Size(36, 36);
+            this.ToolModificar.Text = "toolStripButton2";
+            this.ToolModificar.ToolTipText = "Editar registro";
+            this.ToolModificar.Click += new System.EventHandler(this.ToolModificar_Click);
+            // 
+            // ToolEliminar
+            // 
+            this.ToolEliminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ToolEliminar.Image = ((System.Drawing.Image)(resources.GetObject("ToolEliminar.Image")));
+            this.ToolEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ToolEliminar.Name = "ToolEliminar";
+            this.ToolEliminar.Size = new System.Drawing.Size(36, 36);
+            this.ToolEliminar.Text = "toolStripButton3";
+            this.ToolEliminar.ToolTipText = "Eliminar registro";
+            this.ToolEliminar.Click += new System.EventHandler(this.ToolEliminar_Click);
+            // 
+            // ToolGrabar
+            // 
+            this.ToolGrabar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ToolGrabar.Enabled = false;
+            this.ToolGrabar.Image = ((System.Drawing.Image)(resources.GetObject("ToolGrabar.Image")));
+            this.ToolGrabar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ToolGrabar.Name = "ToolGrabar";
+            this.ToolGrabar.Size = new System.Drawing.Size(36, 36);
+            this.ToolGrabar.Text = "toolStripButton4";
+            this.ToolGrabar.ToolTipText = "Grabar registro";
+            this.ToolGrabar.Click += new System.EventHandler(this.ToolGrabar_Click);
+            // 
+            // ToolCancelar
+            // 
+            this.ToolCancelar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ToolCancelar.Enabled = false;
+            this.ToolCancelar.Image = ((System.Drawing.Image)(resources.GetObject("ToolCancelar.Image")));
+            this.ToolCancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ToolCancelar.Name = "ToolCancelar";
+            this.ToolCancelar.Size = new System.Drawing.Size(36, 36);
+            this.ToolCancelar.Text = "toolStripButton5";
+            this.ToolCancelar.ToolTipText = "Cancelar";
+            this.ToolCancelar.Click += new System.EventHandler(this.ToolCancelar_Click);
+            // 
+            // ToolImprimir
+            // 
+            this.ToolImprimir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ToolImprimir.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.emitirGuiaToolStripMenuItem,
+            this.guiasDelMesToolStripMenuItem});
+            this.ToolImprimir.Image = ((System.Drawing.Image)(resources.GetObject("ToolImprimir.Image")));
+            this.ToolImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ToolImprimir.Name = "ToolImprimir";
+            this.ToolImprimir.Size = new System.Drawing.Size(48, 36);
+            this.ToolImprimir.Text = "toolStripSplitButton1";
+            // 
+            // emitirGuiaToolStripMenuItem
+            // 
+            this.emitirGuiaToolStripMenuItem.Name = "emitirGuiaToolStripMenuItem";
+            this.emitirGuiaToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.emitirGuiaToolStripMenuItem.Text = "Imprimir Orden de Requerimiento";
+            // 
+            // guiasDelMesToolStripMenuItem
+            // 
+            this.guiasDelMesToolStripMenuItem.Name = "guiasDelMesToolStripMenuItem";
+            this.guiasDelMesToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.guiasDelMesToolStripMenuItem.Text = "Imprimir Ordenes del Mes";
+            // 
+            // ToolSalir
+            // 
+            this.ToolSalir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ToolSalir.Image = ((System.Drawing.Image)(resources.GetObject("ToolSalir.Image")));
+            this.ToolSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ToolSalir.Name = "ToolSalir";
+            this.ToolSalir.Size = new System.Drawing.Size(36, 36);
+            this.ToolSalir.Text = "toolStripButton8";
+            this.ToolSalir.ToolTipText = "Salir";
+            this.ToolSalir.Click += new System.EventHandler(this.ToolSalir_Click);
+            // 
+            // btnSubirRegistro
+            // 
+            this.btnSubirRegistro.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnSubirRegistro.Image = global::SSF_NET_Produccion.Properties.Resources.publish_32x32;
+            this.btnSubirRegistro.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSubirRegistro.Name = "btnSubirRegistro";
+            this.btnSubirRegistro.Size = new System.Drawing.Size(36, 36);
+            this.btnSubirRegistro.Text = "Subir Registro";
+            this.btnSubirRegistro.Click += new System.EventHandler(this.btnSubirRegistro_Click);
+            // 
+            // DgLista
+            // 
+            this.DgLista.BackColor = System.Drawing.Color.White;
+            this.DgLista.ForeColor = System.Drawing.Color.Black;
+            this.DgLista.GroupByCaption = "Drag a column header here to group by that column";
+            this.DgLista.Images.Add(((System.Drawing.Image)(resources.GetObject("DgLista.Images"))));
+            this.DgLista.Location = new System.Drawing.Point(4, 36);
+            this.DgLista.Name = "DgLista";
+            this.DgLista.PreviewInfo.Location = new System.Drawing.Point(0, 0);
+            this.DgLista.PreviewInfo.Size = new System.Drawing.Size(0, 0);
+            this.DgLista.PreviewInfo.ZoomFactor = 75D;
+            this.DgLista.PrintInfo.PageSettings = ((System.Drawing.Printing.PageSettings)(resources.GetObject("DgLista.PrintInfo.PageSettings")));
+            this.DgLista.Size = new System.Drawing.Size(662, 345);
+            this.DgLista.TabIndex = 0;
+            this.DgLista.Text = "c1TrueDBGrid1";
+            this.DgLista.DoubleClick += new System.EventHandler(this.DgLista_DoubleClick);
+            this.DgLista.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DgLista_KeyPress);
+            this.DgLista.PropBag = resources.GetString("DgLista.PropBag");
+            // 
             // FrmMantarea
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -638,7 +651,6 @@
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DgLista)).EndInit();
             this.c1DockingTabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Sc02)).EndInit();
             this.Sc02.ResumeLayout(false);
@@ -649,6 +661,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DgLista)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -700,5 +713,6 @@
         private System.Windows.Forms.TextBox TxtObs;
         private System.Windows.Forms.RadioButton OptNo;
         private System.Windows.Forms.RadioButton OptSi;
+        private System.Windows.Forms.ToolStripButton btnSubirRegistro;
     }
 }

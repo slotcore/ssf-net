@@ -20,6 +20,10 @@ using System.Windows.Forms;
 using SIAC_Datos.Models.Planillas;
 using SIAC_Datos.Classes;
 using SIAC_DATOS.Data;
+using Helper.Classes;
+using Helper.Service;
+using Refit;
+using System.Configuration;
 
 namespace SSF_NET_Planillas.Formularios
 {
@@ -356,6 +360,7 @@ namespace SSF_NET_Planillas.Formularios
             TxtImpHorExt.Text = "";
             TxtImpHorNor.Text = "";
             TxtFchIng.Text = "";
+            TxtFchBaj2.Text = "";
             funcon.dtpBlanquea(TxtFchBaj2);
 
             ChkAsigFam.Checked = false;
@@ -444,6 +449,44 @@ namespace SSF_NET_Planillas.Formularios
             Tab1.SelectedIndex = 1;
             Tab2.SelectedIndex = 0;
             TxtNumDoc.Focus();
+        }
+
+        public async void SubirEmpleado()
+        {
+            try
+            {
+                int n_IdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+
+                CN_pla_empleados objRegistros = new CN_pla_empleados(STU_SISTEMA);
+                objRegistros.STU_SISTEMA = STU_SISTEMA;
+                objRegistros.TraerRegistro(n_IdRegistro);
+
+                if (objRegistros.b_OcurrioError)
+                {
+                    throw new Exception("Error!!");
+                }
+
+                entRegistro = objRegistros.entEmpleado;
+                var employee = new Employee
+                {
+                    IdentityDocumentId = 1,
+                    Code = entRegistro.n_id.ToString(),
+                    IdentityDocumentNumber = entRegistro.c_numdocide,
+                    LastName = string.Format("{0} {1}", entRegistro.c_ape1, entRegistro.c_ape2),
+                    FirstName = string.Format("{0} {1}", entRegistro.c_nom1, entRegistro.c_nom2),
+                    HomeAddress = entRegistro.c_dir,
+                    EmailAddress = entRegistro.c_email
+                };
+
+                var masterService = RestService.For<IMasterService>(ConfigurationManager.AppSettings["ApiHostUrl"]);
+                var employeeResult = await masterService.EmployeeCreate(employee);
+
+                MessageBox.Show(string.Format("¡Se subió el empleado: {0} correctamente! ", employeeResult.FullName), "Subir Empleado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("¡Ocurrio un error: {0}! ", ex.Message), "Subir Empleado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         bool EliminarRegistro()
         {
@@ -755,11 +798,13 @@ namespace SSF_NET_Planillas.Formularios
                 LblNumReg.Text = (dtResult.Rows.Count).ToString();
             }
         }
-        private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
+        private void Tab1_SelectedIndexChanging(object sender, EventArgs e)
         {
+            TabControl tc = (TabControl)sender;
+
             if (n_QueHace != 3) { return; }
 
-            if (e.NewIndex == 1)
+            if (tc.SelectedIndex == 1)
             {
                 int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
@@ -1431,6 +1476,11 @@ namespace SSF_NET_Planillas.Formularios
                 MessageBox.Show(string.Format("Ocurrió un error al eliminar el registro, mensaje de error: {0}", ex.Message)
                     , "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnSubirRegistro_Click(object sender, EventArgs e)
+        {
+            SubirEmpleado();
         }
     }
 }

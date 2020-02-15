@@ -17,6 +17,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Helper.Classes;
+using Helper.Service;
+using Refit;
+using System.Configuration;
 
 namespace SSF_NET_Produccion.Formularios
 {
@@ -472,6 +476,43 @@ namespace SSF_NET_Produccion.Formularios
         private void Tab1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSubirRegistro_Click(object sender, EventArgs e)
+        {
+            SubirTarea();
+        }
+
+        public async void SubirTarea()
+        {
+            try
+            {
+                int n_IdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+                objRegistros.mysConec = mysConec;
+                objRegistros.TraerRegistro(n_IdRegistro);
+
+                if (objRegistros.booOcurrioError)
+                {
+                    throw new Exception("Error!!");
+                }
+
+                BE_Registro = objRegistros.entTareas;
+                TaskWork taskWork = new TaskWork
+                {
+                    Code = BE_Registro.n_id.ToString(),
+                    Name = BE_Registro.c_des,
+                    Description = BE_Registro.c_abr
+                };
+
+                var humanResourceService = RestService.For<IHumanResourceService>(ConfigurationManager.AppSettings["ApiHostUrl"]);
+                var taskWorkResult = await humanResourceService.TaskWorkCreate(taskWork);
+
+                MessageBox.Show(string.Format("¡Se subió el empleado: {0} correctamente! ", taskWorkResult.Name), "Subir Empleado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("¡Ocurrio un error: {0}! ", ex.Message), "Subir Empleado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -194,7 +194,7 @@ namespace SSF_NET_Gestion.Formularios
             funFlex.FlexMostrarDatos(FgProdIns, arrCabeceraFlex1, dtDetalle, 2, false);
             funFlex.FlexMostrarDatos(FgInterIns, arrCabeceraFlex1, dtDetalle, 2, false);
             funFlex.FlexMostrarDatos(FgTodoIns, arrCabeceraFlex1, dtDetalle, 2, false);
-        }
+        }       
         void ConfigurarFormulario()
         {
             this.Height = 600;

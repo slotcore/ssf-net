@@ -126,11 +126,11 @@ namespace SSF_NET_Produccion.Formularios
         }
         void ConfigurarFormulario()
         {
-            this.Height = 635;
-            this.Width = 1061;
+            //this.Height = 635;
+            //this.Width = 1061;
             
-            Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
-            Tab_Posicionar(Tab1, 1, 42);
+            //Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
+            //Tab_Posicionar(Tab1, 1, 42);
             Tab1.SelectedIndex = 0;
 
             LblTitulo2.Text = "DETALLE DEL REGISTRO";
@@ -601,7 +601,6 @@ namespace SSF_NET_Produccion.Formularios
         }
         void Bloquea()
         {
-            TxtCodPro.Enabled = !TxtCodPro.Enabled;
             TxtProducto.Enabled = !TxtProducto.Enabled;
             CboFam.Enabled = !CboFam.Enabled;
             CboCla.Enabled = !CboCla.Enabled;
@@ -947,25 +946,9 @@ namespace SSF_NET_Produccion.Formularios
                 LblNumReg.Text = (dtResult.Rows.Count).ToString();
             }
         }
-        private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
-        {
-            if (n_QueHace != 3) { return; }
-
-            if (e.NewIndex == 1)
-            {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
-
-                if (n_QueHace != 1)
-                {
-                    booAgregando = true;
-                    VerRegistro(intIdRegistro);
-                    booAgregando = false;
-                }
-            }
-        }
         private void FrmManProductos_Resize(object sender, EventArgs e)
         {
-            Tab_Dimensionar(Tab1, this.Height - 82, this.Width - 18);
+            //Tab_Dimensionar(Tab1, this.Height - 82, this.Width - 18);
         }
         private void FgRec_RowColChange(object sender, EventArgs e)
         {
@@ -1997,6 +1980,25 @@ namespace SSF_NET_Produccion.Formularios
             string c_NomArchivo = STU_SISTEMA.EMPRESARUC + "-PRO-PRODUCTOS" + STU_SISTEMA.ANOTRABAJO.ToString() + Convert.ToInt16(CboMeses.SelectedValue).ToString("00") + ".xls";
             DgLista.ExportTo(c_NomArchivo);
             MessageBox.Show("! Se exporto con exito la informacion en el archivo " + c_NomArchivo + " !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+        }
+
+        private void Tab1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TabControl tc = (TabControl)sender;
+
+            if (n_QueHace != 3) { return; }
+
+            if (tc.SelectedIndex == 1)
+            {
+                int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+
+                if (n_QueHace != 1)
+                {
+                    booAgregando = true;
+                    VerRegistro(intIdRegistro);
+                    booAgregando = false;
+                }
+            }
         }
     }
 }

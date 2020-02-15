@@ -66,7 +66,7 @@ namespace SIAC_DATOS.Data
                             {
                                 n_idcategoria = reader.GetInt32("n_idcategoria"),
                                 c_descripcion = reader.GetString("c_descripcion"),
-                                c_codsun = reader.GetString("c_codsun"),
+                                c_codsun = reader.GetValue(2).ToString(),
                                 c_abrev = reader.GetString("c_abrev"),
                                 n_activo = reader.GetBoolean("n_activo")
                             };

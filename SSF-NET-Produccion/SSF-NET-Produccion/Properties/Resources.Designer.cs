@@ -73,6 +73,16 @@ namespace SSF_NET_Produccion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap download_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("download_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap edit_16x16 {
             get {
                 object obj = ResourceManager.GetObject("edit_16x16", resourceCulture);
@@ -86,6 +96,16 @@ namespace SSF_NET_Produccion.Properties {
         internal static System.Drawing.Bitmap engranaje {
             get {
                 object obj = ResourceManager.GetObject("engranaje", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap publish_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("publish_32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

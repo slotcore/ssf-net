@@ -43,5 +43,28 @@ namespace SIAC_DATOS.Produccion
 
             return b_Result;
         }
+
+        public bool ObtenerEmpleado(int n_IdPersonal)
+        {
+            bool b_Result = false;
+            string[,] arrParametros = new string[1, 3] {
+                                            {"n_id", "System.INT64", n_IdPersonal.ToString()},
+                                      };
+
+            dtPersonal = xMiFuncion.StoreDTLLenar("pro_personal_obtener_empleado", arrParametros, mysConec);
+
+            if (xMiFuncion.IntErrorNumber != 0)
+            {
+                booOcurrioError = xMiFuncion.booOcurrioError;
+                StrErrorMensaje = xMiFuncion.StrErrorMensaje;
+                IntErrorNumber = xMiFuncion.IntErrorNumber;
+            }
+            else
+            {
+                b_Result = true;
+            }
+
+            return b_Result;
+        }
     }
 }

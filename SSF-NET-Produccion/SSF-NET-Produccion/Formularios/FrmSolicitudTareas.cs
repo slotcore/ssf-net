@@ -20,6 +20,9 @@ using MySql.Data.MySqlClient;
 using Helper;
 using SIAC_Objetos.Sistema;
 using System.Configuration;
+using Helper.Classes;
+using Refit;
+using Helper.Service;
 
 namespace SSF_NET_Produccion.Formularios
 {
@@ -125,11 +128,11 @@ namespace SSF_NET_Produccion.Formularios
         }
         void ConfigurarFormulario()
         {
-            this.Height = 650;
-            this.Width = 1050;
+            //this.Height = 650;
+            //this.Width = 1050;
 
-            Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
-            Tab_Posicionar(Tab1, 1, 42);
+            //Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
+            //Tab_Posicionar(Tab1, 1, 42);
             Tab1.SelectedIndex = 0;
             LblTitulo2.Text = "DETALLE DEL REGISTRO";
 
@@ -352,8 +355,8 @@ namespace SSF_NET_Produccion.Formularios
         }
         void Tab_Dimensionar(C1.Win.C1Command.C1DockingTab dokTab, int intAlto, int intAncho)
         {
-            Tab1.Height = intAlto;
-            Tab1.Width = intAncho;
+            //Tab1.Height = intAlto;
+            //Tab1.Width = intAncho;
         }
         void Tab_Posicionar(C1.Win.C1Command.C1DockingTab dokTab, int intPosX, int intPosY)
         {
@@ -896,11 +899,13 @@ namespace SSF_NET_Produccion.Formularios
                 LblNumReg.Text = (dtResult.Rows.Count).ToString();
             }
         }
-        private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
+        private void Tab1_SelectedIndexChanging(object sender, EventArgs e)
         {
+            TabControl tc = (TabControl)sender;
+
             if (n_QueHace != 3) { return; }
 
-            if (e.NewIndex == 1)
+            if (tc.SelectedIndex == 1)
             {
                 int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
@@ -914,7 +919,7 @@ namespace SSF_NET_Produccion.Formularios
         }
         private void FrmSolicitudTareas_Resize(object sender, EventArgs e)
         {
-            Tab_Dimensionar(Tab1, this.Height - 82, this.Width - 18);
+            //Tab_Dimensionar(Tab1, this.Height - 82, this.Width - 18);
         }
         private void c1Sizer1_Click(object sender, EventArgs e)
         {
@@ -1726,8 +1731,8 @@ namespace SSF_NET_Produccion.Formularios
 
             ToolHerramientas.Enabled = false;
             Tab1.Enabled = false;
-            PanSele.Left = ((this.Width - PanSele.Width) / 2);
-            PanSele.Top = ((this.Height - PanSele.Height) / 2);
+            //PanSele.Left = ((this.Width - PanSele.Width) / 2);
+            //PanSele.Top = ((this.Height - PanSele.Height) / 2);
             PanSele.Visible = true;
             FgSele.Focus();
         }
@@ -1954,6 +1959,263 @@ namespace SSF_NET_Produccion.Formularios
                 double n_prebru = Convert.ToDouble(FgPer.GetData(n_row, 6));
 
                 ActualizarPersonaTarea(n_idper, n_idtar, c_horini, c_horfin, n_can, n_numev, n_prebru);
+            }
+        }
+
+        private void btnSubirRegistro_Click(object sender, EventArgs e)
+        {
+            SubirRegistro();
+        }
+
+        public async void SubirRegistro()
+        {
+            try
+            {
+                int n_IdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+
+                objRegistro.TraerRegistro(n_IdRegistro);
+                entTar = objRegistro.entSolicitud;
+                lstTarCab = objRegistro.lstSolicitudCab;
+
+                //Se trae el objeto produccion
+                CN_pro_produccion objRegistroProd = new CN_pro_produccion();
+                objRegistroProd.mysConec = mysConec;
+                objRegistroProd.TraerRegistro(entTar.n_idpro);
+                var entRegistroProd = objRegistroProd.EntProduccion;
+
+                //Se trae el objeto receta
+                BE_PRO_PRODUCTOSRECETAS entRegistroRec = null;
+                SIAC_DATOS.Produccion.CD_pro_productosrecetas miFunRec = new SIAC_DATOS.Produccion.CD_pro_productosrecetas();
+                miFunRec.mysConec = mysConec;
+                if (miFunRec.Listar(entRegistroProd.n_idpro) == true)
+                {
+                    var DtResultado = miFunRec.dtRecetas;
+
+                    for (var n_fila = 0; n_fila <= DtResultado.Rows.Count - 1; n_fila++)
+                    {
+                        var n_id = Convert.ToInt16(DtResultado.Rows[n_fila]["n_id"].ToString());
+                        if (n_id == entRegistroProd.n_idrec)
+                        {
+                            entRegistroRec = new BE_PRO_PRODUCTOSRECETAS
+                            {
+                                n_id = Convert.ToInt16(DtResultado.Rows[n_fila]["n_id"].ToString()),
+                                n_idpro = Convert.ToInt16(DtResultado.Rows[n_fila]["n_idpro"].ToString()),
+                                c_codrec = DtResultado.Rows[n_fila]["c_codrec"].ToString(),
+                                c_des = DtResultado.Rows[n_fila]["c_des"].ToString(),
+                                n_idunimed = Convert.ToInt16(DtResultado.Rows[n_fila]["n_idunimed"].ToString()),
+                                n_can = Convert.ToInt16(DtResultado.Rows[n_fila]["n_can"].ToString()),
+                                c_obs = DtResultado.Rows[n_fila]["c_obs"].ToString(),
+                                n_act = Convert.ToInt16(DtResultado.Rows[n_fila]["n_act"].ToString())
+                            };
+                        }
+                    }
+                }
+                if (entRegistroRec == null)
+                {
+                    throw new Exception("Receta no encontrada");
+                }
+                //Se trae Producto
+                CN_pro_productos objRegistroProdt = new CN_pro_productos();
+                objRegistroProdt.mysConec = mysConec;
+                objRegistroProdt.TraerRegistro(entRegistroRec.n_idpro);
+                var entRegistroProdt = objRegistroProdt.entRegistro;
+
+                //Se trae personal
+                CN_pro_personal objRegistroPers = new CN_pro_personal();
+                objRegistroPers.mysConec = mysConec;
+                objRegistroPers.ObtenerEmpleado(entRegistroProd.n_idres);
+                int idEmpleado = objRegistroPers.idEmpleado;
+                //int idEmpleado = entRegistroProd.n_idres;
+
+                ProductionWork productionWork = new ProductionWork
+                {
+                    Code = entTar.n_id.ToString(),
+                    Name = string.Format("{0}-{1}", entTar.c_numser, entTar.c_numdoc),
+                    StartDateTime = entTar.d_fchreg,
+                    EndDateTime = entTar.d_fchreg,
+                    CompanyId = 0 ,
+                    Company = new Company { 
+                        CompanyId = 0,
+                        Code = entTar.n_idemp.ToString()
+                    },
+                    ProductionOutputId = 0,
+                    ProductionOutput = new ProductionOutput { 
+                        ProductionOutputId = 0,
+                        Code = entRegistroProd.n_id.ToString(),
+                        Name = string.Format("{0}-{1}", entRegistroProd.c_numser, entRegistroProd.c_numdoc),
+                        ProductionDate = entRegistroProd.d_fchpro,
+                        CompanyId = 0,
+                        Company = new Company
+                        {
+                            CompanyId = 0,
+                            Code = entRegistroProd.n_idemp.ToString()
+                        },
+                        EmployeeId = 0,
+                        Employee = new Employee { 
+                            EmployeeId = 0,
+                            Code = idEmpleado.ToString()
+                        },
+                        ProductionMethodId = 0,
+                        ProductionMethod = new ProductionMethod { 
+                            ProductionMethodId = 0,
+                            Code = entRegistroRec.n_id.ToString(),
+                            Name = entRegistroRec.c_codrec,
+                            Description = entRegistroRec.c_des,
+                            ProductId = 0,
+                            Product = new Product { 
+                                ProductId = 0,
+                                Code = entRegistroProdt.n_id.ToString(),
+                                Name = entRegistroProdt.c_despro,
+                                CompanyId = 0,
+                                Company = new Company
+                                {
+                                    CompanyId = 0,
+                                    Code = entRegistroProdt.n_idemp.ToString()
+                                }
+                            }
+                        }
+                    }
+                };
+
+                productionWork.ProductionWorkTasks = new List<ProductionWorkTask>();
+                foreach (var tarCab in lstTarCab)
+                {
+                    ProductionWorkTask productionWorkTask = new ProductionWorkTask();
+                    productionWorkTask.TaskWorkId = 0;
+                    productionWorkTask.TaskWork = new TaskWork
+                    {
+                        TaskWorkId = 0,
+                        Code = tarCab.n_idtar.ToString()
+                    };
+                    productionWork.ProductionWorkTasks.Add(new ProductionWorkTask
+                    {
+                        TaskWorkId = 0,
+                        TaskWork = new TaskWork
+                        {
+                            TaskWorkId = 0,
+                            Code = tarCab.n_idtar.ToString()
+                        }
+                    });
+                }
+
+                var humanResourceService = RestService.For<IHumanResourceService>(ConfigurationManager.AppSettings["ApiHostUrl"]);
+                var productionOutputResult = await humanResourceService.ProductionWorkCreate(productionWork);
+
+                MessageBox.Show(string.Format("¡Se subió el registro: {0} correctamente! ", productionOutputResult.Name), "Subir Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("¡Ocurrio un error: {0}! ", ex.Message), "Subir Registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void BtnBajarRegistro_Click(object sender, EventArgs e)
+        {
+            BajarRegistro();
+        }
+
+        public async void BajarRegistro()
+        {
+            try
+            {
+                Funciones o_funciones = new Funciones();
+                Convertir o_convertir = new Convertir();
+                int intIdRegistro = 0;
+                var humanResourceService = RestService.For<IHumanResourceService>(ConfigurationManager.AppSettings["ApiHostUrl"]);
+                var productionWorks = await humanResourceService.ProductionWorkTransmit();
+
+                if (productionWorks.Count == 0)
+                {
+                    throw new Exception("¡No existen registros para sincronizar!");
+                }
+
+                foreach (var productionWork in productionWorks)
+                {
+                    intIdRegistro = Convert.ToInt32(productionWork.Code);
+
+                    objRegistro.TraerRegistro(intIdRegistro);
+                    entTar = objRegistro.entSolicitud;
+                    lstTarCab = objRegistro.lstSolicitudCab;
+
+                    if (entTar == null)
+                    {
+                        throw new Exception(string.Format("No se encuentra registro asociado, registro: {0}", productionWork.Name));
+                    }
+
+                    entTar.n_anotra = entTar.d_fchreg.Year;
+                    entTar.n_idmes = entTar.d_fchreg.Month;
+
+                    int orden = 0;
+                    lstTarDet.Clear();
+
+                    foreach (var productionWorkTask in productionWork.ProductionWorkTasks)
+                    {
+                        bool isNew = false;
+                        int idTasWork = Convert.ToInt32(productionWorkTask.TaskWork.Code);
+                        BE_PRO_SOLICITUDTAREASCAB entTarCab = lstTarCab
+                            .Where(t => t.n_idtar == idTasWork)
+                            .FirstOrDefault();
+
+                        if (entTarCab == null)
+                        {
+                            isNew = true;
+                            orden = lstTarCab.Count + 1;
+                            entTarCab = new BE_PRO_SOLICITUDTAREASCAB();
+                            entTarCab.n_idsol = intIdRegistro;
+                            entTarCab.n_id = 0;
+                            entTarCab.n_idtar = Convert.ToInt32(productionWorkTask.TaskWork.Code);
+                            entTarCab.n_ord = orden;
+                        }
+
+                        entTarCab.n_can = productionWorkTask.Qty;
+                        entTarCab.d_fchtra = productionWorkTask.StartDateTime;
+                        entTarCab.h_horini = productionWorkTask.StartDateTime.ToString("HH:mm");
+                        entTarCab.h_horfin = productionWorkTask.EndDateTime.ToString("HH:mm");
+                        entTarCab.n_numper = productionWorkTask.ProductionWorkTaskEmployees.Count;
+                        entTarCab.n_costar = 0;
+
+                        if (isNew) lstTarCab.Add(entTarCab);
+
+                        foreach (var productionWorkTaskEmployee in productionWorkTask.ProductionWorkTaskEmployees)
+                        {
+                            BE_PRO_SOLICITUDTAREASDET entTarDet = new BE_PRO_SOLICITUDTAREASDET();
+
+                            var n_maxpro = productionWorkTask.ProductionWorkTaskEmployees.Max(e => e.Qty);
+                            double n_prekiltar = (n_PRECIOHORA / n_maxpro);// CALCULAMOS EL PRECIO DE TAREA POR KILO PARA ESTA TAREA
+
+                            entTarDet.n_idsol = intIdRegistro;
+                            entTarDet.n_idsoltar = entTarCab.n_idtar; //id de tarea, preguntar epollongo
+                            entTarDet.n_idper = Convert.ToInt32(productionWorkTaskEmployee.Employee.Code);
+                            entTarDet.n_can = productionWorkTaskEmployee.Qty;
+                            entTarDet.c_horini = productionWorkTaskEmployee.StartDateTime.ToString("HH:mm");
+                            entTarDet.c_horter = productionWorkTaskEmployee.EndDateTime.ToString("HH:mm");
+
+                            var c_hora = o_funciones.HorasRestar(entTarDet.c_horini, entTarDet.c_horter);
+                            entTarDet.c_numhortra = c_hora.Substring(0, 5);
+                            entTarDet.n_numhortra = o_convertir.HoraEnDecimal(c_hora);
+                            entTarDet.n_canmaxpro = n_maxpro;
+                            entTarDet.n_preunipro = n_prekiltar;
+                            entTarDet.n_prehorpag = n_prekiltar * productionWorkTaskEmployee.Qty;
+                            entTarDet.n_imppaghrstra = entTarDet.n_prehorpag * entTarDet.n_numhortra;
+
+                            lstTarDet.Add(entTarDet);
+                        }
+                    }
+
+                    var booResultado = objRegistro.Actualizar(entTar, lstTarCab, lstTarDet);
+
+                    if (booResultado == false)
+                    {
+                        throw new Exception("¡Ha ocurrido un un problema, no se pudo guardar el registro ! Error Nº : " + objRegistro.n_ErrorNumber.ToString() + " = " + objRegistro.c_ErrorMensaje);
+                    }
+                }
+
+                MessageBox.Show("¡Se sincronizaron los registros correctamente!", "Bajar Registros", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Bajar Registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

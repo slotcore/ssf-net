@@ -46,6 +46,7 @@
             this.d_fchiniDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.finperiodoComboBox = new System.Windows.Forms.ComboBox();
             this.categoriaComboBox = new System.Windows.Forms.ComboBox();
+            this.kryptonDateTimePicker1 = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
             categoriaLabel = new System.Windows.Forms.Label();
             d_fchfinLabel = new System.Windows.Forms.Label();
             d_fchiniLabel = new System.Windows.Forms.Label();
@@ -59,36 +60,40 @@
             // categoriaLabel
             // 
             categoriaLabel.AutoSize = true;
-            categoriaLabel.Location = new System.Drawing.Point(49, 134);
+            categoriaLabel.Location = new System.Drawing.Point(65, 165);
+            categoriaLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             categoriaLabel.Name = "categoriaLabel";
-            categoriaLabel.Size = new System.Drawing.Size(55, 13);
+            categoriaLabel.Size = new System.Drawing.Size(73, 17);
             categoriaLabel.TabIndex = 46;
             categoriaLabel.Text = "Categoria:";
             // 
             // d_fchfinLabel
             // 
             d_fchfinLabel.AutoSize = true;
-            d_fchfinLabel.Location = new System.Drawing.Point(49, 214);
+            d_fchfinLabel.Location = new System.Drawing.Point(65, 263);
+            d_fchfinLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             d_fchfinLabel.Name = "d_fchfinLabel";
-            d_fchfinLabel.Size = new System.Drawing.Size(57, 13);
+            d_fchfinLabel.Size = new System.Drawing.Size(74, 17);
             d_fchfinLabel.TabIndex = 48;
             d_fchfinLabel.Text = "Fecha Fin:";
             // 
             // d_fchiniLabel
             // 
             d_fchiniLabel.AutoSize = true;
-            d_fchiniLabel.Location = new System.Drawing.Point(49, 188);
+            d_fchiniLabel.Location = new System.Drawing.Point(65, 231);
+            d_fchiniLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             d_fchiniLabel.Name = "d_fchiniLabel";
-            d_fchiniLabel.Size = new System.Drawing.Size(68, 13);
+            d_fchiniLabel.Size = new System.Drawing.Size(87, 17);
             d_fchiniLabel.TabIndex = 50;
             d_fchiniLabel.Text = "Fecha Inicio:";
             // 
             // finperiodoLabel
             // 
             finperiodoLabel.AutoSize = true;
-            finperiodoLabel.Location = new System.Drawing.Point(49, 161);
+            finperiodoLabel.Location = new System.Drawing.Point(65, 198);
+            finperiodoLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             finperiodoLabel.Name = "finperiodoLabel";
-            finperiodoLabel.Size = new System.Drawing.Size(135, 13);
+            finperiodoLabel.Size = new System.Drawing.Size(178, 17);
             finperiodoLabel.TabIndex = 52;
             finperiodoLabel.Text = "Tipo Extinción de Contrato:";
             // 
@@ -106,7 +111,7 @@
             this.ToolHerramientas.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.ToolHerramientas.Location = new System.Drawing.Point(0, 0);
             this.ToolHerramientas.Name = "ToolHerramientas";
-            this.ToolHerramientas.Size = new System.Drawing.Size(554, 39);
+            this.ToolHerramientas.Size = new System.Drawing.Size(739, 39);
             this.ToolHerramientas.TabIndex = 37;
             this.ToolHerramientas.Text = "toolStrip1";
             // 
@@ -150,9 +155,10 @@
             this.LblTitulo2.BackColor = System.Drawing.Color.Transparent;
             this.LblTitulo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblTitulo2.ForeColor = System.Drawing.Color.Black;
-            this.LblTitulo2.Location = new System.Drawing.Point(-3, 43);
+            this.LblTitulo2.Location = new System.Drawing.Point(-4, 53);
+            this.LblTitulo2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblTitulo2.Name = "LblTitulo2";
-            this.LblTitulo2.Size = new System.Drawing.Size(557, 23);
+            this.LblTitulo2.Size = new System.Drawing.Size(743, 28);
             this.LblTitulo2.TabIndex = 46;
             this.LblTitulo2.Text = "MANTENIMIENTO PERIODO LABORAL";
             this.LblTitulo2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -165,18 +171,20 @@
             // 
             this.d_fchfinDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.periodoLaboralBindingSource, "d_fchfin", true));
             this.d_fchfinDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.d_fchfinDateTimePicker.Location = new System.Drawing.Point(190, 210);
+            this.d_fchfinDateTimePicker.Location = new System.Drawing.Point(253, 258);
+            this.d_fchfinDateTimePicker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.d_fchfinDateTimePicker.Name = "d_fchfinDateTimePicker";
-            this.d_fchfinDateTimePicker.Size = new System.Drawing.Size(148, 20);
+            this.d_fchfinDateTimePicker.Size = new System.Drawing.Size(196, 22);
             this.d_fchfinDateTimePicker.TabIndex = 49;
             // 
             // d_fchiniDateTimePicker
             // 
             this.d_fchiniDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.periodoLaboralBindingSource, "d_fchini", true));
             this.d_fchiniDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.d_fchiniDateTimePicker.Location = new System.Drawing.Point(190, 184);
+            this.d_fchiniDateTimePicker.Location = new System.Drawing.Point(253, 226);
+            this.d_fchiniDateTimePicker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.d_fchiniDateTimePicker.Name = "d_fchiniDateTimePicker";
-            this.d_fchiniDateTimePicker.Size = new System.Drawing.Size(148, 20);
+            this.d_fchiniDateTimePicker.Size = new System.Drawing.Size(196, 22);
             this.d_fchiniDateTimePicker.TabIndex = 51;
             // 
             // finperiodoComboBox
@@ -186,9 +194,10 @@
             this.finperiodoComboBox.DisplayMember = "c_descripcion";
             this.finperiodoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.finperiodoComboBox.FormattingEnabled = true;
-            this.finperiodoComboBox.Location = new System.Drawing.Point(190, 158);
+            this.finperiodoComboBox.Location = new System.Drawing.Point(253, 194);
+            this.finperiodoComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.finperiodoComboBox.Name = "finperiodoComboBox";
-            this.finperiodoComboBox.Size = new System.Drawing.Size(308, 21);
+            this.finperiodoComboBox.Size = new System.Drawing.Size(409, 24);
             this.finperiodoComboBox.TabIndex = 53;
             this.finperiodoComboBox.ValueMember = "n_idfinperiodo";
             // 
@@ -199,17 +208,28 @@
             this.categoriaComboBox.DisplayMember = "c_descripcion";
             this.categoriaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.categoriaComboBox.FormattingEnabled = true;
-            this.categoriaComboBox.Location = new System.Drawing.Point(190, 131);
+            this.categoriaComboBox.Location = new System.Drawing.Point(253, 161);
+            this.categoriaComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.categoriaComboBox.Name = "categoriaComboBox";
-            this.categoriaComboBox.Size = new System.Drawing.Size(308, 21);
+            this.categoriaComboBox.Size = new System.Drawing.Size(409, 24);
             this.categoriaComboBox.TabIndex = 47;
             this.categoriaComboBox.ValueMember = "n_idcategoria";
             // 
+            // kryptonDateTimePicker1
+            // 
+            this.kryptonDateTimePicker1.Checked = false;
+            this.kryptonDateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.kryptonDateTimePicker1.Location = new System.Drawing.Point(253, 288);
+            this.kryptonDateTimePicker1.Name = "kryptonDateTimePicker1";
+            this.kryptonDateTimePicker1.Size = new System.Drawing.Size(196, 25);
+            this.kryptonDateTimePicker1.TabIndex = 54;
+            // 
             // FrmManEmpleadoPeriodo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(554, 327);
+            this.ClientSize = new System.Drawing.Size(739, 402);
+            this.Controls.Add(this.kryptonDateTimePicker1);
             this.Controls.Add(categoriaLabel);
             this.Controls.Add(this.categoriaComboBox);
             this.Controls.Add(d_fchfinLabel);
@@ -220,6 +240,7 @@
             this.Controls.Add(this.finperiodoComboBox);
             this.Controls.Add(this.LblTitulo2);
             this.Controls.Add(this.ToolHerramientas);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmManEmpleadoPeriodo";
             this.Text = "Mantenimiento Periodo Laboral";
             this.ToolHerramientas.ResumeLayout(false);
@@ -246,5 +267,6 @@
         private System.Windows.Forms.DateTimePicker d_fchiniDateTimePicker;
         private System.Windows.Forms.ComboBox finperiodoComboBox;
         private System.Windows.Forms.ComboBox categoriaComboBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker kryptonDateTimePicker1;
     }
 }

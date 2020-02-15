@@ -24,6 +24,10 @@ using System.Data.OleDb;
 using C1.Win.C1FlexGrid;
 using SIAC_Datos.Classes;
 using SIAC_DATOS.Models.Produccion;
+using Helper.Classes;
+using Refit;
+using Helper.Service;
+using System.Configuration;
 
 namespace SSF_NET_Produccion.Formularios
 {
@@ -2455,6 +2459,46 @@ namespace SSF_NET_Produccion.Formularios
             {
                 MessageBox.Show(string.Format("Ocurrió un error al eliminar el registro, mensaje de error: {0}", ex.Message)
                     , "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSubirRegistro_Click(object sender, EventArgs e)
+        {
+            SubirRegistro();
+        }
+
+        public async void SubirRegistro()
+        {
+            try
+            {
+                int n_IdRegistro = Convert.ToInt16(DgLista.Columns[2].CellValue(DgLista.Row).ToString());
+
+                objRegistro.TraerRegistro(n_IdRegistro);
+                entRegistro = objRegistro.EntProduccion;
+
+                ProductionOutput productionOutput = new ProductionOutput
+                {
+                    Code = entRegistro.n_id.ToString(),
+                    Name = string.Format("{0}-{1}", entRegistro.c_numser, entRegistro.c_numdoc),
+                    ProductionDate = entRegistro.d_fchpro,
+                    CompanyId = 1,
+                    EmployeeId = 2,
+                    ProductionMethodId = 43
+                };
+
+                var productionService = RestService.For<IProductionService>(ConfigurationManager.AppSettings["ApiHostUrl"]);
+                var productionOutputResult = await productionService.ProductionOutputCreate(productionOutput);
+
+                MessageBox.Show(string.Format("¡Se subió el registro: {0} correctamente! ", productionOutputResult.Name), "Subir Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("¡Ocurrio un error: {0}! ", ex.Message), "Subir Registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

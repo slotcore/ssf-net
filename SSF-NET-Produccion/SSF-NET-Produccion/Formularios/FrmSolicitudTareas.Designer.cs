@@ -40,12 +40,13 @@
             this.ToolImprimir = new System.Windows.Forms.ToolStripSplitButton();
             this.emitirGuiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imprimirTareasConPersonalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSubirRegistro = new System.Windows.Forms.ToolStripButton();
+            this.BtnBajarRegistro = new System.Windows.Forms.ToolStripButton();
             this.ToolVisar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolSalir = new System.Windows.Forms.ToolStripButton();
-            this.Tab1 = new C1.Win.C1Command.C1DockingTab();
-            this.c1DockingTabPage1 = new C1.Win.C1Command.C1DockingTabPage();
-            this.Sc01 = new C1.Win.C1Sizer.C1Sizer();
+            this.Tab1 = new System.Windows.Forms.TabControl();
+            this.c1DockingTabPage1 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.CboMeses = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -55,28 +56,19 @@
             this.PicClos1 = new System.Windows.Forms.PictureBox();
             this.label17 = new System.Windows.Forms.Label();
             this.DgLista = new C1.Win.C1TrueDBGrid.C1TrueDBGrid();
-            this.c1DockingTabPage2 = new C1.Win.C1Command.C1DockingTabPage();
-            this.Sc02 = new C1.Win.C1Sizer.C1Sizer();
-            this.c1Sizer1 = new C1.Win.C1Sizer.C1Sizer();
-            this.c1Sizer2 = new C1.Win.C1Sizer.C1Sizer();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.LblTotal = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
+            this.c1DockingTabPage2 = new System.Windows.Forms.TabPage();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.CmdCalcHor = new System.Windows.Forms.Button();
             this.CmdRankin = new System.Windows.Forms.Button();
             this.CmdAddPer = new System.Windows.Forms.Button();
             this.CmdDelPer = new System.Windows.Forms.Button();
-            this.panel7 = new System.Windows.Forms.Panel();
+            this.FgPer = new C1.Win.C1FlexGrid.C1FlexGrid();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.LblTotal = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             this.LblNomTar = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.FgPer = new C1.Win.C1FlexGrid.C1FlexGrid();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.CmdAddTar = new System.Windows.Forms.Button();
-            this.CmdDelTar = new System.Windows.Forms.Button();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
-            this.FgTar = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label21 = new System.Windows.Forms.Label();
             this.CboLocal = new System.Windows.Forms.ComboBox();
@@ -120,6 +112,12 @@
             this.label12 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.LblTitulo2 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.CmdAddTar = new System.Windows.Forms.Button();
+            this.CmdDelTar = new System.Windows.Forms.Button();
+            this.FgTar = new C1.Win.C1FlexGrid.C1FlexGrid();
+            this.label11 = new System.Windows.Forms.Label();
             this.PanSele = new System.Windows.Forms.Panel();
             this.CmdCanSel = new System.Windows.Forms.Button();
             this.CmdAceSel = new System.Windows.Forms.Button();
@@ -127,32 +125,23 @@
             this.label23 = new System.Windows.Forms.Label();
             this.FgSele = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.ToolHerramientas.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Tab1)).BeginInit();
             this.Tab1.SuspendLayout();
             this.c1DockingTabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Sc01)).BeginInit();
-            this.Sc01.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicClos1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgLista)).BeginInit();
             this.c1DockingTabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Sc02)).BeginInit();
-            this.Sc02.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Sizer1)).BeginInit();
-            this.c1Sizer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Sizer2)).BeginInit();
-            this.c1Sizer2.SuspendLayout();
-            this.panel9.SuspendLayout();
-            this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FgPer)).BeginInit();
-            this.panel5.SuspendLayout();
-            this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.FgTar)).BeginInit();
+            this.panel9.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicClos2)).BeginInit();
             this.panel3.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FgTar)).BeginInit();
             this.PanSele.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FgSele)).BeginInit();
             this.SuspendLayout();
@@ -173,6 +162,8 @@
             this.ToolCancelar,
             this.toolStripSeparator2,
             this.ToolImprimir,
+            this.btnSubirRegistro,
+            this.BtnBajarRegistro,
             this.ToolVisar,
             this.toolStripSeparator3,
             this.ToolSalir});
@@ -278,6 +269,26 @@
             this.imprimirTareasConPersonalToolStripMenuItem.Text = "Imprimir Tareas con Personal";
             this.imprimirTareasConPersonalToolStripMenuItem.Click += new System.EventHandler(this.imprimirTareasConPersonalToolStripMenuItem_Click);
             // 
+            // btnSubirRegistro
+            // 
+            this.btnSubirRegistro.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnSubirRegistro.Image = global::SSF_NET_Produccion.Properties.Resources.publish_32x32;
+            this.btnSubirRegistro.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSubirRegistro.Name = "btnSubirRegistro";
+            this.btnSubirRegistro.Size = new System.Drawing.Size(36, 36);
+            this.btnSubirRegistro.Text = "Subir Registro";
+            this.btnSubirRegistro.Click += new System.EventHandler(this.btnSubirRegistro_Click);
+            // 
+            // BtnBajarRegistro
+            // 
+            this.BtnBajarRegistro.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.BtnBajarRegistro.Image = global::SSF_NET_Produccion.Properties.Resources.download_32x32;
+            this.BtnBajarRegistro.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnBajarRegistro.Name = "BtnBajarRegistro";
+            this.BtnBajarRegistro.Size = new System.Drawing.Size(36, 36);
+            this.BtnBajarRegistro.Text = "toolStripButton1";
+            this.BtnBajarRegistro.Click += new System.EventHandler(this.BtnBajarRegistro_Click);
+            // 
             // ToolVisar
             // 
             this.ToolVisar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -308,65 +319,51 @@
             // Tab1
             // 
             this.Tab1.Alignment = System.Windows.Forms.TabAlignment.Left;
+            this.Tab1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Tab1.Controls.Add(this.c1DockingTabPage1);
             this.Tab1.Controls.Add(this.c1DockingTabPage2);
             this.Tab1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tab1.ForeColor = System.Drawing.Color.Black;
             this.Tab1.Location = new System.Drawing.Point(4, 50);
-            this.Tab1.Margin = new System.Windows.Forms.Padding(4);
+            this.Tab1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tab1.Multiline = true;
             this.Tab1.Name = "Tab1";
             this.Tab1.SelectedIndex = 1;
-            this.Tab1.Size = new System.Drawing.Size(1267, 699);
-            this.Tab1.TabAreaBackColor = System.Drawing.Color.White;
+            this.Tab1.Size = new System.Drawing.Size(1267, 718);
             this.Tab1.TabIndex = 39;
-            this.Tab1.TabsSpacing = -10;
-            this.Tab1.TabStyle = C1.Win.C1Command.TabStyleEnum.Sloping;
-            this.Tab1.VisualStyle = C1.Win.C1Command.VisualStyle.Custom;
-            this.Tab1.VisualStyleBase = C1.Win.C1Command.VisualStyle.OfficeXP;
-            this.Tab1.SelectedIndexChanging += new C1.Win.C1Command.SelectedIndexChangingEventHandler(this.Tab1_SelectedIndexChanging);
+            this.Tab1.SelectedIndexChanged += new System.EventHandler(this.Tab1_SelectedIndexChanging);
             // 
             // c1DockingTabPage1
             // 
             this.c1DockingTabPage1.BackColor = System.Drawing.Color.White;
-            this.c1DockingTabPage1.Controls.Add(this.Sc01);
+            this.c1DockingTabPage1.Controls.Add(this.panel4);
+            this.c1DockingTabPage1.Controls.Add(this.panel2);
+            this.c1DockingTabPage1.Controls.Add(this.DgLista);
             this.c1DockingTabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.c1DockingTabPage1.ForeColor = System.Drawing.Color.Black;
-            this.c1DockingTabPage1.Location = new System.Drawing.Point(34, 1);
-            this.c1DockingTabPage1.Margin = new System.Windows.Forms.Padding(4);
+            this.c1DockingTabPage1.Location = new System.Drawing.Point(32, 4);
+            this.c1DockingTabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.c1DockingTabPage1.Name = "c1DockingTabPage1";
-            this.c1DockingTabPage1.Size = new System.Drawing.Size(1232, 697);
+            this.c1DockingTabPage1.Size = new System.Drawing.Size(1231, 710);
             this.c1DockingTabPage1.TabIndex = 0;
             this.c1DockingTabPage1.Text = "Consulta";
             // 
-            // Sc01
-            // 
-            this.Sc01.Controls.Add(this.panel4);
-            this.Sc01.Controls.Add(this.panel2);
-            this.Sc01.Controls.Add(this.DgLista);
-            this.Sc01.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Sc01.ForeColor = System.Drawing.Color.Black;
-            this.Sc01.GridDefinition = "4.01721664275466:False:True;89.0961262553802:False:False;4.30416068866571:False:T" +
-    "rue;\t99.1883116883117:False:False;";
-            this.Sc01.Location = new System.Drawing.Point(0, 0);
-            this.Sc01.Margin = new System.Windows.Forms.Padding(4);
-            this.Sc01.Name = "Sc01";
-            this.Sc01.Padding = new System.Windows.Forms.Padding(5);
-            this.Sc01.Size = new System.Drawing.Size(1232, 697);
-            this.Sc01.TabIndex = 0;
-            this.Sc01.Text = "c1Sizer1";
-            // 
             // panel4
             // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.Transparent;
             this.panel4.Controls.Add(this.CboMeses);
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.LblNumReg);
             this.panel4.Controls.Add(this.label18);
             this.panel4.ForeColor = System.Drawing.Color.Black;
-            this.panel4.Location = new System.Drawing.Point(5, 662);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4);
+            this.panel4.Location = new System.Drawing.Point(5, 676);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1222, 30);
+            this.panel4.Size = new System.Drawing.Size(1221, 30);
             this.panel4.TabIndex = 2;
             // 
             // CboMeses
@@ -375,7 +372,7 @@
             this.CboMeses.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CboMeses.FormattingEnabled = true;
             this.CboMeses.Location = new System.Drawing.Point(835, 4);
-            this.CboMeses.Margin = new System.Windows.Forms.Padding(4);
+            this.CboMeses.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CboMeses.Name = "CboMeses";
             this.CboMeses.Size = new System.Drawing.Size(189, 28);
             this.CboMeses.TabIndex = 10;
@@ -423,21 +420,23 @@
             // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
             this.panel2.Controls.Add(this.PicClos1);
             this.panel2.Controls.Add(this.label17);
             this.panel2.ForeColor = System.Drawing.Color.Black;
             this.panel2.Location = new System.Drawing.Point(5, 5);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1222, 28);
+            this.panel2.Size = new System.Drawing.Size(1221, 28);
             this.panel2.TabIndex = 1;
             // 
             // PicClos1
             // 
             this.PicClos1.Image = ((System.Drawing.Image)(resources.GetObject("PicClos1.Image")));
             this.PicClos1.Location = new System.Drawing.Point(1167, -2);
-            this.PicClos1.Margin = new System.Windows.Forms.Padding(4);
+            this.PicClos1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PicClos1.Name = "PicClos1";
             this.PicClos1.Size = new System.Drawing.Size(32, 32);
             this.PicClos1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -446,34 +445,38 @@
             // 
             // label17
             // 
+            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label17.BackColor = System.Drawing.Color.Transparent;
-            this.label17.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.Black;
             this.label17.Location = new System.Drawing.Point(0, 0);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(1222, 28);
+            this.label17.Size = new System.Drawing.Size(1221, 28);
             this.label17.TabIndex = 0;
             this.label17.Text = "CONSULTA";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // DgLista
             // 
+            this.DgLista.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DgLista.BackColor = System.Drawing.Color.White;
             this.DgLista.CaptionHeight = 19;
             this.DgLista.ForeColor = System.Drawing.Color.Black;
             this.DgLista.GroupByCaption = "Drag a column header here to group by that column";
             this.DgLista.Images.Add(((System.Drawing.Image)(resources.GetObject("DgLista.Images"))));
             this.DgLista.Location = new System.Drawing.Point(5, 37);
-            this.DgLista.Margin = new System.Windows.Forms.Padding(4);
+            this.DgLista.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DgLista.Name = "DgLista";
             this.DgLista.PreviewInfo.Location = new System.Drawing.Point(0, 0);
             this.DgLista.PreviewInfo.Size = new System.Drawing.Size(0, 0);
             this.DgLista.PreviewInfo.ZoomFactor = 75D;
             this.DgLista.PrintInfo.PageSettings = ((System.Drawing.Printing.PageSettings)(resources.GetObject("DgLista.PrintInfo.PageSettings")));
             this.DgLista.RowHeight = 17;
-            this.DgLista.Size = new System.Drawing.Size(1222, 655);
+            this.DgLista.Size = new System.Drawing.Size(1222, 634);
             this.DgLista.TabIndex = 0;
             this.DgLista.Text = "c1TrueDBGrid1";
             this.DgLista.Click += new System.EventHandler(this.DgLista_Click);
@@ -483,78 +486,123 @@
             // 
             // c1DockingTabPage2
             // 
-            this.c1DockingTabPage2.Controls.Add(this.Sc02);
+            this.c1DockingTabPage2.Controls.Add(this.panel7);
+            this.c1DockingTabPage2.Controls.Add(this.panel1);
+            this.c1DockingTabPage2.Controls.Add(this.panel3);
+            this.c1DockingTabPage2.Controls.Add(this.panel6);
             this.c1DockingTabPage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.c1DockingTabPage2.ForeColor = System.Drawing.Color.Black;
-            this.c1DockingTabPage2.Location = new System.Drawing.Point(34, 1);
-            this.c1DockingTabPage2.Margin = new System.Windows.Forms.Padding(4);
+            this.c1DockingTabPage2.Location = new System.Drawing.Point(32, 4);
+            this.c1DockingTabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.c1DockingTabPage2.Name = "c1DockingTabPage2";
-            this.c1DockingTabPage2.Size = new System.Drawing.Size(1232, 697);
+            this.c1DockingTabPage2.Size = new System.Drawing.Size(1231, 710);
             this.c1DockingTabPage2.TabIndex = 1;
             this.c1DockingTabPage2.Text = "Detalle";
             // 
-            // Sc02
+            // panel7
             // 
-            this.Sc02.Controls.Add(this.c1Sizer1);
-            this.Sc02.Controls.Add(this.panel3);
-            this.Sc02.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Sc02.ForeColor = System.Drawing.Color.Black;
-            this.Sc02.GridDefinition = "4.01721664275466:False:True;95.5523672883788:False:False;\t99.8376623376623:False:" +
-    "False;";
-            this.Sc02.Location = new System.Drawing.Point(0, 0);
-            this.Sc02.Margin = new System.Windows.Forms.Padding(1);
-            this.Sc02.Name = "Sc02";
-            this.Sc02.Padding = new System.Windows.Forms.Padding(1);
-            this.Sc02.Size = new System.Drawing.Size(1232, 697);
-            this.Sc02.SplitterWidth = 1;
-            this.Sc02.TabIndex = 0;
-            this.Sc02.Text = "c1Sizer2";
-            this.Sc02.Click += new System.EventHandler(this.Sc02_Click);
+            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel7.Controls.Add(this.panel8);
+            this.panel7.Controls.Add(this.FgPer);
+            this.panel7.Controls.Add(this.panel9);
+            this.panel7.Controls.Add(this.LblNomTar);
+            this.panel7.Controls.Add(this.label13);
+            this.panel7.Location = new System.Drawing.Point(4, 542);
+            this.panel7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(1223, 171);
+            this.panel7.TabIndex = 96;
             // 
-            // c1Sizer1
+            // panel8
             // 
-            this.c1Sizer1.Controls.Add(this.c1Sizer2);
-            this.c1Sizer1.Controls.Add(this.panel1);
-            this.c1Sizer1.GridDefinition = "35.7357357357357:False:True;63.8138138138138:False:False;\t99.8373983739837:False:" +
-    "False;";
-            this.c1Sizer1.Location = new System.Drawing.Point(1, 30);
-            this.c1Sizer1.Margin = new System.Windows.Forms.Padding(1);
-            this.c1Sizer1.Name = "c1Sizer1";
-            this.c1Sizer1.Padding = new System.Windows.Forms.Padding(1);
-            this.c1Sizer1.Size = new System.Drawing.Size(1230, 666);
-            this.c1Sizer1.SplitterWidth = 1;
-            this.c1Sizer1.TabIndex = 9;
-            this.c1Sizer1.Text = "c1Sizer1";
+            this.panel8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel8.Controls.Add(this.CmdCalcHor);
+            this.panel8.Controls.Add(this.CmdRankin);
+            this.panel8.Controls.Add(this.CmdAddPer);
+            this.panel8.Controls.Add(this.CmdDelPer);
+            this.panel8.Location = new System.Drawing.Point(1056, 2);
+            this.panel8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(161, 163);
+            this.panel8.TabIndex = 161;
             // 
-            // c1Sizer2
+            // CmdCalcHor
             // 
-            this.c1Sizer2.Controls.Add(this.panel9);
-            this.c1Sizer2.Controls.Add(this.panel8);
-            this.c1Sizer2.Controls.Add(this.panel7);
-            this.c1Sizer2.Controls.Add(this.FgPer);
-            this.c1Sizer2.Controls.Add(this.panel5);
-            this.c1Sizer2.Controls.Add(this.panel6);
-            this.c1Sizer2.Controls.Add(this.FgTar);
-            this.c1Sizer2.GridDefinition = "4.70588235294118:False:True;42.5882352941176:False:False;4.70588235294118:False:T" +
-    "rue;40.9411764705882:False:False;5.64705882352941:False:True;\t89.7394136807818:F" +
-    "alse:False;10.0162866449511:False:True;";
-            this.c1Sizer2.Location = new System.Drawing.Point(1, 240);
-            this.c1Sizer2.Margin = new System.Windows.Forms.Padding(1);
-            this.c1Sizer2.Name = "c1Sizer2";
-            this.c1Sizer2.Padding = new System.Windows.Forms.Padding(1);
-            this.c1Sizer2.Size = new System.Drawing.Size(1228, 425);
-            this.c1Sizer2.SplitterWidth = 1;
-            this.c1Sizer2.TabIndex = 1;
-            this.c1Sizer2.Text = "c1Sizer2";
+            this.CmdCalcHor.Enabled = false;
+            this.CmdCalcHor.Location = new System.Drawing.Point(12, 123);
+            this.CmdCalcHor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdCalcHor.Name = "CmdCalcHor";
+            this.CmdCalcHor.Size = new System.Drawing.Size(137, 39);
+            this.CmdCalcHor.TabIndex = 122;
+            this.CmdCalcHor.Text = "Calcular Horas";
+            this.CmdCalcHor.UseVisualStyleBackColor = true;
+            this.CmdCalcHor.Click += new System.EventHandler(this.CmdCalcHor_Click);
+            // 
+            // CmdRankin
+            // 
+            this.CmdRankin.Enabled = false;
+            this.CmdRankin.Location = new System.Drawing.Point(12, 82);
+            this.CmdRankin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdRankin.Name = "CmdRankin";
+            this.CmdRankin.Size = new System.Drawing.Size(137, 39);
+            this.CmdRankin.TabIndex = 121;
+            this.CmdRankin.Text = "Ranking de Tarea";
+            this.CmdRankin.UseVisualStyleBackColor = true;
+            this.CmdRankin.Click += new System.EventHandler(this.CmdRankin_Click);
+            // 
+            // CmdAddPer
+            // 
+            this.CmdAddPer.Enabled = false;
+            this.CmdAddPer.Location = new System.Drawing.Point(12, 1);
+            this.CmdAddPer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdAddPer.Name = "CmdAddPer";
+            this.CmdAddPer.Size = new System.Drawing.Size(137, 39);
+            this.CmdAddPer.TabIndex = 120;
+            this.CmdAddPer.Text = "Agregar Personal";
+            this.CmdAddPer.UseVisualStyleBackColor = true;
+            this.CmdAddPer.Click += new System.EventHandler(this.CmdAddPer_Click);
+            // 
+            // CmdDelPer
+            // 
+            this.CmdDelPer.Enabled = false;
+            this.CmdDelPer.Location = new System.Drawing.Point(12, 42);
+            this.CmdDelPer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdDelPer.Name = "CmdDelPer";
+            this.CmdDelPer.Size = new System.Drawing.Size(137, 39);
+            this.CmdDelPer.TabIndex = 119;
+            this.CmdDelPer.Text = "Eliminar Personal";
+            this.CmdDelPer.UseVisualStyleBackColor = true;
+            this.CmdDelPer.Click += new System.EventHandler(this.CmdDelPer_Click);
+            // 
+            // FgPer
+            // 
+            this.FgPer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.FgPer.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
+            this.FgPer.ColumnInfo = "4,1,0,0,0,100,Columns:0{Width:10;}\t";
+            this.FgPer.Location = new System.Drawing.Point(-1, 38);
+            this.FgPer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FgPer.Name = "FgPer";
+            this.FgPer.Rows.DefaultSize = 20;
+            this.FgPer.Size = new System.Drawing.Size(1047, 127);
+            this.FgPer.StyleInfo = resources.GetString("FgPer.StyleInfo");
+            this.FgPer.TabIndex = 160;
+            this.FgPer.EnterCell += new System.EventHandler(this.FgPer_EnterCell);
             // 
             // panel9
             // 
             this.panel9.Controls.Add(this.LblTotal);
             this.panel9.Controls.Add(this.label25);
-            this.panel9.Location = new System.Drawing.Point(1, 400);
-            this.panel9.Margin = new System.Windows.Forms.Padding(4);
+            this.panel9.Location = new System.Drawing.Point(-1, 444);
+            this.panel9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1226, 24);
+            this.panel9.Size = new System.Drawing.Size(1227, 25);
             this.panel9.TabIndex = 97;
             // 
             // LblTotal
@@ -583,78 +631,6 @@
             this.label25.TabIndex = 160;
             this.label25.Text = "Total ==>";
             // 
-            // panel8
-            // 
-            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel8.Controls.Add(this.CmdCalcHor);
-            this.panel8.Controls.Add(this.CmdRankin);
-            this.panel8.Controls.Add(this.CmdAddPer);
-            this.panel8.Controls.Add(this.CmdDelPer);
-            this.panel8.Location = new System.Drawing.Point(1104, 225);
-            this.panel8.Margin = new System.Windows.Forms.Padding(4);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(123, 199);
-            this.panel8.TabIndex = 95;
-            // 
-            // CmdCalcHor
-            // 
-            this.CmdCalcHor.Enabled = false;
-            this.CmdCalcHor.Location = new System.Drawing.Point(12, 123);
-            this.CmdCalcHor.Margin = new System.Windows.Forms.Padding(4);
-            this.CmdCalcHor.Name = "CmdCalcHor";
-            this.CmdCalcHor.Size = new System.Drawing.Size(137, 39);
-            this.CmdCalcHor.TabIndex = 122;
-            this.CmdCalcHor.Text = "Calcular Horas";
-            this.CmdCalcHor.UseVisualStyleBackColor = true;
-            this.CmdCalcHor.Click += new System.EventHandler(this.CmdCalcHor_Click);
-            // 
-            // CmdRankin
-            // 
-            this.CmdRankin.Enabled = false;
-            this.CmdRankin.Location = new System.Drawing.Point(12, 82);
-            this.CmdRankin.Margin = new System.Windows.Forms.Padding(4);
-            this.CmdRankin.Name = "CmdRankin";
-            this.CmdRankin.Size = new System.Drawing.Size(137, 39);
-            this.CmdRankin.TabIndex = 121;
-            this.CmdRankin.Text = "Ranking de Tarea";
-            this.CmdRankin.UseVisualStyleBackColor = true;
-            this.CmdRankin.Click += new System.EventHandler(this.CmdRankin_Click);
-            // 
-            // CmdAddPer
-            // 
-            this.CmdAddPer.Enabled = false;
-            this.CmdAddPer.Location = new System.Drawing.Point(12, 1);
-            this.CmdAddPer.Margin = new System.Windows.Forms.Padding(4);
-            this.CmdAddPer.Name = "CmdAddPer";
-            this.CmdAddPer.Size = new System.Drawing.Size(137, 39);
-            this.CmdAddPer.TabIndex = 120;
-            this.CmdAddPer.Text = "Agregar Personal";
-            this.CmdAddPer.UseVisualStyleBackColor = true;
-            this.CmdAddPer.Click += new System.EventHandler(this.CmdAddPer_Click);
-            // 
-            // CmdDelPer
-            // 
-            this.CmdDelPer.Enabled = false;
-            this.CmdDelPer.Location = new System.Drawing.Point(12, 42);
-            this.CmdDelPer.Margin = new System.Windows.Forms.Padding(4);
-            this.CmdDelPer.Name = "CmdDelPer";
-            this.CmdDelPer.Size = new System.Drawing.Size(137, 39);
-            this.CmdDelPer.TabIndex = 119;
-            this.CmdDelPer.Text = "Eliminar Personal";
-            this.CmdDelPer.UseVisualStyleBackColor = true;
-            this.CmdDelPer.Click += new System.EventHandler(this.CmdDelPer_Click);
-            // 
-            // panel7
-            // 
-            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel7.Controls.Add(this.LblNomTar);
-            this.panel7.Controls.Add(this.label13);
-            this.panel7.Location = new System.Drawing.Point(1, 225);
-            this.panel7.Margin = new System.Windows.Forms.Padding(4);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1226, 174);
-            this.panel7.TabIndex = 96;
-            // 
             // LblNomTar
             // 
             this.LblNomTar.AutoSize = true;
@@ -680,96 +656,6 @@
             this.label13.Size = new System.Drawing.Size(124, 17);
             this.label13.TabIndex = 158;
             this.label13.Text = "Personas Tarea";
-            // 
-            // FgPer
-            // 
-            this.FgPer.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
-            this.FgPer.ColumnInfo = "4,1,0,0,0,100,Columns:0{Width:10;}\t";
-            this.FgPer.Location = new System.Drawing.Point(1, 225);
-            this.FgPer.Margin = new System.Windows.Forms.Padding(4);
-            this.FgPer.Name = "FgPer";
-            this.FgPer.Rows.DefaultSize = 20;
-            this.FgPer.Size = new System.Drawing.Size(1226, 199);
-            this.FgPer.StyleInfo = resources.GetString("FgPer.StyleInfo");
-            this.FgPer.TabIndex = 93;
-            this.FgPer.EnterCell += new System.EventHandler(this.FgPer_EnterCell);
-            this.FgPer.KeyPressEdit += new C1.Win.C1FlexGrid.KeyPressEditEventHandler(this.FgPer_KeyPressEdit);
-            this.FgPer.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.FgPer_CellChanged);
-            // 
-            // panel5
-            // 
-            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.CmdAddTar);
-            this.panel5.Controls.Add(this.CmdDelTar);
-            this.panel5.Location = new System.Drawing.Point(1104, 22);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(123, 202);
-            this.panel5.TabIndex = 94;
-            // 
-            // CmdAddTar
-            // 
-            this.CmdAddTar.Enabled = false;
-            this.CmdAddTar.Location = new System.Drawing.Point(12, 30);
-            this.CmdAddTar.Margin = new System.Windows.Forms.Padding(4);
-            this.CmdAddTar.Name = "CmdAddTar";
-            this.CmdAddTar.Size = new System.Drawing.Size(137, 39);
-            this.CmdAddTar.TabIndex = 120;
-            this.CmdAddTar.Text = "Agregar Tarea";
-            this.CmdAddTar.UseVisualStyleBackColor = true;
-            this.CmdAddTar.Click += new System.EventHandler(this.CmdAddTar_Click);
-            // 
-            // CmdDelTar
-            // 
-            this.CmdDelTar.Enabled = false;
-            this.CmdDelTar.Location = new System.Drawing.Point(12, 73);
-            this.CmdDelTar.Margin = new System.Windows.Forms.Padding(4);
-            this.CmdDelTar.Name = "CmdDelTar";
-            this.CmdDelTar.Size = new System.Drawing.Size(137, 39);
-            this.CmdDelTar.TabIndex = 119;
-            this.CmdDelTar.Text = "Eliminar Tarea";
-            this.CmdDelTar.UseVisualStyleBackColor = true;
-            this.CmdDelTar.Click += new System.EventHandler(this.CmdDelTar_Click);
-            // 
-            // panel6
-            // 
-            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel6.Controls.Add(this.label11);
-            this.panel6.Location = new System.Drawing.Point(1, 1);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1226, 20);
-            this.panel6.TabIndex = 95;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label11.Location = new System.Drawing.Point(4, 4);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(148, 17);
-            this.label11.TabIndex = 157;
-            this.label11.Text = "Tareas Disponibles";
-            // 
-            // FgTar
-            // 
-            this.FgTar.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
-            this.FgTar.ColumnInfo = "4,1,0,0,0,100,Columns:0{Width:10;}\t";
-            this.FgTar.Location = new System.Drawing.Point(1, 22);
-            this.FgTar.Margin = new System.Windows.Forms.Padding(4);
-            this.FgTar.Name = "FgTar";
-            this.FgTar.Rows.DefaultSize = 20;
-            this.FgTar.Size = new System.Drawing.Size(1226, 202);
-            this.FgTar.StyleInfo = resources.GetString("FgTar.StyleInfo");
-            this.FgTar.TabIndex = 24;
-            this.FgTar.BeforeRowColChange += new C1.Win.C1FlexGrid.RangeEventHandler(this.FgTar_BeforeRowColChange);
-            this.FgTar.AfterRowColChange += new C1.Win.C1FlexGrid.RangeEventHandler(this.FgTar_AfterRowColChange);
-            this.FgTar.RowColChange += new System.EventHandler(this.FgTar_RowColChange);
-            this.FgTar.EnterCell += new System.EventHandler(this.FgTar_EnterCell);
-            this.FgTar.KeyPressEdit += new C1.Win.C1FlexGrid.KeyPressEditEventHandler(this.FgTar_KeyPressEdit);
             // 
             // panel1
             // 
@@ -815,10 +701,10 @@
             this.panel1.Controls.Add(this.TxtNumSer);
             this.panel1.Controls.Add(this.label12);
             this.panel1.ForeColor = System.Drawing.Color.Black;
-            this.panel1.Location = new System.Drawing.Point(1, 1);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Location = new System.Drawing.Point(3, 33);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1228, 238);
+            this.panel1.Size = new System.Drawing.Size(1228, 290);
             this.panel1.TabIndex = 0;
             // 
             // label21
@@ -839,7 +725,7 @@
             this.CboLocal.Enabled = false;
             this.CboLocal.FormattingEnabled = true;
             this.CboLocal.Location = new System.Drawing.Point(139, 85);
-            this.CboLocal.Margin = new System.Windows.Forms.Padding(4);
+            this.CboLocal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CboLocal.Name = "CboLocal";
             this.CboLocal.Size = new System.Drawing.Size(467, 25);
             this.CboLocal.TabIndex = 127;
@@ -861,7 +747,7 @@
             // 
             this.OptProConTar.Enabled = false;
             this.OptProConTar.Location = new System.Drawing.Point(925, 149);
-            this.OptProConTar.Margin = new System.Windows.Forms.Padding(4);
+            this.OptProConTar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.OptProConTar.Name = "OptProConTar";
             this.OptProConTar.Size = new System.Drawing.Size(215, 25);
             this.OptProConTar.TabIndex = 160;
@@ -875,7 +761,7 @@
             this.OptProPen.AutoSize = true;
             this.OptProPen.Enabled = false;
             this.OptProPen.Location = new System.Drawing.Point(669, 149);
-            this.OptProPen.Margin = new System.Windows.Forms.Padding(4);
+            this.OptProPen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.OptProPen.Name = "OptProPen";
             this.OptProPen.Size = new System.Drawing.Size(188, 21);
             this.OptProPen.TabIndex = 159;
@@ -888,7 +774,7 @@
             // 
             this.PicClos2.Image = ((System.Drawing.Image)(resources.GetObject("PicClos2.Image")));
             this.PicClos2.Location = new System.Drawing.Point(1141, 28);
-            this.PicClos2.Margin = new System.Windows.Forms.Padding(4);
+            this.PicClos2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PicClos2.Name = "PicClos2";
             this.PicClos2.Size = new System.Drawing.Size(76, 66);
             this.PicClos2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -930,7 +816,7 @@
             this.TxtReceta.Enabled = false;
             this.TxtReceta.ForeColor = System.Drawing.Color.Black;
             this.TxtReceta.Location = new System.Drawing.Point(139, 235);
-            this.TxtReceta.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtReceta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TxtReceta.MaxLength = 4;
             this.TxtReceta.Name = "TxtReceta";
             this.TxtReceta.ReadOnly = true;
@@ -953,7 +839,7 @@
             // 
             this.TxtFchPro.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.TxtFchPro.Location = new System.Drawing.Point(1073, 206);
-            this.TxtFchPro.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtFchPro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TxtFchPro.Name = "TxtFchPro";
             this.TxtFchPro.Size = new System.Drawing.Size(139, 23);
             this.TxtFchPro.TabIndex = 138;
@@ -965,7 +851,7 @@
             this.TxtUniMed.Enabled = false;
             this.TxtUniMed.ForeColor = System.Drawing.Color.Black;
             this.TxtUniMed.Location = new System.Drawing.Point(139, 206);
-            this.TxtUniMed.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtUniMed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TxtUniMed.MaxLength = 4;
             this.TxtUniMed.Name = "TxtUniMed";
             this.TxtUniMed.ReadOnly = true;
@@ -979,7 +865,7 @@
             this.TxtDesPro.Enabled = false;
             this.TxtDesPro.ForeColor = System.Drawing.Color.Black;
             this.TxtDesPro.Location = new System.Drawing.Point(139, 177);
-            this.TxtDesPro.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtDesPro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TxtDesPro.MaxLength = 4;
             this.TxtDesPro.Name = "TxtDesPro";
             this.TxtDesPro.ReadOnly = true;
@@ -992,7 +878,7 @@
             this.CmdProPen.Image = ((System.Drawing.Image)(resources.GetObject("CmdProPen.Image")));
             this.CmdProPen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.CmdProPen.Location = new System.Drawing.Point(339, 146);
-            this.CmdProPen.Margin = new System.Windows.Forms.Padding(4);
+            this.CmdProPen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CmdProPen.Name = "CmdProPen";
             this.CmdProPen.Size = new System.Drawing.Size(135, 30);
             this.CmdProPen.TabIndex = 154;
@@ -1008,7 +894,7 @@
             this.TxtNumPro.Enabled = false;
             this.TxtNumPro.ForeColor = System.Drawing.Color.Black;
             this.TxtNumPro.Location = new System.Drawing.Point(139, 149);
-            this.TxtNumPro.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtNumPro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TxtNumPro.MaxLength = 4;
             this.TxtNumPro.Name = "TxtNumPro";
             this.TxtNumPro.ReadOnly = true;
@@ -1060,7 +946,7 @@
             this.TxtCanPro2.Enabled = false;
             this.TxtCanPro2.ForeColor = System.Drawing.Color.Black;
             this.TxtCanPro2.Location = new System.Drawing.Point(732, 206);
-            this.TxtCanPro2.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtCanPro2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TxtCanPro2.MaxLength = 4;
             this.TxtCanPro2.Name = "TxtCanPro2";
             this.TxtCanPro2.ReadOnly = true;
@@ -1087,7 +973,7 @@
             this.TxtNumDocOP.Enabled = false;
             this.TxtNumDocOP.ForeColor = System.Drawing.Color.Black;
             this.TxtNumDocOP.Location = new System.Drawing.Point(783, 235);
-            this.TxtNumDocOP.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtNumDocOP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TxtNumDocOP.MaxLength = 4;
             this.TxtNumDocOP.Name = "TxtNumDocOP";
             this.TxtNumDocOP.ReadOnly = true;
@@ -1101,7 +987,7 @@
             this.TxtNumSerOP.Enabled = false;
             this.TxtNumSerOP.ForeColor = System.Drawing.Color.Black;
             this.TxtNumSerOP.Location = new System.Drawing.Point(732, 235);
-            this.TxtNumSerOP.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtNumSerOP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TxtNumSerOP.MaxLength = 4;
             this.TxtNumSerOP.Name = "TxtNumSerOP";
             this.TxtNumSerOP.ReadOnly = true;
@@ -1149,7 +1035,7 @@
             // 
             this.TxtFchOP.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.TxtFchOP.Location = new System.Drawing.Point(1073, 235);
-            this.TxtFchOP.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtFchOP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TxtFchOP.Name = "TxtFchOP";
             this.TxtFchOP.Size = new System.Drawing.Size(139, 23);
             this.TxtFchOP.TabIndex = 140;
@@ -1197,7 +1083,7 @@
             this.TxtObs.Enabled = false;
             this.TxtObs.ForeColor = System.Drawing.Color.Black;
             this.TxtObs.Location = new System.Drawing.Point(139, 262);
-            this.TxtObs.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtObs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TxtObs.MaxLength = 250;
             this.TxtObs.Multiline = true;
             this.TxtObs.Name = "TxtObs";
@@ -1222,7 +1108,7 @@
             this.CboSol.Enabled = false;
             this.CboSol.FormattingEnabled = true;
             this.CboSol.Location = new System.Drawing.Point(669, 57);
-            this.CboSol.Margin = new System.Windows.Forms.Padding(4);
+            this.CboSol.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CboSol.Name = "CboSol";
             this.CboSol.Size = new System.Drawing.Size(445, 25);
             this.CboSol.TabIndex = 126;
@@ -1245,7 +1131,7 @@
             this.CboTipDoc.Enabled = false;
             this.CboTipDoc.FormattingEnabled = true;
             this.CboTipDoc.Location = new System.Drawing.Point(139, 28);
-            this.CboTipDoc.Margin = new System.Windows.Forms.Padding(4);
+            this.CboTipDoc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CboTipDoc.Name = "CboTipDoc";
             this.CboTipDoc.Size = new System.Drawing.Size(467, 25);
             this.CboTipDoc.TabIndex = 122;
@@ -1266,7 +1152,7 @@
             // 
             this.TxtFchReg.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.TxtFchReg.Location = new System.Drawing.Point(973, 28);
-            this.TxtFchReg.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtFchReg.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TxtFchReg.Name = "TxtFchReg";
             this.TxtFchReg.Size = new System.Drawing.Size(139, 23);
             this.TxtFchReg.TabIndex = 123;
@@ -1278,7 +1164,7 @@
             this.TxtNumDoc.Enabled = false;
             this.TxtNumDoc.ForeColor = System.Drawing.Color.Black;
             this.TxtNumDoc.Location = new System.Drawing.Point(216, 57);
-            this.TxtNumDoc.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtNumDoc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TxtNumDoc.MaxLength = 4;
             this.TxtNumDoc.Name = "TxtNumDoc";
             this.TxtNumDoc.ReadOnly = true;
@@ -1304,7 +1190,7 @@
             this.TxtNumSer.Enabled = false;
             this.TxtNumSer.ForeColor = System.Drawing.Color.Black;
             this.TxtNumSer.Location = new System.Drawing.Point(139, 57);
-            this.TxtNumSer.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtNumSer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TxtNumSer.MaxLength = 4;
             this.TxtNumSer.Name = "TxtNumSer";
             this.TxtNumSer.ReadOnly = true;
@@ -1326,28 +1212,111 @@
             // 
             // panel3
             // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
             this.panel3.Controls.Add(this.LblTitulo2);
             this.panel3.ForeColor = System.Drawing.Color.Black;
             this.panel3.Location = new System.Drawing.Point(1, 1);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1230, 28);
+            this.panel3.Size = new System.Drawing.Size(1229, 28);
             this.panel3.TabIndex = 8;
             // 
             // LblTitulo2
             // 
+            this.LblTitulo2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.LblTitulo2.BackColor = System.Drawing.Color.Transparent;
-            this.LblTitulo2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LblTitulo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblTitulo2.ForeColor = System.Drawing.Color.Black;
             this.LblTitulo2.Location = new System.Drawing.Point(0, 0);
             this.LblTitulo2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblTitulo2.Name = "LblTitulo2";
-            this.LblTitulo2.Size = new System.Drawing.Size(1230, 28);
+            this.LblTitulo2.Size = new System.Drawing.Size(1229, 28);
             this.LblTitulo2.TabIndex = 0;
             this.LblTitulo2.Text = "DETALLE DEL REGISTRO";
             this.LblTitulo2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel6
+            // 
+            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Controls.Add(this.panel5);
+            this.panel6.Controls.Add(this.FgTar);
+            this.panel6.Controls.Add(this.label11);
+            this.panel6.Location = new System.Drawing.Point(4, 329);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(1223, 204);
+            this.panel6.TabIndex = 95;
+            // 
+            // panel5
+            // 
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.CmdAddTar);
+            this.panel5.Controls.Add(this.CmdDelTar);
+            this.panel5.Location = new System.Drawing.Point(1053, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(163, 193);
+            this.panel5.TabIndex = 159;
+            // 
+            // CmdAddTar
+            // 
+            this.CmdAddTar.Enabled = false;
+            this.CmdAddTar.Location = new System.Drawing.Point(13, 5);
+            this.CmdAddTar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdAddTar.Name = "CmdAddTar";
+            this.CmdAddTar.Size = new System.Drawing.Size(137, 39);
+            this.CmdAddTar.TabIndex = 120;
+            this.CmdAddTar.Text = "Agregar Tarea";
+            this.CmdAddTar.UseVisualStyleBackColor = true;
+            this.CmdAddTar.Click += new System.EventHandler(this.CmdAddTar_Click);
+            // 
+            // CmdDelTar
+            // 
+            this.CmdDelTar.Enabled = false;
+            this.CmdDelTar.Location = new System.Drawing.Point(13, 48);
+            this.CmdDelTar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdDelTar.Name = "CmdDelTar";
+            this.CmdDelTar.Size = new System.Drawing.Size(137, 39);
+            this.CmdDelTar.TabIndex = 119;
+            this.CmdDelTar.Text = "Eliminar Tarea";
+            this.CmdDelTar.UseVisualStyleBackColor = true;
+            this.CmdDelTar.Click += new System.EventHandler(this.CmdDelTar_Click);
+            // 
+            // FgTar
+            // 
+            this.FgTar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.FgTar.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
+            this.FgTar.ColumnInfo = "4,1,0,0,0,100,Columns:0{Width:10;}\t";
+            this.FgTar.Location = new System.Drawing.Point(-1, 42);
+            this.FgTar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FgTar.Name = "FgTar";
+            this.FgTar.Rows.DefaultSize = 20;
+            this.FgTar.Size = new System.Drawing.Size(1047, 155);
+            this.FgTar.StyleInfo = resources.GetString("FgTar.StyleInfo");
+            this.FgTar.TabIndex = 158;
+            this.FgTar.RowColChange += new System.EventHandler(this.FgTar_RowColChange);
+            this.FgTar.EnterCell += new System.EventHandler(this.FgTar_EnterCell);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.label11.Location = new System.Drawing.Point(5, 2);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(148, 17);
+            this.label11.TabIndex = 157;
+            this.label11.Text = "Tareas Disponibles";
             // 
             // PanSele
             // 
@@ -1358,7 +1327,7 @@
             this.PanSele.Controls.Add(this.label23);
             this.PanSele.Controls.Add(this.FgSele);
             this.PanSele.Location = new System.Drawing.Point(1281, 123);
-            this.PanSele.Margin = new System.Windows.Forms.Padding(4);
+            this.PanSele.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PanSele.Name = "PanSele";
             this.PanSele.Size = new System.Drawing.Size(1046, 525);
             this.PanSele.TabIndex = 40;
@@ -1369,7 +1338,7 @@
             this.CmdCanSel.Image = ((System.Drawing.Image)(resources.GetObject("CmdCanSel.Image")));
             this.CmdCanSel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.CmdCanSel.Location = new System.Drawing.Point(523, 471);
-            this.CmdCanSel.Margin = new System.Windows.Forms.Padding(4);
+            this.CmdCanSel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CmdCanSel.Name = "CmdCanSel";
             this.CmdCanSel.Size = new System.Drawing.Size(120, 48);
             this.CmdCanSel.TabIndex = 4;
@@ -1383,7 +1352,7 @@
             this.CmdAceSel.Image = ((System.Drawing.Image)(resources.GetObject("CmdAceSel.Image")));
             this.CmdAceSel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.CmdAceSel.Location = new System.Drawing.Point(400, 471);
-            this.CmdAceSel.Margin = new System.Windows.Forms.Padding(4);
+            this.CmdAceSel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CmdAceSel.Name = "CmdAceSel";
             this.CmdAceSel.Size = new System.Drawing.Size(120, 48);
             this.CmdAceSel.TabIndex = 3;
@@ -1419,11 +1388,10 @@
             this.FgSele.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
             this.FgSele.ColumnInfo = "10,1,0,0,0,85,Columns:0{Width:9;}\t";
             this.FgSele.Location = new System.Drawing.Point(3, 36);
-            this.FgSele.Margin = new System.Windows.Forms.Padding(4);
+            this.FgSele.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.FgSele.Name = "FgSele";
             this.FgSele.Rows.DefaultSize = 17;
             this.FgSele.Size = new System.Drawing.Size(1039, 433);
-            this.FgSele.StyleInfo = resources.GetString("FgSele.StyleInfo");
             this.FgSele.TabIndex = 0;
             this.FgSele.EnterCell += new System.EventHandler(this.FgSele_EnterCell);
             // 
@@ -1431,11 +1399,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1272, 753);
+            this.ClientSize = new System.Drawing.Size(1272, 771);
             this.Controls.Add(this.PanSele);
             this.Controls.Add(this.ToolHerramientas);
             this.Controls.Add(this.Tab1);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmSolicitudTareas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmSolicitudTareas";
@@ -1444,11 +1412,8 @@
             this.Resize += new System.EventHandler(this.FrmSolicitudTareas_Resize);
             this.ToolHerramientas.ResumeLayout(false);
             this.ToolHerramientas.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Tab1)).EndInit();
             this.Tab1.ResumeLayout(false);
             this.c1DockingTabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Sc01)).EndInit();
-            this.Sc01.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -1456,26 +1421,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.PicClos1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgLista)).EndInit();
             this.c1DockingTabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Sc02)).EndInit();
-            this.Sc02.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.c1Sizer1)).EndInit();
-            this.c1Sizer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.c1Sizer2)).EndInit();
-            this.c1Sizer2.ResumeLayout(false);
-            this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
-            this.panel8.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            this.panel8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.FgPer)).EndInit();
-            this.panel5.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.FgTar)).EndInit();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicClos2)).EndInit();
             this.panel3.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.FgTar)).EndInit();
             this.PanSele.ResumeLayout(false);
             this.PanSele.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FgSele)).EndInit();
@@ -1497,9 +1456,8 @@
         private System.Windows.Forms.ToolStripSplitButton ToolImprimir;
         private System.Windows.Forms.ToolStripMenuItem emitirGuiaToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton ToolSalir;
-        private C1.Win.C1Command.C1DockingTab Tab1;
-        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage1;
-        private C1.Win.C1Sizer.C1Sizer Sc01;
+        private System.Windows.Forms.TabControl Tab1;
+        private System.Windows.Forms.TabPage c1DockingTabPage1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.ComboBox CboMeses;
         private System.Windows.Forms.Label label1;
@@ -1508,13 +1466,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label17;
         private C1.Win.C1TrueDBGrid.C1TrueDBGrid DgLista;
-        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage2;
-        private C1.Win.C1Sizer.C1Sizer Sc02;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button CmdAddTar;
-        private System.Windows.Forms.Button CmdDelTar;
-        private C1.Win.C1FlexGrid.C1FlexGrid FgPer;
-        private C1.Win.C1FlexGrid.C1FlexGrid FgTar;
+        private System.Windows.Forms.TabPage c1DockingTabPage2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label LblTitulo2;
@@ -1551,16 +1503,11 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox TxtObs;
-        private C1.Win.C1Sizer.C1Sizer c1Sizer1;
-        private C1.Win.C1Sizer.C1Sizer c1Sizer2;
         private System.Windows.Forms.Label LblIdReceta;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Button CmdAddPer;
-        private System.Windows.Forms.Button CmdDelPer;
         private System.Windows.Forms.Label LblNomTar;
         private System.Windows.Forms.ToolStripMenuItem imprimirTareasConPersonalToolStripMenuItem;
         private System.Windows.Forms.PictureBox PicClos1;
@@ -1578,10 +1525,20 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
         private C1.Win.C1FlexGrid.C1FlexGrid FgSele;
-        private System.Windows.Forms.Button CmdRankin;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Label LblTotal;
         private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Button CmdCalcHor;
+        private System.Windows.Forms.Button CmdRankin;
+        private System.Windows.Forms.Button CmdAddPer;
+        private System.Windows.Forms.Button CmdDelPer;
+        private C1.Win.C1FlexGrid.C1FlexGrid FgPer;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button CmdAddTar;
+        private System.Windows.Forms.Button CmdDelTar;
+        private C1.Win.C1FlexGrid.C1FlexGrid FgTar;
+        private System.Windows.Forms.ToolStripButton btnSubirRegistro;
+        private System.Windows.Forms.ToolStripButton BtnBajarRegistro;
     }
 }
