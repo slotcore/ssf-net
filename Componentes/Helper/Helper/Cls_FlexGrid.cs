@@ -1005,11 +1005,14 @@ namespace Helper
         }
         public void Flex_PintarCeldas(C1.Win.C1FlexGrid.C1FlexGrid objControl, int n_Fila, int n_Columna, int n_Fila2, int n_Columna2, Color n_ForeColor, Color n_BackColor)
         {
-            CellRange rg;
+            if (n_Fila2 > n_Fila)
+            {
+                CellRange rg;
 
-            rg = objControl.GetCellRange(n_Fila, n_Columna, n_Fila2, n_Columna2);
-            rg.StyleNew.BackColor = n_BackColor;
-            rg.StyleNew.ForeColor = n_ForeColor;
+                rg = objControl.GetCellRange(n_Fila, n_Columna, n_Fila2, n_Columna2);
+                rg.StyleNew.BackColor = n_BackColor;
+                rg.StyleNew.ForeColor = n_ForeColor;
+            }
         }
         public void Flex_PintarCeldas(C1.Win.C1FlexGrid.C1FlexGrid objControl, int n_Fila, int n_Columna, int n_Fila2, int n_Columna2, Color n_ForeColor)
         {

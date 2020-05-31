@@ -26,7 +26,8 @@ namespace Helper.Formularios
         {
             InitializeComponent();
         }
-        private void crystalReportViewer1_Load(object sender, EventArgs e)
+
+        private void LoadReport()
         {
             this.Text = c_Titulo;
             this.Height = 663;
@@ -34,7 +35,7 @@ namespace Helper.Formularios
 
             int n_NumeroElementos;
             int n_fila;
-            
+
             ConnectionInfo ci = new ConnectionInfo();
             ConnectionInfo iConnectionInfo = new ConnectionInfo();
             iConnectionInfo.ServerName = c_NombreServidor;
@@ -75,8 +76,8 @@ namespace Helper.Formularios
                 //reportdocument.PrintOptions.PrinterName = ImpresoraDefecto();
                 //reportdocument.PrintToPrinter(1, false, 0, 0);
 
-                
-                
+
+
 
                 //this.Text = "Imprimiendo Documento";
                 //this.Width = 300;
@@ -88,6 +89,11 @@ namespace Helper.Formularios
                 //reportdocument.PrintToPrinter(1, false, 0, 0);
                 //this.Close();
             }
+        }
+
+        private void crystalReportViewer1_Load(object sender, EventArgs e)
+        {
+            LoadReport();
         }
 
         string ImpresoraDefecto()
@@ -133,6 +139,11 @@ namespace Helper.Formularios
                 tableLogonInfo.ConnectionInfo = connectionInfo;
                 table.ApplyLogOnInfo(tableLogonInfo);
             }
+        }
+
+        private void FrmVerImpresion_Load(object sender, EventArgs e)
+        {
+            LoadReport();
         }
     }
 }

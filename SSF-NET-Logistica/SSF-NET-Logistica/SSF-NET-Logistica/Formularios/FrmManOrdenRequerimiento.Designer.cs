@@ -41,9 +41,8 @@
             this.emitirGuiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guiasDelMesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolSalir = new System.Windows.Forms.ToolStripButton();
-            this.Tab1 = new C1.Win.C1Command.C1DockingTab();
-            this.c1DockingTabPage1 = new C1.Win.C1Command.C1DockingTabPage();
-            this.Sc01 = new C1.Win.C1Sizer.C1Sizer();
+            this.Tab1 = new System.Windows.Forms.TabControl();
+            this.c1DockingTabPage1 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.CboMeses = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,9 +51,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
             this.DgLista = new C1.Win.C1TrueDBGrid.C1TrueDBGrid();
-            this.c1DockingTabPage2 = new C1.Win.C1Command.C1DockingTabPage();
-            this.Sc02 = new C1.Win.C1Sizer.C1Sizer();
-            this.c1Sizer1 = new C1.Win.C1Sizer.C1Sizer();
+            this.c1DockingTabPage2 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.CmdAddNewItem = new System.Windows.Forms.Button();
             this.LblIdEstado = new System.Windows.Forms.Label();
@@ -85,19 +82,12 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.LblTitulo2 = new System.Windows.Forms.Label();
             this.ToolHerramientas.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Tab1)).BeginInit();
             this.Tab1.SuspendLayout();
             this.c1DockingTabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Sc01)).BeginInit();
-            this.Sc01.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgLista)).BeginInit();
             this.c1DockingTabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Sc02)).BeginInit();
-            this.Sc02.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Sizer1)).BeginInit();
-            this.c1Sizer1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FgItems)).BeginInit();
@@ -123,7 +113,7 @@
             this.ToolHerramientas.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.ToolHerramientas.Location = new System.Drawing.Point(0, 0);
             this.ToolHerramientas.Name = "ToolHerramientas";
-            this.ToolHerramientas.Size = new System.Drawing.Size(898, 39);
+            this.ToolHerramientas.Size = new System.Drawing.Size(875, 39);
             this.ToolHerramientas.TabIndex = 32;
             this.ToolHerramientas.Text = "toolStrip1";
             this.ToolHerramientas.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ToolHerramientas_ItemClicked);
@@ -236,60 +226,48 @@
             // Tab1
             // 
             this.Tab1.Alignment = System.Windows.Forms.TabAlignment.Left;
+            this.Tab1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Tab1.Controls.Add(this.c1DockingTabPage1);
             this.Tab1.Controls.Add(this.c1DockingTabPage2);
             this.Tab1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tab1.ForeColor = System.Drawing.Color.Black;
             this.Tab1.Location = new System.Drawing.Point(2, 39);
+            this.Tab1.Multiline = true;
             this.Tab1.Name = "Tab1";
             this.Tab1.SelectedIndex = 1;
-            this.Tab1.Size = new System.Drawing.Size(894, 514);
-            this.Tab1.TabAreaBackColor = System.Drawing.Color.White;
+            this.Tab1.Size = new System.Drawing.Size(871, 492);
             this.Tab1.TabIndex = 33;
-            this.Tab1.TabsSpacing = -10;
-            this.Tab1.TabStyle = C1.Win.C1Command.TabStyleEnum.Sloping;
-            this.Tab1.VisualStyle = C1.Win.C1Command.VisualStyle.Custom;
-            this.Tab1.VisualStyleBase = C1.Win.C1Command.VisualStyle.OfficeXP;
-            this.Tab1.SelectedIndexChanging += new C1.Win.C1Command.SelectedIndexChangingEventHandler(this.Tab1_SelectedIndexChanging);
+            this.Tab1.SelectedIndexChanged += new System.EventHandler(this.Tab1_SelectedIndexChanging);
             // 
             // c1DockingTabPage1
             // 
             this.c1DockingTabPage1.BackColor = System.Drawing.Color.White;
-            this.c1DockingTabPage1.Controls.Add(this.Sc01);
+            this.c1DockingTabPage1.Controls.Add(this.panel4);
+            this.c1DockingTabPage1.Controls.Add(this.panel2);
+            this.c1DockingTabPage1.Controls.Add(this.DgLista);
             this.c1DockingTabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.c1DockingTabPage1.ForeColor = System.Drawing.Color.Black;
-            this.c1DockingTabPage1.Location = new System.Drawing.Point(29, 1);
+            this.c1DockingTabPage1.Location = new System.Drawing.Point(28, 4);
             this.c1DockingTabPage1.Name = "c1DockingTabPage1";
-            this.c1DockingTabPage1.Size = new System.Drawing.Size(864, 512);
+            this.c1DockingTabPage1.Size = new System.Drawing.Size(839, 484);
             this.c1DockingTabPage1.TabIndex = 0;
             this.c1DockingTabPage1.Text = "Consulta";
             // 
-            // Sc01
-            // 
-            this.Sc01.Controls.Add(this.panel4);
-            this.Sc01.Controls.Add(this.panel2);
-            this.Sc01.Controls.Add(this.DgLista);
-            this.Sc01.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Sc01.ForeColor = System.Drawing.Color.Black;
-            this.Sc01.GridDefinition = "5.46875:False:True;85.546875:False:False;5.859375:False:True;\t99.0740740740741:Fa" +
-    "lse:False;";
-            this.Sc01.Location = new System.Drawing.Point(0, 0);
-            this.Sc01.Name = "Sc01";
-            this.Sc01.Size = new System.Drawing.Size(864, 512);
-            this.Sc01.TabIndex = 0;
-            this.Sc01.Text = "c1Sizer1";
-            // 
             // panel4
             // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.Transparent;
             this.panel4.Controls.Add(this.CboMeses);
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.LblNumReg);
             this.panel4.Controls.Add(this.label18);
             this.panel4.ForeColor = System.Drawing.Color.Black;
-            this.panel4.Location = new System.Drawing.Point(4, 478);
+            this.panel4.Location = new System.Drawing.Point(4, 453);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(856, 30);
+            this.panel4.Size = new System.Drawing.Size(833, 30);
             this.panel4.TabIndex = 2;
             // 
             // CboMeses
@@ -342,12 +320,14 @@
             // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
             this.panel2.Controls.Add(this.label17);
             this.panel2.ForeColor = System.Drawing.Color.Black;
             this.panel2.Location = new System.Drawing.Point(4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(856, 28);
+            this.panel2.Size = new System.Drawing.Size(833, 28);
             this.panel2.TabIndex = 1;
             // 
             // label17
@@ -358,13 +338,16 @@
             this.label17.ForeColor = System.Drawing.Color.Black;
             this.label17.Location = new System.Drawing.Point(0, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(856, 28);
+            this.label17.Size = new System.Drawing.Size(833, 28);
             this.label17.TabIndex = 0;
             this.label17.Text = "CONSULTA";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // DgLista
             // 
+            this.DgLista.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DgLista.BackColor = System.Drawing.Color.White;
             this.DgLista.ForeColor = System.Drawing.Color.Black;
             this.DgLista.GroupByCaption = "Drag a column header here to group by that column";
@@ -375,7 +358,7 @@
             this.DgLista.PreviewInfo.Size = new System.Drawing.Size(0, 0);
             this.DgLista.PreviewInfo.ZoomFactor = 75D;
             this.DgLista.PrintInfo.PageSettings = ((System.Drawing.Printing.PageSettings)(resources.GetObject("DgLista.PrintInfo.PageSettings")));
-            this.DgLista.Size = new System.Drawing.Size(856, 438);
+            this.DgLista.Size = new System.Drawing.Size(833, 414);
             this.DgLista.TabIndex = 0;
             this.DgLista.Text = "c1TrueDBGrid1";
             this.DgLista.DoubleClick += new System.EventHandler(this.DgLista_DoubleClick);
@@ -384,44 +367,21 @@
             // 
             // c1DockingTabPage2
             // 
-            this.c1DockingTabPage2.Controls.Add(this.Sc02);
+            this.c1DockingTabPage2.Controls.Add(this.panel1);
+            this.c1DockingTabPage2.Controls.Add(this.panel3);
             this.c1DockingTabPage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.c1DockingTabPage2.ForeColor = System.Drawing.Color.Black;
-            this.c1DockingTabPage2.Location = new System.Drawing.Point(29, 1);
+            this.c1DockingTabPage2.Location = new System.Drawing.Point(28, 4);
             this.c1DockingTabPage2.Name = "c1DockingTabPage2";
-            this.c1DockingTabPage2.Size = new System.Drawing.Size(864, 512);
+            this.c1DockingTabPage2.Size = new System.Drawing.Size(839, 484);
             this.c1DockingTabPage2.TabIndex = 1;
             this.c1DockingTabPage2.Text = "Detalle";
             // 
-            // Sc02
-            // 
-            this.Sc02.Controls.Add(this.c1Sizer1);
-            this.Sc02.Controls.Add(this.panel3);
-            this.Sc02.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Sc02.ForeColor = System.Drawing.Color.Black;
-            this.Sc02.GridDefinition = "5.46875:False:True;91.40625:False:False;0:False:True;\t99.0740740740741:False:Fals" +
-    "e;";
-            this.Sc02.Location = new System.Drawing.Point(0, 0);
-            this.Sc02.Name = "Sc02";
-            this.Sc02.Size = new System.Drawing.Size(864, 512);
-            this.Sc02.TabIndex = 0;
-            this.Sc02.Text = "c1Sizer2";
-            // 
-            // c1Sizer1
-            // 
-            this.c1Sizer1.Controls.Add(this.panel1);
-            this.c1Sizer1.ForeColor = System.Drawing.Color.Black;
-            this.c1Sizer1.GridDefinition = "1.28205128205128:False:False;94.017094017094:False:True;1.28205128205128:False:Fa" +
-    "lse;\t1.16822429906542:False:False;95.7943925233645:False:True;1.16822429906542:F" +
-    "alse:False;";
-            this.c1Sizer1.Location = new System.Drawing.Point(4, 36);
-            this.c1Sizer1.Name = "c1Sizer1";
-            this.c1Sizer1.Size = new System.Drawing.Size(856, 468);
-            this.c1Sizer1.TabIndex = 10;
-            this.c1Sizer1.Text = "c1Sizer1";
-            // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.CmdAddNewItem);
             this.panel1.Controls.Add(this.LblIdEstado);
@@ -449,15 +409,16 @@
             this.panel1.Controls.Add(this.CboSolicitante);
             this.panel1.Controls.Add(this.label7);
             this.panel1.ForeColor = System.Drawing.Color.Black;
-            this.panel1.Location = new System.Drawing.Point(18, 14);
+            this.panel1.Location = new System.Drawing.Point(4, 39);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(820, 440);
+            this.panel1.Size = new System.Drawing.Size(832, 442);
             this.panel1.TabIndex = 0;
             // 
             // CmdAddNewItem
             // 
+            this.CmdAddNewItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CmdAddNewItem.Enabled = false;
-            this.CmdAddNewItem.Location = new System.Drawing.Point(245, 403);
+            this.CmdAddNewItem.Location = new System.Drawing.Point(250, 403);
             this.CmdAddNewItem.Name = "CmdAddNewItem";
             this.CmdAddNewItem.Size = new System.Drawing.Size(121, 32);
             this.CmdAddNewItem.TabIndex = 78;
@@ -470,7 +431,7 @@
             this.LblIdEstado.AutoSize = true;
             this.LblIdEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblIdEstado.ForeColor = System.Drawing.Color.DarkRed;
-            this.LblIdEstado.Location = new System.Drawing.Point(477, 19);
+            this.LblIdEstado.Location = new System.Drawing.Point(482, 19);
             this.LblIdEstado.Name = "LblIdEstado";
             this.LblIdEstado.Size = new System.Drawing.Size(74, 13);
             this.LblIdEstado.TabIndex = 77;
@@ -484,17 +445,18 @@
             this.CboMotivo.Enabled = false;
             this.CboMotivo.ForeColor = System.Drawing.Color.Black;
             this.CboMotivo.FormattingEnabled = true;
-            this.CboMotivo.Location = new System.Drawing.Point(95, 100);
+            this.CboMotivo.Location = new System.Drawing.Point(100, 100);
             this.CboMotivo.Name = "CboMotivo";
             this.CboMotivo.Size = new System.Drawing.Size(358, 21);
             this.CboMotivo.TabIndex = 8;
             // 
             // CmdDelItem
             // 
+            this.CmdDelItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CmdDelItem.BackColor = System.Drawing.Color.White;
             this.CmdDelItem.Enabled = false;
             this.CmdDelItem.ForeColor = System.Drawing.Color.Black;
-            this.CmdDelItem.Location = new System.Drawing.Point(118, 403);
+            this.CmdDelItem.Location = new System.Drawing.Point(123, 403);
             this.CmdDelItem.Name = "CmdDelItem";
             this.CmdDelItem.Size = new System.Drawing.Size(109, 32);
             this.CmdDelItem.TabIndex = 12;
@@ -504,10 +466,11 @@
             // 
             // CmdAddItem
             // 
+            this.CmdAddItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CmdAddItem.BackColor = System.Drawing.Color.White;
             this.CmdAddItem.Enabled = false;
             this.CmdAddItem.ForeColor = System.Drawing.Color.Black;
-            this.CmdAddItem.Location = new System.Drawing.Point(3, 403);
+            this.CmdAddItem.Location = new System.Drawing.Point(8, 403);
             this.CmdAddItem.Name = "CmdAddItem";
             this.CmdAddItem.Size = new System.Drawing.Size(109, 32);
             this.CmdAddItem.TabIndex = 11;
@@ -522,7 +485,7 @@
             this.CboPrioridad.Enabled = false;
             this.CboPrioridad.ForeColor = System.Drawing.Color.Black;
             this.CboPrioridad.FormattingEnabled = true;
-            this.CboPrioridad.Location = new System.Drawing.Point(95, 78);
+            this.CboPrioridad.Location = new System.Drawing.Point(100, 78);
             this.CboPrioridad.Name = "CboPrioridad";
             this.CboPrioridad.Size = new System.Drawing.Size(127, 21);
             this.CboPrioridad.TabIndex = 6;
@@ -532,7 +495,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(4, 82);
+            this.label6.Location = new System.Drawing.Point(9, 82);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(48, 13);
             this.label6.TabIndex = 76;
@@ -545,7 +508,7 @@
             this.CboLocal.Enabled = false;
             this.CboLocal.ForeColor = System.Drawing.Color.Black;
             this.CboLocal.FormattingEnabled = true;
-            this.CboLocal.Location = new System.Drawing.Point(95, 32);
+            this.CboLocal.Location = new System.Drawing.Point(100, 32);
             this.CboLocal.Name = "CboLocal";
             this.CboLocal.Size = new System.Drawing.Size(358, 21);
             this.CboLocal.TabIndex = 3;
@@ -555,7 +518,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(4, 36);
+            this.label4.Location = new System.Drawing.Point(9, 36);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(33, 13);
             this.label4.TabIndex = 74;
@@ -564,7 +527,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.LblEstado);
-            this.groupBox1.Location = new System.Drawing.Point(562, 3);
+            this.groupBox1.Location = new System.Drawing.Point(567, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(244, 41);
             this.groupBox1.TabIndex = 72;
@@ -585,7 +548,7 @@
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(4, 124);
+            this.label10.Location = new System.Drawing.Point(9, 124);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(78, 13);
             this.label10.TabIndex = 71;
@@ -595,7 +558,7 @@
             // 
             this.TxtObs.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtObs.Enabled = false;
-            this.TxtObs.Location = new System.Drawing.Point(95, 122);
+            this.TxtObs.Location = new System.Drawing.Point(100, 122);
             this.TxtObs.MaxLength = 300;
             this.TxtObs.Multiline = true;
             this.TxtObs.Name = "TxtObs";
@@ -606,7 +569,7 @@
             // TxtNumDoc
             // 
             this.TxtNumDoc.Enabled = false;
-            this.TxtNumDoc.Location = new System.Drawing.Point(145, 9);
+            this.TxtNumDoc.Location = new System.Drawing.Point(150, 9);
             this.TxtNumDoc.MaxLength = 10;
             this.TxtNumDoc.Name = "TxtNumDoc";
             this.TxtNumDoc.Size = new System.Drawing.Size(121, 20);
@@ -617,7 +580,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(4, 12);
+            this.label2.Location = new System.Drawing.Point(9, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 13);
             this.label2.TabIndex = 69;
@@ -626,7 +589,7 @@
             // TxtNumSer
             // 
             this.TxtNumSer.Enabled = false;
-            this.TxtNumSer.Location = new System.Drawing.Point(95, 9);
+            this.TxtNumSer.Location = new System.Drawing.Point(100, 9);
             this.TxtNumSer.MaxLength = 4;
             this.TxtNumSer.Name = "TxtNumSer";
             this.TxtNumSer.Size = new System.Drawing.Size(44, 20);
@@ -637,7 +600,7 @@
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(4, 103);
+            this.label11.Location = new System.Drawing.Point(9, 103);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(39, 13);
             this.label11.TabIndex = 69;
@@ -645,12 +608,15 @@
             // 
             // FgItems
             // 
+            this.FgItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.FgItems.BackColor = System.Drawing.Color.White;
             this.FgItems.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
             this.FgItems.ColumnInfo = "3,1,0,0,0,85,Columns:0{Width:9;}\t1{Width:217;Caption:\"Unidad Medida\";Style:\"TextA" +
     "lign:CenterCenter;\";StyleFixed:\"TextAlign:CenterCenter;\";}\t2{Width:30;}\t";
             this.FgItems.ForeColor = System.Drawing.Color.Black;
-            this.FgItems.Location = new System.Drawing.Point(4, 175);
+            this.FgItems.Location = new System.Drawing.Point(9, 175);
             this.FgItems.Name = "FgItems";
             this.FgItems.Rows.DefaultSize = 17;
             this.FgItems.Size = new System.Drawing.Size(812, 225);
@@ -667,7 +633,7 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(482, 82);
+            this.label8.Location = new System.Drawing.Point(487, 82);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 13);
             this.label8.TabIndex = 64;
@@ -679,7 +645,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(296, 12);
+            this.label5.Location = new System.Drawing.Point(301, 12);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(64, 13);
             this.label5.TabIndex = 62;
@@ -689,7 +655,7 @@
             // 
             this.TxtFchEnt.Enabled = false;
             this.TxtFchEnt.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.TxtFchEnt.Location = new System.Drawing.Point(562, 78);
+            this.TxtFchEnt.Location = new System.Drawing.Point(567, 78);
             this.TxtFchEnt.Name = "TxtFchEnt";
             this.TxtFchEnt.Size = new System.Drawing.Size(87, 20);
             this.TxtFchEnt.TabIndex = 7;
@@ -699,7 +665,7 @@
             // 
             this.TxtFchEmiDoc.Enabled = false;
             this.TxtFchEmiDoc.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.TxtFchEmiDoc.Location = new System.Drawing.Point(366, 9);
+            this.TxtFchEmiDoc.Location = new System.Drawing.Point(371, 9);
             this.TxtFchEmiDoc.Name = "TxtFchEmiDoc";
             this.TxtFchEmiDoc.Size = new System.Drawing.Size(87, 20);
             this.TxtFchEmiDoc.TabIndex = 2;
@@ -711,7 +677,7 @@
             this.CboArea.Enabled = false;
             this.CboArea.ForeColor = System.Drawing.Color.Black;
             this.CboArea.FormattingEnabled = true;
-            this.CboArea.Location = new System.Drawing.Point(562, 55);
+            this.CboArea.Location = new System.Drawing.Point(567, 55);
             this.CboArea.Name = "CboArea";
             this.CboArea.Size = new System.Drawing.Size(255, 21);
             this.CboArea.TabIndex = 5;
@@ -721,7 +687,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(518, 59);
+            this.label3.Location = new System.Drawing.Point(523, 59);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 13);
             this.label3.TabIndex = 57;
@@ -734,7 +700,7 @@
             this.CboSolicitante.Enabled = false;
             this.CboSolicitante.ForeColor = System.Drawing.Color.Black;
             this.CboSolicitante.FormattingEnabled = true;
-            this.CboSolicitante.Location = new System.Drawing.Point(95, 55);
+            this.CboSolicitante.Location = new System.Drawing.Point(100, 55);
             this.CboSolicitante.Name = "CboSolicitante";
             this.CboSolicitante.Size = new System.Drawing.Size(358, 21);
             this.CboSolicitante.TabIndex = 4;
@@ -744,7 +710,7 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(4, 59);
+            this.label7.Location = new System.Drawing.Point(9, 59);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 13);
             this.label7.TabIndex = 8;
@@ -752,12 +718,14 @@
             // 
             // panel3
             // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
             this.panel3.Controls.Add(this.LblTitulo2);
             this.panel3.ForeColor = System.Drawing.Color.Black;
             this.panel3.Location = new System.Drawing.Point(4, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(856, 28);
+            this.panel3.Size = new System.Drawing.Size(833, 28);
             this.panel3.TabIndex = 8;
             // 
             // LblTitulo2
@@ -768,7 +736,7 @@
             this.LblTitulo2.ForeColor = System.Drawing.Color.Black;
             this.LblTitulo2.Location = new System.Drawing.Point(0, 0);
             this.LblTitulo2.Name = "LblTitulo2";
-            this.LblTitulo2.Size = new System.Drawing.Size(856, 28);
+            this.LblTitulo2.Size = new System.Drawing.Size(833, 28);
             this.LblTitulo2.TabIndex = 0;
             this.LblTitulo2.Text = "DETALLE DEL REGISTRO";
             this.LblTitulo2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -777,7 +745,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(898, 558);
+            this.ClientSize = new System.Drawing.Size(875, 536);
             this.Controls.Add(this.ToolHerramientas);
             this.Controls.Add(this.Tab1);
             this.Name = "FrmManOrdenRequerimiento";
@@ -787,20 +755,13 @@
             this.Load += new System.EventHandler(this.FrmManOrdenRequerimiento_Load);
             this.ToolHerramientas.ResumeLayout(false);
             this.ToolHerramientas.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Tab1)).EndInit();
             this.Tab1.ResumeLayout(false);
             this.c1DockingTabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Sc01)).EndInit();
-            this.Sc01.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DgLista)).EndInit();
             this.c1DockingTabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Sc02)).EndInit();
-            this.Sc02.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.c1Sizer1)).EndInit();
-            this.c1Sizer1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -825,9 +786,8 @@
         private System.Windows.Forms.ToolStripMenuItem emitirGuiaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem guiasDelMesToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton ToolSalir;
-        private C1.Win.C1Command.C1DockingTab Tab1;
-        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage1;
-        private C1.Win.C1Sizer.C1Sizer Sc01;
+        private System.Windows.Forms.TabControl Tab1;
+        private System.Windows.Forms.TabPage c1DockingTabPage1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.ComboBox CboMeses;
         private System.Windows.Forms.Label label1;
@@ -836,9 +796,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label17;
         private C1.Win.C1TrueDBGrid.C1TrueDBGrid DgLista;
-        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage2;
-        private C1.Win.C1Sizer.C1Sizer Sc02;
-        private C1.Win.C1Sizer.C1Sizer c1Sizer1;
+        private System.Windows.Forms.TabPage c1DockingTabPage2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label LblEstado;

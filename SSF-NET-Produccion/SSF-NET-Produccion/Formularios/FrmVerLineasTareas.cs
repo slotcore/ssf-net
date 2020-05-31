@@ -178,14 +178,14 @@ namespace SSF_NET_Produccion.Formularios
 
             arrCabeceraFlexTar[14, 0] = "Kg H x Persona";
             arrCabeceraFlexTar[14, 1] = "60";
-            arrCabeceraFlexTar[14, 2] = "N";
-            arrCabeceraFlexTar[14, 3] = "0";
+            arrCabeceraFlexTar[14, 2] = "D";
+            arrCabeceraFlexTar[14, 3] = "0.0000";
             arrCabeceraFlexTar[14, 4] = "";
 
             arrCabeceraFlexTar[15, 0] = "Costo tarea";
             arrCabeceraFlexTar[15, 1] = "60";
-            arrCabeceraFlexTar[15, 2] = "N";
-            arrCabeceraFlexTar[15, 3] = "0";
+            arrCabeceraFlexTar[15, 2] = "D";
+            arrCabeceraFlexTar[15, 3] = "0.0000";
             arrCabeceraFlexTar[15, 4] = "";
 
             arrCabeceraFlexTar[16, 0] = "Id Equipo";
@@ -334,9 +334,9 @@ namespace SSF_NET_Produccion.Formularios
                 //13
                 FgTar.SetData(n_fila, 14, n_Valor.ToString("0.00"));                                      // PORCENTAJE DE EFICIENCIA TOTAL
 
-                n_Valor = 0;
+                n_Valor = lstLineaTar[n_row].n_kghper;
                 //14
-                FgTar.SetData(n_fila, 15, n_Valor.ToString("0.00"));                                      
+                FgTar.SetData(n_fila, 15, n_Valor.ToString("0.000000"));                                      
 
                 n_Valor = lstLineaTar[n_row].n_costar;
                 //15
@@ -723,8 +723,10 @@ namespace SSF_NET_Produccion.Formularios
                         //13
                         lstLineaTar[n_row].n_porefitot = Convert.ToDouble(FgTar.GetData(n_fila, 14).ToString());
                         //15
+                        lstLineaTar[n_row].n_kghper = Convert.ToDouble(FgTar.GetData(n_fila, 15).ToString());
+                        //16
                         lstLineaTar[n_row].n_costar = Convert.ToDouble(FgTar.GetData(n_fila, 16).ToString());
-                        
+
                         lstLineaTar[n_row].n_ord = Convert.ToInt32(FgTar.GetData(n_fila, 19).ToString());
                         n_encontrado = true;
                         break;
@@ -738,9 +740,33 @@ namespace SSF_NET_Produccion.Formularios
                     entTar.n_idlin = entLinea.n_id;
                     //17
                     entTar.n_idtar = Convert.ToInt32(FgTar.GetData(n_fila, 18).ToString());
-                    entTar.n_porefi = Convert.ToDouble(FgTar.GetData(n_fila, 2).ToString());
-                    entTar.n_cankilpro = Convert.ToDouble(FgTar.GetData(n_fila, 3).ToString());
-                    entTar.n_numpertar = Convert.ToInt32(FgTar.GetData(n_fila, 5).ToString());
+                    if (string.IsNullOrEmpty(funFunciones.NulosC(FgTar.GetData(n_fila, 2))))
+                    {
+                        entTar.n_porefi = 0;
+                    }
+                    else
+                    {
+                        entTar.n_porefi = Convert.ToDouble(FgTar.GetData(n_fila, 2));
+                    }
+
+                    if (string.IsNullOrEmpty(funFunciones.NulosC(FgTar.GetData(n_fila, 3))))
+                    {
+                        entTar.n_cankilpro = 0;
+                    }
+                    else
+                    {
+                        entTar.n_cankilpro = Convert.ToDouble(FgTar.GetData(n_fila, 3));
+                    }
+
+                    if (string.IsNullOrEmpty(funFunciones.NulosC(FgTar.GetData(n_fila, 5))))
+                    {
+                        entTar.n_numpertar = 0;
+                    }
+                    else
+                    {
+                        entTar.n_numpertar = Convert.ToInt32(FgTar.GetData(n_fila, 5));
+                    }
+
                     //16
                     if (funFunciones.NulosC(FgTar.GetData(n_fila, 17)) == "")
                     {
@@ -751,23 +777,65 @@ namespace SSF_NET_Produccion.Formularios
                         //16
                         entTar.n_idequipo = Convert.ToInt32(FgTar.GetData(n_fila, 17).ToString());
                     }
+                    if (string.IsNullOrEmpty(funFunciones.NulosC(FgTar.GetData(n_fila, 5))))
+                    {
+                        MessageBox.Show("¡ Debe de ingresar el numero de personas por tarea !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                        return;
+                    }
                     entTar.n_numpertarequ = Convert.ToInt32(FgTar.GetData(n_fila, 5).ToString());
                     //7
+                    if (string.IsNullOrEmpty(funFunciones.NulosC(FgTar.GetData(n_fila, 8))))
+                    {
+                        MessageBox.Show("¡ Debe de ingresar la capacidad kg persona x hora !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                        return;
+                    }
                     entTar.n_capkilporper = Convert.ToDouble(FgTar.GetData(n_fila, 8).ToString());
                     //8
+                    if (string.IsNullOrEmpty(funFunciones.NulosC(FgTar.GetData(n_fila, 9))))
+                    {
+                        MessageBox.Show("¡ Debe de ingresar la capacidad de la linea por hora !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                        return;
+                    }
                     entTar.n_capkilporhorlin = Convert.ToDouble(FgTar.GetData(n_fila, 9).ToString());
                     //9
+                    if (string.IsNullOrEmpty(funFunciones.NulosC(FgTar.GetData(n_fila, 10))))
+                    {
+                        MessageBox.Show("¡ Debe de ingresar la capacidad de la linea por lapso de tiempo !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                        return;
+                    }
                     entTar.n_capkilporlintietra = Convert.ToDouble(FgTar.GetData(n_fila, 10).ToString());
 
                     int n_valor = 1;// Convert.ToInt32(FgTar.GetData(n_fila, 10));
                     entTar.n_numpercal = n_valor;
                     //11
+                    if (string.IsNullOrEmpty(funFunciones.NulosC(FgTar.GetData(n_fila, 12))))
+                    {
+                        MessageBox.Show("¡ Debe de ingresar la cantidad total a producir por lapso de tiempo !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                        return;
+                    }
                     entTar.n_totprotietra = Convert.ToDouble(FgTar.GetData(n_fila, 12).ToString());
                     //12
                     entTar.n_porefiuni = Convert.ToDouble(funFunciones.NulosN(FgTar.GetData(n_fila, 13)));
                     //13
+                    if (string.IsNullOrEmpty(funFunciones.NulosC(FgTar.GetData(n_fila, 14))))
+                    {
+                        MessageBox.Show("¡ Debe de ingresar la eficiencia total !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                        return;
+                    }
                     entTar.n_porefitot = Convert.ToDouble(FgTar.GetData(n_fila, 14).ToString());
                     //15
+                    if (string.IsNullOrEmpty(funFunciones.NulosC(FgTar.GetData(n_fila, 15))))
+                    {
+                        MessageBox.Show("¡ Debe de ingresar KgHxPersona !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                        return;
+                    }
+                    entTar.n_kghper = Convert.ToDouble(FgTar.GetData(n_fila, 15).ToString());
+                    //16
+                    if (string.IsNullOrEmpty(funFunciones.NulosC(FgTar.GetData(n_fila, 16))))
+                    {
+                        MessageBox.Show("¡ Debe de ingresar costo de la tarea !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                        return;
+                    }
                     entTar.n_costar = Convert.ToDouble(FgTar.GetData(n_fila, 16).ToString());
 
                     entTar.n_ord = Convert.ToInt32(funFunciones.NulosN(FgTar.GetData(n_fila, 19)));
@@ -1091,13 +1159,22 @@ namespace SSF_NET_Produccion.Formularios
                 FgTar.SetData(FgTar.Row, 14, n_valor.ToString("0.00"));
             }
             //15
+            if (FgTar.Col == 15)
+            {
+                //15
+                n_valor = Convert.ToDouble(funFunciones.NulosN(FgTar.GetData(FgTar.Row, 15)));
+                lstLineaTar[n_index].n_kghper = n_valor;                                                    // COSTO POR TAREA         
+                //15
+                FgTar.SetData(FgTar.Row, 15, n_valor.ToString("0.0000"));
+            }
+            //16
             if (FgTar.Col == 16)
             {
                 //15
                 n_valor = Convert.ToDouble(funFunciones.NulosN(FgTar.GetData(FgTar.Row, 16)));
                 lstLineaTar[n_index].n_costar = n_valor;                                                    // COSTO POR TAREA         
                 //15
-                FgTar.SetData(FgTar.Row, 16, n_valor.ToString("0.00"));
+                FgTar.SetData(FgTar.Row, 16, n_valor.ToString("0.0000"));
             }
             if (FgTar.Col == 19)
             {
@@ -1165,8 +1242,48 @@ namespace SSF_NET_Produccion.Formularios
             {
                 FgTar.AllowEditing = true;
             }
-            //7
-            if ((FgTar.Col > 8) && (FgTar.Col < 18))
+            //9
+            if (FgTar.Col == 9)                                                 // NUMERO DE PERSONAS
+            {
+                FgTar.AllowEditing = true;
+            }
+            //10
+            if (FgTar.Col == 10)                                                 // NUMERO DE PERSONAS
+            {
+                FgTar.AllowEditing = true;
+            }
+            //11
+            if (FgTar.Col == 11)                                                 // NUMERO DE PERSONAS
+            {
+                FgTar.AllowEditing = false;
+            }
+            //12
+            if (FgTar.Col == 12)                                                 // NUMERO DE PERSONAS
+            {
+                FgTar.AllowEditing = true;
+            }
+            //13
+            if (FgTar.Col == 13)                                                 // NUMERO DE PERSONAS
+            {
+                FgTar.AllowEditing = false;
+            }
+            //14
+            if (FgTar.Col == 14)                                                 // NUMERO DE PERSONAS
+            {
+                FgTar.AllowEditing = true;
+            }
+            //15
+            if (FgTar.Col == 15)                                                 // KGH POR PERSONA
+            {
+                FgTar.AllowEditing = true;
+            }
+            //16
+            if (FgTar.Col == 16)                                                 // NUMERO DE PERSONAS
+            {
+                FgTar.AllowEditing = true;
+            }
+            //12
+            if ((FgTar.Col > 16) && (FgTar.Col < 18))
             {
                 FgTar.AllowEditing = false;
             }

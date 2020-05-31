@@ -289,11 +289,12 @@ namespace SIAC_Negocio.Produccion
                 n_numpro = Convert.ToInt32(dtResult.Rows[0]["n_idprogra"]);
                 n_ordpro = Convert.ToInt32(dtResult.Rows[0]["n_idordpro"]);
                 n_idite = Convert.ToInt32(dtResult.Rows[0]["n_idite"]);
+                int n_idtipdoc = Convert.ToInt32(dtResult.Rows[0]["n_idtipdoc"]);
                 c_fchent = dtResult.Rows[0]["d_fchent"].ToString().Substring(0, 10);
 
                 string c_NomArchivo = "";
                 string c_Ruta = "";
-                string[,] arrPara = new string[3, 3];
+                string[,] arrPara = new string[4, 3];
 
                 arrPara[0, 0] = "n_idsol";
                 arrPara[0, 1] = "N";
@@ -307,8 +308,23 @@ namespace SIAC_Negocio.Produccion
                 arrPara[2, 1] = "C";
                 arrPara[2, 2] = STU_SISTEMA.EMPRESARUC;
 
+                arrPara[3, 0] = "c_tipdoc";
+                arrPara[3, 1] = "C";
+                if (n_idtipdoc == 72)
+                {
+                    arrPara[3, 2] = "SOLICITUD MATERIALES";
+                }
+                if (n_idtipdoc == 92)
+                {
+                    arrPara[3, 2] = "SOLICITUD ADICIONAL";
+                }
+                if (n_idtipdoc == 93)
+                {
+                    arrPara[3, 2] = "SOLICITUD DEVOLUCIÓN";
+                }
+
                 c_NomArchivo = "RptSolicitudMateriales.rpt";
-                //c_Ruta = @"j:\ssf-net\reportes\Produccion\" + c_NomArchivo;
+                //c_Ruta = @"D:\Users\jchac\Source\Repos\App\ssf-net\SSF-NET-Produccion\SSF-NET-Produccion\Reportes\" + c_NomArchivo;
                 c_Ruta = "" + STU_SISTEMA.RUTAREPORTES + "produccion\\" + c_NomArchivo;
 
                 Helper.Cls_VisorCrystal xVisor = new Helper.Cls_VisorCrystal();
@@ -323,6 +339,7 @@ namespace SIAC_Negocio.Produccion
                 xVisor.VerCrystal();
             }
         }
+
         public bool Consulta2(int n_IdOrdPro, int n_idite, int n_idrec, string c_FechaEntrega)
         {
             bool b_result = false;

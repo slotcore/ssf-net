@@ -31,6 +31,7 @@ namespace SSF_NET_Planillas.Formularios
         Cls_Controles funControl = new Cls_Controles();
         int n_NUMCOL = 0;
 
+        string[,] arrCabeceraDetallado = new string[5, 5];
         string[,] arrCabecera1 = new string[3, 5];
         string[,] arrCabecera2 = new string[3, 5];
         string[,] arrCabecera3 = new string[4, 5];
@@ -69,14 +70,46 @@ namespace SSF_NET_Planillas.Formularios
             FgDatos.Cols.Count = 5;
             Cabecera1();
             funFlex.b_AlternarColor = false;
+            funFlex.FlexMostrarDatos(FgDetallado, arrCabeceraDetallado, dt, 2, false);
             funFlex.FlexMostrarDatos(FgDatos, arrCabecera1, dt, 3, false);
             funFlex.FlexMostrarDatos(FgDatos2, arrCabecera2, dt, 3, false);
             funFlex.FlexMostrarDatos(FgMarca, arrCabecera3, dt, 2, false);
 
-            SetearCabecera1();
+            //SetearCabecera1();
         }
         void Cabecera1()
         {
+            arrCabeceraDetallado[0, 0] = "Id";
+            arrCabeceraDetallado[0, 1] = "0";
+            arrCabeceraDetallado[0, 2] = "C";
+            arrCabeceraDetallado[0, 3] = "";
+            arrCabeceraDetallado[0, 4] = "n_id";
+
+            arrCabeceraDetallado[1, 0] = "Nº Documento";
+            arrCabeceraDetallado[1, 1] = "70";
+            arrCabeceraDetallado[1, 2] = "C";
+            arrCabeceraDetallado[1, 3] = "";
+            arrCabeceraDetallado[1, 4] = "c_numdocide";
+
+            arrCabeceraDetallado[2, 0] = "Apellidos y Nombres";
+            arrCabeceraDetallado[2, 1] = "300";
+            arrCabeceraDetallado[2, 2] = "C";
+            arrCabeceraDetallado[2, 3] = "";
+            arrCabeceraDetallado[2, 4] = "c_apenom";
+
+
+            arrCabeceraDetallado[3, 0] = "Fecha";
+            arrCabeceraDetallado[3, 1] = "70";
+            arrCabeceraDetallado[3, 2] = "F";
+            arrCabeceraDetallado[3, 3] = "dd/MM/yyyy";
+            arrCabeceraDetallado[3, 4] = "d_fecha";
+
+            arrCabeceraDetallado[4, 0] = "Hora";
+            arrCabeceraDetallado[4, 1] = "70";
+            arrCabeceraDetallado[4, 2] = "H";
+            arrCabeceraDetallado[4, 3] = "";
+            arrCabeceraDetallado[4, 4] = "c_hor";
+
             arrCabecera1[0, 0] = "Id";
             arrCabecera1[0, 1] = "0";
             arrCabecera1[0, 2] = "C";
@@ -94,7 +127,6 @@ namespace SSF_NET_Planillas.Formularios
             arrCabecera1[2, 2] = "C";
             arrCabecera1[2, 3] = "";
             arrCabecera1[2, 4] = "c_apenom";
-
 
             arrCabecera2[0, 0] = "Id";
             arrCabecera2[0, 1] = "0";
@@ -218,56 +250,74 @@ namespace SSF_NET_Planillas.Formularios
         
         void EjecutarConsulta()
         {
-            ConfigurarCabecera();
-            if (funFunciones.NulosC(TxtFchIni.Text) == "")
+            try
             {
-                MessageBox.Show("¡ No ha indicado la fecha de inicio para la consulta !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                TxtFchIni.Focus();
-                return;
+                Cursor.Current = Cursors.WaitCursor;
+                ConfigurarCabecera();
+                if (funFunciones.NulosC(TxtFchIni.Text) == "")
+                {
+                    MessageBox.Show("¡ No ha indicado la fecha de inicio para la consulta !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    TxtFchIni.Focus();
+                    return;
+                }
+                if (funFunciones.NulosC(TxtFchFin.Text) == "")
+                {
+                    MessageBox.Show("¡ No ha indicado la fecha final para la consulta !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    TxtFchFin.Focus();
+                    return;
+                }
+
+                DateTime d_fchini = Convert.ToDateTime(TxtFchIni.Text);
+                DateTime d_fchfin = Convert.ToDateTime(TxtFchFin.Text);
+
+                if (d_fchini > d_fchfin)
+                {
+                    MessageBox.Show("¡ La fecha de inicio no puede ser mayor a la fecha final de la consulta !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    TxtFchIni.Focus();
+                    return;
+                }
+
+                DataTable dtListaDetallado = new DataTable();
+                DataTable dtLista = new DataTable();
+                DataTable dtLista2 = new DataTable();
+                int m_tiprep = 0;
+                CN_pla_empleados o_emple = new CN_pla_empleados(STU_SISTEMA);
+                o_emple.STU_SISTEMA = STU_SISTEMA;
+
+                if (OpTod.Checked == true) { m_tiprep = 1; }
+                if (OptPen.Checked == true) { m_tiprep = 2; }
+                if (OptEnt.Checked == true) { m_tiprep = 3; }
+
+                o_emple.ListarAsistenciaDetallado(TxtFchIni.Text, TxtFchFin.Text);
+                dtListaDetallado = o_emple.dtLista;
+
+                o_emple.ListarAsistenciaDec(TxtFchIni.Text, TxtFchFin.Text);
+                dtLista = o_emple.dtLista;
+
+                o_emple.ListarAsistenciaHor(TxtFchIni.Text, TxtFchFin.Text);
+                dtLista2 = o_emple.dtLista;
+
+                funFlex.b_AlternarColor = true;
+
+                funFlex.FlexMostrarDatos(FgDetallado, arrCabeceraDetallado, dtListaDetallado, 2, true);
+                funFlex = new Cls_FlexGrid();
+                funFlex.FlexMostrarDatos(FgDatos, arrCabecera1, dtLista, 3, true);
+                funFlex = new Cls_FlexGrid();
+                funFlex.FlexMostrarDatos(FgDatos2, arrCabecera2, dtLista2, 3, true);
+
+                SetearCabecera1();
+                ResaltarErrores();
+                MessageBox.Show("¡ Los datos se mostraron con exito !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                FgDetallado.Focus();
             }
-            if (funFunciones.NulosC(TxtFchFin.Text) == "")
+            catch (Exception ex)
             {
-                MessageBox.Show("¡ No ha indicado la fecha final para la consulta !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                TxtFchFin.Focus();
-                return;
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
-
-            DateTime d_fchini = Convert.ToDateTime(TxtFchIni.Text);
-            DateTime d_fchfin = Convert.ToDateTime(TxtFchFin.Text);
-
-            if (d_fchini > d_fchfin)
+            finally
             {
-                MessageBox.Show("¡ La fecha de inicio no puede ser mayor a la fecha final de la consulta !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                TxtFchIni.Focus();
-                return;
+                Cursor.Current = Cursors.Default;
             }
-
-            DataTable dtLista = new DataTable();
-            DataTable dtLista2 = new DataTable();
-            int m_tiprep = 0;
-            CN_pla_empleados o_emple = new CN_pla_empleados(STU_SISTEMA);
-            o_emple.STU_SISTEMA = STU_SISTEMA;
-
-            if (OpTod.Checked == true) { m_tiprep = 1; }
-            if (OptPen.Checked == true) { m_tiprep = 2; }
-            if (OptEnt.Checked == true) { m_tiprep = 3; }
-
-            o_emple.ListarAsistenciaDec(TxtFchIni.Text, TxtFchFin.Text);
-            dtLista = o_emple.dtLista;
-
-            o_emple.ListarAsistenciaHor(TxtFchIni.Text, TxtFchFin.Text);
-            dtLista2 = o_emple.dtLista;
-
-            funFlex.b_AlternarColor = true;
-            
-            funFlex.FlexMostrarDatos(FgDatos, arrCabecera1, dtLista, 3, true);
-            funFlex = new Cls_FlexGrid();
-            funFlex.FlexMostrarDatos(FgDatos2, arrCabecera2, dtLista2, 3, true);
-            
-            SetearCabecera1();
-            ResaltarErrores();
-            MessageBox.Show("¡ Los datos se mostraron con exito !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-            FgDatos.Focus();
         }
         void ResaltarErrores()
         { 

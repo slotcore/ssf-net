@@ -148,13 +148,14 @@ namespace SSF_NET_Almacen.Formularios
             funDatos.ComboBoxCargarDataTable(CboTipOpe, dtTipOpe, "n_id", "c_des");
             funDatos.ComboBoxCargarDataTable(CboMeses, dtMeses, "n_id", "c_des");
 
+            //dtResult = funDatos.DataTableFiltrar(dtTipoDocumento2, "n_id IN (74,10,32)");
             dtResult = funDatos.DataTableFiltrar(dtTipoDocumento2, "n_id IN (74,10,32)");
             funDatos.ComboBoxCargarDataTable(CboDocRef, dtResult, "n_id", "c_des");
         }
         void ConfigurarFormulario()
         {
-            this.Height = 582;
-            this.Width = 967;
+            //this.Height = 582;
+            //this.Width = 967;
             
             string c_nomarc = ConfigurationManager.AppSettings["PathIniFile"];
             //string c_idlocal = funDatos.IniLeerSeccion(c_nomarc, "SISTEMA", "LOCAL").ToString();
@@ -173,8 +174,8 @@ namespace SSF_NET_Almacen.Formularios
                 }
             }
 
-            Tab_Posicionar(Tab1, 1, 41);
-            Tab_Dimensionar(Tab1, this.Height - 81, this.Width - 18);
+            //Tab_Posicionar(Tab1, 1, 41);
+            //Tab_Dimensionar(Tab1, this.Height - 81, this.Width - 18);
             Tab1.SelectedIndex = 0;
             LblTitulo2.Text = "DETALLE DEL REGISTRO";
 
@@ -332,13 +333,13 @@ namespace SSF_NET_Almacen.Formularios
         }
         void Tab_Dimensionar(C1.Win.C1Command.C1DockingTab dokTab, int intAlto, int intAncho)
         {
-            Tab1.Height = intAlto;
-            Tab1.Width = intAncho;
+            //Tab1.Height = intAlto;
+            //Tab1.Width = intAncho;
         }
         void Tab_Posicionar(C1.Win.C1Command.C1DockingTab dokTab, int intPosX, int intPosY)
         {
-            dokTab.Left = intPosX;
-            dokTab.Top = intPosY;
+            //dokTab.Left = intPosX;
+            //dokTab.Top = intPosY;
         }
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
@@ -418,13 +419,15 @@ namespace SSF_NET_Almacen.Formularios
                 n_fila++;
             }
         }
-        private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
+        private void Tab1_SelectedIndexChanging(object sender, EventArgs e)
         {
+            TabControl tc = (TabControl)sender;
+
             if (n_QueHace != 3) { return; }
 
-            if (e.NewIndex == 1)
+            if (tc.SelectedIndex == 1)
             {
-                Int64 intIdRegistro = Convert.ToInt64(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -434,9 +437,25 @@ namespace SSF_NET_Almacen.Formularios
                 }
             }
         }
+        private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
+        {
+            //if (n_QueHace != 3) { return; }
+
+            //if (e.NewIndex == 1)
+            //{
+            //    Int64 intIdRegistro = Convert.ToInt64(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
+
+            //    if (n_QueHace != 1)
+            //    {
+            //        booAgregando = true;
+            //        VerRegistro(intIdRegistro);
+            //        booAgregando = false;
+            //    }
+            //}
+        }
         private void FrmIngresoAlmacen3_Resize(object sender, EventArgs e)
         {
-            Tab_Dimensionar(Tab1, this.Height - 81, this.Width - 18);
+            //Tab_Dimensionar(Tab1, this.Height - 81, this.Width - 18);
         }
         private void ToolNuevo_Click(object sender, EventArgs e)
         {

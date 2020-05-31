@@ -20,6 +20,9 @@ using MySql.Data.MySqlClient;
 using Helper;
 using SIAC_Objetos.Sistema;
 using System.Configuration;
+using Helper.Classes;
+using Refit;
+using Helper.Service;
 
 namespace SSF_NET_Produccion.Formularios
 {
@@ -1701,6 +1704,64 @@ namespace SSF_NET_Produccion.Formularios
             if (FgSele.Col == 7)
             {
                 FgSele.AllowEditing = true;
+            }
+        }
+
+        private void btnSubirRegistro_Click(object sender, EventArgs e)
+        {
+            SubirRegistro();
+        }
+
+        public async void SubirRegistro()
+        {
+            try
+            {
+                int n_IdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+
+                objRegistro.TraerRegistro(n_IdRegistro);
+                entTar = objRegistro.entSolicitud;
+                lstTarCab = objRegistro.lstSolicitudCab;
+
+                DiverseWork diverseWork = new DiverseWork
+                {
+                    Code = entTar.n_id.ToString(),
+                    Name = string.Format("{0}-{1}", entTar.c_numser, entTar.c_numdoc),
+                    StartDateTime = entTar.d_fchreg,
+                    EndDateTime = entTar.d_fchreg,
+                    CompanyId = 0,
+                    Company = new Company
+                    {
+                        CompanyId = 0,
+                        Code = entTar.n_idemp.ToString()
+                    }
+                };
+
+                diverseWork.DiverseWorkTasks = new List<DiverseWorkTask>();
+                foreach (var tarCab in lstTarCab)
+                {
+                    var drTarea = dtTareas.Select("n_id = " + tarCab.n_idtar);
+
+                    diverseWork.DiverseWorkTasks.Add(new DiverseWorkTask
+                    {
+                        TaskWorkId = 0,
+                        TaskWork = new TaskWork
+                        {
+                            TaskWorkId = 0,
+                            Code = tarCab.n_idtar.ToString(),
+                            Name = drTarea[0]["c_des"].ToString(),
+                            Description = drTarea[0]["c_recabr"].ToString()
+                        }
+                    });
+                }
+
+                var humanResourceService = RestService.For<IHumanResourceService>(ConfigurationManager.AppSettings["ApiHostUrl"]);
+                var productionOutputResult = await humanResourceService.DiverseWorkCreate(diverseWork);
+
+                MessageBox.Show(string.Format("¡Se subió el registro: {0} correctamente! ", productionOutputResult.Name), "Subir Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("¡Ocurrio un error: {0}! ", ex.Message), "Subir Registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

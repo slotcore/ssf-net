@@ -137,8 +137,8 @@ namespace SSF_NET_Produccion.Formularios
             this.Height = 587;
             this.Width = 965;         
 
-            Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
-            Tab_Posicionar(Tab1, 1, 42);
+            //Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
+            //Tab_Posicionar(Tab1, 1, 42);
             Tab1.SelectedIndex = 0;
 
             LblTitulo2.Text = "DETALLE DEL REGISTRO";
@@ -1059,9 +1059,15 @@ namespace SSF_NET_Produccion.Formularios
         }
         private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
         {
-             if (n_QueHace != 3) { return; }
+        }
 
-            if (e.NewIndex == 1)
+        private void Tab1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TabControl tc = (TabControl)sender;
+
+            if (n_QueHace != 3) { return; }
+
+            if (tc.SelectedIndex == 1)
             {
                 int intIdRegistro = Convert.ToInt16(DgLista.Columns[2].CellValue(DgLista.Row).ToString());
 
@@ -1073,9 +1079,10 @@ namespace SSF_NET_Produccion.Formularios
                 }
             }
         }
+
         private void FrmRegistroProduccion_Resize(object sender, EventArgs e)
         {
-            Tab_Dimensionar(Tab1, this.Height - 82, this.Width - 18);
+            //Tab_Dimensionar(Tab1, this.Height - 82, this.Width - 18);
         }
         private void label12_Click(object sender, EventArgs e)
         {

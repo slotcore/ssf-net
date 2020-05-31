@@ -679,13 +679,6 @@ namespace SSF_NET.Formularios
         {
  
         }
-        private void maestroDeEmpleadosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SSF_NET_Planillas.CLS_Planillas objForm = new SSF_NET_Planillas.CLS_Planillas();
-            objForm.mysConec = Program.mysConeccion;
-            objForm.STU_SISTEMA = Program.STU_SISTEMA;
-            objForm.ManEmpleados();
-        }
         private void importacionDeAsistenciaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //SSF_NET_Planillas.CLS_Planillas objForm = new SSF_NET_Planillas.CLS_Planillas();
@@ -1620,6 +1613,22 @@ namespace SSF_NET.Formularios
             objForm.mysConec = Program.mysConeccion;
             objForm.STU_SISTEMA = Program.STU_SISTEMA;
             objForm.VentasPeriodo();
+        }
+
+        private void activosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            SSF_NET_Planillas.CLS_Planillas objForm = new SSF_NET_Planillas.CLS_Planillas();
+            objForm.mysConec = Program.mysConeccion;
+            objForm.STU_SISTEMA = Program.STU_SISTEMA;
+            objForm.ManEmpleadosActivos();
+        }
+
+        private void inactivosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SSF_NET_Planillas.CLS_Planillas objForm = new SSF_NET_Planillas.CLS_Planillas();
+            objForm.mysConec = Program.mysConeccion;
+            objForm.STU_SISTEMA = Program.STU_SISTEMA;
+            objForm.ManEmpleadosInactivos();
         }
     }
 }

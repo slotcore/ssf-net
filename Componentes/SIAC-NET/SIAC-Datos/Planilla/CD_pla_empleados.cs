@@ -121,6 +121,47 @@ namespace SIAC_DATOS.Planilla
             }
             return b_result;
         }
+        public bool ListarDetalladoActivo(int n_IdEmpresa)
+        {
+            bool b_result = false;
+            string[,] arrParametros = new string[1, 3] {
+                                            {"n_idemp", "System.INT32",n_IdEmpresa.ToString()},
+                                      };
+            dtLista = xMiFuncion.StoreDTLLenar("pla_empleados_listar_detallado_activo", arrParametros, mysConec);
+
+            if (xMiFuncion.IntErrorNumber != 0)
+            {
+                b_OcurrioError = xMiFuncion.booOcurrioError;
+                c_ErrorMensaje = xMiFuncion.StrErrorMensaje;
+                n_ErrorNumber = xMiFuncion.IntErrorNumber;
+            }
+            else
+            {
+                b_result = true;
+            }
+            return b_result;
+        }
+
+        public bool ListarDetalladoInactivo(int n_IdEmpresa)
+        {
+            bool b_result = false;
+            string[,] arrParametros = new string[1, 3] {
+                                            {"n_idemp", "System.INT32",n_IdEmpresa.ToString()},
+                                      };
+            dtLista = xMiFuncion.StoreDTLLenar("pla_empleados_listar_detallado_inactivo", arrParametros, mysConec);
+
+            if (xMiFuncion.IntErrorNumber != 0)
+            {
+                b_OcurrioError = xMiFuncion.booOcurrioError;
+                c_ErrorMensaje = xMiFuncion.StrErrorMensaje;
+                n_ErrorNumber = xMiFuncion.IntErrorNumber;
+            }
+            else
+            {
+                b_result = true;
+            }
+            return b_result;
+        }
         public bool TraerRegistro(Int64 n_IdRegistro)
         {
             bool b_result = false;
@@ -336,6 +377,28 @@ namespace SIAC_DATOS.Planilla
                                       };
 
             dtLista = xMiFuncion.StoreDTLLenar("pla_marcacion_consulta2", arrParametros, mysConec);
+
+            if (xMiFuncion.IntErrorNumber != 0)
+            {
+                b_OcurrioError = xMiFuncion.booOcurrioError;
+                c_ErrorMensaje = xMiFuncion.StrErrorMensaje;
+                n_ErrorNumber = xMiFuncion.IntErrorNumber;
+            }
+            else
+            {
+                b_result = true;
+            }
+            return b_result;
+        }
+        public bool ListarAsistenciaDetallado(string c_FechaInicio, string c_FechaFInal)
+        {
+            bool b_result = false;
+            string[,] arrParametros = new string[2, 3] {
+                                            {"c_fchini", "System.STRING", c_FechaInicio.ToString()},
+                                            {"c_fchfin", "System.STRING", c_FechaFInal.ToString()},
+                                      };
+
+            dtLista = xMiFuncion.StoreDTLLenar("pla_marcacion_consulta_detallado", arrParametros, mysConec);
 
             if (xMiFuncion.IntErrorNumber != 0)
             {

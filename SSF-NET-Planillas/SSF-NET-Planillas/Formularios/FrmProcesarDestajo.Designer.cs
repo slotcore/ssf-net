@@ -220,14 +220,14 @@
             // exportarPagosToolStripMenuItem
             // 
             this.exportarPagosToolStripMenuItem.Name = "exportarPagosToolStripMenuItem";
-            this.exportarPagosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exportarPagosToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.exportarPagosToolStripMenuItem.Text = "Exportar Pagos";
             this.exportarPagosToolStripMenuItem.Click += new System.EventHandler(this.exportarPagosToolStripMenuItem_Click);
             // 
             // exportarHorasToolStripMenuItem
             // 
             this.exportarHorasToolStripMenuItem.Name = "exportarHorasToolStripMenuItem";
-            this.exportarHorasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exportarHorasToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.exportarHorasToolStripMenuItem.Text = "Exportar Horas";
             this.exportarHorasToolStripMenuItem.Click += new System.EventHandler(this.exportarHorasToolStripMenuItem_Click);
             // 

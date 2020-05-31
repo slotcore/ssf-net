@@ -38,7 +38,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
-            this.DgLista = new C1.Win.C1TrueDBGrid.C1TrueDBGrid();
             this.c1DockingTabPage2 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.LblTitulo2 = new System.Windows.Forms.Label();
@@ -56,8 +55,6 @@
             this.AmdAddLin = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.FgLineas = new C1.Win.C1FlexGrid.C1FlexGrid();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.CmdVerRec = new System.Windows.Forms.Button();
             this.CmdDelRec = new System.Windows.Forms.Button();
@@ -95,23 +92,26 @@
             this.label7 = new System.Windows.Forms.Label();
             this.CboSubCla2 = new System.Windows.Forms.ComboBox();
             this.ToolHerramientas = new System.Windows.Forms.ToolStrip();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolNuevo = new System.Windows.Forms.ToolStripButton();
             this.ToolModificar = new System.Windows.Forms.ToolStripButton();
             this.ToolEliminar = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolGrabar = new System.Windows.Forms.ToolStripButton();
             this.ToolCancelar = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolMenuImprimir = new System.Windows.Forms.ToolStripSplitButton();
             this.imprimirRecetaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolSalir = new System.Windows.Forms.ToolStripButton();
+            this.DgLista = new C1.Win.C1TrueDBGrid.C1TrueDBGrid();
+            this.kryptonHeader1 = new ComponentFactory.Krypton.Toolkit.KryptonHeader();
+            this.ExportarExcelButton = new ComponentFactory.Krypton.Toolkit.ButtonSpecAny();
+            this.kryptonHeader2 = new ComponentFactory.Krypton.Toolkit.KryptonHeader();
             this.Tab1.SuspendLayout();
             this.c1DockingTabPage1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgLista)).BeginInit();
             this.c1DockingTabPage2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -130,6 +130,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.ToolHerramientas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgLista)).BeginInit();
             this.SuspendLayout();
             // 
             // Tab1
@@ -252,30 +253,6 @@
             this.label17.TabIndex = 0;
             this.label17.Text = "CONSULTA";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // DgLista
-            // 
-            this.DgLista.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DgLista.BackColor = System.Drawing.Color.White;
-            this.DgLista.CaptionHeight = 19;
-            this.DgLista.ForeColor = System.Drawing.Color.Black;
-            this.DgLista.GroupByCaption = "Drag a column header here to group by that column";
-            this.DgLista.Images.Add(((System.Drawing.Image)(resources.GetObject("DgLista.Images"))));
-            this.DgLista.Location = new System.Drawing.Point(4, 36);
-            this.DgLista.Name = "DgLista";
-            this.DgLista.PreviewInfo.Location = new System.Drawing.Point(0, 0);
-            this.DgLista.PreviewInfo.Size = new System.Drawing.Size(0, 0);
-            this.DgLista.PreviewInfo.ZoomFactor = 75D;
-            this.DgLista.PrintInfo.PageSettings = ((System.Drawing.Printing.PageSettings)(resources.GetObject("DgLista.PrintInfo.PageSettings")));
-            this.DgLista.RowHeight = 17;
-            this.DgLista.Size = new System.Drawing.Size(895, 443);
-            this.DgLista.TabIndex = 0;
-            this.DgLista.Text = "c1TrueDBGrid1";
-            this.DgLista.DoubleClick += new System.EventHandler(this.DgLista_DoubleClick);
-            this.DgLista.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DgLista_KeyPress);
-            this.DgLista.PropBag = resources.GetString("DgLista.PropBag");
             // 
             // c1DockingTabPage2
             // 
@@ -403,12 +380,12 @@
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.kryptonHeader2);
+            this.panel5.Controls.Add(this.kryptonHeader1);
             this.panel5.Controls.Add(this.LblReceta);
             this.panel5.Controls.Add(this.groupBox2);
             this.panel5.Controls.Add(this.label2);
             this.panel5.Controls.Add(this.FgLineas);
-            this.panel5.Controls.Add(this.label10);
-            this.panel5.Controls.Add(this.label1);
             this.panel5.Controls.Add(this.groupBox1);
             this.panel5.Controls.Add(this.FgRec);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -422,7 +399,7 @@
             this.LblReceta.BackColor = System.Drawing.Color.White;
             this.LblReceta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.LblReceta.ForeColor = System.Drawing.Color.Black;
-            this.LblReceta.Location = new System.Drawing.Point(119, 153);
+            this.LblReceta.Location = new System.Drawing.Point(119, 181);
             this.LblReceta.Name = "LblReceta";
             this.LblReceta.Size = new System.Drawing.Size(640, 21);
             this.LblReceta.TabIndex = 95;
@@ -479,7 +456,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.Control;
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(3, 157);
+            this.label2.Location = new System.Drawing.Point(3, 185);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 13);
             this.label2.TabIndex = 93;
@@ -493,36 +470,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FgLineas.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
             this.FgLineas.ColumnInfo = "4,1,0,0,0,85,Columns:0{Width:11;}\t";
-            this.FgLineas.Location = new System.Drawing.Point(0, 176);
+            this.FgLineas.Location = new System.Drawing.Point(0, 206);
             this.FgLineas.Name = "FgLineas";
             this.FgLineas.Rows.DefaultSize = 17;
-            this.FgLineas.Size = new System.Drawing.Size(779, 106);
+            this.FgLineas.Size = new System.Drawing.Size(779, 76);
             this.FgLineas.TabIndex = 91;
             this.FgLineas.EnterCell += new System.EventHandler(this.FgLineas_EnterCell);
             this.FgLineas.KeyPressEdit += new C1.Win.C1FlexGrid.KeyPressEditEventHandler(this.FgLineas_KeyPressEdit);
             this.FgLineas.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.FgLineas_CellChanged);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label10.Location = new System.Drawing.Point(3, 134);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(168, 13);
-            this.label10.TabIndex = 92;
-            this.label10.Text = ":: LINEAS DE LA RECETA::";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label1.Location = new System.Drawing.Point(3, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 13);
-            this.label1.TabIndex = 78;
-            this.label1.Text = ":: RECETAS ::";
             // 
             // groupBox1
             // 
@@ -530,7 +485,7 @@
             this.groupBox1.Controls.Add(this.CmdVerRec);
             this.groupBox1.Controls.Add(this.CmdDelRec);
             this.groupBox1.Controls.Add(this.CmdAddRec);
-            this.groupBox1.Location = new System.Drawing.Point(782, 15);
+            this.groupBox1.Location = new System.Drawing.Point(782, 26);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(96, 114);
             this.groupBox1.TabIndex = 77;
@@ -574,10 +529,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FgRec.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
             this.FgRec.ColumnInfo = "4,1,0,0,0,85,Columns:0{Width:10;}\t";
-            this.FgRec.Location = new System.Drawing.Point(0, 21);
+            this.FgRec.Location = new System.Drawing.Point(0, 37);
             this.FgRec.Name = "FgRec";
             this.FgRec.Rows.DefaultSize = 17;
-            this.FgRec.Size = new System.Drawing.Size(779, 106);
+            this.FgRec.Size = new System.Drawing.Size(779, 100);
             this.FgRec.TabIndex = 76;
             this.FgRec.RowColChange += new System.EventHandler(this.FgRec_RowColChange);
             this.FgRec.EnterCell += new System.EventHandler(this.FgRec_EnterCell);
@@ -964,6 +919,21 @@
             this.ToolHerramientas.Text = "toolStrip1";
             this.ToolHerramientas.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ToolHerramientas_ItemClicked);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 39);
+            // 
             // ToolNuevo
             // 
             this.ToolNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -998,11 +968,6 @@
             this.ToolEliminar.ToolTipText = "Eliminar registro";
             this.ToolEliminar.Click += new System.EventHandler(this.ToolEliminar_Click);
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
-            // 
             // ToolGrabar
             // 
             this.ToolGrabar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -1026,11 +991,6 @@
             this.ToolCancelar.Text = "toolStripButton5";
             this.ToolCancelar.ToolTipText = "Cancelar";
             this.ToolCancelar.Click += new System.EventHandler(this.ToolCancelar_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
             // 
             // ToolMenuImprimir
             // 
@@ -1059,11 +1019,6 @@
             this.toolStripButton1.Text = "ToolExportar";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 39);
-            // 
             // ToolSalir
             // 
             this.ToolSalir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -1074,6 +1029,69 @@
             this.ToolSalir.Text = "toolStripButton8";
             this.ToolSalir.ToolTipText = "Salir";
             this.ToolSalir.Click += new System.EventHandler(this.ToolSalir_Click);
+            // 
+            // DgLista
+            // 
+            this.DgLista.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DgLista.BackColor = System.Drawing.Color.White;
+            this.DgLista.CaptionHeight = 19;
+            this.DgLista.ForeColor = System.Drawing.Color.Black;
+            this.DgLista.GroupByCaption = "Drag a column header here to group by that column";
+            this.DgLista.Images.Add(((System.Drawing.Image)(resources.GetObject("DgLista.Images"))));
+            this.DgLista.Location = new System.Drawing.Point(4, 36);
+            this.DgLista.Name = "DgLista";
+            this.DgLista.PreviewInfo.Location = new System.Drawing.Point(0, 0);
+            this.DgLista.PreviewInfo.Size = new System.Drawing.Size(0, 0);
+            this.DgLista.PreviewInfo.ZoomFactor = 75D;
+            this.DgLista.PrintInfo.PageSettings = ((System.Drawing.Printing.PageSettings)(resources.GetObject("DgLista.PrintInfo.PageSettings")));
+            this.DgLista.RowHeight = 17;
+            this.DgLista.Size = new System.Drawing.Size(895, 443);
+            this.DgLista.TabIndex = 0;
+            this.DgLista.Text = "c1TrueDBGrid1";
+            this.DgLista.DoubleClick += new System.EventHandler(this.DgLista_DoubleClick);
+            this.DgLista.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DgLista_KeyPress);
+            this.DgLista.PropBag = resources.GetString("DgLista.PropBag");
+            // 
+            // kryptonHeader1
+            // 
+            this.kryptonHeader1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.kryptonHeader1.AutoSize = false;
+            this.kryptonHeader1.ButtonSpecs.AddRange(new ComponentFactory.Krypton.Toolkit.ButtonSpecAny[] {
+            this.ExportarExcelButton});
+            this.kryptonHeader1.HeaderStyle = ComponentFactory.Krypton.Toolkit.HeaderStyle.Secondary;
+            this.kryptonHeader1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonHeader1.Name = "kryptonHeader1";
+            this.kryptonHeader1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2007Silver;
+            this.kryptonHeader1.Size = new System.Drawing.Size(878, 31);
+            this.kryptonHeader1.TabIndex = 97;
+            this.kryptonHeader1.Values.Description = "";
+            this.kryptonHeader1.Values.Heading = "RECETAS";
+            this.kryptonHeader1.Values.Image = null;
+            // 
+            // ExportarExcelButton
+            // 
+            this.ExportarExcelButton.Image = global::SSF_NET_Produccion.Properties.Resources.exporttoxls_16x16;
+            this.ExportarExcelButton.Text = "Exportar";
+            this.ExportarExcelButton.UniqueName = "5022FE7199F846DF5D8E817DE5954B90";
+            this.ExportarExcelButton.Click += new System.EventHandler(this.ExportarExcelButton_Click);
+            // 
+            // kryptonHeader2
+            // 
+            this.kryptonHeader2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.kryptonHeader2.AutoSize = false;
+            this.kryptonHeader2.HeaderStyle = ComponentFactory.Krypton.Toolkit.HeaderStyle.Secondary;
+            this.kryptonHeader2.Location = new System.Drawing.Point(0, 147);
+            this.kryptonHeader2.Name = "kryptonHeader2";
+            this.kryptonHeader2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2007Silver;
+            this.kryptonHeader2.Size = new System.Drawing.Size(878, 31);
+            this.kryptonHeader2.TabIndex = 98;
+            this.kryptonHeader2.Values.Description = "";
+            this.kryptonHeader2.Values.Heading = "LINEAS DE LA RECETA";
+            this.kryptonHeader2.Values.Image = null;
             // 
             // FrmManProductos
             // 
@@ -1093,7 +1111,6 @@
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DgLista)).EndInit();
             this.c1DockingTabPage2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -1116,6 +1133,7 @@
             this.groupBox5.ResumeLayout(false);
             this.ToolHerramientas.ResumeLayout(false);
             this.ToolHerramientas.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgLista)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1176,8 +1194,6 @@
         private System.Windows.Forms.Button AmdAddLin;
         private System.Windows.Forms.Label label2;
         private C1.Win.C1FlexGrid.C1FlexGrid FgLineas;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button CmdVerRec;
         private System.Windows.Forms.Button CmdDelRec;
@@ -1201,5 +1217,8 @@
         private System.Windows.Forms.Label LblEst;
         private System.Windows.Forms.CheckBox ChkAct;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private ComponentFactory.Krypton.Toolkit.KryptonHeader kryptonHeader2;
+        private ComponentFactory.Krypton.Toolkit.KryptonHeader kryptonHeader1;
+        private ComponentFactory.Krypton.Toolkit.ButtonSpecAny ExportarExcelButton;
     }
 }

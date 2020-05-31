@@ -119,6 +119,42 @@ namespace SIAC_Negocio.Planilla
 
             return b_result;
         }
+        public bool ListarDetalladoActivo(int n_IdEmpresa)
+        {
+            bool b_result = false;
+
+            if (miFun.ListarDetalladoActivo(n_IdEmpresa) == true)
+            {
+                b_result = true;
+                dtLista = miFun.dtLista;
+            }
+            else
+            {
+                b_OcurrioError = miFun.b_OcurrioError;
+                c_ErrorMensaje = miFun.c_ErrorMensaje;
+                n_ErrorNumber = miFun.n_ErrorNumber;
+            }
+
+            return b_result;
+        }
+        public bool ListarDetalladoInactivo(int n_IdEmpresa)
+        {
+            bool b_result = false;
+
+            if (miFun.ListarDetalladoInactivo(n_IdEmpresa) == true)
+            {
+                b_result = true;
+                dtLista = miFun.dtLista;
+            }
+            else
+            {
+                b_OcurrioError = miFun.b_OcurrioError;
+                c_ErrorMensaje = miFun.c_ErrorMensaje;
+                n_ErrorNumber = miFun.n_ErrorNumber;
+            }
+
+            return b_result;
+        }
         public bool TraerRegistro(int n_Idregistro)
         {
             bool b_result = false;
@@ -540,6 +576,24 @@ namespace SIAC_Negocio.Planilla
             bool b_result = false;
 
             if (miFun.ListarAsistenciaHor(c_FechaInicio, c_FechaFInal) == true)
+            {
+                b_result = true;
+                dtLista = miFun.dtLista;
+            }
+            else
+            {
+                b_OcurrioError = miFun.b_OcurrioError;
+                c_ErrorMensaje = miFun.c_ErrorMensaje;
+                n_ErrorNumber = miFun.n_ErrorNumber;
+            }
+
+            return b_result;
+        }
+        public bool ListarAsistenciaDetallado(string c_FechaInicio, string c_FechaFInal)
+        {
+            bool b_result = false;
+
+            if (miFun.ListarAsistenciaDetallado(c_FechaInicio, c_FechaFInal) == true)
             {
                 b_result = true;
                 dtLista = miFun.dtLista;

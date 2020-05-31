@@ -23,6 +23,7 @@ using System.Configuration;
 using Helper.Classes;
 using Refit;
 using Helper.Service;
+using SIAC_DATOS.Data;
 
 namespace SSF_NET_Produccion.Formularios
 {
@@ -98,7 +99,7 @@ namespace SSF_NET_Produccion.Formularios
         string[,] arrCabeceraDg1 = new string[9, 4];                                    // ARRAY PARA MOSTRAR LAS COLUMNAS DEL DATAGRID PRINCIPAL
         string[,] arrCabeceraFlex1 = new string[4, 5];
         string[,] arrCabeceraFlexTar = new string[12, 5];
-        string[,] arrCabeceraFlexPer = new string[9, 5];
+        string[,] arrCabeceraFlexPer = new string[11, 5];
 
         int n_FilaTareaActual = 0;
         double n_PRECIOHORA = 0;
@@ -225,7 +226,7 @@ namespace SSF_NET_Produccion.Formularios
             arrCabeceraFlexPer[0, 4] = "";
 
             arrCabeceraFlexPer[1, 0] = "Persona";
-            arrCabeceraFlexPer[1, 1] = "300";
+            arrCabeceraFlexPer[1, 1] = "250";
             arrCabeceraFlexPer[1, 2] = "C";
             arrCabeceraFlexPer[1, 3] = "";
             arrCabeceraFlexPer[1, 4] = "";
@@ -249,13 +250,13 @@ namespace SSF_NET_Produccion.Formularios
             arrCabeceraFlexPer[4, 4] = "";
 
             arrCabeceraFlexPer[5, 0] = "Peso Bruto";
-            arrCabeceraFlexPer[5, 1] = "60";
+            arrCabeceraFlexPer[5, 1] = "50";
             arrCabeceraFlexPer[5, 2] = "D";
             arrCabeceraFlexPer[5, 3] = "0.00";
             arrCabeceraFlexPer[5, 4] = "";
 
             arrCabeceraFlexPer[6, 0] = "Cantidad";
-            arrCabeceraFlexPer[6, 1] = "70";
+            arrCabeceraFlexPer[6, 1] = "60";
             arrCabeceraFlexPer[6, 2] = "D";
             arrCabeceraFlexPer[6, 3] = "";
             arrCabeceraFlexPer[6, 4] = "";
@@ -267,10 +268,22 @@ namespace SSF_NET_Produccion.Formularios
             arrCabeceraFlexPer[7, 4] = "";
 
             arrCabeceraFlexPer[8, 0] = "Horas Decimal";
-            arrCabeceraFlexPer[8, 1] = "0";
+            arrCabeceraFlexPer[8, 1] = "60";
             arrCabeceraFlexPer[8, 2] = "D";
             arrCabeceraFlexPer[8, 3] = "";
             arrCabeceraFlexPer[8, 4] = "";
+
+            arrCabeceraFlexPer[9, 0] = "Horas Total";
+            arrCabeceraFlexPer[9, 1] = "50";
+            arrCabeceraFlexPer[9, 2] = "D";
+            arrCabeceraFlexPer[9, 3] = "";
+            arrCabeceraFlexPer[9, 4] = "";
+
+            arrCabeceraFlexPer[10, 0] = "Kg./Hr./P";
+            arrCabeceraFlexPer[10, 1] = "60";
+            arrCabeceraFlexPer[10, 2] = "D";
+            arrCabeceraFlexPer[10, 3] = "";
+            arrCabeceraFlexPer[10, 4] = "";
 
             funFlex.FlexMostrarDatos(FgPer, arrCabeceraFlexPer, dtLista, 2, false);
 
@@ -1321,9 +1334,11 @@ namespace SSF_NET_Produccion.Formularios
 
                     c_dato = lstTarDet[n_row].c_horini.ToString();
                     FgPer.SetData(FgPer.Rows.Count - 1, 3, c_dato);
+                    var n_horIni = funCon.HoraEnDecimal(c_dato);
 
                     c_dato = lstTarDet[n_row].c_horter.ToString();
                     FgPer.SetData(FgPer.Rows.Count - 1, 4, c_dato);
+                    var n_horFin = funCon.HoraEnDecimal(c_dato);
 
                     c_dato = lstTarDet[n_row].n_numenv.ToString("0.00");
                     FgPer.SetData(FgPer.Rows.Count - 1, 5, c_dato);
@@ -1342,6 +1357,21 @@ namespace SSF_NET_Produccion.Formularios
 
                     n_numhor = funCon.HoraEnDecimal(funFunciones.HorasRestar(c_fchini, c_fchfin));
                     FgPer.SetData(FgPer.Rows.Count - 1, 9, n_numhor);
+
+                    var n_numhor_real = n_numhor;                    
+                    //hora de almuerzo
+                    if (n_horFin >= 13.5 && n_horIni <= 12.5)
+                    {
+                        n_numhor_real = n_numhor_real - 1;
+                    }
+                    //Horas totales
+                    FgPer.SetData(FgPer.Rows.Count - 1, 10, n_numhor_real.ToString("0.00"));
+                    //Kg/h/p
+                    if (n_numhor_real > 0)
+                    {
+                        var n_kg_h_p = lstTarDet[n_row].n_can / n_numhor_real;
+                        FgPer.SetData(FgPer.Rows.Count - 1, 11, n_kg_h_p.ToString("0.00"));
+                    }
 
                     n_num = n_num + 1;
                 }
@@ -1731,8 +1761,8 @@ namespace SSF_NET_Produccion.Formularios
 
             ToolHerramientas.Enabled = false;
             Tab1.Enabled = false;
-            //PanSele.Left = ((this.Width - PanSele.Width) / 2);
-            //PanSele.Top = ((this.Height - PanSele.Height) / 2);
+            PanSele.Left = ((this.Width - PanSele.Width) / 2);
+            PanSele.Top = ((this.Height - PanSele.Height) / 2);
             PanSele.Visible = true;
             FgSele.Focus();
         }
@@ -2087,13 +2117,18 @@ namespace SSF_NET_Produccion.Formularios
                         TaskWorkId = 0,
                         Code = tarCab.n_idtar.ToString()
                     };
+
+                    var drTarea = dtTareas.Select("n_id = " + tarCab.n_idtar);
+
                     productionWork.ProductionWorkTasks.Add(new ProductionWorkTask
                     {
                         TaskWorkId = 0,
                         TaskWork = new TaskWork
                         {
                             TaskWorkId = 0,
-                            Code = tarCab.n_idtar.ToString()
+                            Code = tarCab.n_idtar.ToString(),
+                            Name = drTarea[0]["c_des"].ToString(),
+                            Description = drTarea[0]["c_recabr"].ToString()
                         }
                     });
                 }
@@ -2179,6 +2214,15 @@ namespace SSF_NET_Produccion.Formularios
                         foreach (var productionWorkTaskEmployee in productionWorkTask.ProductionWorkTaskEmployees)
                         {
                             BE_PRO_SOLICITUDTAREASDET entTarDet = new BE_PRO_SOLICITUDTAREASDET();
+
+                            //Se busca el costo por hora por tarea
+                            n_PRECIOHORA = ApplicationDbContext
+                                .ObtenerCostoPorTarea(entTar.n_idpro, entTarCab.n_idtar);
+
+                            if (n_PRECIOHORA == 0)
+                            {
+                                throw new Exception(string.Format("La tarea: {0} relacionada al producto: {1} no tiene costo", entTarCab.n_idtar, entTar.n_idpro));
+                            }
 
                             var n_maxpro = productionWorkTask.ProductionWorkTaskEmployees.Max(e => e.Qty);
                             double n_prekiltar = (n_PRECIOHORA / n_maxpro);// CALCULAMOS EL PRECIO DE TAREA POR KILO PARA ESTA TAREA

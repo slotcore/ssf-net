@@ -556,7 +556,7 @@ namespace SSF_NET_Contabilidad.Formularios
 
                     if (Convert.ToInt16(CboMon.SelectedValue) == 151)
                     {
-                        c_dato = FgItems.GetData(n_row, 5).ToString();
+                        c_dato = funFunciones.NulosN(FgItems.GetData(n_row, 5)).ToString();
                         if (Convert.ToDouble(funFunciones.NulosN(c_dato)) != 0)
                         {
                             e_Det.n_tipo = 1;
@@ -565,7 +565,7 @@ namespace SSF_NET_Contabilidad.Formularios
                         }
                         else
                         {
-                            c_dato = FgItems.GetData(n_row, 6).ToString();
+                            c_dato = funFunciones.NulosN(FgItems.GetData(n_row, 6)).ToString();
                             if (Convert.ToDouble(funFunciones.NulosN(c_dato)) != 0)
                             {
                                 e_Det.n_tipo = 2;

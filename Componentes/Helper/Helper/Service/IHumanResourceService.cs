@@ -22,7 +22,13 @@ namespace Helper.Service
         [Post("/api/human-resource/production-work-v2/")]
         Task<TaskWork> ProductionWorkCreate([Body] ProductionWork productionWork);
 
+        [Post("/api/human-resource/diverse-work-v2/")]
+        Task<TaskWork> DiverseWorkCreate([Body] DiverseWork diverseWork);
+
         [Get("/api/human-resource/production-work-transmit")]
         Task<List<ProductionWork>> ProductionWorkTransmit();
+
+        [Get("/api/human-resource/diverse-work-transmit")]
+        Task<List<DiverseWork>> DiverseWorkTransmit();
     }
 }

@@ -61,6 +61,22 @@ namespace SIAC_DATOS.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a SELECT pro_productosrecetaslineastareas.n_costar 
+        ///FROM pro_produccion 
+        ///INNER JOIN pro_productosrecetaslineas 
+        ///	ON pro_productosrecetaslineas.n_idrec = pro_produccion.n_idrec 
+        ///INNER JOIN pro_productosrecetaslineastareas 
+        ///	ON pro_productosrecetaslineastareas.n_idlin = pro_productosrecetaslineas.n_id 
+        ///WHERE pro_produccion.n_id = @n_idpro 
+        ///	AND pro_productosrecetaslineastareas.n_idtar = @n_idtar.
+        /// </summary>
+        internal static string q_ObtenerCostoPorTarea {
+            get {
+                return ResourceManager.GetString("q_ObtenerCostoPorTarea", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a INSERT INTO pla_empleados
         ///	(
         ///	n_idemp,

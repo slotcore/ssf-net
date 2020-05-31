@@ -268,101 +268,105 @@ namespace SSF_NET_Gestion.Formularios
 
             FgItems.Rows.Count = 2;
 
-            if (dtResult.Rows.Count != 0)
+            if (dtResult != null)
             {
-                funFlex.FlexMostrarDatos(FgItems, arrCabeceraFlex1, dtResult, 2, true);
-                FgItems.SelectionMode = C1.Win.C1FlexGrid.SelectionModeEnum.Row;
+                if (dtResult.Rows.Count != 0)
+                {
+                    funFlex.FlexMostrarDatos(FgItems, arrCabeceraFlex1, dtResult, 2, true);
+                    FgItems.SelectionMode = C1.Win.C1FlexGrid.SelectionModeEnum.Row;
 
-                n_numanos = dtResult.Rows.Count;
-                // CALCULAMOS EL TOTAL
-                double n_totalmes = 0;
-                FgItems.Rows.Count = FgItems.Rows.Count + 1;
-                FgItems.SetData(FgItems.Rows.Count - 1, 1, "TOTAL ==>");
-                n_totalmes = funFlex.FlexSumarCol(FgItems, 2, 2, FgItems.Rows.Count - 1);
-                FgItems.SetData(FgItems.Rows.Count - 1,2, n_totalmes.ToString("0.00"));
-                n_totalmes = funFlex.FlexSumarCol(FgItems, 3, 2, FgItems.Rows.Count - 1);
-                FgItems.SetData(FgItems.Rows.Count - 1, 3, n_totalmes.ToString("0.00"));
-                n_totalmes = funFlex.FlexSumarCol(FgItems, 4, 2, FgItems.Rows.Count - 1);
-                FgItems.SetData(FgItems.Rows.Count - 1, 4, n_totalmes.ToString("0.00"));
-                n_totalmes = funFlex.FlexSumarCol(FgItems, 5, 2, FgItems.Rows.Count - 1);
-                FgItems.SetData(FgItems.Rows.Count - 1, 5, n_totalmes.ToString("0.00"));
-                n_totalmes = funFlex.FlexSumarCol(FgItems, 6, 2, FgItems.Rows.Count - 1);
-                FgItems.SetData(FgItems.Rows.Count - 1, 6, n_totalmes.ToString("0.00"));
-                n_totalmes = funFlex.FlexSumarCol(FgItems, 7, 2, FgItems.Rows.Count - 1);
-                FgItems.SetData(FgItems.Rows.Count - 1, 7, n_totalmes.ToString("0.00"));
-                n_totalmes = funFlex.FlexSumarCol(FgItems, 8, 2, FgItems.Rows.Count - 1);
-                FgItems.SetData(FgItems.Rows.Count - 1, 8, n_totalmes.ToString("0.00"));
-                n_totalmes = funFlex.FlexSumarCol(FgItems, 9, 2, FgItems.Rows.Count - 1);
-                FgItems.SetData(FgItems.Rows.Count - 1, 9, n_totalmes.ToString("0.00"));
-                n_totalmes = funFlex.FlexSumarCol(FgItems, 10, 2, FgItems.Rows.Count - 1);
-                FgItems.SetData(FgItems.Rows.Count - 1, 10, n_totalmes.ToString("0.00"));
-                n_totalmes = funFlex.FlexSumarCol(FgItems, 11, 2, FgItems.Rows.Count - 1);
-                FgItems.SetData(FgItems.Rows.Count - 1, 11, n_totalmes.ToString("0.00"));
-                n_totalmes = funFlex.FlexSumarCol(FgItems, 12, 2, FgItems.Rows.Count - 1);
-                FgItems.SetData(FgItems.Rows.Count - 1, 12, n_totalmes.ToString("0.00"));
-                n_totalmes = funFlex.FlexSumarCol(FgItems, 13, 2, FgItems.Rows.Count - 1);
-                FgItems.SetData(FgItems.Rows.Count - 1, 13, n_totalmes.ToString("0.00"));
-                n_totalmes = funFlex.FlexSumarCol(FgItems, 14, 2, FgItems.Rows.Count - 1);
-                FgItems.SetData(FgItems.Rows.Count - 1, 14, n_totalmes.ToString("0.00"));
+                    n_numanos = dtResult.Rows.Count;
+                    // CALCULAMOS EL TOTAL
+                    double n_totalmes = 0;
+                    FgItems.Rows.Count = FgItems.Rows.Count + 1;
+                    FgItems.SetData(FgItems.Rows.Count - 1, 1, "TOTAL ==>");
+                    n_totalmes = funFlex.FlexSumarCol(FgItems, 2, 2, FgItems.Rows.Count - 1);
+                    FgItems.SetData(FgItems.Rows.Count - 1, 2, n_totalmes.ToString("0.00"));
+                    n_totalmes = funFlex.FlexSumarCol(FgItems, 3, 2, FgItems.Rows.Count - 1);
+                    FgItems.SetData(FgItems.Rows.Count - 1, 3, n_totalmes.ToString("0.00"));
+                    n_totalmes = funFlex.FlexSumarCol(FgItems, 4, 2, FgItems.Rows.Count - 1);
+                    FgItems.SetData(FgItems.Rows.Count - 1, 4, n_totalmes.ToString("0.00"));
+                    n_totalmes = funFlex.FlexSumarCol(FgItems, 5, 2, FgItems.Rows.Count - 1);
+                    FgItems.SetData(FgItems.Rows.Count - 1, 5, n_totalmes.ToString("0.00"));
+                    n_totalmes = funFlex.FlexSumarCol(FgItems, 6, 2, FgItems.Rows.Count - 1);
+                    FgItems.SetData(FgItems.Rows.Count - 1, 6, n_totalmes.ToString("0.00"));
+                    n_totalmes = funFlex.FlexSumarCol(FgItems, 7, 2, FgItems.Rows.Count - 1);
+                    FgItems.SetData(FgItems.Rows.Count - 1, 7, n_totalmes.ToString("0.00"));
+                    n_totalmes = funFlex.FlexSumarCol(FgItems, 8, 2, FgItems.Rows.Count - 1);
+                    FgItems.SetData(FgItems.Rows.Count - 1, 8, n_totalmes.ToString("0.00"));
+                    n_totalmes = funFlex.FlexSumarCol(FgItems, 9, 2, FgItems.Rows.Count - 1);
+                    FgItems.SetData(FgItems.Rows.Count - 1, 9, n_totalmes.ToString("0.00"));
+                    n_totalmes = funFlex.FlexSumarCol(FgItems, 10, 2, FgItems.Rows.Count - 1);
+                    FgItems.SetData(FgItems.Rows.Count - 1, 10, n_totalmes.ToString("0.00"));
+                    n_totalmes = funFlex.FlexSumarCol(FgItems, 11, 2, FgItems.Rows.Count - 1);
+                    FgItems.SetData(FgItems.Rows.Count - 1, 11, n_totalmes.ToString("0.00"));
+                    n_totalmes = funFlex.FlexSumarCol(FgItems, 12, 2, FgItems.Rows.Count - 1);
+                    FgItems.SetData(FgItems.Rows.Count - 1, 12, n_totalmes.ToString("0.00"));
+                    n_totalmes = funFlex.FlexSumarCol(FgItems, 13, 2, FgItems.Rows.Count - 1);
+                    FgItems.SetData(FgItems.Rows.Count - 1, 13, n_totalmes.ToString("0.00"));
+                    n_totalmes = funFlex.FlexSumarCol(FgItems, 14, 2, FgItems.Rows.Count - 1);
+                    FgItems.SetData(FgItems.Rows.Count - 1, 14, n_totalmes.ToString("0.00"));
 
-                //CALCULAMOS EL PROMEDIO
-                FgItems.Rows.Count = FgItems.Rows.Count + 1;
-                FgItems.SetData(FgItems.Rows.Count - 1, 1, "PROMEDIO ==>");
-                double n_total = 0;
-                Double n_promedio = 0;
+                    //CALCULAMOS EL PROMEDIO
+                    FgItems.Rows.Count = FgItems.Rows.Count + 1;
+                    FgItems.SetData(FgItems.Rows.Count - 1, 1, "PROMEDIO ==>");
+                    double n_total = 0;
+                    Double n_promedio = 0;
 
-                n_total = Convert.ToDouble(FgItems.GetData(FgItems.Rows.Count - 2, 2));
-                n_promedio = (n_total / n_numanos);
-                FgItems.SetData(FgItems.Rows.Count - 1, 2, n_promedio.ToString("0.00"));
+                    n_total = Convert.ToDouble(FgItems.GetData(FgItems.Rows.Count - 2, 2));
+                    n_promedio = (n_total / n_numanos);
+                    FgItems.SetData(FgItems.Rows.Count - 1, 2, n_promedio.ToString("0.00"));
 
-                n_total = Convert.ToDouble(FgItems.GetData(FgItems.Rows.Count - 2, 3));
-                n_promedio = (n_total / n_numanos);
-                FgItems.SetData(FgItems.Rows.Count - 1, 3, n_promedio.ToString("0.00"));
+                    n_total = Convert.ToDouble(FgItems.GetData(FgItems.Rows.Count - 2, 3));
+                    n_promedio = (n_total / n_numanos);
+                    FgItems.SetData(FgItems.Rows.Count - 1, 3, n_promedio.ToString("0.00"));
 
-                n_total = Convert.ToDouble(FgItems.GetData(FgItems.Rows.Count - 2, 4));
-                n_promedio = (n_total / n_numanos);
-                FgItems.SetData(FgItems.Rows.Count - 1, 4, n_promedio.ToString("0.00"));
+                    n_total = Convert.ToDouble(FgItems.GetData(FgItems.Rows.Count - 2, 4));
+                    n_promedio = (n_total / n_numanos);
+                    FgItems.SetData(FgItems.Rows.Count - 1, 4, n_promedio.ToString("0.00"));
 
-                n_total = Convert.ToDouble(FgItems.GetData(FgItems.Rows.Count - 2, 5));
-                n_promedio = (n_total / n_numanos);
-                FgItems.SetData(FgItems.Rows.Count - 1, 5, n_promedio.ToString("0.00"));
-                
-                n_total = Convert.ToDouble(FgItems.GetData(FgItems.Rows.Count - 2, 6));
-                n_promedio = (n_total / n_numanos);
-                FgItems.SetData(FgItems.Rows.Count - 1, 6, n_promedio.ToString("0.00"));
+                    n_total = Convert.ToDouble(FgItems.GetData(FgItems.Rows.Count - 2, 5));
+                    n_promedio = (n_total / n_numanos);
+                    FgItems.SetData(FgItems.Rows.Count - 1, 5, n_promedio.ToString("0.00"));
 
-                n_total = Convert.ToDouble(FgItems.GetData(FgItems.Rows.Count - 2, 7));
-                n_promedio = (n_total / n_numanos);
-                FgItems.SetData(FgItems.Rows.Count - 1, 7, n_promedio.ToString("0.00"));
+                    n_total = Convert.ToDouble(FgItems.GetData(FgItems.Rows.Count - 2, 6));
+                    n_promedio = (n_total / n_numanos);
+                    FgItems.SetData(FgItems.Rows.Count - 1, 6, n_promedio.ToString("0.00"));
 
-                n_total = Convert.ToDouble(FgItems.GetData(FgItems.Rows.Count - 2, 8));
-                n_promedio = (n_total / n_numanos);
-                FgItems.SetData(FgItems.Rows.Count - 1, 8, n_promedio.ToString("0.00"));
+                    n_total = Convert.ToDouble(FgItems.GetData(FgItems.Rows.Count - 2, 7));
+                    n_promedio = (n_total / n_numanos);
+                    FgItems.SetData(FgItems.Rows.Count - 1, 7, n_promedio.ToString("0.00"));
 
-                n_total = Convert.ToDouble(FgItems.GetData(FgItems.Rows.Count - 2, 9));
-                n_promedio = (n_total / n_numanos);
-                FgItems.SetData(FgItems.Rows.Count - 1, 9, n_promedio.ToString("0.00"));
+                    n_total = Convert.ToDouble(FgItems.GetData(FgItems.Rows.Count - 2, 8));
+                    n_promedio = (n_total / n_numanos);
+                    FgItems.SetData(FgItems.Rows.Count - 1, 8, n_promedio.ToString("0.00"));
 
-                n_total = Convert.ToDouble(FgItems.GetData(FgItems.Rows.Count - 2, 10));
-                n_promedio = (n_total / n_numanos);
-                FgItems.SetData(FgItems.Rows.Count - 1, 10, n_promedio.ToString("0.00"));
+                    n_total = Convert.ToDouble(FgItems.GetData(FgItems.Rows.Count - 2, 9));
+                    n_promedio = (n_total / n_numanos);
+                    FgItems.SetData(FgItems.Rows.Count - 1, 9, n_promedio.ToString("0.00"));
 
-                n_total = Convert.ToDouble(FgItems.GetData(FgItems.Rows.Count - 2, 11));
-                n_promedio = (n_total / n_numanos);
-                FgItems.SetData(FgItems.Rows.Count - 1, 11, n_promedio.ToString("0.00"));
+                    n_total = Convert.ToDouble(FgItems.GetData(FgItems.Rows.Count - 2, 10));
+                    n_promedio = (n_total / n_numanos);
+                    FgItems.SetData(FgItems.Rows.Count - 1, 10, n_promedio.ToString("0.00"));
 
-                n_total = Convert.ToDouble(FgItems.GetData(FgItems.Rows.Count - 2, 12));
-                n_promedio = (n_total / n_numanos);
-                FgItems.SetData(FgItems.Rows.Count - 1, 12, n_promedio.ToString("0.00"));
+                    n_total = Convert.ToDouble(FgItems.GetData(FgItems.Rows.Count - 2, 11));
+                    n_promedio = (n_total / n_numanos);
+                    FgItems.SetData(FgItems.Rows.Count - 1, 11, n_promedio.ToString("0.00"));
 
-                n_total = Convert.ToDouble(FgItems.GetData(FgItems.Rows.Count - 2, 13));
-                n_promedio = (n_total / n_numanos);
-                FgItems.SetData(FgItems.Rows.Count - 1, 13, n_promedio.ToString("0.00"));
+                    n_total = Convert.ToDouble(FgItems.GetData(FgItems.Rows.Count - 2, 12));
+                    n_promedio = (n_total / n_numanos);
+                    FgItems.SetData(FgItems.Rows.Count - 1, 12, n_promedio.ToString("0.00"));
 
-                n_total = Convert.ToDouble(FgItems.GetData(FgItems.Rows.Count - 2, 14));
-                n_promedio = (n_total / n_numanos);
-                FgItems.SetData(FgItems.Rows.Count - 1, 14, n_promedio.ToString("0.00"));
+                    n_total = Convert.ToDouble(FgItems.GetData(FgItems.Rows.Count - 2, 13));
+                    n_promedio = (n_total / n_numanos);
+                    FgItems.SetData(FgItems.Rows.Count - 1, 13, n_promedio.ToString("0.00"));
+
+                    n_total = Convert.ToDouble(FgItems.GetData(FgItems.Rows.Count - 2, 14));
+                    n_promedio = (n_total / n_numanos);
+                    FgItems.SetData(FgItems.Rows.Count - 1, 14, n_promedio.ToString("0.00"));
+                }
             }
+
             string[] c_datos = new string[12];
             int n_fil = 0;
             int n_ele = 0;

@@ -118,11 +118,11 @@ namespace SSF_NET_Gestion.Formularios
         void ConfigurarFormulario()
         {
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.Height = 583;
-            this.Width = 986;
+            //this.Height = 583;
+            //this.Width = 986;
             
-            Tab_Posicionar(Tab1, 1, 42);
-            Tab_Dimensionar(Tab1, this.Height - 82, this.Width - 18);
+            //Tab_Posicionar(Tab1, 1, 42);
+            //Tab_Dimensionar(Tab1, this.Height - 82, this.Width - 18);
             Tab1.SelectedIndex = 0;
             LblTitulo2.Text = "DETALLE DEL REGISTRO";
 
@@ -279,10 +279,10 @@ namespace SSF_NET_Gestion.Formularios
         }
         void Tab_Dimensionar(C1.Win.C1Command.C1DockingTab dokTab, int intAlto, int intAncho)
         {
-            Tab1.Height = intAlto;
-            Tab1.Width = intAncho;
-            FgItems.Width = Tab1.Width - 70;
-            FgItems.Height = Tab1.Height - 143;
+            //Tab1.Height = intAlto;
+            //Tab1.Width = intAncho;
+            //FgItems.Width = Tab1.Width - 70;
+            //FgItems.Height = Tab1.Height - 143;
         }
         void Tab_Posicionar(C1.Win.C1Command.C1DockingTab dokTab, int intPosX, int intPosY)
         {
@@ -361,15 +361,18 @@ namespace SSF_NET_Gestion.Formularios
                 }
             }
         }
-        private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
+
+        private void Tab1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            TabControl tc = (TabControl)sender;
+
             if (DgLista.RowCount == 0) { return; }
             if (n_QueHace != 3) { return; }
 
-            if (e.NewIndex == 1)
+            if (tc.SelectedIndex == 1)
             {
                 int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
-                               
+
                 if (n_QueHace != 1)
                 {
                     booAgregando = true;
@@ -378,11 +381,12 @@ namespace SSF_NET_Gestion.Formularios
                 }
             }
         }
+
         private void FrmManPlanVentas2_Resize(object sender, EventArgs e)
         {
-            Tab_Dimensionar(Tab1, this.Height - 82, this.Width - 18);
-            FgItems.Width = Tab1.Width - 70;
-            FgItems.Height = Tab1.Height - 143;
+            //Tab_Dimensionar(Tab1, this.Height - 82, this.Width - 18);
+            //FgItems.Width = Tab1.Width - 70;
+            //FgItems.Height = Tab1.Height - 143;
         }
         void Nuevo()
         {
@@ -684,7 +688,7 @@ namespace SSF_NET_Gestion.Formularios
                         if (funFunciones.NulosC(FgItems.GetData(0, n_col).ToString()) == "Noviembre") { n_idmes = 11; }
                         if (funFunciones.NulosC(FgItems.GetData(0, n_col).ToString()) == "Diciembre") { n_idmes = 12; }
                                                                                           
-                        n_iditem = Convert.ToInt32(FgItems.GetData(n_fila, 17).ToString());
+                        n_iditem = Convert.ToInt32(funFunciones.NulosN(FgItems.GetData(n_fila, 17).ToString()));
                         
                         BE_GES_PLANVENTASDET BE_Detalle = new BE_GES_PLANVENTASDET();
                         BE_Detalle.n_idplan = 0;
@@ -824,20 +828,20 @@ namespace SSF_NET_Gestion.Formularios
         }
         private void FgItems_DoubleClick(object sender, EventArgs e)
         {
-            int n_iditem;
-            DataTable dtresult = new DataTable();
+            //int n_iditem;
+            //DataTable dtresult = new DataTable();
             
-            dtresult = funDatos.DataTableFiltrar(dtItems,"c_despro= '" + FgItems.GetData(FgItems.Row,4).ToString() + "'");
+            //dtresult = funDatos.DataTableFiltrar(dtItems,"c_despro= '" + FgItems.GetData(FgItems.Row,2).ToString() + "'");
 
-            if (dtresult.Rows.Count != 0)
-            {
-                n_iditem = Convert.ToInt16(dtresult.Rows[0]["n_id"].ToString());
-                FrmManPlanVentasHistorico FrmVista = new FrmManPlanVentasHistorico();
-                FrmVista.dtHistorico = dtVenHisDet;
-                FrmVista.dtItems = dtresult;
-                FrmVista.n_IdItem = n_iditem;
-                FrmVista.ShowDialog();
-            }
+            //if (dtresult.Rows.Count != 0)
+            //{
+            //    n_iditem = Convert.ToInt16(dtresult.Rows[0]["n_id"].ToString());
+            //    FrmManPlanVentasHistorico FrmVista = new FrmManPlanVentasHistorico();
+            //    FrmVista.dtHistorico = dtVenHisDet;
+            //    FrmVista.dtItems = dtresult;
+            //    FrmVista.n_IdItem = n_iditem;
+            //    FrmVista.ShowDialog();
+            //}
         }
         private void CmdAddValores_Click(object sender, EventArgs e)
         {
@@ -1253,6 +1257,51 @@ namespace SSF_NET_Gestion.Formularios
 
         private void Cmd_VerGra_MouseHover(object sender, EventArgs e)
         {
+        }
+
+        private void FgItems_KeyPressEdit(object sender, C1.Win.C1FlexGrid.KeyPressEditEventArgs e)
+        {
+            switch (e.Col)
+            {
+                case 1:
+                    break;
+                default:
+                    if (!strNumerovalidos.Contains(e.KeyChar))
+                    {
+                        e.Handled = true;
+                    }
+                    break;
+            }
+
+        }
+
+        private void FgItems_EnterCell(object sender, EventArgs e)
+        {
+            if (FgItems.Rows.Count <= 2) { return; }
+
+            if (booAgregando == true) { return; }
+
+            switch (FgItems.Col)
+            {
+                case 1:
+                    FgItems.AllowEditing = false;
+                    break;
+                default:
+                    FgItems.AllowEditing = true;
+                    break;
+            }
+        }
+
+        private void FgItems_CellChanged(object sender, C1.Win.C1FlexGrid.RowColEventArgs e)
+        {
+            if (booAgregando == true) { return; }
+            if ((e.Col >= 4) && (e.Col <= 15))
+            {
+                double n_valor = funFlex.FlexSumarRow(FgItems, e.Row, 4, 15);
+                FgItems.SetData(e.Row, 16, n_valor.ToString("0.00"));
+            }
+
+            FgItems.Select(e.Row - 1, e.Col + 1);
         }
     }
 }

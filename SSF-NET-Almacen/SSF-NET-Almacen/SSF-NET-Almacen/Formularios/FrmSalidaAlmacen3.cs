@@ -136,10 +136,10 @@ namespace SSF_NET_Almacen.Formularios
         }
         void ConfigurarFormulario()
         {
-            this.Height = 587;
-            this.Width = 930;
-            Tab_Dimensionar(Tab1,  this.Height - 81, this.Width - 18);
-            Tab_Posicionar(Tab1, 1, 41);
+            //this.Height = 587;
+            //this.Width = 930;
+            //Tab_Dimensionar(Tab1,  this.Height - 81, this.Width - 18);
+            //Tab_Posicionar(Tab1, 1, 41);
             Tab1.SelectedIndex = 0;
 
             string c_nomarc = ConfigurationManager.AppSettings["PathIniFile"];
@@ -291,13 +291,13 @@ namespace SSF_NET_Almacen.Formularios
         }
         void Tab_Dimensionar(C1.Win.C1Command.C1DockingTab dokTab, int intAlto, int intAncho)
         {
-            Tab1.Height = intAlto;
-            Tab1.Width = intAncho;
+            //Tab1.Height = intAlto;
+            //Tab1.Width = intAncho;
         }
         void Tab_Posicionar(C1.Win.C1Command.C1DockingTab dokTab, int intPosX, int intPosY)
         {
-            dokTab.Left = intPosX;
-            dokTab.Top = intPosY;
+            //dokTab.Left = intPosX;
+            //dokTab.Top = intPosY;
         }
         void VerRegistro(Int64 n_IdRegistro)
         {
@@ -903,11 +903,13 @@ namespace SSF_NET_Almacen.Formularios
 
             this.Close();
         }
-        private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
+        private void Tab1_SelectedIndexChanging(object sender, EventArgs e)
         {
+            TabControl tc = (TabControl)sender;
+
             if (n_QueHace != 3) { return; }
 
-            if (e.NewIndex == 1)
+            if (tc.SelectedIndex == 1)
             {
                 int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
 
@@ -918,6 +920,22 @@ namespace SSF_NET_Almacen.Formularios
                     booAgregando = false;
                 }
             }
+        }
+        private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
+        {
+            //if (n_QueHace != 3) { return; }
+
+            //if (e.NewIndex == 1)
+            //{
+            //    int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
+
+            //    if (n_QueHace != 1)
+            //    {
+            //        booAgregando = true;
+            //        VerRegistro(intIdRegistro);
+            //        booAgregando = false;
+            //    }
+            //}
         }
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
@@ -1059,7 +1077,7 @@ namespace SSF_NET_Almacen.Formularios
         }
         private void FrmSalidaAlmacen3_Resize(object sender, EventArgs e)
         {
-            Tab_Dimensionar(Tab1, this.Height - 81, this.Width - 18);
+            //Tab_Dimensionar(Tab1, this.Height - 81, this.Width - 18);
         }
         private void TxtNumSer_TextChanged(object sender, EventArgs e)
         {

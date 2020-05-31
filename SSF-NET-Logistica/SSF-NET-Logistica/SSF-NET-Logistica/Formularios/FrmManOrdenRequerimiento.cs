@@ -109,10 +109,10 @@ namespace SSF_NET_Logistica.Formularios
         }
         void ConfigurarFormulario()
         {
-            this.Height = 587;
-            this.Width = 930;
-            Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
-            Tab_Posicionar(Tab1, 1, 42);
+            //this.Height = 587;
+            //this.Width = 930;
+            //Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
+            //Tab_Posicionar(Tab1, 1, 42);
             Tab1.SelectedIndex = 0;
             LblTitulo2.Text = "DETALLE DEL REGISTRO";
 
@@ -203,8 +203,8 @@ namespace SSF_NET_Logistica.Formularios
         }
         void Tab_Dimensionar(C1.Win.C1Command.C1DockingTab dokTab, int intAlto, int intAncho)
         {
-            Tab1.Height = intAlto;
-            Tab1.Width = intAncho;
+            //Tab1.Height = intAlto;
+            //Tab1.Width = intAncho;
         }
         void Tab_Posicionar(C1.Win.C1Command.C1DockingTab dokTab, int intPosX, int intPosY)
         {
@@ -764,25 +764,25 @@ namespace SSF_NET_Logistica.Formularios
 
             if (FgItems.Col == 2)
             {
-                //// OBTNEMOS LA DESCRIPCION DEL TIPO DE PRODUCTO
-                //strDesTipPro = funFunciones.NulosC(FgItems.GetData(FgItems.Row, 1));
+                // OBTNEMOS LA DESCRIPCION DEL TIPO DE PRODUCTO
+                strDesTipPro = funFunciones.NulosC(FgItems.GetData(FgItems.Row, 1));
 
-                //if (strDesTipPro == "")
-                //{
-                //    FgItems.AllowEditing = false;
-                //    funFlex.FlexColumnaCombo(FgItems, dtResul, "c_despro", 2);
-                //    return;
-                //}
-                //// OBTENEMOS EL ID DEL TIPO DE PRODUCTO
-                //dtResul = funDatos.DataTableFiltrar(dtTipoExis, "c_des = '" + strDesTipPro + "'");
-                //if (dtResul.Rows.Count != 0)
-                //{
-                //    n_idtipproducto = Convert.ToInt16(dtResul.Rows[0]["n_id"].ToString());
+                if (strDesTipPro == "")
+                {
+                    FgItems.AllowEditing = false;
+                    funFlex.FlexColumnaCombo(FgItems, dtResul, "c_despro", 2);
+                    return;
+                }
+                // OBTENEMOS EL ID DEL TIPO DE PRODUCTO
+                dtResul = funDatos.DataTableFiltrar(dtTipoExis, "c_des = '" + strDesTipPro + "'");
+                if (dtResul.Rows.Count != 0)
+                {
+                    n_idtipproducto = Convert.ToInt16(dtResul.Rows[0]["n_id"].ToString());
 
-                //    // FILTRAMOS LOS ITEMS DEL TIPO DE PRODUCTO SELECCIONADO
-                //    dtResul = funDatos.DataTableFiltrar(dtItems, "n_idtipexi = " + n_idtipproducto + "", "c_despro");
-                //    funFlex.FlexColumnaCombo(FgItems, dtResul, "c_despro", 2);    // ITEMS
-                //}
+                    // FILTRAMOS LOS ITEMS DEL TIPO DE PRODUCTO SELECCIONADO
+                    dtResul = funDatos.DataTableFiltrar(dtItems, "n_idtipexi = " + n_idtipproducto + "", "c_despro");
+                    funFlex.FlexColumnaCombo(FgItems, dtResul, "c_despro", 2);    // ITEMS
+                }
             }
             if (FgItems.Col == 3)
             {
@@ -904,11 +904,13 @@ namespace SSF_NET_Logistica.Formularios
                 LblNumReg.Text = (dtResult.Rows.Count).ToString();
             }
         }
-        private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
+        private void Tab1_SelectedIndexChanging(object sender, EventArgs e)
         {
+            TabControl tc = (TabControl)sender;
+
             if (n_QueHace != 3) { return; }
 
-            if (e.NewIndex == 1)
+            if (tc.SelectedIndex == 1)
             {
                 int intIdRegistro = Convert.ToInt16(DgLista.Columns[8].CellValue(DgLista.Row).ToString());
 
@@ -919,6 +921,22 @@ namespace SSF_NET_Logistica.Formularios
                     booAgregando = false;
                 }
             }
+        }
+        private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
+        {
+            //if (n_QueHace != 3) { return; }
+
+            //if (e.NewIndex == 1)
+            //{
+            //    int intIdRegistro = Convert.ToInt16(DgLista.Columns[8].CellValue(DgLista.Row).ToString());
+
+            //    if (n_QueHace != 1)
+            //    {
+            //        booAgregando = true;
+            //        VerRegistro(intIdRegistro);
+            //        booAgregando = false;
+            //    }
+            //}
         }
         private void CmdAddItem_Click(object sender, EventArgs e)
         {

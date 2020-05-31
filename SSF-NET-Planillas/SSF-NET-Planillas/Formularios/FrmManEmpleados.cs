@@ -86,12 +86,21 @@ namespace SSF_NET_Planillas.Formularios
         string strNumerovalidos = "1234567890." + (char)8;                                        // + (char)8;
         string strCaracteres = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ1234567890()º.,/$' !!·%/()=?¿*^" + (char)8;
         const int id_Formulario = 96;
-        
+
+        bool flagFiltro = false;
+        bool flagActivos = true;
+
         private ObservableListSource<PeriodoLaboral> PeriodoLaborals;
 
         public FrmManEmpleados()
         {
             InitializeComponent();
+        }
+        public FrmManEmpleados(bool mostrarActivos)
+        {
+            InitializeComponent();
+            flagFiltro = true;
+            flagActivos = mostrarActivos;
         }
         private void FrmManEmpleados_Load(object sender, EventArgs e)
         {
@@ -133,9 +142,29 @@ namespace SSF_NET_Planillas.Formularios
             //objRegistros.mysConec = mysConec;                                    // CARGAMOS LOS DATOS DEL FORMULARIO
             CN_pla_empleados objRegistros = new CN_pla_empleados(STU_SISTEMA);
             objRegistros.STU_SISTEMA = STU_SISTEMA;
-            if (objRegistros.ListarDetallado(STU_SISTEMA.EMPRESAID) == true)
+            if (flagFiltro)
             {
-                dtLista = objRegistros.dtLista; 
+                if (flagActivos)
+                {
+                    if (objRegistros.ListarDetalladoActivo(STU_SISTEMA.EMPRESAID) == true)
+                    {
+                        dtLista = objRegistros.dtLista;
+                    }
+                }
+                else
+                {
+                    if (objRegistros.ListarDetalladoInactivo(STU_SISTEMA.EMPRESAID) == true)
+                    {
+                        dtLista = objRegistros.dtLista;
+                    }
+                }
+            }
+            else
+            {
+                if (objRegistros.ListarDetallado(STU_SISTEMA.EMPRESAID) == true)
+                {
+                    dtLista = objRegistros.dtLista;
+                }
             }
             objRegistros = null;
 
@@ -601,7 +630,7 @@ namespace SSF_NET_Planillas.Formularios
             entRegistro.n_idsex = Convert.ToInt32(CboSex.SelectedValue);
             entRegistro.c_numtel = TxtTel.Text;
             entRegistro.c_numesa = TxtNumEsa.Text;
-            entRegistro.d_fching = Convert.ToDateTime(TxtFchIng.Text);
+            entRegistro.d_fching = TxtFchIng.Value;
             
             if (ChkAsigFam.Checked == true)
             {
@@ -721,10 +750,29 @@ namespace SSF_NET_Planillas.Formularios
                 //objRegistros.mysConec = mysConec;
                 CN_pla_empleados objRegistros = new CN_pla_empleados(STU_SISTEMA);
                 objRegistros.STU_SISTEMA = STU_SISTEMA;
-
-                if (objRegistros.Listar(STU_SISTEMA.EMPRESAID) == true)
+                if (flagFiltro)
                 {
-                    dtLista = objRegistros.dtLista;
+                    if (flagActivos)
+                    {
+                        if (objRegistros.ListarDetalladoActivo(STU_SISTEMA.EMPRESAID) == true)
+                        {
+                            dtLista = objRegistros.dtLista;
+                        }
+                    }
+                    else
+                    {
+                        if (objRegistros.ListarDetalladoInactivo(STU_SISTEMA.EMPRESAID) == true)
+                        {
+                            dtLista = objRegistros.dtLista;
+                        }
+                    }
+                }
+                else
+                {
+                    if (objRegistros.Listar(STU_SISTEMA.EMPRESAID) == true)
+                    {
+                        dtLista = objRegistros.dtLista;
+                    }
                 }
                 objRegistros = null;
                 // MOSTRAMOS LOS DATOS EN LA GRILLA
@@ -758,6 +806,17 @@ namespace SSF_NET_Planillas.Formularios
             {
                 booSeEjecuto = true;
                 ListarItems();
+                if (flagFiltro)
+                {
+                    if (flagActivos)
+                    {
+                        this.Text = "PLANILLAS - MAESTRO DE EMPLEADOS - ACTIVOS";
+                    }
+                    else
+                    {
+                        this.Text = "PLANILLAS - MAESTRO DE EMPLEADOS - INACTIVOS";
+                    }
+                }
 
                 if (dtLista.Rows.Count == 0)
                 {
@@ -1239,7 +1298,22 @@ namespace SSF_NET_Planillas.Formularios
 
                     // VOLVEMOS A CARGAR EL DATATABLE dtItems CON LOS DATOS DEL SERVIDOR
                     //objRegistros.mysConec = mysConec;
-                    objRegistros.Listar(STU_SISTEMA.EMPRESAID);
+                    if (flagFiltro)
+                    {
+                        if (flagActivos)
+                        {
+                            objRegistros.ListarDetalladoActivo(STU_SISTEMA.EMPRESAID);
+                        }
+                        else
+                        {
+                            objRegistros.ListarDetalladoInactivo(STU_SISTEMA.EMPRESAID);
+                        }
+                    }
+                    else
+                    {
+                        objRegistros.Listar(STU_SISTEMA.EMPRESAID);
+                    }
+
                     if (objRegistros.b_OcurrioError == false)
                     {
                         dtLista = objRegistros.dtLista;
@@ -1319,6 +1393,7 @@ namespace SSF_NET_Planillas.Formularios
         private void CmdCan_Click(object sender, EventArgs e)
         {
             Pan1.Visible = false;
+            Pan1.Refresh();
         }
         private void darDeBajaEmpleadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1337,6 +1412,7 @@ namespace SSF_NET_Planillas.Formularios
             TxtFchIng2.Text = Convert.ToDateTime(e_emp.d_fching).ToString("dd/MM/yyyy");
             TxtFchBaj.Text = DateTime.Now.ToString("dd/MM/yyyy");
             Pan1.Visible = true;
+            Pan1.Refresh();
         }
         private void CmdAce_Click(object sender, EventArgs e)
         {
@@ -1349,10 +1425,26 @@ namespace SSF_NET_Planillas.Formularios
                 objRegistros.STU_SISTEMA = STU_SISTEMA;
                 //objRegistros.mysConec = mysConec;
                 if (objRegistros.DarBajaEmpleado(n_idreg, TxtFchBaj.Text) == true)
-                { 
+                {
                     MessageBox.Show("¡ El empleado se dio de baja con exito !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     //objRegistros.mysConec = mysConec;
-                    objRegistros.Listar(STU_SISTEMA.EMPRESAID);
+
+                    if (flagFiltro)
+                    {
+                        if (flagActivos)
+                        {
+                            objRegistros.ListarDetalladoActivo(STU_SISTEMA.EMPRESAID);
+                        }
+                        else
+                        {
+                            objRegistros.ListarDetalladoInactivo(STU_SISTEMA.EMPRESAID);
+                        }
+                    }
+                    else
+                    {
+                        objRegistros.Listar(STU_SISTEMA.EMPRESAID);
+                    }
+
                     if (objRegistros.b_OcurrioError == false)
                     {
                         dtLista = objRegistros.dtLista;

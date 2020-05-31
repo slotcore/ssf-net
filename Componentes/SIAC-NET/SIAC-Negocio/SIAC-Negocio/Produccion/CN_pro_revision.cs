@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using SIAC_Entidades.Produccion;
 using System.Data.OleDb;
+using System.Diagnostics;
 
 namespace SIAC_Negocio.Produccion
 {
@@ -213,6 +214,25 @@ namespace SIAC_Negocio.Produccion
             c_NomArchivo = "RptParteProduccion2.rpt";
             
             c_Ruta = "" + STU_SISTEMA.RUTAREPORTES + "produccion\\" + c_NomArchivo;
+            //c_Ruta = "D:\\Users\\jchac\\Source\\Repos\\App\\ssf-net\\SSF-NET-Produccion\\SSF-NET-Produccion\\Reportes\\" + c_NomArchivo;
+
+            //string cs = "SSF";
+            //if (!EventLog.SourceExists(cs)) { 
+            //    EventLog.CreateEventSource(cs, cs); 
+            //}
+            //EventLog.WriteEntry(cs, c_Ruta, EventLogEntryType.Information);
+
+            //var eventSource = "SSF";
+            //if (!EventLog.SourceExists(eventSource))
+            //{
+            //    EventLog.CreateEventSource(eventSource, "Application");
+            //}
+            //using (EventLog eventLog = new EventLog("Application"))
+            //{
+            //    eventLog.Source = "Application";
+            //    var message = string.Format("SSF - Ruta Produccion: {0}", c_Ruta);
+            //    eventLog.WriteEntry(message, EventLogEntryType.Information);
+            //}
 
             Helper.Cls_VisorCrystal xVisor = new Helper.Cls_VisorCrystal();
             xVisor.c_NombreServidor = STU_SISTEMA.BD_NOMSERVIDOR;

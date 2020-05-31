@@ -108,5 +108,32 @@ namespace SIAC_DATOS.Data
             }
             return _FinPeriodos;
         }
+
+        public static double ObtenerCostoPorTarea(int n_idpro, int n_idtar)
+        {
+            double _Costo = 0;
+
+            using (MySqlConnection connection
+                = new MySqlConnection(
+                    ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                connection.Open();
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandText = Properties.Resources.q_ObtenerCostoPorTarea;
+                    command.Parameters.Add(new MySqlParameter("@n_idpro", n_idpro));
+                    command.Parameters.Add(new MySqlParameter("@n_idtar", n_idtar));
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            _Costo = reader.GetInt32("n_idfinperiodo");
+                        }
+                    }
+                }
+            }
+            return _Costo;
+        }
     }
 }

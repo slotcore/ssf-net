@@ -66,6 +66,8 @@
             this.FgMarca = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.c1DockingTabPage1 = new C1.Win.C1Command.C1DockingTabPage();
+            this.FgDetallado = new C1.Win.C1FlexGrid.C1FlexGrid();
             ((System.ComponentModel.ISupportInitialize)(this.Sz1)).BeginInit();
             this.Sz1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Tab2)).BeginInit();
@@ -80,6 +82,8 @@
             this.ToolHerramientas.SuspendLayout();
             this.Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FgMarca)).BeginInit();
+            this.c1DockingTabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FgDetallado)).BeginInit();
             this.SuspendLayout();
             // 
             // Sz1
@@ -103,6 +107,7 @@
             // 
             this.Tab2.Alignment = System.Windows.Forms.TabAlignment.Bottom;
             this.Tab2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Tab2.Controls.Add(this.c1DockingTabPage1);
             this.Tab2.Controls.Add(this.c1DockingTabPage3);
             this.Tab2.Controls.Add(this.c1DockingTabPage4);
             this.Tab2.Location = new System.Drawing.Point(2, 58);
@@ -503,6 +508,26 @@
             this.label2.Size = new System.Drawing.Size(390, 29);
             this.label2.TabIndex = 77;
             // 
+            // c1DockingTabPage1
+            // 
+            this.c1DockingTabPage1.Controls.Add(this.FgDetallado);
+            this.c1DockingTabPage1.Location = new System.Drawing.Point(1, 1);
+            this.c1DockingTabPage1.Name = "c1DockingTabPage1";
+            this.c1DockingTabPage1.Size = new System.Drawing.Size(1068, 434);
+            this.c1DockingTabPage1.TabIndex = 2;
+            this.c1DockingTabPage1.Text = "Detallado";
+            // 
+            // FgDetallado
+            // 
+            this.FgDetallado.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
+            this.FgDetallado.ColumnInfo = "10,1,0,0,0,85,Columns:0{Width:10;}\t";
+            this.FgDetallado.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FgDetallado.Location = new System.Drawing.Point(0, 0);
+            this.FgDetallado.Name = "FgDetallado";
+            this.FgDetallado.Rows.DefaultSize = 17;
+            this.FgDetallado.Size = new System.Drawing.Size(1068, 434);
+            this.FgDetallado.TabIndex = 1;
+            // 
             // FrmMarcacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -534,6 +559,8 @@
             this.Panel2.ResumeLayout(false);
             this.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FgMarca)).EndInit();
+            this.c1DockingTabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.FgDetallado)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -578,5 +605,7 @@
         internal System.Windows.Forms.Button CmdImp;
         internal System.Windows.Forms.Button CmdActDat;
         private System.Windows.Forms.Label LblIdEmple;
+        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage1;
+        private C1.Win.C1FlexGrid.C1FlexGrid FgDetallado;
     }
 }

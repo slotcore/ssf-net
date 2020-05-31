@@ -25,7 +25,8 @@ namespace SIAC_Entidades.Produccion
         private double _n_totprotietra;
         private double _n_porefiuni;
         private double _n_porefitot;
-        private double _n_costar;		
+        private double _n_kghper;
+        private double _n_costar;
         private int _n_ord;
         public int n_idpro
         {
@@ -111,6 +112,11 @@ namespace SIAC_Entidades.Produccion
         {
             get { return _n_porefitot; }
             set { _n_porefitot = value; }
+        }
+        public double n_kghper
+        {
+            get { return _n_kghper; }
+            set { _n_kghper = value; }
         }
         public double n_costar
         {

@@ -164,19 +164,19 @@ namespace SIAC_Negocio.Planilla
             
             // FLEX GRID DE LOS TAREAS
             arrCabeceraFlexFil[0, 0] = "Apellidos y Nombres";
-            arrCabeceraFlexFil[0, 1] = "300";
+            arrCabeceraFlexFil[0, 1] = "210";
             arrCabeceraFlexFil[0, 2] = "C";
             arrCabeceraFlexFil[0, 3] = "";
             arrCabeceraFlexFil[0, 4] = "c_apenom";
 
             arrCabeceraFlexFil[1, 0] = "Producto";
-            arrCabeceraFlexFil[1, 1] = "250";
+            arrCabeceraFlexFil[1, 1] = "210";
             arrCabeceraFlexFil[1, 2] = "C";
             arrCabeceraFlexFil[1, 3] = "";
             arrCabeceraFlexFil[1, 4] = "c_despro";
             
             arrCabeceraFlexFil[2, 0] = "Tarea";
-            arrCabeceraFlexFil[2, 1] = "250";
+            arrCabeceraFlexFil[2, 1] = "180";
             arrCabeceraFlexFil[2, 2] = "C";
             arrCabeceraFlexFil[2, 3] = "";
             arrCabeceraFlexFil[2, 4] = "c_des";
@@ -212,25 +212,25 @@ namespace SIAC_Negocio.Planilla
             arrCabeceraFlexFil[7, 4] = "c_horter";
 
             arrCabeceraFlexFil[8, 0] = "Can. Prod.";
-            arrCabeceraFlexFil[8, 1] = "70";
+            arrCabeceraFlexFil[8, 1] = "50";
             arrCabeceraFlexFil[8, 2] = "D";
             arrCabeceraFlexFil[8, 3] = "0.00";
             arrCabeceraFlexFil[8, 4] = "n_can";
 
             arrCabeceraFlexFil[9, 0] = "Tiempo";
-            arrCabeceraFlexFil[9, 1] = "60";
+            arrCabeceraFlexFil[9, 1] = "45";
             arrCabeceraFlexFil[9, 2] = "C";
             arrCabeceraFlexFil[9, 3] = "";
             arrCabeceraFlexFil[9, 4] = "c_numhortra";
 
             arrCabeceraFlexFil[10, 0] = "Nº Horas";
-            arrCabeceraFlexFil[10, 1] = "60";
+            arrCabeceraFlexFil[10, 1] = "40";
             arrCabeceraFlexFil[10, 2] = "D";
             arrCabeceraFlexFil[10, 3] = "0.00";
             arrCabeceraFlexFil[10, 4] = "n_numhortra";
 
             arrCabeceraFlexFil[11, 0] = "Importe";
-            arrCabeceraFlexFil[11, 1] = "80";
+            arrCabeceraFlexFil[11, 1] = "60";
             arrCabeceraFlexFil[11, 2] = "D";
             arrCabeceraFlexFil[11, 3] = "0.00";
             arrCabeceraFlexFil[11, 4] = "n_imppaghrstra";

@@ -68,6 +68,17 @@
             this.Tab2 = new System.Windows.Forms.TabControl();
             this.c1DockingTabPage3 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Pan1 = new System.Windows.Forms.Panel();
+            this.CmdAce = new System.Windows.Forms.Button();
+            this.CmdCan = new System.Windows.Forms.Button();
+            this.TxtFchBaj = new System.Windows.Forms.DateTimePicker();
+            this.TxtFchIng2 = new System.Windows.Forms.DateTimePicker();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.TxtApeNom2 = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
             this.CboResDis = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
             this.CboResPro = new System.Windows.Forms.ComboBox();
@@ -107,17 +118,6 @@
             this.CmdBusImg = new System.Windows.Forms.Button();
             this.c1DockingTabPage4 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.Pan1 = new System.Windows.Forms.Panel();
-            this.CmdAce = new System.Windows.Forms.Button();
-            this.CmdCan = new System.Windows.Forms.Button();
-            this.TxtFchBaj = new System.Windows.Forms.DateTimePicker();
-            this.TxtFchIng2 = new System.Windows.Forms.DateTimePicker();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.TxtApeNom2 = new System.Windows.Forms.TextBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
             this.kryptonHeaderGroup1 = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
             this.BtnAgregarPeriodo = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
             this.BtnModificarPeriodo = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
@@ -156,11 +156,11 @@
             this.Tab2.SuspendLayout();
             this.c1DockingTabPage3.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.Pan1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.c1DockingTabPage4.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.Pan1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup1.Panel)).BeginInit();
             this.kryptonHeaderGroup1.Panel.SuspendLayout();
@@ -594,6 +594,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.Pan1);
             this.panel1.Controls.Add(this.CboResDis);
             this.panel1.Controls.Add(this.label19);
             this.panel1.Controls.Add(this.CboResPro);
@@ -637,456 +638,6 @@
             this.panel1.Size = new System.Drawing.Size(792, 368);
             this.panel1.TabIndex = 1;
             // 
-            // CboResDis
-            // 
-            this.CboResDis.BackColor = System.Drawing.Color.White;
-            this.CboResDis.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CboResDis.Enabled = false;
-            this.CboResDis.ForeColor = System.Drawing.Color.Black;
-            this.CboResDis.FormattingEnabled = true;
-            this.CboResDis.Location = new System.Drawing.Point(120, 231);
-            this.CboResDis.Name = "CboResDis";
-            this.CboResDis.Size = new System.Drawing.Size(249, 21);
-            this.CboResDis.TabIndex = 10;
-            this.CboResDis.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboResDis_KeyPress);
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.BackColor = System.Drawing.Color.Transparent;
-            this.label19.ForeColor = System.Drawing.Color.Black;
-            this.label19.Location = new System.Drawing.Point(9, 236);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(84, 13);
-            this.label19.TabIndex = 106;
-            this.label19.Text = "Dist. Residencia";
-            // 
-            // CboResPro
-            // 
-            this.CboResPro.BackColor = System.Drawing.Color.White;
-            this.CboResPro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CboResPro.Enabled = false;
-            this.CboResPro.ForeColor = System.Drawing.Color.Black;
-            this.CboResPro.FormattingEnabled = true;
-            this.CboResPro.Location = new System.Drawing.Point(383, 208);
-            this.CboResPro.Name = "CboResPro";
-            this.CboResPro.Size = new System.Drawing.Size(145, 21);
-            this.CboResPro.TabIndex = 9;
-            this.CboResPro.SelectedIndexChanged += new System.EventHandler(this.CboResPro_SelectedIndexChanged);
-            this.CboResPro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboResPro_KeyPress);
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.BackColor = System.Drawing.Color.Transparent;
-            this.label20.ForeColor = System.Drawing.Color.Black;
-            this.label20.Location = new System.Drawing.Point(280, 211);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(88, 13);
-            this.label20.TabIndex = 104;
-            this.label20.Text = "Prov. Residencia";
-            // 
-            // CboResDep
-            // 
-            this.CboResDep.AccessibleDescription = "";
-            this.CboResDep.BackColor = System.Drawing.Color.White;
-            this.CboResDep.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CboResDep.Enabled = false;
-            this.CboResDep.ForeColor = System.Drawing.Color.Black;
-            this.CboResDep.FormattingEnabled = true;
-            this.CboResDep.Location = new System.Drawing.Point(120, 208);
-            this.CboResDep.Name = "CboResDep";
-            this.CboResDep.Size = new System.Drawing.Size(146, 21);
-            this.CboResDep.TabIndex = 8;
-            this.CboResDep.SelectedValueChanged += new System.EventHandler(this.CboResDep_SelectedValueChanged);
-            this.CboResDep.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboResDep_KeyPress);
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.BackColor = System.Drawing.Color.Transparent;
-            this.label21.ForeColor = System.Drawing.Color.Black;
-            this.label21.Location = new System.Drawing.Point(9, 211);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(86, 13);
-            this.label21.TabIndex = 102;
-            this.label21.Text = "Dep. Residencia";
-            // 
-            // TxtMail
-            // 
-            this.TxtMail.Enabled = false;
-            this.TxtMail.Location = new System.Drawing.Point(383, 254);
-            this.TxtMail.MaxLength = 25;
-            this.TxtMail.Name = "TxtMail";
-            this.TxtMail.Size = new System.Drawing.Size(145, 20);
-            this.TxtMail.TabIndex = 12;
-            this.TxtMail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMail_KeyPress);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.label16.ForeColor = System.Drawing.Color.Black;
-            this.label16.Location = new System.Drawing.Point(273, 257);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(96, 13);
-            this.label16.TabIndex = 99;
-            this.label16.Text = "Correlo Electronico";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(543, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(234, 289);
-            this.pictureBox1.TabIndex = 98;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.ForeColor = System.Drawing.Color.Black;
-            this.label15.Location = new System.Drawing.Point(9, 165);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(52, 13);
-            this.label15.TabIndex = 97;
-            this.label15.Text = "Direccion";
-            this.label15.Click += new System.EventHandler(this.label15_Click);
-            // 
-            // CboNacDis
-            // 
-            this.CboNacDis.BackColor = System.Drawing.Color.White;
-            this.CboNacDis.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CboNacDis.Enabled = false;
-            this.CboNacDis.ForeColor = System.Drawing.Color.Black;
-            this.CboNacDis.FormattingEnabled = true;
-            this.CboNacDis.Location = new System.Drawing.Point(120, 311);
-            this.CboNacDis.Name = "CboNacDis";
-            this.CboNacDis.Size = new System.Drawing.Size(248, 21);
-            this.CboNacDis.TabIndex = 15;
-            this.CboNacDis.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboNacDis_KeyPress);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(9, 316);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(84, 13);
-            this.label14.TabIndex = 96;
-            this.label14.Text = "Dist. Nacimiento";
-            // 
-            // CboNacPro
-            // 
-            this.CboNacPro.BackColor = System.Drawing.Color.White;
-            this.CboNacPro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CboNacPro.Enabled = false;
-            this.CboNacPro.ForeColor = System.Drawing.Color.Black;
-            this.CboNacPro.FormattingEnabled = true;
-            this.CboNacPro.Location = new System.Drawing.Point(383, 288);
-            this.CboNacPro.Name = "CboNacPro";
-            this.CboNacPro.Size = new System.Drawing.Size(145, 21);
-            this.CboNacPro.TabIndex = 14;
-            this.CboNacPro.SelectedIndexChanged += new System.EventHandler(this.CboNacPro_SelectedIndexChanged);
-            this.CboNacPro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboNacPro_KeyPress);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(281, 291);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(88, 13);
-            this.label13.TabIndex = 94;
-            this.label13.Text = "Prov. Nacimiento";
-            // 
-            // CboNacDep
-            // 
-            this.CboNacDep.BackColor = System.Drawing.Color.White;
-            this.CboNacDep.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CboNacDep.Enabled = false;
-            this.CboNacDep.ForeColor = System.Drawing.Color.Black;
-            this.CboNacDep.FormattingEnabled = true;
-            this.CboNacDep.Location = new System.Drawing.Point(120, 288);
-            this.CboNacDep.Name = "CboNacDep";
-            this.CboNacDep.Size = new System.Drawing.Size(146, 21);
-            this.CboNacDep.TabIndex = 13;
-            this.CboNacDep.SelectedValueChanged += new System.EventHandler(this.CboNacDep_SelectedValueChanged);
-            this.CboNacDep.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboNacDep_KeyPress);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(9, 291);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(86, 13);
-            this.label12.TabIndex = 92;
-            this.label12.Text = "Dep. Nacimiento";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
-            // 
-            // TxtFchNac
-            // 
-            this.TxtFchNac.Enabled = false;
-            this.TxtFchNac.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.TxtFchNac.Location = new System.Drawing.Point(120, 334);
-            this.TxtFchNac.Name = "TxtFchNac";
-            this.TxtFchNac.Size = new System.Drawing.Size(100, 20);
-            this.TxtFchNac.TabIndex = 16;
-            this.TxtFchNac.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtFchNac_KeyPress);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(9, 120);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(44, 13);
-            this.label8.TabIndex = 89;
-            this.label8.Text = "Nombre";
-            // 
-            // TxtNom2
-            // 
-            this.TxtNom2.Enabled = false;
-            this.TxtNom2.Location = new System.Drawing.Point(120, 117);
-            this.TxtNom2.MaxLength = 25;
-            this.TxtNom2.Name = "TxtNom2";
-            this.TxtNom2.Size = new System.Drawing.Size(233, 20);
-            this.TxtNom2.TabIndex = 5;
-            this.TxtNom2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNom2_KeyPress);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(9, 98);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(44, 13);
-            this.label9.TabIndex = 87;
-            this.label9.Text = "Nombre";
-            // 
-            // TxtNom1
-            // 
-            this.TxtNom1.Enabled = false;
-            this.TxtNom1.Location = new System.Drawing.Point(120, 95);
-            this.TxtNom1.MaxLength = 25;
-            this.TxtNom1.Name = "TxtNom1";
-            this.TxtNom1.Size = new System.Drawing.Size(233, 20);
-            this.TxtNom1.TabIndex = 4;
-            this.TxtNom1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNom1_KeyPress);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(9, 75);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(71, 13);
-            this.label7.TabIndex = 85;
-            this.label7.Text = "Ape. Materno";
-            // 
-            // TxtApeMat
-            // 
-            this.TxtApeMat.Enabled = false;
-            this.TxtApeMat.Location = new System.Drawing.Point(120, 72);
-            this.TxtApeMat.MaxLength = 25;
-            this.TxtApeMat.Name = "TxtApeMat";
-            this.TxtApeMat.Size = new System.Drawing.Size(233, 20);
-            this.TxtApeMat.TabIndex = 3;
-            this.TxtApeMat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtApeMat_KeyPress);
-            // 
-            // CboTipDoc
-            // 
-            this.CboTipDoc.BackColor = System.Drawing.Color.White;
-            this.CboTipDoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CboTipDoc.Enabled = false;
-            this.CboTipDoc.ForeColor = System.Drawing.Color.Black;
-            this.CboTipDoc.FormattingEnabled = true;
-            this.CboTipDoc.Location = new System.Drawing.Point(120, 5);
-            this.CboTipDoc.Name = "CboTipDoc";
-            this.CboTipDoc.Size = new System.Drawing.Size(233, 21);
-            this.CboTipDoc.TabIndex = 0;
-            this.CboTipDoc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboTipDoc_KeyPress);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(9, 8);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 13);
-            this.label3.TabIndex = 83;
-            this.label3.Text = "Tipo Documento";
-            // 
-            // TxtTel
-            // 
-            this.TxtTel.Enabled = false;
-            this.TxtTel.Location = new System.Drawing.Point(120, 254);
-            this.TxtTel.MaxLength = 25;
-            this.TxtTel.Name = "TxtTel";
-            this.TxtTel.Size = new System.Drawing.Size(102, 20);
-            this.TxtTel.TabIndex = 11;
-            this.TxtTel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtTel_KeyPress);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(9, 53);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(69, 13);
-            this.label5.TabIndex = 79;
-            this.label5.Text = "Ape. Paterno";
-            // 
-            // TxtApePat
-            // 
-            this.TxtApePat.Enabled = false;
-            this.TxtApePat.Location = new System.Drawing.Point(120, 50);
-            this.TxtApePat.MaxLength = 25;
-            this.TxtApePat.Name = "TxtApePat";
-            this.TxtApePat.Size = new System.Drawing.Size(233, 20);
-            this.TxtApePat.TabIndex = 2;
-            this.TxtApePat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtApePat_KeyPress);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(9, 337);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 13);
-            this.label4.TabIndex = 77;
-            this.label4.Text = "Fch. Nacimiento";
-            // 
-            // CboSex
-            // 
-            this.CboSex.BackColor = System.Drawing.Color.White;
-            this.CboSex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CboSex.Enabled = false;
-            this.CboSex.ForeColor = System.Drawing.Color.Black;
-            this.CboSex.FormattingEnabled = true;
-            this.CboSex.Location = new System.Drawing.Point(120, 139);
-            this.CboSex.Name = "CboSex";
-            this.CboSex.Size = new System.Drawing.Size(133, 21);
-            this.CboSex.TabIndex = 6;
-            this.CboSex.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboSex_KeyPress);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(9, 142);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(31, 13);
-            this.label6.TabIndex = 76;
-            this.label6.Text = "Sexo";
-            // 
-            // TxtDir
-            // 
-            this.TxtDir.Enabled = false;
-            this.TxtDir.Location = new System.Drawing.Point(120, 162);
-            this.TxtDir.MaxLength = 25;
-            this.TxtDir.Multiline = true;
-            this.TxtDir.Name = "TxtDir";
-            this.TxtDir.Size = new System.Drawing.Size(407, 43);
-            this.TxtDir.TabIndex = 7;
-            this.TxtDir.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtDir_KeyPress);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(9, 32);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 13);
-            this.label2.TabIndex = 69;
-            this.label2.Text = "Nº Documento";
-            // 
-            // TxtNumDoc
-            // 
-            this.TxtNumDoc.Enabled = false;
-            this.TxtNumDoc.Location = new System.Drawing.Point(120, 28);
-            this.TxtNumDoc.MaxLength = 25;
-            this.TxtNumDoc.Name = "TxtNumDoc";
-            this.TxtNumDoc.Size = new System.Drawing.Size(102, 20);
-            this.TxtNumDoc.TabIndex = 1;
-            this.TxtNumDoc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNumDoc_KeyPress);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(9, 257);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(64, 13);
-            this.label11.TabIndex = 69;
-            this.label11.Text = "Nº Telefono";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.CmdBusImg);
-            this.groupBox1.Location = new System.Drawing.Point(543, 294);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(234, 56);
-            this.groupBox1.TabIndex = 107;
-            this.groupBox1.TabStop = false;
-            // 
-            // CmdBusImg
-            // 
-            this.CmdBusImg.Location = new System.Drawing.Point(15, 17);
-            this.CmdBusImg.Name = "CmdBusImg";
-            this.CmdBusImg.Size = new System.Drawing.Size(93, 27);
-            this.CmdBusImg.TabIndex = 17;
-            this.CmdBusImg.Text = "Buscar Foto";
-            this.CmdBusImg.UseVisualStyleBackColor = true;
-            // 
-            // c1DockingTabPage4
-            // 
-            this.c1DockingTabPage4.Controls.Add(this.panel5);
-            this.c1DockingTabPage4.Location = new System.Drawing.Point(4, 4);
-            this.c1DockingTabPage4.Name = "c1DockingTabPage4";
-            this.c1DockingTabPage4.Size = new System.Drawing.Size(792, 368);
-            this.c1DockingTabPage4.TabIndex = 1;
-            this.c1DockingTabPage4.Text = "Datos laborales";
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.Pan1);
-            this.panel5.Controls.Add(this.kryptonHeaderGroup1);
-            this.panel5.Controls.Add(this.TxtFchBaj2);
-            this.panel5.Controls.Add(this.label31);
-            this.panel5.Controls.Add(this.ChkDestacado);
-            this.panel5.Controls.Add(this.label25);
-            this.panel5.Controls.Add(this.TxtNumEsa);
-            this.panel5.Controls.Add(this.TxtFchIng);
-            this.panel5.Controls.Add(this.label24);
-            this.panel5.Controls.Add(this.ChkAsigFam);
-            this.panel5.Controls.Add(this.ChkDes);
-            this.panel5.Controls.Add(this.label10);
-            this.panel5.Controls.Add(this.TxtImpHorExt);
-            this.panel5.Controls.Add(this.label22);
-            this.panel5.Controls.Add(this.TxtImpHorNor);
-            this.panel5.Controls.Add(this.label23);
-            this.panel5.Controls.Add(this.TxtBas);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(792, 368);
-            this.panel5.TabIndex = 0;
-            // 
             // Pan1
             // 
             this.Pan1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -1100,7 +651,7 @@
             this.Pan1.Controls.Add(this.TxtApeNom2);
             this.Pan1.Controls.Add(this.label27);
             this.Pan1.Controls.Add(this.label26);
-            this.Pan1.Location = new System.Drawing.Point(739, 52);
+            this.Pan1.Location = new System.Drawing.Point(383, 21);
             this.Pan1.Name = "Pan1";
             this.Pan1.Size = new System.Drawing.Size(388, 157);
             this.Pan1.TabIndex = 38;
@@ -1203,6 +754,456 @@
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(384, 23);
             this.label26.TabIndex = 0;
+            // 
+            // CboResDis
+            // 
+            this.CboResDis.BackColor = System.Drawing.Color.White;
+            this.CboResDis.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CboResDis.Enabled = false;
+            this.CboResDis.ForeColor = System.Drawing.Color.Black;
+            this.CboResDis.FormattingEnabled = true;
+            this.CboResDis.Location = new System.Drawing.Point(120, 268);
+            this.CboResDis.Name = "CboResDis";
+            this.CboResDis.Size = new System.Drawing.Size(249, 21);
+            this.CboResDis.TabIndex = 10;
+            this.CboResDis.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboResDis_KeyPress);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.Transparent;
+            this.label19.ForeColor = System.Drawing.Color.Black;
+            this.label19.Location = new System.Drawing.Point(9, 273);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(84, 13);
+            this.label19.TabIndex = 106;
+            this.label19.Text = "Dist. Residencia";
+            // 
+            // CboResPro
+            // 
+            this.CboResPro.BackColor = System.Drawing.Color.White;
+            this.CboResPro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CboResPro.Enabled = false;
+            this.CboResPro.ForeColor = System.Drawing.Color.Black;
+            this.CboResPro.FormattingEnabled = true;
+            this.CboResPro.Location = new System.Drawing.Point(383, 245);
+            this.CboResPro.Name = "CboResPro";
+            this.CboResPro.Size = new System.Drawing.Size(145, 21);
+            this.CboResPro.TabIndex = 9;
+            this.CboResPro.SelectedIndexChanged += new System.EventHandler(this.CboResPro_SelectedIndexChanged);
+            this.CboResPro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboResPro_KeyPress);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.Color.Transparent;
+            this.label20.ForeColor = System.Drawing.Color.Black;
+            this.label20.Location = new System.Drawing.Point(280, 248);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(88, 13);
+            this.label20.TabIndex = 104;
+            this.label20.Text = "Prov. Residencia";
+            // 
+            // CboResDep
+            // 
+            this.CboResDep.AccessibleDescription = "";
+            this.CboResDep.BackColor = System.Drawing.Color.White;
+            this.CboResDep.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CboResDep.Enabled = false;
+            this.CboResDep.ForeColor = System.Drawing.Color.Black;
+            this.CboResDep.FormattingEnabled = true;
+            this.CboResDep.Location = new System.Drawing.Point(120, 245);
+            this.CboResDep.Name = "CboResDep";
+            this.CboResDep.Size = new System.Drawing.Size(146, 21);
+            this.CboResDep.TabIndex = 8;
+            this.CboResDep.SelectedValueChanged += new System.EventHandler(this.CboResDep_SelectedValueChanged);
+            this.CboResDep.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboResDep_KeyPress);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.BackColor = System.Drawing.Color.Transparent;
+            this.label21.ForeColor = System.Drawing.Color.Black;
+            this.label21.Location = new System.Drawing.Point(9, 248);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(86, 13);
+            this.label21.TabIndex = 102;
+            this.label21.Text = "Dep. Residencia";
+            // 
+            // TxtMail
+            // 
+            this.TxtMail.Enabled = false;
+            this.TxtMail.Location = new System.Drawing.Point(383, 292);
+            this.TxtMail.MaxLength = 25;
+            this.TxtMail.Name = "TxtMail";
+            this.TxtMail.Size = new System.Drawing.Size(145, 20);
+            this.TxtMail.TabIndex = 12;
+            this.TxtMail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMail_KeyPress);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.ForeColor = System.Drawing.Color.Black;
+            this.label16.Location = new System.Drawing.Point(273, 295);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(96, 13);
+            this.label16.TabIndex = 99;
+            this.label16.Text = "Correlo Electronico";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(543, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(234, 289);
+            this.pictureBox1.TabIndex = 98;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.ForeColor = System.Drawing.Color.Black;
+            this.label15.Location = new System.Drawing.Point(9, 165);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(52, 13);
+            this.label15.TabIndex = 97;
+            this.label15.Text = "Direccion";
+            this.label15.Click += new System.EventHandler(this.label15_Click);
+            // 
+            // CboNacDis
+            // 
+            this.CboNacDis.BackColor = System.Drawing.Color.White;
+            this.CboNacDis.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CboNacDis.Enabled = false;
+            this.CboNacDis.ForeColor = System.Drawing.Color.Black;
+            this.CboNacDis.FormattingEnabled = true;
+            this.CboNacDis.Location = new System.Drawing.Point(120, 339);
+            this.CboNacDis.Name = "CboNacDis";
+            this.CboNacDis.Size = new System.Drawing.Size(146, 21);
+            this.CboNacDis.TabIndex = 15;
+            this.CboNacDis.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboNacDis_KeyPress);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.ForeColor = System.Drawing.Color.Black;
+            this.label14.Location = new System.Drawing.Point(9, 344);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(84, 13);
+            this.label14.TabIndex = 96;
+            this.label14.Text = "Dist. Nacimiento";
+            // 
+            // CboNacPro
+            // 
+            this.CboNacPro.BackColor = System.Drawing.Color.White;
+            this.CboNacPro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CboNacPro.Enabled = false;
+            this.CboNacPro.ForeColor = System.Drawing.Color.Black;
+            this.CboNacPro.FormattingEnabled = true;
+            this.CboNacPro.Location = new System.Drawing.Point(383, 316);
+            this.CboNacPro.Name = "CboNacPro";
+            this.CboNacPro.Size = new System.Drawing.Size(145, 21);
+            this.CboNacPro.TabIndex = 14;
+            this.CboNacPro.SelectedIndexChanged += new System.EventHandler(this.CboNacPro_SelectedIndexChanged);
+            this.CboNacPro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboNacPro_KeyPress);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.ForeColor = System.Drawing.Color.Black;
+            this.label13.Location = new System.Drawing.Point(281, 319);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(88, 13);
+            this.label13.TabIndex = 94;
+            this.label13.Text = "Prov. Nacimiento";
+            // 
+            // CboNacDep
+            // 
+            this.CboNacDep.BackColor = System.Drawing.Color.White;
+            this.CboNacDep.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CboNacDep.Enabled = false;
+            this.CboNacDep.ForeColor = System.Drawing.Color.Black;
+            this.CboNacDep.FormattingEnabled = true;
+            this.CboNacDep.Location = new System.Drawing.Point(120, 316);
+            this.CboNacDep.Name = "CboNacDep";
+            this.CboNacDep.Size = new System.Drawing.Size(146, 21);
+            this.CboNacDep.TabIndex = 13;
+            this.CboNacDep.SelectedValueChanged += new System.EventHandler(this.CboNacDep_SelectedValueChanged);
+            this.CboNacDep.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboNacDep_KeyPress);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(9, 319);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(86, 13);
+            this.label12.TabIndex = 92;
+            this.label12.Text = "Dep. Nacimiento";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
+            // 
+            // TxtFchNac
+            // 
+            this.TxtFchNac.Enabled = false;
+            this.TxtFchNac.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.TxtFchNac.Location = new System.Drawing.Point(383, 339);
+            this.TxtFchNac.Name = "TxtFchNac";
+            this.TxtFchNac.Size = new System.Drawing.Size(100, 20);
+            this.TxtFchNac.TabIndex = 16;
+            this.TxtFchNac.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtFchNac_KeyPress);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(9, 120);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(44, 13);
+            this.label8.TabIndex = 89;
+            this.label8.Text = "Nombre";
+            // 
+            // TxtNom2
+            // 
+            this.TxtNom2.Enabled = false;
+            this.TxtNom2.Location = new System.Drawing.Point(120, 117);
+            this.TxtNom2.MaxLength = 25;
+            this.TxtNom2.Name = "TxtNom2";
+            this.TxtNom2.Size = new System.Drawing.Size(233, 20);
+            this.TxtNom2.TabIndex = 5;
+            this.TxtNom2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNom2_KeyPress);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(9, 98);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(44, 13);
+            this.label9.TabIndex = 87;
+            this.label9.Text = "Nombre";
+            // 
+            // TxtNom1
+            // 
+            this.TxtNom1.Enabled = false;
+            this.TxtNom1.Location = new System.Drawing.Point(120, 95);
+            this.TxtNom1.MaxLength = 25;
+            this.TxtNom1.Name = "TxtNom1";
+            this.TxtNom1.Size = new System.Drawing.Size(233, 20);
+            this.TxtNom1.TabIndex = 4;
+            this.TxtNom1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNom1_KeyPress);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(9, 75);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(71, 13);
+            this.label7.TabIndex = 85;
+            this.label7.Text = "Ape. Materno";
+            // 
+            // TxtApeMat
+            // 
+            this.TxtApeMat.Enabled = false;
+            this.TxtApeMat.Location = new System.Drawing.Point(120, 72);
+            this.TxtApeMat.MaxLength = 25;
+            this.TxtApeMat.Name = "TxtApeMat";
+            this.TxtApeMat.Size = new System.Drawing.Size(233, 20);
+            this.TxtApeMat.TabIndex = 3;
+            this.TxtApeMat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtApeMat_KeyPress);
+            // 
+            // CboTipDoc
+            // 
+            this.CboTipDoc.BackColor = System.Drawing.Color.White;
+            this.CboTipDoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CboTipDoc.Enabled = false;
+            this.CboTipDoc.ForeColor = System.Drawing.Color.Black;
+            this.CboTipDoc.FormattingEnabled = true;
+            this.CboTipDoc.Location = new System.Drawing.Point(120, 5);
+            this.CboTipDoc.Name = "CboTipDoc";
+            this.CboTipDoc.Size = new System.Drawing.Size(233, 21);
+            this.CboTipDoc.TabIndex = 0;
+            this.CboTipDoc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboTipDoc_KeyPress);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(9, 8);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(86, 13);
+            this.label3.TabIndex = 83;
+            this.label3.Text = "Tipo Documento";
+            // 
+            // TxtTel
+            // 
+            this.TxtTel.Enabled = false;
+            this.TxtTel.Location = new System.Drawing.Point(120, 292);
+            this.TxtTel.MaxLength = 25;
+            this.TxtTel.Name = "TxtTel";
+            this.TxtTel.Size = new System.Drawing.Size(102, 20);
+            this.TxtTel.TabIndex = 11;
+            this.TxtTel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtTel_KeyPress);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(9, 53);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(69, 13);
+            this.label5.TabIndex = 79;
+            this.label5.Text = "Ape. Paterno";
+            // 
+            // TxtApePat
+            // 
+            this.TxtApePat.Enabled = false;
+            this.TxtApePat.Location = new System.Drawing.Point(120, 50);
+            this.TxtApePat.MaxLength = 25;
+            this.TxtApePat.Name = "TxtApePat";
+            this.TxtApePat.Size = new System.Drawing.Size(233, 20);
+            this.TxtApePat.TabIndex = 2;
+            this.TxtApePat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtApePat_KeyPress);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(281, 342);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(84, 13);
+            this.label4.TabIndex = 77;
+            this.label4.Text = "Fch. Nacimiento";
+            // 
+            // CboSex
+            // 
+            this.CboSex.BackColor = System.Drawing.Color.White;
+            this.CboSex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CboSex.Enabled = false;
+            this.CboSex.ForeColor = System.Drawing.Color.Black;
+            this.CboSex.FormattingEnabled = true;
+            this.CboSex.Location = new System.Drawing.Point(120, 139);
+            this.CboSex.Name = "CboSex";
+            this.CboSex.Size = new System.Drawing.Size(133, 21);
+            this.CboSex.TabIndex = 6;
+            this.CboSex.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboSex_KeyPress);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(9, 142);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(31, 13);
+            this.label6.TabIndex = 76;
+            this.label6.Text = "Sexo";
+            // 
+            // TxtDir
+            // 
+            this.TxtDir.Enabled = false;
+            this.TxtDir.Location = new System.Drawing.Point(120, 162);
+            this.TxtDir.MaxLength = 99;
+            this.TxtDir.Multiline = true;
+            this.TxtDir.Name = "TxtDir";
+            this.TxtDir.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.TxtDir.Size = new System.Drawing.Size(407, 77);
+            this.TxtDir.TabIndex = 7;
+            this.TxtDir.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtDir_KeyPress);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(9, 32);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 13);
+            this.label2.TabIndex = 69;
+            this.label2.Text = "Nº Documento";
+            // 
+            // TxtNumDoc
+            // 
+            this.TxtNumDoc.Enabled = false;
+            this.TxtNumDoc.Location = new System.Drawing.Point(120, 28);
+            this.TxtNumDoc.MaxLength = 25;
+            this.TxtNumDoc.Name = "TxtNumDoc";
+            this.TxtNumDoc.Size = new System.Drawing.Size(102, 20);
+            this.TxtNumDoc.TabIndex = 1;
+            this.TxtNumDoc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNumDoc_KeyPress);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.Location = new System.Drawing.Point(9, 295);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(64, 13);
+            this.label11.TabIndex = 69;
+            this.label11.Text = "Nº Telefono";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.CmdBusImg);
+            this.groupBox1.Location = new System.Drawing.Point(543, 294);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(234, 56);
+            this.groupBox1.TabIndex = 107;
+            this.groupBox1.TabStop = false;
+            // 
+            // CmdBusImg
+            // 
+            this.CmdBusImg.Location = new System.Drawing.Point(15, 17);
+            this.CmdBusImg.Name = "CmdBusImg";
+            this.CmdBusImg.Size = new System.Drawing.Size(93, 27);
+            this.CmdBusImg.TabIndex = 17;
+            this.CmdBusImg.Text = "Buscar Foto";
+            this.CmdBusImg.UseVisualStyleBackColor = true;
+            // 
+            // c1DockingTabPage4
+            // 
+            this.c1DockingTabPage4.Controls.Add(this.panel5);
+            this.c1DockingTabPage4.Location = new System.Drawing.Point(4, 4);
+            this.c1DockingTabPage4.Name = "c1DockingTabPage4";
+            this.c1DockingTabPage4.Size = new System.Drawing.Size(792, 368);
+            this.c1DockingTabPage4.TabIndex = 1;
+            this.c1DockingTabPage4.Text = "Datos laborales";
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.kryptonHeaderGroup1);
+            this.panel5.Controls.Add(this.TxtFchBaj2);
+            this.panel5.Controls.Add(this.label31);
+            this.panel5.Controls.Add(this.ChkDestacado);
+            this.panel5.Controls.Add(this.label25);
+            this.panel5.Controls.Add(this.TxtNumEsa);
+            this.panel5.Controls.Add(this.TxtFchIng);
+            this.panel5.Controls.Add(this.label24);
+            this.panel5.Controls.Add(this.ChkAsigFam);
+            this.panel5.Controls.Add(this.ChkDes);
+            this.panel5.Controls.Add(this.label10);
+            this.panel5.Controls.Add(this.TxtImpHorExt);
+            this.panel5.Controls.Add(this.label22);
+            this.panel5.Controls.Add(this.TxtImpHorNor);
+            this.panel5.Controls.Add(this.label23);
+            this.panel5.Controls.Add(this.TxtBas);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(792, 368);
+            this.panel5.TabIndex = 0;
             // 
             // kryptonHeaderGroup1
             // 
@@ -1531,13 +1532,13 @@
             this.c1DockingTabPage3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.Pan1.ResumeLayout(false);
+            this.Pan1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.c1DockingTabPage4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            this.Pan1.ResumeLayout(false);
-            this.Pan1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup1.Panel)).EndInit();
             this.kryptonHeaderGroup1.Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup1)).EndInit();

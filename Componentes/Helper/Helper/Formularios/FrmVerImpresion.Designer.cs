@@ -39,23 +39,26 @@
             this.Cr7.Cursor = System.Windows.Forms.Cursors.Default;
             this.Cr7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Cr7.Location = new System.Drawing.Point(0, 0);
+            this.Cr7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Cr7.Name = "Cr7";
-            this.Cr7.Size = new System.Drawing.Size(923, 624);
+            this.Cr7.Size = new System.Drawing.Size(1231, 768);
             this.Cr7.TabIndex = 0;
             this.Cr7.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             this.Cr7.Load += new System.EventHandler(this.crystalReportViewer1_Load);
             // 
             // FrmVerImpresion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(923, 624);
+            this.ClientSize = new System.Drawing.Size(1231, 768);
             this.Controls.Add(this.Cr7);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmVerImpresion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Activated += new System.EventHandler(this.FrmVerImpresion_Activated);
+            this.Load += new System.EventHandler(this.FrmVerImpresion_Load);
             this.ResumeLayout(false);
 
         }

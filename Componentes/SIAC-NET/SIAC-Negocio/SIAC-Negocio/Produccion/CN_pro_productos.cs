@@ -193,6 +193,15 @@ namespace SIAC_Negocio.Produccion
                                     entLineasTar.n_totprotietra = Convert.ToDouble(DtResultado.Rows[n_fila]["n_totprotietra"].ToString());
                                     entLineasTar.n_porefiuni = Convert.ToDouble(DtResultado.Rows[n_fila]["n_porefiuni"].ToString());
                                     entLineasTar.n_porefitot = Convert.ToDouble(DtResultado.Rows[n_fila]["n_porefitot"].ToString());
+                                    if (string.IsNullOrEmpty(DtResultado.Rows[n_fila]["n_kghper"].ToString()))
+                                    {
+                                        entLineasTar.n_kghper = 0;
+                                    }
+                                    else
+                                    {
+                                        entLineasTar.n_kghper = Convert.ToDouble(DtResultado.Rows[n_fila]["n_kghper"].ToString());
+                                    }
+                                    
                                     entLineasTar.n_costar = Convert.ToDouble(DtResultado.Rows[n_fila]["n_costar"].ToString());
                                     entLineasTar.n_ord = Convert.ToInt16(DtResultado.Rows[n_fila]["n_ord"].ToString());
 

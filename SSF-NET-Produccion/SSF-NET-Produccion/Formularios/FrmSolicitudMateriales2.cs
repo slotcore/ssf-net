@@ -75,7 +75,7 @@ namespace SSF_NET_Produccion.Formularios
 
         // VARIABLES LOCALES
         int n_QueHace = 3;                                                                // INDICA EN QUE ESTADO SE ENCUENTRA EL FORMULARIO
-        string[,] arrCabeceraDg1 = new string[9, 4];                                     // ARRAY PARA MOSTRAR LAS COLUMNAS DEL DATAGRID PRINCIPAL
+        string[,] arrCabeceraDg1 = new string[10, 4];                                     // ARRAY PARA MOSTRAR LAS COLUMNAS DEL DATAGRID PRINCIPAL
         string[,] arrCabeceraFlexIns = new string[8, 5];
         string[,] arrCabeceraFlexLisPro = new string[11, 5];
 
@@ -101,7 +101,10 @@ namespace SSF_NET_Produccion.Formularios
         {
             DataTableCargar();
             funDatos.ComboBoxCargarDataTable(CboMeses, dtMeses, "n_id", "c_des");
-            funDatos.ComboBoxCargarDataTable(CboTipDoc, dtTipDoc, "n_id", "c_des");
+
+            var lstIdFilter = new List<int>() { 72, 92, 93 };
+            var dtTipDocFilter = dtTipDoc.AsEnumerable().Where(r => lstIdFilter.Contains(r.Field<int>("n_id"))).CopyToDataTable();
+            funDatos.ComboBoxCargarDataTable(CboTipDoc, dtTipDocFilter, "n_id", "c_des");
           
             funDatos.ComboBoxCargarDataTable(CboSol, dtPerPro, "n_id", "c_apenom");
         }
@@ -110,8 +113,6 @@ namespace SSF_NET_Produccion.Formularios
             this.Height = 663;
             this.Width = 990;
 
-            Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
-            Tab_Posicionar(Tab1, 1, 42);
             Tab1.SelectedIndex = 0;
 
             LblTitulo2.Text = "DETALLE DEL REGISTRO";
@@ -231,16 +232,6 @@ namespace SSF_NET_Produccion.Formularios
             LblNumReg.Text = (dtListar.Rows.Count).ToString();
             funDbGrid.DG_FormatearGrid(DgLista, arrCabeceraDg1, dtListar, true);
         }
-        void Tab_Dimensionar(C1.Win.C1Command.C1DockingTab dokTab, int intAlto, int intAncho)
-        {
-            Tab1.Height = intAlto;
-            Tab1.Width = intAncho;
-        }
-        void Tab_Posicionar(C1.Win.C1Command.C1DockingTab dokTab, int intPosX, int intPosY)
-        {
-            dokTab.Left = intPosX;
-            dokTab.Top = intPosY;
-        }
         void VerRegistro(int n_IdRegistro)
         {
             int n_row = 0;
@@ -353,9 +344,9 @@ namespace SSF_NET_Produccion.Formularios
             CboTipDoc.SelectedValue = 72;
             TxtNumSer.Text = "0001";
             TxtNumDoc.Text = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, 72, "0001");
-            OptBusProducto.Checked = true;
-            OptBusProducto.Visible = true;
-            OptBusProcesado.Visible = true;
+            //OptBusProducto.Checked = true;
+            //OptBusProducto.Visible = true;
+            //OptBusProcesado.Visible = true;
             
             CboSol.Focus();
         }
@@ -381,7 +372,7 @@ namespace SSF_NET_Produccion.Formularios
         }
         void Bloquea()
         {
-            //CboTipDoc.Enabled = !CboTipDoc.Enabled;
+            CboTipDoc.Enabled = !CboTipDoc.Enabled;
             TxtNumSer.Enabled = !TxtNumSer.Enabled;
             TxtNumDoc.Enabled = !TxtNumDoc.Enabled;
             CboSol.Enabled = !CboSol.Enabled;
@@ -501,8 +492,8 @@ namespace SSF_NET_Produccion.Formularios
             LblTitulo2.Text = "Detalle del Registro";
             Tab1.TabPages[0].Enabled = true;
             Tab1.SelectedIndex = 0;
-            OptBusProducto.Visible = false;
-            OptBusProcesado.Visible = false;
+            //OptBusProducto.Visible = false;
+            //OptBusProcesado.Visible = false;
             DgLista.Focus();
         }
         bool Grabar()
@@ -548,7 +539,7 @@ namespace SSF_NET_Produccion.Formularios
             }
 
             entSolicitud.n_idemp = STU_SISTEMA.EMPRESAID;
-            entSolicitud.n_idtipdoc = 72;
+            entSolicitud.n_idtipdoc = Convert.ToInt32(CboTipDoc.SelectedValue);
             entSolicitud.c_numser = TxtNumSer.Text;
             entSolicitud.c_numdoc = TxtNumDoc.Text;
             entSolicitud.d_fchreg = Convert.ToDateTime(TxtFchReg.Text);
@@ -667,12 +658,16 @@ namespace SSF_NET_Produccion.Formularios
                 // CHEQUEAMOS QUE LOS INSUMOS TENGAN CATIDADES
                 for (n_fila = 2; n_fila <= FgInsumos.Rows.Count - 1; n_fila++)
                 {
-                    if (Convert.ToDouble(funFunciones.NulosN(FgInsumos.GetData(n_fila, 4))) == 0)
+                    if (funFunciones.NulosC(FgInsumos.GetData(n_fila, 8)) == "True")
                     {
-                        MessageBox.Show("¡ Debe de indicar la cantidad de insumo entregada en la fila Nº" + n_fila.ToString() + "!", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                        FgInsumos.Focus();
-                        booEstado = false;
-                        return booEstado;
+                        if (Convert.ToDouble(funFunciones.NulosN(FgInsumos.GetData(n_fila, 4))) == 0)
+                        {
+                            int fila_real = n_fila - 1;
+                            MessageBox.Show("¡ Debe de indicar la cantidad de insumo entregada en la fila Nº" + fila_real.ToString() + "!", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                            FgInsumos.Focus();
+                            booEstado = false;
+                            return booEstado;
+                        }
                     }
                 }
             }
@@ -795,7 +790,6 @@ namespace SSF_NET_Produccion.Formularios
         }
         private void FrmSolicitudMateriales2_Resize(object sender, EventArgs e)
         {
-            Tab_Dimensionar(Tab1, this.Height - 82, this.Width - 18);
         }
         private void imprimirRecetaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -826,7 +820,7 @@ namespace SSF_NET_Produccion.Formularios
             double n_canpro = 0;
 
             objProduccion.mysConec = mysConec;
-            if (OptBusProducto.Checked == true)
+            if (Convert.ToInt32(CboTipDoc.SelectedValue) == 72)
             {
                 if (objProduccion.ConsultaSolMatPendientes(STU_SISTEMA.EMPRESAID) == true)
                 {
@@ -894,7 +888,7 @@ namespace SSF_NET_Produccion.Formularios
             string c_nidpro = dtResult.Rows[0]["n_idpro"].ToString();
             dtResult = funDatos.DataTableFiltrar(dtRecetasInsumos, "n_idrec = " + LblIdRec.Text + " AND n_idpro = " + c_nidpro + "");                                 // FILTRAMOS LOS INSUMOS DE LA RECETA
 
-            if (OptBusProducto.Checked == true)
+            if (Convert.ToInt32(CboTipDoc.SelectedValue) == 72)
             {
                 objRegistro.Consulta4(Convert.ToInt32(LblIdProduccion.Text));
             }
@@ -903,7 +897,7 @@ namespace SSF_NET_Produccion.Formularios
                 objRegistro.Consulta4(999999);
             }
             dtInsEnt = objRegistro.dtLista;
-                        
+
             // CREAMOS EL DETALLE DE LA SOLICITUD               
             int n_idinsEnt = 0;                   // ID DEL INSUMO ENTREGADO
             int n_idinsCar = 0;                   // ID DEL INSUMO CARGADO
@@ -930,7 +924,14 @@ namespace SSF_NET_Produccion.Formularios
                     entSolicitudDet.n_idite = Convert.ToInt32(dtResult.Rows[n_row]["n_idite"]);
                     entSolicitudDet.n_idunimed = Convert.ToInt32(dtResult.Rows[n_row]["n_idunimed"]);
                     entSolicitudDet.n_canteo = Convert.ToDouble(dtResult.Rows[n_row]["n_can"]);
-                    entSolicitudDet.n_canent = Convert.ToDouble(dtResult.Rows[n_row]["n_can"]) * n_canpro;
+                    if (Convert.ToInt32(CboTipDoc.SelectedValue) == 72)
+                    {
+                        entSolicitudDet.n_canent = Convert.ToDouble(dtResult.Rows[n_row]["n_can"]) * n_canpro;
+                    }
+                    else
+                    {
+                        entSolicitudDet.n_canent = 0;
+                    }
                     entSolicitudDet.c_numlot = "";
                     entSolicitudDet.n_impval = 0;
                     lstSolicitudDet.Add(entSolicitudDet);
@@ -1172,6 +1173,24 @@ namespace SSF_NET_Produccion.Formularios
             //CmdSel.Enabled = true;
             //CmdSelTod.Enabled = true;
             //CmdDelSel.Enabled = true;
+        }
+        private void Tab1_SelectedIndexChanging(object sender, EventArgs e)
+        {
+            TabControl tc = (TabControl)sender;
+
+            if (n_QueHace != 3) { return; }
+
+            if (tc.SelectedIndex == 1)
+            {
+                int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+
+                if (n_QueHace != 1)
+                {
+                    booAgregando = true;
+                    VerRegistro(intIdRegistro);
+                    booAgregando = false;
+                }
+            }
         }
     }
 }

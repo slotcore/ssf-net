@@ -439,5 +439,10 @@ namespace SSF_NET_Produccion.Formularios
                 }
             }
         }
+
+        private void guiasDelMesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

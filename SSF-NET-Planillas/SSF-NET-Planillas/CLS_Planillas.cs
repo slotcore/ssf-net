@@ -62,6 +62,20 @@ namespace SSF_NET_Planillas
             frmForm.STU_SISTEMA = STU_SISTEMA;
             frmForm.ShowDialog();
         }
+        public void ManEmpleadosActivos()
+        {
+            Formularios.FrmManEmpleados frmForm = new Formularios.FrmManEmpleados(true);
+            frmForm.mysConec = mysConec;
+            frmForm.STU_SISTEMA = STU_SISTEMA;
+            frmForm.ShowDialog();
+        }
+        public void ManEmpleadosInactivos()
+        {
+            Formularios.FrmManEmpleados frmForm = new Formularios.FrmManEmpleados(false);
+            frmForm.mysConec = mysConec;
+            frmForm.STU_SISTEMA = STU_SISTEMA;
+            frmForm.ShowDialog();
+        }
         //public void ImportarAsistencia()
         //{
         //    Formularios.FrmImportarAsistencia frmForm = new Formularios.FrmImportarAsistencia();

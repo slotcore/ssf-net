@@ -96,6 +96,8 @@
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.FgSele = new C1.Win.C1FlexGrid.C1FlexGrid();
+            this.btnSubirRegistro = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolHerramientas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Tab1)).BeginInit();
             this.Tab1.SuspendLayout();
@@ -129,6 +131,7 @@
             // ToolHerramientas
             // 
             this.ToolHerramientas.BackColor = System.Drawing.Color.White;
+            this.ToolHerramientas.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ToolHerramientas.ForeColor = System.Drawing.Color.Black;
             this.ToolHerramientas.GripMargin = new System.Windows.Forms.Padding(0);
             this.ToolHerramientas.ImageScalingSize = new System.Drawing.Size(32, 32);
@@ -141,6 +144,8 @@
             this.ToolCancelar,
             this.toolStripSeparator2,
             this.ToolImprimir,
+            this.toolStripSeparator4,
+            this.btnSubirRegistro,
             this.ToolVisar,
             this.toolStripSeparator3,
             this.ToolSalir});
@@ -234,14 +239,14 @@
             // emitirGuiaToolStripMenuItem
             // 
             this.emitirGuiaToolStripMenuItem.Name = "emitirGuiaToolStripMenuItem";
-            this.emitirGuiaToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.emitirGuiaToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
             this.emitirGuiaToolStripMenuItem.Text = "Imprimir Tareas en Blanco";
             this.emitirGuiaToolStripMenuItem.Click += new System.EventHandler(this.emitirGuiaToolStripMenuItem_Click);
             // 
             // imprimirTareasConPersonalToolStripMenuItem
             // 
             this.imprimirTareasConPersonalToolStripMenuItem.Name = "imprimirTareasConPersonalToolStripMenuItem";
-            this.imprimirTareasConPersonalToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.imprimirTareasConPersonalToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
             this.imprimirTareasConPersonalToolStripMenuItem.Text = "Imprimir Tareas con Personal";
             this.imprimirTareasConPersonalToolStripMenuItem.Click += new System.EventHandler(this.imprimirTareasConPersonalToolStripMenuItem_Click);
             // 
@@ -923,6 +928,21 @@
             this.FgSele.TabIndex = 0;
             this.FgSele.EnterCell += new System.EventHandler(this.FgSele_EnterCell);
             // 
+            // btnSubirRegistro
+            // 
+            this.btnSubirRegistro.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnSubirRegistro.Image = global::SSF_NET_Produccion.Properties.Resources.publish_32x32;
+            this.btnSubirRegistro.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSubirRegistro.Name = "btnSubirRegistro";
+            this.btnSubirRegistro.Size = new System.Drawing.Size(36, 36);
+            this.btnSubirRegistro.Text = "Subir Registro";
+            this.btnSubirRegistro.Click += new System.EventHandler(this.btnSubirRegistro_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 39);
+            // 
             // FrmSolicitudTareasDiversas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1046,5 +1066,7 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
         private C1.Win.C1FlexGrid.C1FlexGrid FgSele;
+        private System.Windows.Forms.ToolStripButton btnSubirRegistro;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
     }
 }

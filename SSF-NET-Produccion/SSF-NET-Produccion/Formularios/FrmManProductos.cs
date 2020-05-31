@@ -20,6 +20,11 @@ using MySql.Data.MySqlClient;
 using Helper;
 using SIAC_Objetos.Sistema;
 using System.Data.OleDb;
+using NPOI.SS.UserModel;
+using System.IO;
+using NPOI.HSSF.UserModel;
+using NPOI.XSSF.UserModel;
+using System.Diagnostics;
 
 namespace SSF_NET_Produccion.Formularios
 {
@@ -1256,6 +1261,7 @@ namespace SSF_NET_Produccion.Formularios
                         lstLineasTar[n_rowdet].n_totprotietra = lstOrigen[n_row].n_totprotietra;
                         lstLineasTar[n_rowdet].n_porefiuni = lstOrigen[n_row].n_porefiuni;
                         lstLineasTar[n_rowdet].n_porefitot = lstOrigen[n_row].n_porefitot;
+                        lstLineasTar[n_rowdet].n_kghper = lstOrigen[n_row].n_kghper;
                         lstLineasTar[n_rowdet].n_costar = lstOrigen[n_row].n_costar;
                         lstLineasTar[n_rowdet].n_ord = lstOrigen[n_row].n_ord;
                         b_SeEncontro = true;
@@ -1283,6 +1289,7 @@ namespace SSF_NET_Produccion.Formularios
                     entTar.n_totprotietra = lstOrigen[n_row].n_totprotietra;
                     entTar.n_porefiuni = lstOrigen[n_row].n_porefiuni;
                     entTar.n_porefitot = lstOrigen[n_row].n_porefitot;
+                    entTar.n_kghper = lstOrigen[n_row].n_kghper;
                     entTar.n_costar = lstOrigen[n_row].n_costar;
                     entTar.n_ord = lstOrigen[n_row].n_ord;
 
@@ -1323,7 +1330,7 @@ namespace SSF_NET_Produccion.Formularios
                 }
                 if (funFunciones.NulosC(FgLineas.GetData(FgLineas.Row, 5)) == "")
                 {
-                    MessageBox.Show("¡ No se ha especificado la cantidad por hora a proesar !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    MessageBox.Show("¡ No se ha especificado la cantidad por hora a procesar !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     return;
                 }
             }
@@ -1998,6 +2005,184 @@ namespace SSF_NET_Produccion.Formularios
                     VerRegistro(intIdRegistro);
                     booAgregando = false;
                 }
+            }
+        }
+
+        private void ExportarExcelButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (FgRec.Rows.Count == 2)
+                {
+                    MessageBox.Show("No se han encontrado recetas ¡ Debe de agregar una como minimo!", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    return;
+                }
+                else
+                {
+                    int n_row = 0;
+                    int n_index = 0;
+                    int n_idre = Convert.ToInt32(FgRec.GetData(FgRec.Row, 7).ToString());
+
+                    for (n_row = 0; n_row <= lstRecetas.Count - 1; n_row++)
+                    {
+                        if (lstRecetas[n_row].n_id == n_idre)
+                        {
+                            n_index = n_row;
+                            break;
+                        }
+                    }
+
+                    // FILTRAMOS SOLO LOS INSUMOS DE LA RECETA  ACTUAL
+                    List<BE_PRO_PRODUCTOSRECETASINSUMOS> lstTemp = new List<BE_PRO_PRODUCTOSRECETASINSUMOS>();
+                    BE_PRO_PRODUCTOSRECETASINSUMOS entTemp = new BE_PRO_PRODUCTOSRECETASINSUMOS();
+
+                    for (n_row = 0; n_row <= lstRecetasIns.Count - 1; n_row++)
+                    {
+                        if (lstRecetasIns[n_row].n_idrec == n_idre)
+                        {
+                            entTemp = lstRecetasIns[n_row];
+
+                            lstTemp.Add(entTemp);
+                        }
+                    }
+
+
+                    SaveFileDialog objCuadroDialogo = new SaveFileDialog();
+                    objCuadroDialogo.Filter = "MS Excel (*.xlsx) |*.xlsx;*.xlsx|(*.xlsx) |*.xlsx|(*.*) |*.*";
+
+                    if (objCuadroDialogo.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        ExportarAExcel(objCuadroDialogo.FileName, lstRecetas[n_index], lstTemp);
+
+                        MessageBox.Show("El archivo se exportó correctamente", "Exportar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        string filename = "Excel.exe";
+
+                        Process proc = new Process();
+                        proc.EnableRaisingEvents = false;
+                        proc.StartInfo.FileName = filename;
+                        proc.StartInfo.Arguments = objCuadroDialogo.FileName;
+                        proc.Start();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Ocurrio un error: {0}", ex.Message), "Exportar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ExportarAExcel(string pFilePath
+            , BE_PRO_PRODUCTOSRECETAS entReceta
+            , List<BE_PRO_PRODUCTOSRECETASINSUMOS> lstRecetasIns)
+        {
+            try
+            {
+                if (entReceta != null && lstRecetasIns.Count > 0)
+                {
+                    IWorkbook workbook = null;
+                    ISheet worksheet = null;
+
+                    using (FileStream stream = new FileStream(pFilePath, FileMode.Create, FileAccess.ReadWrite))
+                    {
+                        string Ext = System.IO.Path.GetExtension(pFilePath); //<-Extension del archivo
+                        switch (Ext.ToLower())
+                        {
+                            case ".xls":
+                                HSSFWorkbook workbookH = new HSSFWorkbook();
+                                NPOI.HPSF.DocumentSummaryInformation dsi = NPOI.HPSF.PropertySetFactory.CreateDocumentSummaryInformation();
+                                dsi.Company = "Cutcsa"; dsi.Manager = "Departamento Informatico";
+                                workbookH.DocumentSummaryInformation = dsi;
+                                workbook = workbookH;
+                                break;
+
+                            case ".xlsx": workbook = new XSSFWorkbook(); break;
+                        }
+
+                        worksheet = workbook.CreateSheet("Reporte de Receta"); //<-Usa el nombre de la tabla como nombre de la Hoja
+
+                        //Fuente negita
+                        var font = workbook.CreateFont();
+                        font.FontHeightInPoints = 11;
+                        font.FontName = "Calibri";
+                        font.Boldweight = (short)FontBoldWeight.Bold;
+
+                        //CREAR EN LA PRIMERA FILA LOS TITULOS DE LAS COLUMNAS
+                        int iRow = 0;
+                        IRow fila = worksheet.CreateRow(iRow);
+                        ICell cell = fila.CreateCell(0, CellType.String);
+                        cell.SetCellValue("RECETA");
+                        cell.CellStyle = workbook.CreateCellStyle();
+                        cell.CellStyle.SetFont(font);
+
+                        cell = fila.CreateCell(1, CellType.String);
+                        cell.SetCellValue(string.Format("{0}-{1}", entReceta.c_codrec, entReceta.c_des));
+                        iRow += 2;
+
+                        fila = worksheet.CreateRow(iRow);
+                        // Columnas de la tabla
+                        cell = fila.CreateCell(0, CellType.String);
+                        cell.SetCellValue("Código");
+                        cell.CellStyle = workbook.CreateCellStyle();
+                        cell.CellStyle.SetFont(font);
+
+                        cell = fila.CreateCell(1, CellType.String);
+                        cell.SetCellValue("Descripción");
+                        cell.CellStyle = workbook.CreateCellStyle();
+                        cell.CellStyle.SetFont(font);
+
+                        cell = fila.CreateCell(2, CellType.String);
+                        cell.SetCellValue("Cantidad");
+                        cell.CellStyle = workbook.CreateCellStyle();
+                        cell.CellStyle.SetFont(font);
+
+                        cell = fila.CreateCell(3, CellType.String);
+                        cell.SetCellValue("Unidad");
+                        cell.CellStyle = workbook.CreateCellStyle();
+                        cell.CellStyle.SetFont(font);
+                        iRow++;
+
+                        foreach (BE_PRO_PRODUCTOSRECETASINSUMOS RecetasIns in lstRecetasIns)
+                        {
+                            // Valores de la tabla
+                            fila = worksheet.CreateRow(iRow);
+
+                            // CODIGO DEL PRODUCTO
+                            var c_dato = funDatos.DataTableBuscar(dtItems, "n_id", "c_codpro", RecetasIns.n_idite.ToString(), "N").ToString();
+                            cell = fila.CreateCell(0, CellType.String);
+                            cell.SetCellValue(c_dato);
+
+                            // DESCRIPCION DEL PRODUCTO
+                            c_dato = funDatos.DataTableBuscar(dtItems, "n_id", "c_despro", RecetasIns.n_idite.ToString(), "N").ToString();
+                            cell = fila.CreateCell(1, CellType.String);
+                            cell.SetCellValue(c_dato);
+
+                            // CANTIDAD
+                            cell = fila.CreateCell(2, CellType.String);
+                            cell.SetCellValue(RecetasIns.n_can);
+
+                            // UNIDAD DE MEDIDA DEL PRODUCTO
+                            c_dato = funDatos.DataTableBuscar(dtUniMed, "n_id", "c_abr", RecetasIns.n_idunimed.ToString(), "N").ToString();
+                            cell = fila.CreateCell(3, CellType.String);
+                            cell.SetCellValue(c_dato);
+
+                            iRow++;
+                        }
+                        
+                        //Ancho de las columnas
+                        worksheet.AutoSizeColumn(0);
+                        worksheet.AutoSizeColumn(1);
+                        worksheet.AutoSizeColumn(2);
+                        worksheet.AutoSizeColumn(3);
+                        
+                        workbook.Write(stream);
+                        stream.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
     }
