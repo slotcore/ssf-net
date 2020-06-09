@@ -122,7 +122,7 @@
             this.Tab1.Multiline = true;
             this.Tab1.Name = "Tab1";
             this.Tab1.SelectedIndex = 1;
-            this.Tab1.Size = new System.Drawing.Size(909, 503);
+            this.Tab1.Size = new System.Drawing.Size(942, 503);
             this.Tab1.TabIndex = 13;
             this.Tab1.SelectedIndexChanged += new System.EventHandler(this.Tab1_SelectedIndexChanging);
             // 
@@ -136,7 +136,7 @@
             this.c1DockingTabPage1.ForeColor = System.Drawing.Color.Black;
             this.c1DockingTabPage1.Location = new System.Drawing.Point(28, 4);
             this.c1DockingTabPage1.Name = "c1DockingTabPage1";
-            this.c1DockingTabPage1.Size = new System.Drawing.Size(877, 495);
+            this.c1DockingTabPage1.Size = new System.Drawing.Size(910, 495);
             this.c1DockingTabPage1.TabIndex = 0;
             this.c1DockingTabPage1.Text = "Consulta";
             // 
@@ -152,7 +152,7 @@
             this.panel4.ForeColor = System.Drawing.Color.Black;
             this.panel4.Location = new System.Drawing.Point(4, 463);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(871, 30);
+            this.panel4.Size = new System.Drawing.Size(904, 30);
             this.panel4.TabIndex = 2;
             // 
             // CboMeses
@@ -213,7 +213,7 @@
             this.panel2.ForeColor = System.Drawing.Color.Black;
             this.panel2.Location = new System.Drawing.Point(4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(871, 28);
+            this.panel2.Size = new System.Drawing.Size(904, 28);
             this.panel2.TabIndex = 1;
             // 
             // PicClos1
@@ -234,7 +234,7 @@
             this.label17.ForeColor = System.Drawing.Color.Black;
             this.label17.Location = new System.Drawing.Point(0, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(871, 28);
+            this.label17.Size = new System.Drawing.Size(904, 28);
             this.label17.TabIndex = 0;
             this.label17.Text = "CONSULTA";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -254,7 +254,7 @@
             this.DgLista.PreviewInfo.Size = new System.Drawing.Size(0, 0);
             this.DgLista.PreviewInfo.ZoomFactor = 75D;
             this.DgLista.PrintInfo.PageSettings = ((System.Drawing.Printing.PageSettings)(resources.GetObject("DgLista.PrintInfo.PageSettings")));
-            this.DgLista.Size = new System.Drawing.Size(871, 423);
+            this.DgLista.Size = new System.Drawing.Size(904, 423);
             this.DgLista.TabIndex = 0;
             this.DgLista.Text = "c1TrueDBGrid1";
             this.DgLista.DoubleClick += new System.EventHandler(this.DgLista_DoubleClick);
@@ -838,7 +838,7 @@
             this.ToolHerramientas.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.ToolHerramientas.Location = new System.Drawing.Point(0, 0);
             this.ToolHerramientas.Name = "ToolHerramientas";
-            this.ToolHerramientas.Size = new System.Drawing.Size(912, 39);
+            this.ToolHerramientas.Size = new System.Drawing.Size(945, 39);
             this.ToolHerramientas.TabIndex = 12;
             this.ToolHerramientas.Text = "toolStrip1";
             this.ToolHerramientas.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ToolHerramientas_ItemClicked);
@@ -953,7 +953,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(912, 548);
+            this.ClientSize = new System.Drawing.Size(945, 548);
             this.Controls.Add(this.Tab1);
             this.Controls.Add(this.ToolHerramientas);
             this.Name = "FrmSalidaAlmacen3";

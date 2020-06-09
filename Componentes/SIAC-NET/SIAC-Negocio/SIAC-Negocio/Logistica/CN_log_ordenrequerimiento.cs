@@ -10,6 +10,7 @@ using SIAC_DATOS.Logistica;
 using MySql.Data.MySqlClient;
 using SIAC_Entidades.Almacen;
 using SIAC_Entidades.Logistica;
+using Helper;
 
 namespace SIAC_Negocio.Logistica
 {
@@ -23,6 +24,7 @@ namespace SIAC_Negocio.Logistica
         public DataTable dtOrdReqPendiente = new DataTable();
         public DataTable dtListaOrdenReq = new DataTable();
         public DataTable dtLista = new DataTable();
+        Genericas funDatos = new Genericas();
 
         public BE_LOG_ORDENREQUERIMIENTO entReqCab = new BE_LOG_ORDENREQUERIMIENTO();
         public List<BE_LOG_ORDENREQUERIMIENTODET> lstReqDet = new  List<BE_LOG_ORDENREQUERIMIENTODET>();
@@ -86,6 +88,60 @@ namespace SIAC_Negocio.Logistica
                 IntErrorNumber = miFun.IntErrorNumber;
             }
             return b_Result;
+        }
+        public DataTable OrdenesListarTodo(int n_IdEmpresa)
+        {
+            DataTable dtResult = new DataTable();
+            CN_log_ordenrequerimiento objsol = new CN_log_ordenrequerimiento();
+            string[,] arrCabeceraFlexFil = new string[7, 5];
+
+            objsol.mysConec = mysConec;
+            if (objsol.ListarTodoRequerimientos(n_IdEmpresa) == true)
+            {
+                dtResult = objsol.dtListaOrdenReq;
+                // FLEX GRID DE LOS TAREAS
+                arrCabeceraFlexFil[0, 0] = "Nº Documento";
+                arrCabeceraFlexFil[0, 1] = "110";
+                arrCabeceraFlexFil[0, 2] = "C";
+                arrCabeceraFlexFil[0, 3] = "c_numdoc_cad";
+
+                arrCabeceraFlexFil[1, 0] = "Fecha";
+                arrCabeceraFlexFil[1, 1] = "40";
+                arrCabeceraFlexFil[1, 2] = "C";
+                arrCabeceraFlexFil[1, 3] = "d_fchemi";
+
+                arrCabeceraFlexFil[2, 0] = "Obs";
+                arrCabeceraFlexFil[2, 1] = "30";
+                arrCabeceraFlexFil[2, 2] = "C";
+                arrCabeceraFlexFil[2, 3] = "c_obs";
+
+                arrCabeceraFlexFil[3, 0] = "Mes";
+                arrCabeceraFlexFil[3, 1] = "30";
+                arrCabeceraFlexFil[3, 2] = "C";
+                arrCabeceraFlexFil[3, 3] = "n_mes";
+
+                arrCabeceraFlexFil[4, 0] = "Año";
+                arrCabeceraFlexFil[4, 1] = "40";
+                arrCabeceraFlexFil[4, 2] = "C";
+                arrCabeceraFlexFil[4, 3] = "n_ano";
+                
+                arrCabeceraFlexFil[5, 0] = "Area";
+                arrCabeceraFlexFil[5, 1] = "110";
+                arrCabeceraFlexFil[5, 2] = "C";
+                arrCabeceraFlexFil[5, 3] = "c_area";
+
+                arrCabeceraFlexFil[6, 0] = "Id";
+                arrCabeceraFlexFil[6, 1] = "0";
+                arrCabeceraFlexFil[6, 2] = "N";
+                arrCabeceraFlexFil[6, 3] = "n_id";
+
+                funDatos.Buscar_CampoBusqueda = "c_numdoc_cad";
+                funDatos.Buscar_CadFiltro = "";
+                funDatos.Buscar_CampoOrden = "c_numdoc_cad";
+                funDatos.Buscar_Titulo = "Documentos Pendientes de Visar por Almacen";
+                dtResult = funDatos.Buscar(arrCabeceraFlexFil, dtResult);
+            }
+            return dtResult;
         }
         public bool ActualizarEstadoRequerimiento(int n_IdRegistro, int n_IdEstado)
         {

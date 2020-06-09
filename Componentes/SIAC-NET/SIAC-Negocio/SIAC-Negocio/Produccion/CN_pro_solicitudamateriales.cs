@@ -541,5 +541,135 @@ namespace SIAC_Negocio.Produccion
             }
             return dtResult;
         }
+
+        public DataTable SolicitudPendienteJalarDevoluciones(int n_IdEmpresa)
+        {
+            DataTable dtResult = new DataTable();
+            CD_pro_solicitudamateriales objsol = new CD_pro_solicitudamateriales();
+            string[,] arrCabeceraFlexFil = new string[9, 5];
+
+            objsol.mysConec = mysConec;
+            if (objsol.ConsultaDevoluciones(n_IdEmpresa) == true)
+            {
+                dtResult = objsol.dtLista;
+                // FLEX GRID DE LOS TAREAS
+                arrCabeceraFlexFil[0, 0] = "Nº Documento";
+                arrCabeceraFlexFil[0, 1] = "110";
+                arrCabeceraFlexFil[0, 2] = "C";
+                arrCabeceraFlexFil[0, 3] = "c_numdoc";
+
+                arrCabeceraFlexFil[1, 0] = "T.D.";
+                arrCabeceraFlexFil[1, 1] = "40";
+                arrCabeceraFlexFil[1, 2] = "C";
+                arrCabeceraFlexFil[1, 3] = "c_abr";
+
+                arrCabeceraFlexFil[2, 0] = "Dia";
+                arrCabeceraFlexFil[2, 1] = "30";
+                arrCabeceraFlexFil[2, 2] = "C";
+                arrCabeceraFlexFil[2, 3] = "n_dia";
+
+                arrCabeceraFlexFil[3, 0] = "Mes";
+                arrCabeceraFlexFil[3, 1] = "30";
+                arrCabeceraFlexFil[3, 2] = "C";
+                arrCabeceraFlexFil[3, 3] = "n_mes";
+
+                arrCabeceraFlexFil[4, 0] = "Año";
+                arrCabeceraFlexFil[4, 1] = "40";
+                arrCabeceraFlexFil[4, 2] = "C";
+                arrCabeceraFlexFil[4, 3] = "n_ano";
+
+                arrCabeceraFlexFil[5, 0] = "Producto";
+                arrCabeceraFlexFil[5, 1] = "300";
+                arrCabeceraFlexFil[5, 2] = "C";
+                arrCabeceraFlexFil[5, 3] = "c_despro";
+
+                arrCabeceraFlexFil[6, 0] = "Contidad";
+                arrCabeceraFlexFil[6, 1] = "70";
+                arrCabeceraFlexFil[6, 2] = "D";
+                arrCabeceraFlexFil[6, 3] = "n_can";
+
+                arrCabeceraFlexFil[7, 0] = "Responsable";
+                arrCabeceraFlexFil[7, 1] = "200";
+                arrCabeceraFlexFil[7, 2] = "D";
+                arrCabeceraFlexFil[7, 3] = "c_resapenom";
+
+                arrCabeceraFlexFil[8, 0] = "Id";
+                arrCabeceraFlexFil[8, 1] = "0";
+                arrCabeceraFlexFil[8, 2] = "N";
+                arrCabeceraFlexFil[8, 3] = "n_id";
+
+                funDatos.Buscar_CampoBusqueda = "c_numdoc";
+                funDatos.Buscar_CadFiltro = "";
+                funDatos.Buscar_CampoOrden = "c_numdoc";
+                funDatos.Buscar_Titulo = "Documentos Pendientes de Visar por Almacen";
+                dtResult = funDatos.Buscar(arrCabeceraFlexFil, dtResult);
+            }
+            return dtResult;
+        }
+
+        public DataTable SolicitudPendienteJalarAdicionales(int n_IdEmpresa)
+        {
+            DataTable dtResult = new DataTable();
+            CD_pro_solicitudamateriales objsol = new CD_pro_solicitudamateriales();
+            string[,] arrCabeceraFlexFil = new string[9, 5];
+
+            objsol.mysConec = mysConec;
+            if (objsol.ConsultaAdicionales(n_IdEmpresa) == true)
+            {
+                dtResult = objsol.dtLista;
+                // FLEX GRID DE LOS TAREAS
+                arrCabeceraFlexFil[0, 0] = "Nº Documento";
+                arrCabeceraFlexFil[0, 1] = "110";
+                arrCabeceraFlexFil[0, 2] = "C";
+                arrCabeceraFlexFil[0, 3] = "c_numdoc";
+
+                arrCabeceraFlexFil[1, 0] = "T.D.";
+                arrCabeceraFlexFil[1, 1] = "40";
+                arrCabeceraFlexFil[1, 2] = "C";
+                arrCabeceraFlexFil[1, 3] = "c_abr";
+
+                arrCabeceraFlexFil[2, 0] = "Dia";
+                arrCabeceraFlexFil[2, 1] = "30";
+                arrCabeceraFlexFil[2, 2] = "C";
+                arrCabeceraFlexFil[2, 3] = "n_dia";
+
+                arrCabeceraFlexFil[3, 0] = "Mes";
+                arrCabeceraFlexFil[3, 1] = "30";
+                arrCabeceraFlexFil[3, 2] = "C";
+                arrCabeceraFlexFil[3, 3] = "n_mes";
+
+                arrCabeceraFlexFil[4, 0] = "Año";
+                arrCabeceraFlexFil[4, 1] = "40";
+                arrCabeceraFlexFil[4, 2] = "C";
+                arrCabeceraFlexFil[4, 3] = "n_ano";
+
+                arrCabeceraFlexFil[5, 0] = "Producto";
+                arrCabeceraFlexFil[5, 1] = "300";
+                arrCabeceraFlexFil[5, 2] = "C";
+                arrCabeceraFlexFil[5, 3] = "c_despro";
+
+                arrCabeceraFlexFil[6, 0] = "Contidad";
+                arrCabeceraFlexFil[6, 1] = "70";
+                arrCabeceraFlexFil[6, 2] = "D";
+                arrCabeceraFlexFil[6, 3] = "n_can";
+
+                arrCabeceraFlexFil[7, 0] = "Responsable";
+                arrCabeceraFlexFil[7, 1] = "200";
+                arrCabeceraFlexFil[7, 2] = "D";
+                arrCabeceraFlexFil[7, 3] = "c_resapenom";
+
+                arrCabeceraFlexFil[8, 0] = "Id";
+                arrCabeceraFlexFil[8, 1] = "0";
+                arrCabeceraFlexFil[8, 2] = "N";
+                arrCabeceraFlexFil[8, 3] = "n_id";
+
+                funDatos.Buscar_CampoBusqueda = "c_numdoc";
+                funDatos.Buscar_CadFiltro = "";
+                funDatos.Buscar_CampoOrden = "c_numdoc";
+                funDatos.Buscar_Titulo = "Documentos Pendientes de Visar por Almacen";
+                dtResult = funDatos.Buscar(arrCabeceraFlexFil, dtResult);
+            }
+            return dtResult;
+        }
     }
 }

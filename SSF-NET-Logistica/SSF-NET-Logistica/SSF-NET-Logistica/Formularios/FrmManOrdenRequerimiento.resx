@@ -260,34 +260,34 @@
   <data name="ToolCancelar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         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
-        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
-        AElFTkSuQmCC
+        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
+        SUVORK5CYII=
 </value>
   </data>
   <data name="ToolImprimir.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -370,9 +370,9 @@
   </data>
   <data name="DgLista.Images" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAYAAADgkQYQAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA0SURBVChTdYkBCgAgDAL9/6eLIsd0eSCKhw/r9aCLtC88
-        vAdHMEIXKUIUhMK76EfagglgA6CqHOQpL6GyAAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAYAAADgkQYQAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAADRJREFUKFN1iQEKACAMAv3/p4six3R5IIqHD+v1oIu0Lzy8B0cwQhcpQhSEwrvo
+        R9qCCWADoKoc5CkvobIAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="DgLista.PrintInfo.PageSettings" mimetype="application/x-microsoft.net.object.binary.base64">
@@ -405,7 +405,7 @@
 </value>
   </data>
   <data name="DgLista.PropBag" xml:space="preserve">
-    <value>&lt;?xml version="1.0"?&gt;&lt;Blob&gt;&lt;Styles type="C1.Win.C1TrueDBGrid.Design.ContextWrapper"&gt;&lt;Data&gt;HighlightRow{ForeColor:HighlightText;BackColor:Highlight;}Style8{}Style7{}EvenRow{BackColor:Aqua;}Normal{Font:Microsoft Sans Serif, 8.25pt;}RecordSelector{AlignImage:Center;}OddRow{}Style3{}Footer{}Style14{}FilterBar{}Heading{AlignVert:Center;Border:Flat,ControlDark,0, 1, 0, 1;ForeColor:ControlText;BackColor:Control;Wrap:True;}Style5{}Editor{}Style10{AlignHorz:Near;}FilterWatermark{ForeColor:InfoText;BackColor:Info;}Style16{}Selected{ForeColor:HighlightText;BackColor:Highlight;}Style15{}Style13{}Style12{}Style11{}Style4{}Style9{}Group{Border:None,,0, 0, 0, 0;AlignVert:Center;BackColor:ControlDark;}Style6{}Style1{}Caption{AlignHorz:Center;}Style2{}Inactive{ForeColor:InactiveCaptionText;BackColor:InactiveCaption;}&lt;/Data&gt;&lt;/Styles&gt;&lt;Splits&gt;&lt;C1.Win.C1TrueDBGrid.MergeView Name="" CaptionHeight="17" ColumnCaptionHeight="17" ColumnFooterHeight="17" MarqueeStyle="DottedCellBorder" RecordSelectorWidth="17" DefRecSelWidth="17" VerticalScrollGroup="1" HorizontalScrollGroup="1"&gt;&lt;Height&gt;412&lt;/Height&gt;&lt;CaptionStyle parent="Style2" me="Style10" /&gt;&lt;EditorStyle parent="Editor" me="Style5" /&gt;&lt;EvenRowStyle parent="EvenRow" me="Style8" /&gt;&lt;FilterBarStyle parent="FilterBar" me="Style13" /&gt;&lt;FilterWatermarkStyle parent="FilterWatermark" me="Style14" /&gt;&lt;FooterStyle parent="Footer" me="Style3" /&gt;&lt;GroupStyle parent="Group" me="Style12" /&gt;&lt;HeadingStyle parent="Heading" me="Style2" /&gt;&lt;HighLightRowStyle parent="HighlightRow" me="Style7" /&gt;&lt;InactiveStyle parent="Inactive" me="Style4" /&gt;&lt;OddRowStyle parent="OddRow" me="Style9" /&gt;&lt;RecordSelectorStyle parent="RecordSelector" me="Style11" /&gt;&lt;SelectedStyle parent="Selected" me="Style6" /&gt;&lt;Style parent="Normal" me="Style1" /&gt;&lt;ClientRect&gt;0, 0, 831, 412&lt;/ClientRect&gt;&lt;BorderSide&gt;0&lt;/BorderSide&gt;&lt;/C1.Win.C1TrueDBGrid.MergeView&gt;&lt;/Splits&gt;&lt;NamedStyles&gt;&lt;Style parent="" me="Normal" /&gt;&lt;Style parent="Normal" me="Heading" /&gt;&lt;Style parent="Heading" me="Footer" /&gt;&lt;Style parent="Heading" me="Caption" /&gt;&lt;Style parent="Heading" me="Inactive" /&gt;&lt;Style parent="Normal" me="Selected" /&gt;&lt;Style parent="Normal" me="Editor" /&gt;&lt;Style parent="Normal" me="HighlightRow" /&gt;&lt;Style parent="Normal" me="EvenRow" /&gt;&lt;Style parent="Normal" me="OddRow" /&gt;&lt;Style parent="Heading" me="RecordSelector" /&gt;&lt;Style parent="Normal" me="FilterBar" /&gt;&lt;Style parent="FilterBar" me="FilterWatermark" /&gt;&lt;Style parent="Caption" me="Group" /&gt;&lt;/NamedStyles&gt;&lt;vertSplits&gt;1&lt;/vertSplits&gt;&lt;horzSplits&gt;1&lt;/horzSplits&gt;&lt;Layout&gt;None&lt;/Layout&gt;&lt;DefaultRecSelWidth&gt;17&lt;/DefaultRecSelWidth&gt;&lt;ClientArea&gt;0, 0, 831, 412&lt;/ClientArea&gt;&lt;PrintPageHeaderStyle parent="" me="Style15" /&gt;&lt;PrintPageFooterStyle parent="" me="Style16" /&gt;&lt;/Blob&gt;</value>
+    <value>&lt;?xml version="1.0"?&gt;&lt;Blob&gt;&lt;Styles type="C1.Win.C1TrueDBGrid.Design.ContextWrapper"&gt;&lt;Data&gt;HighlightRow{ForeColor:HighlightText;BackColor:Highlight;}Style8{}Style7{}Style2{}EvenRow{BackColor:Aqua;}Normal{Font:Microsoft Sans Serif, 8.25pt;}RecordSelector{AlignImage:Center;}Inactive{ForeColor:InactiveCaptionText;BackColor:InactiveCaption;}OddRow{}Style3{}Footer{}Style14{}Heading{Wrap:True;Border:Flat,ControlDark,0, 1, 0, 1;AlignVert:Center;BackColor:Control;ForeColor:ControlText;}Style5{}Editor{}Style10{AlignHorz:Near;}FilterWatermark{ForeColor:InfoText;BackColor:Info;}Style16{}Selected{ForeColor:HighlightText;BackColor:Highlight;}Style15{}Style13{}Style12{}Style11{}Style4{}Style9{}Group{Border:None,,0, 0, 0, 0;AlignVert:Center;BackColor:ControlDark;}Style1{}Caption{AlignHorz:Center;}Style6{}FilterBar{}&lt;/Data&gt;&lt;/Styles&gt;&lt;Splits&gt;&lt;C1.Win.C1TrueDBGrid.MergeView Name="" CaptionHeight="17" ColumnCaptionHeight="17" ColumnFooterHeight="17" MarqueeStyle="DottedCellBorder" RecordSelectorWidth="17" DefRecSelWidth="17" VerticalScrollGroup="1" HorizontalScrollGroup="1"&gt;&lt;Height&gt;412&lt;/Height&gt;&lt;CaptionStyle parent="Style2" me="Style10" /&gt;&lt;EditorStyle parent="Editor" me="Style5" /&gt;&lt;EvenRowStyle parent="EvenRow" me="Style8" /&gt;&lt;FilterBarStyle parent="FilterBar" me="Style13" /&gt;&lt;FilterWatermarkStyle parent="FilterWatermark" me="Style14" /&gt;&lt;FooterStyle parent="Footer" me="Style3" /&gt;&lt;GroupStyle parent="Group" me="Style12" /&gt;&lt;HeadingStyle parent="Heading" me="Style2" /&gt;&lt;HighLightRowStyle parent="HighlightRow" me="Style7" /&gt;&lt;InactiveStyle parent="Inactive" me="Style4" /&gt;&lt;OddRowStyle parent="OddRow" me="Style9" /&gt;&lt;RecordSelectorStyle parent="RecordSelector" me="Style11" /&gt;&lt;SelectedStyle parent="Selected" me="Style6" /&gt;&lt;Style parent="Normal" me="Style1" /&gt;&lt;ClientRect&gt;0, 0, 881, 412&lt;/ClientRect&gt;&lt;BorderSide&gt;0&lt;/BorderSide&gt;&lt;/C1.Win.C1TrueDBGrid.MergeView&gt;&lt;/Splits&gt;&lt;NamedStyles&gt;&lt;Style parent="" me="Normal" /&gt;&lt;Style parent="Normal" me="Heading" /&gt;&lt;Style parent="Heading" me="Footer" /&gt;&lt;Style parent="Heading" me="Caption" /&gt;&lt;Style parent="Heading" me="Inactive" /&gt;&lt;Style parent="Normal" me="Selected" /&gt;&lt;Style parent="Normal" me="Editor" /&gt;&lt;Style parent="Normal" me="HighlightRow" /&gt;&lt;Style parent="Normal" me="EvenRow" /&gt;&lt;Style parent="Normal" me="OddRow" /&gt;&lt;Style parent="Heading" me="RecordSelector" /&gt;&lt;Style parent="Normal" me="FilterBar" /&gt;&lt;Style parent="FilterBar" me="FilterWatermark" /&gt;&lt;Style parent="Caption" me="Group" /&gt;&lt;/NamedStyles&gt;&lt;vertSplits&gt;1&lt;/vertSplits&gt;&lt;horzSplits&gt;1&lt;/horzSplits&gt;&lt;Layout&gt;None&lt;/Layout&gt;&lt;DefaultRecSelWidth&gt;17&lt;/DefaultRecSelWidth&gt;&lt;ClientArea&gt;0, 0, 881, 412&lt;/ClientArea&gt;&lt;PrintPageHeaderStyle parent="" me="Style15" /&gt;&lt;PrintPageFooterStyle parent="" me="Style16" /&gt;&lt;/Blob&gt;</value>
   </data>
   <data name="FgItems.StyleInfo" xml:space="preserve">
     <value>Normal{Font:Microsoft Sans Serif, 8.25pt;BackColor:White;ForeColor:Black;}	Alternate{}	Fixed{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;}	Focus{}	Editor{}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	FirstCustomStyle{}	</value>

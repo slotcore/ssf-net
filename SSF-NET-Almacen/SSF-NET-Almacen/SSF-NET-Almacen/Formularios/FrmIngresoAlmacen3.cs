@@ -22,6 +22,7 @@ using Helper;
 using SIAC_Objetos.Sistema;
 using System.Data.OleDb;
 using System.Configuration;
+using SIAC_Entidades.Produccion;
 
 namespace SSF_NET_Almacen.Formularios
 {
@@ -149,7 +150,7 @@ namespace SSF_NET_Almacen.Formularios
             funDatos.ComboBoxCargarDataTable(CboMeses, dtMeses, "n_id", "c_des");
 
             //dtResult = funDatos.DataTableFiltrar(dtTipoDocumento2, "n_id IN (74,10,32)");
-            dtResult = funDatos.DataTableFiltrar(dtTipoDocumento2, "n_id IN (74,10,32)");
+            dtResult = funDatos.DataTableFiltrar(dtTipoDocumento2, "n_id IN (74, 10, 32, 93)");
             funDatos.ComboBoxCargarDataTable(CboDocRef, dtResult, "n_id", "c_des");
         }
         void ConfigurarFormulario()
@@ -1367,7 +1368,9 @@ namespace SSF_NET_Almacen.Formularios
             {
                 FgItems.Rows.Count = FgItems.Rows.Count + n_NumFilasDocumento;
             }
-            TxtNumSer.Focus();
+            TxtNumSer.Text = "0001";
+            MostarNumeroDocumento(STU_SISTEMA.EMPRESAID, Convert.ToInt16(CboTipDoc.SelectedValue), TxtNumSer.Text);
+            TxtNumRuc.Focus();
             booAgregando = false;
         }
         private void txtFchIng_KeyPress(object sender, KeyPressEventArgs e)
@@ -1592,6 +1595,19 @@ namespace SSF_NET_Almacen.Formularios
                 //TxtNumSer_Validated(sender, e);
                 CmdBusDocRef.Focus();
             }
+
+            if (Convert.ToInt32(CboDocRef.SelectedValue) == 93)   // PARTE DE CONFORMIDAD
+            {
+                booAgregando = true;
+                TxtNumDocRef.Text = "";
+                TxtSerDocRef.Text = "";
+                TxtNumDocRef.Enabled = false;
+                TxtSerDocRef.Enabled = false;
+                CmdBusDocRef.Text = "Solicitud de Materiales";
+                CmdBusDocRef.Visible = true;
+                booAgregando = false;
+            }
+
             TxtSerDocRef.Focus();
         }
         private void CmdBusDocRef_Click(object sender, EventArgs e)
@@ -1609,6 +1625,10 @@ namespace SSF_NET_Almacen.Formularios
             if (Convert.ToInt16(CboDocRef.SelectedValue) == 32)
             {
                 MostrarGuiaTransportista();
+            }
+            if (Convert.ToInt16(CboDocRef.SelectedValue) == 93)
+            {
+                MostrarSolicitudMateriales();
             }
 
             booAgregando = false;
@@ -1836,8 +1856,98 @@ namespace SSF_NET_Almacen.Formularios
 
             booAgregando = false;
         }
+
+        void MostrarSolicitudMateriales()
+        {
+            int n_Fila = 0;
+            int n_filaflex = 2;
+            int n_iditem = 0;
+            double n_Cantidad = 0;
+            DataTable dtresult = new DataTable();
+            CN_pro_solicitudamateriales o_pro = new CN_pro_solicitudamateriales();
+            List<BE_PRO_SOLICITUDMATERIALESDET> l_solmatdet = new List<BE_PRO_SOLICITUDMATERIALESDET>();
+            BE_PRO_SOLICITUDMATERIALES e_solmat = new BE_PRO_SOLICITUDMATERIALES();
+            o_pro.mysConec = mysConec;
+            dtresult = o_pro.SolicitudPendienteJalarDevoluciones(STU_SISTEMA.EMPRESAID);
+
+            FgItems.Rows.Count = 2;
+            if (dtresult != null)
+            {
+                if (dtresult.Rows.Count != 0)
+                {
+                    booAgregando = true;
+
+                    o_pro.TraerRegistro(Convert.ToInt32(dtresult.Rows[0]["n_id"]));
+                    e_solmat = o_pro.entSolicitud;
+
+                    LblIdPro.Text = e_empresa.n_idclipro.ToString();
+                    TxtNumRuc.Text = funDatos.DataTableBuscar(dtProveedor, "n_id", "c_numdoc", e_empresa.n_idclipro.ToString(), "N").ToString();
+                    TxtProv.Text = funDatos.DataTableBuscar(dtProveedor, "n_id", "c_nombre", e_empresa.n_idclipro.ToString(), "N").ToString();
+
+                    TxtNumDoc.Text = e_solmat.c_numdoc;
+                    TxtNumSer.Text = e_solmat.c_numser;
+                    TxtNumDocRef.Text = e_solmat.c_numdoc;
+                    TxtSerDocRef.Text = e_solmat.c_numser;
+                    LblIdDocRef.Text = e_solmat.n_id.ToString();
+
+                    //CboTipDoc.SelectedValue = e_solmat.n_idtipdoc;
+                    TxtFchDoc.Text = e_solmat.d_fchreg.ToString("dd/MM/yyyy");
+                    //txtFchIng.Text = e_solmat.d_fchreg.ToString("dd/MM/yyyy");
+                    //CboTipOpe.SelectedValue = 10;
+                    //CboTipDoc.SelectedValue = 72;
+                    l_solmatdet = o_pro.lstSolicitudDet;
+                    CmdBusPro.Enabled = false;
+
+                    if (l_solmatdet.Count != 0)
+                    {
+                        for (n_Fila = 0; n_Fila <= (l_solmatdet.Count - 1); n_Fila++)
+                        {
+                            FgItems.Rows.Count = FgItems.Rows.Count + 1;
+                            n_iditem = l_solmatdet[n_Fila].n_idite;
+
+                            dtresult = funDatos.DataTableFiltrar(dtItems, "n_id = " + n_iditem + "");
+
+                            if (dtresult.Rows.Count != 0)
+                            {
+                                // MOSTRAMOS LA DESCRIPCION DEL ITEM
+                                FgItems.SetData(n_filaflex, 2, dtresult.Rows[0]["c_despro"].ToString());
+
+                                // MOSTRAMOS LA DESCRIPCION DEL TIPO DE ITEM
+                                dtresult = funDatos.DataTableFiltrar(dtTipoExis, "n_id = " + Convert.ToInt16(dtresult.Rows[0]["n_idtipexi"]) + "");
+                                FgItems.SetData(n_filaflex, 1, dtresult.Rows[0]["c_des"].ToString());
+                            }
+
+                            //MOSTRAMOS LA PRESENTACION DEL ITEM
+                            dtresult = funDatos.DataTableFiltrar(dtPresentaItem, "n_idite = " + n_iditem + " AND n_default = 1");
+                            if (dtresult.Rows.Count == 1)
+                            {
+                                FgItems.SetData(n_filaflex, 3, dtresult.Rows[0]["c_abrpre"].ToString());
+                            }
+                            else
+                            {
+                                FgItems.SetData(n_filaflex, 3, "");
+                            }
+                            n_Cantidad = Convert.ToDouble(l_solmatdet[n_Fila].n_canent);
+                            FgItems.SetData(n_filaflex, 4, n_Cantidad.ToString("0.000000"));
+                            //FgItems.SetData(n_filaflex, 6, n_Cantidad.ToString("0.000000"));
+                            //FgItems.SetData(n_filaflex, 7, DateTime.Now.ToString("HH:mm"));
+                            n_filaflex = n_filaflex + 1;
+                        }
+
+                        booAgregando = false;
+                    }
+                }
+            }
+        }
         private void ToolImprimir_Click(object sender, EventArgs e)
         {
+        }
+        void MostarNumeroDocumento(int IdEmpresa, int n_TipoDocumento, string c_NumeroSerie)
+        {
+            TxtNumSer.Text = "0001";
+            string c_numdoc = "";
+            c_numdoc = objTipDoc.UltimoNumero(IdEmpresa, n_TipoDocumento, c_NumeroSerie);
+            TxtNumDoc.Text = c_numdoc;
         }
         void MostrarUnidadMedida(int n_Fila, string c_DesItem)
         {

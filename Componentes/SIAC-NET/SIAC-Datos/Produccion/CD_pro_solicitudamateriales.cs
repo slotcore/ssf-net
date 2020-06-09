@@ -385,6 +385,48 @@ namespace SIAC_DATOS.Produccion
             }
             return b_result;
         }
+        public bool ConsultaDevoluciones(int n_IdEmpresa)
+        {
+            bool b_result = false;
+            string[,] arrParametros = new string[1, 3] {
+                                            {"n_idemp", "System.INT32", n_IdEmpresa.ToString()},
+                                      };
+
+            dtLista = xMiFuncion.StoreDTLLenar("pro_solicitudmateriales_consulta_devoluciones", arrParametros, mysConec);
+
+            if (xMiFuncion.IntErrorNumber != 0)
+            {
+                b_OcurrioError = xMiFuncion.booOcurrioError;
+                c_ErrorMensaje = xMiFuncion.StrErrorMensaje;
+                n_ErrorNumber = xMiFuncion.IntErrorNumber;
+            }
+            else
+            {
+                b_result = true;
+            }
+            return b_result;
+        }
+        public bool ConsultaAdicionales(int n_IdEmpresa)
+        {
+            bool b_result = false;
+            string[,] arrParametros = new string[1, 3] {
+                                            {"n_idemp", "System.INT32", n_IdEmpresa.ToString()},
+                                      };
+
+            dtLista = xMiFuncion.StoreDTLLenar("pro_solicitudmateriales_consulta_adicionales", arrParametros, mysConec);
+
+            if (xMiFuncion.IntErrorNumber != 0)
+            {
+                b_OcurrioError = xMiFuncion.booOcurrioError;
+                c_ErrorMensaje = xMiFuncion.StrErrorMensaje;
+                n_ErrorNumber = xMiFuncion.IntErrorNumber;
+            }
+            else
+            {
+                b_result = true;
+            }
+            return b_result;
+        }
         public bool BuscarProduccionEnSolicitud(int n_idProduccion, int n_IdEmpresa)
         {
             bool b_result = false;
