@@ -113,7 +113,7 @@
             this.ToolHerramientas.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.ToolHerramientas.Location = new System.Drawing.Point(0, 0);
             this.ToolHerramientas.Name = "ToolHerramientas";
-            this.ToolHerramientas.Size = new System.Drawing.Size(925, 39);
+            this.ToolHerramientas.Size = new System.Drawing.Size(875, 39);
             this.ToolHerramientas.TabIndex = 32;
             this.ToolHerramientas.Text = "toolStrip1";
             this.ToolHerramientas.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ToolHerramientas_ItemClicked);
@@ -237,7 +237,7 @@
             this.Tab1.Multiline = true;
             this.Tab1.Name = "Tab1";
             this.Tab1.SelectedIndex = 1;
-            this.Tab1.Size = new System.Drawing.Size(921, 492);
+            this.Tab1.Size = new System.Drawing.Size(871, 492);
             this.Tab1.TabIndex = 33;
             this.Tab1.SelectedIndexChanged += new System.EventHandler(this.Tab1_SelectedIndexChanging);
             // 
@@ -251,7 +251,7 @@
             this.c1DockingTabPage1.ForeColor = System.Drawing.Color.Black;
             this.c1DockingTabPage1.Location = new System.Drawing.Point(28, 4);
             this.c1DockingTabPage1.Name = "c1DockingTabPage1";
-            this.c1DockingTabPage1.Size = new System.Drawing.Size(889, 484);
+            this.c1DockingTabPage1.Size = new System.Drawing.Size(839, 484);
             this.c1DockingTabPage1.TabIndex = 0;
             this.c1DockingTabPage1.Text = "Consulta";
             // 
@@ -267,7 +267,7 @@
             this.panel4.ForeColor = System.Drawing.Color.Black;
             this.panel4.Location = new System.Drawing.Point(4, 453);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(883, 30);
+            this.panel4.Size = new System.Drawing.Size(833, 30);
             this.panel4.TabIndex = 2;
             // 
             // CboMeses
@@ -327,7 +327,7 @@
             this.panel2.ForeColor = System.Drawing.Color.Black;
             this.panel2.Location = new System.Drawing.Point(4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(883, 28);
+            this.panel2.Size = new System.Drawing.Size(833, 28);
             this.panel2.TabIndex = 1;
             // 
             // label17
@@ -338,7 +338,7 @@
             this.label17.ForeColor = System.Drawing.Color.Black;
             this.label17.Location = new System.Drawing.Point(0, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(883, 28);
+            this.label17.Size = new System.Drawing.Size(833, 28);
             this.label17.TabIndex = 0;
             this.label17.Text = "CONSULTA";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -358,7 +358,7 @@
             this.DgLista.PreviewInfo.Size = new System.Drawing.Size(0, 0);
             this.DgLista.PreviewInfo.ZoomFactor = 75D;
             this.DgLista.PrintInfo.PageSettings = ((System.Drawing.Printing.PageSettings)(resources.GetObject("DgLista.PrintInfo.PageSettings")));
-            this.DgLista.Size = new System.Drawing.Size(883, 414);
+            this.DgLista.Size = new System.Drawing.Size(833, 414);
             this.DgLista.TabIndex = 0;
             this.DgLista.Text = "c1TrueDBGrid1";
             this.DgLista.DoubleClick += new System.EventHandler(this.DgLista_DoubleClick);
@@ -431,7 +431,7 @@
             this.LblIdEstado.AutoSize = true;
             this.LblIdEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblIdEstado.ForeColor = System.Drawing.Color.DarkRed;
-            this.LblIdEstado.Location = new System.Drawing.Point(482, 19);
+            this.LblIdEstado.Location = new System.Drawing.Point(482, 51);
             this.LblIdEstado.Name = "LblIdEstado";
             this.LblIdEstado.Size = new System.Drawing.Size(74, 13);
             this.LblIdEstado.TabIndex = 77;
@@ -445,7 +445,7 @@
             this.CboMotivo.Enabled = false;
             this.CboMotivo.ForeColor = System.Drawing.Color.Black;
             this.CboMotivo.FormattingEnabled = true;
-            this.CboMotivo.Location = new System.Drawing.Point(100, 100);
+            this.CboMotivo.Location = new System.Drawing.Point(100, 101);
             this.CboMotivo.Name = "CboMotivo";
             this.CboMotivo.Size = new System.Drawing.Size(358, 21);
             this.CboMotivo.TabIndex = 8;
@@ -527,9 +527,9 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.LblEstado);
-            this.groupBox1.Location = new System.Drawing.Point(567, 3);
+            this.groupBox1.Location = new System.Drawing.Point(567, 35);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(244, 41);
+            this.groupBox1.Size = new System.Drawing.Size(254, 41);
             this.groupBox1.TabIndex = 72;
             this.groupBox1.TabStop = false;
             // 
@@ -538,7 +538,7 @@
             this.LblEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblEstado.Location = new System.Drawing.Point(6, 11);
             this.LblEstado.Name = "LblEstado";
-            this.LblEstado.Size = new System.Drawing.Size(234, 23);
+            this.LblEstado.Size = new System.Drawing.Size(248, 23);
             this.LblEstado.TabIndex = 0;
             this.LblEstado.Text = "LblEstado";
             this.LblEstado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -558,12 +558,12 @@
             // 
             this.TxtObs.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtObs.Enabled = false;
-            this.TxtObs.Location = new System.Drawing.Point(100, 122);
+            this.TxtObs.Location = new System.Drawing.Point(100, 126);
             this.TxtObs.MaxLength = 300;
             this.TxtObs.Multiline = true;
             this.TxtObs.Name = "TxtObs";
             this.TxtObs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.TxtObs.Size = new System.Drawing.Size(721, 48);
+            this.TxtObs.Size = new System.Drawing.Size(721, 43);
             this.TxtObs.TabIndex = 9;
             // 
             // TxtNumDoc
@@ -633,7 +633,7 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(487, 82);
+            this.label8.Location = new System.Drawing.Point(486, 106);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 13);
             this.label8.TabIndex = 64;
@@ -655,7 +655,7 @@
             // 
             this.TxtFchEnt.Enabled = false;
             this.TxtFchEnt.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.TxtFchEnt.Location = new System.Drawing.Point(567, 78);
+            this.TxtFchEnt.Location = new System.Drawing.Point(566, 102);
             this.TxtFchEnt.Name = "TxtFchEnt";
             this.TxtFchEnt.Size = new System.Drawing.Size(87, 20);
             this.TxtFchEnt.TabIndex = 7;
@@ -677,7 +677,7 @@
             this.CboArea.Enabled = false;
             this.CboArea.ForeColor = System.Drawing.Color.Black;
             this.CboArea.FormattingEnabled = true;
-            this.CboArea.Location = new System.Drawing.Point(567, 55);
+            this.CboArea.Location = new System.Drawing.Point(566, 79);
             this.CboArea.Name = "CboArea";
             this.CboArea.Size = new System.Drawing.Size(255, 21);
             this.CboArea.TabIndex = 5;
@@ -687,7 +687,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(523, 59);
+            this.label3.Location = new System.Drawing.Point(522, 83);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 13);
             this.label3.TabIndex = 57;
@@ -725,7 +725,7 @@
             this.panel3.ForeColor = System.Drawing.Color.Black;
             this.panel3.Location = new System.Drawing.Point(4, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(833, 28);
+            this.panel3.Size = new System.Drawing.Size(832, 28);
             this.panel3.TabIndex = 8;
             // 
             // LblTitulo2
@@ -736,7 +736,7 @@
             this.LblTitulo2.ForeColor = System.Drawing.Color.Black;
             this.LblTitulo2.Location = new System.Drawing.Point(0, 0);
             this.LblTitulo2.Name = "LblTitulo2";
-            this.LblTitulo2.Size = new System.Drawing.Size(833, 28);
+            this.LblTitulo2.Size = new System.Drawing.Size(832, 28);
             this.LblTitulo2.TabIndex = 0;
             this.LblTitulo2.Text = "DETALLE DEL REGISTRO";
             this.LblTitulo2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -745,7 +745,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(925, 536);
+            this.ClientSize = new System.Drawing.Size(875, 536);
             this.Controls.Add(this.ToolHerramientas);
             this.Controls.Add(this.Tab1);
             this.Name = "FrmManOrdenRequerimiento";

@@ -47,9 +47,8 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolImprimir = new System.Windows.Forms.ToolStripButton();
             this.ToolSalir = new System.Windows.Forms.ToolStripButton();
-            this.Tab1 = new C1.Win.C1Command.C1DockingTab();
-            this.c1DockingTabPage1 = new C1.Win.C1Command.C1DockingTabPage();
-            this.Sc01 = new C1.Win.C1Sizer.C1Sizer();
+            this.Tab1 = new System.Windows.Forms.TabControl();
+            this.c1DockingTabPage1 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.ChkVerActivos = new System.Windows.Forms.CheckBox();
             this.LblNumReg = new System.Windows.Forms.Label();
@@ -57,8 +56,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
             this.DgLista = new C1.Win.C1TrueDBGrid.C1TrueDBGrid();
-            this.c1DockingTabPage2 = new C1.Win.C1Command.C1DockingTabPage();
-            this.Sc02 = new C1.Win.C1Sizer.C1Sizer();
+            this.c1DockingTabPage2 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.LblTitulo2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -111,17 +109,12 @@
             this.CmdAddUni = new C1.Win.C1Input.C1Button();
             this.FDImagenes = new System.Windows.Forms.OpenFileDialog();
             this.ToolHerramientas.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Tab1)).BeginInit();
             this.Tab1.SuspendLayout();
             this.c1DockingTabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Sc01)).BeginInit();
-            this.Sc01.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgLista)).BeginInit();
             this.c1DockingTabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Sc02)).BeginInit();
-            this.Sc02.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -135,6 +128,7 @@
             // ToolHerramientas
             // 
             this.ToolHerramientas.BackColor = System.Drawing.Color.White;
+            this.ToolHerramientas.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ToolHerramientas.ForeColor = System.Drawing.Color.Black;
             this.ToolHerramientas.GripMargin = new System.Windows.Forms.Padding(0);
             this.ToolHerramientas.ImageScalingSize = new System.Drawing.Size(32, 32);
@@ -153,7 +147,7 @@
             this.ToolHerramientas.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.ToolHerramientas.Location = new System.Drawing.Point(0, 0);
             this.ToolHerramientas.Name = "ToolHerramientas";
-            this.ToolHerramientas.Size = new System.Drawing.Size(964, 39);
+            this.ToolHerramientas.Size = new System.Drawing.Size(887, 39);
             this.ToolHerramientas.TabIndex = 12;
             this.ToolHerramientas.Text = "toolStrip1";
             this.ToolHerramientas.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ToolHerramientas_ItemClicked);
@@ -316,52 +310,38 @@
             // Tab1
             // 
             this.Tab1.Alignment = System.Windows.Forms.TabAlignment.Left;
-            this.Tab1.AutoHiding = true;
-            this.Tab1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Tab1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Tab1.Controls.Add(this.c1DockingTabPage1);
             this.Tab1.Controls.Add(this.c1DockingTabPage2);
             this.Tab1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tab1.Location = new System.Drawing.Point(1, 41);
+            this.Tab1.Multiline = true;
             this.Tab1.Name = "Tab1";
-            this.Tab1.Padding = new System.Drawing.Point(60, 4);
+            this.Tab1.Padding = new System.Drawing.Point(20, 4);
             this.Tab1.SelectedIndex = 1;
-            this.Tab1.Size = new System.Drawing.Size(960, 533);
+            this.Tab1.Size = new System.Drawing.Size(883, 536);
             this.Tab1.TabIndex = 13;
-            this.Tab1.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
-            this.Tab1.TabsSpacing = 1;
-            this.Tab1.TabStyle = C1.Win.C1Command.TabStyleEnum.Sloping;
-            this.Tab1.TextDirection = C1.Win.C1Command.TabTextDirectionEnum.VerticalLeft;
-            this.Tab1.VisualStyleBase = C1.Win.C1Command.VisualStyle.OfficeXP;
-            this.Tab1.SelectedIndexChanging += new C1.Win.C1Command.SelectedIndexChangingEventHandler(this.Tab1_SelectedIndexChanging);
+            this.Tab1.SelectedIndexChanged += new System.EventHandler(this.Tab1_SelectedIndexChanging);
             // 
             // c1DockingTabPage1
             // 
-            this.c1DockingTabPage1.Controls.Add(this.Sc01);
+            this.c1DockingTabPage1.Controls.Add(this.panel4);
+            this.c1DockingTabPage1.Controls.Add(this.panel2);
+            this.c1DockingTabPage1.Controls.Add(this.DgLista);
             this.c1DockingTabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.c1DockingTabPage1.ForeColor = System.Drawing.Color.Black;
-            this.c1DockingTabPage1.Location = new System.Drawing.Point(31, 1);
+            this.c1DockingTabPage1.Location = new System.Drawing.Point(30, 4);
             this.c1DockingTabPage1.Name = "c1DockingTabPage1";
-            this.c1DockingTabPage1.Size = new System.Drawing.Size(928, 531);
+            this.c1DockingTabPage1.Size = new System.Drawing.Size(849, 528);
             this.c1DockingTabPage1.TabIndex = 0;
             this.c1DockingTabPage1.Text = "Consulta";
             // 
-            // Sc01
-            // 
-            this.Sc01.Controls.Add(this.panel4);
-            this.Sc01.Controls.Add(this.panel2);
-            this.Sc01.Controls.Add(this.DgLista);
-            this.Sc01.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Sc01.ForeColor = System.Drawing.Color.Black;
-            this.Sc01.GridDefinition = "5.27306967984934:False:True;86.4406779661017:False:False;5.27306967984934:False:T" +
-    "rue;\t99.1379310344828:False:False;";
-            this.Sc01.Location = new System.Drawing.Point(0, 0);
-            this.Sc01.Name = "Sc01";
-            this.Sc01.Size = new System.Drawing.Size(928, 531);
-            this.Sc01.TabIndex = 0;
-            this.Sc01.Text = "c1Sizer1";
-            // 
             // panel4
             // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.Transparent;
             this.panel4.Controls.Add(this.ChkVerActivos);
             this.panel4.Controls.Add(this.LblNumReg);
@@ -369,7 +349,7 @@
             this.panel4.ForeColor = System.Drawing.Color.Black;
             this.panel4.Location = new System.Drawing.Point(4, 499);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(920, 28);
+            this.panel4.Size = new System.Drawing.Size(842, 28);
             this.panel4.TabIndex = 2;
             // 
             // ChkVerActivos
@@ -411,12 +391,14 @@
             // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
             this.panel2.Controls.Add(this.label17);
             this.panel2.ForeColor = System.Drawing.Color.Black;
             this.panel2.Location = new System.Drawing.Point(4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(920, 28);
+            this.panel2.Size = new System.Drawing.Size(842, 28);
             this.panel2.TabIndex = 1;
             // 
             // label17
@@ -427,13 +409,16 @@
             this.label17.ForeColor = System.Drawing.Color.Black;
             this.label17.Location = new System.Drawing.Point(0, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(920, 28);
+            this.label17.Size = new System.Drawing.Size(842, 28);
             this.label17.TabIndex = 0;
             this.label17.Text = "CONSULTA";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // DgLista
             // 
+            this.DgLista.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DgLista.BackColor = System.Drawing.Color.White;
             this.DgLista.CaptionHeight = 17;
             this.DgLista.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -447,7 +432,7 @@
             this.DgLista.PreviewInfo.ZoomFactor = 75D;
             this.DgLista.PrintInfo.PageSettings = ((System.Drawing.Printing.PageSettings)(resources.GetObject("DgLista.PrintInfo.PageSettings")));
             this.DgLista.RowHeight = 15;
-            this.DgLista.Size = new System.Drawing.Size(920, 459);
+            this.DgLista.Size = new System.Drawing.Size(842, 459);
             this.DgLista.TabIndex = 0;
             this.DgLista.Text = "c1TrueDBGrid1";
             this.DgLista.DoubleClick += new System.EventHandler(this.DgLista_DoubleClick);
@@ -457,54 +442,46 @@
             // c1DockingTabPage2
             // 
             this.c1DockingTabPage2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.c1DockingTabPage2.Controls.Add(this.Sc02);
+            this.c1DockingTabPage2.Controls.Add(this.panel3);
+            this.c1DockingTabPage2.Controls.Add(this.panel1);
             this.c1DockingTabPage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.c1DockingTabPage2.ForeColor = System.Drawing.Color.Black;
-            this.c1DockingTabPage2.Location = new System.Drawing.Point(31, 1);
+            this.c1DockingTabPage2.Location = new System.Drawing.Point(30, 4);
             this.c1DockingTabPage2.Name = "c1DockingTabPage2";
-            this.c1DockingTabPage2.Size = new System.Drawing.Size(928, 531);
+            this.c1DockingTabPage2.Size = new System.Drawing.Size(849, 528);
             this.c1DockingTabPage2.TabIndex = 1;
             this.c1DockingTabPage2.Text = "Detalle";
             // 
-            // Sc02
-            // 
-            this.Sc02.Controls.Add(this.panel3);
-            this.Sc02.Controls.Add(this.panel1);
-            this.Sc02.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Sc02.ForeColor = System.Drawing.Color.Black;
-            this.Sc02.GridDefinition = "4.89642184557439:False:False;92.090395480226:False:False;0:False:False;\t99.137931" +
-    "0344828:False:False;";
-            this.Sc02.Location = new System.Drawing.Point(0, 0);
-            this.Sc02.Name = "Sc02";
-            this.Sc02.Size = new System.Drawing.Size(928, 531);
-            this.Sc02.TabIndex = 0;
-            this.Sc02.Text = "c1Sizer2";
-            // 
             // panel3
             // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
             this.panel3.Controls.Add(this.LblTitulo2);
             this.panel3.ForeColor = System.Drawing.Color.Black;
             this.panel3.Location = new System.Drawing.Point(4, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(920, 26);
+            this.panel3.Size = new System.Drawing.Size(843, 26);
             this.panel3.TabIndex = 8;
             // 
             // LblTitulo2
             // 
-            this.LblTitulo2.BackColor = System.Drawing.Color.White;
+            this.LblTitulo2.BackColor = System.Drawing.Color.Transparent;
             this.LblTitulo2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LblTitulo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblTitulo2.ForeColor = System.Drawing.Color.Black;
             this.LblTitulo2.Location = new System.Drawing.Point(0, 0);
             this.LblTitulo2.Name = "LblTitulo2";
-            this.LblTitulo2.Size = new System.Drawing.Size(920, 26);
+            this.LblTitulo2.Size = new System.Drawing.Size(843, 26);
             this.LblTitulo2.TabIndex = 0;
             this.LblTitulo2.Text = "DETALLE DEL REGISTRO";
             this.LblTitulo2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.TxtLotPref);
             this.panel1.Controls.Add(this.label21);
@@ -551,7 +528,7 @@
             this.panel1.ForeColor = System.Drawing.Color.Black;
             this.panel1.Location = new System.Drawing.Point(4, 34);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(920, 489);
+            this.panel1.Size = new System.Drawing.Size(843, 492);
             this.panel1.TabIndex = 0;
             // 
             // TxtLotPref
@@ -561,7 +538,7 @@
             this.TxtLotPref.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtLotPref.Enabled = false;
             this.TxtLotPref.ForeColor = System.Drawing.Color.Black;
-            this.TxtLotPref.Location = new System.Drawing.Point(145, 115);
+            this.TxtLotPref.Location = new System.Drawing.Point(108, 120);
             this.TxtLotPref.Name = "TxtLotPref";
             this.TxtLotPref.Size = new System.Drawing.Size(135, 20);
             this.TxtLotPref.TabIndex = 5;
@@ -571,7 +548,7 @@
             this.label21.AutoSize = true;
             this.label21.BackColor = System.Drawing.Color.White;
             this.label21.ForeColor = System.Drawing.Color.Black;
-            this.label21.Location = new System.Drawing.Point(50, 117);
+            this.label21.Location = new System.Drawing.Point(13, 122);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(60, 13);
             this.label21.TabIndex = 45;
@@ -580,7 +557,7 @@
             // ChkGenCod
             // 
             this.ChkGenCod.AutoSize = true;
-            this.ChkGenCod.Location = new System.Drawing.Point(462, 5);
+            this.ChkGenCod.Location = new System.Drawing.Point(425, 10);
             this.ChkGenCod.Name = "ChkGenCod";
             this.ChkGenCod.Size = new System.Drawing.Size(100, 17);
             this.ChkGenCod.TabIndex = 43;
@@ -593,7 +570,7 @@
             this.label20.AutoSize = true;
             this.label20.BackColor = System.Drawing.Color.White;
             this.label20.ForeColor = System.Drawing.Color.Black;
-            this.label20.Location = new System.Drawing.Point(488, 229);
+            this.label20.Location = new System.Drawing.Point(451, 234);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(28, 13);
             this.label20.TabIndex = 42;
@@ -606,7 +583,7 @@
             this.TxtTiemVid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtTiemVid.Enabled = false;
             this.TxtTiemVid.ForeColor = System.Drawing.Color.Black;
-            this.TxtTiemVid.Location = new System.Drawing.Point(421, 224);
+            this.TxtTiemVid.Location = new System.Drawing.Point(384, 229);
             this.TxtTiemVid.Name = "TxtTiemVid";
             this.TxtTiemVid.Size = new System.Drawing.Size(61, 20);
             this.TxtTiemVid.TabIndex = 10;
@@ -618,7 +595,7 @@
             this.label19.AutoSize = true;
             this.label19.BackColor = System.Drawing.Color.White;
             this.label19.ForeColor = System.Drawing.Color.Black;
-            this.label19.Location = new System.Drawing.Point(346, 229);
+            this.label19.Location = new System.Drawing.Point(309, 234);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(60, 13);
             this.label19.TabIndex = 40;
@@ -629,7 +606,7 @@
             this.groupBox3.BackColor = System.Drawing.Color.White;
             this.groupBox3.Controls.Add(this.pictureBox1);
             this.groupBox3.ForeColor = System.Drawing.Color.Black;
-            this.groupBox3.Location = new System.Drawing.Point(581, 4);
+            this.groupBox3.Location = new System.Drawing.Point(544, 9);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(292, 303);
             this.groupBox3.TabIndex = 39;
@@ -654,7 +631,7 @@
     "gn:CenterCenter;\";StyleFixed:\"TextAlign:CenterCenter;\";}\t2{Width:30;Caption:\"Nom" +
     "Archivo\";}\t3{Width:40;Caption:\"Id\";}\t";
             this.FgImagen.ForeColor = System.Drawing.Color.Black;
-            this.FgImagen.Location = new System.Drawing.Point(581, 339);
+            this.FgImagen.Location = new System.Drawing.Point(544, 344);
             this.FgImagen.Name = "FgImagen";
             this.FgImagen.Rows.DefaultSize = 17;
             this.FgImagen.Size = new System.Drawing.Size(292, 103);
@@ -667,7 +644,7 @@
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.Color.White;
             this.label16.ForeColor = System.Drawing.Color.Black;
-            this.label16.Location = new System.Drawing.Point(50, 319);
+            this.label16.Location = new System.Drawing.Point(13, 324);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(80, 13);
             this.label16.TabIndex = 32;
@@ -679,7 +656,7 @@
             this.FgUniMed.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
             this.FgUniMed.ColumnInfo = resources.GetString("FgUniMed.ColumnInfo");
             this.FgUniMed.ForeColor = System.Drawing.Color.Black;
-            this.FgUniMed.Location = new System.Drawing.Point(53, 339);
+            this.FgUniMed.Location = new System.Drawing.Point(16, 344);
             this.FgUniMed.Name = "FgUniMed";
             this.FgUniMed.Rows.DefaultSize = 17;
             this.FgUniMed.Size = new System.Drawing.Size(514, 103);
@@ -697,7 +674,7 @@
             this.TxtPreAct.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtPreAct.Enabled = false;
             this.TxtPreAct.ForeColor = System.Drawing.Color.Black;
-            this.TxtPreAct.Location = new System.Drawing.Point(421, 293);
+            this.TxtPreAct.Location = new System.Drawing.Point(384, 298);
             this.TxtPreAct.Name = "TxtPreAct";
             this.TxtPreAct.Size = new System.Drawing.Size(97, 20);
             this.TxtPreAct.TabIndex = 16;
@@ -710,7 +687,7 @@
             this.TxtStockMin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtStockMin.Enabled = false;
             this.TxtStockMin.ForeColor = System.Drawing.Color.Black;
-            this.TxtStockMin.Location = new System.Drawing.Point(145, 271);
+            this.TxtStockMin.Location = new System.Drawing.Point(108, 276);
             this.TxtStockMin.Name = "TxtStockMin";
             this.TxtStockMin.Size = new System.Drawing.Size(97, 20);
             this.TxtStockMin.TabIndex = 13;
@@ -723,7 +700,7 @@
             this.TxtStockActual.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtStockActual.Enabled = false;
             this.TxtStockActual.ForeColor = System.Drawing.Color.Black;
-            this.TxtStockActual.Location = new System.Drawing.Point(421, 249);
+            this.TxtStockActual.Location = new System.Drawing.Point(384, 254);
             this.TxtStockActual.Name = "TxtStockActual";
             this.TxtStockActual.Size = new System.Drawing.Size(97, 20);
             this.TxtStockActual.TabIndex = 12;
@@ -736,7 +713,7 @@
             this.TxtPreIni.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtPreIni.Enabled = false;
             this.TxtPreIni.ForeColor = System.Drawing.Color.Black;
-            this.TxtPreIni.Location = new System.Drawing.Point(145, 293);
+            this.TxtPreIni.Location = new System.Drawing.Point(108, 298);
             this.TxtPreIni.Name = "TxtPreIni";
             this.TxtPreIni.Size = new System.Drawing.Size(97, 20);
             this.TxtPreIni.TabIndex = 15;
@@ -749,7 +726,7 @@
             this.TxtStockmMax.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtStockmMax.Enabled = false;
             this.TxtStockmMax.ForeColor = System.Drawing.Color.Black;
-            this.TxtStockmMax.Location = new System.Drawing.Point(421, 271);
+            this.TxtStockmMax.Location = new System.Drawing.Point(384, 276);
             this.TxtStockmMax.Name = "TxtStockmMax";
             this.TxtStockmMax.Size = new System.Drawing.Size(97, 20);
             this.TxtStockmMax.TabIndex = 14;
@@ -762,7 +739,7 @@
             this.TxtStockIni.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtStockIni.Enabled = false;
             this.TxtStockIni.ForeColor = System.Drawing.Color.Black;
-            this.TxtStockIni.Location = new System.Drawing.Point(145, 249);
+            this.TxtStockIni.Location = new System.Drawing.Point(108, 254);
             this.TxtStockIni.Name = "TxtStockIni";
             this.TxtStockIni.Size = new System.Drawing.Size(97, 20);
             this.TxtStockIni.TabIndex = 11;
@@ -775,7 +752,7 @@
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.White;
             this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(336, 295);
+            this.label13.Location = new System.Drawing.Point(299, 300);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(70, 13);
             this.label13.TabIndex = 23;
@@ -786,7 +763,7 @@
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.White;
             this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(50, 273);
+            this.label14.Location = new System.Drawing.Point(13, 278);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(71, 13);
             this.label14.TabIndex = 22;
@@ -797,7 +774,7 @@
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.White;
             this.label15.ForeColor = System.Drawing.Color.Black;
-            this.label15.Location = new System.Drawing.Point(338, 251);
+            this.label15.Location = new System.Drawing.Point(301, 256);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(68, 13);
             this.label15.TabIndex = 21;
@@ -808,7 +785,7 @@
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.White;
             this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(50, 295);
+            this.label12.Location = new System.Drawing.Point(13, 300);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(67, 13);
             this.label12.TabIndex = 20;
@@ -819,7 +796,7 @@
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.White;
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(332, 273);
+            this.label11.Location = new System.Drawing.Point(295, 278);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(74, 13);
             this.label11.TabIndex = 19;
@@ -830,7 +807,7 @@
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.White;
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(50, 251);
+            this.label10.Location = new System.Drawing.Point(13, 256);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(65, 13);
             this.label10.TabIndex = 18;
@@ -844,7 +821,7 @@
             this.CboMoneda.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CboMoneda.ForeColor = System.Drawing.Color.Black;
             this.CboMoneda.FormattingEnabled = true;
-            this.CboMoneda.Location = new System.Drawing.Point(145, 224);
+            this.CboMoneda.Location = new System.Drawing.Point(108, 229);
             this.CboMoneda.Name = "CboMoneda";
             this.CboMoneda.Size = new System.Drawing.Size(168, 21);
             this.CboMoneda.TabIndex = 9;
@@ -856,7 +833,7 @@
             this.TxtCaracteristica.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtCaracteristica.Enabled = false;
             this.TxtCaracteristica.ForeColor = System.Drawing.Color.Black;
-            this.TxtCaracteristica.Location = new System.Drawing.Point(145, 180);
+            this.TxtCaracteristica.Location = new System.Drawing.Point(108, 185);
             this.TxtCaracteristica.Multiline = true;
             this.TxtCaracteristica.Name = "TxtCaracteristica";
             this.TxtCaracteristica.Size = new System.Drawing.Size(422, 40);
@@ -870,7 +847,7 @@
             this.TxtdescTecnica.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtdescTecnica.Enabled = false;
             this.TxtdescTecnica.ForeColor = System.Drawing.Color.Black;
-            this.TxtdescTecnica.Location = new System.Drawing.Point(145, 158);
+            this.TxtdescTecnica.Location = new System.Drawing.Point(108, 163);
             this.TxtdescTecnica.Name = "TxtdescTecnica";
             this.TxtdescTecnica.Size = new System.Drawing.Size(422, 20);
             this.TxtdescTecnica.TabIndex = 7;
@@ -883,7 +860,7 @@
             this.TxtDescripcion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtDescripcion.Enabled = false;
             this.TxtDescripcion.ForeColor = System.Drawing.Color.Black;
-            this.TxtDescripcion.Location = new System.Drawing.Point(145, 136);
+            this.TxtDescripcion.Location = new System.Drawing.Point(108, 141);
             this.TxtDescripcion.Name = "TxtDescripcion";
             this.TxtDescripcion.Size = new System.Drawing.Size(422, 20);
             this.TxtDescripcion.TabIndex = 6;
@@ -897,7 +874,7 @@
             this.CboSubClase.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CboSubClase.ForeColor = System.Drawing.Color.Black;
             this.CboSubClase.FormattingEnabled = true;
-            this.CboSubClase.Location = new System.Drawing.Point(145, 91);
+            this.CboSubClase.Location = new System.Drawing.Point(108, 96);
             this.CboSubClase.Name = "CboSubClase";
             this.CboSubClase.Size = new System.Drawing.Size(317, 21);
             this.CboSubClase.TabIndex = 4;
@@ -910,7 +887,7 @@
             this.CboClase.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CboClase.ForeColor = System.Drawing.Color.Black;
             this.CboClase.FormattingEnabled = true;
-            this.CboClase.Location = new System.Drawing.Point(145, 68);
+            this.CboClase.Location = new System.Drawing.Point(108, 73);
             this.CboClase.Name = "CboClase";
             this.CboClase.Size = new System.Drawing.Size(317, 21);
             this.CboClase.TabIndex = 3;
@@ -924,7 +901,7 @@
             this.CboFamilia.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CboFamilia.ForeColor = System.Drawing.Color.Black;
             this.CboFamilia.FormattingEnabled = true;
-            this.CboFamilia.Location = new System.Drawing.Point(145, 46);
+            this.CboFamilia.Location = new System.Drawing.Point(108, 51);
             this.CboFamilia.Name = "CboFamilia";
             this.CboFamilia.Size = new System.Drawing.Size(317, 21);
             this.CboFamilia.TabIndex = 2;
@@ -938,7 +915,7 @@
             this.CboTipExis.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CboTipExis.ForeColor = System.Drawing.Color.Black;
             this.CboTipExis.FormattingEnabled = true;
-            this.CboTipExis.Location = new System.Drawing.Point(145, 24);
+            this.CboTipExis.Location = new System.Drawing.Point(108, 29);
             this.CboTipExis.Name = "CboTipExis";
             this.CboTipExis.Size = new System.Drawing.Size(317, 21);
             this.CboTipExis.TabIndex = 1;
@@ -950,7 +927,7 @@
             this.TxtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtCodigo.Enabled = false;
             this.TxtCodigo.ForeColor = System.Drawing.Color.Black;
-            this.TxtCodigo.Location = new System.Drawing.Point(145, 2);
+            this.TxtCodigo.Location = new System.Drawing.Point(108, 7);
             this.TxtCodigo.Name = "TxtCodigo";
             this.TxtCodigo.Size = new System.Drawing.Size(135, 20);
             this.TxtCodigo.TabIndex = 0;
@@ -961,7 +938,7 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.White;
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(50, 229);
+            this.label9.Location = new System.Drawing.Point(13, 234);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(46, 13);
             this.label9.TabIndex = 8;
@@ -972,7 +949,7 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.White;
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(50, 183);
+            this.label8.Location = new System.Drawing.Point(13, 188);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(76, 13);
             this.label8.TabIndex = 7;
@@ -983,7 +960,7 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.White;
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(50, 161);
+            this.label7.Location = new System.Drawing.Point(13, 166);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(77, 13);
             this.label7.TabIndex = 6;
@@ -994,7 +971,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.White;
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(50, 139);
+            this.label6.Location = new System.Drawing.Point(13, 144);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(63, 13);
             this.label6.TabIndex = 5;
@@ -1005,7 +982,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.White;
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(50, 97);
+            this.label5.Location = new System.Drawing.Point(13, 102);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(55, 13);
             this.label5.TabIndex = 4;
@@ -1016,7 +993,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.White;
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(50, 75);
+            this.label4.Location = new System.Drawing.Point(13, 80);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(33, 13);
             this.label4.TabIndex = 3;
@@ -1027,7 +1004,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(50, 54);
+            this.label3.Location = new System.Drawing.Point(13, 59);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(39, 13);
             this.label3.TabIndex = 2;
@@ -1038,7 +1015,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(50, 29);
+            this.label2.Location = new System.Drawing.Point(13, 34);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 13);
             this.label2.TabIndex = 1;
@@ -1049,7 +1026,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(50, 4);
+            this.label1.Location = new System.Drawing.Point(13, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 0;
@@ -1061,7 +1038,7 @@
             this.groupBox2.Controls.Add(this.CmdDelImg);
             this.groupBox2.Controls.Add(this.CmdAddImg);
             this.groupBox2.ForeColor = System.Drawing.Color.Black;
-            this.groupBox2.Location = new System.Drawing.Point(581, 440);
+            this.groupBox2.Location = new System.Drawing.Point(544, 445);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(292, 43);
             this.groupBox2.TabIndex = 38;
@@ -1095,7 +1072,7 @@
             this.groupBox1.Controls.Add(this.CmdDelUni);
             this.groupBox1.Controls.Add(this.CmdAddUni);
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
-            this.groupBox1.Location = new System.Drawing.Point(53, 440);
+            this.groupBox1.Location = new System.Drawing.Point(16, 445);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(514, 43);
             this.groupBox1.TabIndex = 37;
@@ -1131,7 +1108,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(964, 574);
+            this.ClientSize = new System.Drawing.Size(887, 577);
             this.Controls.Add(this.Tab1);
             this.Controls.Add(this.ToolHerramientas);
             this.Name = "FrmAlmacen3";
@@ -1142,18 +1119,13 @@
             this.Resize += new System.EventHandler(this.FrmAlmacen3_Resize);
             this.ToolHerramientas.ResumeLayout(false);
             this.ToolHerramientas.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Tab1)).EndInit();
             this.Tab1.ResumeLayout(false);
             this.c1DockingTabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Sc01)).EndInit();
-            this.Sc01.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DgLista)).EndInit();
             this.c1DockingTabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Sc02)).EndInit();
-            this.Sc02.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -1180,17 +1152,15 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton ToolImprimir;
         private System.Windows.Forms.ToolStripButton ToolSalir;
-        private C1.Win.C1Command.C1DockingTab Tab1;
-        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage1;
-        private C1.Win.C1Sizer.C1Sizer Sc01;
+        private System.Windows.Forms.TabControl Tab1;
+        private System.Windows.Forms.TabPage c1DockingTabPage1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label LblNumReg;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label17;
         private C1.Win.C1TrueDBGrid.C1TrueDBGrid DgLista;
-        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage2;
-        private C1.Win.C1Sizer.C1Sizer Sc02;
+        private System.Windows.Forms.TabPage c1DockingTabPage2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label LblTitulo2;
         private System.Windows.Forms.Panel panel1;

@@ -28,7 +28,7 @@ using SIAC_Negocio.Logistica;
 
 namespace SSF_NET_Almacen.Formularios
 {
-    public partial class FrmSalidaAlmacen3 : Form
+    public partial class FrmMovMultAlmacen : Form
     {
         // VARIABLES PUBLICAS
         public MySqlConnection mysConec = new MySqlConnection();
@@ -66,6 +66,7 @@ namespace SSF_NET_Almacen.Formularios
         Cls_DBGrid funDbGrid = new Cls_DBGrid();
 
         // ENTIDADES LOCALES
+        List<BE_ALM_MOVIMIENTOS_CONSULTA> BE_l_Movimiento = new List<BE_ALM_MOVIMIENTOS_CONSULTA>();
         BE_ALM_MOVIMIENTOS_CONSULTA BE_Movimiento = new BE_ALM_MOVIMIENTOS_CONSULTA();
         BE_SYS_EMPRESA entEmp = new BE_SYS_EMPRESA();
 
@@ -97,57 +98,43 @@ namespace SSF_NET_Almacen.Formularios
         int N_INGPRECIO = 0;
         int n_NumFilasDocumento = 30;                                                   // LE INDICAMOS AL FORMULARIO EL NUMERO MAXIMO DE FILAS PARA EL DETALLE
         int n_QueHace = 3;                                                              // INDICA EN QUE ESTADO SE ENCUENTRA EL FORMULARIO
-        string[,] arrCabeceraDg1 = new string[10, 4];                                    // ARRAY PARA MOSTRAR LAS COLUMNAS DEL DATAGRID PRINCIPAL
-        string[,] arrCabeceraFlex1 = new string[9, 5];
+        //string[,] arrCabeceraDg1 = new string[10, 4];                                    // ARRAY PARA MOSTRAR LAS COLUMNAS DEL DATAGRID PRINCIPAL
+        string[,] arrCabeceraFlex1 = new string[10, 5];
         bool booSeEjecuto = false;
         bool booAgregando = false;
         string strNumerovalidos = "1234567890." + (char)8;                                        // + (char)8;
         string strCaracteres = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ1234567890-()º.,/$' !!·%/()=?¿*^" + (char)8;
         int n_ItemProducido;                                                            // ESTA VARIABLE ALMACENARA EL ID DEL ITEM PRODUCIDO CUANDO SE SELECCIONE UNA ORDEN DE PRODUCCION
-        public FrmSalidaAlmacen3()
+        
+        public FrmMovMultAlmacen()
         {
             InitializeComponent();
         }
-        private void ToolHerramientas_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
 
-        }
         private void FrmSalidaAlmacen3_Load(object sender, EventArgs e)
         {
             booAgregando = true;
             CargarCombos();
             ConfigurarFormulario();
+            Nuevo();
             booAgregando = false;
         }
+
         void CargarCombos()
         {
             DataTable dtResul = new DataTable();
             DataTableCargar();
-            funDatos.ComboBoxCargarDataTable(CboTipPro, dtTipoExis, "n_id", "c_des");
-            funDatos.ComboBoxCargarDataTable(CboTipDoc, dtTipoDocumento, "n_id", "c_des");
-                        
-            dtResul = funDatos.DataTableFiltrar(dtTipoDocumento2, "n_id IN (2, 5, 4, 72, 75, 10, 32, 88, 92)");
-            funDatos.ComboBoxCargarDataTable(CboDocRef, dtResul, "n_id", "c_des");
             
-            //funDatos.ComboBoxCargarDataTable(CboProveedor, dtProveedor, "n_id", "c_nombre");
-            funDatos.ComboBoxCargarDataTable(CboAlmacen, dtAlmacenes, "n_id", "c_des");
-            //funDatos.ComboBoxCargarDataTable(CboSolicitante, dtResponsables, "n_id", "c_des");
-            funDatos.ComboBoxCargarDataTable(CboMeses, dtMeses, "n_id", "c_des");
+            dtResul = funDatos.DataTableFiltrar(dtTipoDocumento2, "n_id IN (2, 5, 4, 72, 75, 10, 32, 88, 92)");
+            funDatos.ComboBoxCargarDataTable(CboDocRef, dtResul, "n_id", "c_des");            
             funDatos.ComboBoxCargarDataTable(CboTipOpe, dtTipOpe, "n_id", "c_des");
             funDatos.ComboBoxCargarDataTable(CboSolicitante, dtPerAdj, "n_id", "c_apenom");
         }
+
         void ConfigurarFormulario()
         {
-            //this.Height = 587;
-            //this.Width = 930;
-            //Tab_Dimensionar(Tab1,  this.Height - 81, this.Width - 18);
-            //Tab_Posicionar(Tab1, 1, 41);
-            Tab1.SelectedIndex = 0;
-
             string c_nomarc = ConfigurationManager.AppSettings["PathIniFile"];
-            //string c_idlocal = funDatos.IniLeerSeccion(c_nomarc, "SISTEMA", "LOCAL").ToString();
             N_IDALMACEN = Convert.ToInt16(funDatos.IniLeerSeccion(c_nomarc, "SISTEMA", "ALMACEN").ToString());
-            //CboAlmacen.SelectedValue = Convert.ToInt16(c_idalmacen);
 
             if (dtsetup.Rows.Count != 0)
             {
@@ -161,8 +148,6 @@ namespace SSF_NET_Almacen.Formularios
                 }
             }
 
-            LblTitulo2.Text = "DETALLE DEL REGISTRO";
-
             arrCabeceraFlex1[0, 0] = "Tipo Item";
             arrCabeceraFlex1[0, 1] = "100";
             arrCabeceraFlex1[0, 2] = "S";
@@ -172,7 +157,6 @@ namespace SSF_NET_Almacen.Formularios
             arrCabeceraFlex1[1, 0] = "Item";
             if (N_INGTRAZABALIDAD == 1) { arrCabeceraFlex1[1, 1] = "280"; }
             if (N_INGTRAZABALIDAD == 0) { arrCabeceraFlex1[1, 1] = "400"; }
-            //arrCabeceraFlex1[1, 1] = "280";
             arrCabeceraFlex1[1, 2] = "S";
             arrCabeceraFlex1[1, 3] = "";
             arrCabeceraFlex1[1, 4] = "c_itedes";
@@ -186,13 +170,12 @@ namespace SSF_NET_Almacen.Formularios
             arrCabeceraFlex1[3, 0] = "Nº Lote";
             if (N_INGTRAZABALIDAD == 1) { arrCabeceraFlex1[3, 1] = "80"; }
             if (N_INGTRAZABALIDAD == 0) { arrCabeceraFlex1[3, 1] = "0"; }
-            //arrCabeceraFlex1[3, 1] = "75";
             arrCabeceraFlex1[3, 2] = "C";
             arrCabeceraFlex1[3, 3] = "";
             arrCabeceraFlex1[3, 4] = "n_numlot";
 
             arrCabeceraFlex1[4, 0] = "Cantidad en Almacen";
-            arrCabeceraFlex1[4, 1] = "70";
+            arrCabeceraFlex1[4, 1] = "0";
             arrCabeceraFlex1[4, 2] = "D";
             arrCabeceraFlex1[4, 3] = "0.000000";
             arrCabeceraFlex1[4, 4] = "n_can";
@@ -206,7 +189,6 @@ namespace SSF_NET_Almacen.Formularios
             arrCabeceraFlex1[6, 0] = "Precio Unitario";
             if (N_INGPRECIO == 1) { arrCabeceraFlex1[6, 1] = "70"; }
             if (N_INGPRECIO == 0) { arrCabeceraFlex1[6, 1] = "0"; }
-            //arrCabeceraFlex1[6, 1] = "70";
             arrCabeceraFlex1[6, 2] = "D";
             arrCabeceraFlex1[6, 3] = "0.00";
             arrCabeceraFlex1[6, 4] = "n_can";
@@ -214,7 +196,6 @@ namespace SSF_NET_Almacen.Formularios
             arrCabeceraFlex1[7, 0] = "Imp. Total";
             if (N_INGPRECIO == 1) { arrCabeceraFlex1[7, 1] = "70"; }
             if (N_INGPRECIO == 0) { arrCabeceraFlex1[7, 1] = "0"; }
-            //arrCabeceraFlex1[7, 1] = "70";
             arrCabeceraFlex1[7, 2] = "D";
             arrCabeceraFlex1[7, 3] = "0.00";
             arrCabeceraFlex1[7, 4] = "n_can";
@@ -225,11 +206,15 @@ namespace SSF_NET_Almacen.Formularios
             arrCabeceraFlex1[8, 3] = "HH:mm";
             arrCabeceraFlex1[8, 4] = "n_can";
 
-            funFlex.FlexMostrarDatos(FgItems, arrCabeceraFlex1, dtMoviDetalle, 2, false);
+            arrCabeceraFlex1[9, 0] = "Almacén";
+            arrCabeceraFlex1[9, 1] = "250";
+            arrCabeceraFlex1[9, 2] = "S";
+            arrCabeceraFlex1[9, 3] = "";
+            arrCabeceraFlex1[9, 4] = "c_almdes";
 
-            this.Text = dtForm.Rows[0]["c_titfor"].ToString();
-            CboMeses.SelectedValue = STU_SISTEMA.MESTRABAJO;
+            funFlex.FlexMostrarDatos(FgItems, arrCabeceraFlex1, dtMoviDetalle, 2, false);
         }
+
         void DataTableCargar()
         {
             ObjPro.mysConec = mysConec;
@@ -272,9 +257,6 @@ namespace SSF_NET_Almacen.Formularios
             objForm.mysConec = mysConec;                                    // CARGAMOS LOS DATOS DEL FORMULARIO
             dtForm = objForm.TraerRegistro(3);
 
-            objFormVis.mysConec = mysConec;                                 // CARGAMOS EL ARRAY CON LOS DATOS PARA LA VISTA DE DgLista
-            objFormVis.ObtenerCabeceraLista(2, ref arrCabeceraDg1);
-
             ObjAlmDoc.mysConec = mysConec;
             dtDocAlm = ObjAlmDoc.ListarEmpAlm(STU_SISTEMA.EMPRESAID, 2);               // 1 FILTRAREMOS SOLO LOS ALMACENES QUE PERTENESCAN A LA EMPRESA Y QUE GENEREN MOVIMIENTO DE INGRESO A ALMACEN 
 
@@ -285,101 +267,31 @@ namespace SSF_NET_Almacen.Formularios
             funsys.TraerRegistro(STU_SISTEMA.EMPRESAID);
             entEmp = funsys.e_Empresa;
         }
-        void ListarItems()
-        {
-            MostrarEstadoMes(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO);
-            LblNumReg.Text = (dtMovimientos.Rows.Count).ToString();
-            funDbGrid.DG_FormatearGrid(DgLista, arrCabeceraDg1, dtMovimientos, true);
-        }
-        void Tab_Dimensionar(C1.Win.C1Command.C1DockingTab dokTab, int intAlto, int intAncho)
-        {
-            //Tab1.Height = intAlto;
-            //Tab1.Width = intAncho;
-        }
-        void Tab_Posicionar(C1.Win.C1Command.C1DockingTab dokTab, int intPosX, int intPosY)
-        {
-            //dokTab.Left = intPosX;
-            //dokTab.Top = intPosY;
-        }
-        void VerRegistro(Int64 n_IdRegistro)
-        {
-            objMovimientos.mysConec = mysConec;
-            BE_Movimiento = objMovimientos.TraerRegistro(n_IdRegistro);
 
-            txtFchIng.Text = BE_Movimiento.d_fching.ToString();
-            TxtFchDoc.Text = BE_Movimiento.d_fchdoc.ToString();
-            CboTipDoc.SelectedValue = BE_Movimiento.n_idtipdoc;
-            TxtNumDoc.Text = BE_Movimiento.c_numdoc;
-            TxtNumSer.Text = BE_Movimiento.c_numser;
-            
-            //CboProveedor.SelectedValue = BE_Movimiento.n_idclipro;
-            LblIdPro.Text = BE_Movimiento.n_idclipro.ToString();
-            TxtNumRuc.Text = funDatos.DataTableBuscar(dtProveedor, "n_id", "c_numdoc", BE_Movimiento.n_idclipro.ToString(), "N").ToString();
-            TxtProv.Text = funDatos.DataTableBuscar(dtProveedor, "n_id", "c_nombre", BE_Movimiento.n_idclipro.ToString(), "N").ToString();
-
-
-            CboAlmacen.SelectedValue = BE_Movimiento.n_idalm;
-            TxtObs.Text = BE_Movimiento.c_obs;
-            CboTipOpe.SelectedValue = BE_Movimiento.n_idtipope;
-
-            CboSolicitante.SelectedValue = BE_Movimiento.n_perid;
-            CboDocRef.SelectedValue = BE_Movimiento.n_docrefidtipdoc;
-            TxtSerDocRef.Text = BE_Movimiento.c_docrefnumser;
-            TxtNumDocRef.Text = BE_Movimiento.c_docrefnumdoc;
-            LblIdDocRef.Text = BE_Movimiento.n_docrefiddocref.ToString();
-
-            funFlex.FlexMostrarDatos(FgItems, arrCabeceraFlex1, BE_Movimiento.lst_items, 2, false);
-
-            int n_fila = 2;
-            foreach (BE_ALM_MOVIMIENTOSDET_CONSULTA element in BE_Movimiento.lst_items)
-            {
-                FgItems.Rows.Count = FgItems.Rows.Count + 1;
-                FgItems.SetData(n_fila, 1, element.c_tipexides);
-                FgItems.SetData(n_fila, 2, element.c_itedes);
-                FgItems.SetData(n_fila, 3, element.c_itepredes);
-                FgItems.SetData(n_fila, 4, element.c_numlot);
-                FgItems.SetData(n_fila, 6, element.n_can);
-                FgItems.SetData(n_fila, 7, element.n_preuni);
-                FgItems.SetData(n_fila, 8, element.n_pretot);
-                FgItems.SetData(n_fila, 9, element.h_horsal);
-
-                n_fila++;
-            }
-        }
         void Nuevo()
         {
             booAgregando = true;
             n_QueHace = 1;
-            Tab1.TabPages[0].Enabled = false;
             Blanquea();
             Bloquea();
-            ActivarTool();
-            LblTitulo2.Text = "Agregando Nuevo Registro";
-            Tab1.SelectedIndex = 1;
             FgItems.Rows.Count = 2;
             booAgregando = false;
             FgItems.Cols[2].ComboList = "...";
-            CboAlmacen.SelectedValue = Convert.ToInt16(N_IDALMACEN);
             txtFchIng.Focus();
         }
+
         void Blanquea()
         {
             txtFchIng.Text = "";
             TxtFchDoc.Text = "";
-            TxtNumSer.Text = "";
-            TxtNumDoc.Text = "";
             TxtObs.Text = "";
             TxtSerDocRef.Text = "";
             TxtNumDocRef.Text = "";
 
-            CboTipPro.SelectedValue = 0;
-            CboTipDoc.SelectedValue = 0;
-            //CboProveedor.SelectedValue = 0;
             TxtNumRuc.Text = "";
             LblIdPro.Text = "";
             TxtProv.Text = "";
             
-            CboAlmacen.SelectedValue = 0;
             CboSolicitante.SelectedValue = 0;
             CboTipOpe.SelectedValue = 0;
             CboSolicitante.SelectedValue = 0;
@@ -388,24 +300,19 @@ namespace SSF_NET_Almacen.Formularios
             CmdBusDocRef.Visible = false;
             LblIdDocRef.Text = "";
         }
+
         void Bloquea()
         {
             txtFchIng.Enabled = !txtFchIng.Enabled;
             TxtFchDoc.Enabled = !TxtFchDoc.Enabled;
-            TxtNumSer.Enabled = !TxtNumSer.Enabled;
-            TxtNumDoc.Enabled = !TxtNumDoc.Enabled;
             TxtObs.Enabled = !TxtObs.Enabled;
             TxtSerDocRef.Enabled = !TxtSerDocRef.Enabled;
             TxtNumDocRef.Enabled = !TxtNumDocRef.Enabled;
 
-            CboTipPro.Enabled = !CboTipPro.Enabled;
-            CboTipDoc.Enabled = !CboTipDoc.Enabled;
-            //CboProveedor.Enabled = !CboProveedor.Enabled;
             TxtNumRuc.Enabled = !TxtNumRuc.Enabled;
             TxtProv.Enabled = !TxtProv.Enabled;
             CmdBusPro.Enabled = !CmdBusPro.Enabled;
 
-            CboAlmacen.Enabled = !CboAlmacen.Enabled;
             CboTipOpe.Enabled = !CboTipOpe.Enabled;
             CboSolicitante.Enabled = !CboSolicitante.Enabled;
             CboDocRef.Enabled = !CboDocRef.Enabled;
@@ -413,110 +320,7 @@ namespace SSF_NET_Almacen.Formularios
             CmdAddItem.Enabled = !CmdAddItem.Enabled;
             CmdDelItem.Enabled = !CmdDelItem.Enabled;
         }
-        void MostrarEstadoMes(int n_IdEmpresa, int n_IdMes)
-        {
-            obj_fungen.mysConec = mysConec;
-            if (obj_fungen.EstadoPeriodo(n_IdEmpresa, n_IdMes, 3) == true)
-            {
-                ToolNuevo.Visible = false;
-                ToolModificar.Visible = false;
-                ToolEliminar.Visible = false;
 
-                ToolGrabar.Visible = false;
-                ToolCancelar.Visible = false;
-
-                toolStripSeparator1.Visible = false;
-                toolStripSeparator2.Visible = false;
-
-                PicClos1.Visible = true;
-                PicClos2.Visible = true;
-            }
-            else
-            {
-                ToolNuevo.Visible = true;
-                ToolModificar.Visible = true;
-                ToolEliminar.Visible = true;
-
-                ToolGrabar.Visible = true;
-                ToolCancelar.Visible = true;
-
-                toolStripSeparator1.Visible = true;
-                toolStripSeparator2.Visible = true;
-
-                PicClos1.Visible = false;
-                PicClos2.Visible = false;
-            }
-        }
-        void ActivarTool()
-        {
-            ToolNuevo.Enabled = !ToolNuevo.Enabled;
-            ToolModificar.Enabled = !ToolModificar.Enabled;
-            ToolEliminar.Enabled = !ToolEliminar.Enabled;
-            ToolGrabar.Enabled = !ToolGrabar.Enabled;
-            ToolCancelar.Enabled = !ToolCancelar.Enabled;
-            ToolImprimir.Enabled = !ToolImprimir.Enabled;
-            ToolManFun.Enabled = !ToolManFun.Enabled;
-            //ToolExportar.Enabled = !ToolExportar.Enabled;
-            ToolSalir.Enabled = !ToolSalir.Enabled;
-        }
-        void Modificar()
-        {
-            booAgregando = true;
-            n_QueHace = 2;
-            Tab1.TabPages[0].Enabled = false;
-            Blanquea();
-            Bloquea();
-            ActivarTool();
-
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
-
-            VerRegistro(intIdRegistro);
-            LblTitulo2.Text = "Modificando Registro";
-            Tab1.SelectedIndex = 1;
-            txtFchIng.Focus();
-            booAgregando = false;
-        }
-        bool EliminarRegistro()
-        {
-            bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
-
-            objMovimientos.mysConec = mysConec;
-            BE_Movimiento = objMovimientos.TraerRegistro(intIdRegistro);
-
-            DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-
-            if (DialogResult.Yes == Rpta)
-            {
-                //objMovimientos.AccConec = AccConec;
-                if (objMovimientos.Eliminar(intIdRegistro, BE_Movimiento, 1) == true)     // INDICAMOS 1 = SALIDA
-                {
-                    booResult = true;
-                    MessageBox.Show("¡ El registro se elimino con exito !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-
-                    // VOLVEMOS A CARGAR EL DATATABLE dtItems CON LOS DATOS DEL SERVIDOR
-                    objMovimientos.mysConec = mysConec;
-                    dtMovimientos = objMovimientos.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO, 2, 0);
-                    // MOSTRAMOS LOS DATOS EN LA GRILLA
-                    ListarItems();
-                }
-                else
-                {
-                    MessageBox.Show("¡ No se pudo eliminar el registro por el siguiente motivo ! " + objMovimientos.StrErrorMensaje, "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                }
-            }
-            return booResult;
-        }
-        void Cancelar()
-        {
-            n_QueHace = 3;
-            ActivarTool();
-            Bloquea();
-            LblTitulo2.Text = "Detalle del Registro";
-            Tab1.TabPages[0].Enabled = true;
-            Tab1.SelectedIndex = 0;
-            DgLista.Focus();
-        }
         bool Grabar()
         {
             bool booResultado = false;
@@ -527,62 +331,15 @@ namespace SSF_NET_Almacen.Formularios
             AsignarEntidad();
 
             if (n_QueHace == 1)
-            {
-                if (objMovimientos.DocumentoExiste(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboTipDoc.SelectedValue), TxtNumSer.Text, TxtNumDoc.Text, 2) == true)
-                {
-                    MessageBox.Show(" El numero de documento " + TxtNumSer.Text + "-" + TxtNumDoc.Text + " ya existe, ingrese otro ", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                    return booResultado;
-                }
-                //objMovimientos.AccConec = AccConec;
+            {                
                 objMovimientos.n_ItemProducido = n_ItemProducido;
-                booResultado = objMovimientos.Insertar(BE_Movimiento, 1);    // INDICAMOS 1 = SALIDA
-            }
-
-            if (n_QueHace == 2)
-            {
-                //objMovimientos.AccConec = AccConec;
-                booResultado = objMovimientos.Actualizar(BE_Movimiento);
+                booResultado = objMovimientos.InsertarLista(BE_l_Movimiento, 1);    // INDICAMOS 1 = SALIDA
             }
             return booResultado;
         }
+
         void AsignarEntidad()
         {
-            //BE_Movimiento.n_id;
-            BE_Movimiento.n_idemp = STU_SISTEMA.EMPRESAID;
-            BE_Movimiento.n_idtipmov = 2;                                                           // 1 = INGRESO ; 2 = SALIDA
-            //BE_Movimiento.n_idclipro = Convert.ToInt16(CboProveedor.SelectedValue);
-            BE_Movimiento.n_idclipro = Convert.ToInt16(LblIdPro.Text);
-            BE_Movimiento.d_fchdoc = Convert.ToDateTime(TxtFchDoc.Text);
-            BE_Movimiento.d_fching = Convert.ToDateTime(txtFchIng.Text);
-            BE_Movimiento.n_idtipdoc = Convert.ToInt16(CboTipDoc.SelectedValue);
-            BE_Movimiento.c_numser = TxtNumSer.Text;
-            BE_Movimiento.c_numdoc = TxtNumDoc.Text;
-            BE_Movimiento.n_idalm = Convert.ToInt16(CboAlmacen.SelectedValue);
-            BE_Movimiento.n_anotra = STU_SISTEMA.ANOTRABAJO;
-            BE_Movimiento.n_idmes = STU_SISTEMA.MESTRABAJO;
-            BE_Movimiento.c_obs = TxtObs.Text; ;
-            BE_Movimiento.n_idtipope = Convert.ToInt16(CboTipOpe.SelectedValue);
-
-            BE_Movimiento.n_perid =  Convert.ToInt16(CboSolicitante.SelectedValue);
-
-            // SOLO PARA CUANDO SEA EL DOCUMENTO REF 32 GUIA DE TRANSPORTISTA LO CAMBIARA A 10 PARA PODERBUSCARLO 
-            // EN LA GUIA DE REMISION POR SU VERDADERO TIPO DE DOCUMENTO, POR ERROR LAS GUITAS DE TRANSPORTE SE GRABAN COMO GUIAS
-            if (Convert.ToInt16(CboDocRef.SelectedValue) == 32)
-            {
-                BE_Movimiento.n_docrefidtipdoc = 10;
-            }
-            else
-            { 
-                BE_Movimiento.n_docrefidtipdoc =  Convert.ToInt16(CboDocRef.SelectedValue);
-            }
-            BE_Movimiento.c_docrefnumser = TxtSerDocRef.Text;
-            BE_Movimiento.c_docrefnumdoc = TxtNumDocRef.Text;
-
-            BE_Movimiento.n_docrefiddocref = null;
-            if (LblIdDocRef.Text != "")
-            { 
-                BE_Movimiento.n_docrefiddocref = Convert.ToInt32(LblIdDocRef.Text);
-            }
             int n_fila = 0;
             int n_NumeroElementos = 0;
 
@@ -600,13 +357,56 @@ namespace SSF_NET_Almacen.Formularios
             booAgregando = true;
 
             List<BE_ALM_MOVIMIENTOSDET_CONSULTA> LstDetalle = new List<BE_ALM_MOVIMIENTOSDET_CONSULTA>();
-
+            BE_l_Movimiento.Clear();
             if (FgItems.Rows.Count > 2)
             {
                 for (n_fila = 2; n_fila <= FgItems.Rows.Count - 1; n_fila++)
                 {
                     if (funFunciones.NulosC(FgItems.GetData(n_fila, 1)) != "")
                     {
+                        DataTable DtFiltro = new DataTable();
+
+                        string strCadenaFiltro = "c_des = '" + FgItems.GetData(n_fila, 10).ToString() + "'";
+                        DtFiltro = funDatos.DataTableFiltrar(dtAlmacenes, strCadenaFiltro);
+                        int n_idalm = Convert.ToInt32(DtFiltro.Rows[0]["n_id"].ToString());
+
+                        BE_ALM_MOVIMIENTOS_CONSULTA BE_Movimiento = BE_l_Movimiento
+                                                                    .Where(m => m.n_idalm == n_idalm)
+                                                                    .FirstOrDefault();
+                        bool m_AlmacenNuevo = false;
+
+                        if (BE_Movimiento == null)
+                        {
+                            m_AlmacenNuevo = true;
+                            BE_Movimiento = new BE_ALM_MOVIMIENTOS_CONSULTA();
+                            BE_Movimiento.n_idemp = STU_SISTEMA.EMPRESAID;
+                            BE_Movimiento.n_idtipmov = 2;
+                            BE_Movimiento.n_idclipro = Convert.ToInt16(LblIdPro.Text);
+                            BE_Movimiento.d_fchdoc = Convert.ToDateTime(TxtFchDoc.Text);
+                            BE_Movimiento.d_fching = Convert.ToDateTime(txtFchIng.Text);
+                            BE_Movimiento.n_idtipdoc = 50;
+                            BE_Movimiento.c_numser = "001";
+                            BE_Movimiento.c_numdoc = objTipDoc.UltimoNumero(BE_Movimiento.n_idemp
+                                , BE_Movimiento.n_idtipdoc
+                                , BE_Movimiento.c_numser);
+                            BE_Movimiento.n_idalm = n_idalm;
+                            BE_Movimiento.n_anotra = STU_SISTEMA.ANOTRABAJO;
+                            BE_Movimiento.n_idmes = STU_SISTEMA.MESTRABAJO;
+                            BE_Movimiento.c_obs = TxtObs.Text; ;
+                            BE_Movimiento.n_idtipope = Convert.ToInt16(CboTipOpe.SelectedValue);
+                            BE_Movimiento.n_perid = Convert.ToInt16(CboSolicitante.SelectedValue);
+                            BE_Movimiento.n_docrefidtipdoc = Convert.ToInt16(CboDocRef.SelectedValue);
+                            BE_Movimiento.c_docrefnumser = TxtSerDocRef.Text;
+                            BE_Movimiento.c_docrefnumdoc = TxtNumDocRef.Text;
+
+                            BE_Movimiento.n_docrefiddocref = null;
+                            if (LblIdDocRef.Text != "")
+                            {
+                                BE_Movimiento.n_docrefiddocref = Convert.ToInt32(LblIdDocRef.Text);
+                            }
+
+                        }
+                        
                         BE_ALM_MOVIMIENTOSDET_CONSULTA BE_Detalle = new BE_ALM_MOVIMIENTOSDET_CONSULTA();
 
                         BE_Detalle.n_idmov = 0;
@@ -617,10 +417,9 @@ namespace SSF_NET_Almacen.Formularios
                         BE_Detalle.c_itepredes = FgItems.GetData(n_fila, 3).ToString();
                         BE_Detalle.c_numlot = funFunciones.NulosC(FgItems.GetData(n_fila, 4));
 
-                        DataTable DtFiltro = new DataTable();
 
                         // FILTRAMOS EL ITEM DE LA FILA PARA OBTENER EL ID  
-                        string strCadenaFiltro = "c_despro = '" + BE_Detalle.c_itedes + "'";
+                        strCadenaFiltro = "c_despro = '" + BE_Detalle.c_itedes + "'";
                         DtFiltro = funDatos.DataTableFiltrar(dtItems, strCadenaFiltro);
                         BE_Detalle.n_idite = Convert.ToInt32(DtFiltro.Rows[0]["n_id"].ToString());
 
@@ -637,13 +436,18 @@ namespace SSF_NET_Almacen.Formularios
                         BE_Detalle.n_preuni = Convert.ToDouble(FgItems.GetData(n_fila, 7));
                         BE_Detalle.n_pretot = Convert.ToDouble(FgItems.GetData(n_fila, 8));
 
-                        LstDetalle.Add(BE_Detalle);
+                        BE_Movimiento.lst_items.Add(BE_Detalle);
+
+                        if (m_AlmacenNuevo)
+                        {
+                            BE_l_Movimiento.Add(BE_Movimiento);
+                        }
                     }
                 }
-                BE_Movimiento.lst_items = LstDetalle;
             }
             booAgregando = false;
         }
+
         bool CamposOK()
         {
             bool booEstado = true;
@@ -664,30 +468,6 @@ namespace SSF_NET_Almacen.Formularios
                 return booEstado;
             }
 
-            if (Convert.ToInt16(CboTipDoc.SelectedValue) == 0)
-            {
-                MessageBox.Show("¡ No ha especificado el tipo de documento !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                CboTipDoc.Focus();
-                booEstado = false;
-                return booEstado;
-            }
-
-            if (TxtNumSer.Text == "")
-            {
-                MessageBox.Show("¡ No ha especificado el numero de serie !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                TxtNumSer.Focus();
-                booEstado = false;
-                return booEstado;
-            }
-
-            if (TxtNumDoc.Text == "")
-            {
-                MessageBox.Show("¡ No ha especificado el numero de documento !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                TxtNumDoc.Focus();
-                booEstado = false;
-                return booEstado;
-            }
-
             if (Convert.ToInt16(LblIdPro.Text) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el nombre del proveedor !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
@@ -696,25 +476,10 @@ namespace SSF_NET_Almacen.Formularios
                 return booEstado;
             }
 
-            if (Convert.ToInt16(CboAlmacen.SelectedValue) == 0)
-            {
-                MessageBox.Show("¡ No ha especificado el almacen de destino !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                CboAlmacen.Focus();
-                booEstado = false;
-                return booEstado;
-            }
             if (Convert.ToInt16(CboTipOpe.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el tipo de operacion !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboTipOpe.Focus();
-                booEstado = false;
-                return booEstado;
-            }
-
-            if (Convert.ToInt16(Convert.ToDateTime(TxtFchDoc.Text).ToString("MM")) != Convert.ToInt16(CboMeses.SelectedValue))
-            {
-                MessageBox.Show("¡ La fecha del documento de salida no coincide con el mes de trabajo !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                TxtFchDoc.Focus();
                 booEstado = false;
                 return booEstado;
             }
@@ -757,6 +522,12 @@ namespace SSF_NET_Almacen.Formularios
                         if (funFunciones.NulosC(FgItems.GetData(intFila, 9)) == "")
                         {
                             MessageBox.Show("¡ No ha especificado la hora de salida del item en la fila " + (FgItems.Row - 1).ToString() + " !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                            booEstado = false;
+                            return booEstado;
+                        }
+                        if (funFunciones.NulosC(FgItems.GetData(intFila, 10)) == "")
+                        {
+                            MessageBox.Show("¡ No ha especificado el almacén del item en la fila " + (FgItems.Row - 1).ToString() + " !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                             booEstado = false;
                             return booEstado;
                         }
@@ -811,45 +582,8 @@ namespace SSF_NET_Almacen.Formularios
                 return booEstado;
             }
             return booEstado;
-        }
-        private void FrmSalidaAlmacen3_Activated(object sender, EventArgs e)
-        {
-            if (booSeEjecuto == false)
-            {
-                booSeEjecuto = true;
-                ListarItems();
-
-                if (dtMovimientos.Rows.Count == 0)
-                {
-                    DialogResult Rpta = MessageBox.Show("No se han encontrado registros, ¿ Desea agregar uno ahora ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-
-                    if (DialogResult.Yes == Rpta)
-                    {
-                        Nuevo();
-                    }
-                    else
-                    {
-                        this.Close();
-                    }
-                }
-                else
-                {
-                    DgLista.Focus();
-                }
-            }  
-        }
-        private void ToolNuevo_Click(object sender, EventArgs e)
-        {
-            Nuevo();
-        }
-        private void ToolModificar_Click(object sender, EventArgs e)
-        {
-            Modificar();
-        }
-        private void ToolEliminar_Click(object sender, EventArgs e)
-        {
-            EliminarRegistro();
-        }
+        }     
+        
         private void ToolGrabar_Click(object sender, EventArgs e)
         {
             if (Grabar() == true)
@@ -858,25 +592,11 @@ namespace SSF_NET_Almacen.Formularios
                 objMovimientos.mysConec = mysConec;
                 dtMovimientos = objMovimientos.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO, 2, 0);
                 // MOSTRAMOS LOS DATOS EN LA GRILLA
-                ListarItems();
-
-                DialogResult Rpta = MessageBox.Show("! El registro se agrego con exito ¡ ¿Desea agregar otro registro? ", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-
-                if (DialogResult.Yes == Rpta)
-                {
-                    Nuevo();
-                    return;
-                }
-                else
-                {
-                    Cancelar();
-                }
+                Blanquea();
+                MessageBox.Show("! El registro se agregó con exito ¡ ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private void ToolCancelar_Click(object sender, EventArgs e)
-        {
-            Cancelar();
-        }
+
         private void ToolSalir_Click(object sender, EventArgs e)
         {
             objTipoExi = null;
@@ -905,48 +625,7 @@ namespace SSF_NET_Almacen.Formularios
 
             this.Close();
         }
-        private void Tab1_SelectedIndexChanging(object sender, EventArgs e)
-        {
-            TabControl tc = (TabControl)sender;
 
-            if (n_QueHace != 3) { return; }
-
-            if (tc.SelectedIndex == 1)
-            {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
-
-                if (n_QueHace != 1)
-                {
-                    booAgregando = true;
-                    VerRegistro(intIdRegistro);
-                    booAgregando = false;
-                }
-            }
-        }
-        private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
-        {
-            //if (n_QueHace != 3) { return; }
-
-            //if (e.NewIndex == 1)
-            //{
-            //    int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
-
-            //    if (n_QueHace != 1)
-            //    {
-            //        booAgregando = true;
-            //        VerRegistro(intIdRegistro);
-            //        booAgregando = false;
-            //    }
-            //}
-        }
-        private void DgLista_DoubleClick(object sender, EventArgs e)
-        {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
-            Tab1.SelectedIndex = 1;
-            booAgregando = true;
-            VerRegistro(intIdRegistro);
-            booAgregando = false;
-        }
         private void FgItems_KeyPressEdit(object sender, C1.Win.C1FlexGrid.KeyPressEditEventArgs e)
         {
             if (e.Col == 4)
@@ -958,6 +637,7 @@ namespace SSF_NET_Almacen.Formularios
             }
  
         }
+
         private void FgItems_EnterCell(object sender, EventArgs e)
         {
             if (FgItems.Rows.Count == 2) { return; }
@@ -1025,9 +705,20 @@ namespace SSF_NET_Almacen.Formularios
                 FgItems.AllowEditing = false;
                 return;
             }
- 
+
+
+            if (FgItems.Col == 10)
+            {
+                if (FgItems.Row >= 2)
+                {
+                    if (funFunciones.NulosC(FgItems.GetData(FgItems.Row - 1, 1)) == "") { FgItems.AllowEditing = false; return; }
+                }
+                funFlex.FlexColumnaCombo(FgItems, dtAlmacenes, "c_des", 10);
+            }
+
             FgItems.AllowEditing = true;
         }
+
         private void CmdDelItem_Click(object sender, EventArgs e)
         {
             if (FgItems.Rows.Count > 2)
@@ -1036,6 +727,7 @@ namespace SSF_NET_Almacen.Formularios
                 FgItems.Focus();
             }
         }
+
         private void CmdAddItem_Click(object sender, EventArgs e)
         {
             bool booAgregarUnidad = true;
@@ -1056,6 +748,7 @@ namespace SSF_NET_Almacen.Formularios
                 MessageBox.Show("No puede agregar mas items hasta que no haya completado el item anterior", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             }
         }
+
         private void FgItems_RowColChange(object sender, EventArgs e)
         {
             if (n_QueHace == 3)
@@ -1065,76 +758,7 @@ namespace SSF_NET_Almacen.Formularios
 
             if (booAgregando == true) { return; }
         }
-        private void DgLista_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 13)
-            {
-                DataTable dtResult = new DataTable();
 
-                string c_CadFiltro = funDbGrid.DG_LeerCondicionesFiltro(DgLista);
-                dtResult = funDbGrid.DG_Filtrar(dtMovimientos, c_CadFiltro, DgLista);
-                DgLista.DataSource = dtResult;
-                LblNumReg.Text = (dtResult.Rows.Count).ToString();
-            }
-        }
-        private void FrmSalidaAlmacen3_Resize(object sender, EventArgs e)
-        {
-            //Tab_Dimensionar(Tab1, this.Height - 81, this.Width - 18);
-        }
-        private void TxtNumSer_TextChanged(object sender, EventArgs e)
-        {
-        }
-        private void TxtNumSer_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (Convert.ToInt32(e.KeyChar) == 13)
-            {
-                string strCad = "0000" + TxtNumSer.Text;
-
-                TxtNumSer.Text = strCad.Substring(strCad.Length - 4, 4);
-                SendKeys.Send("{TAB}");
-            }
-            else
-            {
-                if (!strNumerovalidos.Contains(e.KeyChar))
-                {
-                    e.Handled = true;
-                }
-            }
-        }
-        private void TxtNumDoc_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (Convert.ToInt32(e.KeyChar) == 13)
-            {
-                string strCad = "0000000000" + TxtNumDoc.Text;
-
-                TxtNumDoc.Text = strCad.Substring(strCad.Length - 10, 10);
-                SendKeys.Send("{TAB}");
-            }
-            else
-            {
-                if (!strNumerovalidos.Contains(e.KeyChar))
-                {
-                    e.Handled = true;
-                }
-            }
-        }
-        private void CboAlmacen_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if (n_QueHace == 3) { return; }
-            if (booAgregando == true) { return; }
-
-            int n_Idlm = Convert.ToInt16(CboAlmacen.SelectedValue);
-
-            booAgregando = true;
-            DataTable dtResul = funDatos.DataTableFiltrar(dtDocAlm, "n_idalm = " + n_Idlm.ToString() + "");
-
-            funDatos.ComboBoxCargarDataTable(CboTipDoc, dtResul, "n_idtipdoc", "c_desdoc");
-            booAgregando = false;
-        }
-        private void CboTipDoc_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            
-        }
         void CargarLotes(int n_iditem)
         {   
             DataTable dtResul = new DataTable();
@@ -1187,42 +811,7 @@ namespace SSF_NET_Almacen.Formularios
                 FgItems.SetData(FgItems.Row, 5, "0.000000");
             }
         }
-        DataTable LotesActualizarSaldo(DataTable dtLotes, int n_IdItem)
-        {
-            DataTable dtResul = new DataTable();
-            int n_row;
-            int n_filadt;
 
-            dtResul = dtLotes;
-
-            if (dtResul.Rows.Count != 0)
-            {
-                // RECORREMOS LOS ITEMS CARGADOS PARA ACTUALIZAR EL SALDO DE LOS LOTES
-                for (n_row = 2; n_row <= FgItems.Rows.Count - 1; n_row++)
-                {
-                    string c_numlote;
-                    double n_cantidad;
-
-                    c_numlote = funFunciones.NulosC(FgItems.GetData(n_row, 4));
-                    n_cantidad = Convert.ToDouble(funFunciones.NulosN(FgItems.GetData(n_row, 6)));
-
-                    if (c_numlote != "")
-                    {
-                        for (n_filadt = 0; n_filadt <= dtResul.Rows.Count - 1; n_filadt++)
-                        {
-                            if (dtResul.Rows[n_filadt]["c_numlot"].ToString() == c_numlote)
-                            {
-                                dtResul.Rows[n_filadt]["n_saldo"] = (Convert.ToDouble(dtResul.Rows[n_filadt]["n_saldo"]) - n_cantidad);
-                                break;
-                            }
-                        }
-                    }
-                }
-
-                dtResul = funDatos.DataTableFiltrar(dtResul, "n_saldo <> 0");
-            }
-            return dtResul;
-        }
         private void FgItems_CellChanged(object sender, C1.Win.C1FlexGrid.RowColEventArgs e)
         {
             DataTable dtResul;
@@ -1317,6 +906,7 @@ namespace SSF_NET_Almacen.Formularios
                 return;
             }
         }
+
         private void txtFchIng_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (Convert.ToInt32(e.KeyChar) == 13)
@@ -1324,6 +914,7 @@ namespace SSF_NET_Almacen.Formularios
                 SendKeys.Send("{TAB}");
             }
         }
+
         private void TxtFchDoc_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (Convert.ToInt32(e.KeyChar) == 13)
@@ -1331,20 +922,7 @@ namespace SSF_NET_Almacen.Formularios
                 SendKeys.Send("{TAB}");
             }
         }
-        private void CboAlmacen_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (Convert.ToInt32(e.KeyChar) == 13)
-            {
-                SendKeys.Send("{TAB}");
-            }
-        }
-        private void CboTipDoc_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (Convert.ToInt32(e.KeyChar) == 13)
-            {
-                SendKeys.Send("{TAB}");
-            }
-        }
+
         private void CboProveedor_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (Convert.ToInt32(e.KeyChar) == 13)
@@ -1352,6 +930,7 @@ namespace SSF_NET_Almacen.Formularios
                 SendKeys.Send("{TAB}");
             }
         }
+
         private void TxtObs_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (Convert.ToInt32(e.KeyChar) == 13)
@@ -1359,33 +938,7 @@ namespace SSF_NET_Almacen.Formularios
                 SendKeys.Send("{TAB}");
             }
         }
-        private void CboMeses_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if (booAgregando == true) { return; }
 
-            objMovimientos.mysConec = mysConec;
-            dtMovimientos = objMovimientos.Listar(STU_SISTEMA.EMPRESAID, Convert.ToInt16(CboMeses.SelectedValue), STU_SISTEMA.ANOTRABAJO, 2, 0);  // EL PARAMETROS N_IDTIPITEM = 0  MOSTRARA TODAS LAS SALIDAS
-            STU_SISTEMA.MESTRABAJO = Convert.ToInt16(CboMeses.SelectedValue);
-            ListarItems();
-
-            if (dtMovimientos.Rows.Count == 0)
-            {
-                DialogResult Rpta = MessageBox.Show("No se han encontrado registros, ¿ Desea agregar uno ahora ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-
-                if (DialogResult.Yes == Rpta)
-                {
-                    //Nuevo();
-                }
-                else
-                {
-                    this.Close();
-                }
-            }
-            else
-            {
-                DgLista.Focus();
-            }
-        }
         private void TxtSerDocRef_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (Convert.ToInt32(e.KeyChar) == 13)
@@ -1403,6 +956,7 @@ namespace SSF_NET_Almacen.Formularios
                 }
             }
         }
+
         private void TxtNumDocRef_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (Convert.ToInt32(e.KeyChar) == 13)
@@ -1420,14 +974,7 @@ namespace SSF_NET_Almacen.Formularios
                 }
             }
         }
-        private void TxtNumSer_Validated(object sender, EventArgs e)
-        {
-            if (TxtNumSer.Text == "") { return; }
 
-            string c_numdoc = "";
-            c_numdoc = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, Convert.ToInt16(CboTipDoc.SelectedValue), TxtNumSer.Text);
-            TxtNumDoc.Text = c_numdoc;
-        }
         private void TxtSerDocRef_Validated(object sender, EventArgs e)
         {
             if (TxtSerDocRef.Text == "") { return; }
@@ -1435,6 +982,7 @@ namespace SSF_NET_Almacen.Formularios
             string strCad = "0000" + TxtSerDocRef.Text;
             TxtSerDocRef.Text = strCad.Substring(strCad.Length - 4, 4);
         }
+
         private void TxtNumDocRef_Validated(object sender, EventArgs e)
         {
             if (TxtNumDocRef.Text == "") { return; }
@@ -1442,23 +990,17 @@ namespace SSF_NET_Almacen.Formularios
             string strCad = "0000000000" + TxtNumDocRef.Text;
             TxtNumDocRef.Text = strCad.Substring(strCad.Length - 10, 10);
         }
-        private void TxtNumDoc_Validated(object sender, EventArgs e)
-        {
-            if (TxtNumDoc.Text == "") { return; }
 
-            string strCad = "0000000000" + TxtNumDoc.Text;
-            TxtNumDoc.Text = strCad.Substring(strCad.Length - 10, 10);
-        }
         private void CboDocRef_SelectedValueChanged(object sender, EventArgs e)
         {
             if (booAgregando == true) { return; }
 
-            if (Convert.ToInt16(CboAlmacen.SelectedValue) == 0)
-            {
-                MessageBox.Show("¡ No ha indicado el almacen", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                CboDocRef.SelectedValue = 0;
-                return;
-            }
+            //if (Convert.ToInt16(CboAlmacen.SelectedValue) == 0)
+            //{
+            //    MessageBox.Show("¡ No ha indicado el almacen", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+            //    CboDocRef.SelectedValue = 0;
+            //    return;
+            //}
             TxtNumDocRef.Enabled = true;
             TxtSerDocRef.Enabled = true;
             CmdBusDocRef.Visible = false;
@@ -1472,7 +1014,7 @@ namespace SSF_NET_Almacen.Formularios
                 TxtSerDocRef.Text = "";
                 TxtNumDocRef.Enabled = false;
                 TxtSerDocRef.Enabled = false;
-                CmdBusDocRef.Text = "FACTURA";
+                //CmdBusDocRef.Text = "FACTURA";
                 CmdBusDocRef.Visible = true;
 
                 CmdAddItem.Enabled = false;
@@ -1488,7 +1030,7 @@ namespace SSF_NET_Almacen.Formularios
                 TxtSerDocRef.Text = "";
                 TxtNumDocRef.Enabled = false;
                 TxtSerDocRef.Enabled = false;
-                CmdBusDocRef.Text = "GUIA REMISION";
+                //CmdBusDocRef.Text = "GUIA REMISION";
                 CmdBusDocRef.Visible = true;
 
                 CmdAddItem.Enabled = false;
@@ -1503,14 +1045,14 @@ namespace SSF_NET_Almacen.Formularios
                 TxtNumDocRef.Enabled = false;
                 TxtSerDocRef.Enabled = false;
                 CmdBusDocRef.Visible = true;
-                CmdBusDocRef.Text = "Solicitud Mat.";
+                //CmdBusDocRef.Text = "Solicitud Mat.";
                 CmdBusDocRef.Visible = true;
 
                 CmdAddItem.Enabled = false;
                 CmdDelItem.Enabled = false;
                 booAgregando = true;
                 CboTipOpe.SelectedValue = 10;
-                CboTipDoc.SelectedValue = 72;
+                //CboTipDoc.SelectedValue = 72;
                 booAgregando = false; ;
             }
 
@@ -1521,14 +1063,14 @@ namespace SSF_NET_Almacen.Formularios
                 TxtNumDocRef.Enabled = false;
                 TxtSerDocRef.Enabled = false;
                 CmdBusDocRef.Visible = true;
-                CmdBusDocRef.Text = "Orden de Req.";
+                //CmdBusDocRef.Text = "Orden de Req.";
                 CmdBusDocRef.Visible = true;
 
                 //CmdAddItem.Enabled = false;
                 //CmdDelItem.Enabled = false;
                 booAgregando = true;
                 CboTipOpe.SelectedValue = 10;
-                CboTipDoc.SelectedValue = 75;
+                //CboTipDoc.SelectedValue = 75;
                 booAgregando = false; ;
             }
 
@@ -1539,14 +1081,14 @@ namespace SSF_NET_Almacen.Formularios
                 TxtNumDocRef.Enabled = false;
                 TxtSerDocRef.Enabled = false;
                 CmdBusDocRef.Visible = true;
-                CmdBusDocRef.Text = "Solicitud Adic. Mat.";
+                //CmdBusDocRef.Text = "Solicitud Adic. Mat.";
                 CmdBusDocRef.Visible = true;
 
                 CmdAddItem.Enabled = false;
                 CmdDelItem.Enabled = false;
                 booAgregando = true;
                 CboTipOpe.SelectedValue = 10;
-                CboTipDoc.SelectedValue = 92;
+                //CboTipDoc.SelectedValue = 92;
                 booAgregando = false; ;
             }
 
@@ -1556,7 +1098,7 @@ namespace SSF_NET_Almacen.Formularios
                 TxtSerDocRef.Text = "";
                 TxtNumDocRef.Enabled = false;
                 TxtSerDocRef.Enabled = false;
-                CmdBusDocRef.Text = "Parte Produccion";
+                //CmdBusDocRef.Text = "Parte Produccion";
                 CmdBusDocRef.Visible = true;
 
                 CmdAddItem.Enabled = false;
@@ -1570,7 +1112,7 @@ namespace SSF_NET_Almacen.Formularios
                 TxtSerDocRef.Text = "";
                 TxtNumDocRef.Enabled = false;
                 TxtSerDocRef.Enabled = false;
-                CmdBusDocRef.Text = "Guia Transporte";
+                //CmdBusDocRef.Text = "Guia Transporte";
                 CmdBusDocRef.Visible = true;
 
                 CmdAddItem.Enabled = false;
@@ -1583,7 +1125,7 @@ namespace SSF_NET_Almacen.Formularios
                 TxtSerDocRef.Text = "";
                 TxtNumDocRef.Enabled = false;
                 TxtSerDocRef.Enabled = false;
-                CmdBusDocRef.Text = "Proforma";
+                //CmdBusDocRef.Text = "Proforma";
                 CmdBusDocRef.Visible = true;
 
                 CmdAddItem.Enabled = false;
@@ -1594,149 +1136,7 @@ namespace SSF_NET_Almacen.Formularios
             }
             TxtSerDocRef.Focus();
         }
-        void MostrarSolicitudaMat()
-        {
-            string[,] arrCabeceraDg1 = new string[7, 4];
-            DataTable dtResult = new DataTable();
-            DataTable dtresulpre = new DataTable();
-            int n_Fila;
-            int n_iditem;
-            int n_filaflex;
-            double n_saldorequerido = 0;
 
-            objSolMar.AccConec = AccConec;
-            DtSolMat = objSolMar.solicitamatpendientes();
-
-            arrCabeceraDg1[0, 0] = "Nº Solicitud";
-            arrCabeceraDg1[0, 1] = "120";
-            arrCabeceraDg1[0, 2] = "C";
-            arrCabeceraDg1[0, 3] = "numsolmat";
-
-            arrCabeceraDg1[1, 0] = "Fch. Emision";
-            arrCabeceraDg1[1, 1] = "80";
-            arrCabeceraDg1[1, 2] = "F";
-            arrCabeceraDg1[1, 3] = "fchdoc";
-
-            arrCabeceraDg1[2, 0] = "Solicitante";
-            arrCabeceraDg1[2, 1] = "200";
-            arrCabeceraDg1[2, 2] = "C";
-            arrCabeceraDg1[2, 3] = "apenom";
-
-            arrCabeceraDg1[3, 0] = "Nº Ord. Produccion";
-            arrCabeceraDg1[3, 1] = "120";
-            arrCabeceraDg1[3, 2] = "C";
-            arrCabeceraDg1[3, 3] = "numordpro";
-
-            arrCabeceraDg1[4, 0] = "Id";
-            arrCabeceraDg1[4, 1] = "0";
-            arrCabeceraDg1[4, 2] = "N";
-            arrCabeceraDg1[4, 3] = "id";
-
-            arrCabeceraDg1[5, 0] = "Producto";
-            arrCabeceraDg1[5, 1] = "150";
-            arrCabeceraDg1[5, 2] = "C";
-            arrCabeceraDg1[5, 3] = "despro";
-
-            arrCabeceraDg1[6, 0] = "Receta";
-            arrCabeceraDg1[6, 1] = "150";
-            arrCabeceraDg1[6, 2] = "C";
-            arrCabeceraDg1[6, 3] = "desrec";
-
-            Genericas xFun = new Genericas();
-            xFun.Buscar_CampoBusqueda = "id";
-            dtResult = xFun.Buscar(arrCabeceraDg1, DtSolMat);
-
-            if (dtResult == null) { return; }
-            if (dtResult.Rows.Count == 0) { return; }
-
-            TxtNumDocRef.Text = dtResult.Rows[0]["solmatnumdoc"].ToString();
-            TxtSerDocRef.Text = dtResult.Rows[0]["solmatnumser"].ToString();
-            LblIdDocRef.Text = dtResult.Rows[0]["id"].ToString();
-
-            // ACTUALIZAMOS EL DATATABLE DE LOS LOTES PARA SABER SI ALGUIEN MAS DESCARGO EL LOTE
-            objlotes.mysConec = mysConec;
-            dtLotes = objlotes.TraerLotesConSaldo(STU_SISTEMA.EMPRESAID);
-            FgItems.Rows.Count = 2;
-            DtDetalleTMP = objSolMar.solicitamatitems(Convert.ToInt32(LblIdDocRef.Text));
-            dtResult = DtDetalleTMP;
-            if (dtResult.Rows.Count != 0)
-            {
-                booAgregando = true;
-                n_filaflex = 2;
-                for (n_Fila = 0; n_Fila <= (dtResult.Rows.Count - 1); n_Fila++)
-                {
-                    n_iditem = Convert.ToInt32(dtResult.Rows[n_Fila]["iditem"].ToString());
-
-                    DataTable dtResulLote = new DataTable();
-
-                    dtResulLote = funDatos.DataTableFiltrar(dtLotes, "n_idite = " + n_iditem.ToString() + "", "n_idite");
-
-                    dtResulLote = LotesActualizarSaldo(dtResulLote, n_iditem);
-
-                    //if (dtResulLote.Rows.Count !=0)
-                    //{ 
-                    FgItems.Rows.Count = FgItems.Rows.Count + 1;
-                    FgItems.SetData(n_filaflex, 1, "SUMINISTROS");
-                    FgItems.SetData(n_filaflex, 2, dtResult.Rows[n_Fila]["descripcion"].ToString());
-
-                    // MOSTRAMOS LA PRESENTACION DEL ITEM
-                    dtresulpre = funDatos.DataTableFiltrar(dtPresentaItem, "n_idite = " + n_iditem + " AND n_default = 1");
-                    if (dtresulpre.Rows.Count == 1)
-                    {
-                        FgItems.SetData(n_filaflex, 3, dtresulpre.Rows[0]["c_abrpre"].ToString());
-                    }
-                    else
-                    {
-                        FgItems.SetData(n_filaflex, 3, "");
-                    }
-
-                    if (dtResulLote.Rows.Count != 0)
-                    {
-                        double n_saldo;
-                        double n_requerido;
-                        double n_diferencia;
-
-                        n_saldo = Convert.ToDouble(dtResulLote.Rows[0]["n_saldo"]);
-                        n_requerido = Convert.ToDouble(dtResult.Rows[n_Fila]["cantidad"]);
-
-                        n_diferencia = (n_saldo - n_requerido);
-                        if (n_diferencia < 0)
-                        {
-                            n_Fila = n_Fila - 1;
-                            FgItems.SetData(n_filaflex, 6, n_saldo.ToString("0.000000"));
-                            n_saldorequerido = n_requerido - n_saldo;
-                        }
-                        else
-                        {
-                            if (n_saldorequerido != 0)
-                            {
-                                FgItems.SetData(n_filaflex, 6, n_saldorequerido.ToString("0.000000"));
-                                n_saldorequerido = 0;
-                            }
-                            else
-                            {
-                                FgItems.SetData(n_filaflex, 6, n_requerido.ToString("0.000000"));
-                            }
-                        }
-
-                        FgItems.SetData(n_filaflex, 4, dtResulLote.Rows[0]["c_numlot"]).ToString();
-                        FgItems.SetData(n_filaflex, 5, Convert.ToDouble(dtResulLote.Rows[0]["n_saldo"]).ToString("0.000000"));
-                    }
-                    else
-                    {
-                        // SI NO HAY LOTE SE ROTULA SIN LOTE 
-                        FgItems.SetData(n_filaflex, 4, "SIN LOTE");
-                        FgItems.SetData(n_filaflex, 5, "0.000000");
-                        FgItems.SetData(n_filaflex, 6, Convert.ToDouble(dtResult.Rows[n_Fila]["cantidad"]).ToString("0.000000"));
-                    }
-
-
-                    FgItems.SetData(n_filaflex, 7, DateTime.Now.ToString("HH:mm"));
-                    n_filaflex = n_filaflex + 1;
-                }
-                booAgregando = false;
-            }
-        }
         void MostrarParteProduccion()
         {
             string[,] arrCabeceraDg1 = new string[6, 4];
@@ -1874,13 +1274,13 @@ namespace SSF_NET_Almacen.Formularios
             LblIdPro.Text = entGuia.n_idcli.ToString();
             TxtNumRuc.Text = funDatos.DataTableBuscar(dtProveedor,"n_id","c_numdoc", entGuia.n_idcli.ToString(),"N").ToString();
             TxtProv.Text =  funDatos.DataTableBuscar(dtProveedor,"n_id","c_nombre", entGuia.n_idcli.ToString(),"N").ToString();
-            TxtNumDoc.Text = entGuia.c_numdoc;
-            TxtNumSer.Text = entGuia.c_numser;
+            //TxtNumDoc.Text = entGuia.c_numdoc;
+            //TxtNumSer.Text = entGuia.c_numser;
             TxtNumDocRef.Text = entGuia.c_numdoc;
             TxtSerDocRef.Text = entGuia.c_numser;
             LblIdDocRef.Text = entGuia.n_id.ToString();
 
-            CboTipDoc.SelectedValue = entGuia.n_idtipdoc;
+            //CboTipDoc.SelectedValue = entGuia.n_idtipdoc;
             TxtFchDoc.Text = entGuia.d_fchdoc.ToString("dd/MM/yyyy");
             txtFchIng.Text = entGuia.d_fchdoc.ToString("dd/MM/yyyy");
             //CboTipOpe.SelectedValue = 11;
@@ -1970,7 +1370,7 @@ namespace SSF_NET_Almacen.Formularios
                     TxtSerDocRef.Text = e_reqcab.c_numser;
                     LblIdDocRef.Text = e_reqcab.n_id.ToString();
 
-                    CboTipDoc.SelectedValue = e_reqcab.n_idtipdoc;
+                    //CboTipDoc.SelectedValue = e_reqcab.n_idtipdoc;
                     TxtFchDoc.Text = e_reqcab.d_fchent.Value.ToString("dd/MM/yyyy");
                     //txtFchIng.Text = e_reqcab.d_fchent.Value.ToString("dd/MM/yyyy");
                     //CboTipOpe.SelectedValue = 10;
@@ -2047,17 +1447,15 @@ namespace SSF_NET_Almacen.Formularios
                     TxtNumRuc.Text = funDatos.DataTableBuscar(dtProveedor, "n_id", "c_numdoc", entEmp.n_idclipro.ToString(), "N").ToString();
                     TxtProv.Text = funDatos.DataTableBuscar(dtProveedor, "n_id", "c_nombre", entEmp.n_idclipro.ToString(), "N").ToString();
 
-                    TxtNumDoc.Text = e_solmat.c_numdoc;
-                    TxtNumSer.Text = e_solmat.c_numser;
                     TxtNumDocRef.Text = e_solmat.c_numdoc;
                     TxtSerDocRef.Text = e_solmat.c_numser;
                     LblIdDocRef.Text = e_solmat.n_id.ToString();
 
-                    CboTipDoc.SelectedValue = e_solmat.n_idtipdoc;
+                    //CboTipDoc.SelectedValue = e_solmat.n_idtipdoc;
                     TxtFchDoc.Text = e_solmat.d_fchreg.ToString("dd/MM/yyyy");
                     txtFchIng.Text = e_solmat.d_fchreg.ToString("dd/MM/yyyy");
                     CboTipOpe.SelectedValue = 10;
-                    CboTipDoc.SelectedValue = 72;
+                    //CboTipDoc.SelectedValue = 72;
                     l_solmatdet = o_pro.lstSolicitudDet;
                     CmdBusPro.Enabled = false;
 
@@ -2130,8 +1528,6 @@ namespace SSF_NET_Almacen.Formularios
                     TxtNumRuc.Text = funDatos.DataTableBuscar(dtProveedor, "n_id", "c_numdoc", entEmp.n_idclipro.ToString(), "N").ToString();
                     TxtProv.Text = funDatos.DataTableBuscar(dtProveedor, "n_id", "c_nombre", entEmp.n_idclipro.ToString(), "N").ToString();
 
-                    TxtNumDoc.Text = e_solmat.c_numdoc;
-                    TxtNumSer.Text = e_solmat.c_numser;
                     TxtNumDocRef.Text = e_solmat.c_numdoc;
                     TxtSerDocRef.Text = e_solmat.c_numser;
                     LblIdDocRef.Text = e_solmat.n_id.ToString();
@@ -2211,13 +1607,11 @@ namespace SSF_NET_Almacen.Formularios
                     LblIdPro.Text = e_ven.n_idcli.ToString();
                     TxtNumRuc.Text = dtresult.Rows[0]["c_clinumdoc"].ToString();
                     TxtProv.Text = dtresult.Rows[0]["c_clinom"].ToString();
-                    TxtNumDoc.Text = e_ven.c_numdoc;
-                    TxtNumSer.Text = e_ven.c_numser;
                     TxtNumDocRef.Text = e_ven.c_numdoc;
                     TxtSerDocRef.Text = e_ven.c_numser;
                     LblIdDocRef.Text = e_ven.n_id.ToString();
 
-                    CboTipDoc.SelectedValue = e_ven.n_idtipdoc;
+                    //CboTipDoc.SelectedValue = e_ven.n_idtipdoc;
                     TxtFchDoc.Text = e_ven.d_fchdoc.ToString("dd/MM/yyyy");
                     txtFchIng.Text = e_ven.d_fchdoc.ToString("dd/MM/yyyy");
                     CboTipOpe.SelectedValue = 1;
@@ -2292,13 +1686,11 @@ namespace SSF_NET_Almacen.Formularios
                     LblIdPro.Text = e_ven.n_idcli.ToString();
                     TxtNumRuc.Text = dtresult.Rows[0]["c_clinumdoc"].ToString();
                     TxtProv.Text = dtresult.Rows[0]["c_clinom"].ToString();
-                    TxtNumDoc.Text = e_ven.c_numdoc;
-                    TxtNumSer.Text = e_ven.c_numser;
                     TxtNumDocRef.Text = e_ven.c_numdoc;
                     TxtSerDocRef.Text = e_ven.c_numser;
                     LblIdDocRef.Text = e_ven.n_id.ToString();
 
-                    CboTipDoc.SelectedValue = e_ven.n_idtipdoc;
+                    //CboTipDoc.SelectedValue = e_ven.n_idtipdoc;
                     TxtFchDoc.Text = e_ven.d_fchdoc.ToString("dd/MM/yyyy");
                     txtFchIng.Text = e_ven.d_fchdoc.ToString("dd/MM/yyyy");
                     CboTipOpe.SelectedValue = 1;
@@ -2347,99 +1739,7 @@ namespace SSF_NET_Almacen.Formularios
                 }
             }
         }
-        //void MostrarGuiaSalidaVenta()
-        //{
-        //    string[,] arrCabeceraDg1 = new string[4, 4];
-        //    SIAC_DATOS.Ventas.CD_ACC_vta_guias objguia = new SIAC_DATOS.Ventas.CD_ACC_vta_guias();
-        //    DataTable DtGuias = new DataTable();
-        //    DataTable dtResult = new DataTable();
-        //    DataTable dtresulpre = new DataTable();
-        //    DataTable dtItemFiltro = new DataTable();
-        //    int n_Fila;
-        //    int n_iditem;
-        //    int n_filaflex;
-        //    double n_Cantidad = 0;
-        //    int n_idguia;
 
-        //    objguia.AccConec = AccConec;
-        //    DtSolMat = objguia.GuiasEmitida(STU_SISTEMA.ANOTRABAJO);
-
-        //    arrCabeceraDg1[0, 0] = "Nº Guia";
-        //    arrCabeceraDg1[0, 1] = "110";
-        //    arrCabeceraDg1[0, 2] = "C";
-        //    arrCabeceraDg1[0, 3] = "numdoc2";
-
-        //    arrCabeceraDg1[1, 0] = "Fch. Emision";
-        //    arrCabeceraDg1[1, 1] = "80";
-        //    arrCabeceraDg1[1, 2] = "C";
-        //    arrCabeceraDg1[1, 3] = "fecgiro";
-
-        //    arrCabeceraDg1[2, 0] = "Cliente";
-        //    arrCabeceraDg1[2, 1] = "400";
-        //    arrCabeceraDg1[2, 2] = "C";
-        //    arrCabeceraDg1[2, 3] = "nombre";
-
-        //    arrCabeceraDg1[3, 0] = "Id";
-        //    arrCabeceraDg1[3, 1] = "0";
-        //    arrCabeceraDg1[3, 2] = "N";
-        //    arrCabeceraDg1[3, 3] = "id";
-
-        //    Genericas xFun = new Genericas();
-        //    xFun.Buscar_CampoBusqueda = "id";
-        //    xFun.Buscar_CampoOrden = "fecgiro";
-        //    xFun.Buscar_CadFiltro = "";
-        //    dtResult = xFun.Buscar(arrCabeceraDg1, DtSolMat);
-
-        //    if (dtResult == null) { return; }
-        //    if (dtResult.Rows.Count == 0) { return; }
-
-        //    n_idguia = Convert.ToInt16(dtResult.Rows[0]["id"].ToString());
-        //    LblIdDocRef.Text = n_idguia.ToString();
-        //    TxtSerDocRef.Text = dtResult.Rows[0]["numser"].ToString();
-        //    TxtNumDocRef.Text = dtResult.Rows[0]["numdoc"].ToString();
-
-        //    DtDetalleTMP = objguia.GuiasDetalle(n_idguia);
-        //    dtResult = DtDetalleTMP;
-        //    n_filaflex = 2;
-        //    FgItems.Rows.Count = 2;
-
-        //    booAgregando = true;
-        //    for (n_Fila = 0; n_Fila <= (dtResult.Rows.Count - 1); n_Fila++)
-        //    {
-        //        FgItems.Rows.Count = FgItems.Rows.Count + 1;
-        //        n_iditem = Convert.ToInt32(dtResult.Rows[n_Fila]["iditem"].ToString());
-
-        //        dtItemFiltro = funDatos.DataTableFiltrar(dtItems, "n_id = " + n_iditem + "");
-
-        //        if (dtItemFiltro.Rows.Count != 0)
-        //        {
-        //            // MOSTRAMOS LA DESCRIPCION DEL ITEM
-        //            FgItems.SetData(n_filaflex, 2, dtItemFiltro.Rows[0]["c_despro"].ToString());
-
-        //            // MOSTRAMOS LA DESCRIPCION DEL TIPO DE ITEM
-        //            dtItemFiltro = funDatos.DataTableFiltrar(dtTipoExis, "n_id = " + Convert.ToInt16(dtItemFiltro.Rows[0]["n_idtipexi"]) + "");
-        //            FgItems.SetData(n_filaflex, 1, dtItemFiltro.Rows[0]["c_des"].ToString());
-        //        }
-
-        //        //MOSTRAMOS LA PRESENTACION DEL ITEM
-        //        dtresulpre = funDatos.DataTableFiltrar(dtPresentaItem, "n_idite = " + n_iditem + " AND n_default = 1");
-        //        if (dtresulpre.Rows.Count == 1)
-        //        {
-        //            FgItems.SetData(n_filaflex, 3, dtresulpre.Rows[0]["c_abrpre"].ToString());
-        //        }
-        //        else
-        //        {
-        //            FgItems.SetData(n_filaflex, 3, "");
-        //        }
-        //        n_Cantidad = Convert.ToDouble(dtResult.Rows[n_Fila]["canpro"]);
-        //        FgItems.SetData(n_filaflex, 4, "");
-        //        FgItems.SetData(n_filaflex, 6, n_Cantidad.ToString("0.000000"));
-        //        FgItems.SetData(n_filaflex, 7, DateTime.Now.ToString("HH:mm"));
-        //        n_filaflex = n_filaflex + 1;
-        //    }
-
-        //    booAgregando = false;
-        //}
         private void CmdBusDocRef_Click(object sender, EventArgs e)
         {
             if (Convert.ToInt16(CboDocRef.SelectedValue) == 73)
@@ -2475,21 +1775,7 @@ namespace SSF_NET_Almacen.Formularios
                 MostrarProformas();    // MOSTRAMOS LOS DOCUMENTOS DE VENTA QUE NO TENGAN GUIA ADJUNTA
             }
         }
-        private void c1Sizer1_Click(object sender, EventArgs e)
-        {
 
-        }
-        private void ToolImprimir_Click(object sender, EventArgs e)
-        {
-            CN_alm_movimientos objAlm = new CN_alm_movimientos();
-            objAlm.STU_SISTEMA = STU_SISTEMA;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
-            objAlm.ReportImprimirNotaSalida(intIdRegistro);
-        }
-        private void CboTipOpe_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
         private void CboTipOpe_SelectedValueChanged(object sender, EventArgs e)
         {
             if (booAgregando == true) { return; }
@@ -2498,17 +1784,17 @@ namespace SSF_NET_Almacen.Formularios
             CmdBusPro.Enabled = true;
             TxtNumRuc.Enabled = true;
             //CboProveedor.SelectedValue = 0;
-            CmdAddLot.Visible = false;
-            CmdDelLot.Visible = false;
+            //CmdAddLot.Visible = false;
+            //CmdDelLot.Visible = false;
 
-            TxtNumSer.Text = "0001";
-            TxtNumDoc.Text = "";
+            //TxtNumSer.Text = "0001";
+            //TxtNumDoc.Text = "";
             if (Convert.ToInt16(CboTipOpe.SelectedValue) == 1)                                                                  // SALIDA POR VENTA
             {
-                CboTipDoc.SelectedValue = 50;
+                //CboTipDoc.SelectedValue = 50;
                 CboDocRef.SelectedValue = 10;
-                CmdAddLot.Visible = true;
-                CmdDelLot.Visible = true;
+                //CmdAddLot.Visible = true;
+                //CmdDelLot.Visible = true;
                 //CboProveedor.Focus();
                 TxtNumRuc.Focus();
             }
@@ -2525,10 +1811,8 @@ namespace SSF_NET_Almacen.Formularios
                 CmdBusPro.Enabled = false;
                 TxtNumRuc.Enabled = false;
 
-                CboTipDoc.SelectedValue = 50;
-                CboDocRef.SelectedValue = 73;
-                CmdAddLot.Visible = true;
-                CmdDelLot.Visible = true;
+                //CboTipDoc.SelectedValue = 50;
+                CboDocRef.SelectedValue = 73;                
                 CboSolicitante.Focus();
             }
 
@@ -2544,77 +1828,12 @@ namespace SSF_NET_Almacen.Formularios
                 CmdBusPro.Enabled = false;
                 TxtNumRuc.Enabled = false;
 
-                CboTipDoc.SelectedValue = 50;
+                //CboTipDoc.SelectedValue = 50;
                 CboDocRef.SelectedValue = 32;
-                CmdAddLot.Visible = true;
-                CmdDelLot.Visible = true;
                 CboSolicitante.Focus();
             }
 
-            MostarNumeroDocumento(STU_SISTEMA.EMPRESAID, Convert.ToInt16(CboTipDoc.SelectedValue), TxtNumSer.Text);
-        }
-        void MostarNumeroDocumento(int IdEmpresa, int n_TipoDocumento, string c_NumeroSerie)
-        {
-            TxtNumSer.Text = "0001";
-            string c_numdoc = "";
-            c_numdoc = objTipDoc.UltimoNumero(IdEmpresa, n_TipoDocumento, c_NumeroSerie);
-            TxtNumDoc.Text = c_numdoc;
-        }
-        private void ToolManFun_Click(object sender, EventArgs e)
-        {
-            Helper.Cls_VisorHTML VerHtml = new Helper.Cls_VisorHTML();
-            VerHtml.c_NombreArchivo = "j:\\SSF-NET\\archivos\\documentacion\\Procesos\\proceso01.html";
-            VerHtml.c_TituloForm = "Manual Funciones - Almacen";
-            VerHtml.VerHtml();
-        }
-        private void CboTipDoc_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if (booAgregando == true) { return; }
-            if (n_QueHace == 3) { return; }
-            if (Convert.ToInt32(CboTipDoc.SelectedValue) == 0) { return; }
-            int n_IdTipDoc = Convert.ToInt32(CboTipDoc.SelectedValue);
-            DataTable dtResul = funDatos.DataTableFiltrar(dtDocAlm, "n_idtipdoc = " + n_IdTipDoc.ToString() + "");
-            booAgregando = true;
-            FgItems.Rows.Count = 2;
-            if (Convert.ToInt16(dtResul.Rows[0]["n_numfil"].ToString()) != 0)
-            {
-                FgItems.Rows.Count = FgItems.Rows.Count + Convert.ToInt16(dtResul.Rows[0]["n_numfil"].ToString());                  // INDICAMOS EL NUMERO DE FILAS PARA EL DETALLE
-            }
-            else
-            {
-                FgItems.Rows.Count = FgItems.Rows.Count + n_NumFilasDocumento;
-            }
-            TxtNumSer.Text = "0001";
-            MostarNumeroDocumento(STU_SISTEMA.EMPRESAID, Convert.ToInt16(CboTipDoc.SelectedValue), TxtNumSer.Text);
-            CboDocRef.Focus();
-            //TxtNumRuc.Focus();
-
-            booAgregando = false;
-        }
-        private void CboTipDoc_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-        private void CmdAddLot_Click(object sender, EventArgs e)
-        {
-            booAgregando = true;
-            string c_TipDoc = FgItems.GetData(FgItems.Row, 1).ToString();
-            string c_Item = FgItems.GetData(FgItems.Row, 2).ToString();
-            string c_UniMed = FgItems.GetData(FgItems.Row, 3).ToString();
-
-            FgItems.Rows.Count = FgItems.Rows.Count + 1;
-
-            FgItems.SetData(FgItems.Rows.Count - 1, 1, c_TipDoc);
-            FgItems.SetData(FgItems.Rows.Count - 1, 2, c_Item);
-            FgItems.SetData(FgItems.Rows.Count - 1, 3, c_UniMed);
-            FgItems.SetData(FgItems.Rows.Count - 1, 7, DateTime.Now.ToString("HH:mm"));
-            booAgregando = false;
-        }
-        private void CmdDelLot_Click(object sender, EventArgs e)
-        {
-            if (FgItems.Rows.Count == 2) { return; }
-
-            FgItems.RemoveItem(FgItems.Row);
+            //MostarNumeroDocumento(STU_SISTEMA.EMPRESAID, Convert.ToInt16(CboTipDoc.SelectedValue), TxtNumSer.Text);
         }
 
         private void FgItems_CellButtonClick(object sender, C1.Win.C1FlexGrid.RowColEventArgs e)
@@ -2727,9 +1946,5 @@ namespace SSF_NET_Almacen.Formularios
             }
         }
 
-        private void CboAlmacen_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

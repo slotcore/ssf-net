@@ -69,6 +69,28 @@ namespace SIAC_Negocio.Logistica
             }
             return b_result;
         }
+
+        public bool ListarRequerimientosPorArea(int n_IdEmpresa, int n_IdAreaDest)
+        {
+            bool b_result = false;
+
+            CD_log_ordenrequerimiento miFun = new CD_log_ordenrequerimiento();
+            miFun.mysConec = mysConec;
+
+            b_result = miFun.ListarRequerimientosPorArea(n_IdEmpresa, n_IdAreaDest);
+
+            if (b_result == false)
+            {
+                booOcurrioError = miFun.booOcurrioError;
+                StrErrorMensaje = miFun.StrErrorMensaje;
+                IntErrorNumber = miFun.IntErrorNumber;
+            }
+            else
+            {
+                dtListaOrdenReq = miFun.dtListaOrdenReq;
+            }
+            return b_result;
+        }
         public bool ListarPendientes(int n_IdEmpresa, string c_CadenaIN)
         {
             bool b_Result;
@@ -143,6 +165,61 @@ namespace SIAC_Negocio.Logistica
             }
             return dtResult;
         }
+
+        public DataTable OrdenesListarPorArea(int n_IdEmpresa, int n_IdAreaDest)
+        {
+            DataTable dtResult = new DataTable();
+            CN_log_ordenrequerimiento objsol = new CN_log_ordenrequerimiento();
+            string[,] arrCabeceraFlexFil = new string[7, 5];
+
+            objsol.mysConec = mysConec;
+            if (objsol.ListarRequerimientosPorArea(n_IdEmpresa, n_IdAreaDest) == true)
+            {
+                dtResult = objsol.dtListaOrdenReq;
+                // FLEX GRID DE LOS TAREAS
+                arrCabeceraFlexFil[0, 0] = "Nº Documento";
+                arrCabeceraFlexFil[0, 1] = "110";
+                arrCabeceraFlexFil[0, 2] = "C";
+                arrCabeceraFlexFil[0, 3] = "c_numdoc_cad";
+
+                arrCabeceraFlexFil[1, 0] = "Fecha";
+                arrCabeceraFlexFil[1, 1] = "40";
+                arrCabeceraFlexFil[1, 2] = "C";
+                arrCabeceraFlexFil[1, 3] = "d_fchemi";
+
+                arrCabeceraFlexFil[2, 0] = "Obs";
+                arrCabeceraFlexFil[2, 1] = "30";
+                arrCabeceraFlexFil[2, 2] = "C";
+                arrCabeceraFlexFil[2, 3] = "c_obs";
+
+                arrCabeceraFlexFil[3, 0] = "Mes";
+                arrCabeceraFlexFil[3, 1] = "30";
+                arrCabeceraFlexFil[3, 2] = "C";
+                arrCabeceraFlexFil[3, 3] = "n_mes";
+
+                arrCabeceraFlexFil[4, 0] = "Año";
+                arrCabeceraFlexFil[4, 1] = "40";
+                arrCabeceraFlexFil[4, 2] = "C";
+                arrCabeceraFlexFil[4, 3] = "n_ano";
+
+                arrCabeceraFlexFil[5, 0] = "Area";
+                arrCabeceraFlexFil[5, 1] = "110";
+                arrCabeceraFlexFil[5, 2] = "C";
+                arrCabeceraFlexFil[5, 3] = "c_area";
+
+                arrCabeceraFlexFil[6, 0] = "Id";
+                arrCabeceraFlexFil[6, 1] = "0";
+                arrCabeceraFlexFil[6, 2] = "N";
+                arrCabeceraFlexFil[6, 3] = "n_id";
+
+                funDatos.Buscar_CampoBusqueda = "c_numdoc_cad";
+                funDatos.Buscar_CadFiltro = "";
+                funDatos.Buscar_CampoOrden = "c_numdoc_cad";
+                funDatos.Buscar_Titulo = "Documentos Pendientes de Visar por Almacen";
+                dtResult = funDatos.Buscar(arrCabeceraFlexFil, dtResult);
+            }
+            return dtResult;
+        }
         public bool ActualizarEstadoRequerimiento(int n_IdRegistro, int n_IdEstado)
         {
             CD_log_ordenrequerimiento miFun = new CD_log_ordenrequerimiento();
@@ -189,6 +266,25 @@ namespace SIAC_Negocio.Logistica
             miFun.mysConec = mysConec;
 
             dtResul = miFun.Listar(n_idempresa, n_idmes, n_idano);
+
+            if (dtResul == null)
+            {
+                booOcurrioError = miFun.booOcurrioError;
+                StrErrorMensaje = miFun.StrErrorMensaje;
+                IntErrorNumber = miFun.IntErrorNumber;
+            }
+
+            return dtResul;
+        }
+
+        public DataTable ListarPorArea(int n_idempresa, int n_idmes, int n_idano, int n_idareadest)
+        {
+            DataTable dtResul = new DataTable();
+
+            CD_log_ordenrequerimiento miFun = new CD_log_ordenrequerimiento();
+            miFun.mysConec = mysConec;
+
+            dtResul = miFun.ListarPorArea(n_idempresa, n_idmes, n_idano, n_idareadest);
 
             if (dtResul == null)
             {

@@ -178,6 +178,12 @@
     <Compile Include="Formularios\FrmRevision.Designer.cs">
       <DependentUpon>FrmRevision.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FrmOrdenProduccionSelItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmOrdenProduccionSelItem.Designer.cs">
+      <DependentUpon>FrmOrdenProduccionSelItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FrmSolicitudMateriales2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -269,6 +275,7 @@
       <DependentUpon>RptTareasProduccion.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ViewModels\OrdenProduccionDetalleItem.cs" />
     <EmbeddedResource Include="Formularios\FrmConsultaProduccion.resx">
       <DependentUpon>FrmConsultaProduccion.cs</DependentUpon>
     </EmbeddedResource>
@@ -301,6 +308,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmRevision.resx">
       <DependentUpon>FrmRevision.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmOrdenProduccionSelItem.resx">
+      <DependentUpon>FrmOrdenProduccionSelItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmSolicitudMateriales2.resx">
       <DependentUpon>FrmSolicitudMateriales2.cs</DependentUpon>

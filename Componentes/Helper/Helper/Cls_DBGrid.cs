@@ -171,7 +171,8 @@ namespace Helper
             My_FormatearGrid(xDg,arrColumnas,dtDataTable,Alternar);
         }
 
-        public bool DG_ExporExcel(C1.Win.C1TrueDBGrid.C1TrueDBGrid xDg, System.Windows.Forms.SaveFileDialog objCuadroDialogo )
+        public bool DG_ExporExcel(C1.Win.C1TrueDBGrid.C1TrueDBGrid xDg
+            , System.Windows.Forms.SaveFileDialog objCuadroDialogo )
         {
             bool boolExporto = false;
             objCuadroDialogo.Filter = "MS Excel (*.xls) |*.xls;*.xls|(*.xls) |*.xls|(*.*) |*.*";
@@ -193,7 +194,8 @@ namespace Helper
             return boolExporto;
         }
         
-        public bool DG_ExporExcel_2(C1.Win.C1TrueDBGrid.C1TrueDBGrid xDg, System.Windows.Forms.SaveFileDialog objCuadroDialogo)
+        public bool DG_ExporExcel_2(C1.Win.C1TrueDBGrid.C1TrueDBGrid xDg
+            , System.Windows.Forms.SaveFileDialog objCuadroDialogo)
         {
             bool boolExporto = false;
             //objCuadroDialogo.Filter = "MS Excel (*.xls) |*.xls;*.xls|(*.xls) |*.xls|(*.*) |*.*";
@@ -223,6 +225,45 @@ namespace Helper
             dtTableWithOneColumn.Columns[7].ColumnName = "Tip.Doc.Ref.";
             dtTableWithOneColumn.Columns[8].ColumnName = "N° Doc.Ref.";
 
+
+            if (objCuadroDialogo.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                DataTable_To_Excel(dtTableWithOneColumn, objCuadroDialogo.FileName);
+                //xDg.ExportToExcel(objCuadroDialogo.FileName);
+                boolExporto = true;
+            }
+
+            string filename = "Excel.exe";
+
+            Process proc = new Process();
+            proc.EnableRaisingEvents = false;
+            proc.StartInfo.FileName = filename;
+            proc.StartInfo.Arguments = objCuadroDialogo.FileName;
+            proc.Start();
+
+            return boolExporto;
+        }
+
+        public bool DG_ExporExcel(C1.Win.C1TrueDBGrid.C1TrueDBGrid xDg
+            , System.Windows.Forms.SaveFileDialog objCuadroDialogo
+            , string[] columnGridNames
+            , string[] columnHeaderNames)
+        {
+            bool boolExporto = false;
+            //objCuadroDialogo.Filter = "MS Excel (*.xls) |*.xls;*.xls|(*.xls) |*.xls|(*.*) |*.*";
+            objCuadroDialogo.Filter = "MS Excel (*.xlsx) |*.xlsx;*.xlsx|(*.xlsx) |*.xlsx|(*.*) |*.*";
+
+            DataTable tCxC = (DataTable)xDg.DataSource;
+
+            DataView dtView = new DataView(tCxC);
+            DataTable dtTableWithOneColumn = dtView.ToTable("Hoja 1", true, columnGridNames);
+
+            int index = 0;
+            foreach (var columnHeaderName in columnHeaderNames)
+            {
+                dtTableWithOneColumn.Columns[index].ColumnName = columnHeaderName;
+                index += 1;
+            }
 
             if (objCuadroDialogo.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {

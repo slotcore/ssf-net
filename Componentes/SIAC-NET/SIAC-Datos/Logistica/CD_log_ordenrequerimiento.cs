@@ -72,6 +72,31 @@ namespace SIAC_DATOS.Logistica
             }
             return b_result;
         }
+
+
+        public bool ListarRequerimientosPorArea(int n_IdEmpresa, int n_IdAreaDest)
+        {
+            bool b_result = false;
+
+            string[,] arrParametros = new string[2, 3] {
+                                            {"n_idemp", "System.INT64",n_IdEmpresa.ToString()},
+                                            {"n_idareadest", "System.INT64",n_IdAreaDest.ToString()}
+                                      };
+
+            dtListaOrdenReq = xMiFuncion.StoreDTLLenar("log_ordenrequerimiento_listarporarea", arrParametros, mysConec);
+
+            if (xMiFuncion.IntErrorNumber != 0)
+            {
+                booOcurrioError = xMiFuncion.booOcurrioError;
+                StrErrorMensaje = xMiFuncion.StrErrorMensaje;
+                IntErrorNumber = xMiFuncion.IntErrorNumber;
+            }
+            else
+            {
+                b_result = true;
+            }
+            return b_result;
+        }
         public bool ActualizarEstadoRequerimiento(int n_IdRegistro, int n_IdEstado)
         { 
             bool b_result = false;
@@ -158,6 +183,30 @@ namespace SIAC_DATOS.Logistica
                                       };
 
             DtResultado = xMiFuncion.StoreDTLLenar("log_ordenrequerimiento_listar", arrParametros, mysConec);
+
+            if (xMiFuncion.IntErrorNumber != 0)
+            {
+                DtResultado = null;
+                booOcurrioError = xMiFuncion.booOcurrioError;
+                StrErrorMensaje = xMiFuncion.StrErrorMensaje;
+                IntErrorNumber = xMiFuncion.IntErrorNumber;
+            }
+
+            return DtResultado;
+        }
+
+        public DataTable ListarPorArea(int n_idempresa, int n_idmes, int n_idano, int n_idareadest)
+        {
+            DataTable DtResultado = new DataTable();
+
+            string[,] arrParametros = new string[4, 3] {
+                                            {"n_idemp", "System.INT64",n_idempresa.ToString()},
+                                            {"n_anotra", "System.INT64",n_idano.ToString()},
+                                            {"n_mestra", "System.INT64",n_idmes.ToString()},
+                                            {"n_idareadest", "System.INT64",n_idareadest.ToString()}
+                                      };
+
+            DtResultado = xMiFuncion.StoreDTLLenar("log_ordenrequerimiento_listar_todo_porarea", arrParametros, mysConec);
 
             if (xMiFuncion.IntErrorNumber != 0)
             {

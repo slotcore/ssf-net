@@ -55,6 +55,7 @@ namespace SSF_NET_Almacen.Formularios
     
         string strNumerovalidos = "1234567890." + (char)8;                                        // + (char)8;
         string strCaracteres = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ1234567890()º.,/$' !!·%/()=?¿*^" + (char)8;
+        
         public FrmManAlmacenes()
         {
             InitializeComponent();
@@ -75,10 +76,10 @@ namespace SSF_NET_Almacen.Formularios
         }
         void ConfigurarFormulario()
         {
-            this.Height = 587;
-            this.Width = 930;
-            Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
-            Tab_Posicionar(Tab1, 1, 42);
+            //this.Height = 587;
+            //this.Width = 930;
+            //Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
+            //Tab_Posicionar(Tab1, 1, 42);
             Tab1.SelectedIndex = 0;
             LblTitulo2.Text = "DETALLE DEL REGISTRO";
 
@@ -102,13 +103,13 @@ namespace SSF_NET_Almacen.Formularios
         }
         void Tab_Dimensionar(C1.Win.C1Command.C1DockingTab dokTab, int intAlto, int intAncho)
         {
-            Tab1.Height = intAlto;
-            Tab1.Width = intAncho;
+            //Tab1.Height = intAlto;
+            //Tab1.Width = intAncho;
         }
         void Tab_Posicionar(C1.Win.C1Command.C1DockingTab dokTab, int intPosX, int intPosY)
         {
-            dokTab.Left = intPosX;
-            dokTab.Top = intPosY;
+            //dokTab.Left = intPosX;
+            //dokTab.Top = intPosY;
         }
         void VerRegistro(int n_IdRegistro)
         {
@@ -231,7 +232,9 @@ namespace SSF_NET_Almacen.Formularios
         void AsignarEntidad()
         {
             BE_ListaReg.n_id = BE_Registro.n_id;
-            BE_ListaReg.n_idemp = STU_SISTEMA.EMPRESAID;
+            //BE_ListaReg.n_idemp = STU_SISTEMA.EMPRESAID;
+            //Se setea por defecto a empresa cero
+            BE_ListaReg.n_idemp = 0;
             BE_ListaReg.n_idlocal = Convert.ToInt16(CboLocal.SelectedValue);
             BE_ListaReg.c_des = TxtDes.Text;
         }
@@ -340,11 +343,13 @@ namespace SSF_NET_Almacen.Formularios
 
             this.Close();
         }
-        private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
+        private void Tab1_SelectedIndexChanging(object sender, EventArgs e)
         {
+            TabControl tc = (TabControl)sender;
+
             if (n_QueHace != 3) { return; }
 
-            if (e.NewIndex == 1)
+            if (tc.SelectedIndex == 1)
             {
                 int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
@@ -353,6 +358,20 @@ namespace SSF_NET_Almacen.Formularios
                     VerRegistro(intIdRegistro);
                 }
             }
+        }
+        private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
+        {
+            //if (n_QueHace != 3) { return; }
+
+            //if (e.NewIndex == 1)
+            //{
+            //    int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+
+            //    if (n_QueHace != 1)
+            //    {
+            //        VerRegistro(intIdRegistro);
+            //    }
+            //}
         }
         private void DgLista_DoubleClick(object sender, System.EventArgs e)
         {
@@ -374,7 +393,7 @@ namespace SSF_NET_Almacen.Formularios
         }
         private void FrmManAlmacenes_Resize(object sender, System.EventArgs e)
         {
-            Tab_Dimensionar(Tab1, this.Height - 110, this.Width - 38);
+            //Tab_Dimensionar(Tab1, this.Height - 110, this.Width - 38);
         }
     }
 }

@@ -253,5 +253,27 @@ namespace SIAC_DATOS.Logistica
                 return booOk;
             }
         }
+
+        public bool ConsultaPendientes(int n_IdEmpresa)
+        {
+            bool b_result = false;
+            string[,] arrParametros = new string[1, 3] {
+                                            {"n_idemp", "System.INT32", n_IdEmpresa.ToString()},
+                                      };
+
+            dtLista = xMiFuncion.StoreDTLLenar("log_ordencompra_consulta_pendientes", arrParametros, mysConec);
+
+            if (xMiFuncion.IntErrorNumber != 0)
+            {
+                b_OcurrioError = xMiFuncion.booOcurrioError;
+                c_ErrorMensaje = xMiFuncion.StrErrorMensaje;
+                n_ErrorNumber = xMiFuncion.IntErrorNumber;
+            }
+            else
+            {
+                b_result = true;
+            }
+            return b_result;
+        }
     }
 }

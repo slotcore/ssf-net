@@ -10,6 +10,7 @@ using SIAC_DATOS.Logistica;
 using MySql.Data.MySqlClient;
 using SIAC_Entidades.Almacen;
 using SIAC_Entidades.Logistica;
+using Helper;
 
 namespace SIAC_Negocio.Logistica
 {
@@ -27,6 +28,9 @@ namespace SIAC_Negocio.Logistica
         public BE_LOG_ORDENCOMPRA e_OC = new BE_LOG_ORDENCOMPRA();
         public List<BE_LOG_ORDENCOMPRADET> l_OCDet = new List<BE_LOG_ORDENCOMPRADET>();
         Helper.Comunes.Funciones xFun = new Helper.Comunes.Funciones();
+
+        Genericas funDatos = new Genericas();
+
         public void Listar(int n_idempresa, int n_idmes, int n_idano)
         {
             DataTable dtResul = new DataTable();
@@ -45,6 +49,52 @@ namespace SIAC_Negocio.Logistica
 
             return;
         }
+
+        public DataTable OrdenesPendienteJalar(int n_IdEmpresa)
+        {
+            DataTable dtResult = new DataTable();
+            CD_log_ordencompra objsol = new CD_log_ordencompra();
+            string[,] arrCabeceraFlexFil = new string[5, 5];
+
+            objsol.mysConec = mysConec;
+            if (objsol.ConsultaPendientes(n_IdEmpresa) == true)
+            {
+                dtResult = objsol.dtLista;
+                // FLEX GRID DE LOS TAREAS
+                arrCabeceraFlexFil[0, 0] = "Nº Documento";
+                arrCabeceraFlexFil[0, 1] = "110";
+                arrCabeceraFlexFil[0, 2] = "C";
+                arrCabeceraFlexFil[0, 3] = "c_numdoc";
+
+                arrCabeceraFlexFil[1, 0] = "Proveedor";
+                arrCabeceraFlexFil[1, 1] = "110";
+                arrCabeceraFlexFil[1, 2] = "C";
+                arrCabeceraFlexFil[1, 3] = "c_pronom";
+
+                arrCabeceraFlexFil[2, 0] = "Fecha";
+                arrCabeceraFlexFil[2, 1] = "30";
+                arrCabeceraFlexFil[2, 2] = "C";
+                arrCabeceraFlexFil[2, 3] = "d_fchent";
+
+                arrCabeceraFlexFil[3, 0] = "Local";
+                arrCabeceraFlexFil[3, 1] = "110";
+                arrCabeceraFlexFil[3, 2] = "C";
+                arrCabeceraFlexFil[3, 3] = "c_locdes";
+
+                arrCabeceraFlexFil[4, 0] = "Area";
+                arrCabeceraFlexFil[4, 1] = "110";
+                arrCabeceraFlexFil[4, 2] = "C";
+                arrCabeceraFlexFil[4, 3] = "c_aredes";
+
+                funDatos.Buscar_CampoBusqueda = "c_numdoc";
+                funDatos.Buscar_CadFiltro = "";
+                funDatos.Buscar_CampoOrden = "c_numdoc";
+                funDatos.Buscar_Titulo = "Documentos Pendientes";
+                dtResult = funDatos.Buscar(arrCabeceraFlexFil, dtResult);
+            }
+            return dtResult;
+        }
+
         public bool TraerRegistro(int n_IdRegistro)
         {
             bool booresult = false;

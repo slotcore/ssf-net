@@ -23,6 +23,7 @@ namespace SIAC_Entidades.Logistica
         private string _c_obs;
         private int _n_idest;
         private int _n_idmot;
+        private int _n_idareadest;
 
         public int n_idemp
         {
@@ -104,6 +105,11 @@ namespace SIAC_Entidades.Logistica
             get { return _n_idmot; }
             set { _n_idmot = value; }
         }
-        
+
+        public int n_idareadest
+        {
+            get { return _n_idareadest; }
+            set { _n_idareadest = value; }
+        }
     }
 }

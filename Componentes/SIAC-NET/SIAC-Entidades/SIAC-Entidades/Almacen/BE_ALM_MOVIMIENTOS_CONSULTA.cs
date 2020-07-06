@@ -8,6 +8,11 @@ namespace SIAC_Entidades.Almacen
 {
     public class BE_ALM_MOVIMIENTOS_CONSULTA : BE_ALM_MOVIMIENTOS
     {
+        public BE_ALM_MOVIMIENTOS_CONSULTA()
+        {
+            _lst_items = new List<BE_ALM_MOVIMIENTOSDET_CONSULTA>();
+        }
+
         private List<BE_ALM_MOVIMIENTOSDET_CONSULTA> _lst_items;
 
         public List<BE_ALM_MOVIMIENTOSDET_CONSULTA> lst_items

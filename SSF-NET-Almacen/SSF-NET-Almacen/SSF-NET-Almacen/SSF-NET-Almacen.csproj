@@ -159,6 +159,12 @@
     <Compile Include="Formularios\FrmRepMovAlm.Designer.cs">
       <DependentUpon>FrmRepMovAlm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FrmMovMultAlmacen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmMovMultAlmacen.Designer.cs">
+      <DependentUpon>FrmMovMultAlmacen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FrmSalidaAlmacen3.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -326,6 +332,9 @@
     <EmbeddedResource Include="Formularios\FrmRepMovAlm.resx">
       <DependentUpon>FrmRepMovAlm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmMovMultAlmacen.resx">
+      <DependentUpon>FrmMovMultAlmacen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmSalidaAlmacen3.resx">
       <DependentUpon>FrmSalidaAlmacen3.cs</DependentUpon>
     </EmbeddedResource>
@@ -432,6 +441,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Excel_2013_23480.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lookup&amp;reference_16x16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -85,16 +85,33 @@ namespace SSF_NET_Logistica.Formularios
         bool booAgregando = false;
         string strNumerovalidos = "1234567890." + (char)8;                                        // + (char)8;
         string strCaracteres = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ1234567890()º.,/$' !!·%/()=?¿*^" + (char)8;
+
+        int idAreaDestino = 0;
+
         public FrmManOrdenRequerimiento()
         {
             InitializeComponent();
-        } 
+        }
+
+        public FrmManOrdenRequerimiento(int idAreaDestino)
+        {
+            InitializeComponent();
+            this.idAreaDestino = idAreaDestino;
+        }
+
         private void FrmManOrdenRequerimiento_Load(object sender, EventArgs e)
         {
             booAgregando = true;
             CargarCombos();
             ConfigurarFormulario();
             booAgregando = false;
+
+            switch (idAreaDestino)
+            {
+                case 12:
+                    this.Text = "ALMACÉN - ORDEN DE REQUERIMIENTO INTERNO";
+                    break;
+            }
         }
         void CargarCombos()
         {
@@ -149,7 +166,19 @@ namespace SSF_NET_Logistica.Formularios
         void DataTableCargar()
         {
             objRegistros.mysConec = mysConec;                                    // CARGAMOS LOS DATOS DEL FORMULARIO
-            dtLista = objRegistros.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO);
+
+            if (idAreaDestino == 0)
+            {
+                dtLista = objRegistros.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO);
+            }
+            else
+            {
+                dtLista = objRegistros.ListarPorArea(STU_SISTEMA.EMPRESAID
+                    , STU_SISTEMA.MESTRABAJO
+                    , STU_SISTEMA.ANOTRABAJO
+                    , idAreaDestino);
+            }
+
 
             objFormVis.mysConec = mysConec;                                      // CARGAMOS EL ARRAY CON LOS DATOS PARA LA VISTA DE DgLista
             objFormVis.ObtenerCabeceraLista(27, ref arrCabeceraDg1);
@@ -401,7 +430,18 @@ namespace SSF_NET_Logistica.Formularios
 
                     // VOLVEMOS A CARGAR EL DATATABLE dtItems CON LOS DATOS DEL SERVIDOR
                     objRegistros.mysConec = mysConec;
-                    dtLista = objRegistros.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO);
+
+                    if (idAreaDestino == 0)
+                    {
+                        dtLista = objRegistros.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO);
+                    }
+                    else
+                    {
+                        dtLista = objRegistros.ListarPorArea(STU_SISTEMA.EMPRESAID
+                            , STU_SISTEMA.MESTRABAJO
+                            , STU_SISTEMA.ANOTRABAJO
+                            , idAreaDestino);
+                    }
                     // MOSTRAMOS LOS DATOS EN LA GRILLA
                     ListarItems();
                 }
@@ -465,7 +505,9 @@ namespace SSF_NET_Logistica.Formularios
             {
                 BE_Registro.n_id = BE_Registro.n_id;
             }
-            
+
+
+            BE_Registro.n_idareadest = idAreaDestino;
             BE_Registro.n_idtipdoc = 75;
             BE_Registro.c_numser = TxtNumSer.Text;
             BE_Registro.c_numdoc = TxtNumDoc.Text;
@@ -601,6 +643,12 @@ namespace SSF_NET_Logistica.Formularios
                 CboArea.Focus();
                 return booEstado;
             }
+
+            // Se setea el area destino por defecto a compras
+            if (idAreaDestino == 0)
+            {
+                idAreaDestino = 28;
+            }
             return booEstado;
         }
         private void TxtFchEnt_ValueChanged(object sender, EventArgs e)
@@ -629,7 +677,19 @@ namespace SSF_NET_Logistica.Formularios
             {
                 // VOLVEMOS A CARGAR EL DATATABLE dtItems CON LOS DATOS DEL SERVIDOR
                 objRegistros.mysConec = mysConec;
-                dtLista = objRegistros.Listar( STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO);
+
+                if (idAreaDestino == 0)
+                {
+                    dtLista = objRegistros.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO);
+                }
+                else
+                {
+                    dtLista = objRegistros.ListarPorArea(STU_SISTEMA.EMPRESAID
+                        , STU_SISTEMA.MESTRABAJO
+                        , STU_SISTEMA.ANOTRABAJO
+                        , idAreaDestino);
+                }
+
                 // MOSTRAMOS LOS DATOS EN LA GRILLA
                 ListarItems();
 
@@ -992,7 +1052,18 @@ namespace SSF_NET_Logistica.Formularios
             if (booAgregando == true) { return; }
 
             objRegistros.mysConec = mysConec;                                    // CARGAMOS LOS DATOS DEL FORMULARIO
-            dtLista = objRegistros.Listar(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboMeses.SelectedValue), STU_SISTEMA.ANOTRABAJO);
+
+            if (idAreaDestino == 0)
+            {
+                dtLista = objRegistros.Listar(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboMeses.SelectedValue), STU_SISTEMA.ANOTRABAJO);
+            }
+            else
+            {
+                dtLista = objRegistros.ListarPorArea(STU_SISTEMA.EMPRESAID
+                    , Convert.ToInt32(CboMeses.SelectedValue)
+                    , STU_SISTEMA.ANOTRABAJO
+                    , idAreaDestino);
+            }
 
             ListarItems();
 

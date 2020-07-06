@@ -181,6 +181,7 @@ namespace SIAC_DATOS.Almacen
 
             return booResult;
         }
+
         public bool Insertar(BE_ALM_MOVIMIENTOS entCabecera, List<BE_ALM_MOVIMIENTOSDET> lstDetalle, List<BE_ALM_INVENTARIOLOTE> lstLote)
         {
             bool booOk = false;
@@ -263,6 +264,93 @@ namespace SIAC_DATOS.Almacen
                 return booOk;
             }
         }
+
+        public bool InsertarLista(List<BE_ALM_MOVIMIENTO_GROUP> entCabecera_Groups)
+        {
+            bool booOk = false;
+            int intFila = 0;
+            DatosMySql xMiFuncion = new DatosMySql();
+            MySqlTransaction trans;
+
+            xMiFuncion.ReAbrirConeccion(mysConec);
+            trans = mysConec.BeginTransaction();
+
+            try
+            {
+                foreach(BE_ALM_MOVIMIENTO_GROUP entCabecera_Group in entCabecera_Groups)
+                {
+                    if (xMiFuncion.StoreEjecutar("alm_movimientos_insertar", entCabecera_Group.entCabecera, mysConec, 0) == true)
+                    {
+                        for (intFila = 0; intFila <= entCabecera_Group.lstDetalle.Count - 1; intFila++)
+                        {
+                            entCabecera_Group.entCabecera.n_id = Convert.ToInt16(xMiFuncion.intIdGenerado);
+                            entCabecera_Group.lstDetalle[intFila].n_idmov = Convert.ToInt16(xMiFuncion.intIdGenerado);
+                            if (xMiFuncion.StoreEjecutar("alm_movimientosdet_insertar", entCabecera_Group.lstDetalle[intFila], mysConec, null) == true)
+                            {
+                                booOk = true;
+                            }
+                            else
+                            {
+                                // CONTROLAR EL ERROR
+                                booOcurrioError = xMiFuncion.booOcurrioError;
+                                StrErrorMensaje = xMiFuncion.StrErrorMensaje;
+                                IntErrorNumber = xMiFuncion.IntErrorNumber;
+                                trans.Rollback();
+                                booOk = false;
+                                return booOk;
+                            }
+
+                            // AGREGAMOS LOS LOTES
+                            entCabecera_Group.lstLote[intFila].n_iddocmov = Convert.ToInt16(xMiFuncion.intIdGenerado);
+                            if (xMiFuncion.StoreEjecutar("alm_inventariolotes_insertar", entCabecera_Group.lstLote[intFila], mysConec, null) == true)
+                            {
+                                booOk = true;
+                            }
+                            else
+                            {
+                                // CONTROLAR EL ERROR
+                                booOcurrioError = xMiFuncion.booOcurrioError;
+                                StrErrorMensaje = xMiFuncion.StrErrorMensaje;
+                                IntErrorNumber = xMiFuncion.IntErrorNumber;
+                                trans.Rollback();
+                                booOk = false;
+                                return booOk;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        booOcurrioError = xMiFuncion.booOcurrioError;
+                        StrErrorMensaje = xMiFuncion.StrErrorMensaje;
+                        IntErrorNumber = xMiFuncion.IntErrorNumber;
+                        trans.Rollback();
+                        booOk = false;
+                        return booOk;
+                    }
+                }
+
+                if (booOk == true)
+                {
+                    trans.Commit();
+                }
+                else
+                {
+                    trans.Rollback();
+                }
+
+                return booOk;
+            }
+            catch (Exception exc)
+            {
+                // SI SUCEDE UN ERROR DEVOLVEMOS FALSO
+                booOcurrioError = xMiFuncion.booOcurrioError;
+                StrErrorMensaje = xMiFuncion.StrErrorMensaje;
+                IntErrorNumber = xMiFuncion.IntErrorNumber;
+                trans.Rollback();
+                return booOk;
+            }
+        }
+
         public bool Actualizar(BE_ALM_MOVIMIENTOS entCabecera, List<BE_ALM_MOVIMIENTOSDET> lstDetalle, List<BE_ALM_INVENTARIOLOTE> lstLote)
         {
             bool booOk = false;
@@ -395,6 +483,7 @@ namespace SIAC_DATOS.Almacen
         }
         public bool DocumentoExiste(int n_IdEmpresa, int n_IdTipoDocumento, string c_NumSerie, string c_NumDocumento, int n_TipoMovimiento)
         {
+            DataTable DtResultado = new DataTable();
             bool b_result = false;
 
             string[,] arrParametros = new string[5, 3] {
@@ -402,7 +491,7 @@ namespace SIAC_DATOS.Almacen
                                             {"n_idtipdoc", "System.INT32",n_IdTipoDocumento.ToString()},
                                             {"c_numser", "System.STRING",c_NumSerie.ToString()},
                                             {"c_numdoc", "System.STRING",c_NumDocumento.ToString()},
-                                            {"n_idtipdoc", "System.STRING",n_TipoMovimiento.ToString()}
+                                            {"n_idtipmov", "System.INT32",n_TipoMovimiento.ToString()}
                                       };
 
             dtMovimiento = xMiFuncion.StoreDTLLenar("alm_movimientos_existenumerodocumento", arrParametros, mysConec);

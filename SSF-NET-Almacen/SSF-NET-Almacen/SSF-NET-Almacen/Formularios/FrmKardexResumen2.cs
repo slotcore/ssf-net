@@ -238,7 +238,26 @@ namespace SSF_NET_Almacen.Formularios
                 CmdBuscar.Focus();
                 return;
             }
-            funDbGrid.DG_ExporExcel(DgLista, saveFileDialog1);
+
+            string[] columnGridNames = { "c_tipexides"
+                    , "c_codpro"
+                    , "c_despro"
+                    , "c_abrepre"
+                    , "n_stkini"
+                    , "n_toting"
+                    , "n_totsal"
+                    , "n_saldo"};
+
+            string[] columnHeaderNames = { "Tipo de Existencia"
+                    , "Codigo Producto"
+                    , "Descripcion Item"
+                    , "Uni. Med"
+                    , "Stock Inicial"
+                    , "Ingresos"
+                    , "Salida"
+                    , "Saldo"};
+
+            funDbGrid.DG_ExporExcel(DgLista, saveFileDialog1, columnGridNames, columnHeaderNames);
         }
         private void DgLista_KeyPress(object sender, KeyPressEventArgs e)
         {

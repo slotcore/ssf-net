@@ -23,6 +23,8 @@ using MySql.Data.MySqlClient;
 using Helper;
 using SIAC_Objetos.Sistema;
 using System.Data.OleDb;
+using SSF_NET_Produccion.ViewModels;
+using SSF_NET_Planillas.Formularios;
 
 namespace SSF_NET_Produccion.Formularios
 {
@@ -115,18 +117,18 @@ namespace SSF_NET_Produccion.Formularios
         }
         void ConfigurarFormulario()
         {
-            this.Height = 631;
-            this.Width = 945;
+            //this.Height = 631;
+            //this.Width = 945;
              
-            Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
-            Tab_Posicionar(Tab1, 1, 42);
+            //Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
+            //Tab_Posicionar(Tab1, 1, 42);
             Tab1.SelectedIndex = 0;
             
             LblTitulo2.Text = "DETALLE DEL REGISTRO";
 
             // FLEX GRID DE LOS INSUMOS
             arrCabeceraFlexLisPro[0, 0] = "Producto";
-            arrCabeceraFlexLisPro[0, 1] = "350";
+            arrCabeceraFlexLisPro[0, 1] = "260";
             arrCabeceraFlexLisPro[0, 2] = "C";
             arrCabeceraFlexLisPro[0, 3] = "";
             arrCabeceraFlexLisPro[0, 4] = "c_despro";
@@ -280,13 +282,13 @@ namespace SSF_NET_Produccion.Formularios
         }
         void Tab_Dimensionar(C1.Win.C1Command.C1DockingTab dokTab, int intAlto, int intAncho)
         {
-            Tab1.Height = intAlto;
-            Tab1.Width = intAncho;
+            //Tab1.Height = intAlto;
+            //Tab1.Width = intAncho;
         }
         void Tab_Posicionar(C1.Win.C1Command.C1DockingTab dokTab, int intPosX, int intPosY)
         {
-            dokTab.Left = intPosX;
-            dokTab.Top = intPosY;
+            //dokTab.Left = intPosX;
+            //dokTab.Top = intPosY;
         }
         void VerRegistro(int n_IdRegistro)
         {
@@ -737,11 +739,13 @@ namespace SSF_NET_Produccion.Formularios
                 LblNumReg.Text = (dtResult.Rows.Count).ToString();
             }
         }
-        private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
+        private void Tab1_SelectedIndexChanging(object sender, EventArgs e)
         {
+            TabControl tc = (TabControl)sender;
+
             if (n_QueHace != 3) { return; }
 
-            if (e.NewIndex == 1)
+            if (tc.SelectedIndex == 1)
             {
                 int intIdRegistro = Convert.ToInt16(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
 
@@ -753,9 +757,25 @@ namespace SSF_NET_Produccion.Formularios
                 }
             }
         }
+        private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
+        {
+            //if (n_QueHace != 3) { return; }
+
+            //if (e.NewIndex == 1)
+            //{
+            //    int intIdRegistro = Convert.ToInt16(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
+
+            //    if (n_QueHace != 1)
+            //    {
+            //        booAgregando = true;
+            //        VerRegistro(intIdRegistro);
+            //        booAgregando = false;
+            //    }
+            //}
+        }
         private void FrmOrdenProduccion_Resize(object sender, EventArgs e)
         {
-            Tab_Dimensionar(Tab1, this.Height - 82, this.Width - 18);
+            //Tab_Dimensionar(Tab1, this.Height - 82, this.Width - 18);
         }
         private void CboTipDocRef_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -970,41 +990,91 @@ namespace SSF_NET_Produccion.Formularios
             booAgregando = true;
             FgLisPro.Rows.Count = 2;
 
-            for (n_Fila = 0; n_Fila <= (lstPedidoDet.Count - 1); n_Fila++)
+            List<OrdenProduccionDetalleItem> ordenProduccionDetalleItems 
+                = new List<OrdenProduccionDetalleItem>();
+
+            foreach (var pedidoDet in lstPedidoDet)
             {
-                FgLisPro.Rows.Count = FgLisPro.Rows.Count + 1;
+                OrdenProduccionDetalleItem ordenProduccionDetalleItem 
+                    = new OrdenProduccionDetalleItem();
 
-                // MOSTRAMOS EL NOMBRE DEL ITEM
-                c_dato = lstPedidoDet[n_Fila].n_idite.ToString("");
+                //producto
+                ordenProduccionDetalleItem.n_idite = pedidoDet.n_idite;
+                c_dato = pedidoDet.n_idite.ToString("");
                 c_dato = funDatos.DataTableBuscar(dtItems, "n_id", "c_despro", c_dato, "N").ToString();
-                FgLisPro.SetData(n_filaflex, 1, c_dato);
-
-                c_dato = lstPedidoDet[n_Fila].n_idite.ToString("");                                             // OBTENEMOS EL ID DEL PRODUCTO
-                dtResult = funDatos.DataTableFiltrar(dtReceta, "(n_idpro = " + c_dato + ")");                  // FILTRAMOS TODAS LAS RECETAS DEL PRODUCTO
-                dtResult = funDatos.DataTableFiltrar(dtResult, "(n_prirec = " + 1 + ")");                      // FILTRAMOS LA RECETA PRINCIPAL DEL PRODUCTO
-                c_dato = dtResult.Rows[0]["n_id"].ToString();                                                  // OBTENEMOS EL ID DE LA RECETA
-                FgLisPro.SetData(n_filaflex, 8, c_dato);                                                       // ESCRIBIMOS EL ID DE LA RECETA
-                c_dato = funDatos.DataTableBuscar(dtResult, "n_id", "c_des", c_dato, "N").ToString();          // OBTENEMOS LA DESCRIPCION DE LA RECETA
-                FgLisPro.SetData(n_filaflex, 2, c_dato);                                                       // POR DEFECTO MOSTRAMOS LA RECETA PRINCIPAL
-
-
-                // MOSTRAMOS LA UNIDAD DE MEDIDA
-                c_dato = lstPedidoDet[n_Fila].n_idunimed.ToString("");
+                ordenProduccionDetalleItem.c_despro = c_dato;
+                //Receta
+                c_dato = pedidoDet.n_idite.ToString("");
+                dtResult = funDatos.DataTableFiltrar(dtReceta, "(n_idpro = " + c_dato + ")");
+                dtResult = funDatos.DataTableFiltrar(dtResult, "(n_prirec = " + 1 + ")");
+                ordenProduccionDetalleItem.n_idrec = Convert.ToInt32(dtResult.Rows[0]["n_id"]);
+                c_dato = dtResult.Rows[0]["n_id"].ToString();
+                c_dato = funDatos.DataTableBuscar(dtResult, "n_id", "c_des", c_dato, "N").ToString();
+                ordenProduccionDetalleItem.c_desrec = c_dato;
+                //Unidad
+                ordenProduccionDetalleItem.n_idunimed = pedidoDet.n_idunimed;
+                c_dato = pedidoDet.n_idunimed.ToString("");
                 c_dato = funDatos.DataTableBuscar(dtUniMed, "n_id", "c_despre", c_dato, "N").ToString();
-                FgLisPro.SetData(n_filaflex, 3, c_dato);
+                ordenProduccionDetalleItem.c_desunimed = c_dato;
+                //cantidad
+                ordenProduccionDetalleItem.n_can = pedidoDet.n_can;
+                //fecha
+                ordenProduccionDetalleItem.d_fchent = pedidoDet.d_fchent;
+                //
+                ordenProduccionDetalleItems.Add(ordenProduccionDetalleItem);
+            }
 
-                c_dato = lstPedidoDet[n_Fila].n_can.ToString("0.00");
-                FgLisPro.SetData(n_filaflex, 4, c_dato);
+            if (ordenProduccionDetalleItems.Count > 1)
+            {
+                FrmOrdenProduccionSelItem frmOrdenProduccionSelItem
+                    = new FrmOrdenProduccionSelItem(ordenProduccionDetalleItems);
+                frmOrdenProduccionSelItem.ShowDialog();
+                if (frmOrdenProduccionSelItem.ordenProduccionDetalleItem != null)
+                {
+                    var ordenProduccionDetalleItem = frmOrdenProduccionSelItem.ordenProduccionDetalleItem;
+                    FgLisPro.Rows.Count = FgLisPro.Rows.Count + 1;
 
-                c_dato = Convert.ToString(lstPedidoDet[n_Fila].d_fchent);
-                FgLisPro.SetData(n_filaflex, 5, c_dato);
+                    // MOSTRAMOS EL NOMBRE DEL ITEM
+                    FgLisPro.SetData(n_filaflex, 1, ordenProduccionDetalleItem.c_despro);
+                    FgLisPro.SetData(n_filaflex, 8, ordenProduccionDetalleItem.n_idrec);
+                    FgLisPro.SetData(n_filaflex, 2, ordenProduccionDetalleItem.c_desrec);                                                       // POR DEFECTO MOSTRAMOS LA RECETA PRINCIPAL
 
-                FgLisPro.SetData(n_filaflex, 6, 1);                                                            // POR DEFECTO GENERAMOS 1 ARMADA
+                    // MOSTRAMOS LA UNIDAD DE MEDIDA
+                    FgLisPro.SetData(n_filaflex, 3, ordenProduccionDetalleItem.c_desunimed);
 
-                c_dato = lstPedidoDet[n_Fila].n_idite.ToString();                                               // ID DEL PRODUCTO
-                FgLisPro.SetData(n_filaflex, 7, c_dato);
+                    FgLisPro.SetData(n_filaflex, 4, ordenProduccionDetalleItem.n_can.ToString("0.00"));
 
-                n_filaflex = n_filaflex + 1;
+                    FgLisPro.SetData(n_filaflex, 5, Convert.ToString(ordenProduccionDetalleItem.d_fchent));
+
+                    FgLisPro.SetData(n_filaflex, 6, 1);
+
+                    FgLisPro.SetData(n_filaflex, 7, ordenProduccionDetalleItem.n_idite.ToString());
+                }
+            }
+            else
+            {
+                foreach (var ordenProduccionDetalleItem in ordenProduccionDetalleItems)
+                {
+                    FgLisPro.Rows.Count = FgLisPro.Rows.Count + 1;
+
+                    // MOSTRAMOS EL NOMBRE DEL ITEM
+                    FgLisPro.SetData(n_filaflex, 1, ordenProduccionDetalleItem.c_despro);
+                    FgLisPro.SetData(n_filaflex, 8, ordenProduccionDetalleItem.n_idrec);
+                    FgLisPro.SetData(n_filaflex, 2, ordenProduccionDetalleItem.c_desrec);                                                       // POR DEFECTO MOSTRAMOS LA RECETA PRINCIPAL
+
+                    // MOSTRAMOS LA UNIDAD DE MEDIDA
+                    FgLisPro.SetData(n_filaflex, 3, ordenProduccionDetalleItem.c_desunimed);
+
+                    FgLisPro.SetData(n_filaflex, 4, ordenProduccionDetalleItem.n_can.ToString("0.00"));
+
+                    FgLisPro.SetData(n_filaflex, 5, Convert.ToString(ordenProduccionDetalleItem.d_fchent));
+
+                    FgLisPro.SetData(n_filaflex, 6, 1);
+
+                    FgLisPro.SetData(n_filaflex, 7, ordenProduccionDetalleItem.n_idite.ToString());
+
+                    n_filaflex += 1;
+                }
             }
 
             booAgregando = false;

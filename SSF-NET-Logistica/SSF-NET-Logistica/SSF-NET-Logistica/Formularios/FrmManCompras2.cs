@@ -174,12 +174,12 @@ namespace SSF_NET_Logistica.Formularios
         }
         void ConfigurarFormulario()
         {
-            this.Height = 636;
-            this.Width = 976;
+            //this.Height = 636;
+            //this.Width = 976;
             
             n_porigv = 18;
-            Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
-            Tab_Posicionar(Tab1, 1, 42);
+            //Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
+            //Tab_Posicionar(Tab1, 1, 42);
             Tab1.SelectedIndex = 0;
             LblTitulo2.Text = "DETALLE DEL REGISTRO";
             
@@ -1235,11 +1235,13 @@ namespace SSF_NET_Logistica.Formularios
                 LblNumReg.Text = (dtResult.Rows.Count).ToString();
             }
         }
-        private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
+        private void Tab1_SelectedIndexChanging(object sender, EventArgs e)
         {
+            TabControl tc = (TabControl)sender;
+
             if (n_QueHace != 3) { return; }
 
-            if (e.NewIndex == 1)
+            if (tc.SelectedIndex == 1)
             {
                 int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
@@ -1248,6 +1250,20 @@ namespace SSF_NET_Logistica.Formularios
                     VerRegistro(intIdRegistro);
                 }
             }
+        }
+        private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
+        {
+            //if (n_QueHace != 3) { return; }
+
+            //if (e.NewIndex == 1)
+            //{
+            //    int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+
+            //    if (n_QueHace != 1)
+            //    {
+            //        VerRegistro(intIdRegistro);
+            //    }
+            //}
         }
         private void ToolSalir_Click(object sender, EventArgs e)
         {
@@ -1336,7 +1352,7 @@ namespace SSF_NET_Logistica.Formularios
         }
         private void FrmManCompras2_Resize(object sender, EventArgs e)
         {
-            Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
+            //Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
         }
 
         private void FgItems_CellButtonClick(object sender, C1.Win.C1FlexGrid.RowColEventArgs e)

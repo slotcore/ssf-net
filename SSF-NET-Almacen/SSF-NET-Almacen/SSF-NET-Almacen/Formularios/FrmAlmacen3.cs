@@ -227,10 +227,13 @@ namespace SSF_NET_Almacen.Formularios
 
             this.Close();
         }
-        private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
+        private void Tab1_SelectedIndexChanging(object sender, EventArgs e)
         {
+            TabControl tc = (TabControl)sender;
+
             if (DgLista.RowCount == 0) { return; }
-            if (e.NewIndex == 1)
+
+            if (tc.SelectedIndex == 1)
             {
                 if (n_QueHace != 1)
                 {
@@ -242,13 +245,28 @@ namespace SSF_NET_Almacen.Formularios
                 }
             }
         }
+        private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
+        {
+            //if (DgLista.RowCount == 0) { return; }
+            //if (e.NewIndex == 1)
+            //{
+            //    if (n_QueHace != 1)
+            //    {
+            //        int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+
+            //        booAgregando = true;
+            //        VerRegistro(intIdRegistro);
+            //        booAgregando = false;
+            //    }
+            //}
+        }
         void ConfigurarFormulario()
         {
             this.Height = 613;
             this.Width = 980;
 
-            Tab_Dimensionar(Tab1, this.Height - 82, this.Width - 18);
-            Tab_Posicionar(Tab1, 1, 41);
+            //Tab_Dimensionar(Tab1, this.Height - 82, this.Width - 18);
+            //Tab_Posicionar(Tab1, 1, 41);
 
             Tab1.SelectedIndex = 0;
             LblTitulo2.Text = "Detalle Registro";
@@ -780,7 +798,7 @@ namespace SSF_NET_Almacen.Formularios
 
         private void FrmAlmacen3_Resize(object sender, EventArgs e)
         {          
-            Tab_Dimensionar(Tab1, this.Height - 82, this.Width - 18);
+            //Tab_Dimensionar(Tab1, this.Height - 82, this.Width - 18);
         }
 
         private void DgLista_DoubleClick(object sender, EventArgs e)

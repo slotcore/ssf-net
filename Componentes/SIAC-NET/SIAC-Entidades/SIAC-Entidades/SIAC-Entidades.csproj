@@ -64,6 +64,7 @@
     <Compile Include="Almacen\BE_ALM_MOVIMIENTOSDET.cs" />
     <Compile Include="Almacen\BE_ALM_MOVIMIENTOSDET_CONSULTA.cs" />
     <Compile Include="Almacen\BE_ALM_MOVIMIENTOS_CONSULTA.cs" />
+    <Compile Include="Almacen\BE_ALM_MOVIMIENTO_GROUP.cs" />
     <Compile Include="Contabilidad\BE_CON_CERRARMES.cs" />
     <Compile Include="Contabilidad\BE_CON_DETRACCION.cs" />
     <Compile Include="Contabilidad\BE_CON_DIARIO.cs" />

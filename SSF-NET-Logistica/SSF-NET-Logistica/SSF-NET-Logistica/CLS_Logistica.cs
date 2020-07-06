@@ -29,6 +29,13 @@ namespace SSF_NET_Logistica
             FrmForm.STU_SISTEMA = STU_SISTEMA;
             FrmForm.Show();
         }
+        public void MantenimientoOR(int idAreaDestino)
+        {
+            Formularios.FrmManOrdenRequerimiento FrmForm = new Formularios.FrmManOrdenRequerimiento(idAreaDestino);
+            FrmForm.mysConec = mysConec;
+            FrmForm.STU_SISTEMA = STU_SISTEMA;
+            FrmForm.Show();
+        }
         public void MantenimientoCompras()
         {
             Formularios.FrmManCompras2 FrmForm = new Formularios.FrmManCompras2();
