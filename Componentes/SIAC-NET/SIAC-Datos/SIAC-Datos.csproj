@@ -122,6 +122,7 @@
     <Compile Include="Logistica\CD_log_ordenrequerimiento.cs" />
     <Compile Include="Logistica\CD_log_personal.cs" />
     <Compile Include="Maestros\CD_mae_almacenes.cs" />
+    <Compile Include="Maestros\CD_mae_aprobador.cs" />
     <Compile Include="Maestros\CD_mae_area.cs" />
     <Compile Include="Maestros\CD_mae_clase.cs" />
     <Compile Include="Maestros\CD_mae_clipro.cs" />

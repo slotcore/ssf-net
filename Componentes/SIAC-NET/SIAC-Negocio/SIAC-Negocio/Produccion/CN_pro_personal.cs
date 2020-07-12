@@ -48,6 +48,28 @@ namespace SIAC_Negocio.Produccion
             return b_Result;
         }
 
+        public bool ListarPorCargo(int n_IdEmpresa, int n_IdCargo)
+        {
+            bool b_Result = false;
+
+            CD_pro_personal miFun = new CD_pro_personal();
+            miFun.mysConec = mysConec;
+
+            if (miFun.ListarPorCargo(n_IdEmpresa, n_IdCargo) == true)
+            {
+                b_Result = true;
+                dtPersonal = miFun.dtPersonal;
+            }
+            else
+            {
+                booOcurrioError = miFun.booOcurrioError;
+                StrErrorMensaje = miFun.StrErrorMensaje;
+                IntErrorNumber = miFun.IntErrorNumber;
+            }
+
+            return b_Result;
+        }
+
         public bool ObtenerEmpleado(int n_IdPersonal)
         {
             bool b_Result = false;

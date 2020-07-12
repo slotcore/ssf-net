@@ -513,7 +513,7 @@ namespace SSF_NET.Formularios
             SSF_NET_Logistica.CLS_Logistica objForm = new SSF_NET_Logistica.CLS_Logistica();
             objForm.mysConec = Program.mysConeccion;
             objForm.STU_SISTEMA = Program.STU_SISTEMA;
-            objForm.MantenimientoOR();
+            objForm.MantenimientoOR(28);
         }
         private void ordenDeCompraToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1646,6 +1646,14 @@ namespace SSF_NET.Formularios
             objForm.AccConec = Program.AccConeccion;
             objForm.STU_SISTEMA = Program.STU_SISTEMA;
             objForm.SalidaAlmacenVarios();
+        }
+
+        private void aprobadoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SSF_NET_Logistica.CLS_Logistica objForm = new SSF_NET_Logistica.CLS_Logistica();
+            objForm.mysConec = Program.mysConeccion;
+            objForm.STU_SISTEMA = Program.STU_SISTEMA;
+            objForm.MantenimientoAprobadores();
         }
     }
 }

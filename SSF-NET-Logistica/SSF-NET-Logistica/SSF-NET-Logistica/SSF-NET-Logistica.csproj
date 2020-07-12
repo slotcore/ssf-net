@@ -37,6 +37,7 @@
     <Reference Include="C1.Win.C1Command.2, Version=2.0.20101.19448, Culture=neutral, PublicKeyToken=e808566f358766d8, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1FlexGrid.2, Version=2.6.20101.528, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1FlexGrid.Classic.2, Version=2.6.20101.528, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Input.2, Version=2.0.20101.33244, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1Sizer.2, Version=2.1.20101.49, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1TrueDBGrid.2, Version=2.0.20101.61177, Culture=neutral, PublicKeyToken=75ae3fb0e2b1e0da, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -63,6 +64,12 @@
     </Compile>
     <Compile Include="Formularios\FrmConsultaCompras.designer.cs">
       <DependentUpon>FrmConsultaCompras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManAprobador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManAprobador.Designer.cs">
+      <DependentUpon>FrmManAprobador.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\FrmManCompras2.cs">
       <SubType>Form</SubType>
@@ -176,6 +183,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Formularios\FrmConsultaCompras.resx">
       <DependentUpon>FrmConsultaCompras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManAprobador.resx">
+      <DependentUpon>FrmManAprobador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmManCompras2.resx">
       <DependentUpon>FrmManCompras2.cs</DependentUpon>

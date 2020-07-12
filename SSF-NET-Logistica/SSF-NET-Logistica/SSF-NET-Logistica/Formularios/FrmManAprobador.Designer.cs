@@ -1,6 +1,6 @@
-﻿namespace SSF_NET_Almacen.Formularios
+﻿namespace SSF_NET_Logistica.Formularios
 {
-    partial class FrmManAlmacenes
+    partial class FrmManAprobador
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmManAlmacenes));
-            this.TxtDes = new System.Windows.Forms.TextBox();
-            this.CboLocal = new System.Windows.Forms.ComboBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmManAprobador));
+            this.CboUsuario = new System.Windows.Forms.ComboBox();
             this.ToolImprimir = new System.Windows.Forms.ToolStripButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.LblTitulo2 = new System.Windows.Forms.Label();
@@ -53,10 +52,9 @@
             this.DgLista = new C1.Win.C1TrueDBGrid.C1TrueDBGrid();
             this.c1DockingTabPage2 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.CboTipExis = new System.Windows.Forms.ComboBox();
+            this.CboArea = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.ToolHerramientas.SuspendLayout();
             this.Tab1.SuspendLayout();
@@ -68,33 +66,19 @@
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // TxtDes
+            // CboUsuario
             // 
-            this.TxtDes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.CboUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtDes.BackColor = System.Drawing.Color.White;
-            this.TxtDes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtDes.Enabled = false;
-            this.TxtDes.ForeColor = System.Drawing.Color.Black;
-            this.TxtDes.Location = new System.Drawing.Point(124, 119);
-            this.TxtDes.Multiline = true;
-            this.TxtDes.Name = "TxtDes";
-            this.TxtDes.Size = new System.Drawing.Size(611, 40);
-            this.TxtDes.TabIndex = 7;
-            // 
-            // CboLocal
-            // 
-            this.CboLocal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CboLocal.BackColor = System.Drawing.Color.White;
-            this.CboLocal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CboLocal.Enabled = false;
-            this.CboLocal.ForeColor = System.Drawing.Color.Black;
-            this.CboLocal.FormattingEnabled = true;
-            this.CboLocal.Location = new System.Drawing.Point(124, 96);
-            this.CboLocal.Name = "CboLocal";
-            this.CboLocal.Size = new System.Drawing.Size(611, 21);
-            this.CboLocal.TabIndex = 2;
+            this.CboUsuario.BackColor = System.Drawing.Color.White;
+            this.CboUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CboUsuario.Enabled = false;
+            this.CboUsuario.ForeColor = System.Drawing.Color.Black;
+            this.CboUsuario.FormattingEnabled = true;
+            this.CboUsuario.Location = new System.Drawing.Point(124, 96);
+            this.CboUsuario.Name = "CboUsuario";
+            this.CboUsuario.Size = new System.Drawing.Size(611, 21);
+            this.CboUsuario.TabIndex = 2;
             // 
             // ToolImprimir
             // 
@@ -154,7 +138,6 @@
             this.ToolHerramientas.Size = new System.Drawing.Size(835, 39);
             this.ToolHerramientas.TabIndex = 14;
             this.ToolHerramientas.Text = "toolStrip1";
-            this.ToolHerramientas.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ToolHerramientas_ItemClicked);
             // 
             // ToolNuevo
             // 
@@ -372,17 +355,38 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.CboTipExis);
+            this.panel1.Controls.Add(this.CboArea);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.TxtDes);
-            this.panel1.Controls.Add(this.CboLocal);
+            this.panel1.Controls.Add(this.CboUsuario);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.label4);
             this.panel1.ForeColor = System.Drawing.Color.Black;
             this.panel1.Location = new System.Drawing.Point(6, 37);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(793, 378);
             this.panel1.TabIndex = 0;
+            // 
+            // CboArea
+            // 
+            this.CboArea.BackColor = System.Drawing.Color.White;
+            this.CboArea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CboArea.Enabled = false;
+            this.CboArea.ForeColor = System.Drawing.Color.Black;
+            this.CboArea.FormattingEnabled = true;
+            this.CboArea.Location = new System.Drawing.Point(124, 123);
+            this.CboArea.Name = "CboArea";
+            this.CboArea.Size = new System.Drawing.Size(611, 21);
+            this.CboArea.TabIndex = 9;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(26, 126);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Area";
             // 
             // label7
             // 
@@ -391,57 +395,23 @@
             this.label7.ForeColor = System.Drawing.Color.Black;
             this.label7.Location = new System.Drawing.Point(26, 98);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(33, 13);
+            this.label7.Size = new System.Drawing.Size(43, 13);
             this.label7.TabIndex = 8;
-            this.label7.Text = "Local";
+            this.label7.Text = "Usuario";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(26, 122);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 13);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Descripcion";
-            // 
-            // CboTipExis
-            // 
-            this.CboTipExis.BackColor = System.Drawing.Color.White;
-            this.CboTipExis.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CboTipExis.Enabled = false;
-            this.CboTipExis.ForeColor = System.Drawing.Color.Black;
-            this.CboTipExis.FormattingEnabled = true;
-            this.CboTipExis.Location = new System.Drawing.Point(124, 165);
-            this.CboTipExis.Name = "CboTipExis";
-            this.CboTipExis.Size = new System.Drawing.Size(611, 21);
-            this.CboTipExis.TabIndex = 9;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(26, 168);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 13);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Tipo de item";
-            // 
-            // FrmManAlmacenes
+            // FrmManAprobador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(835, 473);
             this.Controls.Add(this.ToolHerramientas);
             this.Controls.Add(this.Tab1);
-            this.Name = "FrmManAlmacenes";
+            this.MaximizeBox = false;
+            this.Name = "FrmManAprobador";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrrmManAlmacenes";
-            this.Activated += new System.EventHandler(this.FrmManAlmacenes_Activated);
+            this.Activated += new System.EventHandler(this.FrmManAprobador_Activated);
             this.Load += new System.EventHandler(this.FrrmManAlmacenes_Load);
-            this.Resize += new System.EventHandler(this.FrmManAlmacenes_Resize);
             this.panel3.ResumeLayout(false);
             this.ToolHerramientas.ResumeLayout(false);
             this.ToolHerramientas.PerformLayout();
@@ -460,9 +430,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox TxtDes;
-        private System.Windows.Forms.ComboBox CboLocal;
+        private System.Windows.Forms.ComboBox CboUsuario;
         private System.Windows.Forms.ToolStripButton ToolImprimir;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label LblTitulo2;
@@ -486,8 +454,7 @@
         private System.Windows.Forms.TabPage c1DockingTabPage2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox CboTipExis;
+        private System.Windows.Forms.ComboBox CboArea;
         private System.Windows.Forms.Label label2;
     }
 }

@@ -94,6 +94,13 @@ namespace SSF_NET_Logistica
              FrmForm.mysConec = mysConec;
              FrmForm.STU_SISTEMA = STU_SISTEMA;
              FrmForm.Show();
-         }
+        }
+        public void MantenimientoAprobadores()
+        {
+            Formularios.FrmManAprobador FrmForm = new Formularios.FrmManAprobador();
+            FrmForm.mysConec = mysConec;
+            FrmForm.STU_SISTEMA = STU_SISTEMA;
+            FrmForm.Show();
+        }
     }
 }

@@ -44,6 +44,30 @@ namespace SIAC_DATOS.Produccion
             return b_Result;
         }
 
+        public bool ListarPorCargo(int n_IdEmpresa, int n_IdCargo)
+        {
+            bool b_Result = false;
+            string[,] arrParametros = new string[2, 3] {
+                                            {"n_idemp", "System.INT64",n_IdEmpresa.ToString()},
+                                            {"n_idcargo", "System.INT64",n_IdCargo.ToString()},
+                                      };
+
+            dtPersonal = xMiFuncion.StoreDTLLenar("pro_personal_listar_Por_Cargo", arrParametros, mysConec);
+
+            if (xMiFuncion.IntErrorNumber != 0)
+            {
+                booOcurrioError = xMiFuncion.booOcurrioError;
+                StrErrorMensaje = xMiFuncion.StrErrorMensaje;
+                IntErrorNumber = xMiFuncion.IntErrorNumber;
+            }
+            else
+            {
+                b_Result = true;
+            }
+
+            return b_Result;
+        }
+
         public bool ObtenerEmpleado(int n_IdPersonal)
         {
             bool b_Result = false;

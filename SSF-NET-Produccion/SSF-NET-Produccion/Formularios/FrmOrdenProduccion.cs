@@ -919,165 +919,178 @@ namespace SSF_NET_Produccion.Formularios
         }
         void BuscarPedidoCliente()
         {
-            string[,] arrCabeceraDg1 = new string[6, 4];
-            DataTable dtResult = new DataTable();
-            DataTable dtresulpre = new DataTable();
-            int n_Fila;
-            int n_filaflex = 2;
-            string c_dato;
-
-            objPedido.mysConec = mysConec; 
-            if (objPedido.ListarPedidosPendientes(STU_SISTEMA.EMPRESAID) == false)        // OOOJJJOOO actualizar el 0 se puso solo para que pase
+            try
             {
-                MessageBox.Show("No se pudieron traer los pedidos pendiente, por el siguiente motivo : " + objRequerimiento.StrErrorMensaje, "", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
-                return;
-            }
-            dtRequerimiento = objPedido.dtLisPedPend;
+                string[,] arrCabeceraDg1 = new string[6, 4];
+                DataTable dtResult = new DataTable();
+                DataTable dtresulpre = new DataTable();
+                int n_Fila;
+                int n_filaflex = 2;
+                string c_dato;
 
-            arrCabeceraDg1[0, 0] = "Nº Pedido";
-            arrCabeceraDg1[0, 1] = "120";
-            arrCabeceraDg1[0, 2] = "C";
-            arrCabeceraDg1[0, 3] = "c_numdoc";
-
-            arrCabeceraDg1[1, 0] = "Cliente";
-            arrCabeceraDg1[1, 1] = "300";
-            arrCabeceraDg1[1, 2] = "C";
-            arrCabeceraDg1[1, 3] = "c_nombre";
-
-            arrCabeceraDg1[2, 0] = "Fecha Reg.";
-            arrCabeceraDg1[2, 1] = "70";
-            arrCabeceraDg1[2, 2] = "C";
-            arrCabeceraDg1[2, 3] = "d_fchped";
-
-            arrCabeceraDg1[3, 0] = "Nº Orden Compra";
-            arrCabeceraDg1[3, 1] = "100";
-            arrCabeceraDg1[3, 2] = "N";
-            arrCabeceraDg1[3, 3] = "c_numordcom";
-            
-            arrCabeceraDg1[4, 0] = "Fch. O.C.";
-            arrCabeceraDg1[4, 1] = "70";
-            arrCabeceraDg1[4, 2] = "F";
-            arrCabeceraDg1[4, 3] = "d_fchped";
-
-            arrCabeceraDg1[5, 0] = "Id";
-            arrCabeceraDg1[5, 1] = "0";
-            arrCabeceraDg1[5, 2] = "N";
-            arrCabeceraDg1[5, 3] = "n_id";
-
-            Genericas xFun = new Genericas();
-            xFun.Buscar_CampoBusqueda = "n_id";
-            xFun.Buscar_CadFiltro = "";
-            xFun.Buscar_CampoOrden = "c_numdoc";
-            dtResult = xFun.Buscar(arrCabeceraDg1, dtRequerimiento);
-
-            if (dtResult == null) { return; }
-            if (dtResult.Rows.Count == 0) { return; }
-
-            TxtNumDocRef.Text = dtResult.Rows[0]["c_numdoc"].ToString();
-            TxtNumSerDocRef.Text = dtResult.Rows[0]["c_numser"].ToString();
-
-            LblIdDocRef.Text = dtResult.Rows[0]["n_id"].ToString();
-
-            BE_VTA_PEDIDOCLI entPedido = new BE_VTA_PEDIDOCLI();
-            List<BE_VTA_PEDIDOCLIDET> lstPedidoDet = new List<BE_VTA_PEDIDOCLIDET>();
-
-            lstPedidoDet.Clear();
-
-            objPedido.TraerRegistro(Convert.ToInt32(LblIdDocRef.Text));
-            entPedido = objPedido.entPedCab;
-            lstPedidoDet = objPedido.lstPedDet;
-
-            booAgregando = true;
-            FgLisPro.Rows.Count = 2;
-
-            List<OrdenProduccionDetalleItem> ordenProduccionDetalleItems 
-                = new List<OrdenProduccionDetalleItem>();
-
-            foreach (var pedidoDet in lstPedidoDet)
-            {
-                OrdenProduccionDetalleItem ordenProduccionDetalleItem 
-                    = new OrdenProduccionDetalleItem();
-
-                //producto
-                ordenProduccionDetalleItem.n_idite = pedidoDet.n_idite;
-                c_dato = pedidoDet.n_idite.ToString("");
-                c_dato = funDatos.DataTableBuscar(dtItems, "n_id", "c_despro", c_dato, "N").ToString();
-                ordenProduccionDetalleItem.c_despro = c_dato;
-                //Receta
-                c_dato = pedidoDet.n_idite.ToString("");
-                dtResult = funDatos.DataTableFiltrar(dtReceta, "(n_idpro = " + c_dato + ")");
-                dtResult = funDatos.DataTableFiltrar(dtResult, "(n_prirec = " + 1 + ")");
-                ordenProduccionDetalleItem.n_idrec = Convert.ToInt32(dtResult.Rows[0]["n_id"]);
-                c_dato = dtResult.Rows[0]["n_id"].ToString();
-                c_dato = funDatos.DataTableBuscar(dtResult, "n_id", "c_des", c_dato, "N").ToString();
-                ordenProduccionDetalleItem.c_desrec = c_dato;
-                //Unidad
-                ordenProduccionDetalleItem.n_idunimed = pedidoDet.n_idunimed;
-                c_dato = pedidoDet.n_idunimed.ToString("");
-                c_dato = funDatos.DataTableBuscar(dtUniMed, "n_id", "c_despre", c_dato, "N").ToString();
-                ordenProduccionDetalleItem.c_desunimed = c_dato;
-                //cantidad
-                ordenProduccionDetalleItem.n_can = pedidoDet.n_can;
-                //fecha
-                ordenProduccionDetalleItem.d_fchent = pedidoDet.d_fchent;
-                //
-                ordenProduccionDetalleItems.Add(ordenProduccionDetalleItem);
-            }
-
-            if (ordenProduccionDetalleItems.Count > 1)
-            {
-                FrmOrdenProduccionSelItem frmOrdenProduccionSelItem
-                    = new FrmOrdenProduccionSelItem(ordenProduccionDetalleItems);
-                frmOrdenProduccionSelItem.ShowDialog();
-                if (frmOrdenProduccionSelItem.ordenProduccionDetalleItem != null)
+                objPedido.mysConec = mysConec;
+                if (objPedido.ListarPedidosPendientes(STU_SISTEMA.EMPRESAID) == false)        // OOOJJJOOO actualizar el 0 se puso solo para que pase
                 {
-                    var ordenProduccionDetalleItem = frmOrdenProduccionSelItem.ordenProduccionDetalleItem;
-                    FgLisPro.Rows.Count = FgLisPro.Rows.Count + 1;
-
-                    // MOSTRAMOS EL NOMBRE DEL ITEM
-                    FgLisPro.SetData(n_filaflex, 1, ordenProduccionDetalleItem.c_despro);
-                    FgLisPro.SetData(n_filaflex, 8, ordenProduccionDetalleItem.n_idrec);
-                    FgLisPro.SetData(n_filaflex, 2, ordenProduccionDetalleItem.c_desrec);                                                       // POR DEFECTO MOSTRAMOS LA RECETA PRINCIPAL
-
-                    // MOSTRAMOS LA UNIDAD DE MEDIDA
-                    FgLisPro.SetData(n_filaflex, 3, ordenProduccionDetalleItem.c_desunimed);
-
-                    FgLisPro.SetData(n_filaflex, 4, ordenProduccionDetalleItem.n_can.ToString("0.00"));
-
-                    FgLisPro.SetData(n_filaflex, 5, Convert.ToString(ordenProduccionDetalleItem.d_fchent));
-
-                    FgLisPro.SetData(n_filaflex, 6, 1);
-
-                    FgLisPro.SetData(n_filaflex, 7, ordenProduccionDetalleItem.n_idite.ToString());
+                    MessageBox.Show("No se pudieron traer los pedidos pendiente, por el siguiente motivo : " + objRequerimiento.StrErrorMensaje, "", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                    return;
                 }
-            }
-            else
-            {
-                foreach (var ordenProduccionDetalleItem in ordenProduccionDetalleItems)
+                dtRequerimiento = objPedido.dtLisPedPend;
+
+                arrCabeceraDg1[0, 0] = "Nº Pedido";
+                arrCabeceraDg1[0, 1] = "120";
+                arrCabeceraDg1[0, 2] = "C";
+                arrCabeceraDg1[0, 3] = "c_numdoc";
+
+                arrCabeceraDg1[1, 0] = "Cliente";
+                arrCabeceraDg1[1, 1] = "300";
+                arrCabeceraDg1[1, 2] = "C";
+                arrCabeceraDg1[1, 3] = "c_nombre";
+
+                arrCabeceraDg1[2, 0] = "Fecha Reg.";
+                arrCabeceraDg1[2, 1] = "70";
+                arrCabeceraDg1[2, 2] = "C";
+                arrCabeceraDg1[2, 3] = "d_fchped";
+
+                arrCabeceraDg1[3, 0] = "Nº Orden Compra";
+                arrCabeceraDg1[3, 1] = "100";
+                arrCabeceraDg1[3, 2] = "N";
+                arrCabeceraDg1[3, 3] = "c_numordcom";
+
+                arrCabeceraDg1[4, 0] = "Fch. O.C.";
+                arrCabeceraDg1[4, 1] = "70";
+                arrCabeceraDg1[4, 2] = "F";
+                arrCabeceraDg1[4, 3] = "d_fchped";
+
+                arrCabeceraDg1[5, 0] = "Id";
+                arrCabeceraDg1[5, 1] = "0";
+                arrCabeceraDg1[5, 2] = "N";
+                arrCabeceraDg1[5, 3] = "n_id";
+
+                Genericas xFun = new Genericas();
+                xFun.Buscar_CampoBusqueda = "n_id";
+                xFun.Buscar_CadFiltro = "";
+                xFun.Buscar_CampoOrden = "c_numdoc";
+                dtResult = xFun.Buscar(arrCabeceraDg1, dtRequerimiento);
+
+                if (dtResult == null) { return; }
+                if (dtResult.Rows.Count == 0) { return; }
+
+                TxtNumDocRef.Text = dtResult.Rows[0]["c_numdoc"].ToString();
+                TxtNumSerDocRef.Text = dtResult.Rows[0]["c_numser"].ToString();
+
+                LblIdDocRef.Text = dtResult.Rows[0]["n_id"].ToString();
+
+                BE_VTA_PEDIDOCLI entPedido = new BE_VTA_PEDIDOCLI();
+                List<BE_VTA_PEDIDOCLIDET> lstPedidoDet = new List<BE_VTA_PEDIDOCLIDET>();
+
+                lstPedidoDet.Clear();
+
+                objPedido.TraerRegistro(Convert.ToInt32(LblIdDocRef.Text));
+                entPedido = objPedido.entPedCab;
+                lstPedidoDet = objPedido.lstPedDet;
+
+                booAgregando = true;
+                FgLisPro.Rows.Count = 2;
+
+                List<OrdenProduccionDetalleItem> ordenProduccionDetalleItems
+                    = new List<OrdenProduccionDetalleItem>();
+
+                foreach (var pedidoDet in lstPedidoDet)
                 {
-                    FgLisPro.Rows.Count = FgLisPro.Rows.Count + 1;
+                    OrdenProduccionDetalleItem ordenProduccionDetalleItem
+                        = new OrdenProduccionDetalleItem();
 
-                    // MOSTRAMOS EL NOMBRE DEL ITEM
-                    FgLisPro.SetData(n_filaflex, 1, ordenProduccionDetalleItem.c_despro);
-                    FgLisPro.SetData(n_filaflex, 8, ordenProduccionDetalleItem.n_idrec);
-                    FgLisPro.SetData(n_filaflex, 2, ordenProduccionDetalleItem.c_desrec);                                                       // POR DEFECTO MOSTRAMOS LA RECETA PRINCIPAL
+                    //producto
+                    ordenProduccionDetalleItem.n_idite = pedidoDet.n_idite;
+                    c_dato = pedidoDet.n_idite.ToString("");
+                    c_dato = funDatos.DataTableBuscar(dtItems, "n_id", "c_despro", c_dato, "N").ToString();
+                    ordenProduccionDetalleItem.c_despro = c_dato;
+                    //Receta
+                    c_dato = pedidoDet.n_idite.ToString("");
+                    dtResult = funDatos.DataTableFiltrar(dtReceta, "(n_idpro = " + c_dato + ")");
+                    dtResult = funDatos.DataTableFiltrar(dtResult, "(n_prirec = " + 1 + ")");
 
-                    // MOSTRAMOS LA UNIDAD DE MEDIDA
-                    FgLisPro.SetData(n_filaflex, 3, ordenProduccionDetalleItem.c_desunimed);
+                    if (dtResult.Rows.Count == 0)
+                    {
+                        throw new Exception(string.Format("No existe receta para el producto: {0}", ordenProduccionDetalleItem.c_despro));
+                    }
 
-                    FgLisPro.SetData(n_filaflex, 4, ordenProduccionDetalleItem.n_can.ToString("0.00"));
-
-                    FgLisPro.SetData(n_filaflex, 5, Convert.ToString(ordenProduccionDetalleItem.d_fchent));
-
-                    FgLisPro.SetData(n_filaflex, 6, 1);
-
-                    FgLisPro.SetData(n_filaflex, 7, ordenProduccionDetalleItem.n_idite.ToString());
-
-                    n_filaflex += 1;
+                    ordenProduccionDetalleItem.n_idrec = Convert.ToInt32(dtResult.Rows[0]["n_id"]);
+                    c_dato = dtResult.Rows[0]["n_id"].ToString();
+                    c_dato = funDatos.DataTableBuscar(dtResult, "n_id", "c_des", c_dato, "N").ToString();
+                    ordenProduccionDetalleItem.c_desrec = c_dato;
+                    //Unidad
+                    ordenProduccionDetalleItem.n_idunimed = pedidoDet.n_idunimed;
+                    c_dato = pedidoDet.n_idunimed.ToString("");
+                    c_dato = funDatos.DataTableBuscar(dtUniMed, "n_id", "c_despre", c_dato, "N").ToString();
+                    ordenProduccionDetalleItem.c_desunimed = c_dato;
+                    //cantidad
+                    ordenProduccionDetalleItem.n_can = pedidoDet.n_can;
+                    //fecha
+                    ordenProduccionDetalleItem.d_fchent = pedidoDet.d_fchent;
+                    //
+                    ordenProduccionDetalleItems.Add(ordenProduccionDetalleItem);
                 }
-            }
 
-            booAgregando = false;
+                if (ordenProduccionDetalleItems.Count > 1)
+                {
+                    FrmOrdenProduccionSelItem frmOrdenProduccionSelItem
+                        = new FrmOrdenProduccionSelItem(ordenProduccionDetalleItems);
+                    frmOrdenProduccionSelItem.ShowDialog();
+                    if (frmOrdenProduccionSelItem.ordenProduccionDetalleItem != null)
+                    {
+                        var ordenProduccionDetalleItem = frmOrdenProduccionSelItem.ordenProduccionDetalleItem;
+                        FgLisPro.Rows.Count = FgLisPro.Rows.Count + 1;
+
+                        // MOSTRAMOS EL NOMBRE DEL ITEM
+                        FgLisPro.SetData(n_filaflex, 1, ordenProduccionDetalleItem.c_despro);
+                        FgLisPro.SetData(n_filaflex, 8, ordenProduccionDetalleItem.n_idrec);
+                        FgLisPro.SetData(n_filaflex, 2, ordenProduccionDetalleItem.c_desrec);                                                       // POR DEFECTO MOSTRAMOS LA RECETA PRINCIPAL
+
+                        // MOSTRAMOS LA UNIDAD DE MEDIDA
+                        FgLisPro.SetData(n_filaflex, 3, ordenProduccionDetalleItem.c_desunimed);
+
+                        FgLisPro.SetData(n_filaflex, 4, ordenProduccionDetalleItem.n_can.ToString("0.00"));
+
+                        FgLisPro.SetData(n_filaflex, 5, Convert.ToString(ordenProduccionDetalleItem.d_fchent));
+
+                        FgLisPro.SetData(n_filaflex, 6, 1);
+
+                        FgLisPro.SetData(n_filaflex, 7, ordenProduccionDetalleItem.n_idite.ToString());
+                    }
+                }
+                else
+                {
+                    foreach (var ordenProduccionDetalleItem in ordenProduccionDetalleItems)
+                    {
+                        FgLisPro.Rows.Count = FgLisPro.Rows.Count + 1;
+
+                        // MOSTRAMOS EL NOMBRE DEL ITEM
+                        FgLisPro.SetData(n_filaflex, 1, ordenProduccionDetalleItem.c_despro);
+                        FgLisPro.SetData(n_filaflex, 8, ordenProduccionDetalleItem.n_idrec);
+                        FgLisPro.SetData(n_filaflex, 2, ordenProduccionDetalleItem.c_desrec);                                                       // POR DEFECTO MOSTRAMOS LA RECETA PRINCIPAL
+
+                        // MOSTRAMOS LA UNIDAD DE MEDIDA
+                        FgLisPro.SetData(n_filaflex, 3, ordenProduccionDetalleItem.c_desunimed);
+
+                        FgLisPro.SetData(n_filaflex, 4, ordenProduccionDetalleItem.n_can.ToString("0.00"));
+
+                        FgLisPro.SetData(n_filaflex, 5, Convert.ToString(ordenProduccionDetalleItem.d_fchent));
+
+                        FgLisPro.SetData(n_filaflex, 6, 1);
+
+                        FgLisPro.SetData(n_filaflex, 7, ordenProduccionDetalleItem.n_idite.ToString());
+
+                        n_filaflex += 1;
+                    }
+                }
+
+                booAgregando = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
         }
         private void CmdBusDocRef_Click(object sender, EventArgs e)
         {

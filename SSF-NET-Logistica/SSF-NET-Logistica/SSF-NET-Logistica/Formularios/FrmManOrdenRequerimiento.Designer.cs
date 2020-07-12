@@ -40,6 +40,10 @@
             this.ToolImprimir = new System.Windows.Forms.ToolStripSplitButton();
             this.emitirGuiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guiasDelMesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.ToolAprobar = new System.Windows.Forms.ToolStripButton();
+            this.ToolRechazar = new System.Windows.Forms.ToolStripButton();
+            this.ToolSeparadorAprobador = new System.Windows.Forms.ToolStripSeparator();
             this.ToolSalir = new System.Windows.Forms.ToolStripButton();
             this.Tab1 = new System.Windows.Forms.TabControl();
             this.c1DockingTabPage1 = new System.Windows.Forms.TabPage();
@@ -109,11 +113,15 @@
             this.ToolCancelar,
             this.toolStripSeparator2,
             this.ToolImprimir,
+            this.toolStripSeparator3,
+            this.ToolAprobar,
+            this.ToolRechazar,
+            this.ToolSeparadorAprobador,
             this.ToolSalir});
             this.ToolHerramientas.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.ToolHerramientas.Location = new System.Drawing.Point(0, 0);
             this.ToolHerramientas.Name = "ToolHerramientas";
-            this.ToolHerramientas.Size = new System.Drawing.Size(875, 39);
+            this.ToolHerramientas.Size = new System.Drawing.Size(934, 39);
             this.ToolHerramientas.TabIndex = 32;
             this.ToolHerramientas.Text = "toolStrip1";
             this.ToolHerramientas.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ToolHerramientas_ItemClicked);
@@ -212,6 +220,36 @@
             this.guiasDelMesToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
             this.guiasDelMesToolStripMenuItem.Text = "Imprimir Ordenes del Mes";
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 39);
+            // 
+            // ToolAprobar
+            // 
+            this.ToolAprobar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ToolAprobar.Image = ((System.Drawing.Image)(resources.GetObject("ToolAprobar.Image")));
+            this.ToolAprobar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ToolAprobar.Name = "ToolAprobar";
+            this.ToolAprobar.Size = new System.Drawing.Size(36, 36);
+            this.ToolAprobar.Text = "toolStripButton1";
+            this.ToolAprobar.Click += new System.EventHandler(this.ToolAprobar_Click);
+            // 
+            // ToolRechazar
+            // 
+            this.ToolRechazar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ToolRechazar.Image = ((System.Drawing.Image)(resources.GetObject("ToolRechazar.Image")));
+            this.ToolRechazar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ToolRechazar.Name = "ToolRechazar";
+            this.ToolRechazar.Size = new System.Drawing.Size(36, 36);
+            this.ToolRechazar.Text = "toolStripButton1";
+            this.ToolRechazar.Click += new System.EventHandler(this.ToolRechazar_Click);
+            // 
+            // ToolSeparadorAprobador
+            // 
+            this.ToolSeparadorAprobador.Name = "ToolSeparadorAprobador";
+            this.ToolSeparadorAprobador.Size = new System.Drawing.Size(6, 39);
+            // 
             // ToolSalir
             // 
             this.ToolSalir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -237,7 +275,7 @@
             this.Tab1.Multiline = true;
             this.Tab1.Name = "Tab1";
             this.Tab1.SelectedIndex = 1;
-            this.Tab1.Size = new System.Drawing.Size(871, 492);
+            this.Tab1.Size = new System.Drawing.Size(930, 492);
             this.Tab1.TabIndex = 33;
             this.Tab1.SelectedIndexChanged += new System.EventHandler(this.Tab1_SelectedIndexChanging);
             // 
@@ -251,7 +289,7 @@
             this.c1DockingTabPage1.ForeColor = System.Drawing.Color.Black;
             this.c1DockingTabPage1.Location = new System.Drawing.Point(28, 4);
             this.c1DockingTabPage1.Name = "c1DockingTabPage1";
-            this.c1DockingTabPage1.Size = new System.Drawing.Size(839, 484);
+            this.c1DockingTabPage1.Size = new System.Drawing.Size(898, 484);
             this.c1DockingTabPage1.TabIndex = 0;
             this.c1DockingTabPage1.Text = "Consulta";
             // 
@@ -267,7 +305,7 @@
             this.panel4.ForeColor = System.Drawing.Color.Black;
             this.panel4.Location = new System.Drawing.Point(4, 453);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(833, 30);
+            this.panel4.Size = new System.Drawing.Size(892, 30);
             this.panel4.TabIndex = 2;
             // 
             // CboMeses
@@ -327,7 +365,7 @@
             this.panel2.ForeColor = System.Drawing.Color.Black;
             this.panel2.Location = new System.Drawing.Point(4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(833, 28);
+            this.panel2.Size = new System.Drawing.Size(892, 28);
             this.panel2.TabIndex = 1;
             // 
             // label17
@@ -338,7 +376,7 @@
             this.label17.ForeColor = System.Drawing.Color.Black;
             this.label17.Location = new System.Drawing.Point(0, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(833, 28);
+            this.label17.Size = new System.Drawing.Size(892, 28);
             this.label17.TabIndex = 0;
             this.label17.Text = "CONSULTA";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -358,7 +396,7 @@
             this.DgLista.PreviewInfo.Size = new System.Drawing.Size(0, 0);
             this.DgLista.PreviewInfo.ZoomFactor = 75D;
             this.DgLista.PrintInfo.PageSettings = ((System.Drawing.Printing.PageSettings)(resources.GetObject("DgLista.PrintInfo.PageSettings")));
-            this.DgLista.Size = new System.Drawing.Size(833, 414);
+            this.DgLista.Size = new System.Drawing.Size(892, 414);
             this.DgLista.TabIndex = 0;
             this.DgLista.Text = "c1TrueDBGrid1";
             this.DgLista.DoubleClick += new System.EventHandler(this.DgLista_DoubleClick);
@@ -373,7 +411,7 @@
             this.c1DockingTabPage2.ForeColor = System.Drawing.Color.Black;
             this.c1DockingTabPage2.Location = new System.Drawing.Point(28, 4);
             this.c1DockingTabPage2.Name = "c1DockingTabPage2";
-            this.c1DockingTabPage2.Size = new System.Drawing.Size(839, 484);
+            this.c1DockingTabPage2.Size = new System.Drawing.Size(898, 484);
             this.c1DockingTabPage2.TabIndex = 1;
             this.c1DockingTabPage2.Text = "Detalle";
             // 
@@ -745,7 +783,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(875, 536);
+            this.ClientSize = new System.Drawing.Size(934, 536);
             this.Controls.Add(this.ToolHerramientas);
             this.Controls.Add(this.Tab1);
             this.Name = "FrmManOrdenRequerimiento";
@@ -826,5 +864,9 @@
         private System.Windows.Forms.ComboBox CboMotivo;
         private System.Windows.Forms.Label LblIdEstado;
         private System.Windows.Forms.Button CmdAddNewItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton ToolAprobar;
+        private System.Windows.Forms.ToolStripButton ToolRechazar;
+        private System.Windows.Forms.ToolStripSeparator ToolSeparadorAprobador;
     }
 }

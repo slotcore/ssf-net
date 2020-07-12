@@ -56,6 +56,7 @@
             this.consultaDeLotesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saldosPorLoteResumidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saldosPorLoteDetalladoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salidasAlmacenVariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maestrosToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -351,7 +352,7 @@
             this.toolStripStatusLabel8 = new System.Windows.Forms.ToolStripStatusLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
-            this.salidasAlmacenVariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aprobadoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -586,6 +587,13 @@
             this.saldosPorLoteDetalladoToolStripMenuItem.Text = "Saldos por Lote - Detallado";
             this.saldosPorLoteDetalladoToolStripMenuItem.Click += new System.EventHandler(this.saldosPorLoteDetalladoToolStripMenuItem_Click);
             // 
+            // salidasAlmacenVariosToolStripMenuItem
+            // 
+            this.salidasAlmacenVariosToolStripMenuItem.Name = "salidasAlmacenVariosToolStripMenuItem";
+            this.salidasAlmacenVariosToolStripMenuItem.Size = new System.Drawing.Size(275, 22);
+            this.salidasAlmacenVariosToolStripMenuItem.Text = "Salidas Almacen Varios";
+            this.salidasAlmacenVariosToolStripMenuItem.Click += new System.EventHandler(this.salidasAlmacenVariosToolStripMenuItem_Click);
+            // 
             // comprasToolStripMenuItem
             // 
             this.comprasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -608,7 +616,8 @@
             this.maestrosToolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.proveedoresToolStripMenuItem,
             this.puntoVentaClienteProveedorToolStripMenuItem,
-            this.maestroDeMotivosToolStripMenuItem});
+            this.maestroDeMotivosToolStripMenuItem,
+            this.aprobadoresToolStripMenuItem});
             this.maestrosToolStripMenuItem2.Name = "maestrosToolStripMenuItem2";
             this.maestrosToolStripMenuItem2.Size = new System.Drawing.Size(271, 22);
             this.maestrosToolStripMenuItem2.Text = "Maestros";
@@ -2928,12 +2937,12 @@
             // 
             this.kryptonManager1.GlobalPaletteMode = ComponentFactory.Krypton.Toolkit.PaletteModeManager.Office2010Silver;
             // 
-            // salidasAlmacenVariosToolStripMenuItem
+            // aprobadoresToolStripMenuItem
             // 
-            this.salidasAlmacenVariosToolStripMenuItem.Name = "salidasAlmacenVariosToolStripMenuItem";
-            this.salidasAlmacenVariosToolStripMenuItem.Size = new System.Drawing.Size(275, 22);
-            this.salidasAlmacenVariosToolStripMenuItem.Text = "Salidas Almacen Varios";
-            this.salidasAlmacenVariosToolStripMenuItem.Click += new System.EventHandler(this.salidasAlmacenVariosToolStripMenuItem_Click);
+            this.aprobadoresToolStripMenuItem.Name = "aprobadoresToolStripMenuItem";
+            this.aprobadoresToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.aprobadoresToolStripMenuItem.Text = "Aprobadores";
+            this.aprobadoresToolStripMenuItem.Click += new System.EventHandler(this.aprobadoresToolStripMenuItem_Click);
             // 
             // FrmMenu10
             // 
@@ -3286,5 +3295,6 @@
         private System.Windows.Forms.ToolStripMenuItem inactivosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ordenDeRequerimientoToolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem salidasAlmacenVariosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aprobadoresToolStripMenuItem;
     }
 }

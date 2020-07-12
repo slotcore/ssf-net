@@ -356,10 +356,11 @@ namespace Helper
             MyFont = new Font(xDg.Splits[0].Style.Font, FontStyle.Regular);
             xDg.Splits[0].Style.Font = MyFont;
 
-            while (xDg.Columns.Count != 0)
-            {
-                xDg.Columns.RemoveAt(0);
-            }
+            xDg.Columns.Clear();
+            //while (xDg.Columns.Count != 0)
+            //{
+            //    xDg.Columns.RemoveAt(0);
+            //}
 
             n_NumCols = xDg.Columns.Count;
             xDg.RowHeight = 22;

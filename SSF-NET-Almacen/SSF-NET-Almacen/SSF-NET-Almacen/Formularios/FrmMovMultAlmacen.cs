@@ -299,6 +299,8 @@ namespace SSF_NET_Almacen.Formularios
 
             CmdBusDocRef.Visible = false;
             LblIdDocRef.Text = "";
+
+            FgItems.Rows.Count = 2;
         }
 
         void Bloquea()
@@ -360,6 +362,12 @@ namespace SSF_NET_Almacen.Formularios
             BE_l_Movimiento.Clear();
             if (FgItems.Rows.Count > 2)
             {
+                int m_IdTipDoc = 50;
+                string m_NumeroSerie = "0001";
+                int m_NumeroDocumento_int = Convert.ToInt32(objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID
+                                , m_IdTipDoc
+                                , m_NumeroSerie));
+
                 for (n_fila = 2; n_fila <= FgItems.Rows.Count - 1; n_fila++)
                 {
                     if (funFunciones.NulosC(FgItems.GetData(n_fila, 1)) != "")
@@ -386,9 +394,11 @@ namespace SSF_NET_Almacen.Formularios
                             BE_Movimiento.d_fching = Convert.ToDateTime(txtFchIng.Text);
                             BE_Movimiento.n_idtipdoc = 50;
                             BE_Movimiento.c_numser = "001";
-                            BE_Movimiento.c_numdoc = objTipDoc.UltimoNumero(BE_Movimiento.n_idemp
-                                , BE_Movimiento.n_idtipdoc
-                                , BE_Movimiento.c_numser);
+
+                            string strCad = "0000000000" + m_NumeroDocumento_int;
+                            string m_NumeroDocumento_cad = strCad.Substring(strCad.Length - 10, 10);
+
+                            BE_Movimiento.c_numdoc = m_NumeroDocumento_cad;
                             BE_Movimiento.n_idalm = n_idalm;
                             BE_Movimiento.n_anotra = STU_SISTEMA.ANOTRABAJO;
                             BE_Movimiento.n_idmes = STU_SISTEMA.MESTRABAJO;
@@ -405,6 +415,7 @@ namespace SSF_NET_Almacen.Formularios
                                 BE_Movimiento.n_docrefiddocref = Convert.ToInt32(LblIdDocRef.Text);
                             }
 
+                            m_NumeroDocumento_int += 1;
                         }
                         
                         BE_ALM_MOVIMIENTOSDET_CONSULTA BE_Detalle = new BE_ALM_MOVIMIENTOSDET_CONSULTA();
@@ -1212,6 +1223,7 @@ namespace SSF_NET_Almacen.Formularios
                 n_iditem = Convert.ToInt32(dtResult.Rows[n_Fila]["iditem"].ToString());
                 
                 dtItemFiltro = funDatos.DataTableFiltrar(dtItems, "n_id = " + n_iditem + "");
+                int n_idtipexi = Convert.ToInt32(dtItemFiltro.Rows[0]["n_idtipexi"]);
 
                 if (dtItemFiltro.Rows.Count != 0)
                 { 
@@ -1237,6 +1249,13 @@ namespace SSF_NET_Almacen.Formularios
                 FgItems.SetData(n_filaflex, 4, "");
                 FgItems.SetData(n_filaflex, 6, n_Cantidad.ToString("0.000000"));
                 FgItems.SetData(n_filaflex, 7, DateTime.Now.ToString("HH:mm"));
+
+                dtResult = funDatos.DataTableFiltrar(dtAlmacenes, "n_idtipexi = " + n_idtipexi + "");
+                if (dtResult.Rows.Count > 0)
+                {
+                    FgItems.SetData(n_filaflex, 10, dtResult.Rows[0]["c_des"].ToString());
+                }
+
                 n_filaflex = n_filaflex + 1;
             }
 
@@ -1298,6 +1317,7 @@ namespace SSF_NET_Almacen.Formularios
                 n_iditem = Convert.ToInt32(lstGuiasDet[n_Fila].n_idite);
 
                 dtItemFiltro = funDatos.DataTableFiltrar(dtItems, "n_id = " + n_iditem + "");
+                int n_idtipexi = Convert.ToInt32(dtItemFiltro.Rows[0]["n_idtipexi"]);
 
                 if (dtItemFiltro.Rows.Count != 0)
                 {
@@ -1330,6 +1350,13 @@ namespace SSF_NET_Almacen.Formularios
                 FgItems.SetData(n_filaflex, 7,lstGuiasDet[n_Fila].n_preuni.ToString("0.00"));
                 FgItems.SetData(n_filaflex, 8, lstGuiasDet[n_Fila].n_preuni * n_Cantidad);
                 FgItems.SetData(n_filaflex, 9, "08:00");
+
+                dtresult = funDatos.DataTableFiltrar(dtAlmacenes, "n_idtipexi = " + n_idtipexi + "");
+                if (dtresult.Rows.Count > 0)
+                {
+                    FgItems.SetData(n_filaflex, 10, dtresult.Rows[0]["c_des"].ToString());
+                }
+
                 n_filaflex = n_filaflex + 1;
             }
             
@@ -1386,6 +1413,7 @@ namespace SSF_NET_Almacen.Formularios
                             n_iditem = l_reqcabdet[n_Fila].n_idite;
 
                             dtresult = funDatos.DataTableFiltrar(dtItems, "n_id = " + n_iditem + "");
+                            int n_idtipexi = Convert.ToInt32(dtresult.Rows[0]["n_idtipexi"]);
 
                             if (dtresult.Rows.Count != 0)
                             {
@@ -1411,6 +1439,13 @@ namespace SSF_NET_Almacen.Formularios
                             FgItems.SetData(n_filaflex, 4, "");
                             FgItems.SetData(n_filaflex, 6, n_Cantidad.ToString("0.000000"));
                             FgItems.SetData(n_filaflex, 7, DateTime.Now.ToString("HH:mm"));
+
+                            dtresult = funDatos.DataTableFiltrar(dtAlmacenes, "n_idtipexi = " + n_idtipexi + "");
+                            if (dtresult.Rows.Count > 0)
+                            {
+                                FgItems.SetData(n_filaflex, 10, dtresult.Rows[0]["c_des"].ToString());
+                            }
+
                             n_filaflex = n_filaflex + 1;
                         }
 
@@ -1467,6 +1502,7 @@ namespace SSF_NET_Almacen.Formularios
                             n_iditem = l_solmatdet[n_Fila].n_idite;
 
                             dtresult = funDatos.DataTableFiltrar(dtItems, "n_id = " + n_iditem + "");
+                            int n_idtipexi = Convert.ToInt32(dtresult.Rows[0]["n_idtipexi"]);
 
                             if (dtresult.Rows.Count != 0)
                             {
@@ -1492,6 +1528,13 @@ namespace SSF_NET_Almacen.Formularios
                             FgItems.SetData(n_filaflex, 4, "");
                             FgItems.SetData(n_filaflex, 6, n_Cantidad.ToString("0.000000"));
                             FgItems.SetData(n_filaflex, 7, DateTime.Now.ToString("HH:mm"));
+
+                            dtresult = funDatos.DataTableFiltrar(dtAlmacenes, "n_idtipexi = " + n_idtipexi + "");
+                            if (dtresult.Rows.Count > 0)
+                            {
+                                FgItems.SetData(n_filaflex, 10, dtresult.Rows[0]["c_des"].ToString());
+                            }
+
                             n_filaflex = n_filaflex + 1;
                         }
 
@@ -1548,6 +1591,7 @@ namespace SSF_NET_Almacen.Formularios
                             n_iditem = l_solmatdet[n_Fila].n_idite;
 
                             dtresult = funDatos.DataTableFiltrar(dtItems, "n_id = " + n_iditem + "");
+                            int n_idtipexi = Convert.ToInt32(dtresult.Rows[0]["n_idtipexi"]);
 
                             if (dtresult.Rows.Count != 0)
                             {
@@ -1573,6 +1617,13 @@ namespace SSF_NET_Almacen.Formularios
                             FgItems.SetData(n_filaflex, 4, "");
                             FgItems.SetData(n_filaflex, 6, n_Cantidad.ToString("0.000000"));
                             FgItems.SetData(n_filaflex, 7, DateTime.Now.ToString("HH:mm"));
+
+                            dtresult = funDatos.DataTableFiltrar(dtAlmacenes, "n_idtipexi = " + n_idtipexi + "");
+                            if (dtresult.Rows.Count > 0)
+                            {
+                                FgItems.SetData(n_filaflex, 10, dtresult.Rows[0]["c_des"].ToString());
+                            }
+
                             n_filaflex = n_filaflex + 1;
                         }
 
@@ -1627,6 +1678,7 @@ namespace SSF_NET_Almacen.Formularios
                             n_iditem = l_vendet[n_Fila].n_iditem;
 
                             dtresult = funDatos.DataTableFiltrar(dtItems, "n_id = " + n_iditem + "");
+                            int n_idtipexi = Convert.ToInt32(dtresult.Rows[0]["n_idtipexi"]);
 
                             if (dtresult.Rows.Count != 0)
                             {
@@ -1652,6 +1704,13 @@ namespace SSF_NET_Almacen.Formularios
                             FgItems.SetData(n_filaflex, 4, "");
                             FgItems.SetData(n_filaflex, 6, n_Cantidad.ToString("0.000000"));
                             FgItems.SetData(n_filaflex, 9, DateTime.Now.ToString("HH:mm"));
+
+                            dtresult = funDatos.DataTableFiltrar(dtAlmacenes, "n_idtipexi = " + n_idtipexi + "");
+                            if (dtresult.Rows.Count > 0)
+                            {
+                                FgItems.SetData(n_filaflex, 10, dtresult.Rows[0]["c_des"].ToString());
+                            }
+
                             n_filaflex = n_filaflex + 1;
                         }
 
@@ -1706,6 +1765,7 @@ namespace SSF_NET_Almacen.Formularios
                             n_iditem = l_vendet[n_Fila].n_iditem;
 
                             dtresult = funDatos.DataTableFiltrar(dtItems, "n_id = " + n_iditem + "");
+                            int n_idtipexi = Convert.ToInt32(dtresult.Rows[0]["n_idtipexi"]);
 
                             if (dtresult.Rows.Count != 0)
                             {
@@ -1731,6 +1791,13 @@ namespace SSF_NET_Almacen.Formularios
                             FgItems.SetData(n_filaflex, 4, "");
                             FgItems.SetData(n_filaflex, 6, n_Cantidad.ToString("0.000000"));
                             FgItems.SetData(n_filaflex, 9, DateTime.Now.ToString("HH:mm"));
+
+                            dtresult = funDatos.DataTableFiltrar(dtAlmacenes, "n_idtipexi = " + n_idtipexi + "");
+                            if (dtresult.Rows.Count > 0)
+                            {
+                                FgItems.SetData(n_filaflex, 10, dtresult.Rows[0]["c_des"].ToString());
+                            }
+
                             n_filaflex = n_filaflex + 1;
                         }
 

@@ -125,6 +125,7 @@
     <Compile Include="Logistica\BE_LOG_PERSONAL.cs" />
     <Compile Include="Maestros\BE_MAE_ALMDOC.cs" />
     <Compile Include="Maestros\BE_MAE_ALMDOC_CONSULTA.cs" />
+    <Compile Include="Maestros\BE_MAE_APROBADOR.cs" />
     <Compile Include="Maestros\BE_MAE_AREA.cs" />
     <Compile Include="Maestros\BE_MAE_CLASE.cs" />
     <Compile Include="Maestros\BE_MAE_FAMILIA.cs" />

@@ -2,6 +2,7 @@
 using Helper.Comunes;
 using MySql.Data.MySqlClient;
 using SIAC_Entidades.Almacen;
+using SIAC_Entidades.Maestros;
 using SIAC_Entidades.Ventas;
 using SIAC_Negocio.Almacen;
 using SIAC_Negocio.Maestros;
@@ -19,19 +20,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SSF_NET_Almacen.Formularios
+namespace SSF_NET_Logistica.Formularios
 {
-    public partial class FrmManAlmacenes : Form
+    public partial class FrmManAprobador : Form
     {
         // VARIABLES PUBLICAS
         public MySqlConnection mysConec = new MySqlConnection();
         public Sistema.STU_SISTEMA STU_SISTEMA = new Sistema.STU_SISTEMA();
 
         // OBJETOS LOCALES
-        CN_alm_almacenes objRegistros = new CN_alm_almacenes();
+        CN_mae_aprobador objRegistros = new CN_mae_aprobador();
         CN_sys_formulariovista objFormVis = new CN_sys_formulariovista();
-        CN_sys_empresalocal objEmpresaLocal = new CN_sys_empresalocal();
-        CN_sun_tipexi objTipoExi = new CN_sun_tipexi();
+        CN_sys_usuarios objUsuarios = new CN_sys_usuarios();
+        CN_mae_area objArea = new CN_mae_area();
 
         // OBJETOS DE ACCESO A DATOS
         Cls_FlexGrid funFlex = new Cls_FlexGrid();
@@ -40,92 +41,79 @@ namespace SSF_NET_Almacen.Formularios
         Cls_DBGrid funDbGrid = new Cls_DBGrid();
 
         // ENTIDADES LOCALES
-        BE_ALM_ALMACENES BE_ListaReg = new BE_ALM_ALMACENES();
-        BE_ALM_ALMACENES_CONSULTA BE_Registro = new BE_ALM_ALMACENES_CONSULTA();
+        BE_MAE_APROBADOR BE_ListaReg = new BE_MAE_APROBADOR();
+        BE_MAE_APROBADOR BE_Registro = new BE_MAE_APROBADOR();
        
         // DATATABLE LOCALES
         DataTable dtRegistros = new DataTable();
         DataTable dtLocal = new DataTable();
-        DataTable dtEmpresaLocal = new DataTable();
-        DataTable dtTipoExis = new DataTable();
+        DataTable dtUsuario = new DataTable();
+        DataTable dtArea = new DataTable();
 
         // VARIABLES LOCALES
         int n_QueHace = 3;                                                              // INDICA EN QUE ESTADO SE ENCUENTRA EL FORMULARIO
-        string[,] arrCabeceraDg1 = new string[4, 4];                                    // ARRAY PARA MOSTRAR LAS COLUMNAS DEL DATAGRID PRINCIPAL
+        string[,] arrCabeceraDg1 = new string[3, 4];                                    // ARRAY PARA MOSTRAR LAS COLUMNAS DEL DATAGRID PRINCIPAL
 
         bool booSeEjecuto = false;
     
         string strNumerovalidos = "1234567890." + (char)8;                                        // + (char)8;
         string strCaracteres = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ1234567890()º.,/$' !!·%/()=?¿*^" + (char)8;
         
-        public FrmManAlmacenes()
+        public FrmManAprobador()
         {
             InitializeComponent();
         }
 
-        private void ToolHerramientas_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-        }
         private void FrrmManAlmacenes_Load(object sender, System.EventArgs e)
         {
             CargarCombos();
             ConfigurarFormulario();
         }
+
         void CargarCombos()
         {
             DataTableCargar();
-            funDatos.ComboBoxCargarDataTable(CboLocal, dtEmpresaLocal, "n_id", "c_des");
-            funDatos.ComboBoxCargarDataTable(CboTipExis, dtTipoExis, "n_id", "c_des");
+            funDatos.ComboBoxCargarDataTable(CboUsuario, dtUsuario, "n_id", "c_usuario");
+            funDatos.ComboBoxCargarDataTable(CboArea, dtArea, "n_id", "c_des");
         }
+
         void ConfigurarFormulario()
         {
-            //this.Height = 587;
-            //this.Width = 930;
-            //Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
-            //Tab_Posicionar(Tab1, 1, 42);
             Tab1.SelectedIndex = 0;
             LblTitulo2.Text = "DETALLE DEL REGISTRO";
-
-            //this.Text = dtForm.Rows[0]["c_titfor"].ToString();
         }
+
         void DataTableCargar()
         {
             objRegistros.mysConec = mysConec;                                    // CARGAMOS LOS DATOS DEL FORMULARIO
-            dtRegistros = objRegistros.ListarNuevo(STU_SISTEMA.EMPRESAID, STU_SISTEMA.SYS_UNIBD);
+            dtRegistros = objRegistros.Listar(STU_SISTEMA.EMPRESAID);
 
-            objEmpresaLocal.mysConec = mysConec;
-            dtEmpresaLocal = objEmpresaLocal.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.SYS_UNIBD);
+            objUsuarios.mysConec = mysConec;
+            objUsuarios.Listar();
+            dtUsuario = objUsuarios.dtLista;
 
-            objTipoExi.mysConec = mysConec;
-            dtTipoExis = objTipoExi.Listar();                               //  CARGAMOS TODOS LOS TIPOS DE ITEM
+            objArea.mysConec = mysConec;
+            dtArea = objArea.Listar(STU_SISTEMA.EMPRESAID);                               //  CARGAMOS TODOS LOS TIPOS DE ITEM
 
             objFormVis.mysConec = mysConec;                                      // CARGAMOS EL ARRAY CON LOS DATOS PARA LA VISTA DE DgLista
-            objFormVis.ObtenerCabeceraLista(5, ref arrCabeceraDg1);
+            objFormVis.ObtenerCabeceraLista(97, ref arrCabeceraDg1);
         }
+
         void ListarItems()
         {
             LblNumReg.Text = (dtRegistros.Rows.Count).ToString();
             funDbGrid.DG_FormatearGrid(DgLista, arrCabeceraDg1, dtRegistros, true);
         }
-        void Tab_Dimensionar(C1.Win.C1Command.C1DockingTab dokTab, int intAlto, int intAncho)
-        {
-            //Tab1.Height = intAlto;
-            //Tab1.Width = intAncho;
-        }
-        void Tab_Posicionar(C1.Win.C1Command.C1DockingTab dokTab, int intPosX, int intPosY)
-        {
-            //dokTab.Left = intPosX;
-            //dokTab.Top = intPosY;
-        }
+
         void VerRegistro(int n_IdRegistro)
         {
             objRegistros.mysConec = mysConec;
             BE_Registro = objRegistros.TraerRegistro(n_IdRegistro);
 
-            CboLocal.SelectedValue = BE_Registro.n_idlocal;
-            CboTipExis.SelectedValue = BE_Registro.n_idtipexi;
-            TxtDes.Text = BE_Registro.c_des;
+            CboUsuario.SelectedValue = BE_Registro.n_idusu;
+            CboArea.SelectedValue = BE_Registro.n_idare;
         }
+
         void Nuevo()
         {
             n_QueHace = 1;
@@ -135,20 +123,21 @@ namespace SSF_NET_Almacen.Formularios
             ActivarTool();
             LblTitulo2.Text = "Agregando Nuevo Registro";
             Tab1.SelectedIndex = 1;
-            CboLocal.Focus();
+            CboUsuario.Focus();
         }
+
         void Blanquea()
         {
-            TxtDes.Text = "";
-            CboLocal.SelectedValue = 0;
-            CboTipExis.SelectedValue = 0;
+            CboUsuario.SelectedValue = 0;
+            CboArea.SelectedValue = 0;
         }
+
         void Bloquea()
         {
-            TxtDes.Enabled = !TxtDes.Enabled;
-            CboLocal.Enabled = !CboLocal.Enabled;
-            CboTipExis.Enabled = !CboTipExis.Enabled;
+            CboUsuario.Enabled = !CboUsuario.Enabled;
+            CboArea.Enabled = !CboArea.Enabled;
         }
+
         void ActivarTool()
         {
             ToolNuevo.Enabled = !ToolNuevo.Enabled;
@@ -157,9 +146,9 @@ namespace SSF_NET_Almacen.Formularios
             ToolGrabar.Enabled = !ToolGrabar.Enabled;
             ToolCancelar.Enabled = !ToolCancelar.Enabled;
             ToolImprimir.Enabled = !ToolImprimir.Enabled;
-            //ToolExportar.Enabled = !ToolExportar.Enabled;
             ToolSalir.Enabled = !ToolSalir.Enabled;
         }
+
         void Modificar()
         {
             n_QueHace = 2;
@@ -173,8 +162,9 @@ namespace SSF_NET_Almacen.Formularios
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
             Tab1.SelectedIndex = 1;
-            CboLocal.Focus();
+            CboUsuario.Focus();
         }
+
         bool EliminarRegistro()
         {
             bool booResult = false;
@@ -191,7 +181,7 @@ namespace SSF_NET_Almacen.Formularios
 
                     // VOLVEMOS A CARGAR EL DATATABLE dtItems CON LOS DATOS DEL SERVIDOR
                     objRegistros.mysConec = mysConec;
-                    dtRegistros = objRegistros.ListarNuevo(STU_SISTEMA.EMPRESAID, STU_SISTEMA.SYS_UNIBD);
+                    dtRegistros = objRegistros.Listar(STU_SISTEMA.EMPRESAID);
                     // MOSTRAMOS LOS DATOS EN LA GRILLA
                     ListarItems();
                 }
@@ -202,6 +192,7 @@ namespace SSF_NET_Almacen.Formularios
             }
             return booResult;
         }
+
         void Cancelar()
         {
             n_QueHace = 3;
@@ -212,6 +203,7 @@ namespace SSF_NET_Almacen.Formularios
             Tab1.SelectedIndex = 0;
             DgLista.Focus();
         }
+
         bool Grabar()
         {
             bool booResultado = false;
@@ -242,35 +234,34 @@ namespace SSF_NET_Almacen.Formularios
         void AsignarEntidad()
         {
             BE_ListaReg.n_id = BE_Registro.n_id;
-            //BE_ListaReg.n_idemp = STU_SISTEMA.EMPRESAID;
-            //Se setea por defecto a empresa cero
-            BE_ListaReg.n_idemp = 0;
-            BE_ListaReg.n_idlocal = Convert.ToInt16(CboLocal.SelectedValue);
-            BE_ListaReg.n_idtipexi = Convert.ToInt16(CboTipExis.SelectedValue);
-            BE_ListaReg.c_des = TxtDes.Text;
+            BE_ListaReg.n_idemp = STU_SISTEMA.EMPRESAID;
+            BE_ListaReg.n_idusu = Convert.ToInt16(CboUsuario.SelectedValue);
+            BE_ListaReg.n_idare = Convert.ToInt16(CboArea.SelectedValue);
+            BE_ListaReg.n_idfor = 27;
         }
 
         bool CamposOK()
         {
             bool booEstado = true;
 
-            if (TxtDes.Text == "")
+            if (Convert.ToInt16(CboUsuario.SelectedValue) == 0)
             {
-                MessageBox.Show("¡ No ha especificado la descripcion del almacen !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                MessageBox.Show("¡ No ha especificado el usuario !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
                 return booEstado;
             }
 
-            if (Convert.ToInt16(CboLocal.SelectedValue) == 0)
+            if (Convert.ToInt16(CboArea.SelectedValue) == 0)
             {
-                MessageBox.Show("¡ No ha especificado el local del almacen !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                MessageBox.Show("¡ No ha especificado el area !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
                 return booEstado;
             }
- 
+
             return booEstado;
         }
-        private void FrmManAlmacenes_Activated(object sender, System.EventArgs e)
+
+        private void FrmManAprobador_Activated(object sender, System.EventArgs e)
         {
             if (booSeEjecuto == false)
             {
@@ -296,14 +287,17 @@ namespace SSF_NET_Almacen.Formularios
                 }
             }  
         }
+
         private void ToolNuevo_Click(object sender, System.EventArgs e)
         {
             Nuevo();
         }
+
         private void ToolModificar_Click(object sender, System.EventArgs e)
         {
             Modificar();
         }
+
         private void ToolEliminar_Click(object sender, System.EventArgs e)
         {
             EliminarRegistro();
@@ -315,7 +309,7 @@ namespace SSF_NET_Almacen.Formularios
             {
                 // VOLVEMOS A CARGAR EL DATATABLE dtItems CON LOS DATOS DEL SERVIDOR
                 objRegistros.mysConec = mysConec;
-                dtRegistros = objRegistros.ListarNuevo(STU_SISTEMA.EMPRESAID, STU_SISTEMA.SYS_UNIBD);
+                dtRegistros = objRegistros.Listar(STU_SISTEMA.EMPRESAID);
                 DialogResult Rpta;
                 // MOSTRAMOS LOS DATOS EN LA GRILLA
                 ListarItems();
@@ -342,10 +336,12 @@ namespace SSF_NET_Almacen.Formularios
                 }
             }
         }
+
         private void ToolCancelar_Click(object sender, System.EventArgs e)
         {
             Cancelar();
         }
+
         private void ToolSalir_Click(object sender, System.EventArgs e)
         {
             objRegistros = null;
@@ -355,6 +351,7 @@ namespace SSF_NET_Almacen.Formularios
 
             this.Close();
         }
+
         private void Tab1_SelectedIndexChanging(object sender, EventArgs e)
         {
             TabControl tc = (TabControl)sender;
@@ -371,26 +368,14 @@ namespace SSF_NET_Almacen.Formularios
                 }
             }
         }
-        private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
-        {
-            //if (n_QueHace != 3) { return; }
 
-            //if (e.NewIndex == 1)
-            //{
-            //    int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
-
-            //    if (n_QueHace != 1)
-            //    {
-            //        VerRegistro(intIdRegistro);
-            //    }
-            //}
-        }
         private void DgLista_DoubleClick(object sender, System.EventArgs e)
         {
             int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             VerRegistro(intIdRegistro);
         }
+
         private void DgLista_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
@@ -402,10 +387,6 @@ namespace SSF_NET_Almacen.Formularios
                 DgLista.DataSource = dtResult;
                 LblNumReg.Text = (dtResult.Rows.Count).ToString();
             }
-        }
-        private void FrmManAlmacenes_Resize(object sender, System.EventArgs e)
-        {
-            //Tab_Dimensionar(Tab1, this.Height - 110, this.Width - 38);
         }
     }
 }

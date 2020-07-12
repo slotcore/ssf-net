@@ -327,6 +327,7 @@ namespace SIAC_DATOS.Logistica
                 return booOk;
             }
         }
+
         public bool Actualizar(BE_LOG_ORDENREQUERIMIENTO entCabecera, List<BE_LOG_ORDENREQUERIMIENTODET> lstDetalle)
         {
             bool booOk = false;
@@ -397,6 +398,48 @@ namespace SIAC_DATOS.Logistica
                 trans.Rollback();
                 return booOk;
             }
+        }
+
+        public bool Aprobar(int n_IdRegistro)
+        {
+            bool booResult = false;
+
+            // ELIMINAMOS EL DETALLE DEL REQUERIMIENTO
+            string[,] arrParametros = new string[1, 3] {
+                                            {"n_id", "System.INT64", n_IdRegistro.ToString()}
+                                      };
+                        
+            booResult = xMiFuncion.StoreEjecutar("log_ordenrequerimiento_aprobar", arrParametros, mysConec);
+
+            if (booResult == false)
+            {
+                booOcurrioError = xMiFuncion.booOcurrioError;
+                StrErrorMensaje = xMiFuncion.StrErrorMensaje;
+                IntErrorNumber = xMiFuncion.IntErrorNumber;
+            }
+
+            return booResult;
+        }
+
+        public bool Rechazar(int n_IdRegistro)
+        {
+            bool booResult = false;
+
+            // ELIMINAMOS EL DETALLE DEL REQUERIMIENTO
+            string[,] arrParametros = new string[1, 3] {
+                                            {"n_id", "System.INT64", n_IdRegistro.ToString()}
+                                      };
+
+            booResult = xMiFuncion.StoreEjecutar("log_ordenrequerimiento_rechazar", arrParametros, mysConec);
+
+            if (booResult == false)
+            {
+                booOcurrioError = xMiFuncion.booOcurrioError;
+                StrErrorMensaje = xMiFuncion.StrErrorMensaje;
+                IntErrorNumber = xMiFuncion.IntErrorNumber;
+            }
+
+            return booResult;
         }
     }
 }

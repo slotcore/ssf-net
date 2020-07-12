@@ -56,6 +56,7 @@ namespace SIAC_Negocio.Almacen
             entNuevoAlmacen.n_idemp = entAlmacenes.n_idemp;
             entNuevoAlmacen.n_id = entAlmacenes.n_id;
             entNuevoAlmacen.n_idlocal = entAlmacenes.n_idlocal;
+            entNuevoAlmacen.n_idtipexi = entAlmacenes.n_idtipexi;
             entNuevoAlmacen.c_des = entAlmacenes.c_des;
 
             booOk = miFun.Insertar(entNuevoAlmacen);
@@ -75,7 +76,8 @@ namespace SIAC_Negocio.Almacen
             miFun.mysConec = mysConec;            
             entNuevoAlmacen.n_idemp = entAlmacenes.n_idemp;
             entNuevoAlmacen.n_id = entAlmacenes.n_id;
-            entNuevoAlmacen.n_idlocal = entAlmacenes.n_idlocal;  
+            entNuevoAlmacen.n_idlocal = entAlmacenes.n_idlocal;
+            entNuevoAlmacen.n_idtipexi = entAlmacenes.n_idtipexi;
             entNuevoAlmacen.c_des = entAlmacenes.c_des;
 
             booOk = miFun.Actualizar(entNuevoAlmacen);

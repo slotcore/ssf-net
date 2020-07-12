@@ -378,6 +378,37 @@ namespace SIAC_Negocio.Logistica
 
             return booOk;
         }
+
+        public bool Aprobar(int n_Id)
+        {
+            CD_log_ordenrequerimiento miFun = new CD_log_ordenrequerimiento();
+            bool booOk = false;
+
+            miFun.mysConec = mysConec;
+            booOk = miFun.Aprobar(n_Id);
+
+            booOcurrioError = miFun.booOcurrioError;
+            StrErrorMensaje = miFun.StrErrorMensaje;
+            IntErrorNumber = miFun.IntErrorNumber;
+
+            return booOk;
+        }
+
+        public bool Rechazar(int n_Id)
+        {
+            CD_log_ordenrequerimiento miFun = new CD_log_ordenrequerimiento();
+            bool booOk = false;
+
+            miFun.mysConec = mysConec;
+            booOk = miFun.Rechazar(n_Id);
+
+            booOcurrioError = miFun.booOcurrioError;
+            StrErrorMensaje = miFun.StrErrorMensaje;
+            IntErrorNumber = miFun.IntErrorNumber;
+
+            return booOk;
+        }
+
         public bool Eliminar(int n_Id)
         {
             CD_log_ordenrequerimiento miFun = new CD_log_ordenrequerimiento();

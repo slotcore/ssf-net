@@ -106,6 +106,7 @@
     <Compile Include="Logistica\CN_log_ordencompra.cs" />
     <Compile Include="Logistica\CN_log_ordenrequerimiento.cs" />
     <Compile Include="Logistica\CN_log_personal.cs" />
+    <Compile Include="Maestros\CN_mae_aprobador.cs" />
     <Compile Include="Maestros\CN_mae_area.cs" />
     <Compile Include="Maestros\CN_mae_clase.cs" />
     <Compile Include="Maestros\CN_mae_clipro.cs" />

@@ -40,6 +40,7 @@ namespace SSF_NET_Logistica.Formularios
         CN_mae_estados objestados = new CN_mae_estados();
         CN_sys_empresalocal objlocal = new CN_sys_empresalocal();
         CN_mae_area objarea = new CN_mae_area();
+        CN_mae_aprobador objaprobador = new CN_mae_aprobador();
         CN_sys_personalmodulo objpermod = new CN_sys_personalmodulo();
         CN_mae_motivos objmotivos = new CN_mae_motivos();
         CN_log_personal objLogPer = new CN_log_personal();
@@ -112,6 +113,8 @@ namespace SSF_NET_Logistica.Formularios
                     this.Text = "ALMACÉN - ORDEN DE REQUERIMIENTO INTERNO";
                     break;
             }
+
+            ActivarAprobador();
         }
         void CargarCombos()
         {
@@ -398,6 +401,39 @@ namespace SSF_NET_Logistica.Formularios
             ToolCancelar.Enabled = !ToolCancelar.Enabled;
             ToolImprimir.Enabled = !ToolImprimir.Enabled;
             ToolSalir.Enabled = !ToolSalir.Enabled;
+        }
+
+        public void ActivarAprobador()
+        {
+            if (n_QueHace == 3)
+            {
+                objaprobador.mysConec = mysConec;
+                DataTable dtAprobador = objaprobador.ListarAprobadores(STU_SISTEMA.EMPRESAID
+                    , STU_SISTEMA.USUARIOID
+                    , 27
+                    , idAreaDestino);
+                if (dtAprobador != null)
+                {
+                    if (dtAprobador.Rows.Count > 0)
+                    {
+                        ToolAprobar.Visible = true;
+                        ToolRechazar.Visible = true;
+                        ToolSeparadorAprobador.Visible = true;
+                    }
+                    else
+                    {
+                        ToolAprobar.Visible = false;
+                        ToolRechazar.Visible = false;
+                        ToolSeparadorAprobador.Visible = false;
+                    }
+                }
+                else
+                {
+                    ToolAprobar.Visible = false;
+                    ToolRechazar.Visible = false;
+                    ToolSeparadorAprobador.Visible = false;
+                }
+            }
         }
         void Modificar()
         {
@@ -1133,6 +1169,116 @@ namespace SSF_NET_Logistica.Formularios
                     booAgregando = false;
                 }
             }
+        }
+
+        private void ToolAprobar_Click(object sender, EventArgs e)
+        {
+            AprobarRegistro();
+        }
+
+        private void ToolRechazar_Click(object sender, EventArgs e)
+        {
+            RechazarRegistro();
+        }
+
+        bool AprobarRegistro()
+        {
+            bool booResult = false;
+            int intIdRegistro = Convert.ToInt16(DgLista.Columns[8].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+
+            if (objRegistros.TraerRegistro(intIdRegistro) == true)
+            {
+                BE_Registro = objRegistros.entReqCab;
+
+                if (BE_Registro.n_idest != 1)
+                {
+                    MessageBox.Show("¡ Solo se pueden aprobar ordenes pendientes !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    return false;
+                }
+            }
+
+            DialogResult Rpta = MessageBox.Show("¿Esta seguro de aprobar el registro seleccionado?", "Cambiar Estado", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+
+            if (DialogResult.Yes == Rpta)
+            {
+                if (objRegistros.Aprobar(intIdRegistro) == true)
+                {
+                    booResult = true;
+                    MessageBox.Show("¡ El registro se aprobó con éxito !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+
+                    // VOLVEMOS A CARGAR EL DATATABLE dtItems CON LOS DATOS DEL SERVIDOR
+                    objRegistros.mysConec = mysConec;
+
+                    if (idAreaDestino == 0)
+                    {
+                        dtLista = objRegistros.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO);
+                    }
+                    else
+                    {
+                        dtLista = objRegistros.ListarPorArea(STU_SISTEMA.EMPRESAID
+                            , STU_SISTEMA.MESTRABAJO
+                            , STU_SISTEMA.ANOTRABAJO
+                            , idAreaDestino);
+                    }
+                    // MOSTRAMOS LOS DATOS EN LA GRILLA
+                    ListarItems();
+                }
+                else
+                {
+                    MessageBox.Show("¡ No se pudo aprobar el registro por el siguiente motivo ! " + objRegistros.StrErrorMensaje, "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                }
+            }
+            return booResult;
+        }
+
+        bool RechazarRegistro()
+        {
+            bool booResult = false;
+            int intIdRegistro = Convert.ToInt16(DgLista.Columns[8].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+
+            if (objRegistros.TraerRegistro(intIdRegistro) == true)
+            {
+                BE_Registro = objRegistros.entReqCab;
+
+                if (BE_Registro.n_idest != 1)
+                {
+                    MessageBox.Show("¡ Solo se pueden rechazar ordenes pendientes !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    return false;
+                }
+            }
+
+            DialogResult Rpta = MessageBox.Show("¿Esta seguro de rechazar el registro seleccionado?", "Cambiar Estado", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+
+            if (DialogResult.Yes == Rpta)
+            {
+                if (objRegistros.Rechazar(intIdRegistro) == true)
+                {
+                    booResult = true;
+                    MessageBox.Show("¡ El registro se aprobó con éxito !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+
+                    // VOLVEMOS A CARGAR EL DATATABLE dtItems CON LOS DATOS DEL SERVIDOR
+                    objRegistros.mysConec = mysConec;
+
+                    if (idAreaDestino == 0)
+                    {
+                        dtLista = objRegistros.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO);
+                    }
+                    else
+                    {
+                        dtLista = objRegistros.ListarPorArea(STU_SISTEMA.EMPRESAID
+                            , STU_SISTEMA.MESTRABAJO
+                            , STU_SISTEMA.ANOTRABAJO
+                            , idAreaDestino);
+                    }
+                    // MOSTRAMOS LOS DATOS EN LA GRILLA
+                    ListarItems();
+                }
+                else
+                {
+                    MessageBox.Show("¡ No se pudo aprobar el registro por el siguiente motivo ! " + objRegistros.StrErrorMensaje, "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                }
+            }
+            return booResult;
         }
     }
 }

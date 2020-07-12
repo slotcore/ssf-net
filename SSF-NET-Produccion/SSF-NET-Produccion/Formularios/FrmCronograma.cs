@@ -491,7 +491,7 @@ namespace SSF_NET_Produccion.Formularios
 
             // CARGAMOS EL PERSONAL DE PRODUCCION
             objPerPro.mysConec = mysConec;
-            if (objPerPro.Listar(STU_SISTEMA.EMPRESAID) == true)
+            if (objPerPro.ListarPorCargo(STU_SISTEMA.EMPRESAID, 4) == true)
             {
                 dtPerPro = objPerPro.dtPersonal;
             }

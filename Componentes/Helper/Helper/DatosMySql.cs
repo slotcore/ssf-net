@@ -185,6 +185,7 @@ namespace Helper
             int IntNumeroElementos;
             Comunes.Funciones MiFun = new Comunes.Funciones();
             DataTable DtResul = new DataTable();
+            IntErrorNumber = 0;
 
             try
             {

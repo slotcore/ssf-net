@@ -10,6 +10,7 @@ namespace SIAC_Entidades.Almacen
     {
         private int _n_idemp;
         private int _n_idlocal;
+        private int _n_idtipexi;
         private int _n_id;
         private string _c_des;
 
@@ -22,6 +23,11 @@ namespace SIAC_Entidades.Almacen
         {
             get { return _n_idlocal; }
             set { _n_idlocal = value; }
+        }
+        public int n_idtipexi
+        {
+            get { return _n_idtipexi; }
+            set { _n_idtipexi = value; }
         }
         public int n_id
         {
