@@ -79,5 +79,15 @@ namespace SSF_NET_Almacen.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap lookup_reference_16x161 {
+            get {
+                object obj = ResourceManager.GetObject("lookup&reference_16x161", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

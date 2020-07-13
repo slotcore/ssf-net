@@ -1655,5 +1655,13 @@ namespace SSF_NET.Formularios
             objForm.STU_SISTEMA = Program.STU_SISTEMA;
             objForm.MantenimientoAprobadores();
         }
+
+        private void maestroDePersonalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SSF_NET_Almacen.CLS_Almacen objForm = new SSF_NET_Almacen.CLS_Almacen();
+            objForm.mysConec = Program.mysConeccion;
+            objForm.STU_SISTEMA = Program.STU_SISTEMA;
+            objForm.MantenimientoPersonal();
+        }
     }
 }

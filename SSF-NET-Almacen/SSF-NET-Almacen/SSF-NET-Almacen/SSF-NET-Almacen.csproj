@@ -117,6 +117,12 @@
     <Compile Include="Formularios\FrmManAlmDocumentos.Designer.cs">
       <DependentUpon>FrmManAlmDocumentos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FrmManPersonal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManPersonal.Designer.cs">
+      <DependentUpon>FrmManPersonal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FrmManFamilia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -311,6 +317,9 @@
     <EmbeddedResource Include="Formularios\FrmManAlmDocumentos.resx">
       <DependentUpon>FrmManAlmDocumentos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManPersonal.resx">
+      <DependentUpon>FrmManPersonal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmManFamilia.resx">
       <DependentUpon>FrmManFamilia.cs</DependentUpon>
     </EmbeddedResource>
@@ -444,6 +453,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\lookup&amp;reference_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lookup&amp;reference_16x161.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

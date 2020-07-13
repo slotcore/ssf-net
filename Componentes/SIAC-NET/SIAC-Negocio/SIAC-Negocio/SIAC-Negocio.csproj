@@ -59,6 +59,7 @@
     <Compile Include="Almacen\CN_alm_inventariounimed.cs" />
     <Compile Include="Almacen\CN_alm_movimientos.cs" />
     <Compile Include="Almacen\CN_alm_responsable.cs" />
+    <Compile Include="Almacen\CN_alm_personal.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Contabilidad\CN_con_cerrarmes.cs" />
     <Compile Include="Contabilidad\CN_con_destinoinforme.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="Maestros\CN_mae_subclase.cs" />
     <Compile Include="Maestros\CN_mae_tipoclipro.cs" />
     <Compile Include="Mantenimiento\CN_man_equipos.cs" />
+    <Compile Include="Planilla\CN_pla_cargos.cs" />
     <Compile Include="Planilla\CN_pla_destajo.cs" />
     <Compile Include="Planilla\CN_pla_destajouni.cs" />
     <Compile Include="Planilla\CN_pla_empleados.cs" />

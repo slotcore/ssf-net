@@ -71,6 +71,7 @@
     <Compile Include="Almacen\CD_alm_inventariounimed.cs" />
     <Compile Include="Almacen\CD_alm_movimientos.cs" />
     <Compile Include="Almacen\CD_alm_responsable.cs" />
+    <Compile Include="Almacen\CD_alm_personal.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Classes\ObjectBase.cs" />
     <Compile Include="Classes\ObservableListSource.cs" />
@@ -143,6 +144,7 @@
     <Compile Include="Models\Planillas\Empleado.cs" />
     <Compile Include="Models\Planillas\PeriodoLaboral.cs" />
     <Compile Include="Models\Produccion\ProduccionNotaIng.cs" />
+    <Compile Include="Planilla\CD_pla_cargos.cs" />
     <Compile Include="Planilla\CD_pla_destajo.cs" />
     <Compile Include="Planilla\CD_pla_destajouni.cs" />
     <Compile Include="Planilla\CD_pla_empleados.cs" />

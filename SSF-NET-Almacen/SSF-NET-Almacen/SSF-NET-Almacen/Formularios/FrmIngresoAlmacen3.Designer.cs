@@ -111,6 +111,7 @@
             // ToolHerramientas
             // 
             this.ToolHerramientas.BackColor = System.Drawing.Color.White;
+            this.ToolHerramientas.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ToolHerramientas.ForeColor = System.Drawing.Color.Black;
             this.ToolHerramientas.GripMargin = new System.Windows.Forms.Padding(0);
             this.ToolHerramientas.ImageScalingSize = new System.Drawing.Size(32, 32);
@@ -679,9 +680,9 @@
             this.label8.ForeColor = System.Drawing.Color.Black;
             this.label8.Location = new System.Drawing.Point(9, 106);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(69, 13);
+            this.label8.Size = new System.Drawing.Size(59, 13);
             this.label8.TabIndex = 16;
-            this.label8.Text = "Responsable";
+            this.label8.Text = "Encargado";
             // 
             // CboResponsable
             // 

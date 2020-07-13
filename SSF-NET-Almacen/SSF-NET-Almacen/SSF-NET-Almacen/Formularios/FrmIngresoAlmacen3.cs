@@ -42,7 +42,7 @@ namespace SSF_NET_Almacen.Formularios
         CN_mae_clipro ObjPro = new CN_mae_clipro();
         CN_alm_almacenes ObjAlm = new CN_alm_almacenes();
         CN_alm_inventariounimed ObjAlmUniMed = new CN_alm_inventariounimed();
-        CN_alm_responsable ObjRes = new CN_alm_responsable();
+        CN_alm_personal ObjRes = new CN_alm_personal();
         CN_alm_almacenesdoc ObjAlmDoc = new CN_alm_almacenesdoc();
         CN_sys_formulariovista objFormVis = new CN_sys_formulariovista();
         CN_sys_formulario objForm = new CN_sys_formulario();
@@ -269,7 +269,7 @@ namespace SSF_NET_Almacen.Formularios
             dtAlmacenes = ObjAlm.ListarNuevo(STU_SISTEMA.EMPRESAID, Convert.ToInt16(funFunciones.NulosN(dtsetup.Rows[0]["n_almunialmacenes"])));                             // 
 
             ObjRes.mysConec = mysConec;
-            dtResponsables = ObjRes.Listar(STU_SISTEMA.EMPRESAID);                          // 
+            dtResponsables = ObjRes.ListarPorCargo(STU_SISTEMA.EMPRESAID, 2);                          // 
 
             objItems.mysConec = mysConec;
             dtItems = objItems.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.SYS_UNIBD, 1);
@@ -386,8 +386,8 @@ namespace SSF_NET_Almacen.Formularios
             CboTipDoc.SelectedValue = BE_Movimiento.n_idtipdoc;
 
             // MOSTRAMOS LOS RESPONSABLES DEL ALMACEN
-            dtResul = funDatos.DataTableFiltrar(dtResponsables, "n_idalm = " + n_idalm.ToString() + "");
-            funDatos.ComboBoxCargarDataTable(CboResponsable, dtResul, "n_id", "c_apenom");
+            //dtResul = funDatos.DataTableFiltrar(dtResponsables, "n_idalm = " + n_idalm.ToString() + "");
+            funDatos.ComboBoxCargarDataTable(CboResponsable, dtResponsables, "n_id", "destra");
             CboResponsable.SelectedValue = BE_Movimiento.n_perid;
 
             //funFlex.FlexMostrarDatos(FgItems, arrCabeceraFlex1, BE_Movimiento.lst_items, 2, false);
@@ -1348,8 +1348,8 @@ namespace SSF_NET_Almacen.Formularios
             funDatos.ComboBoxCargarDataTable(CboTipDoc, dtResul, "n_idtipdoc", "c_desdoc");
 
             // MOSTRAMOS LOS RESPONSABLES DEL ALMACEN
-            dtResul = funDatos.DataTableFiltrar(dtResponsables, "n_idalm = " + n_idalm.ToString() + "");
-            funDatos.ComboBoxCargarDataTable(CboResponsable, dtResul, "n_id", "c_apenom");
+            //dtResul = funDatos.DataTableFiltrar(dtResponsables, "n_idalm = " + n_idalm.ToString() + "");
+            funDatos.ComboBoxCargarDataTable(CboResponsable, dtResponsables, "n_id", "destra");
         }
         private void CboTipDoc_SelectionChangeCommitted(object sender, EventArgs e)
         {

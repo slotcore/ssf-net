@@ -47,7 +47,7 @@ namespace SSF_NET_Almacen.Formularios
         CN_alm_inventariolotes ObjLotes = new CN_alm_inventariolotes();
         CN_sys_formulariovista objFormVis = new CN_sys_formulariovista();
         CN_sys_formulario objForm = new CN_sys_formulario();
-        CN_sys_personaladjunto objPerAdj = new CN_sys_personaladjunto();
+        CN_alm_personal objPerAdj = new CN_alm_personal();
         CN_sys_empresa funsys = new CN_sys_empresa();
         CN_alm_movimientos objMovimientos = new CN_alm_movimientos();
         CN_alm_inventario objItems = new CN_alm_inventario();
@@ -128,7 +128,7 @@ namespace SSF_NET_Almacen.Formularios
             dtResul = funDatos.DataTableFiltrar(dtTipoDocumento2, "n_id IN (2, 5, 4, 72, 75, 10, 32, 88, 92)");
             funDatos.ComboBoxCargarDataTable(CboDocRef, dtResul, "n_id", "c_des");            
             funDatos.ComboBoxCargarDataTable(CboTipOpe, dtTipOpe, "n_id", "c_des");
-            funDatos.ComboBoxCargarDataTable(CboSolicitante, dtPerAdj, "n_id", "c_apenom");
+            funDatos.ComboBoxCargarDataTable(CboSolicitante, dtPerAdj, "n_id", "destra");
         }
 
         void ConfigurarFormulario()
@@ -252,7 +252,7 @@ namespace SSF_NET_Almacen.Formularios
             dtPresentaItem = ObjAlmUniMed.Listar();
 
             objPerAdj.mysConec = mysConec;
-            dtPerAdj = objPerAdj.Listar(STU_SISTEMA.EMPRESAID);
+            dtPerAdj = objPerAdj.ListarPorCargo(STU_SISTEMA.EMPRESAID, 5);
 
             objForm.mysConec = mysConec;                                    // CARGAMOS LOS DATOS DEL FORMULARIO
             dtForm = objForm.TraerRegistro(3);

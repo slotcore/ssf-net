@@ -65,6 +65,7 @@
     <Compile Include="Almacen\BE_ALM_MOVIMIENTOSDET_CONSULTA.cs" />
     <Compile Include="Almacen\BE_ALM_MOVIMIENTOS_CONSULTA.cs" />
     <Compile Include="Almacen\BE_ALM_MOVIMIENTO_GROUP.cs" />
+    <Compile Include="Almacen\BE_ALM_PERSONAL.cs" />
     <Compile Include="Contabilidad\BE_CON_CERRARMES.cs" />
     <Compile Include="Contabilidad\BE_CON_DETRACCION.cs" />
     <Compile Include="Contabilidad\BE_CON_DIARIO.cs" />
@@ -137,6 +138,7 @@
     <Compile Include="Maestros\BE_MAE_CLIPRO.cs" />
     <Compile Include="Maestros\BE_MAE_CLIPROITEMS.cs" />
     <Compile Include="Mantenimiento\BE_MAN_EQUIPOS.cs" />
+    <Compile Include="Planillas\BE_PLA_CARGOS.cs" />
     <Compile Include="Planillas\BE_PLA_DESTAJO.cs" />
     <Compile Include="Planillas\BE_PLA_DESTAJODET.cs" />
     <Compile Include="Planillas\BE_PLA_DESTAJOUNI.cs" />

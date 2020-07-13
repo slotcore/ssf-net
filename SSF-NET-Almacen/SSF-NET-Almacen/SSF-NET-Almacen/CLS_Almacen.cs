@@ -108,6 +108,13 @@ namespace SSF_NET_Almacen
             FrmForm.STU_SISTEMA = STU_SISTEMA;
             FrmForm.Show();
         }
+        public void MantenimientoPersonal()
+        {
+            Formularios.FrmManPersonal FrmForm = new Formularios.FrmManPersonal();
+            FrmForm.mysConec = mysConec;
+            FrmForm.STU_SISTEMA = STU_SISTEMA;
+            FrmForm.Show();
+        }
         public void MantenimientoTipOpe()
         {
             Formularios.FrmManTipOpe FrmForm = new Formularios.FrmManTipOpe();

@@ -62,6 +62,7 @@
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.puntoVentaClienteProveedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maestroDeMotivosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aprobadoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.ordenDeRequerimientoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ordenDeCompraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -352,7 +353,7 @@
             this.toolStripStatusLabel8 = new System.Windows.Forms.ToolStripStatusLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
-            this.aprobadoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.maestroDePersonalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -421,7 +422,8 @@
             this.maestroDeSeriresXAlmacenToolStripMenuItem,
             this.maestroDeFamiliasToolStripMenuItem,
             this.maestroDeClasesToolStripMenuItem,
-            this.maestroDeSubClaseToolStripMenuItem});
+            this.maestroDeSubClaseToolStripMenuItem,
+            this.maestroDePersonalToolStripMenuItem});
             this.maestrosToolStripMenuItem1.Name = "maestrosToolStripMenuItem1";
             this.maestrosToolStripMenuItem1.Size = new System.Drawing.Size(275, 22);
             this.maestrosToolStripMenuItem1.Text = "Maestros";
@@ -643,6 +645,13 @@
             this.maestroDeMotivosToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
             this.maestroDeMotivosToolStripMenuItem.Text = "Maestro de Motivos";
             this.maestroDeMotivosToolStripMenuItem.Click += new System.EventHandler(this.maestroDeMotivosToolStripMenuItem_Click);
+            // 
+            // aprobadoresToolStripMenuItem
+            // 
+            this.aprobadoresToolStripMenuItem.Name = "aprobadoresToolStripMenuItem";
+            this.aprobadoresToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.aprobadoresToolStripMenuItem.Text = "Aprobadores";
+            this.aprobadoresToolStripMenuItem.Click += new System.EventHandler(this.aprobadoresToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
@@ -2937,12 +2946,12 @@
             // 
             this.kryptonManager1.GlobalPaletteMode = ComponentFactory.Krypton.Toolkit.PaletteModeManager.Office2010Silver;
             // 
-            // aprobadoresToolStripMenuItem
+            // maestroDePersonalToolStripMenuItem
             // 
-            this.aprobadoresToolStripMenuItem.Name = "aprobadoresToolStripMenuItem";
-            this.aprobadoresToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
-            this.aprobadoresToolStripMenuItem.Text = "Aprobadores";
-            this.aprobadoresToolStripMenuItem.Click += new System.EventHandler(this.aprobadoresToolStripMenuItem_Click);
+            this.maestroDePersonalToolStripMenuItem.Name = "maestroDePersonalToolStripMenuItem";
+            this.maestroDePersonalToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.maestroDePersonalToolStripMenuItem.Text = "Maestro de Personal";
+            this.maestroDePersonalToolStripMenuItem.Click += new System.EventHandler(this.maestroDePersonalToolStripMenuItem_Click);
             // 
             // FrmMenu10
             // 
@@ -3296,5 +3305,6 @@
         private System.Windows.Forms.ToolStripMenuItem ordenDeRequerimientoToolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem salidasAlmacenVariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aprobadoresToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem maestroDePersonalToolStripMenuItem;
     }
 }
