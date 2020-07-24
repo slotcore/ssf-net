@@ -42,6 +42,7 @@
             this.maestroDeFamiliasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maestroDeClasesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maestroDeSubClaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.maestroDePersonalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maestroDeItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.ordenDeRequerimientoToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
@@ -353,7 +354,7 @@
             this.toolStripStatusLabel8 = new System.Windows.Forms.ToolStripStatusLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
-            this.maestroDePersonalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.transferenciasEntreAlmacenesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -405,7 +406,8 @@
             this.consultaIngresosSalidasDeAlmacenToolStripMenuItem,
             this.reportesDeInventarioToolStripMenuItem,
             this.consultaDeLotesToolStripMenuItem,
-            this.salidasAlmacenVariosToolStripMenuItem});
+            this.salidasAlmacenVariosToolStripMenuItem,
+            this.transferenciasEntreAlmacenesToolStripMenuItem});
             this.almacenToolStripMenuItem.Enabled = false;
             this.almacenToolStripMenuItem.Name = "almacenToolStripMenuItem";
             this.almacenToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
@@ -488,6 +490,13 @@
             this.maestroDeSubClaseToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
             this.maestroDeSubClaseToolStripMenuItem.Text = "Maestro de Sub Clase";
             this.maestroDeSubClaseToolStripMenuItem.Click += new System.EventHandler(this.maestroDeSubClaseToolStripMenuItem_Click);
+            // 
+            // maestroDePersonalToolStripMenuItem
+            // 
+            this.maestroDePersonalToolStripMenuItem.Name = "maestroDePersonalToolStripMenuItem";
+            this.maestroDePersonalToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.maestroDePersonalToolStripMenuItem.Text = "Maestro de Personal";
+            this.maestroDePersonalToolStripMenuItem.Click += new System.EventHandler(this.maestroDePersonalToolStripMenuItem_Click);
             // 
             // maestroDeItemsToolStripMenuItem
             // 
@@ -2946,12 +2955,12 @@
             // 
             this.kryptonManager1.GlobalPaletteMode = ComponentFactory.Krypton.Toolkit.PaletteModeManager.Office2010Silver;
             // 
-            // maestroDePersonalToolStripMenuItem
+            // transferenciasEntreAlmacenesToolStripMenuItem
             // 
-            this.maestroDePersonalToolStripMenuItem.Name = "maestroDePersonalToolStripMenuItem";
-            this.maestroDePersonalToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.maestroDePersonalToolStripMenuItem.Text = "Maestro de Personal";
-            this.maestroDePersonalToolStripMenuItem.Click += new System.EventHandler(this.maestroDePersonalToolStripMenuItem_Click);
+            this.transferenciasEntreAlmacenesToolStripMenuItem.Name = "transferenciasEntreAlmacenesToolStripMenuItem";
+            this.transferenciasEntreAlmacenesToolStripMenuItem.Size = new System.Drawing.Size(275, 22);
+            this.transferenciasEntreAlmacenesToolStripMenuItem.Text = "Transferencias entre Almacenes";
+            this.transferenciasEntreAlmacenesToolStripMenuItem.Click += new System.EventHandler(this.transferenciasEntreAlmacenesToolStripMenuItem_Click);
             // 
             // FrmMenu10
             // 
@@ -3306,5 +3315,6 @@
         private System.Windows.Forms.ToolStripMenuItem salidasAlmacenVariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aprobadoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem maestroDePersonalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem transferenciasEntreAlmacenesToolStripMenuItem;
     }
 }

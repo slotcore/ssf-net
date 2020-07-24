@@ -152,7 +152,7 @@ namespace SSF_NET_Almacen.Formularios
             funDatos.ComboBoxCargarDataTable(CboMeses, dtMeses, "n_id", "c_des");
 
             //dtResult = funDatos.DataTableFiltrar(dtTipoDocumento2, "n_id IN (74,10,32)");
-            dtResult = funDatos.DataTableFiltrar(dtTipoDocumento2, "n_id IN (74, 10, 32, 93, 84)");
+            dtResult = funDatos.DataTableFiltrar(dtTipoDocumento2, "n_id IN (74, 10, 32, 93, 84, 95)");
             funDatos.ComboBoxCargarDataTable(CboDocRef, dtResult, "n_id", "c_des");
         }
         void ConfigurarFormulario()

@@ -66,6 +66,14 @@ namespace SSF_NET_Almacen
             FrmMovMult.STU_SISTEMA = STU_SISTEMA;
             FrmMovMult.Show();
         }
+        public void TransferenciaAlmacenes()
+        {
+            Formularios.FrmTransferenciaAlmacen FrmTrans = new Formularios.FrmTransferenciaAlmacen();
+            FrmTrans.mysConec = mysConec;
+            FrmTrans.AccConec = AccConec;
+            FrmTrans.STU_SISTEMA = STU_SISTEMA;
+            FrmTrans.Show();
+        }
         public void MantenimientoAlmacenes()
         {
             Formularios.FrmManAlmacenes FrmForm = new Formularios.FrmManAlmacenes();

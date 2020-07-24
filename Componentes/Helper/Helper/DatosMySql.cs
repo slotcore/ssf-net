@@ -811,13 +811,21 @@ namespace Helper
 
                 cmd.ExecuteNonQuery();
 
-                for (iFila = 0; iFila <= IntNumeroElementos - 1; iFila++)
+                //for (iFila = 0; iFila <= IntNumeroElementos - 1; iFila++)
+                //{
+                //    if (cmd.Parameters[iFila].Direction ==  ParameterDirection.Output)
+                //    {
+                //        intIdGenerado = Int64.Parse(cmd.Parameters[iFila].Value.ToString());
+                //    }
+                //}
+
+                foreach (MySqlParameter parameter in cmd.Parameters)
                 {
-                    if (cmd.Parameters[iFila].Direction ==  ParameterDirection.Output)
+                    if (parameter.Direction == ParameterDirection.Output)
                     {
-                        intIdGenerado = Int64.Parse(cmd.Parameters[iFila].Value.ToString());
+                        intIdGenerado = Int64.Parse(parameter.Value.ToString());
                     }
-                }  
+                }
                 
                 adapter.SelectCommand = cmd;
                 bolOk = true;

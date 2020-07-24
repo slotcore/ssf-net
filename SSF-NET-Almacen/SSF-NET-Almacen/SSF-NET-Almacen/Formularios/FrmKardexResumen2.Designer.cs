@@ -141,7 +141,7 @@
             // TxtFchIni
             // 
             this.TxtFchIni.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.TxtFchIni.Location = new System.Drawing.Point(325, 32);
+            this.TxtFchIni.Location = new System.Drawing.Point(312, 32);
             this.TxtFchIni.Name = "TxtFchIni";
             this.TxtFchIni.Size = new System.Drawing.Size(103, 20);
             this.TxtFchIni.TabIndex = 3;
@@ -149,7 +149,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(469, 10);
+            this.label4.Location = new System.Drawing.Point(8, 6);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 13);
             this.label4.TabIndex = 50;
@@ -159,15 +159,15 @@
             // 
             this.CboAlmacen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CboAlmacen.FormattingEnabled = true;
-            this.CboAlmacen.Location = new System.Drawing.Point(523, 7);
+            this.CboAlmacen.Location = new System.Drawing.Point(77, 3);
             this.CboAlmacen.Name = "CboAlmacen";
-            this.CboAlmacen.Size = new System.Drawing.Size(325, 21);
+            this.CboAlmacen.Size = new System.Drawing.Size(338, 21);
             this.CboAlmacen.TabIndex = 1;
             this.CboAlmacen.KeyUp += new System.Windows.Forms.KeyEventHandler(this.CboAlmacen_KeyUp);
             // 
             // TxtAñoTra
             // 
-            this.TxtAñoTra.Location = new System.Drawing.Point(90, 32);
+            this.TxtAñoTra.Location = new System.Drawing.Point(77, 32);
             this.TxtAñoTra.Maximum = new decimal(new int[] {
             2013,
             0,
@@ -221,7 +221,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(263, 35);
+            this.label3.Location = new System.Drawing.Point(250, 35);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 13);
             this.label3.TabIndex = 5;
@@ -239,7 +239,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 10);
+            this.label1.Location = new System.Drawing.Point(437, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 13);
             this.label1.TabIndex = 1;
@@ -249,7 +249,7 @@
             // 
             this.CboTipExi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CboTipExi.FormattingEnabled = true;
-            this.CboTipExi.Location = new System.Drawing.Point(90, 7);
+            this.CboTipExi.Location = new System.Drawing.Point(523, 3);
             this.CboTipExi.Name = "CboTipExi";
             this.CboTipExi.Size = new System.Drawing.Size(338, 21);
             this.CboTipExi.TabIndex = 0;

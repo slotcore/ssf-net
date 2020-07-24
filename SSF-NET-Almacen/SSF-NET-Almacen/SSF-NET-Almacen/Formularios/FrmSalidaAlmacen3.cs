@@ -104,6 +104,7 @@ namespace SSF_NET_Almacen.Formularios
         string strNumerovalidos = "1234567890." + (char)8;                                        // + (char)8;
         string strCaracteres = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ1234567890-()º.,/$' !!·%/()=?¿*^" + (char)8;
         int n_ItemProducido;                                                            // ESTA VARIABLE ALMACENARA EL ID DEL ITEM PRODUCIDO CUANDO SE SELECCIONE UNA ORDEN DE PRODUCCION
+        
         public FrmSalidaAlmacen3()
         {
             InitializeComponent();
@@ -126,7 +127,7 @@ namespace SSF_NET_Almacen.Formularios
             funDatos.ComboBoxCargarDataTable(CboTipPro, dtTipoExis, "n_id", "c_des");
             funDatos.ComboBoxCargarDataTable(CboTipDoc, dtTipoDocumento, "n_id", "c_des");
                         
-            dtResul = funDatos.DataTableFiltrar(dtTipoDocumento2, "n_id IN (2, 5, 4, 72, 75, 10, 32, 88, 92, 94)");
+            dtResul = funDatos.DataTableFiltrar(dtTipoDocumento2, "n_id IN (2, 5, 4, 72, 75, 10, 32, 88, 92, 94, 95)");
             funDatos.ComboBoxCargarDataTable(CboDocRef, dtResul, "n_id", "c_des");
             
             //funDatos.ComboBoxCargarDataTable(CboProveedor, dtProveedor, "n_id", "c_nombre");
@@ -1507,7 +1508,7 @@ namespace SSF_NET_Almacen.Formularios
                 CmdBusDocRef.Visible = true;
 
                 CmdAddItem.Enabled = false;
-                CmdDelItem.Enabled = false;
+                //CmdDelItem.Enabled = false;
                 booAgregando = true;
                 CboTipOpe.SelectedValue = 10;
                 CboTipDoc.SelectedValue = 72;

@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Almacen\BE_ALM_TRANSFERENCIASDET.cs" />
+    <Compile Include="Almacen\BE_ALM_TRANSFERENCIAS.cs" />
     <Compile Include="Almacen\BE_ALM_ALMACENES.cs" />
     <Compile Include="Almacen\BE_ALM_ALMACENESDOC.cs" />
     <Compile Include="Almacen\BE_ALM_ALMACENES_CONSULTA.cs" />

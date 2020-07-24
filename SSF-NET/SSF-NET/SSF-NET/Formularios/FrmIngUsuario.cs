@@ -135,8 +135,7 @@ namespace SSF_NET.Formularios
             }
         }
         void ObternerBD(int n_IdEmpresa)
-        {
-            
+        {            
             DataTable dtResult = new DataTable();
             Cls_Seguridad objSeg = new Cls_Seguridad();
             string c_nomBD = "";
@@ -150,8 +149,7 @@ namespace SSF_NET.Formularios
             
             string c_nombd = miFun.IniLeerSeccion(c_nomarc, "INFORMACION", "DATO6").ToString();
             c_nombd = objSeg.Desencriptar(c_nombd);
-
-            
+                        
             c_usu = miFun.IniLeerSeccion(c_nomarc, "INFORMACION", "DATO3").ToString();
             c_usu = objSeg.Desencriptar(c_usu);
 

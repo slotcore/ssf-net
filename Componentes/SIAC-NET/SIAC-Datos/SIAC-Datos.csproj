@@ -63,6 +63,7 @@
     <Compile Include="Almacen\CD_ACC_movimientoAlmacen.cs" />
     <Compile Include="Almacen\CD_ACC_pro_producciondet.cs" />
     <Compile Include="Almacen\CD_ACC_pro_solicitudmat.cs" />
+    <Compile Include="Almacen\CD_alm_transferencias.cs" />
     <Compile Include="Almacen\CD_alm_almacenes.cs" />
     <Compile Include="Almacen\CD_alm_almacenesdoc.cs" />
     <Compile Include="Almacen\CD_alm_inventario.cs" />

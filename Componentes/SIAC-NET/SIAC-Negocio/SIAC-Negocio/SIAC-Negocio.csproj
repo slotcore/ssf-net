@@ -57,6 +57,7 @@
     <Compile Include="Almacen\CN_alm_inventarioimagen.cs" />
     <Compile Include="Almacen\CN_alm_inventariolotes.cs" />
     <Compile Include="Almacen\CN_alm_inventariounimed.cs" />
+    <Compile Include="Almacen\CN_alm_transferencias.cs" />
     <Compile Include="Almacen\CN_alm_movimientos.cs" />
     <Compile Include="Almacen\CN_alm_responsable.cs" />
     <Compile Include="Almacen\CN_alm_personal.cs" />

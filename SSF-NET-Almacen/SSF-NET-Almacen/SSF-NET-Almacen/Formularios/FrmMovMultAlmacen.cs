@@ -2012,6 +2012,5 @@ namespace SSF_NET_Almacen.Formularios
                 LblIdPro.Text = "";
             }
         }
-
     }
 }

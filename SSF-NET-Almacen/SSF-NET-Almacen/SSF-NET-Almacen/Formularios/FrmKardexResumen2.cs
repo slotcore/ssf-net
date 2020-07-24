@@ -187,9 +187,9 @@ namespace SSF_NET_Almacen.Formularios
         }
         private void CmdBuscar_Click(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(CboTipExi.SelectedValue) == 0)
+            if (Convert.ToInt32(CboAlmacen.SelectedValue) == 0)
             {
-                MessageBox.Show("¡ No ha especificado el tipo de existencia !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                MessageBox.Show("¡ No ha especificado el almacén !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboTipExi.Focus();
                 return;
             }
