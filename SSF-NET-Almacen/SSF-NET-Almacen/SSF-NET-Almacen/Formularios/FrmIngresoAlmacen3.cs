@@ -717,7 +717,7 @@ namespace SSF_NET_Almacen.Formularios
 
             if (n_QueHace == 1)
             {
-                if (objMovimientos.DocumentoExiste(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboTipDoc.SelectedValue), TxtNumSer.Text, TxtNumDoc.Text, 1) == true)
+                if (objMovimientos.DocumentoExiste(STU_SISTEMA.EMPRESAID, BE_Movimiento.n_idclipro, Convert.ToInt32(CboTipDoc.SelectedValue), TxtNumSer.Text, TxtNumDoc.Text, 1) == true)
                 {
                     MessageBox.Show(" El numero de documento " + TxtNumSer.Text + "-" + TxtNumDoc.Text + " ya existe, ingrese otro ", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     return booResultado;
@@ -2000,34 +2000,40 @@ namespace SSF_NET_Almacen.Formularios
                     {
                         foreach (var ocDet in l_OCDet)
                         {
-                            FgItems.Rows.Count = FgItems.Rows.Count + 1;
+                            double n_can_pend = ocDet.n_can - ocDet.n_canat;
 
-                            dtresult = funDatos.DataTableFiltrar(dtItems, "n_id = " + ocDet.n_idite + "");
-
-                            if (dtresult.Rows.Count != 0)
+                            if (n_can_pend > 0)
                             {
-                                // MOSTRAMOS LA DESCRIPCION DEL ITEM
-                                FgItems.SetData(n_filaflex, 2, dtresult.Rows[0]["c_despro"].ToString());
+                                FgItems.Rows.Count = FgItems.Rows.Count + 1;
 
-                                // MOSTRAMOS LA DESCRIPCION DEL TIPO DE ITEM
-                                dtresult = funDatos.DataTableFiltrar(dtTipoExis, "n_id = " + Convert.ToInt16(dtresult.Rows[0]["n_idtipexi"]) + "");
-                                FgItems.SetData(n_filaflex, 1, dtresult.Rows[0]["c_des"].ToString());
-                            }
+                                dtresult = funDatos.DataTableFiltrar(dtItems, "n_id = " + ocDet.n_idite + "");
 
-                            //MOSTRAMOS LA PRESENTACION DEL ITEM
-                            dtresult = funDatos.DataTableFiltrar(dtPresentaItem, "n_idite = " + ocDet.n_idite + " AND n_default = 1");
-                            if (dtresult.Rows.Count == 1)
-                            {
-                                FgItems.SetData(n_filaflex, 3, dtresult.Rows[0]["c_abrpre"].ToString());
+                                if (dtresult.Rows.Count != 0)
+                                {
+                                    // MOSTRAMOS LA DESCRIPCION DEL ITEM
+                                    FgItems.SetData(n_filaflex, 2, dtresult.Rows[0]["c_despro"].ToString());
+
+                                    // MOSTRAMOS LA DESCRIPCION DEL TIPO DE ITEM
+                                    dtresult = funDatos.DataTableFiltrar(dtTipoExis, "n_id = " + Convert.ToInt16(dtresult.Rows[0]["n_idtipexi"]) + "");
+                                    FgItems.SetData(n_filaflex, 1, dtresult.Rows[0]["c_des"].ToString());
+                                }
+
+                                //MOSTRAMOS LA PRESENTACION DEL ITEM
+                                dtresult = funDatos.DataTableFiltrar(dtPresentaItem, "n_idite = " + ocDet.n_idite + " AND n_default = 1");
+                                if (dtresult.Rows.Count == 1)
+                                {
+                                    FgItems.SetData(n_filaflex, 3, dtresult.Rows[0]["c_abrpre"].ToString());
+                                }
+                                else
+                                {
+                                    FgItems.SetData(n_filaflex, 3, "");
+                                }
+
+                                FgItems.SetData(n_filaflex, 4, n_can_pend.ToString("0.000000"));
+                                //FgItems.SetData(n_filaflex, 6, n_Cantidad.ToString("0.000000"));
+                                //FgItems.SetData(n_filaflex, 7, DateTime.Now.ToString("HH:mm"));
+                                n_filaflex = n_filaflex + 1;
                             }
-                            else
-                            {
-                                FgItems.SetData(n_filaflex, 3, "");
-                            }
-                            FgItems.SetData(n_filaflex, 4, ocDet.n_can.ToString("0.000000"));
-                            //FgItems.SetData(n_filaflex, 6, n_Cantidad.ToString("0.000000"));
-                            //FgItems.SetData(n_filaflex, 7, DateTime.Now.ToString("HH:mm"));
-                            n_filaflex = n_filaflex + 1;
                         }
 
                         booAgregando = false;

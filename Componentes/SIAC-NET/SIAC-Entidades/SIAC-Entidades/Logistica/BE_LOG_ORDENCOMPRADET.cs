@@ -15,6 +15,7 @@ namespace SIAC_Entidades.Logistica
         double _n_preuni;
         double _n_imptot;
         int _n_idtipafeigv;
+        private double _n_canat;
 
         public int n_idoc
         {
@@ -50,6 +51,12 @@ namespace SIAC_Entidades.Logistica
         {
             get { return _n_idtipafeigv; }
             set { _n_idtipafeigv = value; }
+        }
+
+        public double n_canat
+        {
+            get { return _n_canat; }
+            set { _n_canat = value; }
         }
     }
 }

@@ -147,6 +147,14 @@ namespace SIAC_Negocio.Logistica
                     e_ocdet.n_preuni = Convert.ToDouble(dtDet.Rows[n_row]["n_preuni"]);
                     e_ocdet.n_imptot = Convert.ToDouble(dtDet.Rows[n_row]["n_imptot"]);
                     e_ocdet.n_idtipafeigv = Convert.ToInt16(dtDet.Rows[n_row]["n_idtipafeigv"]);
+                    if (string.IsNullOrEmpty(dtDet.Rows[n_row]["n_canat"].ToString()))
+                    {
+                        e_ocdet.n_canat = 0;
+                    }
+                    else
+                    {
+                        e_ocdet.n_canat = Convert.ToDouble(dtDet.Rows[n_row]["n_canat"]);
+                    }
                     l_OCDet.Add(e_ocdet);
                 }
                 booresult = true;

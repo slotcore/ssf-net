@@ -58,6 +58,7 @@
             this.saldosPorLoteResumidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saldosPorLoteDetalladoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salidasAlmacenVariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.transferenciasEntreAlmacenesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maestrosToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -354,7 +355,9 @@
             this.toolStripStatusLabel8 = new System.Windows.Forms.ToolStripStatusLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
-            this.transferenciasEntreAlmacenesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem42 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem43 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem44 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -407,7 +410,8 @@
             this.reportesDeInventarioToolStripMenuItem,
             this.consultaDeLotesToolStripMenuItem,
             this.salidasAlmacenVariosToolStripMenuItem,
-            this.transferenciasEntreAlmacenesToolStripMenuItem});
+            this.transferenciasEntreAlmacenesToolStripMenuItem,
+            this.toolStripMenuItem42});
             this.almacenToolStripMenuItem.Enabled = false;
             this.almacenToolStripMenuItem.Name = "almacenToolStripMenuItem";
             this.almacenToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
@@ -604,6 +608,13 @@
             this.salidasAlmacenVariosToolStripMenuItem.Size = new System.Drawing.Size(275, 22);
             this.salidasAlmacenVariosToolStripMenuItem.Text = "Salidas Almacen Varios";
             this.salidasAlmacenVariosToolStripMenuItem.Click += new System.EventHandler(this.salidasAlmacenVariosToolStripMenuItem_Click);
+            // 
+            // transferenciasEntreAlmacenesToolStripMenuItem
+            // 
+            this.transferenciasEntreAlmacenesToolStripMenuItem.Name = "transferenciasEntreAlmacenesToolStripMenuItem";
+            this.transferenciasEntreAlmacenesToolStripMenuItem.Size = new System.Drawing.Size(275, 22);
+            this.transferenciasEntreAlmacenesToolStripMenuItem.Text = "Transferencias entre Almacenes";
+            this.transferenciasEntreAlmacenesToolStripMenuItem.Click += new System.EventHandler(this.transferenciasEntreAlmacenesToolStripMenuItem_Click);
             // 
             // comprasToolStripMenuItem
             // 
@@ -2955,12 +2966,28 @@
             // 
             this.kryptonManager1.GlobalPaletteMode = ComponentFactory.Krypton.Toolkit.PaletteModeManager.Office2010Silver;
             // 
-            // transferenciasEntreAlmacenesToolStripMenuItem
+            // toolStripMenuItem42
             // 
-            this.transferenciasEntreAlmacenesToolStripMenuItem.Name = "transferenciasEntreAlmacenesToolStripMenuItem";
-            this.transferenciasEntreAlmacenesToolStripMenuItem.Size = new System.Drawing.Size(275, 22);
-            this.transferenciasEntreAlmacenesToolStripMenuItem.Text = "Transferencias entre Almacenes";
-            this.transferenciasEntreAlmacenesToolStripMenuItem.Click += new System.EventHandler(this.transferenciasEntreAlmacenesToolStripMenuItem_Click);
+            this.toolStripMenuItem42.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem43,
+            this.toolStripMenuItem44});
+            this.toolStripMenuItem42.Name = "toolStripMenuItem42";
+            this.toolStripMenuItem42.Size = new System.Drawing.Size(275, 22);
+            this.toolStripMenuItem42.Text = "Control Procesos";
+            // 
+            // toolStripMenuItem43
+            // 
+            this.toolStripMenuItem43.Name = "toolStripMenuItem43";
+            this.toolStripMenuItem43.Size = new System.Drawing.Size(286, 22);
+            this.toolStripMenuItem43.Text = "Parte de Produccion sin Visar x Almacen";
+            this.toolStripMenuItem43.Click += new System.EventHandler(this.toolStripMenuItem43_Click);
+            // 
+            // toolStripMenuItem44
+            // 
+            this.toolStripMenuItem44.Name = "toolStripMenuItem44";
+            this.toolStripMenuItem44.Size = new System.Drawing.Size(286, 22);
+            this.toolStripMenuItem44.Text = "Producion Pendientes de Cierre";
+            this.toolStripMenuItem44.Click += new System.EventHandler(this.toolStripMenuItem44_Click);
             // 
             // FrmMenu10
             // 
@@ -3316,5 +3343,8 @@
         private System.Windows.Forms.ToolStripMenuItem aprobadoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem maestroDePersonalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem transferenciasEntreAlmacenesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem42;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem43;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem44;
     }
 }

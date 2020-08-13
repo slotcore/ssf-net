@@ -69,6 +69,8 @@
     <Compile Include="Almacen\BE_ALM_MOVIMIENTO_GROUP.cs" />
     <Compile Include="Almacen\BE_ALM_PERSONAL.cs" />
     <Compile Include="Contabilidad\BE_CON_CERRARMES.cs" />
+    <Compile Include="Contabilidad\BE_CON_COSTOPRODUCCION.cs" />
+    <Compile Include="Contabilidad\BE_CON_COSTOPRODUCCIONDET.cs" />
     <Compile Include="Contabilidad\BE_CON_DETRACCION.cs" />
     <Compile Include="Contabilidad\BE_CON_DIARIO.cs" />
     <Compile Include="Contabilidad\BE_CON_DOCCOMIMP.cs" />

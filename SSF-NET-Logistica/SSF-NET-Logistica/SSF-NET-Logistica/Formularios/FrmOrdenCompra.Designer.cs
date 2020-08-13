@@ -43,6 +43,7 @@
             this.Tab1 = new C1.Win.C1Command.C1DockingTab();
             this.c1DockingTabPage1 = new C1.Win.C1Command.C1DockingTabPage();
             this.Sc01 = new C1.Win.C1Sizer.C1Sizer();
+            this.DgLista = new C1.Win.C1TrueDBGrid.C1TrueDBGrid();
             this.panel4 = new System.Windows.Forms.Panel();
             this.CboMeses = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,7 +51,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
-            this.DgLista = new C1.Win.C1TrueDBGrid.C1TrueDBGrid();
             this.c1DockingTabPage2 = new C1.Win.C1Command.C1DockingTabPage();
             this.Sc02 = new C1.Win.C1Sizer.C1Sizer();
             this.c1Sizer1 = new C1.Win.C1Sizer.C1Sizer();
@@ -104,9 +104,9 @@
             this.c1DockingTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Sc01)).BeginInit();
             this.Sc01.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgLista)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgLista)).BeginInit();
             this.c1DockingTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Sc02)).BeginInit();
             this.Sc02.SuspendLayout();
@@ -121,6 +121,7 @@
             // ToolHerramientas
             // 
             this.ToolHerramientas.BackColor = System.Drawing.Color.White;
+            this.ToolHerramientas.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ToolHerramientas.ForeColor = System.Drawing.Color.Black;
             this.ToolHerramientas.GripMargin = new System.Windows.Forms.Padding(0);
             this.ToolHerramientas.ImageScalingSize = new System.Drawing.Size(32, 32);
@@ -271,9 +272,9 @@
             // 
             // Sc01
             // 
+            this.Sc01.Controls.Add(this.DgLista);
             this.Sc01.Controls.Add(this.panel4);
             this.Sc01.Controls.Add(this.panel2);
-            this.Sc01.Controls.Add(this.DgLista);
             this.Sc01.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Sc01.ForeColor = System.Drawing.Color.Black;
             this.Sc01.GridDefinition = "5.46875:False:True;85.546875:False:False;5.859375:False:True;\t99.1160220994475:Fa" +
@@ -283,6 +284,25 @@
             this.Sc01.Size = new System.Drawing.Size(905, 512);
             this.Sc01.TabIndex = 0;
             this.Sc01.Text = "c1Sizer1";
+            // 
+            // DgLista
+            // 
+            this.DgLista.BackColor = System.Drawing.Color.White;
+            this.DgLista.ForeColor = System.Drawing.Color.Black;
+            this.DgLista.GroupByCaption = "Drag a column header here to group by that column";
+            this.DgLista.Images.Add(((System.Drawing.Image)(resources.GetObject("DgLista.Images"))));
+            this.DgLista.Location = new System.Drawing.Point(4, 36);
+            this.DgLista.Name = "DgLista";
+            this.DgLista.PreviewInfo.Location = new System.Drawing.Point(0, 0);
+            this.DgLista.PreviewInfo.Size = new System.Drawing.Size(0, 0);
+            this.DgLista.PreviewInfo.ZoomFactor = 75D;
+            this.DgLista.PrintInfo.PageSettings = ((System.Drawing.Printing.PageSettings)(resources.GetObject("DgLista.PrintInfo.PageSettings")));
+            this.DgLista.Size = new System.Drawing.Size(897, 438);
+            this.DgLista.TabIndex = 3;
+            this.DgLista.Text = "c1TrueDBGrid1";
+            this.DgLista.DoubleClick += new System.EventHandler(this.DgLista_DoubleClick);
+            this.DgLista.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DgLista_KeyPress);
+            this.DgLista.PropBag = resources.GetString("DgLista.PropBag");
             // 
             // panel4
             // 
@@ -367,25 +387,6 @@
             this.label17.TabIndex = 0;
             this.label17.Text = "CONSULTA";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // DgLista
-            // 
-            this.DgLista.BackColor = System.Drawing.Color.White;
-            this.DgLista.ForeColor = System.Drawing.Color.Black;
-            this.DgLista.GroupByCaption = "Drag a column header here to group by that column";
-            this.DgLista.Images.Add(((System.Drawing.Image)(resources.GetObject("DgLista.Images"))));
-            this.DgLista.Location = new System.Drawing.Point(4, 36);
-            this.DgLista.Name = "DgLista";
-            this.DgLista.PreviewInfo.Location = new System.Drawing.Point(0, 0);
-            this.DgLista.PreviewInfo.Size = new System.Drawing.Size(0, 0);
-            this.DgLista.PreviewInfo.ZoomFactor = 75D;
-            this.DgLista.PrintInfo.PageSettings = ((System.Drawing.Printing.PageSettings)(resources.GetObject("DgLista.PrintInfo.PageSettings")));
-            this.DgLista.Size = new System.Drawing.Size(897, 438);
-            this.DgLista.TabIndex = 0;
-            this.DgLista.Text = "c1TrueDBGrid1";
-            this.DgLista.DoubleClick += new System.EventHandler(this.DgLista_DoubleClick);
-            this.DgLista.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DgLista_KeyPress);
-            this.DgLista.PropBag = resources.GetString("DgLista.PropBag");
             // 
             // c1DockingTabPage2
             // 
@@ -978,10 +979,10 @@
             this.c1DockingTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Sc01)).EndInit();
             this.Sc01.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DgLista)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DgLista)).EndInit();
             this.c1DockingTabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Sc02)).EndInit();
             this.Sc02.ResumeLayout(false);
@@ -1020,7 +1021,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label17;
-        private C1.Win.C1TrueDBGrid.C1TrueDBGrid DgLista;
         private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage2;
         private C1.Win.C1Sizer.C1Sizer Sc02;
         private C1.Win.C1Sizer.C1Sizer c1Sizer1;
@@ -1068,5 +1068,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox TxtInafec;
+        private C1.Win.C1TrueDBGrid.C1TrueDBGrid DgLista;
     }
 }

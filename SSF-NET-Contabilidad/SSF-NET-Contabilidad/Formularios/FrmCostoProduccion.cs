@@ -12,8 +12,8 @@ using SIAC_Entidades.Almacen;
 using SIAC_Entidades.Produccion;
 using SIAC_Entidades.Sistema;
 using SIAC_Negocio.Maestros;
-using SIAC_Negocio.Ventas;
 using SIAC_Negocio.Almacen;
+using SIAC_Negocio.Contabilidad;
 using SIAC_Negocio.Sistema;
 using SIAC_Negocio.Produccion;
 using SIAC_Negocio.Sunat;
@@ -25,10 +25,11 @@ using System.Data.OleDb;
 using System.Configuration;
 using SIAC_Entidades.Logistica;
 using SIAC_Negocio.Logistica;
+using SIAC_Entidades.Contabilidad;
 
-namespace SSF_NET_Almacen.Formularios
+namespace SSF_NET_Contabilidad.Formularios
 {
-    public partial class FrmTransferenciaAlmacen : Form
+    public partial class FrmCostoProduccion : Form
     {
         // VARIABLES PUBLICAS
         public MySqlConnection mysConec = new MySqlConnection();
@@ -47,7 +48,7 @@ namespace SSF_NET_Almacen.Formularios
         CN_sys_formulariovista objFormVis = new CN_sys_formulariovista();
         CN_sys_formulario objForm = new CN_sys_formulario();
         CN_sys_empresa funsys = new CN_sys_empresa();
-        CN_alm_transferencias objTransferencias = new CN_alm_transferencias();
+        CN_con_costoproduccion objCostoProduccion = new CN_con_costoproduccion();
         CN_alm_inventario objItems = new CN_alm_inventario();
         CN_sun_unimed objUniMed = new CN_sun_unimed();
         CN_mae_meses objMeses = new CN_mae_meses();
@@ -63,15 +64,15 @@ namespace SSF_NET_Almacen.Formularios
         Cls_DBGrid funDbGrid = new Cls_DBGrid();
 
         // ENTIDADES LOCALES
-        BE_ALM_TRANSFERENCIAS BE_Transferencia = new BE_ALM_TRANSFERENCIAS();
+        BE_CON_COSTOPRODUCCION BE_CostoProduccion = new BE_CON_COSTOPRODUCCION();
         BE_SYS_EMPRESA entEmp = new BE_SYS_EMPRESA();
 
         // DATATABLE LOCALES
-        DataTable dtAlmacenesOrigen = new DataTable();
+        DataTable dtConfiguracionCosto = new DataTable();
         DataTable dtAlmacenesDestino = new DataTable();
         DataTable dtTipoExis = new DataTable();
         DataTable dtResponsables = new DataTable();
-        DataTable dtTransferencias = new DataTable();
+        DataTable dtCostoProduccion = new DataTable();
         DataTable dtItems = new DataTable();
         DataTable dtMoviDetalle = new DataTable();
         DataTable dtForm = new DataTable();
@@ -91,14 +92,14 @@ namespace SSF_NET_Almacen.Formularios
         int n_NumFilasDocumento = 30;                                                   // LE INDICAMOS AL FORMULARIO EL NUMERO MAXIMO DE FILAS PARA EL DETALLE
         int n_QueHace = 3;                                                              // INDICA EN QUE ESTADO SE ENCUENTRA EL FORMULARIO
         string[,] arrCabeceraDg1 = new string[10, 4];                                    // ARRAY PARA MOSTRAR LAS COLUMNAS DEL DATAGRID PRINCIPAL
-        string[,] arrCabeceraFlex1 = new string[9, 5];
+        string[,] arrCabeceraFlex1 = new string[11, 5];
         bool booSeEjecuto = false;
         bool booAgregando = false;
         string strNumerovalidos = "1234567890." + (char)8;                                        // + (char)8;
         string strCaracteres = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ1234567890-()º.,/$' !!·%/()=?¿*^" + (char)8;
         int n_ItemProducido;                                                            // ESTA VARIABLE ALMACENARA EL ID DEL ITEM PRODUCIDO CUANDO SE SELECCIONE UNA ORDEN DE PRODUCCION
         
-        public FrmTransferenciaAlmacen()
+        public FrmCostoProduccion()
         {
             InitializeComponent();
         }
@@ -114,8 +115,7 @@ namespace SSF_NET_Almacen.Formularios
         void CargarCombos()
         {
             DataTableCargar();
-            funDatos.ComboBoxCargarDataTable(CboAlmacenOrigen, dtAlmacenesOrigen, "n_id", "c_des");
-            funDatos.ComboBoxCargarDataTable(CboAlmacenDestino, dtAlmacenesDestino, "n_id", "c_des");
+            funDatos.ComboBoxCargarDataTable(CboConfiguracion, dtConfiguracionCosto, "n_id", "c_des");
             funDatos.ComboBoxCargarDataTable(CboResponsable, dtResponsables, "n_id", "destra");
             funDatos.ComboBoxCargarDataTable(CboMeses, dtMeses, "n_id", "c_des");
         }
@@ -140,16 +140,14 @@ namespace SSF_NET_Almacen.Formularios
 
             LblTitulo2.Text = "DETALLE DEL REGISTRO";
 
-            arrCabeceraFlex1[0, 0] = "Tipo Item";
+            arrCabeceraFlex1[0, 0] = "Parte Producción";
             arrCabeceraFlex1[0, 1] = "100";
             arrCabeceraFlex1[0, 2] = "S";
             arrCabeceraFlex1[0, 3] = "";
             arrCabeceraFlex1[0, 4] = "c_tipexides";
 
             arrCabeceraFlex1[1, 0] = "Item";
-            if (N_INGTRAZABALIDAD == 1) { arrCabeceraFlex1[1, 1] = "280"; }
-            if (N_INGTRAZABALIDAD == 0) { arrCabeceraFlex1[1, 1] = "400"; }
-            //arrCabeceraFlex1[1, 1] = "280";
+            arrCabeceraFlex1[1, 1] = "280";
             arrCabeceraFlex1[1, 2] = "S";
             arrCabeceraFlex1[1, 3] = "";
             arrCabeceraFlex1[1, 4] = "c_itedes";
@@ -160,47 +158,53 @@ namespace SSF_NET_Almacen.Formularios
             arrCabeceraFlex1[2, 3] = "";
             arrCabeceraFlex1[2, 4] = "c_itepredes";
 
-            arrCabeceraFlex1[3, 0] = "Nº Lote";
-            if (N_INGTRAZABALIDAD == 1) { arrCabeceraFlex1[3, 1] = "80"; }
-            if (N_INGTRAZABALIDAD == 0) { arrCabeceraFlex1[3, 1] = "0"; }
-            //arrCabeceraFlex1[3, 1] = "75";
+            arrCabeceraFlex1[3, 0] = "Receta";
+            arrCabeceraFlex1[3, 1] = "75";
             arrCabeceraFlex1[3, 2] = "C";
             arrCabeceraFlex1[3, 3] = "";
             arrCabeceraFlex1[3, 4] = "n_numlot";
 
-            arrCabeceraFlex1[4, 0] = "Cantidad en Almacen";
+            arrCabeceraFlex1[4, 0] = "Factor Dist.";
             arrCabeceraFlex1[4, 1] = "70";
-            arrCabeceraFlex1[4, 2] = "D";
-            arrCabeceraFlex1[4, 3] = "0.000000";
+            arrCabeceraFlex1[4, 2] = "C";
+            arrCabeceraFlex1[4, 3] = "";
             arrCabeceraFlex1[4, 4] = "n_can";
 
-            arrCabeceraFlex1[5, 0] = "Cantidad Requerida";
+            arrCabeceraFlex1[5, 0] = "Cantidad";
             arrCabeceraFlex1[5, 1] = "70";
             arrCabeceraFlex1[5, 2] = "D";
-            arrCabeceraFlex1[5, 3] = "0.000000";
+            arrCabeceraFlex1[5, 3] = "0.00";
             arrCabeceraFlex1[5, 4] = "n_can";
 
-            arrCabeceraFlex1[6, 0] = "Precio Unitario";
-            if (N_INGPRECIO == 1) { arrCabeceraFlex1[6, 1] = "70"; }
-            if (N_INGPRECIO == 0) { arrCabeceraFlex1[6, 1] = "0"; }
-            //arrCabeceraFlex1[6, 1] = "70";
+            arrCabeceraFlex1[6, 0] = "Costo MP";
+            arrCabeceraFlex1[6, 1] = "70";
             arrCabeceraFlex1[6, 2] = "D";
             arrCabeceraFlex1[6, 3] = "0.00";
             arrCabeceraFlex1[6, 4] = "n_can";
 
-            arrCabeceraFlex1[7, 0] = "Imp. Total";
-            if (N_INGPRECIO == 1) { arrCabeceraFlex1[7, 1] = "70"; }
-            if (N_INGPRECIO == 0) { arrCabeceraFlex1[7, 1] = "0"; }
-            //arrCabeceraFlex1[7, 1] = "70";
+            arrCabeceraFlex1[7, 0] = "Costo MOD";
+            arrCabeceraFlex1[7, 1] = "70";
             arrCabeceraFlex1[7, 2] = "D";
             arrCabeceraFlex1[7, 3] = "0.00";
             arrCabeceraFlex1[7, 4] = "n_can";
 
-            arrCabeceraFlex1[8, 0] = "Hora Entrega";
-            arrCabeceraFlex1[8, 1] = "60";
-            arrCabeceraFlex1[8, 2] = "H";
-            arrCabeceraFlex1[8, 3] = "HH:mm";
+            arrCabeceraFlex1[8, 0] = "Costo Primo";
+            arrCabeceraFlex1[8, 1] = "70";
+            arrCabeceraFlex1[8, 2] = "D";
+            arrCabeceraFlex1[8, 3] = "0.00";
             arrCabeceraFlex1[8, 4] = "n_can";
+
+            arrCabeceraFlex1[9, 0] = "Costo CIF";
+            arrCabeceraFlex1[9, 1] = "70";
+            arrCabeceraFlex1[9, 2] = "D";
+            arrCabeceraFlex1[9, 3] = "0.00";
+            arrCabeceraFlex1[9, 4] = "n_can";
+
+            arrCabeceraFlex1[10, 0] = "Costo Total";
+            arrCabeceraFlex1[10, 1] = "70";
+            arrCabeceraFlex1[10, 2] = "D";
+            arrCabeceraFlex1[10, 3] = "0.00";
+            arrCabeceraFlex1[10, 4] = "n_can";
 
             funFlex.FlexMostrarDatos(FgItems, arrCabeceraFlex1, dtMoviDetalle, 2, false);
 
@@ -219,7 +223,7 @@ namespace SSF_NET_Almacen.Formularios
             dtTipoExis = objTipoExi.Listar();
 
             ObjAlm.mysConec = mysConec;
-            dtAlmacenesOrigen = ObjAlm.ListarNuevo(STU_SISTEMA.EMPRESAID, Convert.ToInt16(funFunciones.NulosN(dtsetup.Rows[0]["n_almunialmacenes"])));                             // 
+            dtConfiguracionCosto = ObjAlm.ListarNuevo(STU_SISTEMA.EMPRESAID, Convert.ToInt16(funFunciones.NulosN(dtsetup.Rows[0]["n_almunialmacenes"])));                             // 
             dtAlmacenesDestino = ObjAlm.ListarNuevo(STU_SISTEMA.EMPRESAID, Convert.ToInt16(funFunciones.NulosN(dtsetup.Rows[0]["n_almunialmacenes"])));                             // 
 
             ObjRes.mysConec = mysConec;
@@ -231,8 +235,8 @@ namespace SSF_NET_Almacen.Formularios
             objMeses.mysConec = mysConec;
             dtMeses = objMeses.Listar();
 
-            objTransferencias.mysConec = mysConec;
-            dtTransferencias = objTransferencias.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO);
+            objCostoProduccion.mysConec = mysConec;
+            dtCostoProduccion = objCostoProduccion.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO);
 
             ObjAlmUniMed.mysConec = mysConec;
             dtPresentaItem = ObjAlmUniMed.Listar();
@@ -257,41 +261,22 @@ namespace SSF_NET_Almacen.Formularios
         void ListarItems()
         {
             MostrarEstadoMes(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO);
-            LblNumReg.Text = (dtTransferencias.Rows.Count).ToString();
-            funDbGrid.DG_FormatearGrid(DgLista, arrCabeceraDg1, dtTransferencias, true);
+            LblNumReg.Text = (dtCostoProduccion.Rows.Count).ToString();
+            funDbGrid.DG_FormatearGrid(DgLista, arrCabeceraDg1, dtCostoProduccion, true);
         }
 
         void VerRegistro(int n_IdRegistro)
         {
-            objTransferencias.mysConec = mysConec;
-            BE_Transferencia = objTransferencias.TraerRegistro(n_IdRegistro);
+            objCostoProduccion.mysConec = mysConec;
+            BE_CostoProduccion = objCostoProduccion.TraerRegistro(n_IdRegistro);
 
-            txtFchIng.Text = BE_Transferencia.d_fching.ToString();
-            TxtFchDoc.Text = BE_Transferencia.d_fchdoc.ToString();
-            TxtNumDoc.Text = BE_Transferencia.c_numdoc;
-            TxtNumSer.Text = BE_Transferencia.c_numser;            
-            CboAlmacenOrigen.SelectedValue = BE_Transferencia.n_idalmorig;
-            CboAlmacenDestino.SelectedValue = BE_Transferencia.n_idalmdest;
-            TxtObs.Text = BE_Transferencia.c_obs;            
-            CboResponsable.SelectedValue = BE_Transferencia.n_idresp;
-            
-            funFlex.FlexMostrarDatos(FgItems, arrCabeceraFlex1, BE_Transferencia.lst_items, 2, false);
+            TxtNumDoc.Text = BE_CostoProduccion.c_numdoc;
+            TxtNumSer.Text = BE_CostoProduccion.c_numser;            
+            CboConfiguracion.SelectedValue = BE_CostoProduccion.n_idconfigval;
+            TxtObs.Text = BE_CostoProduccion.c_obs;            
+            CboResponsable.SelectedValue = BE_CostoProduccion.n_idresp;
 
-            int n_fila = 2;
-            foreach (BE_ALM_TRANSFERENCIASDET element in BE_Transferencia.lst_items)
-            {
-                FgItems.Rows.Count = FgItems.Rows.Count + 1;
-                FgItems.SetData(n_fila, 1, element.c_tipexides);
-                FgItems.SetData(n_fila, 2, element.c_itedes);
-                FgItems.SetData(n_fila, 3, element.c_itepredes);
-                FgItems.SetData(n_fila, 4, element.c_numlot);
-                FgItems.SetData(n_fila, 6, element.n_can);
-                FgItems.SetData(n_fila, 7, element.n_preuni);
-                FgItems.SetData(n_fila, 8, element.n_pretot);
-                FgItems.SetData(n_fila, 9, element.h_horsal);
-
-                n_fila++;
-            }
+            bECONCOSTOPRODUCCIONDETBindingSource.DataSource = BE_CostoProduccion.lst_items;
         }
         void Nuevo()
         {
@@ -306,35 +291,25 @@ namespace SSF_NET_Almacen.Formularios
             FgItems.Rows.Count = 2;
             booAgregando = false;
             FgItems.Cols[2].ComboList = "...";
-            CboAlmacenOrigen.SelectedValue = Convert.ToInt16(N_IDALMACEN);
-            txtFchIng.Focus();
+            CboConfiguracion.SelectedValue = Convert.ToInt16(N_IDALMACEN);
         }
         void Blanquea()
         {
-            txtFchIng.Text = "";
-            TxtFchDoc.Text = "";
             TxtNumSer.Text = "";
             TxtNumDoc.Text = "";
             TxtObs.Text = "";
             
-            CboAlmacenDestino.SelectedValue = 0;            
-            CboAlmacenOrigen.SelectedValue = 0;
+            CboConfiguracion.SelectedValue = 0;
             CboResponsable.SelectedValue = 0;
             
         }
         void Bloquea()
         {
-            txtFchIng.Enabled = !txtFchIng.Enabled;
-            TxtFchDoc.Enabled = !TxtFchDoc.Enabled;
             TxtNumSer.Enabled = !TxtNumSer.Enabled;
             TxtNumDoc.Enabled = !TxtNumDoc.Enabled;
             TxtObs.Enabled = !TxtObs.Enabled;
-            CboAlmacenDestino.Enabled = !CboAlmacenDestino.Enabled;            
-            CboAlmacenOrigen.Enabled = !CboAlmacenOrigen.Enabled;
+            CboConfiguracion.Enabled = !CboConfiguracion.Enabled;
             CboResponsable.Enabled = !CboResponsable.Enabled;
-            
-            CmdAddItem.Enabled = !CmdAddItem.Enabled;
-            CmdDelItem.Enabled = !CmdDelItem.Enabled;
         }
         void MostrarEstadoMes(int n_IdEmpresa, int n_IdMes)
         {
@@ -396,7 +371,7 @@ namespace SSF_NET_Almacen.Formularios
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
             Tab1.SelectedIndex = 1;
-            txtFchIng.Focus();
+            CboMeses.Focus();
             booAgregando = false;
         }
         bool EliminarRegistro()
@@ -404,28 +379,28 @@ namespace SSF_NET_Almacen.Formularios
             bool booResult = false;
             int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
-            objTransferencias.mysConec = mysConec;
-            BE_Transferencia = objTransferencias.TraerRegistro(intIdRegistro);
+            objCostoProduccion.mysConec = mysConec;
+            BE_CostoProduccion = objCostoProduccion.TraerRegistro(intIdRegistro);
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
             if (DialogResult.Yes == Rpta)
             {
                 //objMovimientos.AccConec = AccConec;
-                if (objTransferencias.Eliminar(intIdRegistro) == true)     // INDICAMOS 1 = SALIDA
+                if (objCostoProduccion.Eliminar(intIdRegistro) == true)     // INDICAMOS 1 = SALIDA
                 {
                     booResult = true;
                     MessageBox.Show("¡ El registro se elimino con exito !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
 
                     // VOLVEMOS A CARGAR EL DATATABLE dtItems CON LOS DATOS DEL SERVIDOR
-                    objTransferencias.mysConec = mysConec;
-                    dtTransferencias = objTransferencias.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO);
+                    objCostoProduccion.mysConec = mysConec;
+                    dtCostoProduccion = objCostoProduccion.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO);
                     // MOSTRAMOS LOS DATOS EN LA GRILLA
                     ListarItems();
                 }
                 else
                 {
-                    MessageBox.Show("¡ No se pudo eliminar el registro por el siguiente motivo ! " + objTransferencias.StrErrorMensaje, "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    MessageBox.Show("¡ No se pudo eliminar el registro por el siguiente motivo ! " + objCostoProduccion.StrErrorMensaje, "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 }
             }
             return booResult;
@@ -451,35 +426,32 @@ namespace SSF_NET_Almacen.Formularios
 
             if (n_QueHace == 1)
             {
-                if (objTransferencias.DocumentoExiste(STU_SISTEMA.EMPRESAID, TxtNumSer.Text, TxtNumDoc.Text) == true)
+                if (objCostoProduccion.DocumentoExiste(STU_SISTEMA.EMPRESAID, TxtNumSer.Text, TxtNumDoc.Text) == true)
                 {
                     MessageBox.Show(" El numero de documento " + TxtNumSer.Text + "-" + TxtNumDoc.Text + " ya existe, ingrese otro ", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     return booResultado;
                 }
-                booResultado = objTransferencias.Insertar(BE_Transferencia);
+                booResultado = objCostoProduccion.Insertar(BE_CostoProduccion);
             }
 
             if (n_QueHace == 2)
             {
                 //objMovimientos.AccConec = AccConec;
-                booResultado = objTransferencias.Actualizar(BE_Transferencia);
+                booResultado = objCostoProduccion.Actualizar(BE_CostoProduccion);
             }
             return booResultado;
         }
         void AsignarEntidad()
         {
-            BE_Transferencia = new BE_ALM_TRANSFERENCIAS();
-            BE_Transferencia.n_idemp = STU_SISTEMA.EMPRESAID;
-            BE_Transferencia.d_fchdoc = Convert.ToDateTime(TxtFchDoc.Text);
-            BE_Transferencia.d_fching = Convert.ToDateTime(txtFchIng.Text);
-            BE_Transferencia.c_numser = TxtNumSer.Text;
-            BE_Transferencia.c_numdoc = TxtNumDoc.Text;
-            BE_Transferencia.n_idalmorig = Convert.ToInt16(CboAlmacenOrigen.SelectedValue);
-            BE_Transferencia.n_idalmdest = Convert.ToInt16(CboAlmacenDestino.SelectedValue);
-            BE_Transferencia.n_anotra = STU_SISTEMA.ANOTRABAJO;
-            BE_Transferencia.n_idmes = STU_SISTEMA.MESTRABAJO;
-            BE_Transferencia.c_obs = TxtObs.Text; ;            
-            BE_Transferencia.n_idresp =  Convert.ToInt16(CboResponsable.SelectedValue);
+            BE_CostoProduccion = new BE_CON_COSTOPRODUCCION();
+            BE_CostoProduccion.n_idemp = STU_SISTEMA.EMPRESAID;
+            BE_CostoProduccion.c_numser = TxtNumSer.Text;
+            BE_CostoProduccion.c_numdoc = TxtNumDoc.Text;
+            BE_CostoProduccion.n_idconfigval = Convert.ToInt16(CboConfiguracion.SelectedValue);
+            BE_CostoProduccion.n_anotra = STU_SISTEMA.ANOTRABAJO;
+            BE_CostoProduccion.n_idmes = STU_SISTEMA.MESTRABAJO;
+            BE_CostoProduccion.c_obs = TxtObs.Text; ;            
+            BE_CostoProduccion.n_idresp =  Convert.ToInt16(CboResponsable.SelectedValue);
             booAgregando = true;
 
             if (FgItems.Rows.Count > 2)
@@ -489,61 +461,26 @@ namespace SSF_NET_Almacen.Formularios
                 {
                     if (funFunciones.NulosC(FgItems.GetData(n_fila, 1)) != "")
                     {
-                        BE_ALM_TRANSFERENCIASDET BE_Detalle = new BE_ALM_TRANSFERENCIASDET();
+                        BE_CON_COSTOPRODUCCIONDET BE_Detalle = new BE_CON_COSTOPRODUCCIONDET();
 
-                        BE_Detalle.n_idtrans = 0;
-                        BE_Detalle.n_can = Convert.ToDouble(FgItems.GetData(n_fila, 6).ToString());
+                        BE_Detalle.n_idcostoprod = 0;
+                        BE_Detalle.n_can = Convert.ToDouble(FgItems.GetData(n_fila, 6));
+                        BE_Detalle.n_costomp = Convert.ToDouble(FgItems.GetData(n_fila, 7));
+                        BE_Detalle.n_costomod = Convert.ToDouble(FgItems.GetData(n_fila, 8));
+                        BE_Detalle.n_costocif = Convert.ToDouble(FgItems.GetData(n_fila, 10));
+                        BE_Detalle.n_idparteprod = Convert.ToInt32(FgItems.GetData(n_fila, 12));
+                        BE_Detalle.n_idmov = Convert.ToInt32(FgItems.GetData(n_fila, 13));
 
-                        string c_tipexides = FgItems.GetData(n_fila, 1).ToString();
-                        string c_itedes = FgItems.GetData(n_fila, 2).ToString();
-                        string c_itepredes = FgItems.GetData(n_fila, 3).ToString();
-                        BE_Detalle.c_numlot = funFunciones.NulosC(FgItems.GetData(n_fila, 4));
-
-                        DataTable DtFiltro = new DataTable();
-
-                        // FILTRAMOS EL ITEM DE LA FILA PARA OBTENER EL ID  
-                        string strCadenaFiltro = "c_despro = '" + c_itedes + "'";
-                        DtFiltro = funDatos.DataTableFiltrar(dtItems, strCadenaFiltro);
-                        BE_Detalle.n_idite = Convert.ToInt32(DtFiltro.Rows[0]["n_id"].ToString());
-
-                        // FILTRAMOS LA PRESENTACION PARA OBTENER SU ID
-                        strCadenaFiltro = "c_abrpre = '" + c_itepredes + "' AND n_idite = " + BE_Detalle.n_idite + "";
-                        DtFiltro = funDatos.DataTableFiltrar(dtPresentaItem, strCadenaFiltro);
-                        BE_Detalle.n_idpre = Convert.ToInt32(DtFiltro.Rows[0]["n_id"].ToString());
-
-                        // FILTRAMOS EL TIPO DE PRODUCTO PARA OBTENER SU id
-                        strCadenaFiltro = "c_des = '" + c_tipexides + "'";
-                        DtFiltro = funDatos.DataTableFiltrar(dtTipoExis, strCadenaFiltro);
-                        BE_Detalle.n_idtippro = Convert.ToInt32(DtFiltro.Rows[0]["n_id"].ToString());
-                        BE_Detalle.h_horsal = funFunciones.NulosC(FgItems.GetData(n_fila, 9));
-                        BE_Detalle.n_preuni = Convert.ToDouble(FgItems.GetData(n_fila, 7));
-                        BE_Detalle.n_pretot = Convert.ToDouble(FgItems.GetData(n_fila, 8));
-
-                        BE_Transferencia.lst_items.Add(BE_Detalle);
+                        BE_CostoProduccion.lst_items.Add(BE_Detalle);
                     }
                 }
             }
             booAgregando = false;
         }
+
         bool CamposOK()
         {
             bool booEstado = true;
-
-            if (txtFchIng.Text == "")
-            {
-                MessageBox.Show("¡ No ha especificado la fecha de ingreso !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                txtFchIng.Focus();
-                booEstado = false;
-                return booEstado;
-            }
-
-            if (TxtFchDoc.Text == "")
-            {
-                MessageBox.Show("¡ No ha especificado la fecha del documento !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                TxtFchDoc.Focus();
-                booEstado = false;
-                return booEstado;
-            }
 
             if (TxtNumSer.Text == "")
             {
@@ -561,34 +498,18 @@ namespace SSF_NET_Almacen.Formularios
                 return booEstado;
             }
 
-            if (Convert.ToInt16(CboAlmacenOrigen.SelectedValue) == 0)
+            if (Convert.ToInt32(CboConfiguracion.SelectedValue) == 0)
             {
-                MessageBox.Show("¡ No ha especificado el almacen de Origen !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                CboAlmacenOrigen.Focus();
+                MessageBox.Show("¡ No ha especificado la configuración de valorización !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                CboConfiguracion.Focus();
                 booEstado = false;
                 return booEstado;
             }
 
-            if (Convert.ToInt16(CboAlmacenDestino.SelectedValue) == 0)
+            if (Convert.ToInt32(CboResponsable.SelectedValue) == 0)
             {
-                MessageBox.Show("¡ No ha especificado el almacen de Destino !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                CboAlmacenDestino.Focus();
-                booEstado = false;
-                return booEstado;
-            }
-
-            if (Convert.ToInt16(CboAlmacenDestino.SelectedValue) == Convert.ToInt16(CboAlmacenOrigen.SelectedValue))
-            {
-                MessageBox.Show("¡ Almacén origen y destino no pueden ser iguales !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                CboAlmacenDestino.Focus();
-                booEstado = false;
-                return booEstado;
-            }
-
-            if (Convert.ToInt16(Convert.ToDateTime(TxtFchDoc.Text).ToString("MM")) != Convert.ToInt16(CboMeses.SelectedValue))
-            {
-                MessageBox.Show("¡ La fecha del documento de salida no coincide con el mes de trabajo !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                TxtFchDoc.Focus();
+                MessageBox.Show("¡ No ha especificado el reponsable !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                CboConfiguracion.Focus();
                 booEstado = false;
                 return booEstado;
             }
@@ -639,21 +560,21 @@ namespace SSF_NET_Almacen.Formularios
             }
             else
             {
-                MessageBox.Show("¡ No ha especificado ningun item para este ingreso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                MessageBox.Show("¡ No ha especificado ningun item para este proceso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
                 return booEstado;
             }
             return booEstado;
         }
 
-        private void FrmSalidaAlmacen3_Activated(object sender, EventArgs e)
+        private void FrmCostoProduccion_Activated(object sender, EventArgs e)
         {
             if (booSeEjecuto == false)
             {
                 booSeEjecuto = true;
                 ListarItems();
 
-                if (dtTransferencias.Rows.Count == 0)
+                if (dtCostoProduccion.Rows.Count == 0)
                 {
                     DialogResult Rpta = MessageBox.Show("No se han encontrado registros, ¿ Desea agregar uno ahora ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -689,8 +610,8 @@ namespace SSF_NET_Almacen.Formularios
             if (Grabar() == true)
             {
                 // VOLVEMOS A CARGAR EL DATATABLE dtItems CON LOS DATOS DEL SERVIDOR
-                objTransferencias.mysConec = mysConec;
-                dtTransferencias = objTransferencias.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO);
+                objCostoProduccion.mysConec = mysConec;
+                dtCostoProduccion = objCostoProduccion.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO);
                 // MOSTRAMOS LOS DATOS EN LA GRILLA
                 ListarItems();
 
@@ -724,13 +645,13 @@ namespace SSF_NET_Almacen.Formularios
             dtTipoExis = null;
 
             ObjAlm = null;
-            dtAlmacenesOrigen = null;
+            dtConfiguracionCosto = null;
 
             ObjRes = null;
             dtResponsables = null;
 
-            objTransferencias = null;
-            dtTransferencias = null;
+            objCostoProduccion = null;
+            dtCostoProduccion = null;
 
             objFormVis = null;
             objFormVis = null;
@@ -766,89 +687,6 @@ namespace SSF_NET_Almacen.Formularios
             booAgregando = false;
         }
 
-        private void FgItems_KeyPressEdit(object sender, C1.Win.C1FlexGrid.KeyPressEditEventArgs e)
-        {
-            if (e.Col == 4)
-            {
-                if (!strCaracteres.Contains(e.KeyChar))
-                {
-                    e.Handled = true;
-                }
-            }
- 
-        }
-
-        private void FgItems_EnterCell(object sender, EventArgs e)
-        {
-            if (FgItems.Rows.Count == 2) { return; }
-            if (n_QueHace == 3)
-            {
-                FgItems.AllowEditing = false; return;
-            }
-            if (booAgregando == true) { return; }
-
-            DataTable dtResul = new DataTable();
-            int n_idtipproducto = 0;
-            string strDesTipPro = "";
-
-            if (FgItems.Col == 1)
-            {
-                if (FgItems.Row >= 2)
-                {
-                    if (funFunciones.NulosC(FgItems.GetData(FgItems.Row - 1, 1)) == "") { FgItems.AllowEditing = false; return; }
-                }
-                funFlex.FlexColumnaCombo(FgItems, dtTipoExis, "c_des", 1);
-            }
-
-            if (FgItems.Col == 2)
-            {
-                FgItems.AllowEditing = true;
-            }
-
-            if (FgItems.Col == 3)
-            {
-                // OBTENEMOS LA DESCRIPCIO DEL ITEM
-                strDesTipPro = funFunciones.NulosC(FgItems.GetData(FgItems.Row, 2));
-
-                if (strDesTipPro == "")
-                {
-                    FgItems.AllowEditing = false;
-                    funFlex.FlexColumnaCombo(FgItems, dtResul, "c_despro", 2);
-                    return;
-                }
-
-                // OBTENEMOS EL ID DEL TIPO DE PRODUCTO
-                dtResul = funDatos.DataTableFiltrar(dtItems, "c_despro = '" + strDesTipPro + "'");
-                if (dtResul.Rows.Count != 0)
-                {
-                    n_idtipproducto = Convert.ToInt16(dtResul.Rows[0]["n_id"].ToString());
-
-                    // FILTRAMOS LAS PRESENTACIONES DEL ITEM SELECCIONADO
-                    dtResul = funDatos.DataTableFiltrar(dtPresentaItem, "n_idite = " + n_idtipproducto + "");
-                    funFlex.FlexColumnaCombo(FgItems, dtResul, "c_abrpre", 3);    // ITEMS
-                }
-            }
-
-            if (FgItems.Col == 4)
-            {
-                // OBTENEMOS LA DESCRIPCIO DEL ITEM
-                strDesTipPro = funFunciones.NulosC(FgItems.GetData(FgItems.Row, 3));
-
-                if (strDesTipPro == "")
-                {
-                    FgItems.AllowEditing = false;
-                    return;
-                }
-            }
-            if (FgItems.Col == 5)
-            {
-                FgItems.AllowEditing = false;
-                return;
-            }
- 
-            FgItems.AllowEditing = true;
-        }
-
         private void CmdDelItem_Click(object sender, EventArgs e)
         {
             if (FgItems.Rows.Count > 2)
@@ -858,37 +696,6 @@ namespace SSF_NET_Almacen.Formularios
             }
         }
 
-        private void CmdAddItem_Click(object sender, EventArgs e)
-        {
-            bool booAgregarUnidad = true;
-
-            if (Convert.ToString(FgItems.GetData(FgItems.Rows.Count - 1, 1)) == "") booAgregarUnidad = false;
-            if (Convert.ToString(FgItems.GetData(FgItems.Rows.Count - 1, 2)) == "") booAgregarUnidad = false;
-            if (Convert.ToString(FgItems.GetData(FgItems.Rows.Count - 1, 3)) == "") booAgregarUnidad = false;
-            if (Convert.ToString(FgItems.GetData(FgItems.Rows.Count - 1, 4)) == "") booAgregarUnidad = false;
-
-
-            if (booAgregarUnidad == true)
-            {
-                FgItems.Rows.Count = FgItems.Rows.Count + 1;
-                FgItems.Focus();
-            }
-            else
-            {
-                MessageBox.Show("No puede agregar mas items hasta que no haya completado el item anterior", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-            }
-        }
-
-        private void FgItems_RowColChange(object sender, EventArgs e)
-        {
-            if (n_QueHace == 3)
-            {
-                FgItems.AllowEditing = false; return;
-            }
-
-            if (booAgregando == true) { return; }
-        }
-
         private void DgLista_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
@@ -896,15 +703,10 @@ namespace SSF_NET_Almacen.Formularios
                 DataTable dtResult = new DataTable();
 
                 string c_CadFiltro = funDbGrid.DG_LeerCondicionesFiltro(DgLista);
-                dtResult = funDbGrid.DG_Filtrar(dtTransferencias, c_CadFiltro, DgLista);
+                dtResult = funDbGrid.DG_Filtrar(dtCostoProduccion, c_CadFiltro, DgLista);
                 DgLista.DataSource = dtResult;
                 LblNumReg.Text = (dtResult.Rows.Count).ToString();
             }
-        }
-
-        private void FrmSalidaAlmacen3_Resize(object sender, EventArgs e)
-        {
-            //Tab_Dimensionar(Tab1, this.Height - 81, this.Width - 18);
         }
 
         private void TxtNumSer_TextChanged(object sender, EventArgs e)
@@ -947,99 +749,6 @@ namespace SSF_NET_Almacen.Formularios
             }
         }
 
-        private void FgItems_CellChanged(object sender, C1.Win.C1FlexGrid.RowColEventArgs e)
-        {
-            DataTable dtResul;
-            string c_despro;
-            int n_idpro;
-
-            if (n_QueHace == 3)
-            {
-                FgItems.AllowEditing = false; return;
-            }
-
-            if (booAgregando == true) { return; }
-
-            if (FgItems.Col == 1)
-            {
-                FgItems.Select(FgItems.Row - 1, 2);
-                return;
-            }
-            if (FgItems.Col == 2)
-            {
-                booAgregando = true;
-
-                // OBTENEMOS EL ID DEL TIPO DE PRODUCTO
-                c_despro = funFunciones.NulosC(FgItems.GetData(FgItems.Row, 2));
-                dtResul = funDatos.DataTableFiltrar(dtItems, "c_despro = '" + c_despro + "'");
-                if (dtResul.Rows.Count != 0)
-                {
-                    n_idpro = Convert.ToInt16(dtResul.Rows[0]["n_id"].ToString());
-
-                    // FILTRAMOS LAS PRESENTACIONES DEL ITEM SELECCIONADO
-                    dtResul = funDatos.DataTableFiltrar(dtPresentaItem, "n_idite = " + n_idpro + " AND n_default = 1");
-                    funFlex.FlexColumnaCombo(FgItems, dtResul, "c_abrpre", 3);    // ITEMS
-                    if (dtResul.Rows.Count == 1)
-                    {
-                        FgItems.SetData(FgItems.Row, 3, dtResul.Rows[0]["c_abrpre"].ToString());
-                    }
-                    else
-                    {
-                        FgItems.SetData(FgItems.Row, 3, "");
-                    }
-                }
-                FgItems.SetData(FgItems.Row, 7, DateTime.Now.ToString("HH:mm"));
-
-                FgItems.Select(FgItems.Row - 1, 3);
-                booAgregando = false;
-                return;
-            }
-            if (FgItems.Col == 3)
-            {
-                FgItems.Select(FgItems.Row - 1, 4);
-                return;
-            }
-            if (FgItems.Col == 4)
-            {
-                FgItems.Select(FgItems.Row - 1, 5);
-                return;
-            }
-            if (FgItems.Col == 5)
-            {
-                FgItems.Select(FgItems.Row - 1, 6);
-                return;
-            }
-            if (FgItems.Col == 6)
-            {
-                double n_saldo = Convert.ToDouble(funFunciones.NulosN(FgItems.GetData(FgItems.Row,5)));
-                double n_cansol = Convert.ToDouble(funFunciones.NulosN(FgItems.GetData(FgItems.Row,6)));
-                string c_numlote = funFunciones.NulosC(FgItems.GetData(FgItems.Row, 4));
-
-                //if (c_numlote != "")
-                //{
-                //    if (n_cansol > n_saldo)
-                //    {
-                //        //FgItems.SetData(FgItems.Row, 6, "");
-                //        MessageBox.Show("La cantidad solicitada excede la capacidad del lote, ingrese una cantidad menor o igual al lote", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                //    }
-                //    else
-                //    {
-                //        FgItems.SetData(FgItems.Row, 6, n_cansol.ToString("0.000000"));
-                //    }
-                //}
-                //else
-                //{
-                //    FgItems.SetData(FgItems.Row, 6, n_cansol.ToString("0.000000"));
-                //}
-                return;
-            }
-            if (FgItems.Col == 7)
-            {
-                FgItems.Select(FgItems.Row, 1);
-                return;
-            }
-        }
-
         private void txtFchIng_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (Convert.ToInt32(e.KeyChar) == 13)
@@ -1061,34 +770,6 @@ namespace SSF_NET_Almacen.Formularios
             if (Convert.ToInt32(e.KeyChar) == 13)
             {
                 SendKeys.Send("{TAB}");
-            }
-        }
-
-        private void CboMeses_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if (booAgregando == true) { return; }
-
-            objTransferencias.mysConec = mysConec;
-            dtTransferencias = objTransferencias.Listar(STU_SISTEMA.EMPRESAID, Convert.ToInt16(CboMeses.SelectedValue), STU_SISTEMA.ANOTRABAJO);
-            STU_SISTEMA.MESTRABAJO = Convert.ToInt16(CboMeses.SelectedValue);
-            ListarItems();
-
-            if (dtTransferencias.Rows.Count == 0)
-            {
-                DialogResult Rpta = MessageBox.Show("No se han encontrado registros, ¿ Desea agregar uno ahora ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-
-                if (DialogResult.Yes == Rpta)
-                {
-                    //Nuevo();
-                }
-                else
-                {
-                    this.Close();
-                }
-            }
-            else
-            {
-                DgLista.Focus();
             }
         }
 
@@ -1117,59 +798,6 @@ namespace SSF_NET_Almacen.Formularios
         {            
         }
 
-        private void FgItems_CellButtonClick(object sender, C1.Win.C1FlexGrid.RowColEventArgs e)
-        {
-            if (FgItems.Col == 2)
-            {
-                int n_idtipexi = 3;
-                DataTable dtResul = new DataTable();
-                string c_dato = "";
-
-                // OBTNEMOS LA DESCRIPCION DEL TIPO DE PRODUCTO
-                string strDesTipPro = funFunciones.NulosC(FgItems.GetData(FgItems.Row, 1));
-                if (strDesTipPro == "")
-                {
-                    n_idtipexi = 0;
-                }
-
-                // OBTENEMOS EL ID DEL TIPO DE PRODUCTO
-                dtResul = funDatos.DataTableFiltrar(dtTipoExis, "c_des = '" + strDesTipPro + "'");
-                if (dtResul.Rows.Count != 0)
-                {
-                    n_idtipexi = Convert.ToInt16(dtResul.Rows[0]["n_id"].ToString());
-                }
-
-                booAgregando = true;
-                dtResul = objItems.BuscarItem("", "n_id", dtItems, n_idtipexi);
-                if (dtResul != null)
-                {
-                    if (dtResul.Rows.Count != 0)
-                    {
-                        c_dato = dtResul.Rows[0]["c_despro"].ToString();        // MOSTRAMOS LA DESCRIPCION DEL ITEM
-                        FgItems.SetData(FgItems.Row, 2, c_dato);
-
-                        c_dato = dtResul.Rows[0]["n_id"].ToString();        // MOSTRAMOS LA PRESENTACION DEL ITEM
-                        c_dato = funDatos.DataTableBuscar(dtPresentaItem, "n_idite", "c_abrpre", c_dato, "N").ToString();
-
-                        FgItems.SetData(FgItems.Row, 3, c_dato);
-                    }
-                }
-                booAgregando = false;
-            }
-            if (n_QueHace == 3)
-            {
-                FgItems.AllowEditing = false; return;
-            }
-
-            if (booAgregando == true) { return; }
-
-            if (FgItems.Col == 5)
-            {
-                FgItems.Select(FgItems.Row - 1, 2);
-                return;
-            }
-        }
-
         private void CboResponsable_SelectedValueChanged(object sender, EventArgs e)
         {
             if (booAgregando == true) { return; }
@@ -1178,8 +806,63 @@ namespace SSF_NET_Almacen.Formularios
             
             TxtNumSer.Text = "0001";
             TxtNumDoc.Text = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, 95, TxtNumSer.Text);
-            CboAlmacenOrigen.Focus();
+            CboConfiguracion.Focus();
             booAgregando = false;
+        }
+
+        private void BtnBuscarParte_Click(object sender, EventArgs e)
+        {
+            BE_CostoProduccion.lst_items = objCostoProduccion.ListarPartesdeProduccion(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO);
+            bECONCOSTOPRODUCCIONDETBindingSource.DataSource = BE_CostoProduccion.lst_items;
+            FgItems.DataSource = bECONCOSTOPRODUCCIONDETBindingSource.DataSource;
+        }
+
+        private void BtnProcesarMP_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        //private void ProcesarMp()
+        //{
+        //    foreach (BE_CON_COSTOPRODUCCIONDET costOrdenProduccionViewModel in BE_CostoProduccion.lst_items)
+        //    {
+        //        ProcesaInsumos(costoProduccion, fechaInicioDateTimePicker.Value, fechaFinDateTimePicker.Value);
+        //        ProcesaIntermedios(ViewModel.FechaInicio, ViewModel.FechaFin);
+        //        ProcesaTerminados(ViewModel.FechaInicio, ViewModel.FechaFin);
+        //        CosteaMercaderia(costoProduccion, costOrdenProduccionViewModel.CodigoMercaderia, ViewModel.FechaInicio, ViewModel.FechaFin);
+        //    }
+        //}
+
+
+        //private void ProcesaInsumos(Common.Models.Contabilidad.CostoProduccion costoProduccion, DateTime fechaInicio, DateTime fechaFin)
+        //{
+        //    using (var context = new ApplicationDbContext())
+        //    {
+        //        var tipoMercaderia = context.TipoMercaderias
+        //            .Where(o => o.Codigo == "INS")
+        //            .FirstOrDefault();
+        //        var mercaderias = (from k in context.KardexMovimientos
+        //                           where k.Mercaderia.TipoMercaderiaId == tipoMercaderia.TipoMercaderiaId
+        //                               && k.Fecha >= fechaInicio && k.Fecha <= fechaFin
+        //                           group k by k.MercaderiaId into g
+        //                           select g.FirstOrDefault().Mercaderia).ToList();
+
+        //        foreach (var mercaderia in mercaderias)
+        //        {
+        //            CosteaMercaderia(costoProduccion, mercaderia.MercaderiaId, fechaInicio, fechaFin);
+        //        }
+        //    }
+        //}
+
+        private void ProcesaIntermedios(DateTime fechaInicio, DateTime fechaFin)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ProcesaTerminados(DateTime fechaInicio, DateTime fechaFin)
+        {
+            throw new NotImplementedException();
         }
     }
 }

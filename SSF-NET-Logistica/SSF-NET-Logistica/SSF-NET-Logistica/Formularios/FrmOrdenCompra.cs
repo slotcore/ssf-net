@@ -85,7 +85,7 @@ namespace SSF_NET_Logistica.Formularios
         int n_NumFilasDocumento = 30;                                                   // LE INDICAMOS AL FORMULARIO EL NUMERO MAXIMO DE FILAS PARA EL DETALLE
         int n_QueHace = 3;                                                              // INDICA EN QUE ESTADO SE ENCUENTRA EL FORMULARIO
         string[,] arrCabeceraDg1 = new string[13, 4];                                    // ARRAY PARA MOSTRAR LAS COLUMNAS DEL DATAGRID PRINCIPAL
-        string[,] arrCabeceraFlex1 = new string[7, 5];
+        string[,] arrCabeceraFlex1 = new string[8, 5];
 
         bool booSeEjecuto = false;
         bool booAgregando = false;
@@ -125,13 +125,13 @@ namespace SSF_NET_Logistica.Formularios
             LblTitulo2.Text = "DETALLE DEL REGISTRO";
 
             arrCabeceraFlex1[0, 0] = "Tipo Item";
-            arrCabeceraFlex1[0, 1] = "140";
+            arrCabeceraFlex1[0, 1] = "120";
             arrCabeceraFlex1[0, 2] = "S";
             arrCabeceraFlex1[0, 3] = "";
             arrCabeceraFlex1[0, 4] = "c_tipexides";
 
             arrCabeceraFlex1[1, 0] = "Item";
-            arrCabeceraFlex1[1, 1] = "370";
+            arrCabeceraFlex1[1, 1] = "300";
             arrCabeceraFlex1[1, 2] = "S";
             arrCabeceraFlex1[1, 3] = "";
             arrCabeceraFlex1[1, 4] = "c_itedes";
@@ -148,23 +148,29 @@ namespace SSF_NET_Logistica.Formularios
             arrCabeceraFlex1[3, 3] = "0.00";
             arrCabeceraFlex1[3, 4] = "n_can";
 
-            arrCabeceraFlex1[4, 0] = "P. Unit. Afecto";
-            arrCabeceraFlex1[4, 1] = "75";
+            arrCabeceraFlex1[4, 0] = "Cant.Rec.";
+            arrCabeceraFlex1[4, 1] = "70";
             arrCabeceraFlex1[4, 2] = "D";
-            arrCabeceraFlex1[4, 3] = "0.000000";
-            arrCabeceraFlex1[4, 4] = "n_can";
+            arrCabeceraFlex1[4, 3] = "0.00";
+            arrCabeceraFlex1[4, 4] = "n_canat";
 
-            arrCabeceraFlex1[5, 0] = "P. Unit. Inafecto";
+            arrCabeceraFlex1[5, 0] = "P. Unit. Afecto";
             arrCabeceraFlex1[5, 1] = "75";
             arrCabeceraFlex1[5, 2] = "D";
             arrCabeceraFlex1[5, 3] = "0.000000";
             arrCabeceraFlex1[5, 4] = "n_can";
 
-            arrCabeceraFlex1[6, 0] = "Total";
+            arrCabeceraFlex1[6, 0] = "P. Unit. Inafecto";
             arrCabeceraFlex1[6, 1] = "75";
             arrCabeceraFlex1[6, 2] = "D";
-            arrCabeceraFlex1[6, 3] = "0.00";
+            arrCabeceraFlex1[6, 3] = "0.000000";
             arrCabeceraFlex1[6, 4] = "n_can";
+
+            arrCabeceraFlex1[7, 0] = "Total";
+            arrCabeceraFlex1[7, 1] = "75";
+            arrCabeceraFlex1[7, 2] = "D";
+            arrCabeceraFlex1[7, 3] = "0.00";
+            arrCabeceraFlex1[7, 4] = "n_can";
 
 
             funFlex.FlexMostrarDatos(FgItems, arrCabeceraFlex1, dtMoviDetalle, 2, false);
@@ -342,15 +348,17 @@ namespace SSF_NET_Logistica.Formularios
 
                     FgItems.SetData(n_fila, 4, element.n_can.ToString("0.00"));
 
+                    FgItems.SetData(n_fila, 5, element.n_canat.ToString("0.00"));
+
                     if (element.n_idtipafeigv == 1)
-                    {
-                        FgItems.SetData(n_fila, 5, element.n_preuni.ToString("0.000000"));
-                    }
-                    else
                     {
                         FgItems.SetData(n_fila, 6, element.n_preuni.ToString("0.000000"));
                     }
-                    FgItems.SetData(n_fila, 7, element.n_imptot.ToString("0.00"));
+                    else
+                    {
+                        FgItems.SetData(n_fila, 7, element.n_preuni.ToString("0.000000"));
+                    }
+                    FgItems.SetData(n_fila, 8, element.n_imptot.ToString("0.00"));
 
                     n_fila = n_fila + 1;
                 }
@@ -445,7 +453,7 @@ namespace SSF_NET_Logistica.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -455,7 +463,7 @@ namespace SSF_NET_Logistica.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[1].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -580,18 +588,18 @@ namespace SSF_NET_Logistica.Formularios
                         DtFiltro = funDatos.DataTableFiltrar(dtPresentaItem, strCadenaFiltro);
                         BE_Detalle.n_idunimed = Convert.ToInt32(DtFiltro.Rows[0]["n_id"].ToString());
 
-                        if (Convert.ToDouble(FgItems.GetData(n_fila, 5).ToString())!=0)
+                        if (Convert.ToDouble(FgItems.GetData(n_fila, 6).ToString())!=0)
                         {
-                            BE_Detalle.n_preuni = Convert.ToDouble(FgItems.GetData(n_fila, 5).ToString());
+                            BE_Detalle.n_preuni = Convert.ToDouble(FgItems.GetData(n_fila, 6).ToString());
                             BE_Detalle.n_idtipafeigv = 1;
                         }
 
-                        if (Convert.ToDouble(funFunciones.NulosN(FgItems.GetData(n_fila, 6))) != 0)
+                        if (Convert.ToDouble(funFunciones.NulosN(FgItems.GetData(n_fila, 7))) != 0)
                         {
-                            BE_Detalle.n_preuni = Convert.ToDouble(FgItems.GetData(n_fila, 6).ToString());
+                            BE_Detalle.n_preuni = Convert.ToDouble(FgItems.GetData(n_fila, 7).ToString());
                             BE_Detalle.n_idtipafeigv = 9;
                         }
-                        BE_Detalle.n_imptot = Convert.ToDouble(FgItems.GetData(n_fila, 7).ToString());
+                        BE_Detalle.n_imptot = Convert.ToDouble(FgItems.GetData(n_fila, 8).ToString());
 
                        
 
@@ -726,7 +734,7 @@ namespace SSF_NET_Logistica.Formularios
 
         private void emitirGuiaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             CN_log_ordencompra objLog = new CN_log_ordencompra();
             objLog.STU_SISTEMA = STU_SISTEMA;
             objLog.ReportImprimirOrdCompra(intIdRegistro);
@@ -809,25 +817,26 @@ namespace SSF_NET_Logistica.Formularios
             //    SumarTotales();
             //    return;
             //}
-            if ((FgItems.Col == 5) || (FgItems.Col == 4))
+
+            if ((FgItems.Col == 6) || (FgItems.Col == 4))
             {
-                FgItems.SetData(FgItems.Row, 6, "0.00");
+                FgItems.SetData(FgItems.Row, 7, "0.00");
                 double n_can = Convert.ToDouble(funFunciones.NulosN(FgItems.GetData(FgItems.Row,4)));
-                double n_preuni = Convert.ToDouble(funFunciones.NulosN(FgItems.GetData(FgItems.Row, 5)));
-                double n_imptot = (n_can * n_preuni);
-                SumarTotales();
-                FgItems.SetData(FgItems.Row, 7, n_imptot.ToString("0.00"));
-                FgItems.Select(FgItems.Row, 1);
-                return;
-            }
-            if (FgItems.Col == 6)
-            {
-                FgItems.SetData(FgItems.Row, 5, "0.00");
-                double n_can = Convert.ToDouble(funFunciones.NulosN(FgItems.GetData(FgItems.Row, 4)));
                 double n_preuni = Convert.ToDouble(funFunciones.NulosN(FgItems.GetData(FgItems.Row, 6)));
                 double n_imptot = (n_can * n_preuni);
                 SumarTotales();
-                FgItems.SetData(FgItems.Row, 7, n_imptot.ToString("0.00"));
+                FgItems.SetData(FgItems.Row, 8, n_imptot.ToString("0.00"));
+                FgItems.Select(FgItems.Row, 1);
+                return;
+            }
+            if (FgItems.Col == 7)
+            {
+                FgItems.SetData(FgItems.Row, 6, "0.00");
+                double n_can = Convert.ToDouble(funFunciones.NulosN(FgItems.GetData(FgItems.Row, 4)));
+                double n_preuni = Convert.ToDouble(funFunciones.NulosN(FgItems.GetData(FgItems.Row, 7)));
+                double n_imptot = (n_can * n_preuni);
+                SumarTotales();
+                FgItems.SetData(FgItems.Row, 8, n_imptot.ToString("0.00"));
                 FgItems.Select(FgItems.Row, 1);
                 return;
             }
@@ -847,13 +856,13 @@ namespace SSF_NET_Logistica.Formularios
             {
                 n_cant = Convert.ToDouble(funFunciones.NulosN(FgItems.GetData(n_row, 4)));
 
-                n_valor = Convert.ToDouble(funFunciones.NulosN(FgItems.GetData(n_row, 5)));
+                n_valor = Convert.ToDouble(funFunciones.NulosN(FgItems.GetData(n_row, 6)));
                 n_impafe = n_impafe + (n_valor * n_cant);
 
-                n_valor = Convert.ToDouble(funFunciones.NulosN(FgItems.GetData(n_row, 6)));
+                n_valor = Convert.ToDouble(funFunciones.NulosN(FgItems.GetData(n_row, 7)));
                 n_impina = n_impina + (n_valor * n_cant);
 
-                if (Convert.ToDouble(funFunciones.NulosN(FgItems.GetData(n_row, 5))) != 0)
+                if (Convert.ToDouble(funFunciones.NulosN(FgItems.GetData(n_row, 6))) != 0)
                 { 
                     n_impigv =  ((n_impafe * 1.18) - n_impafe);
                 }
@@ -945,17 +954,13 @@ namespace SSF_NET_Logistica.Formularios
                     return;
                 }
             }
+
             if (FgItems.Col == 5)
             {
-                // OBTENEMOS LA DESCRIPCIO DEL ITEM
-                strDesTipPro = funFunciones.NulosC(FgItems.GetData(FgItems.Row, 3));
-
-                if (strDesTipPro == "")
-                {
                     FgItems.AllowEditing = false;
-                    return;
-                }
+                return;
             }
+
             if (FgItems.Col == 6)
             {
                 // OBTENEMOS LA DESCRIPCIO DEL ITEM
@@ -968,6 +973,17 @@ namespace SSF_NET_Logistica.Formularios
                 }
             }
             if (FgItems.Col == 7)
+            {
+                // OBTENEMOS LA DESCRIPCIO DEL ITEM
+                strDesTipPro = funFunciones.NulosC(FgItems.GetData(FgItems.Row, 3));
+
+                if (strDesTipPro == "")
+                {
+                    FgItems.AllowEditing = false;
+                    return;
+                }
+            }
+            if (FgItems.Col == 8)
             {
                 FgItems.AllowEditing = false;
                 return;
@@ -1033,7 +1049,7 @@ namespace SSF_NET_Logistica.Formularios
 
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             booAgregando = true;
             VerRegistro(intIdRegistro);
@@ -1059,7 +1075,7 @@ namespace SSF_NET_Logistica.Formularios
 
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {

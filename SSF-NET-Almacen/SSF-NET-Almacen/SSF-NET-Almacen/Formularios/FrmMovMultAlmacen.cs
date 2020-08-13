@@ -401,7 +401,7 @@ namespace SSF_NET_Almacen.Formularios
                             BE_Movimiento.c_numdoc = m_NumeroDocumento_cad;
                             BE_Movimiento.n_idalm = n_idalm;
                             BE_Movimiento.n_anotra = STU_SISTEMA.ANOTRABAJO;
-                            BE_Movimiento.n_idmes = STU_SISTEMA.MESTRABAJO;
+                            BE_Movimiento.n_idmes = BE_Movimiento.d_fching.Month;
                             BE_Movimiento.c_obs = TxtObs.Text; ;
                             BE_Movimiento.n_idtipope = Convert.ToInt16(CboTipOpe.SelectedValue);
                             BE_Movimiento.n_perid = Convert.ToInt16(CboSolicitante.SelectedValue);

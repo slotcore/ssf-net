@@ -1672,5 +1672,21 @@ namespace SSF_NET.Formularios
             objForm.STU_SISTEMA = Program.STU_SISTEMA;
             objForm.TransferenciaAlmacenes();
         }
+
+        private void toolStripMenuItem43_Click(object sender, EventArgs e)
+        {
+            SSF_NET_Produccion.CLS_Produccion objForm = new SSF_NET_Produccion.CLS_Produccion();
+            objForm.mysConec = Program.mysConeccion;
+            objForm.STU_SISTEMA = Program.STU_SISTEMA;
+            objForm.ConsultaRevisionesNoJaladasAlmacen(Program.STU_SISTEMA.EMPRESAID);
+        }
+
+        private void toolStripMenuItem44_Click(object sender, EventArgs e)
+        {
+            SSF_NET_Produccion.CLS_Produccion objForm = new SSF_NET_Produccion.CLS_Produccion();
+            objForm.mysConec = Program.mysConeccion;
+            objForm.STU_SISTEMA = Program.STU_SISTEMA;
+            objForm.ConsultaProduccionNoTerminada(Program.STU_SISTEMA.EMPRESAID);
+        }
     }
 }

@@ -775,6 +775,34 @@ namespace SIAC_Negocio.Almacen
             //}
             //return booOk;
         }
+
+        public bool DocumentoExiste(int n_IdEmpresa, int n_idclipro, int n_IdTipoDocumento, string c_NumSerie, string c_NumDocumento, int n_TipoMovimiento)
+        {
+            DataTable dtResul = new DataTable();
+            bool b_resul = false;
+
+            CD_alm_movimientos miFun = new CD_alm_movimientos();
+            miFun.mysConec = mysConec;
+
+            if (miFun.DocumentoExiste(n_IdEmpresa, n_idclipro, n_IdTipoDocumento, c_NumSerie, c_NumDocumento, n_TipoMovimiento) == true)
+            {
+                dtResul = miFun.dtMovimiento;
+                if (dtResul.Rows.Count >=1)
+                {
+                    //  SI SE ENCONTRO DOCUMENTO
+                    b_resul = true;
+                }
+            }
+            else
+            {
+                booOcurrioError = miFun.booOcurrioError;
+                StrErrorMensaje = miFun.StrErrorMensaje;
+                IntErrorNumber = miFun.IntErrorNumber;
+            }
+
+            return b_resul;
+        }
+
         public bool DocumentoExiste(int n_IdEmpresa, int n_IdTipoDocumento, string c_NumSerie, string c_NumDocumento, int n_TipoMovimiento)
         {
             DataTable dtResul = new DataTable();
@@ -786,7 +814,7 @@ namespace SIAC_Negocio.Almacen
             if (miFun.DocumentoExiste(n_IdEmpresa, n_IdTipoDocumento, c_NumSerie, c_NumDocumento, n_TipoMovimiento) == true)
             {
                 dtResul = miFun.dtMovimiento;
-                if (dtResul.Rows.Count >=1)
+                if (dtResul.Rows.Count >= 1)
                 {
                     //  SI SE ENCONTRO DOCUMENTO
                     b_resul = true;

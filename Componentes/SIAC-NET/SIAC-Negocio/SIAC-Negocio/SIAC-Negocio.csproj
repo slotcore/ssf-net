@@ -62,6 +62,7 @@
     <Compile Include="Almacen\CN_alm_responsable.cs" />
     <Compile Include="Almacen\CN_alm_personal.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Contabilidad\CN_con_costoproduccion.cs" />
     <Compile Include="Contabilidad\CN_con_cerrarmes.cs" />
     <Compile Include="Contabilidad\CN_con_destinoinforme.cs" />
     <Compile Include="Contabilidad\CN_con_detraccion.cs" />

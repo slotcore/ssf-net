@@ -147,7 +147,6 @@ namespace SIAC_Entidades.Logistica
             get { return _n_impina; }
             set { _n_impina = value; }
         }
-        
-        
+
     }
 }

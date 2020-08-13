@@ -580,6 +580,37 @@ namespace SIAC_DATOS.Almacen
             }
             return b_result;
         }
+
+        public bool DocumentoExiste(int n_IdEmpresa, int n_idclipro, int n_IdTipoDocumento, string c_NumSerie, string c_NumDocumento, int n_TipoMovimiento)
+        {
+            DataTable DtResultado = new DataTable();
+            bool b_result = false;
+
+            string[,] arrParametros = new string[6, 3] {
+                                            {"n_idemp", "System.INT32",n_IdEmpresa.ToString()},
+                                            {"n_idclipro", "System.INT32",n_idclipro.ToString()},
+                                            {"n_idtipdoc", "System.INT32",n_IdTipoDocumento.ToString()},
+                                            {"c_numser", "System.STRING",c_NumSerie.ToString()},
+                                            {"c_numdoc", "System.STRING",c_NumDocumento.ToString()},
+                                            {"n_idtipmov", "System.INT32",n_TipoMovimiento.ToString()}
+                                      };
+
+            dtMovimiento = xMiFuncion.StoreDTLLenar("alm_movimientos_existenumerodocumento_tot", arrParametros, mysConec);
+
+            if (xMiFuncion.IntErrorNumber != 0)
+            {
+                dtMovimiento = null;
+                booOcurrioError = xMiFuncion.booOcurrioError;
+                StrErrorMensaje = xMiFuncion.StrErrorMensaje;
+                IntErrorNumber = xMiFuncion.IntErrorNumber;
+            }
+            else
+            {
+                b_result = true;
+            }
+            return b_result;
+        }
+
         //public bool VerKardexResumido(int n_IdEmpresa, int n_AnoConsulta, int n_PeriodoConsulta, int n_TipoExistencia, int n_IdAlmacen)
         //{
         //    DataTable DtResultado = new DataTable();
