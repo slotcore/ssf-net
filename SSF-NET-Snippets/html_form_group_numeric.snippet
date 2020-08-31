@@ -1,0 +1,30 @@
+﻿<CodeSnippet Format="1.1.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>FormGroupNumeric</Title>
+    <Author>Jose Chacon</Author>
+    <Shortcut>alpfrmgrpnmrc</Shortcut>
+    <Description>Agrega un bloque form-group para ASP.Net Core</Description>
+    <SnippetTypes>
+      <SnippetType>Expansion</SnippetType>
+      <SnippetType>SurroundsWith</SnippetType>
+    </SnippetTypes>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>PropertyName</ID>
+        <ToolTip>Nombre de la propiedad</ToolTip>
+        <Default>Nombre</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="html">
+      <![CDATA[
+                        <div class="form-group">
+                            <label asp-for="$PropertyName$" class = "control-label col-md-3"></label>
+                            <div class="col-md-4">
+                                <input asp-for="$PropertyName$" class="form-control bs-touch-spin" />
+                                <span asp-validation-for="$PropertyName$" class="text-danger"></span>
+                            </div>
+                        </div>]]></Code>
+  </Snippet>
+</CodeSnippet>

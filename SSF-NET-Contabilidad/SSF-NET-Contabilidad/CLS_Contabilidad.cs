@@ -109,6 +109,13 @@ namespace SSF_NET_Contabilidad
             Frm.STU_SISTEMA = STU_SISTEMA;
             Frm.Show();
         }
+        public void CostoProduccion()
+        {
+            Formularios.FrmCostoProduccion Frm = new Formularios.FrmCostoProduccion();
+            Frm.mysConec = mysConec;
+            Frm.STU_SISTEMA = STU_SISTEMA;
+            Frm.Show();
+        }
         public void VerAsiento(int n_IdEmpresa, int n_AnoTrabajo, int n_MesTrabajo, int n_IdLibro, string c_NumeroAsiento)
         {
             Formularios.FrmVerAsiento Frm = new Formularios.FrmVerAsiento();

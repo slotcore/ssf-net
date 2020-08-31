@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+        <Title>NgTsComponentDetail</Title>
+        <Author>Jose Chacon</Author>
+        <Description>Agrega las acciones para un controlador base - MVC ASP.Net Core</Description>
+        <Shortcut>ngtscmpntdetail</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>ModuleName</ID>
+          <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
+          <Default>Master</Default>
+        </Literal>
+        <Literal>
+          <ID>ModuleInstance</ID>
+          <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
+          <Default>master</Default>
+        </Literal>
+        <Literal>
+          <ID>ModuleLocalName</ID>
+          <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
+          <Default>master</Default>
+        </Literal>
+        <Literal>
+          <ID>ModelName</ID>
+          <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
+          <Default>ModelName</Default>
+        </Literal>
+        <Literal>
+          <ID>ModelInstance</ID>
+          <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
+          <Default>ModelInstance</Default>
+        </Literal>
+        <Literal>
+          <ID>ModelLocalName</ID>
+          <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
+          <Default>ModelLocalName</Default>
+        </Literal>
+        <Literal>
+          <ID>ModelChildName</ID>
+          <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
+          <Default>ModelChildName</Default>
+        </Literal>
+        <Literal>
+          <ID>ModelChildInstance</ID>
+          <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
+          <Default>ModelChildInstance</Default>
+        </Literal>
+        <Literal>
+          <ID>ModelChildLocalName</ID>
+          <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
+          <Default>ModelChildInstance</Default>
+        </Literal>
+        <Literal>
+          <ID>PropName1</ID>
+          <ToolTip>Nombre de la propiedad 1</ToolTip>
+          <Default>code</Default>
+        </Literal>
+        <Literal>
+          <ID>PropName2</ID>
+          <ToolTip>Nombre de la propiedad 2</ToolTip>
+          <Default>name</Default>
+        </Literal>
+        <Literal>
+          <ID>PropName3</ID>
+          <ToolTip>Nombre de la propiedad 3</ToolTip>
+          <Default>description</Default>
+        </Literal>
+      </Declarations>
+        <Code Language="TypeScript">
+        <![CDATA[import { Component, OnInit, Inject, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import Swal from 'sweetalert2';
+//
+import { $ModuleName$Service } from '../../../services/$ModuleLocalName$.service';
+import { $ModelName$ } from '../../../models/$ModelLocalName$';
+import { $ModelChildName$CreateComponent } from '../$ModelChildLocalName$-create/$ModelChildLocalName$-create.component';
+import { $ModelChildName$EditComponent } from '../$ModelChildLocalName$-edit/$ModelChildLocalName$-edit.component';
+import { $ModelName$EditComponent } from '../$ModelLocalName$-edit/$ModelLocalName$-edit.component';
+import { $ModelChildName$ } from '../../../models/$ModelChildLocalName$';
+
+@Component({
+    selector: 'app-$ModelLocalName$-detail',
+    templateUrl: './$ModelLocalName$-detail.component.html',
+    styleUrls: ['./$ModelLocalName$-detail.component.scss']
+})
+
+export class $ModelName$DetailComponent implements OnInit {
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  displayedColumns: string[];
+  dataSource: MatTableDataSource<$ModelChildName$>;
+  //
+  dialog: MatDialog;
+  $ModuleInstance$Service: $ModuleName$Service;
+  dialogRef: MatDialogRef<$ModelName$EditComponent>;
+  //
+  isWait: boolean = false;
+  $ModelInstance$: $ModelName$;
+  $ModelInstance$Id: number;
+
+  constructor($ModuleInstance$Service: $ModuleName$Service
+    , dialog: MatDialog
+    , dialogRef: MatDialogRef<$ModelName$EditComponent>
+    , @Inject(MAT_DIALOG_DATA) $ModelInstance$Id: number) {
+
+    this.dialog = dialog;
+    this.$ModuleInstance$Service = $ModuleInstance$Service;
+    this.dialogRef = dialogRef;
+    //
+    this.$ModelInstance$Id = $ModelInstance$Id;
+    this.$ModelInstance$ = new $ModelName$();
+  }
+
+  ngOnInit(): void {
+    this.initDatatable();
+      this.load();
+  }
+
+  initDatatable(): void {
+    this.displayedColumns = ['$PropName1$', '$PropName2$', '$PropName3$', 'options'];
+  }
+
+  load() {
+    this.isWait = true;
+    this.$ModuleInstance$Service.$ModelInstance$Get(this.$ModelInstance$Id)
+      .subscribe(
+        (response: $ModelName$) => {
+          this.$ModelInstance$ = response;
+          this.setDatasource();
+          this.isWait = false;
+        }
+        , err => {
+            console.log(err);
+        });
+  }
+
+  setDatasource(): void {
+    this.dataSource = new MatTableDataSource(this.$ModelInstance$.$ModelChildInstance$s);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+
+    this.dataSource.filterPredicate = function (data, filter: string): boolean {
+      return (data.$PropName1$ && data.$PropName1$.toLowerCase().includes(filter)) ||
+        (data.$PropName2$ && data.$PropName2$.toLowerCase().includes(filter)) ||
+        (data.$PropName3$ && data.$PropName3$.toLowerCase().includes(filter));
+    };
+  }
+
+  filter(value: string): void {
+    this.dataSource.filter = value.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  edit() {
+    const dialogRef = this.dialog.open($ModelName$EditComponent, { data: this.$ModelInstance$Id });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.load();
+      }
+    });
+  }
+
+  createDetail() {
+    const dialogRef = this.dialog.open($ModelChildName$CreateComponent, { data: this.$ModelInstance$Id });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.load();
+      }
+    });
+  }
+
+  editDetail($ModelChildInstance$Id) {
+    const dialogRef = this.dialog.open($ModelChildName$EditComponent, { data: $ModelChildInstance$Id });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.load();
+      }
+    });
+  }
+
+  deleteDetail($ModelChildInstance$Id) {
+      Swal.fire({
+          title: 'Eliminar',
+          text: '¿Está seguro de eliminar el registro?',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Si',
+          cancelButtonText: 'No'
+      }).then((result) => {
+          if (result.value) {
+              this.$ModuleInstance$Service.$ModelChildInstance$Delete($ModelChildInstance$Id)
+                  .subscribe(
+                      () => {
+                          this.load();
+                      }
+                      , err => {
+                          console.log(err);
+                      });
+          }
+      });
+  }
+
+  close() {
+    this.dialogRef.close();
+  }
+}]]>
+        </Code>
+    </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

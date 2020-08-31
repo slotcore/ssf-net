@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+        <Title>NgTsComponentIndex</Title>
+        <Author>Jose Chacon</Author>
+        <Description>Agrega las acciones para un controlador base - MVC ASP.Net Core</Description>
+        <Shortcut>ngtscmpntindex</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>ModuleName</ID>
+          <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
+          <Default>Master</Default>
+        </Literal>
+        <Literal>
+          <ID>ModuleInstance</ID>
+          <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
+          <Default>master</Default>
+        </Literal>
+        <Literal>
+          <ID>ModuleLocalName</ID>
+          <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
+          <Default>master</Default>
+        </Literal>
+        <Literal>
+          <ID>ModelName</ID>
+          <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
+          <Default>ModelName</Default>
+        </Literal>
+        <Literal>
+          <ID>ModelInstance</ID>
+          <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
+          <Default>ModelInstance</Default>
+        </Literal>
+        <Literal>
+          <ID>ModelLocalName</ID>
+          <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
+          <Default>ModelInstance</Default>
+        </Literal>
+        <Literal>
+          <ID>PropName1</ID>
+          <ToolTip>Nombre de la propiedad 1</ToolTip>
+          <Default>code</Default>
+        </Literal>
+        <Literal>
+          <ID>PropName2</ID>
+          <ToolTip>Nombre de la propiedad 2</ToolTip>
+          <Default>name</Default>
+        </Literal>
+        <Literal>
+          <ID>PropName3</ID>
+          <ToolTip>Nombre de la propiedad 3</ToolTip>
+          <Default>description</Default>
+        </Literal>
+      </Declarations>
+        <Code Language="TypeScript">
+        <![CDATA[import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatDialog } from '@angular/material/dialog';
+import Swal from 'sweetalert2';
+//
+import { $ModuleName$Service } from '../../services/$ModuleLocalName$.service';
+import { $ModelName$CreateComponent } from './$ModelLocalName$-create/$ModelLocalName$-create.component';
+import { $ModelName$EditComponent } from './$ModelLocalName$-edit/$ModelLocalName$-edit.component';
+import { $ModelName$DetailComponent } from './$ModelLocalName$-detail/$ModelLocalName$-detail.component';
+import { $ModelName$ } from '../../models/$ModelLocalName$';
+
+@Component({
+  selector: 'app-$ModelLocalName$',
+  templateUrl: './$ModelLocalName$.component.html',
+  styleUrls: ['./$ModelLocalName$.component.scss']
+})
+
+export class $ModelName$Component implements OnInit {
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  displayedColumns: string[];
+  dataSource: MatTableDataSource<$ModelName$>;
+  //
+  $ModuleInstance$Service: $ModuleName$Service;
+  spinner: NgxSpinnerService;
+  dialog: MatDialog;
+  //
+  isWait: boolean = false;
+  public $ModelInstance$s: $ModelName$[];
+
+  constructor($ModuleInstance$Service: $ModuleName$Service
+    , spinner: NgxSpinnerService
+    , dialog: MatDialog) {
+
+    this.$ModuleInstance$Service = $ModuleInstance$Service;
+    this.spinner = spinner;
+    this.dialog = dialog;
+  }
+
+  ngOnInit(): void {
+    this.initDatatable();
+    this.load();
+  }
+
+  initDatatable(): void {
+      this.displayedColumns = ['$PropName1$', '$PropName2$', '$PropName3$', 'options'];
+  }
+
+  load(): void {
+    this.isWait = true;
+    this.$ModuleInstance$Service.$ModelInstance$GetList()
+      .subscribe(
+        (response: $ModelName$[]) => {
+          this.$ModelInstance$s = response;
+          this.setDatasource();
+          this.isWait = false;
+        }
+        , err => {
+          console.log(err);
+        });
+  }
+
+  setDatasource(): void {
+    this.dataSource = new MatTableDataSource(this.$ModelInstance$s);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+
+    this.dataSource.filterPredicate = function (data, filter: string): boolean {
+      return (data.$PropName1$ && data.$PropName1$.toLowerCase().includes(filter)) ||
+        (data.$PropName2$ && data.$PropName2$.toLowerCase().includes(filter)) ||
+        (data.$PropName3$ && data.$PropName3$.toLowerCase().includes(filter));
+    };
+  }
+
+  filter(value: string): void {
+    this.dataSource.filter = value.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  details($ModelInstance$Id): void {
+    const dialogRef = this.dialog.open($ModelName$DetailComponent, { data: $ModelInstance$Id });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.load();
+      }
+    });
+  }
+
+  create(): void {
+    const dialogRef = this.dialog.open($ModelName$CreateComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.load();
+      }
+    });
+  }
+
+  edit($ModelInstance$Id): void {
+    const dialogRef = this.dialog.open($ModelName$EditComponent, { data: $ModelInstance$Id });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.load();
+      }
+    });
+  }
+
+  delete($ModelInstance$Id) {
+    Swal.fire({
+      title: 'Eliminar',
+      text: '¿Está seguro de eliminar el registro?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si',
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result.value) {
+        this.$ModuleInstance$Service.$ModelInstance$Delete($ModelInstance$Id)
+          .subscribe(
+            () => {
+              this.load();
+            }
+            , err => {
+              console.log(err);
+            });
+      }
+    });
+  }
+}
+]]>
+        </Code>
+    </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

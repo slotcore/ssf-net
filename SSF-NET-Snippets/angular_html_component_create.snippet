@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>NgHtmlComponentCreate</Title>
+      <Author>Jose Chacon</Author>
+      <Shortcut>nghtmlcmpnntcreate</Shortcut>
+      <Description>Agrega componente crear</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+        <SnippetType>SurroundsWith</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>ModelName</ID>
+          <ToolTip>Nombre del modelo</ToolTip>
+          <Default>ModelName</Default>
+        </Literal>
+        <Literal>
+          <ID>ModelDescription</ID>
+          <ToolTip>Nombre del modelo</ToolTip>
+          <Default>ModelDescription</Default>
+        </Literal>
+        <Literal>
+          <ID>ModelInstance</ID>
+          <ToolTip>Descripcion del modelo</ToolTip>
+          <Default>ModelInstance</Default>
+        </Literal>
+        <Literal>
+          <ID>PropDescription1</ID>
+          <ToolTip>Nombre del esquema</ToolTip>
+          <Default>Código</Default>
+        </Literal>
+        <Literal>
+          <ID>PropName1</ID>
+          <ToolTip>Nombre de la propiedad 1</ToolTip>
+          <Default>code</Default>
+        </Literal>
+        <Literal>
+          <ID>PropDescription2</ID>
+          <ToolTip>Nombre del esquema</ToolTip>
+          <Default>Nombre</Default>
+        </Literal>
+        <Literal>
+          <ID>PropName2</ID>
+          <ToolTip>Nombre de la propiedad 2</ToolTip>
+          <Default>name</Default>
+        </Literal>
+        <Literal>
+          <ID>PropDescription3</ID>
+          <ToolTip>Descripción del controlador</ToolTip>
+          <Default>Descripción</Default>
+        </Literal>
+        <Literal>
+          <ID>PropName3</ID>
+          <ToolTip>Nombre de la propiedad 3</ToolTip>
+          <Default>description</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="html">
+        <![CDATA[<h1 mat-dialog-title>Agregar $ModelDescription$</h1>
+<div mat-dialog-content>
+  <form [formGroup]="$ModelInstance$FormGroup" role="form">
+    <div class="form-body">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="$PropDescription1$" formControlName="$PropName1$">
+        <mat-error *ngIf="validateError('$PropName1$')">{{getError('$PropName1$')}}</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field class="full-width">
+        <input matInput placeholder="$PropDescription2$" formControlName="$PropName2$">
+        <mat-error *ngIf="validateError('$PropName2$')">{{getError('$PropName2$')}}</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field class="full-width">
+        <input matInput placeholder="$PropDescription3$" formControlName="$PropName3$">
+        <mat-error *ngIf="validateError('$PropName3$')">{{getError('$PropName3$')}}</mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [disabled]="$ModelInstance$FormGroup.invalid" (click)="save()">Agregar</button>
+  <button mat-button (click)="cancel()">Cancelar</button>
+</div>]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

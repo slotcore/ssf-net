@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>ModelPropertyRelational</Title>
+      <Author>Jose Chacon</Author>
+      <Description>Define una Propiedad para un objeto ViewModel.</Description>
+      <Shortcut>alpmdlpropertyrltn</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>EntityName</ID>
+          <ToolTip>Reemplazar por el Nombre de la propiedad</ToolTip>
+          <Default>EntityName</Default>
+        </Literal>
+      </Declarations>
+      <Imports>
+        <Import>
+          <Namespace>System.Collections.Generic</Namespace>
+        </Import>
+      </Imports>
+      <Code Language="csharp">
+        <![CDATA[
+        public virtual ICollection<$EntityName$> $EntityName$s { get; set; }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,33 @@
+﻿<CodeSnippet Format="1.1.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>FormGroupCheck</Title>
+    <Author>Jose Chacon</Author>
+    <Shortcut>alpformgrpcheck</Shortcut>
+    <Description>Agrega un bloque form-group numérico</Description>
+    <SnippetTypes>
+      <SnippetType>Expansion</SnippetType>
+      <SnippetType>SurroundsWith</SnippetType>
+    </SnippetTypes>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>PropertyName</ID>
+        <ToolTip>Nombre de la propiedad</ToolTip>
+        <Default>PropertyName</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="html">
+      <![CDATA[
+                    <div class="form-group">
+                        <label asp-for="$PropertyName$" class = "control-label col-md-3"></label>
+                        <div class="col-md-4">
+                            <label class="mt-checkbox mt-checkbox-outline">
+                                <input asp-for="$PropertyName$" />
+                                <span></span>
+                            </label>
+                            <span asp-validation-for="$PropertyName$" class="text-danger"></span>
+                        </div>
+                    </div>]]></Code>
+  </Snippet>
+</CodeSnippet>

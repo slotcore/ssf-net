@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.1.0">
+        <Header>
+            <Title>ViewDetails</Title>
+            <Author>Jose Chacon</Author>
+            <Shortcut>alpviewdtls</Shortcut>
+            <Description>Agrega una página de detalle para un modelo</Description>
+            <SnippetTypes>
+            <SnippetType>Expansion</SnippetType>
+            <SnippetType>SurroundsWith</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+            <Literal>
+                <ID>LibraryName</ID>
+                <ToolTip>Nombre del esquema</ToolTip>
+                <Default>AdministracionRuta.Common</Default>
+            </Literal>
+            <Literal>
+                <ID>EsquemaName</ID>
+                <ToolTip>Nombre del esquema</ToolTip>
+                <Default>Application</Default>
+            </Literal>
+            <Literal>
+                <ID>TitleBody</ID>
+                <ToolTip>Detalle de la página</ToolTip>
+                <Default>TitleBody</Default>
+            </Literal>
+            <Literal>
+                <ID>ControlerDescription</ID>
+                <ToolTip>Descripción del controlador</ToolTip>
+                <Default>ControlerDescription</Default>
+            </Literal>
+            <Literal>
+                <ID>ModelName</ID>
+                <ToolTip>Nombre del modelo</ToolTip>
+                <Default>ModelName</Default>
+            </Literal>
+            <Literal>
+                <ID>ModelDescription</ID>
+                <ToolTip>Descripcion del modelo</ToolTip>
+                <Default>ModelDescription</Default>
+            </Literal>
+            <Literal>
+                <ID>PropName1</ID>
+                <ToolTip>Nombre de la propiedad 1</ToolTip>
+                <Default>Code</Default>
+            </Literal>
+            <Literal>
+                <ID>PropName2</ID>
+                <ToolTip>Nombre de la propiedad 2</ToolTip>
+                <Default>Name</Default>
+            </Literal>
+            <Literal>
+                <ID>ModelDetailDescription</ID>
+                <ToolTip>Descripcion del detalle del modelo</ToolTip>
+                <Default>ModelDetailDescription</Default>
+            </Literal>
+            <Literal>
+                <ID>ModelDetailName</ID>
+                <ToolTip>Nombre del detalle del modelo</ToolTip>
+                <Default>ModelDetailName</Default>
+            </Literal>
+            <Literal>
+                <ID>PropNameDetail1</ID>
+                <ToolTip>Nombre de la propiedad 1 del detalle</ToolTip>
+                <Default>Code</Default>
+            </Literal>
+            <Literal>
+                <ID>PropNameDetail2</ID>
+                <ToolTip>Nombre de la propiedad 2 del detalle</ToolTip>
+                <Default>Name</Default>
+            </Literal>
+            </Declarations>
+            <Code Language="html">
+            <![CDATA[@model $LibraryName$.Models.$EsquemaName$.$ModelName$
+
+        @{
+            ViewData["Title"] = "$ModelDescription$";
+            ViewData["Description"] = "Detalle de $ModelDescription$";
+        }
+
+        @section pluginstyles {
+            <partial name="_DetailsPluginStyles" />
+        }
+
+        @section pagestyles {
+            <link asp-append-version="true" href="~/assets/pages/css/page-details.css" rel="stylesheet" type="text/css" />
+        }
+
+        <!-- BEGIN PAGE BASE CONTENT -->
+        <div class="row">
+            <div class="col-md-12">
+                <!-- BEGIN DETAIL SIDEBAR -->
+                <div class="app-detail-sidebar">
+                    <!-- PORTLET MAIN -->
+                    <div class="portlet light">
+                        <div class="portlet-title tabbable-line">
+                            <!-- BEGIN TITLE -->
+                            <div class="caption font-dark animated bounceInDown delay-2s">
+                                <span class="caption-subject bold uppercase">@ViewData["Title"]</span>
+                            </div>
+                            <!-- END TITLE -->
+                            <!-- BEGIN TOOLS -->
+                            <div class="tools">
+                                <a href="" class="collapse"> </a>
+                                <a href="" class="remove"> </a>
+                            </div>
+                            <!-- END TOOLS -->
+                            <!-- BEGIN BREADCRUMB -->
+                            <div class="breadcrumb">
+                                <ul class="page-breadcrumb breadcrumb">
+                                    <li>
+                                        <span>$ControlerDescription$</span>
+                                        <i class="fa fa-circle"></i>
+                                    </li>
+                                    <li>
+                                        <a asp-action="$ModelName$s">$ModelDescription$s</a>
+                                        <i class="fa fa-circle"></i>
+                                    </li>
+                                    <li>
+                                        <span class="active">@ViewData["Description"]</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- END PAGE BREADCRUMB -->
+                        </div>
+                        <div class="table-toolbar">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="btn-group">
+                                        <a asp-action="$ModelName$Edit" asp-route-id="@Model.$ModelName$Id" class="btn yellow-crusta mt-ladda-btn ladda-button" data-style="zoom-in" data-spinner-color="#333">
+                                            <span class="ladda-label">Modificar</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <table id="table_detail" class="table table-bordered table-striped">
+                                <tbody>
+                                    <tr>
+                                        <td class="uppercase sbold">
+                                            @Html.DisplayNameFor(model => model.$PropName1$)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.$PropName1$)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="uppercase sbold">
+                                            @Html.DisplayNameFor(model => model.$PropName2$)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.$PropName2$)
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- END PORTLET MAIN -->
+                </div>
+                <!-- END BEGIN DETAIL SIDEBAR -->
+                <!-- BEGIN DETAIL CONTENT -->
+                <div class="app-detail-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="portlet light">
+                                <div class="portlet-title tabbable-line">
+                                    <div class="caption caption-md">
+                                        <i class="icon-globe theme-font hide"></i>
+                                        <span class="caption-subject font-dark bold uppercase">$ModelDetailDescription$</span>
+                                    </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <div class="table-toolbar">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="btn-group">
+                                                    <a asp-action="$ModelDetailName$Create" asp-route-id="@Model.$ModelName$Id" class="btn green mt-ladda-btn ladda-button" data-style="zoom-in" data-spinner-color="#333">
+                                                        <span class="ladda-label">Agregar Nuevo</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @if (Model.$ModelDetailName$s.Count == 0)
+                                    {
+                                        <h5>No existen registros</h5>
+                                    }
+                                    else
+                                    {
+                                        <table class="table table-striped table-bordered table-hover" id="table_detail_list">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        @Html.DisplayNameFor(model => model.$ModelDetailName$s.FirstOrDefault().$PropNameDetail1$)
+                                                    </th>
+                                                    <th>
+                                                        @Html.DisplayNameFor(model => model.$ModelDetailName$s.FirstOrDefault().$PropNameDetail2$)
+                                                    </th>
+                                                    <th class="group-options-md" data-priority="2"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in Model.$ModelDetailName$s)
+                                                {
+                                                <tr>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.$PropNameDetail1$)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.$PropNameDetail2$)
+                                                    </td>
+                                                    <td>
+                                                        <div class="btn-group" role="group" aria-label="...">
+                                                                <a asp-action="$ModelDetailName$Details" asp-route-id="@item.$ModelDetailName$Id" class="btn btn-default mt-ladda-btn ladda-button" data-style="zoom-in" data-spinner-color="#333" data-toggle="tooltip" title="Detalles">
+                                                                    <span class="ladda-label"><i class="icon-notebook"></i></span>
+                                                                </a>
+                                                                <a asp-action="$ModelDetailName$Edit" asp-route-id="@item.$ModelDetailName$Id" class="btn btn-default yellow-crusta mt-ladda-btn ladda-button" data-style="zoom-in" data-spinner-color="#333" data-toggle="tooltip" title="Modificar">
+                                                                    <span class="ladda-label"><i class="icon-wrench"></i></span>
+                                                                </a>
+                                                                <button class="btn btn-default mt-sweetalert red" data-toggle="tooltip" title="Eliminar" data-title="¿Está seguro de eliminar este registro?" data-type="warning" data-allow-outside-click="true" data-show-confirm-button="true" data-show-cancel-button="true"
+                                                                        data-url-action="@Url.Action("$ModelDetailName$Delete", new { id = item.$ModelDetailName$Id })" data-cancel-button-class="btn-danger" data-cancel-button-text='No' data-confirm-button-text='Si' data-confirm-button-class="btn-info">
+                                                                    <i class="icon-trash"></i>
+                                                                </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END DETAIL CONTENT -->
+            </div>
+        </div>
+        <!-- END PAGE BASE CONTENT -->
+
+        @section pageplugins {
+            <partial name="_DetailsPagePlugin" />
+        }
+
+        @section pagescripts {
+            <script asp-append-version="true" src="~/assets/global/scripts/page-details.js" type="text/javascript"></script>
+        }]]></Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

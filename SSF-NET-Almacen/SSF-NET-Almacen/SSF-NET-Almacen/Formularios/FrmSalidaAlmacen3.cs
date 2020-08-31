@@ -147,16 +147,16 @@ namespace SSF_NET_Almacen.Formularios
 
             string c_nomarc = ConfigurationManager.AppSettings["PathIniFile"];
             //string c_idlocal = funDatos.IniLeerSeccion(c_nomarc, "SISTEMA", "LOCAL").ToString();
-            N_IDALMACEN = Convert.ToInt16(funDatos.IniLeerSeccion(c_nomarc, "SISTEMA", "ALMACEN").ToString());
-            //CboAlmacen.SelectedValue = Convert.ToInt16(c_idalmacen);
+            N_IDALMACEN = Convert.ToInt32(funDatos.IniLeerSeccion(c_nomarc, "SISTEMA", "ALMACEN").ToString());
+            //CboAlmacen.SelectedValue = Convert.ToInt32(c_idalmacen);
 
             if (dtsetup.Rows.Count != 0)
             {
-                if (Convert.ToInt16(dtsetup.Rows[0]["n_almtrazabilidad"]) == 1)
+                if (Convert.ToInt32(dtsetup.Rows[0]["n_almtrazabilidad"]) == 1)
                 {
                     N_INGTRAZABALIDAD = 1;
                 }
-                if (Convert.ToInt16(dtsetup.Rows[0]["n_guipedpre"]) == 1)
+                if (Convert.ToInt32(dtsetup.Rows[0]["n_guipedpre"]) == 1)
                 {
                     N_INGPRECIO = 1;
                 }
@@ -247,7 +247,7 @@ namespace SSF_NET_Almacen.Formularios
             dtsetup = o_set.TraerRegistro(); 
             
             ObjAlm.mysConec = mysConec;
-            dtAlmacenes = ObjAlm.ListarNuevo(STU_SISTEMA.EMPRESAID, Convert.ToInt16(funFunciones.NulosN(dtsetup.Rows[0]["n_almunialmacenes"])));                             // 
+            dtAlmacenes = ObjAlm.ListarNuevo(STU_SISTEMA.EMPRESAID, Convert.ToInt32(funFunciones.NulosN(dtsetup.Rows[0]["n_almunialmacenes"])));                             // 
 
             ObjRes.mysConec = mysConec;
             dtResponsables = ObjRes.Listar(STU_SISTEMA.EMPRESAID);                          // 
@@ -360,7 +360,7 @@ namespace SSF_NET_Almacen.Formularios
             FgItems.Rows.Count = 2;
             booAgregando = false;
             FgItems.Cols[2].ComboList = "...";
-            CboAlmacen.SelectedValue = Convert.ToInt16(N_IDALMACEN);
+            CboAlmacen.SelectedValue = Convert.ToInt32(N_IDALMACEN);
             txtFchIng.Focus();
         }
         void Blanquea()
@@ -469,7 +469,7 @@ namespace SSF_NET_Almacen.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -480,7 +480,7 @@ namespace SSF_NET_Almacen.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[9].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             objMovimientos.mysConec = mysConec;
             BE_Movimiento = objMovimientos.TraerRegistro(intIdRegistro);
@@ -551,30 +551,30 @@ namespace SSF_NET_Almacen.Formularios
             //BE_Movimiento.n_id;
             BE_Movimiento.n_idemp = STU_SISTEMA.EMPRESAID;
             BE_Movimiento.n_idtipmov = 2;                                                           // 1 = INGRESO ; 2 = SALIDA
-            //BE_Movimiento.n_idclipro = Convert.ToInt16(CboProveedor.SelectedValue);
-            BE_Movimiento.n_idclipro = Convert.ToInt16(LblIdPro.Text);
+            //BE_Movimiento.n_idclipro = Convert.ToInt32(CboProveedor.SelectedValue);
+            BE_Movimiento.n_idclipro = Convert.ToInt32(LblIdPro.Text);
             BE_Movimiento.d_fchdoc = Convert.ToDateTime(TxtFchDoc.Text);
             BE_Movimiento.d_fching = Convert.ToDateTime(txtFchIng.Text);
-            BE_Movimiento.n_idtipdoc = Convert.ToInt16(CboTipDoc.SelectedValue);
+            BE_Movimiento.n_idtipdoc = Convert.ToInt32(CboTipDoc.SelectedValue);
             BE_Movimiento.c_numser = TxtNumSer.Text;
             BE_Movimiento.c_numdoc = TxtNumDoc.Text;
-            BE_Movimiento.n_idalm = Convert.ToInt16(CboAlmacen.SelectedValue);
+            BE_Movimiento.n_idalm = Convert.ToInt32(CboAlmacen.SelectedValue);
             BE_Movimiento.n_anotra = STU_SISTEMA.ANOTRABAJO;
             BE_Movimiento.n_idmes = STU_SISTEMA.MESTRABAJO;
             BE_Movimiento.c_obs = TxtObs.Text; ;
-            BE_Movimiento.n_idtipope = Convert.ToInt16(CboTipOpe.SelectedValue);
+            BE_Movimiento.n_idtipope = Convert.ToInt32(CboTipOpe.SelectedValue);
 
-            BE_Movimiento.n_perid =  Convert.ToInt16(CboSolicitante.SelectedValue);
+            BE_Movimiento.n_perid =  Convert.ToInt32(CboSolicitante.SelectedValue);
 
             // SOLO PARA CUANDO SEA EL DOCUMENTO REF 32 GUIA DE TRANSPORTISTA LO CAMBIARA A 10 PARA PODERBUSCARLO 
             // EN LA GUIA DE REMISION POR SU VERDADERO TIPO DE DOCUMENTO, POR ERROR LAS GUITAS DE TRANSPORTE SE GRABAN COMO GUIAS
-            if (Convert.ToInt16(CboDocRef.SelectedValue) == 32)
+            if (Convert.ToInt32(CboDocRef.SelectedValue) == 32)
             {
                 BE_Movimiento.n_docrefidtipdoc = 10;
             }
             else
             { 
-                BE_Movimiento.n_docrefidtipdoc =  Convert.ToInt16(CboDocRef.SelectedValue);
+                BE_Movimiento.n_docrefidtipdoc =  Convert.ToInt32(CboDocRef.SelectedValue);
             }
             BE_Movimiento.c_docrefnumser = TxtSerDocRef.Text;
             BE_Movimiento.c_docrefnumdoc = TxtNumDocRef.Text;
@@ -589,7 +589,7 @@ namespace SSF_NET_Almacen.Formularios
 
             if (BE_Movimiento.lst_items != null)
             {
-                n_NumeroElementos = Convert.ToInt16(BE_Movimiento.lst_items.Count - 1);
+                n_NumeroElementos = Convert.ToInt32(BE_Movimiento.lst_items.Count - 1);
 
                 for (n_fila = 0; n_fila <= n_NumeroElementos; n_fila++)
                 {
@@ -665,7 +665,7 @@ namespace SSF_NET_Almacen.Formularios
                 return booEstado;
             }
 
-            if (Convert.ToInt16(CboTipDoc.SelectedValue) == 0)
+            if (Convert.ToInt32(CboTipDoc.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el tipo de documento !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboTipDoc.Focus();
@@ -689,7 +689,7 @@ namespace SSF_NET_Almacen.Formularios
                 return booEstado;
             }
 
-            if (Convert.ToInt16(LblIdPro.Text) == 0)
+            if (Convert.ToInt32(LblIdPro.Text) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el nombre del proveedor !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 TxtNumRuc.Focus();
@@ -697,14 +697,14 @@ namespace SSF_NET_Almacen.Formularios
                 return booEstado;
             }
 
-            if (Convert.ToInt16(CboAlmacen.SelectedValue) == 0)
+            if (Convert.ToInt32(CboAlmacen.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el almacen de destino !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboAlmacen.Focus();
                 booEstado = false;
                 return booEstado;
             }
-            if (Convert.ToInt16(CboTipOpe.SelectedValue) == 0)
+            if (Convert.ToInt32(CboTipOpe.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el tipo de operacion !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboTipOpe.Focus();
@@ -712,7 +712,7 @@ namespace SSF_NET_Almacen.Formularios
                 return booEstado;
             }
 
-            if (Convert.ToInt16(Convert.ToDateTime(TxtFchDoc.Text).ToString("MM")) != Convert.ToInt16(CboMeses.SelectedValue))
+            if (Convert.ToInt32(Convert.ToDateTime(TxtFchDoc.Text).ToString("MM")) != Convert.ToInt32(CboMeses.SelectedValue))
             {
                 MessageBox.Show("¡ La fecha del documento de salida no coincide con el mes de trabajo !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 TxtFchDoc.Focus();
@@ -777,11 +777,11 @@ namespace SSF_NET_Almacen.Formularios
                 {
                     n_idite = Convert.ToInt32(DtDetalleTMP.Rows[intFila]["iditem"]);
                     c_dato2 = DtDetalleTMP.Rows[intFila]["descripcion"].ToString();
-                    if (Convert.ToInt16(CboDocRef.SelectedValue) == 73)
+                    if (Convert.ToInt32(CboDocRef.SelectedValue) == 73)
                     {
                         n_can = Convert.ToDouble(DtDetalleTMP.Rows[intFila]["canutil"]);
                     }
-                    if (Convert.ToInt16(CboDocRef.SelectedValue) == 10)
+                    if (Convert.ToInt32(CboDocRef.SelectedValue) == 10)
                     {
                         n_can = Convert.ToDouble(DtDetalleTMP.Rows[intFila]["canpro"]);
                     }
@@ -914,7 +914,7 @@ namespace SSF_NET_Almacen.Formularios
 
             if (tc.SelectedIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -930,7 +930,7 @@ namespace SSF_NET_Almacen.Formularios
 
             //if (e.NewIndex == 1)
             //{
-            //    int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
+            //    int intIdRegistro = Convert.ToInt32(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
 
             //    if (n_QueHace != 1)
             //    {
@@ -942,7 +942,7 @@ namespace SSF_NET_Almacen.Formularios
         }
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             booAgregando = true;
             VerRegistro(intIdRegistro);
@@ -1002,7 +1002,7 @@ namespace SSF_NET_Almacen.Formularios
                 dtResul = funDatos.DataTableFiltrar(dtItems, "c_despro = '" + strDesTipPro + "'");
                 if (dtResul.Rows.Count != 0)
                 {
-                    n_idtipproducto = Convert.ToInt16(dtResul.Rows[0]["n_id"].ToString());
+                    n_idtipproducto = Convert.ToInt32(dtResul.Rows[0]["n_id"].ToString());
 
                     // FILTRAMOS LAS PRESENTACIONES DEL ITEM SELECCIONADO
                     dtResul = funDatos.DataTableFiltrar(dtPresentaItem, "n_idite = " + n_idtipproducto + "");
@@ -1124,7 +1124,7 @@ namespace SSF_NET_Almacen.Formularios
             if (n_QueHace == 3) { return; }
             if (booAgregando == true) { return; }
 
-            int n_Idlm = Convert.ToInt16(CboAlmacen.SelectedValue);
+            int n_Idlm = Convert.ToInt32(CboAlmacen.SelectedValue);
 
             booAgregando = true;
             DataTable dtResul = funDatos.DataTableFiltrar(dtDocAlm, "n_idalm = " + n_Idlm.ToString() + "");
@@ -1251,7 +1251,7 @@ namespace SSF_NET_Almacen.Formularios
                 dtResul = funDatos.DataTableFiltrar(dtItems, "c_despro = '" + c_despro + "'");
                 if (dtResul.Rows.Count != 0)
                 {
-                    n_idpro = Convert.ToInt16(dtResul.Rows[0]["n_id"].ToString());
+                    n_idpro = Convert.ToInt32(dtResul.Rows[0]["n_id"].ToString());
 
                     // FILTRAMOS LAS PRESENTACIONES DEL ITEM SELECCIONADO
                     dtResul = funDatos.DataTableFiltrar(dtPresentaItem, "n_idite = " + n_idpro + " AND n_default = 1");
@@ -1365,8 +1365,8 @@ namespace SSF_NET_Almacen.Formularios
             if (booAgregando == true) { return; }
 
             objMovimientos.mysConec = mysConec;
-            dtMovimientos = objMovimientos.Listar(STU_SISTEMA.EMPRESAID, Convert.ToInt16(CboMeses.SelectedValue), STU_SISTEMA.ANOTRABAJO, 2, 0);  // EL PARAMETROS N_IDTIPITEM = 0  MOSTRARA TODAS LAS SALIDAS
-            STU_SISTEMA.MESTRABAJO = Convert.ToInt16(CboMeses.SelectedValue);
+            dtMovimientos = objMovimientos.Listar(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboMeses.SelectedValue), STU_SISTEMA.ANOTRABAJO, 2, 0);  // EL PARAMETROS N_IDTIPITEM = 0  MOSTRARA TODAS LAS SALIDAS
+            STU_SISTEMA.MESTRABAJO = Convert.ToInt32(CboMeses.SelectedValue);
             ListarItems();
 
             if (dtMovimientos.Rows.Count == 0)
@@ -1426,7 +1426,7 @@ namespace SSF_NET_Almacen.Formularios
             if (TxtNumSer.Text == "") { return; }
 
             string c_numdoc = "";
-            c_numdoc = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, Convert.ToInt16(CboTipDoc.SelectedValue), TxtNumSer.Text);
+            c_numdoc = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboTipDoc.SelectedValue), TxtNumSer.Text);
             TxtNumDoc.Text = c_numdoc;
         }
         private void TxtSerDocRef_Validated(object sender, EventArgs e)
@@ -1454,7 +1454,7 @@ namespace SSF_NET_Almacen.Formularios
         {
             if (booAgregando == true) { return; }
 
-            if (Convert.ToInt16(CboAlmacen.SelectedValue) == 0)
+            if (Convert.ToInt32(CboAlmacen.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha indicado el almacen", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboDocRef.SelectedValue = 0;
@@ -1791,8 +1791,8 @@ namespace SSF_NET_Almacen.Formularios
             if (dtResult == null) { return; }
             if (dtResult.Rows.Count == 0) { return; }
 
-            n_ItemProducido = Convert.ToInt16(dtResult.Rows[0]["iditem"].ToString());
-            n_IdReceta = Convert.ToInt16(dtResult.Rows[0]["idrec"].ToString());
+            n_ItemProducido = Convert.ToInt32(dtResult.Rows[0]["iditem"].ToString());
+            n_IdReceta = Convert.ToInt32(dtResult.Rows[0]["idrec"].ToString());
             TxtNumDocRef.Text = dtResult.Rows[0]["numparte"].ToString();
             TxtSerDocRef.Text = "0001";
             LblIdDocRef.Text = dtResult.Rows[0]["idpro"].ToString();
@@ -1801,7 +1801,7 @@ namespace SSF_NET_Almacen.Formularios
             objProdDetalle.AccConec = AccConec;
             DataTable dtItemFiltro = new DataTable();
             objProdDetalle.n_ItemProducido = n_ItemProducido;
-            DtDetalleTMP = objProdDetalle.ProduccionInsumos(Convert.ToInt16(LblIdDocRef.Text), n_IdReceta);
+            DtDetalleTMP = objProdDetalle.ProduccionInsumos(Convert.ToInt32(LblIdDocRef.Text), n_IdReceta);
             dtResult = DtDetalleTMP;
             n_filaflex = 2;
             FgItems.Rows.Count = 2;
@@ -1820,7 +1820,7 @@ namespace SSF_NET_Almacen.Formularios
                     FgItems.SetData(n_filaflex, 2, dtItemFiltro.Rows[0]["c_despro"].ToString());
 
                     // MOSTRAMOS LA DESCRIPCION DEL TIPO DE ITEM
-                    dtItemFiltro = funDatos.DataTableFiltrar(dtTipoExis, "n_id = " + Convert.ToInt16(dtItemFiltro.Rows[0]["n_idtipexi"]) + "");
+                    dtItemFiltro = funDatos.DataTableFiltrar(dtTipoExis, "n_id = " + Convert.ToInt32(dtItemFiltro.Rows[0]["n_idtipexi"]) + "");
                     FgItems.SetData(n_filaflex, 1, dtItemFiltro.Rows[0]["c_des"].ToString());
                 }
 
@@ -1865,7 +1865,7 @@ namespace SSF_NET_Almacen.Formularios
             if (dtresult == null) { return; }
             if (dtresult.Rows.Count == 0) { return; }
 
-            n_idguia = Convert.ToInt16(dtresult.Rows[0]["n_id"].ToString());
+            n_idguia = Convert.ToInt32(dtresult.Rows[0]["n_id"].ToString());
 
             BE_VTA_GUIAS entGuia = new BE_VTA_GUIAS();
             List<BE_VTA_GUIASDET> lstGuiasDet = new List<BE_VTA_GUIASDET>();
@@ -1906,7 +1906,7 @@ namespace SSF_NET_Almacen.Formularios
                     FgItems.SetData(n_filaflex, 2, dtItemFiltro.Rows[0]["c_despro"].ToString());
 
                     // MOSTRAMOS LA DESCRIPCION DEL TIPO DE ITEM
-                    dtItemFiltro = funDatos.DataTableFiltrar(dtTipoExis, "n_id = " + Convert.ToInt16(dtItemFiltro.Rows[0]["n_idtipexi"]) + "");
+                    dtItemFiltro = funDatos.DataTableFiltrar(dtTipoExis, "n_id = " + Convert.ToInt32(dtItemFiltro.Rows[0]["n_idtipexi"]) + "");
                     FgItems.SetData(n_filaflex, 1, dtItemFiltro.Rows[0]["c_des"].ToString());
                 }
 
@@ -1994,7 +1994,7 @@ namespace SSF_NET_Almacen.Formularios
                                 FgItems.SetData(n_filaflex, 2, dtresult.Rows[0]["c_despro"].ToString());
 
                                 // MOSTRAMOS LA DESCRIPCION DEL TIPO DE ITEM
-                                dtresult = funDatos.DataTableFiltrar(dtTipoExis, "n_id = " + Convert.ToInt16(dtresult.Rows[0]["n_idtipexi"]) + "");
+                                dtresult = funDatos.DataTableFiltrar(dtTipoExis, "n_id = " + Convert.ToInt32(dtresult.Rows[0]["n_idtipexi"]) + "");
                                 FgItems.SetData(n_filaflex, 1, dtresult.Rows[0]["c_des"].ToString());
                             }
 
@@ -2077,7 +2077,7 @@ namespace SSF_NET_Almacen.Formularios
                                 FgItems.SetData(n_filaflex, 2, dtresult.Rows[0]["c_despro"].ToString());
 
                                 // MOSTRAMOS LA DESCRIPCION DEL TIPO DE ITEM
-                                dtresult = funDatos.DataTableFiltrar(dtTipoExis, "n_id = " + Convert.ToInt16(dtresult.Rows[0]["n_idtipexi"]) + "");
+                                dtresult = funDatos.DataTableFiltrar(dtTipoExis, "n_id = " + Convert.ToInt32(dtresult.Rows[0]["n_idtipexi"]) + "");
                                 FgItems.SetData(n_filaflex, 1, dtresult.Rows[0]["c_des"].ToString());
                             }
 
@@ -2160,7 +2160,7 @@ namespace SSF_NET_Almacen.Formularios
                                 FgItems.SetData(n_filaflex, 2, dtresult.Rows[0]["c_despro"].ToString());
 
                                 // MOSTRAMOS LA DESCRIPCION DEL TIPO DE ITEM
-                                dtresult = funDatos.DataTableFiltrar(dtTipoExis, "n_id = " + Convert.ToInt16(dtresult.Rows[0]["n_idtipexi"]) + "");
+                                dtresult = funDatos.DataTableFiltrar(dtTipoExis, "n_id = " + Convert.ToInt32(dtresult.Rows[0]["n_idtipexi"]) + "");
                                 FgItems.SetData(n_filaflex, 1, dtresult.Rows[0]["c_des"].ToString());
                             }
 
@@ -2241,7 +2241,7 @@ namespace SSF_NET_Almacen.Formularios
                                 FgItems.SetData(n_filaflex, 2, dtresult.Rows[0]["c_despro"].ToString());
 
                                 // MOSTRAMOS LA DESCRIPCION DEL TIPO DE ITEM
-                                dtresult = funDatos.DataTableFiltrar(dtTipoExis, "n_id = " + Convert.ToInt16(dtresult.Rows[0]["n_idtipexi"]) + "");
+                                dtresult = funDatos.DataTableFiltrar(dtTipoExis, "n_id = " + Convert.ToInt32(dtresult.Rows[0]["n_idtipexi"]) + "");
                                 FgItems.SetData(n_filaflex, 1, dtresult.Rows[0]["c_des"].ToString());
                             }
 
@@ -2322,7 +2322,7 @@ namespace SSF_NET_Almacen.Formularios
                                 FgItems.SetData(n_filaflex, 2, dtresult.Rows[0]["c_despro"].ToString());
 
                                 // MOSTRAMOS LA DESCRIPCION DEL TIPO DE ITEM
-                                dtresult = funDatos.DataTableFiltrar(dtTipoExis, "n_id = " + Convert.ToInt16(dtresult.Rows[0]["n_idtipexi"]) + "");
+                                dtresult = funDatos.DataTableFiltrar(dtTipoExis, "n_id = " + Convert.ToInt32(dtresult.Rows[0]["n_idtipexi"]) + "");
                                 FgItems.SetData(n_filaflex, 1, dtresult.Rows[0]["c_des"].ToString());
                             }
 
@@ -2394,7 +2394,7 @@ namespace SSF_NET_Almacen.Formularios
         //    if (dtResult == null) { return; }
         //    if (dtResult.Rows.Count == 0) { return; }
 
-        //    n_idguia = Convert.ToInt16(dtResult.Rows[0]["id"].ToString());
+        //    n_idguia = Convert.ToInt32(dtResult.Rows[0]["id"].ToString());
         //    LblIdDocRef.Text = n_idguia.ToString();
         //    TxtSerDocRef.Text = dtResult.Rows[0]["numser"].ToString();
         //    TxtNumDocRef.Text = dtResult.Rows[0]["numdoc"].ToString();
@@ -2418,7 +2418,7 @@ namespace SSF_NET_Almacen.Formularios
         //            FgItems.SetData(n_filaflex, 2, dtItemFiltro.Rows[0]["c_despro"].ToString());
 
         //            // MOSTRAMOS LA DESCRIPCION DEL TIPO DE ITEM
-        //            dtItemFiltro = funDatos.DataTableFiltrar(dtTipoExis, "n_id = " + Convert.ToInt16(dtItemFiltro.Rows[0]["n_idtipexi"]) + "");
+        //            dtItemFiltro = funDatos.DataTableFiltrar(dtTipoExis, "n_id = " + Convert.ToInt32(dtItemFiltro.Rows[0]["n_idtipexi"]) + "");
         //            FgItems.SetData(n_filaflex, 1, dtItemFiltro.Rows[0]["c_des"].ToString());
         //        }
 
@@ -2443,35 +2443,35 @@ namespace SSF_NET_Almacen.Formularios
         //}
         private void CmdBusDocRef_Click(object sender, EventArgs e)
         {
-            if (Convert.ToInt16(CboDocRef.SelectedValue) == 73)
+            if (Convert.ToInt32(CboDocRef.SelectedValue) == 73)
             {
                 MostrarParteProduccion();
             }
-            if (Convert.ToInt16(CboDocRef.SelectedValue) == 10)
+            if (Convert.ToInt32(CboDocRef.SelectedValue) == 10)
             {
                 MostrarGuiasPendientes(1); // INDICAMOS QUE MUESTRE SOLO GUIAS DE VENTA
             }
-            if (Convert.ToInt16(CboDocRef.SelectedValue) == 32)
+            if (Convert.ToInt32(CboDocRef.SelectedValue) == 32)
             {
                 MostrarGuiasPendientes(2); // INDICAMOS QUE MUESTRE SOLO GUIAS DE LOGISTICA
             }
-            if ((Convert.ToInt16(CboDocRef.SelectedValue) == 2) || (Convert.ToInt16(CboDocRef.SelectedValue) == 4))
+            if ((Convert.ToInt32(CboDocRef.SelectedValue) == 2) || (Convert.ToInt32(CboDocRef.SelectedValue) == 4))
             {
                 MostrarFacturas();    // MOSTRAMOS LOS DOCUMENTOS DE VENTA QUE NO TENGAN GUIA ADJUNTA
             }
-            if (Convert.ToInt16(CboDocRef.SelectedValue) == 72)
+            if (Convert.ToInt32(CboDocRef.SelectedValue) == 72)
             {
                 MostrarSolicitudMateriales();
             }
-            if (Convert.ToInt16(CboDocRef.SelectedValue) == 75)
+            if (Convert.ToInt32(CboDocRef.SelectedValue) == 75)
             {
                 MostrarOrdenRequerimiento();
             }
-            if (Convert.ToInt16(CboDocRef.SelectedValue) == 92)
+            if (Convert.ToInt32(CboDocRef.SelectedValue) == 92)
             {
                 MostrarSolicitudMaterialesAdicional();
             }
-            if (Convert.ToInt16(CboDocRef.SelectedValue) == 88)
+            if (Convert.ToInt32(CboDocRef.SelectedValue) == 88)
             {
                 MostrarProformas();    // MOSTRAMOS LOS DOCUMENTOS DE VENTA QUE NO TENGAN GUIA ADJUNTA
             }
@@ -2484,7 +2484,7 @@ namespace SSF_NET_Almacen.Formularios
         {
             CN_alm_movimientos objAlm = new CN_alm_movimientos();
             objAlm.STU_SISTEMA = STU_SISTEMA;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
             objAlm.ReportImprimirNotaSalida(intIdRegistro);
         }
         private void CboTipOpe_SelectedIndexChanged(object sender, EventArgs e)
@@ -2504,7 +2504,7 @@ namespace SSF_NET_Almacen.Formularios
 
             TxtNumSer.Text = "0001";
             TxtNumDoc.Text = "";
-            if (Convert.ToInt16(CboTipOpe.SelectedValue) == 1)                                                                  // SALIDA POR VENTA
+            if (Convert.ToInt32(CboTipOpe.SelectedValue) == 1)                                                                  // SALIDA POR VENTA
             {
                 CboTipDoc.SelectedValue = 50;
                 CboDocRef.SelectedValue = 10;
@@ -2514,7 +2514,7 @@ namespace SSF_NET_Almacen.Formularios
                 TxtNumRuc.Focus();
             }
 
-            if (Convert.ToInt16(CboTipOpe.SelectedValue) == 10)                                                                 // SALIDA A PRODUCCION
+            if (Convert.ToInt32(CboTipOpe.SelectedValue) == 10)                                                                 // SALIDA A PRODUCCION
             {
                 if (STU_SISTEMA.EMPRESAID == 1) { LblIdPro.Text = "1711"; }
                 if (STU_SISTEMA.EMPRESAID == 2) { LblIdPro.Text = "7032"; }
@@ -2533,7 +2533,7 @@ namespace SSF_NET_Almacen.Formularios
                 CboSolicitante.Focus();
             }
 
-            if (Convert.ToInt16(CboTipOpe.SelectedValue) == 11)                                                                 // SALIDA A PRODUCCION
+            if (Convert.ToInt32(CboTipOpe.SelectedValue) == 11)                                                                 // SALIDA A PRODUCCION
             {
                 if (STU_SISTEMA.EMPRESAID == 1) {  LblIdPro.Text  = "1711"; }
                 if (STU_SISTEMA.EMPRESAID == 2) {  LblIdPro.Text = "7032"; }
@@ -2552,7 +2552,7 @@ namespace SSF_NET_Almacen.Formularios
                 CboSolicitante.Focus();
             }
 
-            MostarNumeroDocumento(STU_SISTEMA.EMPRESAID, Convert.ToInt16(CboTipDoc.SelectedValue), TxtNumSer.Text);
+            MostarNumeroDocumento(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboTipDoc.SelectedValue), TxtNumSer.Text);
         }
         void MostarNumeroDocumento(int IdEmpresa, int n_TipoDocumento, string c_NumeroSerie)
         {
@@ -2577,16 +2577,16 @@ namespace SSF_NET_Almacen.Formularios
             DataTable dtResul = funDatos.DataTableFiltrar(dtDocAlm, "n_idtipdoc = " + n_IdTipDoc.ToString() + "");
             booAgregando = true;
             FgItems.Rows.Count = 2;
-            if (Convert.ToInt16(dtResul.Rows[0]["n_numfil"].ToString()) != 0)
+            if (Convert.ToInt32(dtResul.Rows[0]["n_numfil"].ToString()) != 0)
             {
-                FgItems.Rows.Count = FgItems.Rows.Count + Convert.ToInt16(dtResul.Rows[0]["n_numfil"].ToString());                  // INDICAMOS EL NUMERO DE FILAS PARA EL DETALLE
+                FgItems.Rows.Count = FgItems.Rows.Count + Convert.ToInt32(dtResul.Rows[0]["n_numfil"].ToString());                  // INDICAMOS EL NUMERO DE FILAS PARA EL DETALLE
             }
             else
             {
                 FgItems.Rows.Count = FgItems.Rows.Count + n_NumFilasDocumento;
             }
             TxtNumSer.Text = "0001";
-            MostarNumeroDocumento(STU_SISTEMA.EMPRESAID, Convert.ToInt16(CboTipDoc.SelectedValue), TxtNumSer.Text);
+            MostarNumeroDocumento(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboTipDoc.SelectedValue), TxtNumSer.Text);
             CboDocRef.Focus();
             //TxtNumRuc.Focus();
 
@@ -2637,7 +2637,7 @@ namespace SSF_NET_Almacen.Formularios
                 dtResul = funDatos.DataTableFiltrar(dtTipoExis, "c_des = '" + strDesTipPro + "'");
                 if (dtResul.Rows.Count != 0)
                 {
-                    n_idtipexi = Convert.ToInt16(dtResul.Rows[0]["n_id"].ToString());
+                    n_idtipexi = Convert.ToInt32(dtResul.Rows[0]["n_id"].ToString());
                 }
 
                 booAgregando = true;

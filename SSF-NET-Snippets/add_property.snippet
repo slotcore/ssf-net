@@ -1,0 +1,42 @@
+﻿<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>AddProperty</Title>
+    <Author>Jose Chacon</Author>
+    <Description>Define una Propiedad para un objeto ViewModel.</Description>
+    <Shortcut>ssfprop</Shortcut>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>Propiedad</ID>
+        <ToolTip>Reemplazar por el Nombre de la propiedad</ToolTip>
+        <Default>Description</Default>
+      </Literal>
+      <Literal>
+        <ID>TipoDato</ID>
+        <ToolTip>Reemplazar por el Tipo de Dato</ToolTip>
+        <Default>string</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="csharp">
+      <![CDATA[
+        private $TipoDato$ _$Propiedad$;
+        public $TipoDato$ $Propiedad$
+        {
+            get
+            {
+                return _$Propiedad$;
+            }
+
+            set
+            {
+                if (value != _$Propiedad$)
+                {
+                    _$Propiedad$ = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }]]>
+    </Code>
+  </Snippet>  
+</CodeSnippet>

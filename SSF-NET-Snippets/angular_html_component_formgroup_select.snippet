@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>NgHtmlComponentFormGroupSelect</Title>
+      <Author>Jose Chacon</Author>
+      <Shortcut>nghtmlcmpnntformgroupselect</Shortcut>
+      <Description>Agrega componente crear</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+        <SnippetType>SurroundsWith</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>ModelInstance</ID>
+          <ToolTip>Nombre del esquema</ToolTip>
+          <Default>ModelInstance</Default>
+        </Literal>
+        <Literal>
+          <ID>ModelDescription</ID>
+          <ToolTip>Nombre del esquema</ToolTip>
+          <Default>ModelDescription</Default>
+        </Literal>
+        <Literal>
+          <ID>PropDdescription</ID>
+          <ToolTip>Nombre del esquema</ToolTip>
+          <Default>name</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="html">
+        <![CDATA[
+        <mat-form-field class="full-width">
+          <mat-label>$ModelDescription$</mat-label>
+          <mat-select formControlName="$ModelInstance$Id" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let $ModelInstance$ of $ModelInstance$s" [value]="$ModelInstance$.$ModelInstance$Id">
+              {{$ModelInstance$.$PropDdescription$}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="validateError('$ModelInstance$Id')">{{getError('$ModelInstance$Id')}}</mat-error>
+      </mat-form-field>]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

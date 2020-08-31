@@ -1,0 +1,28 @@
+﻿<CodeSnippet Format="1.1.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>FormGroupMaterial</Title>
+    <Author>Jose Chacon</Author>
+    <Shortcut>alpformgroupmtrl</Shortcut>
+    <Description>Agrega un bloque form-group para ASP.Net Core</Description>
+    <SnippetTypes>
+      <SnippetType>Expansion</SnippetType>
+      <SnippetType>SurroundsWith</SnippetType>
+    </SnippetTypes>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>PropertyName</ID>
+        <ToolTip>Nombre de la propiedad</ToolTip>
+        <Default>Nombre</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="html">
+      <![CDATA[
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <input asp-for="$PropertyName$" class="form-control">
+                                    <label asp-for="$PropertyName$"></label>
+                                    <span asp-validation-for="$PropertyName$" class="help-block"></span>
+                                </div>]]></Code>
+  </Snippet>
+</CodeSnippet>

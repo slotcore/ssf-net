@@ -1,0 +1,56 @@
+<CodeSnippet Format="1.1.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>ComboGetListModel</Title>
+    <Author>Jose Chacon</Author>
+    <Shortcut>alpjscmbgetlstmdl</Shortcut>
+    <Description>Obtiene el listado del modelo mediante una llamada JSON.</Description>
+    <SnippetTypes>
+      <SnippetType>Expansion</SnippetType>
+      <SnippetType>SurroundsWith</SnippetType>
+    </SnippetTypes>
+  </Header>
+ <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>ModelName</ID>
+        <ToolTip>Nombre del modelo</ToolTip>
+        <Default>ModelName</Default>
+      </Literal>
+      <Literal>
+        <ID>ModelDependentName</ID>
+        <ToolTip>Nombre del modelo dependiente</ToolTip>
+        <Default>ModelDependentName</Default>
+      </Literal>
+      <Literal>
+        <ID>PropertyName</ID>
+        <ToolTip>Nombre de la propiedad</ToolTip>
+        <Default>Nombre</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="JavaScript" Delimiter="~">
+      <![CDATA[
+function Get~ModelName~s(Url) {
+    $("#~ModelName~Id").empty();
+    $('#~ModelName~Id').selectpicker('refresh');
+    
+    if ($("#~ModelDependentName~Id").val() != '') {
+        $.ajax({
+            type: 'POST',
+            url: Url,
+            dataType: 'json',
+            data: { ~ModelDependentName~Id: $("#~ModelDependentName~Id").val() },
+            success: function (list) {
+                $("#~ModelName~Id").append('<option value="">--Seleccione--</option>');
+                $.each(list, function (i, item) {
+                    $("#~ModelName~Id").append('<option value="' + item.~ModelName~id + '">' + item.~PropertyName~ + '</option>');
+                });
+                $('#~ModelName~Id').selectpicker('refresh');
+            },
+            error: function (ex) {
+                alert('Ocurrió un error al intentar recuperar la data.' + ex + "val:" + $("#~ModelDependentName~Id").val());
+            }
+        });
+    }
+}]]></Code>
+  </Snippet>
+</CodeSnippet>

@@ -1,0 +1,191 @@
+﻿<CodeSnippet Format="1.1.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>FormTabContent</Title>
+    <Author>Jose Chacon</Author>
+    <Shortcut>alpformtabcntnt</Shortcut>
+    <Description>Agrega un bloque tabcontent para ASP.Net Core</Description>
+    <SnippetTypes>
+      <SnippetType>Expansion</SnippetType>
+      <SnippetType>SurroundsWith</SnippetType>
+    </SnippetTypes>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>ModelParentName</ID>
+        <ToolTip>Nombre del modelo padre</ToolTip>
+        <Default>ModelParentName</Default>
+      </Literal>
+      <Literal>
+        <ID>ModelName1</ID>
+        <ToolTip>Nombre del modelo 1</ToolTip>
+        <Default>ModelName1</Default>
+      </Literal>
+      <Literal>
+        <ID>ModelName2</ID>
+        <ToolTip>Nombre del modelo 2</ToolTip>
+        <Default>ModelName2</Default>
+      </Literal>
+      <Literal>
+        <ID>ModelDescription1</ID>
+        <ToolTip>Descripcion del modelo 1</ToolTip>
+        <Default>ModelDescription1</Default>
+      </Literal>
+      <Literal>
+        <ID>ModelDescription2</ID>
+        <ToolTip>Descripcion del modelo 2</ToolTip>
+        <Default>ModelDescription2</Default>
+      </Literal>
+      <Literal>
+        <ID>Model1PropertyName1</ID>
+        <ToolTip>Nombre de la propiedad 1 del modelo 1</ToolTip>
+        <Default>Name</Default>
+      </Literal>
+      <Literal>
+        <ID>Model1PropertyName2</ID>
+        <ToolTip>Nombre de la propiedad 2 del modelo 1</ToolTip>
+        <Default>Description</Default>
+      </Literal>
+      <Literal>
+        <ID>Model2PropertyName1</ID>
+        <ToolTip>Nombre de la propiedad 1 del modelo 2</ToolTip>
+        <Default>Name</Default>
+      </Literal>
+      <Literal>
+        <ID>Model2PropertyName2</ID>
+        <ToolTip>Nombre de la propiedad 2 del modelo 2</ToolTip>
+        <Default>Description</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="html">
+      <![CDATA[
+                    <div class="portlet light">
+                        <div class="portlet-title tabbable-line">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#tab_1_1" class="font-blue-madison bold uppercase" data-toggle="tab">$ModelDescription1$s</a>
+                                </li>
+                                <li>
+                                    <a href="#tab_1_2" class="font-blue-madison bold uppercase" data-toggle="tab">$ModelDescription2$s</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="portlet-body">
+                            <div class="tab-content">
+                                <!-- TAB 1 -->
+                                <div class="tab-pane active" id="tab_1_1">
+                                    <div class="table-toolbar">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <a asp-action="$ModelName1$Create" asp-route-id="@Model.$ModelParentName$Id" class="btn sbold green mt-ladda-btn ladda-button" data-style="zoom-in" data-spinner-color="#333">
+                                                    <span class="ladda-label">Agregar Nuevo <i class="fa fa-plus"></i></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @if (Model.$ModelName1$s.Count == 0)
+                                    {
+                                        <h5>No existen registros</h5>
+                                    }
+                                    else
+                                    {
+                                        <table class="table table-striped table-bordered table-hover" id="table_detail_list">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        @Html.DisplayNameFor(model => model.$ModelName1$s.FirstOrDefault().$Model1PropertyName1$)
+                                                    </th>
+                                                    <th>
+                                                        @Html.DisplayNameFor(model => model.$ModelName1$s.FirstOrDefault().$Model1PropertyName2$)
+                                                    </th>
+                                                    <th data-priority="2"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in Model.$ModelName1$s)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.$Model1PropertyName1$)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.$Model1PropertyName2$)
+                                                        </td>
+                                                        <td>
+                                                            <div class="btn-group" role="group" aria-label="...">
+                                                                <a asp-action="$ModelName1$Details" asp-route-id="@item.$ModelName1$Id" class="btn btn-default mt-ladda-btn ladda-button" data-style="zoom-in" data-spinner-color="#333" data-toggle="tooltip" title="Detalles"><span class="ladda-label"><i class="icon-notebook"></i></span></a>
+                                                                <a asp-action="$ModelName1$Edit" asp-route-id="@item.$ModelName1$Id" class="btn btn-default yellow-crusta mt-ladda-btn ladda-button" data-style="zoom-in" data-spinner-color="#333" data-toggle="tooltip" title="Modificar"><span class="ladda-label"><i class="icon-wrench"></i></span></a>
+                                                                <button class="btn btn-default mt-sweetalert red" data-toggle="tooltip" title="Eliminar" data-title="¿Está seguro de eliminar este registro?" data-type="warning" data-allow-outside-click="true" data-show-confirm-button="true" data-show-cancel-button="true"
+                                                                        data-url-action="@Url.Action("$ModelName1$Delete", new { id = item.$ModelName1$Id })" data-cancel-button-class="btn-danger" data-cancel-button-text='No' data-confirm-button-text='Si' data-confirm-button-class="btn-info">
+                                                                    <i class="icon-trash"></i>
+                                                                </button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    }
+                                </div>
+                                <!-- END TAB 1 -->
+                                <!-- TAB 2 -->
+                                <div class="tab-pane" id="tab_1_2">
+                                    <div class="table-toolbar">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <a asp-action="$ModelName2$Create" asp-route-id="@Model.$ModelParentName$Id" class="btn sbold green mt-ladda-btn ladda-button" data-style="zoom-in" data-spinner-color="#333">
+                                                    <span class="ladda-label">Agregar Nuevo <i class="fa fa-plus"></i></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @if (Model.$ModelName2$s.Count == 0)
+                                    {
+                                        <h5>No existen registros</h5>
+                                    }
+                                    else
+                                    {
+                                        <table class="table table-striped table-bordered table-hover" id="table_detail_list2">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        @Html.DisplayNameFor(model => model.$ModelName2$s.FirstOrDefault().$Model2PropertyName1$)
+                                                    </th>
+                                                    <th>
+                                                        @Html.DisplayNameFor(model => model.$ModelName2$s.FirstOrDefault().$Model2PropertyName2$)
+                                                    </th>
+                                                    <th data-priority="2"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in Model.$ModelName2$s)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.$Model2PropertyName1$)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.$Model2PropertyName2$)
+                                                        </td>
+                                                        <td>
+                                                            <div class="btn-group" role="group" aria-label="...">
+                                                                <a asp-action="$ModelName2$Details" asp-route-id="@item.$ModelName2$Id" class="btn btn-default mt-ladda-btn ladda-button" data-style="zoom-in" data-spinner-color="#333" data-toggle="tooltip" title="Detalles"><span class="ladda-label"><i class="icon-notebook"></i></span></a>
+                                                                <a asp-action="$ModelName2$Edit" asp-route-id="@item.$ModelName2$Id" class="btn btn-default yellow-crusta mt-ladda-btn ladda-button" data-style="zoom-in" data-spinner-color="#333" data-toggle="tooltip" title="Modificar"><span class="ladda-label"><i class="icon-wrench"></i></span></a>
+                                                                <button class="btn btn-default mt-sweetalert red" data-toggle="tooltip" title="Eliminar" data-title="¿Está seguro de eliminar este registro?" data-type="warning" data-allow-outside-click="true" data-show-confirm-button="true" data-show-cancel-button="true"
+                                                                        data-url-action="@Url.Action("$ModelName2$Delete", new { id = item.$ModelName2$Id })" data-cancel-button-class="btn-danger" data-cancel-button-text='No' data-confirm-button-text='Si' data-confirm-button-class="btn-info">
+                                                                    <i class="icon-trash"></i>
+                                                                </button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    }
+                                </div>
+                                <!-- END TAB 2 -->
+                            </div>
+                        </div>
+                    </div>]]></Code>
+  </Snippet>
+</CodeSnippet>

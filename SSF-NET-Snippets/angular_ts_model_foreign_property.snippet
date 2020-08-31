@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+        <Title>NgTsModelForeignProperty</Title>
+        <Author>Jose Chacon</Author>
+        <Description>Agrega las acciones para un controlador base - MVC ASP.Net Core</Description>
+        <Shortcut>ngtsmdlfrgnprop</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>TipoDato</ID>
+          <ToolTip>Reemplazar por el Tipo de Dato</ToolTip>
+          <Default>number</Default>
+        </Literal>
+        <Literal>
+          <ID>ModelName</ID>
+          <ToolTip>Reemplazar por el Nombre de la Propiedad</ToolTip>
+          <Default>ModelName</Default>
+        </Literal>
+        <Literal>
+          <ID>ModelNameInstance</ID>
+          <ToolTip>Reemplazar por el Nombre de la Propiedad</ToolTip>
+          <Default>ModelNameInstance</Default>
+        </Literal>
+      </Declarations>
+        <Code Language="TypeScript">
+        <![CDATA[
+  public $ModelNameInstance$Id: $TipoDato$;
+
+  public $ModelNameInstance$: $ModelName$;]]>
+        </Code>
+    </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

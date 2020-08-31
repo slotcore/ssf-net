@@ -1,0 +1,166 @@
+﻿<CodeSnippet Format="1.1.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>ViewCreate</Title>
+    <Author>Jose Chacon</Author>
+    <Shortcut>alpviewcrt</Shortcut>
+    <Description>Agrega una vista para creación de un modelo</Description>
+    <SnippetTypes>
+      <SnippetType>Expansion</SnippetType>
+      <SnippetType>SurroundsWith</SnippetType>
+    </SnippetTypes>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>LibraryName</ID>
+        <ToolTip>Nombre del esquema</ToolTip>
+        <Default>AdministracionRuta.Common</Default>
+      </Literal>
+      <Literal>
+        <ID>EsquemaName</ID>
+        <ToolTip>Nombre del esquema</ToolTip>
+        <Default>Application</Default>
+      </Literal>
+      <Literal>
+        <ID>TitleBody</ID>
+        <ToolTip>Detalle de la página</ToolTip>
+        <Default>TitleBody</Default>
+      </Literal>
+      <Literal>
+        <ID>ControlerName</ID>
+        <ToolTip>Nombre del controlador</ToolTip>
+        <Default>ControlerName</Default>
+      </Literal>
+      <Literal>
+        <ID>ControlerDescription</ID>
+        <ToolTip>Descripción del controlador</ToolTip>
+        <Default>ControlerDescription</Default>
+      </Literal>
+      <Literal>
+        <ID>ModelName</ID>
+        <ToolTip>Nombre del modelo</ToolTip>
+        <Default>ModelName</Default>
+      </Literal>
+      <Literal>
+        <ID>ModelDescription</ID>
+        <ToolTip>Descripcion del modelo</ToolTip>
+        <Default>ModelDescription</Default>
+      </Literal>
+      <Literal>
+        <ID>PropName1</ID>
+        <ToolTip>Nombre de la propiedad 1</ToolTip>
+        <Default>Code</Default>
+      </Literal>
+      <Literal>
+        <ID>PropName2</ID>
+        <ToolTip>Nombre de la propiedad 2</ToolTip>
+        <Default>Name</Default>
+      </Literal>
+      <Literal>
+        <ID>PropName3</ID>
+        <ToolTip>Nombre de la propiedad 3</ToolTip>
+        <Default>Description</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="html">
+      <![CDATA[@model $LibraryName$.Models.$EsquemaName$.$ModelName$
+
+@{
+    ViewData["Title"] = "$ModelDescription$";
+    ViewData["Description"] = "Agregar $ModelDescription$";
+}
+
+@section pluginstyles {
+    <partial name="_CreatePluginStyles" />
+}
+
+<!-- BEGIN PAGE BASE CONTENT -->
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN SAMPLE FORM PORTLET-->
+        <div class="portlet light form-fit bordered">
+            <div class="portlet-title">
+                <div class="caption font-dark-sunglo">
+                    <span class="caption-subject bold uppercase"> @ViewData["Title"]</span>
+                </div>
+                <!-- BEGIN TOOLS -->
+                <div class="tools">
+                    <a href="" class="collapse"> </a>
+                    <a href="" class="reload"> </a>
+                    <a href="" class="fullscreen"> </a>
+                    <a href="" class="remove"> </a>
+                </div>
+                <!-- END TOOLS -->
+                <!-- BEGIN BREADCRUMB -->
+                <div class="breadcrumb">
+                  <ul class="page-breadcrumb breadcrumb">
+                      <li>
+                          <span>$ControlerDescription$</span>
+                          <i class="fa fa-circle"></i>
+                      </li>
+                      <li>
+                          <a asp-action="$ModelName$s">$ModelDescription$s</a>
+                          <i class="fa fa-circle"></i>
+                      </li>
+                      <li>
+                          <span class="active">@ViewData["Description"]</span>
+                      </li>
+                  </ul>
+                </div>
+                <!-- END PAGE BREADCRUMB -->
+            </div>
+            <div class="portlet-body form">
+                <form asp-action="$ModelName$Create" class="form-horizontal form-bordered" role="form">
+                    <div class="form-body">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="form-group">
+                            <label asp-for="$PropName1$" class="control-label col-md-3"></label>
+                            <div class="col-md-4">
+                                <input asp-for="$PropName1$" class="form-control" />
+                                <span asp-validation-for="$PropName1$" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="$PropName2$" class="control-label col-md-3"></label>
+                            <div class="col-md-4">
+                                <input asp-for="$PropName2$" class="form-control" />
+                                <span asp-validation-for="$PropName2$" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="$PropName3$" class="control-label col-md-3"></label>
+                            <div class="col-md-4">
+                                <input asp-for="$PropName3$" class="form-control" />
+                                <span asp-validation-for="$PropName3$" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-4">
+                                <button type="submit" class="btn green mt-ladda-btn ladda-button" data-style="zoom-in" data-spinner-color="#333">
+                                    <span class="ladda-label">Grabar <i class="fa fa-save"></i></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- END SAMPLE FORM PORTLET-->
+    </div>
+</div>
+<!-- END PAGE BASE CONTENT -->
+
+@section pageplugins {
+    <partial name="_CreatePagePlugin" />
+}
+
+@section pagescripts {
+    <script asp-append-version="true" src="~/assets/global/scripts/page-create.js" type="text/javascript"></script>
+}]]></Code>
+  </Snippet>
+</CodeSnippet>

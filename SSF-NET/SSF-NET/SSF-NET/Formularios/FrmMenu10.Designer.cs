@@ -59,6 +59,9 @@
             this.saldosPorLoteDetalladoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salidasAlmacenVariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transferenciasEntreAlmacenesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem42 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem43 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem44 = new System.Windows.Forms.ToolStripMenuItem();
             this.comprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maestrosToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -355,9 +358,7 @@
             this.toolStripStatusLabel8 = new System.Windows.Forms.ToolStripStatusLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
-            this.toolStripMenuItem42 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem43 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem44 = new System.Windows.Forms.ToolStripMenuItem();
+            this.costoDeProducciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -615,6 +616,29 @@
             this.transferenciasEntreAlmacenesToolStripMenuItem.Size = new System.Drawing.Size(275, 22);
             this.transferenciasEntreAlmacenesToolStripMenuItem.Text = "Transferencias entre Almacenes";
             this.transferenciasEntreAlmacenesToolStripMenuItem.Click += new System.EventHandler(this.transferenciasEntreAlmacenesToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem42
+            // 
+            this.toolStripMenuItem42.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem43,
+            this.toolStripMenuItem44});
+            this.toolStripMenuItem42.Name = "toolStripMenuItem42";
+            this.toolStripMenuItem42.Size = new System.Drawing.Size(275, 22);
+            this.toolStripMenuItem42.Text = "Control Procesos";
+            // 
+            // toolStripMenuItem43
+            // 
+            this.toolStripMenuItem43.Name = "toolStripMenuItem43";
+            this.toolStripMenuItem43.Size = new System.Drawing.Size(286, 22);
+            this.toolStripMenuItem43.Text = "Parte de Produccion sin Visar x Almacen";
+            this.toolStripMenuItem43.Click += new System.EventHandler(this.toolStripMenuItem43_Click);
+            // 
+            // toolStripMenuItem44
+            // 
+            this.toolStripMenuItem44.Name = "toolStripMenuItem44";
+            this.toolStripMenuItem44.Size = new System.Drawing.Size(286, 22);
+            this.toolStripMenuItem44.Text = "Producion Pendientes de Cierre";
+            this.toolStripMenuItem44.Click += new System.EventHandler(this.toolStripMenuItem44_Click);
             // 
             // comprasToolStripMenuItem
             // 
@@ -1390,7 +1414,8 @@
             this.operacionesToolStripMenuItem,
             this.librosToolStripMenuItem,
             this.toolStripMenuItem16,
-            this.consultasToolStripMenuItem});
+            this.consultasToolStripMenuItem,
+            this.costoDeProducciónToolStripMenuItem});
             this.contabilidadToolStripMenuItem1.Enabled = false;
             this.contabilidadToolStripMenuItem1.Name = "contabilidadToolStripMenuItem1";
             this.contabilidadToolStripMenuItem1.Size = new System.Drawing.Size(87, 20);
@@ -1408,7 +1433,7 @@
             this.dopcumentosContablesToolStripMenuItem,
             this.impuestosToolStripMenuItem});
             this.maestrosToolStripMenuItem4.Name = "maestrosToolStripMenuItem4";
-            this.maestrosToolStripMenuItem4.Size = new System.Drawing.Size(150, 22);
+            this.maestrosToolStripMenuItem4.Size = new System.Drawing.Size(185, 22);
             this.maestrosToolStripMenuItem4.Text = "Maestros";
             // 
             // planDeCuentasToolStripMenuItem1
@@ -1470,7 +1495,7 @@
             // toolStripMenuItem13
             // 
             this.toolStripMenuItem13.Name = "toolStripMenuItem13";
-            this.toolStripMenuItem13.Size = new System.Drawing.Size(147, 6);
+            this.toolStripMenuItem13.Size = new System.Drawing.Size(182, 6);
             // 
             // configuracionToolStripMenuItem
             // 
@@ -1482,7 +1507,7 @@
             this.estadosFinancierosToolStripMenuItem,
             this.cerrarMesToolStripMenuItem});
             this.configuracionToolStripMenuItem.Name = "configuracionToolStripMenuItem";
-            this.configuracionToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.configuracionToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.configuracionToolStripMenuItem.Text = "Configuracion";
             // 
             // centroDeCostosToolStripMenuItem
@@ -1549,7 +1574,7 @@
             this.registroDePercepcionesToolStripMenuItem,
             this.asientosDiversosToolStripMenuItem});
             this.operacionesToolStripMenuItem.Name = "operacionesToolStripMenuItem";
-            this.operacionesToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.operacionesToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.operacionesToolStripMenuItem.Text = "Operaciones";
             // 
             // registroDeDetracionesToolStripMenuItem
@@ -1629,7 +1654,7 @@
             this.conciliacionBancariaToolStripMenuItem,
             this.kardexValorizadoToolStripMenuItem});
             this.librosToolStripMenuItem.Name = "librosToolStripMenuItem";
-            this.librosToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.librosToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.librosToolStripMenuItem.Text = "Libros";
             // 
             // registroDeComprasToolStripMenuItem1
@@ -1707,7 +1732,7 @@
             // toolStripMenuItem16
             // 
             this.toolStripMenuItem16.Name = "toolStripMenuItem16";
-            this.toolStripMenuItem16.Size = new System.Drawing.Size(147, 6);
+            this.toolStripMenuItem16.Size = new System.Drawing.Size(182, 6);
             // 
             // consultasToolStripMenuItem
             // 
@@ -1715,7 +1740,7 @@
             this.dAOTToolStripMenuItem,
             this.centrosDeCostosToolStripMenuItem});
             this.consultasToolStripMenuItem.Name = "consultasToolStripMenuItem";
-            this.consultasToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.consultasToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.consultasToolStripMenuItem.Text = "Consultas";
             // 
             // dAOTToolStripMenuItem
@@ -2966,28 +2991,12 @@
             // 
             this.kryptonManager1.GlobalPaletteMode = ComponentFactory.Krypton.Toolkit.PaletteModeManager.Office2010Silver;
             // 
-            // toolStripMenuItem42
+            // costoDeProducciónToolStripMenuItem
             // 
-            this.toolStripMenuItem42.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem43,
-            this.toolStripMenuItem44});
-            this.toolStripMenuItem42.Name = "toolStripMenuItem42";
-            this.toolStripMenuItem42.Size = new System.Drawing.Size(275, 22);
-            this.toolStripMenuItem42.Text = "Control Procesos";
-            // 
-            // toolStripMenuItem43
-            // 
-            this.toolStripMenuItem43.Name = "toolStripMenuItem43";
-            this.toolStripMenuItem43.Size = new System.Drawing.Size(286, 22);
-            this.toolStripMenuItem43.Text = "Parte de Produccion sin Visar x Almacen";
-            this.toolStripMenuItem43.Click += new System.EventHandler(this.toolStripMenuItem43_Click);
-            // 
-            // toolStripMenuItem44
-            // 
-            this.toolStripMenuItem44.Name = "toolStripMenuItem44";
-            this.toolStripMenuItem44.Size = new System.Drawing.Size(286, 22);
-            this.toolStripMenuItem44.Text = "Producion Pendientes de Cierre";
-            this.toolStripMenuItem44.Click += new System.EventHandler(this.toolStripMenuItem44_Click);
+            this.costoDeProducciónToolStripMenuItem.Name = "costoDeProducciónToolStripMenuItem";
+            this.costoDeProducciónToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.costoDeProducciónToolStripMenuItem.Text = "Costo de Producción";
+            this.costoDeProducciónToolStripMenuItem.Click += new System.EventHandler(this.costoDeProducciónToolStripMenuItem_Click);
             // 
             // FrmMenu10
             // 
@@ -3346,5 +3355,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem42;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem43;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem44;
+        private System.Windows.Forms.ToolStripMenuItem costoDeProducciónToolStripMenuItem;
     }
 }

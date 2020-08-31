@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E97542E7-1A13-4354-A1A1-432476F0D83C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SSF_NET_Logistica</RootNamespace>
+    <AssemblyName>SSF-NET-Logistica</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="C1.Win.C1Command.2, Version=2.0.20101.19448, Culture=neutral, PublicKeyToken=e808566f358766d8, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1FlexGrid.2, Version=2.6.20101.528, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1FlexGrid.Classic.2, Version=2.6.20101.528, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Input.2, Version=2.0.20101.33244, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Sizer.2, Version=2.1.20101.49, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1TrueDBGrid.2, Version=2.0.20101.61177, Culture=neutral, PublicKeyToken=75ae3fb0e2b1e0da, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=8.0.21.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CLS_Logistica.cs" />
+    <Compile Include="Formularios\FrmConsultaCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmConsultaCompras.designer.cs">
+      <DependentUpon>FrmConsultaCompras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManAprobador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManAprobador.Designer.cs">
+      <DependentUpon>FrmManAprobador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManCompras2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManCompras2.Designer.cs">
+      <DependentUpon>FrmManCompras2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManComprasImportacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManComprasImportacion.Designer.cs">
+      <DependentUpon>FrmManComprasImportacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManGuiasRemision.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManGuiasRemision.Designer.cs">
+      <DependentUpon>FrmManGuiasRemision.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManGuiasRemision2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManGuiasRemision2.Designer.cs">
+      <DependentUpon>FrmManGuiasRemision2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManLiquidacionCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManLiquidacionCompra.Designer.cs">
+      <DependentUpon>FrmManLiquidacionCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManMotivos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManMotivos.Designer.cs">
+      <DependentUpon>FrmManMotivos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManNCND.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManNCND.Designer.cs">
+      <DependentUpon>FrmManNCND.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManOrdenRequerimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManOrdenRequerimiento.Designer.cs">
+      <DependentUpon>FrmManOrdenRequerimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManRenta4ta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManRenta4ta.Designer.cs">
+      <DependentUpon>FrmManRenta4ta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmOrdenCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmOrdenCompra.Designer.cs">
+      <DependentUpon>FrmOrdenCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\RptOrdenCompra.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptOrdenCompra.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\RptOrdenReq.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptOrdenReq.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Componentes\Helper\Helper\Helper.csproj">
+      <Project>{241f484b-ca5a-4e91-90b7-e3b22731e825}</Project>
+      <Name>Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Componentes\SIAC-NET\SIAC-Datos\SIAC-Datos.csproj">
+      <Project>{5b96fd36-691a-4adf-a4bd-0b5888085e7c}</Project>
+      <Name>SIAC-Datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Componentes\SIAC-NET\SIAC-Entidades\SIAC-Entidades\SIAC-Entidades.csproj">
+      <Project>{fc396209-1d34-4316-bed1-10f6c34167c4}</Project>
+      <Name>SIAC-Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Componentes\SIAC-NET\SIAC-Negocio\SIAC-Negocio\SIAC-Negocio.csproj">
+      <Project>{dd73aefb-d61d-46b9-8311-d36e29f02169}</Project>
+      <Name>SIAC-Negocio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Componentes\SIAC-NET\SIAC-Objetos\SIAC-Objetos\SIAC-Objetos.csproj">
+      <Project>{f4f48912-7b4c-4e06-926b-2d98e2f45f07}</Project>
+      <Name>SIAC-Objetos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\SSF-NET-Almacen\SSF-NET-Almacen\SSF-NET-Almacen\SSF-NET-Almacen.csproj">
+      <Project>{4b792186-57a9-4b3c-bf02-7d0a3b60236d}</Project>
+      <Name>SSF-NET-Almacen</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\SSF-NET-Contabilidad\SSF-NET-Contabilidad\SSF-NET-Contabilidad.csproj">
+      <Project>{61f4663c-64a7-4d8b-9cfb-edb4ffe7aef9}</Project>
+      <Name>SSF-NET-Contabilidad</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Formularios\FrmConsultaCompras.resx">
+      <DependentUpon>FrmConsultaCompras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManAprobador.resx">
+      <DependentUpon>FrmManAprobador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManCompras2.resx">
+      <DependentUpon>FrmManCompras2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManComprasImportacion.resx">
+      <DependentUpon>FrmManComprasImportacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManGuiasRemision.resx">
+      <DependentUpon>FrmManGuiasRemision.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManGuiasRemision2.resx">
+      <DependentUpon>FrmManGuiasRemision2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManLiquidacionCompra.resx">
+      <DependentUpon>FrmManLiquidacionCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManMotivos.resx">
+      <DependentUpon>FrmManMotivos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManNCND.resx">
+      <DependentUpon>FrmManNCND.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManOrdenRequerimiento.resx">
+      <DependentUpon>FrmManOrdenRequerimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManRenta4ta.resx">
+      <DependentUpon>FrmManRenta4ta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmOrdenCompra.resx">
+      <DependentUpon>FrmOrdenCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\RptOrdenCompra.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptOrdenCompra.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\RptOrdenReq.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptOrdenReq.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
