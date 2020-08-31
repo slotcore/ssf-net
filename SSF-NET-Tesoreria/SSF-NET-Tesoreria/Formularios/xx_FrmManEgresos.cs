@@ -112,11 +112,11 @@ namespace SSF_NET_Tesoreria.Formularios
         }
         void ConfigurarFormulario()
         {
-            this.Height = 579;
-            this.Width = 955;
+            //this.Height = 579;
+            //this.Width = 955;
 
-            Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
-            Tab_Posicionar(Tab1, 1, 42);
+            //Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
+            //Tab_Posicionar(Tab1, 1, 42);
             Tab1.SelectedIndex = 0;
             LblTitulo2.Text = "DETALLE DEL REGISTRO";
             CboMeses.SelectedValue = STU_SISTEMA.MESTRABAJO;
@@ -405,16 +405,16 @@ namespace SSF_NET_Tesoreria.Formularios
             LblNumReg.Text = (dtLista.Rows.Count).ToString();
             funDbGrid.DG_FormatearGrid(DgLista, arrCabeceraDg1, dtLista, true);
         }
-        void Tab_Dimensionar(C1.Win.C1Command.C1DockingTab dokTab, int intAlto, int intAncho)
-        {
-            Tab1.Height = intAlto;
-            Tab1.Width = intAncho;
-        }
-        void Tab_Posicionar(C1.Win.C1Command.C1DockingTab dokTab, int intPosX, int intPosY)
-        {
-            dokTab.Left = intPosX;
-            dokTab.Top = intPosY;
-        }
+        //void Tab_Dimensionar(C1.Win.C1Command.C1DockingTab dokTab, int intAlto, int intAncho)
+        //{
+        //    Tab1.Height = intAlto;
+        //    Tab1.Width = intAncho;
+        //}
+        //void Tab_Posicionar(C1.Win.C1Command.C1DockingTab dokTab, int intPosX, int intPosY)
+        //{
+        //    dokTab.Left = intPosX;
+        //    dokTab.Top = intPosY;
+        //}
         void VerRegistro(int n_IdRegistro)
         {
             //string c_dato = "";
@@ -873,9 +873,25 @@ namespace SSF_NET_Tesoreria.Formularios
 
         private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
         {
+            //if (n_QueHace != 3) { return; }
+
+            //if (e.NewIndex == 1)
+            //{
+            //    int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+
+            //    if (n_QueHace != 1)
+            //    {
+            //        VerRegistro(intIdRegistro);
+            //    }
+            //}
+        }
+        private void Tab1_SelectedIndexChanging(object sender, EventArgs e)
+        {
+            TabControl tc = (TabControl)sender;
+
             if (n_QueHace != 3) { return; }
 
-            if (e.NewIndex == 1)
+            if (tc.SelectedIndex == 1)
             {
                 int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
@@ -908,7 +924,7 @@ namespace SSF_NET_Tesoreria.Formularios
 
         private void FrmManEgresos_Resize(object sender, EventArgs e)
         {
-            Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
+            //Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
         }
 
         private void CboMeses_SelectedValueChanged(object sender, EventArgs e)
@@ -1392,7 +1408,7 @@ namespace SSF_NET_Tesoreria.Formularios
             {
                 if (Convert.ToInt16(CboMon.SelectedValue) == 151)
                 {
-                    c_dato = FgDesIng.GetData(FgDesIng.Row, 5).ToString();
+                    c_dato = funFunciones.NulosC(FgDesIng.GetData(FgDesIng.Row, 5)).ToString();
                     c_dato = funDatos.DataTableBuscar(dtDes, "n_id", "n_detalla", c_dato, "N").ToString();
                     if (c_dato == "1")
                     {
@@ -1718,7 +1734,7 @@ namespace SSF_NET_Tesoreria.Formularios
                         MessageBox.Show("¡ No ha especificado el tipo de documento en la fila " + n_fil.ToString() + " !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                         return;
                     }
-                    if (FgDocOri.GetData(n_fil, 4).ToString() == "")
+                    if (funFunciones.NulosC(FgDocOri.GetData(n_fil, 4)) == "")
                     {
                         MessageBox.Show("¡ No ha especificado el numero de documento en la fila " + n_fil.ToString() + " !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                         return;
@@ -1884,13 +1900,17 @@ namespace SSF_NET_Tesoreria.Formularios
         }
         void SumarTotDestino()
         {
-            LblHabTotSol.Text = funFlex.FlexSumarCol(FgDesIng, 3, 2, FgDesIng.Rows.Count - 1).ToString("0.00");
-            LblHabTotDol.Text = funFlex.FlexSumarCol(FgDesIng, 4, 2, FgDesIng.Rows.Count - 1).ToString("0.000000");
+            double habTotSol = funFlex.FlexSumarCol(FgDesIng, 3, 2, FgDesIng.Rows.Count - 1);
+            LblHabTotSol.Text = Math.Round(habTotSol, 2).ToString("0.00");
+            double habTotDol = funFlex.FlexSumarCol(FgDesIng, 4, 2, FgDesIng.Rows.Count - 1);
+            LblHabTotDol.Text = Math.Round(habTotDol, 6).ToString("0.000000");
         }
         void SumarTotOrigen()
         {
-            LblDebTotSol.Text = funFlex.FlexSumarCol(FgOriIng, 3, 2, FgOriIng.Rows.Count - 1).ToString("0.00");
-            LblDebTotDol.Text = funFlex.FlexSumarCol(FgOriIng, 4, 2, FgOriIng.Rows.Count - 1).ToString("0.000000");
+            double debTotSol = funFlex.FlexSumarCol(FgOriIng, 3, 2, FgOriIng.Rows.Count - 1);
+            LblDebTotSol.Text = Math.Round(debTotSol, 2).ToString("0.00");
+            double debTotDol = funFlex.FlexSumarCol(FgOriIng, 4, 2, FgOriIng.Rows.Count - 1);
+            LblDebTotDol.Text = Math.Round(debTotDol, 6).ToString("0.000000");
         }
         void SumarColDocumentos()
         {
@@ -2404,6 +2424,11 @@ namespace SSF_NET_Tesoreria.Formularios
             {
                 FgOriIng.AllowEditing = true;
             }
+        }
+
+        private void FgOriIng_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

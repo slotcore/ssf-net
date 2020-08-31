@@ -952,20 +952,34 @@ namespace SIAC_Negocio.Contabilidad
                 e_DiarioH.n_idcue = Convert.ToInt16(funfunciones.NulosN(dtComCab.Rows[n_row]["n_idcueven"]));
                 e_DiarioH.n_tc = Convert.ToDouble(dtComCab.Rows[0]["n_tc"]);
 
-                if (n_TipoRegistro == 2)
-                {
-                    e_DiarioH.n_impdebsol = 0;
-                    e_DiarioH.n_imphabsol = Convert.ToDouble(dtComCab.Rows[n_row]["n_impvensol"]);
-                    e_DiarioH.n_impdebdol = 0;
-                    e_DiarioH.n_imphabdol = Convert.ToDouble(funfunciones.NulosN(dtComCab.Rows[n_row]["n_impvendol"]));
-                }
-                else
+                if (dtComCab.Rows[n_row]["c_tip"].ToString() == "D")
                 {
                     e_DiarioH.n_impdebsol = Convert.ToDouble(dtComCab.Rows[n_row]["n_impvensol"]);
                     e_DiarioH.n_imphabsol = 0;
                     e_DiarioH.n_impdebdol = Convert.ToDouble(funfunciones.NulosN(dtComCab.Rows[n_row]["n_impvendol"]));
                     e_DiarioH.n_imphabdol = 0;
                 }
+                else
+                {
+                    e_DiarioH.n_impdebsol = 0;
+                    e_DiarioH.n_imphabsol = Convert.ToDouble(dtComCab.Rows[n_row]["n_impvensol"]);
+                    e_DiarioH.n_impdebdol = 0;
+                    e_DiarioH.n_imphabdol = Convert.ToDouble(funfunciones.NulosN(dtComCab.Rows[n_row]["n_impvendol"]));
+                }
+                //if (n_TipoRegistro == 2)
+                //{
+                //    e_DiarioH.n_impdebsol = 0;
+                //    e_DiarioH.n_imphabsol = Convert.ToDouble(dtComCab.Rows[n_row]["n_impvensol"]);
+                //    e_DiarioH.n_impdebdol = 0;
+                //    e_DiarioH.n_imphabdol = Convert.ToDouble(funfunciones.NulosN(dtComCab.Rows[n_row]["n_impvendol"]));
+                //}
+                //else
+                //{
+                //    e_DiarioH.n_impdebsol = Convert.ToDouble(dtComCab.Rows[n_row]["n_impvensol"]);
+                //    e_DiarioH.n_imphabsol = 0;
+                //    e_DiarioH.n_impdebdol = Convert.ToDouble(funfunciones.NulosN(dtComCab.Rows[n_row]["n_impvendol"]));
+                //    e_DiarioH.n_imphabdol = 0;
+                //}
                 e_DiarioH.d_fchasi = Convert.ToDateTime(dtComCab.Rows[n_row]["d_fchreg"]);
                 e_DiarioH.d_orifchdoc = Convert.ToDateTime(dtComCab.Rows[n_row]["d_fchdoc"]);
                 e_DiarioH.n_oriid = Convert.ToInt16(dtComCab.Rows[n_row]["n_iddocven"]);
@@ -1065,12 +1079,360 @@ namespace SIAC_Negocio.Contabilidad
             b_result = true;
             c_NewNumAsiento = c_numasi;
             return b_result;
+
+            //CD_con_diario funDat = new CD_con_diario();
+            //CD_tes_tesoreria funTes = new CD_tes_tesoreria();
+
+            //DataTable dtUltAsi = new DataTable();
+            //DataTable dtComCab = new DataTable();
+            //DataTable dtComDet = new DataTable();
+            //bool b_result = false;
+            //int n_row = 0;
+            //string c_numasi = "";
+
+            //if (c_NumAsiento == "")
+            //{
+            //    funDat.mysConec = mysConec;
+            //    funDat.ObtenerUltimoAsiento(n_AnoTrabajo, n_MesTrabajo, n_IdLibro, n_IdEmpresa);
+            //    dtUltAsi = funDat.dtLista;
+            //    c_numasi = dtUltAsi.Rows[0]["c_newnumero"].ToString();
+            //}
+            //else
+            //{
+            //    if (c_numasi.Length > 4)
+            //    {
+            //        c_numasi = c_NumAsiento.Substring(5, 4);
+            //    }
+            //    else
+            //    {
+            //        c_numasi = c_NumAsiento;
+            //    }
+
+            //    funDat.mysConec = mysConec;
+            //    funDat.Eliminar(n_IdLibro, n_AnoTrabajo, n_MesTrabajo, c_numasi, n_IdEmpresa);
+            //}
+
+            //funTes.mysConec = mysConec;
+            //funTes.AsientoCab(n_IdEmpresa, n_IdTesoreria, n_TipoRegistro);
+            //dtComCab = funTes.DtLista1;
+            //dtComDet = funTes.DtLista2;
+
+            //l_Diario.Clear();
+
+            //for (n_row = 0; n_row <= dtComCab.Rows.Count - 1; n_row++)
+            //{
+            //    // CUENTA HABER DEL ASIENTO - TOTAL DEL DOCUMENTO
+            //    BE_CON_DIARIO e_DiarioH = new BE_CON_DIARIO();
+            //    e_DiarioH.n_id = 0;
+            //    e_DiarioH.n_idemp = n_IdEmpresa;
+            //    e_DiarioH.n_ano = n_AnoTrabajo;
+            //    e_DiarioH.n_mes = n_MesTrabajo;
+            //    e_DiarioH.n_lib = n_IdLibro;
+            //    e_DiarioH.c_numasi = c_numasi;
+            //    e_DiarioH.n_idcue = Convert.ToInt16(funfunciones.NulosN(dtComCab.Rows[n_row]["n_idcueven"]));
+            //    e_DiarioH.n_tc = Convert.ToDouble(dtComCab.Rows[0]["n_tc"]);
+
+            //    if (dtComCab.Rows[n_row]["c_tip"].ToString() == "D")
+            //    {
+            //        e_DiarioH.n_impdebsol = Convert.ToDouble(dtComCab.Rows[n_row]["n_impvensol"]);
+            //        e_DiarioH.n_imphabsol = 0;
+            //        e_DiarioH.n_impdebdol = Convert.ToDouble(funfunciones.NulosN(dtComCab.Rows[n_row]["n_impvendol"]));
+            //        e_DiarioH.n_imphabdol = 0;
+            //    }
+            //    else
+            //    {
+            //        e_DiarioH.n_impdebsol = 0;
+            //        e_DiarioH.n_imphabsol = Convert.ToDouble(dtComCab.Rows[n_row]["n_impvensol"]);
+            //        e_DiarioH.n_impdebdol = 0;
+            //        e_DiarioH.n_imphabdol = Convert.ToDouble(funfunciones.NulosN(dtComCab.Rows[n_row]["n_impvendol"]));
+            //    }
+            //    //if (n_TipoRegistro == 2)
+            //    //{
+            //    //    e_DiarioH.n_impdebsol = 0;
+            //    //    e_DiarioH.n_imphabsol = Convert.ToDouble(dtComCab.Rows[n_row]["n_impvensol"]);
+            //    //    e_DiarioH.n_impdebdol = 0;
+            //    //    e_DiarioH.n_imphabdol = Convert.ToDouble(funfunciones.NulosN(dtComCab.Rows[n_row]["n_impvendol"]));
+            //    //}
+            //    //else
+            //    //{
+            //    //    e_DiarioH.n_impdebsol = Convert.ToDouble(dtComCab.Rows[n_row]["n_impvensol"]);
+            //    //    e_DiarioH.n_imphabsol = 0;
+            //    //    e_DiarioH.n_impdebdol = Convert.ToDouble(funfunciones.NulosN(dtComCab.Rows[n_row]["n_impvendol"]));
+            //    //    e_DiarioH.n_imphabdol = 0;
+            //    //}
+            //    e_DiarioH.d_fchasi = Convert.ToDateTime(dtComCab.Rows[n_row]["d_fchreg"]);
+            //    e_DiarioH.d_orifchdoc = Convert.ToDateTime(dtComCab.Rows[n_row]["d_fchdoc"]);
+            //    e_DiarioH.n_oriid = Convert.ToInt16(dtComCab.Rows[n_row]["n_iddocven"]);
+
+            //    if (Convert.ToInt16(funfunciones.NulosN(dtComCab.Rows[n_row]["n_idtipdocven"])) != 0)
+            //    {
+            //        e_DiarioH.n_oriidtipdoc = Convert.ToInt16(dtComCab.Rows[n_row]["n_idtipdocven"]);
+            //    }
+            //    else
+            //    {
+            //        e_DiarioH.n_oriidtipdoc = 0;
+            //    }
+            //    e_DiarioH.n_oriidtipmon = Convert.ToInt16(dtComCab.Rows[n_row]["n_idmon"]);
+            //    e_DiarioH.c_orinumdoc = dtComCab.Rows[n_row]["c_numdoc"].ToString();
+            //    e_DiarioH.c_origlo = dtComCab.Rows[n_row]["c_glosa"].ToString();
+
+            //    e_DiarioH.c_oridestipmon = dtComCab.Rows[n_row]["c_destipmon"].ToString();
+            //    e_DiarioH.c_oridestipdoc = dtComCab.Rows[n_row]["c_destipdoc"].ToString();
+            //    e_DiarioH.c_orinomcli = dtComCab.Rows[n_row]["c_clinom"].ToString();
+            //    e_DiarioH.c_orinumruc = dtComCab.Rows[n_row]["c_clinumruc"].ToString();
+            //    l_Diario.Add(e_DiarioH);
+            //}
+
+
+            //// AGREGAMOS EL DEBE DEL DETALLE DE LA COMPRA
+            //for (n_row = 0; n_row <= dtComDet.Rows.Count - 1; n_row++)
+            //{
+            //    BE_CON_DIARIO e_DiarioA = new BE_CON_DIARIO();
+            //    e_DiarioA.n_id = 0;
+            //    e_DiarioA.n_idemp = n_IdEmpresa;
+            //    e_DiarioA.n_ano = n_AnoTrabajo;
+            //    e_DiarioA.n_mes = n_MesTrabajo;
+            //    e_DiarioA.n_lib = n_IdLibro;
+            //    e_DiarioA.c_numasi = c_numasi;
+            //    e_DiarioA.n_idcue = Convert.ToInt16(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idcueven"]));
+            //    e_DiarioA.n_tc = Convert.ToDouble(dtComCab.Rows[0]["n_tc"]);
+            //    if (n_TipoRegistro == 2)
+            //    {
+            //        if (dtComDet.Rows[n_row]["n_tip"].ToString() == "D")
+            //        {
+            //            e_DiarioA.n_impdebsol = Convert.ToDouble(funfunciones.NulosN(dtComDet.Rows[n_row]["n_impvensol"]));
+            //            e_DiarioA.n_imphabsol = 0;
+            //            e_DiarioA.n_impdebdol = Convert.ToDouble(funfunciones.NulosN(dtComDet.Rows[n_row]["n_impvendol"]));
+            //            e_DiarioA.n_imphabdol = 0;
+            //        }
+            //        else
+            //        {
+            //            e_DiarioA.n_impdebsol = 0;
+            //            e_DiarioA.n_imphabsol = Convert.ToDouble(funfunciones.NulosN(dtComDet.Rows[n_row]["n_impvensol"]));
+            //            e_DiarioA.n_impdebdol = 0;
+            //            e_DiarioA.n_imphabdol = Convert.ToDouble(funfunciones.NulosN(dtComDet.Rows[n_row]["n_impvendol"]));
+            //        }
+            //    }
+            //    else
+            //    {
+            //        e_DiarioA.n_impdebsol = 0;
+            //        e_DiarioA.n_imphabsol = Convert.ToDouble(funfunciones.NulosN(dtComDet.Rows[n_row]["n_impvensol"]));
+            //        e_DiarioA.n_impdebdol = 0;
+            //        e_DiarioA.n_imphabdol = Convert.ToDouble(funfunciones.NulosN(dtComDet.Rows[n_row]["n_impvendol"]));
+            //    }
+            //    if (dtComDet.Rows[n_row]["d_fchreg"].ToString() != "")
+            //    {
+            //        e_DiarioA.d_fchasi = Convert.ToDateTime(dtComDet.Rows[n_row]["d_fchreg"]);
+            //    }
+            //    if (dtComDet.Rows[n_row]["d_fchdoc"].ToString() != "")
+            //    {
+            //        e_DiarioA.d_orifchdoc = Convert.ToDateTime(dtComDet.Rows[n_row]["d_fchdoc"]);
+            //    }
+            //    e_DiarioA.n_oriid = Convert.ToInt32(funfunciones.NulosN(dtComDet.Rows[n_row]["n_iddocven"]));
+            //    e_DiarioA.n_oriidtipdoc = Convert.ToInt16(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idtipdocven"]));
+            //    e_DiarioA.n_oriidtipmon = Convert.ToInt16(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idmon"]));
+            //    e_DiarioA.c_orinumdoc = dtComDet.Rows[n_row]["c_numdoc"].ToString();
+            //    e_DiarioA.c_origlo = dtComDet.Rows[n_row]["c_glosa"].ToString();
+
+            //    if (n_TipoRegistro == 2)
+            //    {
+            //        e_DiarioA.c_oridestipmon = dtComDet.Rows[n_row]["c_destipmon"].ToString();
+            //        e_DiarioA.c_oridestipdoc = dtComDet.Rows[n_row]["c_destipdoc"].ToString();
+            //        e_DiarioA.c_orinomcli = dtComDet.Rows[n_row]["c_pronom"].ToString();
+            //        e_DiarioA.c_orinumruc = dtComDet.Rows[n_row]["c_pronumruc"].ToString();
+            //    }
+            //    else
+            //    {
+            //        e_DiarioA.c_oridestipmon = dtComDet.Rows[n_row]["c_destipmon"].ToString();
+            //        e_DiarioA.c_oridestipdoc = dtComDet.Rows[n_row]["c_destipdoc"].ToString();
+            //        e_DiarioA.c_orinomcli = dtComDet.Rows[n_row]["c_clinom"].ToString();
+            //        e_DiarioA.c_orinumruc = dtComDet.Rows[n_row]["c_clinumruc"].ToString();
+            //    }
+            //    l_Diario.Add(e_DiarioA);
+            //}
+            //if (funDat.Insertar(l_Diario) == false)
+            //{
+            //    b_OcurrioError = funDat.b_OcurrioError;
+            //    c_ErrorMensaje = funDat.c_ErrorMensaje;
+            //    n_ErrorNumber = funDat.n_ErrorNumber;
+            //}
+            //b_result = true;
+            //c_NewNumAsiento = c_numasi;
+            //return b_result;
         }
         //public bool GenerarAsientoTesoreria(int n_IdEmpresa, int n_IdTesoreria, int n_AnoTrabajo, int n_MesTrabajo, int n_IdLibro, string c_NumAsiento, int n_TipoRegistro)
         //{
         //    CD_con_diario funDat = new CD_con_diario();
         //    CD_tes_tesoreria funTes = new CD_tes_tesoreria();
-            
+
+        //    DataTable dtUltAsi = new DataTable();
+        //    DataTable dtComCab = new DataTable();
+        //    DataTable dtComDet = new DataTable();
+        //    bool b_result = false;
+        //    int n_row = 0;
+        //    string c_numasi = "";
+
+        //    if (c_NumAsiento == "")
+        //    {
+        //        funDat.mysConec = mysConec;
+        //        funDat.ObtenerUltimoAsiento(n_AnoTrabajo, n_MesTrabajo, n_IdLibro, n_IdEmpresa);
+        //        dtUltAsi = funDat.dtLista;
+        //        c_numasi = dtUltAsi.Rows[0]["c_newnumero"].ToString();
+        //    }
+        //    else
+        //    {
+        //        if (c_numasi.Length > 4)
+        //        {
+        //            c_numasi = c_NumAsiento.Substring(5, 4);
+        //        }
+        //        else
+        //        {
+        //            c_numasi = c_NumAsiento;
+        //        }
+
+        //        funDat.mysConec = mysConec;
+        //        funDat.Eliminar(n_IdLibro, n_AnoTrabajo, n_MesTrabajo, c_numasi, n_IdEmpresa);
+        //    }
+
+        //    funTes.mysConec = mysConec;
+        //    funTes.AsientoCab(n_IdEmpresa, n_IdTesoreria, n_TipoRegistro);
+        //    dtComCab = funTes.DtLista1;
+        //    dtComDet = funTes.DtLista2;
+
+        //    l_Diario.Clear();
+
+        //    for (n_row = 0; n_row <= dtComCab.Rows.Count - 1; n_row++)
+        //    {
+        //        // CUENTA HABER DEL ASIENTO - TOTAL DEL DOCUMENTO
+        //        BE_CON_DIARIO e_DiarioH = new BE_CON_DIARIO();
+        //        e_DiarioH.n_id = 0;
+        //        e_DiarioH.n_idemp = n_IdEmpresa;
+        //        e_DiarioH.n_ano = n_AnoTrabajo;
+        //        e_DiarioH.n_mes = n_MesTrabajo;
+        //        e_DiarioH.n_lib = n_IdLibro;
+        //        e_DiarioH.c_numasi = c_numasi;
+        //        e_DiarioH.n_idcue = Convert.ToInt16(funfunciones.NulosN(dtComCab.Rows[n_row]["n_idcueven"]));
+        //        e_DiarioH.n_tc = Convert.ToDouble(dtComCab.Rows[0]["n_tc"]);
+
+        //        if (n_TipoRegistro == 2)
+        //        {
+        //            e_DiarioH.n_impdebsol = 0;
+        //            e_DiarioH.n_imphabsol = Convert.ToDouble(dtComCab.Rows[n_row]["n_impvensol"]);
+        //            e_DiarioH.n_impdebdol = 0;
+        //            e_DiarioH.n_imphabdol = Convert.ToDouble(funfunciones.NulosN(dtComCab.Rows[n_row]["n_impvendol"]));
+        //        }
+        //        else
+        //        {
+        //            e_DiarioH.n_impdebsol = Convert.ToDouble(dtComCab.Rows[n_row]["n_impvensol"]);
+        //            e_DiarioH.n_imphabsol = 0;
+        //            e_DiarioH.n_impdebdol = Convert.ToDouble(funfunciones.NulosN(dtComCab.Rows[n_row]["n_impvendol"]));
+        //            e_DiarioH.n_imphabdol = 0;
+        //        }
+        //        e_DiarioH.d_fchasi = Convert.ToDateTime(dtComCab.Rows[n_row]["d_fchreg"]);
+        //        e_DiarioH.d_orifchdoc = Convert.ToDateTime(dtComCab.Rows[n_row]["d_fchdoc"]);
+        //        e_DiarioH.n_oriid = Convert.ToInt16(dtComCab.Rows[n_row]["n_iddocven"]);
+
+        //        if (Convert.ToInt16(funfunciones.NulosN(dtComCab.Rows[n_row]["n_idtipdocven"])) != 0)
+        //        {
+        //            e_DiarioH.n_oriidtipdoc = Convert.ToInt16(dtComCab.Rows[n_row]["n_idtipdocven"]);
+        //        }
+        //        else
+        //        {
+        //            e_DiarioH.n_oriidtipdoc = 0;
+        //        }
+        //        e_DiarioH.n_oriidtipmon = Convert.ToInt16(dtComCab.Rows[n_row]["n_idmon"]);
+        //        e_DiarioH.c_orinumdoc = dtComCab.Rows[n_row]["c_numdoc"].ToString();
+        //        e_DiarioH.c_origlo = dtComCab.Rows[n_row]["c_glosa"].ToString();
+
+        //        e_DiarioH.c_oridestipmon = dtComCab.Rows[n_row]["c_destipmon"].ToString();
+        //        e_DiarioH.c_oridestipdoc = dtComCab.Rows[n_row]["c_destipdoc"].ToString();
+        //        e_DiarioH.c_orinomcli = dtComCab.Rows[n_row]["c_clinom"].ToString();
+        //        e_DiarioH.c_orinumruc = dtComCab.Rows[n_row]["c_clinumruc"].ToString();
+        //        l_Diario.Add(e_DiarioH);
+        //    }
+
+
+        //    // AGREGAMOS EL DEBE DEL DETALLE DE LA COMPRA
+        //    for (n_row = 0; n_row <= dtComDet.Rows.Count - 1; n_row++)
+        //    {
+        //        BE_CON_DIARIO e_DiarioA = new BE_CON_DIARIO();
+        //        e_DiarioA.n_id = 0;
+        //        e_DiarioA.n_idemp = n_IdEmpresa;
+        //        e_DiarioA.n_ano = n_AnoTrabajo;
+        //        e_DiarioA.n_mes = n_MesTrabajo;
+        //        e_DiarioA.n_lib = n_IdLibro;
+        //        e_DiarioA.c_numasi = c_numasi;
+        //        e_DiarioA.n_idcue = Convert.ToInt16(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idcueven"]));
+        //        e_DiarioA.n_tc = Convert.ToDouble(dtComCab.Rows[0]["n_tc"]);
+        //        if (n_TipoRegistro == 2)
+        //        {
+        //            if (dtComDet.Rows[n_row]["n_tip"].ToString() == "D")
+        //            {
+        //                e_DiarioA.n_impdebsol = Convert.ToDouble(funfunciones.NulosN(dtComDet.Rows[n_row]["n_impvensol"]));
+        //                e_DiarioA.n_imphabsol = 0;
+        //                e_DiarioA.n_impdebdol = Convert.ToDouble(funfunciones.NulosN(dtComDet.Rows[n_row]["n_impvendol"]));
+        //                e_DiarioA.n_imphabdol = 0;
+        //            }
+        //            else
+        //            {
+        //                e_DiarioA.n_impdebsol = 0;
+        //                e_DiarioA.n_imphabsol = Convert.ToDouble(funfunciones.NulosN(dtComDet.Rows[n_row]["n_impvensol"]));
+        //                e_DiarioA.n_impdebdol = 0;
+        //                e_DiarioA.n_imphabdol = Convert.ToDouble(funfunciones.NulosN(dtComDet.Rows[n_row]["n_impvendol"]));
+        //            }
+        //        }
+        //        else
+        //        {
+        //            e_DiarioA.n_impdebsol = 0;
+        //            e_DiarioA.n_imphabsol = Convert.ToDouble(funfunciones.NulosN(dtComDet.Rows[n_row]["n_impvensol"]));
+        //            e_DiarioA.n_impdebdol = 0;
+        //            e_DiarioA.n_imphabdol = Convert.ToDouble(funfunciones.NulosN(dtComDet.Rows[n_row]["n_impvendol"]));
+        //        }
+        //        if (dtComDet.Rows[n_row]["d_fchreg"].ToString() != "")
+        //        {
+        //            e_DiarioA.d_fchasi = Convert.ToDateTime(dtComDet.Rows[n_row]["d_fchreg"]);
+        //        }
+        //        if (dtComDet.Rows[n_row]["d_fchdoc"].ToString() != "")
+        //        {
+        //            e_DiarioA.d_orifchdoc = Convert.ToDateTime(dtComDet.Rows[n_row]["d_fchdoc"]);
+        //        }
+        //        e_DiarioA.n_oriid = Convert.ToInt32(funfunciones.NulosN(dtComDet.Rows[n_row]["n_iddocven"]));
+        //        e_DiarioA.n_oriidtipdoc = Convert.ToInt16(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idtipdocven"]));
+        //        e_DiarioA.n_oriidtipmon = Convert.ToInt16(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idmon"]));
+        //        e_DiarioA.c_orinumdoc = dtComDet.Rows[n_row]["c_numdoc"].ToString();
+        //        e_DiarioA.c_origlo = dtComDet.Rows[n_row]["c_glosa"].ToString();
+
+        //        if (n_TipoRegistro == 2)
+        //        {
+        //            e_DiarioA.c_oridestipmon = dtComDet.Rows[n_row]["c_destipmon"].ToString();
+        //            e_DiarioA.c_oridestipdoc = dtComDet.Rows[n_row]["c_destipdoc"].ToString();
+        //            e_DiarioA.c_orinomcli = dtComDet.Rows[n_row]["c_pronom"].ToString();
+        //            e_DiarioA.c_orinumruc = dtComDet.Rows[n_row]["c_pronumruc"].ToString();
+        //        }
+        //        else
+        //        {
+        //            e_DiarioA.c_oridestipmon = dtComDet.Rows[n_row]["c_destipmon"].ToString();
+        //            e_DiarioA.c_oridestipdoc = dtComDet.Rows[n_row]["c_destipdoc"].ToString();
+        //            e_DiarioA.c_orinomcli = dtComDet.Rows[n_row]["c_clinom"].ToString();
+        //            e_DiarioA.c_orinumruc = dtComDet.Rows[n_row]["c_clinumruc"].ToString();
+        //        }
+        //        l_Diario.Add(e_DiarioA);
+        //    }
+        //    if (funDat.Insertar(l_Diario) == false)
+        //    {
+        //        b_OcurrioError = funDat.b_OcurrioError;
+        //        c_ErrorMensaje = funDat.c_ErrorMensaje;
+        //        n_ErrorNumber = funDat.n_ErrorNumber;
+        //    }
+        //    b_result = true;
+        //    c_NewNumAsiento = c_numasi;
+        //    return b_result;
+        //}
+        //public bool GenerarAsientoTesoreria(int n_IdEmpresa, int n_IdTesoreria, int n_AnoTrabajo, int n_MesTrabajo, int n_IdLibro, string c_NumAsiento, int n_TipoRegistro)
+        //{
+        //    CD_con_diario funDat = new CD_con_diario();
+        //    CD_tes_tesoreria funTes = new CD_tes_tesoreria();
+
         //    DataTable dtUltAsi = new DataTable();
         //    DataTable dtComCab = new DataTable();
         //    DataTable dtComDet = new DataTable();

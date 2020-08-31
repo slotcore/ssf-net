@@ -421,9 +421,10 @@ namespace SIAC_DATOS.Tesoreria
         {
             bool b_result = false;
 
-            string[,] arrParametros = new string[2, 3] {
+            string[,] arrParametros = new string[3, 3] {
                                             {"n_id", "System.INT32",n_IdTesoreria.ToString()},
-                                            {"n_idemp", "System.INT32",n_IdEmpresa.ToString()}
+                                            {"n_idemp", "System.INT32",n_IdEmpresa.ToString()},
+                                            {"n_tipreg", "System.INT32", TipoRegistro.ToString()}
                                       };
 
             DtLista1 = xMiFuncion.StoreDTLLenar("tes_tesoreria_asientocab", arrParametros, mysConec);
