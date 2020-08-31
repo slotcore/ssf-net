@@ -124,9 +124,9 @@ namespace SIAC_Negocio.Almacen
                 {
                     BE_ALM_MOVIMIENTOSDET_CONSULTA Detalle = new BE_ALM_MOVIMIENTOSDET_CONSULTA();
 
-                    Detalle.n_idmov = Convert.ToInt16(dr["n_idmov"].ToString());
-                    Detalle.n_idite = Convert.ToInt16(dr["n_idite"].ToString());
-                    Detalle.n_idpre = Convert.ToInt16(dr["n_idpre"].ToString());
+                    Detalle.n_idmov = Convert.ToInt32(dr["n_idmov"].ToString());
+                    Detalle.n_idite = Convert.ToInt32(dr["n_idite"].ToString());
+                    Detalle.n_idpre = Convert.ToInt32(dr["n_idpre"].ToString());
                     Detalle.n_can = Convert.ToDouble(dr["n_can"].ToString());
                     Detalle.n_preuni = Convert.ToDouble(xFun.NulosN(dr["n_preuni"]));
                     Detalle.n_pretot = Convert.ToDouble(xFun.NulosN(dr["n_pretot"]));
@@ -134,7 +134,7 @@ namespace SIAC_Negocio.Almacen
                     Detalle.n_idalm = 0;
                     if (xFun.NulosC(dr["n_idalm"].ToString()) != "")
                     {
-                        Detalle.n_idalm = Convert.ToInt16(dr["n_idalm"].ToString());
+                        Detalle.n_idalm = Convert.ToInt32(dr["n_idalm"].ToString());
                     }
                     Detalle.c_numlot = xFun.NulosC(dr["c_numlot"].ToString());
                     Detalle.c_itedes = dr["c_itedes"].ToString();
@@ -152,17 +152,17 @@ namespace SIAC_Negocio.Almacen
                     Detalle.n_iddep = 0;
                     if (xFun.NulosC(dr["n_iddep"].ToString()) != "")
                     {
-                        Detalle.n_iddep = Convert.ToInt16(dr["n_iddep"].ToString());
+                        Detalle.n_iddep = Convert.ToInt32(dr["n_iddep"].ToString());
                     }
                     Detalle.n_idpro = 0;
                     if (xFun.NulosC(dr["n_idpro"].ToString()) != "")
                     {
-                        Detalle.n_idpro = Convert.ToInt16(dr["n_idpro"].ToString());
+                        Detalle.n_idpro = Convert.ToInt32(dr["n_idpro"].ToString());
                     }
                     Detalle.n_iddis = 0;
                     if (xFun.NulosC(dr["n_iddis"].ToString()) != "")
                     {
-                        Detalle.n_iddis = Convert.ToInt16(dr["n_iddis"].ToString());
+                        Detalle.n_iddis = Convert.ToInt32(dr["n_iddis"].ToString());
                     }
                     Detalle.c_desori = "";
                     if (xFun.NulosC(dr["c_desori"].ToString()) != "")
@@ -184,32 +184,32 @@ namespace SIAC_Negocio.Almacen
                     {
                         Detalle.h_horsal = dr["h_horsal"].ToString();
                     }
-                    Detalle.n_estpro = Convert.ToInt16(xFun.NulosN(dr["n_estpro"]));
+                    Detalle.n_estpro = Convert.ToInt32(xFun.NulosN(dr["n_estpro"]));
                     LstDetalle.Add(Detalle);
                 }
             }
 
             if (DtResultado.Rows.Count != 0)
             {
-                EntCabecera.n_id = Convert.ToInt16(DtResultado.Rows[0]["n_id"].ToString());
-                EntCabecera.n_idemp = Convert.ToInt16(DtResultado.Rows[0]["n_idemp"].ToString());
-                EntCabecera.n_idtipmov = Convert.ToInt16(DtResultado.Rows[0]["n_idtipmov"].ToString());
-                EntCabecera.n_idclipro = Convert.ToInt16(DtResultado.Rows[0]["n_idclipro"].ToString());
+                EntCabecera.n_id = Convert.ToInt32(DtResultado.Rows[0]["n_id"].ToString());
+                EntCabecera.n_idemp = Convert.ToInt32(DtResultado.Rows[0]["n_idemp"].ToString());
+                EntCabecera.n_idtipmov = Convert.ToInt32(DtResultado.Rows[0]["n_idtipmov"].ToString());
+                EntCabecera.n_idclipro = Convert.ToInt32(DtResultado.Rows[0]["n_idclipro"].ToString());
                 EntCabecera.d_fchdoc = Convert.ToDateTime(DtResultado.Rows[0]["d_fchdoc"].ToString());
                 EntCabecera.d_fching = Convert.ToDateTime(DtResultado.Rows[0]["d_fching"].ToString());
-                EntCabecera.n_idtipdoc = Convert.ToInt16(DtResultado.Rows[0]["n_idtipdoc"].ToString());
+                EntCabecera.n_idtipdoc = Convert.ToInt32(DtResultado.Rows[0]["n_idtipdoc"].ToString());
                 EntCabecera.c_numser = DtResultado.Rows[0]["c_numser"].ToString();
                 EntCabecera.c_numdoc = DtResultado.Rows[0]["c_numdoc"].ToString();
-                EntCabecera.n_idalm = Convert.ToInt16(DtResultado.Rows[0]["n_idalm"].ToString());
-                EntCabecera.n_anotra = Convert.ToInt16(DtResultado.Rows[0]["n_anotra"].ToString());
-                EntCabecera.n_idmes = Convert.ToInt16(DtResultado.Rows[0]["n_idmes"].ToString());
+                EntCabecera.n_idalm = Convert.ToInt32(DtResultado.Rows[0]["n_idalm"].ToString());
+                EntCabecera.n_anotra = Convert.ToInt32(DtResultado.Rows[0]["n_anotra"].ToString());
+                EntCabecera.n_idmes = Convert.ToInt32(DtResultado.Rows[0]["n_idmes"].ToString());
                 EntCabecera.c_obs = DtResultado.Rows[0]["c_obs"].ToString();
-                EntCabecera.n_idtipope = Convert.ToInt16(DtResultado.Rows[0]["n_idtipope"].ToString());
-                EntCabecera.n_docrefidtipdoc = Convert.ToInt16(xFun.NulosN(DtResultado.Rows[0]["n_docrefidtipdoc"]));
+                EntCabecera.n_idtipope = Convert.ToInt32(DtResultado.Rows[0]["n_idtipope"].ToString());
+                EntCabecera.n_docrefidtipdoc = Convert.ToInt32(xFun.NulosN(DtResultado.Rows[0]["n_docrefidtipdoc"]));
                 EntCabecera.c_docrefnumser = DtResultado.Rows[0]["c_docrefnumser"].ToString();
                 EntCabecera.c_docrefnumdoc = DtResultado.Rows[0]["c_docrefnumdoc"].ToString();
-                EntCabecera.n_perid = Convert.ToInt16(xFun.NulosN(DtResultado.Rows[0]["n_perid"]));
-                EntCabecera.n_docrefiddocref = Convert.ToInt16(xFun.NulosN(DtResultado.Rows[0]["n_docrefiddocref"]));
+                EntCabecera.n_perid = Convert.ToInt32(xFun.NulosN(DtResultado.Rows[0]["n_perid"]));
+                EntCabecera.n_docrefiddocref = Convert.ToInt32(xFun.NulosN(DtResultado.Rows[0]["n_docrefiddocref"]));
                 EntCabecera.lst_items = LstDetalle;
             }
 

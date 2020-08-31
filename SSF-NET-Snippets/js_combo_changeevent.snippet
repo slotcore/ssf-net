@@ -1,0 +1,33 @@
+<CodeSnippet Format="1.1.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>ComboChangeEvent</Title>
+    <Author>Jose Chacon</Author>
+    <Shortcut>alpjscmbchngevent</Shortcut>
+    <Description>Obtiene el evento change para un combo.</Description>
+    <SnippetTypes>
+      <SnippetType>Expansion</SnippetType>
+      <SnippetType>SurroundsWith</SnippetType>
+    </SnippetTypes>
+  </Header>
+ <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>ModelName</ID>
+        <ToolTip>Nombre del modelo</ToolTip>
+        <Default>ModelName</Default>
+      </Literal>
+      <Literal>
+        <ID>ModelDependentName</ID>
+        <ToolTip>Nombre del modelo dependiente</ToolTip>
+        <Default>ModelDependentName</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="JavaScript" Delimiter="~">
+      <![CDATA[
+    $("#~ModelName~Id").change(function () {
+        var Url = $("#~ModelName~Id").data('url-action');
+        Get~ModelDependentName~s(Url);
+        return false;
+    })]]></Code>
+  </Snippet>
+</CodeSnippet>

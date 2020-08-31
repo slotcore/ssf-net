@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EAC0DC80-ADBA-4D99-AC16-C15B0ADFD0C8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SSF_NET_Tesoreria</RootNamespace>
+    <AssemblyName>SSF-NET-Tesoreria</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="C1.C1Excel.2">
+      <HintPath>..\..\Dlls\C1.C1Excel.2.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Win.C1Command.2">
+      <HintPath>..\..\Dlls\C1.Win.C1Command.2.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Win.C1FlexGrid.2">
+      <HintPath>..\..\Dlls\C1.Win.C1FlexGrid.2.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Win.C1FlexGrid.Classic.2">
+      <HintPath>..\..\Dlls\C1.Win.C1FlexGrid.Classic.2.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Win.C1Sizer.2">
+      <HintPath>..\..\Dlls\C1.Win.C1Sizer.2.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Win.C1TrueDBGrid.2">
+      <HintPath>..\..\Dlls\C1.Win.C1TrueDBGrid.2.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=8.0.21.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cls_Tesoreria.cs" />
+    <Compile Include="Formularios\FrmCanjeDocumentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmCanjeDocumentos.Designer.cs">
+      <DependentUpon>FrmCanjeDocumentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmConciliacionBanco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmConciliacionBanco.Designer.cs">
+      <DependentUpon>FrmConciliacionBanco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmCtaCteCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmCtaCteCliente.Designer.cs">
+      <DependentUpon>FrmCtaCteCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmCtaCteProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmCtaCteProveedor.Designer.cs">
+      <DependentUpon>FrmCtaCteProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManBancos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManBancos.Designer.cs">
+      <DependentUpon>FrmManBancos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManCueBanco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManCueBanco.Designer.cs">
+      <DependentUpon>FrmManCueBanco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManDestino.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManDestino.Designer.cs">
+      <DependentUpon>FrmManDestino.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManDocumentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManDocumentos.Designer.cs">
+      <DependentUpon>FrmManDocumentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManEgresos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManEgresos.Designer.cs">
+      <DependentUpon>FrmManEgresos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManIngresos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManIngresos.Designer.cs">
+      <DependentUpon>FrmManIngresos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManLetras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManLetras.Designer.cs">
+      <DependentUpon>FrmManLetras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManMedioPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManMedioPago.Designer.cs">
+      <DependentUpon>FrmManMedioPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmManOrigen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmManOrigen.Designer.cs">
+      <DependentUpon>FrmManOrigen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Rpt_Conciliacion.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_Conciliacion.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\Rpt_Conciliacion_det1.cs">
+      <DependentUpon>Rpt_Conciliacion_det1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Reportes\Rpt_Conciliacion_det2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_Conciliacion_det2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\Rpt_Letras.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_Letras.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\Rpt_Voucher_Egresos.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_Voucher_Egresos.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\Rpt_Voucher_Egresos_Asiento.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_Voucher_Egresos_Asiento.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Formularios\FrmCanjeDocumentos.resx">
+      <DependentUpon>FrmCanjeDocumentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmConciliacionBanco.resx">
+      <DependentUpon>FrmConciliacionBanco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmCtaCteCliente.resx">
+      <DependentUpon>FrmCtaCteCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmCtaCteProveedor.resx">
+      <DependentUpon>FrmCtaCteProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManBancos.resx">
+      <DependentUpon>FrmManBancos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManCueBanco.resx">
+      <DependentUpon>FrmManCueBanco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManDestino.resx">
+      <DependentUpon>FrmManDestino.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManDocumentos.resx">
+      <DependentUpon>FrmManDocumentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManEgresos.resx">
+      <DependentUpon>FrmManEgresos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManIngresos.resx">
+      <DependentUpon>FrmManIngresos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManLetras.resx">
+      <DependentUpon>FrmManLetras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManMedioPago.resx">
+      <DependentUpon>FrmManMedioPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmManOrigen.resx">
+      <DependentUpon>FrmManOrigen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Rpt_Conciliacion.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_Conciliacion.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Rpt_Conciliacion_det1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_Conciliacion_det1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Rpt_Conciliacion_det2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_Conciliacion_det2.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Rpt_Letras.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_Letras.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Rpt_Voucher_Egresos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_Voucher_Egresos.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Rpt_Voucher_Egresos_Asiento.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_Voucher_Egresos_Asiento.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Componentes\Helper\Helper\Helper.csproj">
+      <Project>{241f484b-ca5a-4e91-90b7-e3b22731e825}</Project>
+      <Name>Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Componentes\SIAC-NET\SIAC-Datos\SIAC-Datos.csproj">
+      <Project>{5b96fd36-691a-4adf-a4bd-0b5888085e7c}</Project>
+      <Name>SIAC-Datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Componentes\SIAC-NET\SIAC-Entidades\SIAC-Entidades\SIAC-Entidades.csproj">
+      <Project>{fc396209-1d34-4316-bed1-10f6c34167c4}</Project>
+      <Name>SIAC-Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Componentes\SIAC-NET\SIAC-Negocio\SIAC-Negocio\SIAC-Negocio.csproj">
+      <Project>{dd73aefb-d61d-46b9-8311-d36e29f02169}</Project>
+      <Name>SIAC-Negocio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Componentes\SIAC-NET\SIAC-Objetos\SIAC-Objetos\SIAC-Objetos.csproj">
+      <Project>{f4f48912-7b4c-4e06-926b-2d98e2f45f07}</Project>
+      <Name>SIAC-Objetos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SSF-NET-Contabilidad\SSF-NET-Contabilidad\SSF-NET-Contabilidad.csproj">
+      <Project>{61f4663c-64a7-4d8b-9cfb-edb4ffe7aef9}</Project>
+      <Name>SSF-NET-Contabilidad</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

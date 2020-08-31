@@ -1,0 +1,34 @@
+﻿<CodeSnippet Format="1.1.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>NgHtmlComponentFormGroupTimepicker</Title>
+    <Author>Jose Chacon</Author>
+    <Shortcut>nghtmlcmpnntformgrouptimepicker</Shortcut>
+    <Description>Agrega componente crear</Description>
+    <SnippetTypes>
+      <SnippetType>Expansion</SnippetType>
+      <SnippetType>SurroundsWith</SnippetType>
+    </SnippetTypes>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>PropDescription</ID>
+        <ToolTip>Nombre del esquema</ToolTip>
+        <Default>Nombre</Default>
+      </Literal>
+      <Literal>
+        <ID>PropName</ID>
+        <ToolTip>Nombre de la propiedad 2</ToolTip>
+        <Default>name</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="html">
+      <![CDATA[
+      <mat-form-field class="full-width timepicker">
+        <input matInput placeholder="$PropDescription$" formControlName="$PropName$" [ngxTimepicker]="$PropName$Picker" [format]="24" [disableClick]="true">
+        <ngx-material-timepicker-toggle [for]="$PropName$Picker"></ngx-material-timepicker-toggle>
+        <ngx-material-timepicker #$PropName$Picker></ngx-material-timepicker>
+        <mat-error *ngIf="validateError('$PropName$')">{{getError('$PropName$')}}</mat-error>
+      </mat-form-field>]]></Code>
+  </Snippet>
+</CodeSnippet>

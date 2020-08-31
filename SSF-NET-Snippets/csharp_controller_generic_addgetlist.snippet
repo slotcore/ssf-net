@@ -1,0 +1,37 @@
+﻿<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>ControllerGenericAddGetList</Title>
+    <Author>Jose Chacon</Author>
+    <Description>Define las acciones basicas de un controlador</Description>
+    <Shortcut>alpcntrllrgnrcaddgtlst</Shortcut>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>ModelDependentName</ID>
+        <ToolTip>Nombre del modelo al que depende</ToolTip>
+        <Default>ModelDependentName</Default>
+      </Literal>
+      <Literal>
+        <ID>ModelName</ID>
+        <ToolTip>Nombre del modelo</ToolTip>
+        <Default>ModelName</Default>
+      </Literal>
+      <Literal>
+        <ID>ControllerName</ID>
+        <ToolTip>Nombre del conrtolador</ToolTip>
+        <Default>Generic</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="csharp">
+      <![CDATA[
+
+        // GET: $ControllerName$/Get$ModelName$s/1
+        public JsonResult Get$ModelName$s(int $ModelDependentName$Id)
+        {
+            var models = Context.$ModelName$s.Where(m => m.$ModelDependentName$Id == $ModelDependentName$Id);
+            return Json(models);
+        }]]>
+    </Code>
+  </Snippet>
+</CodeSnippet>

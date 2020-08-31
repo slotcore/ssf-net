@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+        <Title>NgTsServiceApiActions</Title>
+        <Author>Jose Chacon</Author>
+        <Description>Agrega las acciones para un controlador base - MVC ASP.Net Core</Description>
+        <Shortcut>ngtssrvcapiactns</Shortcut>
+    </Header>
+    <Snippet>
+        <Declarations>
+        <Literal>
+            <ID>ServiceName</ID>
+            <ToolTip>Nombre del controlador</ToolTip>
+            <Default>master</Default>
+        </Literal>
+        <Literal>
+            <ID>ModelName</ID>
+            <ToolTip>Nombre del modelo</ToolTip>
+            <Default>ModelName</Default>
+        </Literal>
+        <Literal>
+            <ID>ApiModelName</ID>
+            <ToolTip>Nombre del modelo</ToolTip>
+            <Default>ApiModelName</Default>
+        </Literal>
+        <Literal>
+            <ID>LocalModelName</ID>
+            <ToolTip>Nombre del modelo</ToolTip>
+            <Default>LocalModelName</Default>
+        </Literal>
+        </Declarations>
+        <Code Language="TypeScript">
+        <![CDATA[
+  //$LocalModelName$
+  $LocalModelName$GetList(): Observable<$ModelName$[]> {
+    return this.http.get<$ModelName$[]>('api/$ServiceName$/$ApiModelName$/');
+  }
+
+  $LocalModelName$Get($LocalModelName$Id: number): Observable<$ModelName$> {
+    return this.http.get<$ModelName$>('api/$ServiceName$/$ApiModelName$/' + $LocalModelName$Id);
+  }
+
+  $LocalModelName$Create($LocalModelName$: $ModelName$): Observable<$ModelName$> {
+    return this.http.post<$ModelName$>('api/$ServiceName$/$ApiModelName$/', $LocalModelName$);
+  }
+
+  $LocalModelName$Edit($LocalModelName$Id: number, $LocalModelName$: $ModelName$): Observable<$ModelName$> {
+    return this.http.put<$ModelName$>('api/$ServiceName$/$ApiModelName$/' + $LocalModelName$Id, $LocalModelName$);
+  }
+
+  $LocalModelName$Delete($LocalModelName$Id: number) {
+    return this.http.delete('api/$ServiceName$/$ApiModelName$/' + $LocalModelName$Id);
+  }]]>
+        </Code>
+    </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

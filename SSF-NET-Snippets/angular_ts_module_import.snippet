@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+        <Title>NgTsModuleImport</Title>
+        <Author>Jose Chacon</Author>
+        <Description>Agrega las acciones para un controlador base - MVC ASP.Net Core</Description>
+        <Shortcut>ngtsmodulimport</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>ModelBaseName</ID>
+          <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
+          <Default>ModelBaseName</Default>
+        </Literal>
+        <Literal>
+          <ID>ModelName</ID>
+          <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
+          <Default>ModelName</Default>
+        </Literal>
+        <Literal>
+          <ID>ModelInstance</ID>
+          <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
+          <Default>ModelInstance</Default>
+        </Literal>
+        <Literal>
+          <ID>ModuleName</ID>
+          <ToolTip>Reemplazar por el Tipo de Dato1</ToolTip>
+          <Default>master</Default>
+        </Literal>
+      </Declarations>
+        <Code Language="TypeScript">
+        <![CDATA[
+import { $ModelName$Component } from './pages/$ModuleName$/$ModelBaseName$/$ModelInstance$.component'
+import { $ModelName$DetailComponent } from './pages/$ModuleName$/$ModelBaseName$/$ModelInstance$-detail/$ModelInstance$-detail.component';
+import { $ModelName$CreateComponent } from './pages/$ModuleName$/$ModelBaseName$/$ModelInstance$-create/$ModelInstance$-create.component';
+import { $ModelName$EditComponent } from './pages/$ModuleName$/$ModelBaseName$/$ModelInstance$-edit/$ModelInstance$-edit.component';]]>
+        </Code>
+    </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,143 @@
+﻿<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>ControllerActionsWithSelect</Title>
+    <Author>Jose Chacon</Author>
+    <Description>Agrega las acciones para un controlador base - MVC ASP.Net Core</Description>
+    <Shortcut>alpctrllractnswthslct</Shortcut>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>ControllerName</ID>
+        <ToolTip>Nombre del controlador</ToolTip>
+        <Default>ControllerName</Default>
+      </Literal>
+      <Literal>
+        <ID>ModelName</ID>
+        <ToolTip>Nombre del modelo</ToolTip>
+        <Default>ModelName</Default>
+      </Literal>
+      <Literal>
+        <ID>ModelSelectName</ID>
+        <ToolTip>Nombre del modelo de seleccion</ToolTip>
+        <Default>ModelSelectName</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="csharp">
+      <![CDATA[
+        // GET: $ControllerName$/$ModelName$s
+        public async Task<IActionResult> $ModelName$s()
+        {
+            var isAccessible = await SecurityService.ValidateAccess(User.Identity.Name, "$ModelName$s", "$ControllerName$");
+            if (!isAccessible) return NotFound();
+
+            var models = await Context.$ModelName$s
+                .Include(o => o.$ModelSelectName$)
+                .ToListAsync();
+            return View(models);
+        }
+
+        // GET: $ControllerName$/$ModelName$Details/5
+        public async Task<IActionResult> $ModelName$Details(int? id)
+        {
+            var isAccessible = await SecurityService.ValidateAccess(User.Identity.Name, "$ModelName$s", "$ControllerName$");
+            if (!isAccessible) return NotFound();
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+            $ModelName$ model = await Context.$ModelName$s
+                .Include(o => o.$ModelSelectName$)
+                .FirstOrDefaultAsync(o => o.$ModelName$Id == id);
+            if (model == null)
+            {
+                return NotFound();
+            }
+            return View(model);
+        }
+
+        // GET: $ControllerName$/$ModelName$Create
+        public async Task<IActionResult> $ModelName$Create()
+        {
+            var isAccessible = await SecurityService.ValidateAccess(User.Identity.Name, "$ModelName$s", "$ControllerName$");
+            if (!isAccessible) return NotFound();
+
+            ViewData["$ModelSelectName$Id"] = new SelectList(Context.$ModelSelectName$s, "$ModelSelectName$Id", "Name");
+            return View();
+        }
+
+        // POST: $ControllerName$/$ModelName$Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> $ModelName$Create($ModelName$ model)
+        {
+            if (ModelState.IsValid)
+            {
+                Context.$ModelName$s.Add(model);
+                await Context.SaveChangesAsync();
+                return RedirectToAction("$ModelName$s");
+            }
+
+            ViewData["$ModelSelectName$Id"] = new SelectList(Context.$ModelSelectName$s, "$ModelSelectName$Id", "Name", model.$ModelSelectName$Id);
+            return View(model);
+        }
+
+        // GET: $ControllerName$/$ModelName$Edit/5
+        public async Task<IActionResult> $ModelName$Edit(int? id)
+        {
+            var isAccessible = await SecurityService.ValidateAccess(User.Identity.Name, "$ModelName$s", "$ControllerName$");
+            if (!isAccessible) return NotFound();
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+            $ModelName$ model = await Context.$ModelName$s.FindAsync(id);
+            if (model == null)
+            {
+                return NotFound();
+            }
+            
+            ViewData["$ModelSelectName$Id"] = new SelectList(Context.$ModelSelectName$s, "$ModelSelectName$Id", "Name", model.$ModelSelectName$Id);
+            return View(model);
+        }
+
+        // POST: $ControllerName$/$ModelName$Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> $ModelName$Edit($ModelName$ model)
+        {
+            if (ModelState.IsValid)
+            {
+                Context.Entry(model).State = EntityState.Modified;
+                await Context.SaveChangesAsync();
+                return RedirectToAction("$ModelName$s");
+            }
+            
+            ViewData["$ModelSelectName$Id"] = new SelectList(Context.$ModelSelectName$s, "$ModelSelectName$Id", "Name", model.$ModelSelectName$Id);
+            return View(model);
+        }
+
+        // GET: $ControllerName$/$ModelName$Delete/5
+        public async Task<IActionResult> $ModelName$Delete(int? id)
+        {
+            var isAccessible = await SecurityService.ValidateAccess(User.Identity.Name, "$ModelName$s", "$ControllerName$");
+            if (!isAccessible) return NotFound();
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+            $ModelName$ model = await Context.$ModelName$s.FindAsync(id);
+            if (model == null)
+            {
+                return NotFound();
+            }
+            Context.$ModelName$s.Remove(model);
+            await Context.SaveChangesAsync();
+            return RedirectToAction("$ModelName$s");
+        }]]>
+    </Code>
+  </Snippet>
+</CodeSnippet>

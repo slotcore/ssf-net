@@ -1,0 +1,26 @@
+﻿<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>ActionSelect</Title>
+    <Author>Jose Chacon</Author>
+    <Description>Define las acciones basicas de un controlador</Description>
+    <Shortcut>alpactnselect</Shortcut>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>ModelName</ID>
+        <ToolTip>Nombre del modelo</ToolTip>
+        <Default>ModelName</Default>
+      </Literal>
+      <Literal>
+        <ID>PropertyName</ID>
+        <ToolTip>Nombre de la propiedad descripcion</ToolTip>
+        <Default>Name</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="csharp">
+      <![CDATA[
+            ViewData["$ModelName$Id"] = new SelectList(Context.$ModelName$s, "$ModelName$Id", "$PropertyName$", model.$ModelName$Id);]]>
+    </Code>
+  </Snippet>
+</CodeSnippet>

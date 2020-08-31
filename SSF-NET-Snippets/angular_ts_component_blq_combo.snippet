@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+        <Title>NgTsComponentBlqCombo</Title>
+        <Author>Jose Chacon</Author>
+        <Description>Agrega las acciones para un controlador base - MVC ASP.Net Core</Description>
+        <Shortcut>ngtscmpntblqcombo</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>ModuleInstance</ID>
+          <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
+          <Default>master</Default>
+        </Literal>
+        <Literal>
+          <ID>ModelName</ID>
+          <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
+          <Default>ModelName</Default>
+        </Literal>
+        <Literal>
+          <ID>ModelInstance</ID>
+          <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
+          <Default>ModelInstance</Default>
+        </Literal>
+      </Declarations>
+        <Code Language="TypeScript">
+        <![CDATA[
+        //$ModelInstance$
+        this.$ModuleInstance$Service.$ModelInstance$GetList()
+            .subscribe(
+                (response: $ModelName$[]) => {
+                    this.$ModelInstance$s = response;
+                }
+                , err => {
+                    console.log(err);
+                });]]>
+        </Code>
+    </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

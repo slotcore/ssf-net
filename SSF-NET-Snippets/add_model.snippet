@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>AddModel</Title>
+      <Author>Jose Chacon</Author>
+      <Description>Define un Modelo con EntityFramework</Description>
+      <Shortcut>ssfmdl</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>Model</ID>
+          <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
+          <Default>Model</Default>
+        </Literal>
+        <Literal>
+          <ID>TipoDato1</ID>
+          <ToolTip>Reemplazar por el Tipo de Dato1</ToolTip>
+          <Default>string</Default>
+        </Literal>
+        <Literal>
+          <ID>Propiedad1</ID>
+          <ToolTip>Reemplazar por el Nombre de la Propiedad1</ToolTip>
+          <Default>Code</Default>
+        </Literal>
+        <Literal>
+          <ID>TipoDato2</ID>
+          <ToolTip>Reemplazar por el Tipo de Dato2</ToolTip>
+          <Default>string</Default>
+        </Literal>
+        <Literal>
+          <ID>Propiedad2</ID>
+          <ToolTip>Reemplazar por el Nombre de la Propiedad2</ToolTip>
+          <Default>Name</Default>
+        </Literal>
+        <Literal>
+          <ID>TipoDato3</ID>
+          <ToolTip>Reemplazar por el Tipo de Dato3</ToolTip>
+          <Default>string</Default>
+        </Literal>
+        <Literal>
+          <ID>Propiedad3</ID>
+          <ToolTip>Reemplazar por el Nombre de la Propiedad3</ToolTip>
+          <Default>Description</Default>
+        </Literal>
+        <Literal>
+          <ID>ProcedureBaseName</ID>
+          <ToolTip>Reemplazar por el DisplayName de la Propiedad 1</ToolTip>
+          <Default>ProcedureName</Default>
+        </Literal>
+      </Declarations>
+      <Imports>
+        <Import>
+          <Namespace>SIAC_Datos.Classes</Namespace>
+        </Import>
+        <Import>
+          <Namespace>MySql.Data.MySqlClient</Namespace>
+        </Import>
+        <Import>
+          <Namespace>System.Configuration</Namespace>
+        </Import>
+      </Imports>
+      <Code Language="csharp">
+        <![CDATA[
+    public class $Model$: ObjectBase
+    {
+        #region constructor
+        public $Model$()
+        {
+            _IsNew = true;
+        }
+
+        #endregion
+
+        #region propiedades
+
+        private int _n_id;
+
+        private $TipoDato1$ _$Propiedad1$;
+
+        private $TipoDato2$ _$Propiedad2$;
+
+        private $TipoDato3$ _$Propiedad3$;
+
+        public int n_id
+        {
+            get
+            {
+                return _n_id;
+            }
+
+            set
+            {
+                if (value != _n_id)
+                {
+                    _n_id = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public $TipoDato1$ $Propiedad1$
+        {
+            get
+            {
+                return _$Propiedad1$;
+            }
+
+            set
+            {
+                if (value != _$Propiedad1$)
+                {
+                    _$Propiedad1$ = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public $TipoDato2$ $Propiedad2$
+        {
+            get
+            {
+                return _$Propiedad2$;
+            }
+
+            set
+            {
+                if (value != _$Propiedad2$)
+                {
+                    _$Propiedad2$ = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public $TipoDato3$ $Propiedad3$
+        {
+            get
+            {
+                return _$Propiedad3$;
+            }
+
+            set
+            {
+                if (value != _$Propiedad3$)
+                {
+                    _$Propiedad3$ = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+        #endregion
+
+        #region metodos publicos
+        
+        public static List<$Model$> FetchList(int n_idemp, int n_anotra)
+        {
+            List<$Model$> m_listentidad = new List<$Model$>();
+
+            using (MySqlConnection connection
+                = new MySqlConnection(
+                    ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.CommandText = "$ProcedureBaseName$_listar";
+                    command.Parameters.Add(new MySqlParameter("@n_idemp", n_idemp));
+                    command.Parameters.Add(new MySqlParameter("@n_anotra", n_anotra));
+                    connection.Open();
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            $Model$ m_entidad = SetObject(reader);
+                            m_listentidad.Add(m_entidad);
+                        }
+                    }
+                }
+            }
+            return m_listentidad;
+        }
+        
+        public static $Model$ Fetch(int id)
+        {
+            $Model$ m_entidad = new $Model$();
+
+            using (MySqlConnection connection
+                = new MySqlConnection(
+                    ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.CommandText = "$ProcedureBaseName$_traerregistro";
+                    command.Parameters.Add(new MySqlParameter("@n_id", id));
+                    connection.Open();
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            m_entidad = SetObject(reader);
+                        }
+                    }
+                }
+            }
+            return m_entidad;
+        }
+
+        protected override void Insert()
+        {
+            using (MySqlConnection connection = new MySqlConnection(
+                    ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                connection.Open();
+                using (MySqlTransaction transaction = connection.BeginTransaction())
+                {
+                    using (MySqlCommand command = connection.CreateCommand())
+                    {
+                        command.Transaction = transaction;
+                        try
+                        {
+                            command.CommandType = System.Data.CommandType.StoredProcedure;
+                            command.CommandText = "$ProcedureBaseName$_insertar";
+                            AddParameters(command);
+                            int rows = command.ExecuteNonQuery();
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            throw ex;
+                        }
+                    }
+                }
+            }
+        }
+
+        protected override void Insert(MySqlConnection connection, MySqlTransaction transaction)
+        {
+            using (MySqlCommand command = connection.CreateCommand())
+            {
+                command.Transaction = transaction;
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.CommandText = "$ProcedureBaseName$_insertar";
+                AddParameters(command);
+                int rows = command.ExecuteNonQuery();
+            }
+        }
+
+        protected override void Update()
+        {
+            using (MySqlConnection connection
+                = new MySqlConnection(
+                    ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                connection.Open();
+                using (MySqlTransaction transaction = connection.BeginTransaction())
+                {
+                    using (MySqlCommand command = connection.CreateCommand())
+                    {
+                        try
+                        { 
+                            command.Transaction = transaction;
+                            command.CommandType = System.Data.CommandType.StoredProcedure;
+                            command.CommandText = "$ProcedureBaseName$_actualizar";
+                            AddParameters(command);
+                            int rows = command.ExecuteNonQuery();
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            throw ex;
+                        }
+                    }
+                }
+            }
+        }
+
+        protected override void Update(MySqlConnection connection, MySqlTransaction transaction)
+        {
+            using (MySqlCommand command = connection.CreateCommand())
+            {
+                command.Transaction = transaction;
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.CommandText = "$ProcedureBaseName$_actualizar";
+                AddParameters(command);
+                int rows = command.ExecuteNonQuery();
+            }
+        }
+
+        public override void Delete()
+        {
+            using (MySqlConnection connection
+                = new MySqlConnection(
+                    ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                connection.Open();
+                using (MySqlTransaction transaction = connection.BeginTransaction())
+                {
+                    using (MySqlCommand command = connection.CreateCommand())
+                    {
+                        try
+                        {
+                            command.Transaction = transaction;
+                            command.CommandType = System.Data.CommandType.StoredProcedure;
+                            command.CommandText = "$ProcedureBaseName$_eliminar";
+                            command.Parameters.Add(new MySqlParameter("@n_id", n_id));
+                            int rows = command.ExecuteNonQuery();
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            throw ex;
+                        }
+                    }
+                }
+            }
+        }
+
+        #endregion
+
+        #region metodos privados
+
+        private static $Model$ SetObject(MySqlDataReader reader)
+        {
+            return new $Model$
+            {
+                n_id = reader.GetInt32("n_id"),
+                $Propiedad1$ = reader.GetString("$Propiedad1$"),
+                $Propiedad2$ = reader.GetString("$Propiedad2$"),
+                $Propiedad3$ = reader.GetString("$Propiedad3$")
+            };
+        }
+
+        private void AddParameters(MySqlCommand command)
+        {
+            command.Parameters.Add(new MySqlParameter("@n_id", n_id));
+            command.Parameters.Add(new MySqlParameter("@$Propiedad1$", $Propiedad1$));
+            command.Parameters.Add(new MySqlParameter("@$Propiedad2$", $Propiedad2$));
+            command.Parameters.Add(new MySqlParameter("@$Propiedad3$", $Propiedad3$));
+        }
+
+        #endregion
+    }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

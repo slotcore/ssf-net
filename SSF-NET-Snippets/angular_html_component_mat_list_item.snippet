@@ -1,0 +1,37 @@
+﻿<CodeSnippet Format="1.1.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>NgHtmlComponentMatListItem</Title>
+    <Author>Jose Chacon</Author>
+    <Shortcut>nghtmlcmpnntmatlistitem</Shortcut>
+    <Description>Agrega componente crear</Description>
+    <SnippetTypes>
+      <SnippetType>Expansion</SnippetType>
+      <SnippetType>SurroundsWith</SnippetType>
+    </SnippetTypes>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>ModelInstance</ID>
+        <ToolTip>Nombre del esquema</ToolTip>
+        <Default>ModelInstance</Default>
+      </Literal>
+      <Literal>
+        <ID>PropDescription</ID>
+        <ToolTip>Nombre del esquema</ToolTip>
+        <Default>Nombre</Default>
+      </Literal>
+      <Literal>
+        <ID>PropName</ID>
+        <ToolTip>Nombre de la propiedad 2</ToolTip>
+        <Default>name</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="html">
+      <![CDATA[
+        <mat-list-item>
+          <p class="label-title-mat sbold" matLine>$PropDescription$</p>
+          <p matLine>{{$ModelInstance$.$PropName$}}</p>
+        </mat-list-item>]]></Code>
+  </Snippet>
+</CodeSnippet>

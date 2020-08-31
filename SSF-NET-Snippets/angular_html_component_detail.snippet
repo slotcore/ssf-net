@@ -1,0 +1,204 @@
+﻿<CodeSnippet Format="1.1.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>NgHtmlComponentDetail</Title>
+    <Author>Jose Chacon</Author>
+    <Shortcut>nghtmlcmpnntdetail</Shortcut>
+    <Description>Agrega componente indice</Description>
+    <SnippetTypes>
+      <SnippetType>Expansion</SnippetType>
+      <SnippetType>SurroundsWith</SnippetType>
+    </SnippetTypes>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>ModelDescription</ID>
+        <ToolTip>Detalle de la página</ToolTip>
+        <Default>ModelDescription</Default>
+      </Literal>
+      <Literal>
+        <ID>ModelName</ID>
+        <ToolTip>Nombre del modelo</ToolTip>
+        <Default>ModelName</Default>
+      </Literal>
+      <Literal>
+        <ID>ModelInstance</ID>
+        <ToolTip>Descripcion del modelo</ToolTip>
+        <Default>ModelInstance</Default>
+      </Literal>
+      <Literal>
+        <ID>PropDescription1</ID>
+        <ToolTip>Nombre del esquema</ToolTip>
+        <Default>Código</Default>
+      </Literal>
+      <Literal>
+        <ID>PropName1</ID>
+        <ToolTip>Nombre de la propiedad 1</ToolTip>
+        <Default>code</Default>
+      </Literal>
+      <Literal>
+        <ID>PropDescription2</ID>
+        <ToolTip>Nombre del esquema</ToolTip>
+        <Default>Nombre</Default>
+      </Literal>
+      <Literal>
+        <ID>PropName2</ID>
+        <ToolTip>Nombre de la propiedad 2</ToolTip>
+        <Default>name</Default>
+      </Literal>
+      <Literal>
+        <ID>PropDescription3</ID>
+        <ToolTip>Descripción del controlador</ToolTip>
+        <Default>Descripción</Default>
+      </Literal>
+      <Literal>
+        <ID>PropName3</ID>
+        <ToolTip>Nombre de la propiedad 3</ToolTip>
+        <Default>description</Default>
+      </Literal>
+      <Literal>
+        <ID>ModelChildDescription</ID>
+        <ToolTip>Detalle de la página</ToolTip>
+        <Default>ModelChildDescription</Default>
+      </Literal>
+      <Literal>
+        <ID>ModelChildInstance</ID>
+        <ToolTip>Descripcion del modelo</ToolTip>
+        <Default>ModelChildInstance</Default>
+      </Literal>
+      <Literal>
+        <ID>PropChildDescription1</ID>
+        <ToolTip>Nombre del esquema</ToolTip>
+        <Default>Código</Default>
+      </Literal>
+      <Literal>
+        <ID>PropChildName1</ID>
+        <ToolTip>Nombre de la propiedad 1</ToolTip>
+        <Default>code</Default>
+      </Literal>
+      <Literal>
+        <ID>PropChildDescription2</ID>
+        <ToolTip>Nombre del esquema</ToolTip>
+        <Default>Nombre</Default>
+      </Literal>
+      <Literal>
+        <ID>PropChildName2</ID>
+        <ToolTip>Nombre de la propiedad 2</ToolTip>
+        <Default>name</Default>
+      </Literal>
+      <Literal>
+        <ID>PropChildDescription3</ID>
+        <ToolTip>Descripción del controlador</ToolTip>
+        <Default>Descripción</Default>
+      </Literal>
+      <Literal>
+        <ID>PropChildName3</ID>
+        <ToolTip>Nombre de la propiedad 3</ToolTip>
+        <Default>description</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="html" Delimiter="~">
+      <![CDATA[<h1 mat-dialog-title>~ModelDescription~</h1>
+<div mat-dialog-content>
+  <div class="row">
+    <div class="col-md-4">
+      <mat-list>
+        <mat-list-item>
+          <p class="label-title-mat sbold" matLine>~PropDescription1~</p>
+          <p matLine>{{~ModelInstance~.~PropName1~}}</p>
+        </mat-list-item>
+
+        <mat-list-item>
+          <p class="label-title-mat sbold" matLine>~PropDescription2~</p>
+          <p matLine>{{~ModelInstance~.~PropName2~}}</p>
+        </mat-list-item>
+
+        <mat-list-item>
+          <p class="label-title-mat sbold" matLine>~PropDescription3~</p>
+          <p matLine>{{~ModelInstance~.~PropName3~}}</p>
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <div class="col-md-8">
+      <mat-tab-group>
+        <mat-tab label="~ModelChildDescription~">
+          <p>
+            <button mat-button class="btn-green" (click)="createDetail()">Agregar</button>
+          </p>
+          <!--BEGIN FILTER-->
+          <mat-form-field>
+            <input matInput (keyup)="filter($event.target.value)" placeholder="Filtrar">
+          </mat-form-field>
+          <!--END FILTER-->
+          <!--BEGIN PROGRESS-BAR-->
+          <mat-progress-bar mode="indeterminate" *ngIf="isWait"></mat-progress-bar>
+          <!--END PROGRESS-BAR-->
+          <!--BEGIN TABLE-->
+          <div class="mat-elevation-z4">
+            <table class="table-mt" mat-table [dataSource]="dataSource" matSort>
+              <!--BEGIN PROP COLUMNS-->
+              <ng-container matColumnDef="~PropChildName1~">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>~PropChildDescription1~</th>
+                <td mat-cell *matCellDef="let element">
+                  <span class="mobile-label">~PropChildDescription1~:</span>{{element.~PropChildName1~}}
+                </td>
+              </ng-container>
+              
+              <ng-container matColumnDef="~PropChildName2~">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>~PropChildDescription2~</th>
+                <td mat-cell *matCellDef="let element">
+                  <span class="mobile-label">~PropChildDescription2~:</span>{{element.~PropChildName2~}}
+                </td>
+              </ng-container>
+              
+              <ng-container matColumnDef="~PropChildName3~">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>~PropChildDescription3~</th>
+                <td mat-cell *matCellDef="let element">
+                  <span class="mobile-label">~PropChildDescription3~:</span>{{element.~PropChildName3~}}
+                </td>
+              </ng-container>
+              <!--END PROP COLUMNS-->
+              <!--BEGIN OPTION COLUMN-->
+              <ng-container matColumnDef="options">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element" class="group-options-md">
+                  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Opciones">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="details(element.~ModelChildInstance~Id)">
+                      <mat-icon>dynamic_feed</mat-icon>
+                      <span>Detalles</span>
+                    </button>
+                    <button mat-menu-item (click)="editDetail(element.~ModelChildInstance~Id)">
+                      <mat-icon>build</mat-icon>
+                      <span>Modificar</span>
+                    </button>
+                    <button mat-menu-item (click)="deleteDetail(element.~ModelChildInstance~Id)">
+                      <mat-icon>delete_outline</mat-icon>
+                      <span>Eliminar</span>
+                    </button>
+                  </mat-menu>
+                </td>
+              </ng-container>
+              <!--END OPTION COLUMN-->
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <!--END TABLE-->
+            <!--BEGIN PAGINATOR-->
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+            <!--END PAGINATOR-->
+          </div>
+          <!--END TABLE-->
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button class="btn-yellow" (click)="edit()">Modificar</button>
+  <button mat-button (click)="close()">Cerrar</button>
+</div>]]></Code>
+  </Snippet>
+</CodeSnippet>

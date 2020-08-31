@@ -26,6 +26,7 @@ using System.Configuration;
 using SIAC_Entidades.Logistica;
 using SIAC_Negocio.Logistica;
 using SIAC_Entidades.Contabilidad;
+using SIAC_DATOS.Models.Contabilidad;
 
 namespace SSF_NET_Contabilidad.Formularios
 {
@@ -48,7 +49,7 @@ namespace SSF_NET_Contabilidad.Formularios
         CN_sys_formulariovista objFormVis = new CN_sys_formulariovista();
         CN_sys_formulario objForm = new CN_sys_formulario();
         CN_sys_empresa funsys = new CN_sys_empresa();
-        CN_con_costoproduccion objCostoProduccion = new CN_con_costoproduccion();
+        //CN_con_costoproduccion objCostoProduccion = new CN_con_costoproduccion();
         CN_alm_inventario objItems = new CN_alm_inventario();
         CN_sun_unimed objUniMed = new CN_sun_unimed();
         CN_mae_meses objMeses = new CN_mae_meses();
@@ -64,7 +65,7 @@ namespace SSF_NET_Contabilidad.Formularios
         Cls_DBGrid funDbGrid = new Cls_DBGrid();
 
         // ENTIDADES LOCALES
-        BE_CON_COSTOPRODUCCION BE_CostoProduccion = new BE_CON_COSTOPRODUCCION();
+        CostoProduccion m_CostoProduccion = new CostoProduccion();
         BE_SYS_EMPRESA entEmp = new BE_SYS_EMPRESA();
 
         // DATATABLE LOCALES
@@ -72,7 +73,7 @@ namespace SSF_NET_Contabilidad.Formularios
         DataTable dtAlmacenesDestino = new DataTable();
         DataTable dtTipoExis = new DataTable();
         DataTable dtResponsables = new DataTable();
-        DataTable dtCostoProduccion = new DataTable();
+        //DataTable dtCostoProduccion = new DataTable();
         DataTable dtItems = new DataTable();
         DataTable dtMoviDetalle = new DataTable();
         DataTable dtForm = new DataTable();
@@ -91,8 +92,8 @@ namespace SSF_NET_Contabilidad.Formularios
         int N_INGPRECIO = 0;
         int n_NumFilasDocumento = 30;                                                   // LE INDICAMOS AL FORMULARIO EL NUMERO MAXIMO DE FILAS PARA EL DETALLE
         int n_QueHace = 3;                                                              // INDICA EN QUE ESTADO SE ENCUENTRA EL FORMULARIO
-        string[,] arrCabeceraDg1 = new string[10, 4];                                    // ARRAY PARA MOSTRAR LAS COLUMNAS DEL DATAGRID PRINCIPAL
-        string[,] arrCabeceraFlex1 = new string[11, 5];
+        //string[,] arrCabeceraDg1 = new string[10, 4];                                    // ARRAY PARA MOSTRAR LAS COLUMNAS DEL DATAGRID PRINCIPAL
+        //string[,] arrCabeceraFlex1 = new string[11, 5];
         bool booSeEjecuto = false;
         bool booAgregando = false;
         string strNumerovalidos = "1234567890." + (char)8;                                        // + (char)8;
@@ -140,74 +141,6 @@ namespace SSF_NET_Contabilidad.Formularios
 
             LblTitulo2.Text = "DETALLE DEL REGISTRO";
 
-            arrCabeceraFlex1[0, 0] = "Parte Producción";
-            arrCabeceraFlex1[0, 1] = "100";
-            arrCabeceraFlex1[0, 2] = "S";
-            arrCabeceraFlex1[0, 3] = "";
-            arrCabeceraFlex1[0, 4] = "c_tipexides";
-
-            arrCabeceraFlex1[1, 0] = "Item";
-            arrCabeceraFlex1[1, 1] = "280";
-            arrCabeceraFlex1[1, 2] = "S";
-            arrCabeceraFlex1[1, 3] = "";
-            arrCabeceraFlex1[1, 4] = "c_itedes";
-
-            arrCabeceraFlex1[2, 0] = "Uni. Med.";
-            arrCabeceraFlex1[2, 1] = "40";
-            arrCabeceraFlex1[2, 2] = "S";
-            arrCabeceraFlex1[2, 3] = "";
-            arrCabeceraFlex1[2, 4] = "c_itepredes";
-
-            arrCabeceraFlex1[3, 0] = "Receta";
-            arrCabeceraFlex1[3, 1] = "75";
-            arrCabeceraFlex1[3, 2] = "C";
-            arrCabeceraFlex1[3, 3] = "";
-            arrCabeceraFlex1[3, 4] = "n_numlot";
-
-            arrCabeceraFlex1[4, 0] = "Factor Dist.";
-            arrCabeceraFlex1[4, 1] = "70";
-            arrCabeceraFlex1[4, 2] = "C";
-            arrCabeceraFlex1[4, 3] = "";
-            arrCabeceraFlex1[4, 4] = "n_can";
-
-            arrCabeceraFlex1[5, 0] = "Cantidad";
-            arrCabeceraFlex1[5, 1] = "70";
-            arrCabeceraFlex1[5, 2] = "D";
-            arrCabeceraFlex1[5, 3] = "0.00";
-            arrCabeceraFlex1[5, 4] = "n_can";
-
-            arrCabeceraFlex1[6, 0] = "Costo MP";
-            arrCabeceraFlex1[6, 1] = "70";
-            arrCabeceraFlex1[6, 2] = "D";
-            arrCabeceraFlex1[6, 3] = "0.00";
-            arrCabeceraFlex1[6, 4] = "n_can";
-
-            arrCabeceraFlex1[7, 0] = "Costo MOD";
-            arrCabeceraFlex1[7, 1] = "70";
-            arrCabeceraFlex1[7, 2] = "D";
-            arrCabeceraFlex1[7, 3] = "0.00";
-            arrCabeceraFlex1[7, 4] = "n_can";
-
-            arrCabeceraFlex1[8, 0] = "Costo Primo";
-            arrCabeceraFlex1[8, 1] = "70";
-            arrCabeceraFlex1[8, 2] = "D";
-            arrCabeceraFlex1[8, 3] = "0.00";
-            arrCabeceraFlex1[8, 4] = "n_can";
-
-            arrCabeceraFlex1[9, 0] = "Costo CIF";
-            arrCabeceraFlex1[9, 1] = "70";
-            arrCabeceraFlex1[9, 2] = "D";
-            arrCabeceraFlex1[9, 3] = "0.00";
-            arrCabeceraFlex1[9, 4] = "n_can";
-
-            arrCabeceraFlex1[10, 0] = "Costo Total";
-            arrCabeceraFlex1[10, 1] = "70";
-            arrCabeceraFlex1[10, 2] = "D";
-            arrCabeceraFlex1[10, 3] = "0.00";
-            arrCabeceraFlex1[10, 4] = "n_can";
-
-            funFlex.FlexMostrarDatos(FgItems, arrCabeceraFlex1, dtMoviDetalle, 2, false);
-
             this.Text = dtForm.Rows[0]["c_titfor"].ToString();
             CboMeses.SelectedValue = STU_SISTEMA.MESTRABAJO;
         }
@@ -234,18 +167,12 @@ namespace SSF_NET_Contabilidad.Formularios
 
             objMeses.mysConec = mysConec;
             dtMeses = objMeses.Listar();
-
-            objCostoProduccion.mysConec = mysConec;
-            dtCostoProduccion = objCostoProduccion.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO);
-
+                        
             ObjAlmUniMed.mysConec = mysConec;
             dtPresentaItem = ObjAlmUniMed.Listar();
 
             objForm.mysConec = mysConec;                                    // CARGAMOS LOS DATOS DEL FORMULARIO
             dtForm = objForm.TraerRegistro(99);
-
-            objFormVis.mysConec = mysConec;                                 // CARGAMOS EL ARRAY CON LOS DATOS PARA LA VISTA DE DgLista
-            objFormVis.ObtenerCabeceraLista(99, ref arrCabeceraDg1);
 
             ObjAlmDoc.mysConec = mysConec;
             dtDocAlm = ObjAlmDoc.ListarEmpAlm(STU_SISTEMA.EMPRESAID, 2);               // 1 FILTRAREMOS SOLO LOS ALMACENES QUE PERTENESCAN A LA EMPRESA Y QUE GENEREN MOVIMIENTO DE INGRESO A ALMACEN 
@@ -260,23 +187,22 @@ namespace SSF_NET_Contabilidad.Formularios
 
         void ListarItems()
         {
-            MostrarEstadoMes(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO);
-            LblNumReg.Text = (dtCostoProduccion.Rows.Count).ToString();
-            funDbGrid.DG_FormatearGrid(DgLista, arrCabeceraDg1, dtCostoProduccion, true);
+            costoProduccionBindingSource.DataSource = CostoProduccion.FetchList(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO);
+            LblNumReg.Text = (costoProduccionBindingSource.Count).ToString();
         }
 
-        void VerRegistro(int n_IdRegistro)
+        void VerRegistro()
         {
-            objCostoProduccion.mysConec = mysConec;
-            BE_CostoProduccion = objCostoProduccion.TraerRegistro(n_IdRegistro);
+            m_CostoProduccion = (CostoProduccion)costoProduccionBindingSource.Current;
+            //m_CostoProduccion = CostoProduccion.Fetch(n_IdRegistro);
 
-            TxtNumDoc.Text = BE_CostoProduccion.c_numdoc;
-            TxtNumSer.Text = BE_CostoProduccion.c_numser;            
-            CboConfiguracion.SelectedValue = BE_CostoProduccion.n_idconfigval;
-            TxtObs.Text = BE_CostoProduccion.c_obs;            
-            CboResponsable.SelectedValue = BE_CostoProduccion.n_idresp;
+            TxtNumDoc.Text = m_CostoProduccion.c_numdoc;
+            TxtNumSer.Text = m_CostoProduccion.c_numser;            
+            CboConfiguracion.SelectedValue = m_CostoProduccion.n_idconfigval;
+            TxtObs.Text = m_CostoProduccion.c_obs;            
+            CboResponsable.SelectedValue = m_CostoProduccion.n_idresp;
 
-            bECONCOSTOPRODUCCIONDETBindingSource.DataSource = BE_CostoProduccion.lst_items;
+            CostoProduccionDetBindingSource.DataSource = m_CostoProduccion.CostoProduccionDets;
         }
         void Nuevo()
         {
@@ -311,40 +237,6 @@ namespace SSF_NET_Contabilidad.Formularios
             CboConfiguracion.Enabled = !CboConfiguracion.Enabled;
             CboResponsable.Enabled = !CboResponsable.Enabled;
         }
-        void MostrarEstadoMes(int n_IdEmpresa, int n_IdMes)
-        {
-            obj_fungen.mysConec = mysConec;
-            if (obj_fungen.EstadoPeriodo(n_IdEmpresa, n_IdMes, 3) == true)
-            {
-                ToolNuevo.Visible = false;
-                ToolModificar.Visible = false;
-                ToolEliminar.Visible = false;
-
-                ToolGrabar.Visible = false;
-                ToolCancelar.Visible = false;
-
-                toolStripSeparator1.Visible = false;
-                toolStripSeparator2.Visible = false;
-
-                PicClos1.Visible = true;
-                PicClos2.Visible = true;
-            }
-            else
-            {
-                ToolNuevo.Visible = true;
-                ToolModificar.Visible = true;
-                ToolEliminar.Visible = true;
-
-                ToolGrabar.Visible = true;
-                ToolCancelar.Visible = true;
-
-                toolStripSeparator1.Visible = true;
-                toolStripSeparator2.Visible = true;
-
-                PicClos1.Visible = false;
-                PicClos2.Visible = false;
-            }
-        }
         void ActivarTool()
         {
             ToolNuevo.Enabled = !ToolNuevo.Enabled;
@@ -366,44 +258,39 @@ namespace SSF_NET_Contabilidad.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
+            //int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
 
-            VerRegistro(intIdRegistro);
+            VerRegistro();
             LblTitulo2.Text = "Modificando Registro";
             Tab1.SelectedIndex = 1;
             CboMeses.Focus();
             booAgregando = false;
         }
-        bool EliminarRegistro()
+        private void EliminarRegistro()
         {
-            bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
-
-            objCostoProduccion.mysConec = mysConec;
-            BE_CostoProduccion = objCostoProduccion.TraerRegistro(intIdRegistro);
-
-            DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-
-            if (DialogResult.Yes == Rpta)
+            try
             {
-                //objMovimientos.AccConec = AccConec;
-                if (objCostoProduccion.Eliminar(intIdRegistro) == true)     // INDICAMOS 1 = SALIDA
+                int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+
+                m_CostoProduccion = CostoProduccion.Fetch(intIdRegistro);
+
+                DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+
+                if (DialogResult.Yes == Rpta)
                 {
-                    booResult = true;
+                    //objMovimientos.AccConec = AccConec;
+                    m_CostoProduccion.Delete();
                     MessageBox.Show("¡ El registro se elimino con exito !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
 
-                    // VOLVEMOS A CARGAR EL DATATABLE dtItems CON LOS DATOS DEL SERVIDOR
-                    objCostoProduccion.mysConec = mysConec;
-                    dtCostoProduccion = objCostoProduccion.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO);
                     // MOSTRAMOS LOS DATOS EN LA GRILLA
                     ListarItems();
                 }
-                else
-                {
-                    MessageBox.Show("¡ No se pudo eliminar el registro por el siguiente motivo ! " + objCostoProduccion.StrErrorMensaje, "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                }
+
             }
-            return booResult;
+            catch (Exception ex)
+            {
+                MessageBox.Show("¡ No se pudo eliminar el registro por el siguiente motivo ! " + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+            }
         }
         void Cancelar()
         {
@@ -426,56 +313,31 @@ namespace SSF_NET_Contabilidad.Formularios
 
             if (n_QueHace == 1)
             {
-                if (objCostoProduccion.DocumentoExiste(STU_SISTEMA.EMPRESAID, TxtNumSer.Text, TxtNumDoc.Text) == true)
+                if (CostoProduccion.DocumentoExiste(STU_SISTEMA.EMPRESAID, TxtNumSer.Text, TxtNumDoc.Text) == true)
                 {
                     MessageBox.Show(" El numero de documento " + TxtNumSer.Text + "-" + TxtNumDoc.Text + " ya existe, ingrese otro ", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     return booResultado;
                 }
-                booResultado = objCostoProduccion.Insertar(BE_CostoProduccion);
+                m_CostoProduccion.IsNew = true;
             }
 
             if (n_QueHace == 2)
             {
-                //objMovimientos.AccConec = AccConec;
-                booResultado = objCostoProduccion.Actualizar(BE_CostoProduccion);
+                m_CostoProduccion.IsOld = true;
             }
+            m_CostoProduccion.Save();
             return booResultado;
         }
         void AsignarEntidad()
         {
-            BE_CostoProduccion = new BE_CON_COSTOPRODUCCION();
-            BE_CostoProduccion.n_idemp = STU_SISTEMA.EMPRESAID;
-            BE_CostoProduccion.c_numser = TxtNumSer.Text;
-            BE_CostoProduccion.c_numdoc = TxtNumDoc.Text;
-            BE_CostoProduccion.n_idconfigval = Convert.ToInt16(CboConfiguracion.SelectedValue);
-            BE_CostoProduccion.n_anotra = STU_SISTEMA.ANOTRABAJO;
-            BE_CostoProduccion.n_idmes = STU_SISTEMA.MESTRABAJO;
-            BE_CostoProduccion.c_obs = TxtObs.Text; ;            
-            BE_CostoProduccion.n_idresp =  Convert.ToInt16(CboResponsable.SelectedValue);
-            booAgregando = true;
-
-            if (FgItems.Rows.Count > 2)
-            {
-                int n_fila;
-                for (n_fila = 2; n_fila <= FgItems.Rows.Count - 1; n_fila++)
-                {
-                    if (funFunciones.NulosC(FgItems.GetData(n_fila, 1)) != "")
-                    {
-                        BE_CON_COSTOPRODUCCIONDET BE_Detalle = new BE_CON_COSTOPRODUCCIONDET();
-
-                        BE_Detalle.n_idcostoprod = 0;
-                        BE_Detalle.n_can = Convert.ToDouble(FgItems.GetData(n_fila, 6));
-                        BE_Detalle.n_costomp = Convert.ToDouble(FgItems.GetData(n_fila, 7));
-                        BE_Detalle.n_costomod = Convert.ToDouble(FgItems.GetData(n_fila, 8));
-                        BE_Detalle.n_costocif = Convert.ToDouble(FgItems.GetData(n_fila, 10));
-                        BE_Detalle.n_idparteprod = Convert.ToInt32(FgItems.GetData(n_fila, 12));
-                        BE_Detalle.n_idmov = Convert.ToInt32(FgItems.GetData(n_fila, 13));
-
-                        BE_CostoProduccion.lst_items.Add(BE_Detalle);
-                    }
-                }
-            }
-            booAgregando = false;
+            m_CostoProduccion.n_idemp = STU_SISTEMA.EMPRESAID;
+            m_CostoProduccion.c_numser = TxtNumSer.Text;
+            m_CostoProduccion.c_numdoc = TxtNumDoc.Text;
+            m_CostoProduccion.n_idconfigval = Convert.ToInt16(CboConfiguracion.SelectedValue);
+            m_CostoProduccion.n_anotra = STU_SISTEMA.ANOTRABAJO;
+            m_CostoProduccion.n_idmes = STU_SISTEMA.MESTRABAJO;
+            m_CostoProduccion.c_obs = TxtObs.Text; ;            
+            m_CostoProduccion.n_idresp =  Convert.ToInt16(CboResponsable.SelectedValue);
         }
 
         bool CamposOK()
@@ -574,7 +436,7 @@ namespace SSF_NET_Contabilidad.Formularios
                 booSeEjecuto = true;
                 ListarItems();
 
-                if (dtCostoProduccion.Rows.Count == 0)
+                if (costoProduccionBindingSource.Count == 0)
                 {
                     DialogResult Rpta = MessageBox.Show("No se han encontrado registros, ¿ Desea agregar uno ahora ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -609,9 +471,6 @@ namespace SSF_NET_Contabilidad.Formularios
         {
             if (Grabar() == true)
             {
-                // VOLVEMOS A CARGAR EL DATATABLE dtItems CON LOS DATOS DEL SERVIDOR
-                objCostoProduccion.mysConec = mysConec;
-                dtCostoProduccion = objCostoProduccion.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO);
                 // MOSTRAMOS LOS DATOS EN LA GRILLA
                 ListarItems();
 
@@ -650,9 +509,6 @@ namespace SSF_NET_Contabilidad.Formularios
             ObjRes = null;
             dtResponsables = null;
 
-            objCostoProduccion = null;
-            dtCostoProduccion = null;
-
             objFormVis = null;
             objFormVis = null;
 
@@ -667,12 +523,11 @@ namespace SSF_NET_Contabilidad.Formularios
 
             if (tc.SelectedIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
-
+                //int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
                 if (n_QueHace != 1)
                 {
                     booAgregando = true;
-                    VerRegistro(intIdRegistro);
+                    VerRegistro();
                     booAgregando = false;
                 }
             }
@@ -680,10 +535,10 @@ namespace SSF_NET_Contabilidad.Formularios
 
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
+            //int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             booAgregando = true;
-            VerRegistro(intIdRegistro);
+            VerRegistro();
             booAgregando = false;
         }
 
@@ -698,15 +553,15 @@ namespace SSF_NET_Contabilidad.Formularios
 
         private void DgLista_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13)
-            {
-                DataTable dtResult = new DataTable();
+            //if (e.KeyChar == 13)
+            //{
+            //    DataTable dtResult = new DataTable();
 
-                string c_CadFiltro = funDbGrid.DG_LeerCondicionesFiltro(DgLista);
-                dtResult = funDbGrid.DG_Filtrar(dtCostoProduccion, c_CadFiltro, DgLista);
-                DgLista.DataSource = dtResult;
-                LblNumReg.Text = (dtResult.Rows.Count).ToString();
-            }
+            //    string c_CadFiltro = funDbGrid.DG_LeerCondicionesFiltro(DgLista);
+            //    dtResult = funDbGrid.DG_Filtrar(dtCostoProduccion, c_CadFiltro, DgLista);
+            //    DgLista.DataSource = dtResult;
+            //    LblNumReg.Text = (dtResult.Rows.Count).ToString();
+            //}
         }
 
         private void TxtNumSer_TextChanged(object sender, EventArgs e)
@@ -812,9 +667,8 @@ namespace SSF_NET_Contabilidad.Formularios
 
         private void BtnBuscarParte_Click(object sender, EventArgs e)
         {
-            BE_CostoProduccion.lst_items = objCostoProduccion.ListarPartesdeProduccion(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO);
-            bECONCOSTOPRODUCCIONDETBindingSource.DataSource = BE_CostoProduccion.lst_items;
-            FgItems.DataSource = bECONCOSTOPRODUCCIONDETBindingSource.DataSource;
+            m_CostoProduccion.CostoProduccionDets = CostoProduccion.ListarPartesdeProduccion(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, STU_SISTEMA.MESTRABAJO);
+            CostoProduccionDetBindingSource.DataSource = m_CostoProduccion.CostoProduccionDets;
         }
 
         private void BtnProcesarMP_Click(object sender, EventArgs e)
@@ -825,7 +679,7 @@ namespace SSF_NET_Contabilidad.Formularios
 
         //private void ProcesarMp()
         //{
-        //    foreach (BE_CON_COSTOPRODUCCIONDET costOrdenProduccionViewModel in BE_CostoProduccion.lst_items)
+        //    foreach (CostoProduccionUCCIONDET costOrdenProduccionViewModel in BE_CostoProduccion.lst_items)
         //    {
         //        ProcesaInsumos(costoProduccion, fechaInicioDateTimePicker.Value, fechaFinDateTimePicker.Value);
         //        ProcesaIntermedios(ViewModel.FechaInicio, ViewModel.FechaFin);
@@ -863,6 +717,14 @@ namespace SSF_NET_Contabilidad.Formularios
         private void ProcesaTerminados(DateTime fechaInicio, DateTime fechaFin)
         {
             throw new NotImplementedException();
+        }
+
+        private void FgItems_SelChange(object sender, EventArgs e)
+        {
+            if (booAgregando) return;
+            CostoProduccionDet costoProduccionDet = (CostoProduccionDet)CostoProduccionDetBindingSource.Current;
+            CostoProduccionDetInsBindingSource.DataSource = costoProduccionDet.CostoProduccionDetInss;
+            CostoProduccionDetModBindingSource.DataSource = costoProduccionDet.CostoProduccionDetMods;
         }
     }
 }

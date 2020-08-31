@@ -198,8 +198,8 @@ namespace SIAC_DATOS.Almacen
                 {
                     for (intFila = 0; intFila <= lstDetalle.Count - 1; intFila++)
                     {
-                        entCabecera.n_id = Convert.ToInt16(xMiFuncion.intIdGenerado);
-                        lstDetalle[intFila].n_idmov = Convert.ToInt16(xMiFuncion.intIdGenerado);
+                        entCabecera.n_id = Convert.ToInt32(xMiFuncion.intIdGenerado);
+                        lstDetalle[intFila].n_idmov = Convert.ToInt32(xMiFuncion.intIdGenerado);
                         if (xMiFuncion.StoreEjecutar("alm_movimientosdet_insertar", lstDetalle[intFila], mysConec, null) == true)
                         {
                             booOk = true;
@@ -216,7 +216,7 @@ namespace SIAC_DATOS.Almacen
                         }
 
                         // AGREGAMOS LOS LOTES
-                        lstLote[intFila].n_iddocmov = Convert.ToInt16(xMiFuncion.intIdGenerado);
+                        lstLote[intFila].n_iddocmov = Convert.ToInt32(xMiFuncion.intIdGenerado);
                         if (xMiFuncion.StoreEjecutar("alm_inventariolotes_insertar", lstLote[intFila], mysConec, null) == true) 
                         {
                             booOk = true;
@@ -280,8 +280,8 @@ namespace SIAC_DATOS.Almacen
                 {
                     for (intFila = 0; intFila <= lstDetalle.Count - 1; intFila++)
                     {
-                        entCabecera.n_id = Convert.ToInt16(xMiFuncion.intIdGenerado);
-                        lstDetalle[intFila].n_idmov = Convert.ToInt16(xMiFuncion.intIdGenerado);
+                        entCabecera.n_id = Convert.ToInt32(xMiFuncion.intIdGenerado);
+                        lstDetalle[intFila].n_idmov = Convert.ToInt32(xMiFuncion.intIdGenerado);
                         if (xMiFuncion.StoreEjecutar("alm_movimientosdet_insertar", lstDetalle[intFila], mysConec, null) == true)
                         {
                             booOk = true;
@@ -297,7 +297,7 @@ namespace SIAC_DATOS.Almacen
                         }
 
                         // AGREGAMOS LOS LOTES
-                        lstLote[intFila].n_iddocmov = Convert.ToInt16(xMiFuncion.intIdGenerado);
+                        lstLote[intFila].n_iddocmov = Convert.ToInt32(xMiFuncion.intIdGenerado);
                         if (xMiFuncion.StoreEjecutar("alm_inventariolotes_insertar", lstLote[intFila], mysConec, null) == true)
                         {
                             booOk = true;
@@ -352,8 +352,8 @@ namespace SIAC_DATOS.Almacen
                     {
                         for (intFila = 0; intFila <= entCabecera_Group.lstDetalle.Count - 1; intFila++)
                         {
-                            entCabecera_Group.entCabecera.n_id = Convert.ToInt16(xMiFuncion.intIdGenerado);
-                            entCabecera_Group.lstDetalle[intFila].n_idmov = Convert.ToInt16(xMiFuncion.intIdGenerado);
+                            entCabecera_Group.entCabecera.n_id = Convert.ToInt32(xMiFuncion.intIdGenerado);
+                            entCabecera_Group.lstDetalle[intFila].n_idmov = Convert.ToInt32(xMiFuncion.intIdGenerado);
                             if (xMiFuncion.StoreEjecutar("alm_movimientosdet_insertar", entCabecera_Group.lstDetalle[intFila], mysConec, null) == true)
                             {
                                 booOk = true;
@@ -370,7 +370,7 @@ namespace SIAC_DATOS.Almacen
                             }
 
                             // AGREGAMOS LOS LOTES
-                            entCabecera_Group.lstLote[intFila].n_iddocmov = Convert.ToInt16(xMiFuncion.intIdGenerado);
+                            entCabecera_Group.lstLote[intFila].n_iddocmov = Convert.ToInt32(xMiFuncion.intIdGenerado);
                             if (xMiFuncion.StoreEjecutar("alm_inventariolotes_insertar", entCabecera_Group.lstLote[intFila], mysConec, null) == true)
                             {
                                 booOk = true;
@@ -451,7 +451,7 @@ namespace SIAC_DATOS.Almacen
                             // SI LOS ITEMS SE ELIMINARON CON EXITO INSERTAMOS LOS NUEVOS ITEMS
                             for (intFila = 0; intFila <= lstDetalle.Count - 1; intFila++)
                             {
-                                //lstDetalle[intFila].n_idmov = Convert.ToInt16(xMiFuncion.intIdGenerado);
+                                //lstDetalle[intFila].n_idmov = Convert.ToInt32(xMiFuncion.intIdGenerado);
                                 if (xMiFuncion.StoreEjecutar("alm_movimientosdet_insertar", lstDetalle[intFila], mysConec, null) == true)
                                 {
                                     booOk = true;
@@ -468,7 +468,7 @@ namespace SIAC_DATOS.Almacen
                                 }
 
                                 // AGREGAMOS LOS LOTES
-                                //lstLote[intFila].n_iddocmov = Convert.ToInt16(xMiFuncion.intIdGenerado);
+                                //lstLote[intFila].n_iddocmov = Convert.ToInt32(xMiFuncion.intIdGenerado);
                                 if (xMiFuncion.StoreEjecutar("alm_inventariolotes_insertar", lstLote[intFila], mysConec, null) == true)
                                 {
                                     booOk = true;

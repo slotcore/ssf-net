@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+        <Title>ControllerApiVmActions</Title>
+        <Author>Jose Chacon</Author>
+        <Description>Agrega las acciones para un controlador base - MVC ASP.Net Core</Description>
+        <Shortcut>alpctrllrapivmactns</Shortcut>
+    </Header>
+    <Snippet>
+        <Declarations>
+        <Literal>
+            <ID>ApiControllerName</ID>
+            <ToolTip>Nombre del controlador</ToolTip>
+            <Default>master</Default>
+        </Literal>
+        <Literal>
+            <ID>ModelName</ID>
+            <ToolTip>Nombre del modelo</ToolTip>
+            <Default>ModelName</Default>
+        </Literal>
+        <Literal>
+          <ID>ModelInstance</ID>
+          <ToolTip>Nombre del modelo</ToolTip>
+          <Default>ModelInstance</Default>
+        </Literal>
+        <Literal>
+          <ID>ApiModelName</ID>
+          <ToolTip>Nombre del modelo</ToolTip>
+          <Default>ApiModelName</Default>
+        </Literal>
+        </Declarations>
+        <Code Language="csharp">
+        <![CDATA[
+        // GET: api/$ApiControllerName$/$ApiModelName$
+        [HttpGet("$ApiModelName$")]
+        public IEnumerable<$ModelName$ViewModel> $ModelName$GetList()
+        {
+            var $ModelInstance$s = _context.$ModelName$s;
+            var $ModelInstance$ViewModels = new List<$ModelName$ViewModel>();
+            foreach (var $ModelInstance$ in $ModelInstance$s)
+            {
+                $ModelInstance$ViewModels.Add(new $ModelName$ViewModel($ModelInstance$));
+            }
+            return $ModelInstance$ViewModels;
+        }
+
+        // GET: api/$ApiControllerName$/$ApiModelName$/5
+        [HttpGet("$ApiModelName$/{id}")]
+        public async Task<IActionResult> $ModelName$Get([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var $ModelName$ = await _context.$ModelName$s
+                .FirstOrDefaultAsync(o => o.$ModelName$Id == id);
+
+            if ($ModelName$ == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(new $ModelName$ViewModel($ModelName$));
+        }
+
+        // PUT: api/$ApiControllerName$/$ApiModelName$/5
+        [HttpPut("$ApiModelName$/{id}")]
+        public async Task<IActionResult> $ModelName$Put([FromRoute] int id
+            , [FromBody] $ModelName$ViewModel $ModelName$ViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != $ModelName$ViewModel.$ModelName$Id)
+            {
+                return BadRequest();
+            }
+
+            var $ModelInstance$ = $ModelName$ViewModel.ToModel();
+            _context.Entry($ModelInstance$).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                bool modelExists = _context.$ModelName$s.Any(e => e.$ModelName$Id == id);
+                if (!modelExists)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return CreatedAtAction("$ModelName$Get", new { id = $ModelName$ViewModel.$ModelName$Id }, $ModelName$ViewModel);
+        }
+
+        // POST: api/$ApiControllerName$/$ApiModelName$
+        [HttpPost("$ApiModelName$")]
+        public async Task<IActionResult> $ModelName$Post([FromBody] $ModelName$ViewModel $ModelName$ViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var $ModelInstance$ = $ModelName$ViewModel.ToModel();
+            _context.$ModelName$s.Add($ModelInstance$);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("$ModelName$Get", new { id = $ModelName$ViewModel.$ModelName$Id }, $ModelName$ViewModel);
+        }
+
+        // DELETE: api/$ApiControllerName$/$ApiModelName$/5
+        [HttpDelete("$ApiModelName$/{id}")]
+        public async Task<IActionResult> $ModelName$Delete([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var $ModelName$ = await _context.$ModelName$s.FindAsync(id);
+            if ($ModelName$ == null)
+            {
+                return NotFound();
+            }
+
+            _context.$ModelName$s.Remove($ModelName$);
+            await _context.SaveChangesAsync();
+
+            return Ok($ModelName$);
+        }]]>
+        </Code>
+    </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

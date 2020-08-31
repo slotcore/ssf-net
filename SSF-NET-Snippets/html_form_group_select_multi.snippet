@@ -1,0 +1,29 @@
+﻿<CodeSnippet Format="1.1.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>FormGroupSelectMulti</Title>
+    <Author>Jose Chacon</Author>
+    <Shortcut>alpformgrpslctmulti</Shortcut>
+    <Description>Agrega un bloque form-group select</Description>
+    <SnippetTypes>
+      <SnippetType>Expansion</SnippetType>
+      <SnippetType>SurroundsWith</SnippetType>
+    </SnippetTypes>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>ModelName</ID>
+        <ToolTip>Nombre del modelo</ToolTip>
+        <Default>ModelName</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="html">
+      <![CDATA[
+                        <div class="form-group">
+                            <label asp-for="$ModelName$Id" class="control-label col-md-3"></label>
+                            <div class="col-md-4">
+                                <select asp-for="$ModelName$Id" asp-items="ViewBag.$ModelName$Id" class="multi-select bs-multiselect"></select>
+                            </div>
+                        </div>]]></Code>
+  </Snippet>
+</CodeSnippet>

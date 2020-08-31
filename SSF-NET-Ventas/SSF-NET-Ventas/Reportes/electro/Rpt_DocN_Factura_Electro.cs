@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SSF_NET_Ventas.Reportes {
+namespace SSF_NET_Ventas.Reportes.electro {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -41,7 +41,7 @@ namespace SSF_NET_Ventas.Reportes {
         
         public override string FullResourceName {
             get {
-                return "SSF_NET_Ventas.Reportes.Rpt_DocN_Factura_Electro.rpt";
+                return "SSF_NET_Ventas.Reportes.electro.Rpt_DocN_Factura_Electro.rpt";
             }
             set {
                 // Do nothing

@@ -1,0 +1,141 @@
+﻿<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>ControllerChildActions</Title>
+    <Author>Jose Chacon</Author>
+    <Description>Define las acciones basicas de un controlador base - MVC ASP.Net Core</Description>
+    <Shortcut>alpctrllrchldactns</Shortcut>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>ControllerName</ID>
+        <ToolTip>Nombre del controlador</ToolTip>
+        <Default>ControllerName</Default>
+      </Literal>
+      <Literal>
+        <ID>ModelParentName</ID>
+        <ToolTip>Nombre del modelo del padre</ToolTip>
+        <Default>ModelParentName</Default>
+      </Literal>
+      <Literal>
+        <ID>ModelName</ID>
+        <ToolTip>Nombre del modelo</ToolTip>
+        <Default>ModelName</Default>
+      </Literal>
+      <Literal>
+        <ID>ValidateModelName</ID>
+        <ToolTip>Nombre del modelo de validación</ToolTip>
+        <Default>ValidateModelName</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="csharp">
+      <![CDATA[        
+        // GET: $ControllerName$/$ModelName$Details/5
+        public async Task<IActionResult> $ModelName$Details(int? id)
+        {
+            var isAccessible = await SecurityService.ValidateAccess(User.Identity.Name, "$ValidateModelName$s", "$ControllerName$");
+            if (!isAccessible) return NotFound();
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+            $ModelName$ model = await Context.$ModelName$s.FindAsync(id);
+            if (model == null)
+            {
+                return NotFound();
+            }
+            return View(model);
+        }
+        
+        // GET: $ControllerName$/$ModelName$Create/1
+        public async Task<IActionResult> $ModelName$Create(int? id)
+        {
+            var isAccessible = await SecurityService.ValidateAccess(User.Identity.Name, "$ValidateModelName$s", "$ControllerName$");
+            if (!isAccessible) return NotFound();
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+            $ModelParentName$ modelParent = await Context.$ModelParentName$s.FindAsync(id);
+            if (modelParent == null)
+            {
+                return NotFound();
+            }
+            $ModelName$ model = new $ModelName$()
+            {
+                $ModelParentName$Id = modelParent.$ModelParentName$Id,
+                $ModelParentName$ = modelParent
+            };
+            return View(model);
+        }
+
+        // POST: $ControllerName$/$ModelName$Create/1
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> $ModelName$Create($ModelName$ model)
+        {
+            if (ModelState.IsValid)
+            {
+                Context.$ModelName$s.Add(model);
+                await Context.SaveChangesAsync();
+                return RedirectToAction("$ModelParentName$Details", new { id = model.$ModelParentName$Id });
+            }
+            return View(model);
+        }
+
+        // GET: $ControllerName$/$ModelName$Edit/5
+        public async Task<IActionResult> $ModelName$Edit(int? id)
+        {
+            var isAccessible = await SecurityService.ValidateAccess(User.Identity.Name, "$ValidateModelName$s", "$ControllerName$");
+            if (!isAccessible) return NotFound();
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+            $ModelName$ model = await Context.$ModelName$s.FindAsync(id);
+            if (model == null)
+            {
+                return NotFound();
+            }
+            return View(model);
+        }
+
+        // POST: $ControllerName$/$ModelName$Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> $ModelName$Edit($ModelName$ model)
+        {
+            if (ModelState.IsValid)
+            {
+                Context.Entry(model).State = EntityState.Modified;
+                await Context.SaveChangesAsync();
+                return RedirectToAction("$ModelParentName$Details", new { id = model.$ModelParentName$Id });
+            }
+            return View(model);
+        }
+
+        // GET: $ControllerName$/TipoDocumentoDelete/5
+        public async Task<IActionResult> $ModelName$Delete(int? id)
+        {
+            var isAccessible = await SecurityService.ValidateAccess(User.Identity.Name, "$ValidateModelName$s", "$ControllerName$");
+            if (!isAccessible) return NotFound();
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+            $ModelName$ model = await Context.$ModelName$s.FindAsync(id);
+            if (model == null)
+            {
+                return NotFound();
+            }
+            Context.$ModelName$s.Remove(model);
+            await Context.SaveChangesAsync();
+            return RedirectToAction("$ModelParentName$Details", new { id = model.$ModelParentName$Id });
+        }]]>
+    </Code>
+  </Snippet>
+</CodeSnippet>
