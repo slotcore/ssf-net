@@ -207,7 +207,7 @@ namespace SSF_NET_Ventas.Formularios
 
         private void CmdGen_Click(object sender, EventArgs e)
         {
-            if (Convert.ToInt16(CboPunPar.SelectedValue) == 0)
+            if (Convert.ToInt32(CboPunPar.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el punto de partida de las guias !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 return;
@@ -339,7 +339,7 @@ namespace SSF_NET_Ventas.Formularios
                     c_fchPed = FgItems.GetData(n_row, 2).ToString();
                     c_FchEnt = FgItems.GetData(n_row, 3).ToString();
 
-                    n_idpunpar = Convert.ToInt16(CboPunPar.SelectedValue);
+                    n_idpunpar = Convert.ToInt32(CboPunPar.SelectedValue);
                     c_dato = funDatos.DataTableBuscar(dtPunPar, "n_id", "c_dir", n_idpunpar.ToString(), "N").ToString();
                     c_punpar = c_dato;
 

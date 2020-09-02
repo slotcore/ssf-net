@@ -41,9 +41,7 @@ namespace SSF_NET_Contabilidad.Formularios
         SIAC_Objetos.Funciones obj_fungen = new SIAC_Objetos.Funciones();
         CN_sun_tipexi objTipoExi = new CN_sun_tipexi();
         CN_sun_tipdoccom objTipDoc = new CN_sun_tipdoccom();
-        CN_alm_almacenes ObjAlm = new CN_alm_almacenes();
         CN_alm_inventariounimed ObjAlmUniMed = new CN_alm_inventariounimed();
-        CN_alm_personal ObjRes = new CN_alm_personal();
         CN_alm_almacenesdoc ObjAlmDoc = new CN_alm_almacenesdoc();
         CN_alm_inventariolotes ObjLotes = new CN_alm_inventariolotes();
         CN_sys_formulariovista objFormVis = new CN_sys_formulariovista();
@@ -69,10 +67,7 @@ namespace SSF_NET_Contabilidad.Formularios
         BE_SYS_EMPRESA entEmp = new BE_SYS_EMPRESA();
 
         // DATATABLE LOCALES
-        DataTable dtConfiguracionCosto = new DataTable();
-        DataTable dtAlmacenesDestino = new DataTable();
         DataTable dtTipoExis = new DataTable();
-        DataTable dtResponsables = new DataTable();
         //DataTable dtCostoProduccion = new DataTable();
         DataTable dtItems = new DataTable();
         DataTable dtMoviDetalle = new DataTable();
@@ -116,24 +111,30 @@ namespace SSF_NET_Contabilidad.Formularios
         void CargarCombos()
         {
             DataTableCargar();
-            funDatos.ComboBoxCargarDataTable(CboConfiguracion, dtConfiguracionCosto, "n_id", "c_des");
-            funDatos.ComboBoxCargarDataTable(CboResponsable, dtResponsables, "n_id", "destra");
             funDatos.ComboBoxCargarDataTable(CboMeses, dtMeses, "n_id", "c_des");
+
+            CboResponsable.DataSource = PersonalContabilidad.FetchList(STU_SISTEMA.EMPRESAID, 2);
+            CboResponsable.DisplayMember = "c_destra";
+            CboResponsable.ValueMember = "n_idtra";
+
+            CboConfiguracion.DataSource = ConfiguracionValorizacion.FetchList(STU_SISTEMA.EMPRESAID);
+            CboConfiguracion.DisplayMember = "c_des";
+            CboConfiguracion.ValueMember = "n_id";
         }
 
         void ConfigurarFormulario()
         {
             Tab1.SelectedIndex = 0;
             string c_nomarc = ConfigurationManager.AppSettings["PathIniFile"];
-            N_IDALMACEN = Convert.ToInt16(funDatos.IniLeerSeccion(c_nomarc, "SISTEMA", "ALMACEN").ToString());
+            N_IDALMACEN = Convert.ToInt32(funDatos.IniLeerSeccion(c_nomarc, "SISTEMA", "ALMACEN").ToString());
 
             if (dtsetup.Rows.Count != 0)
             {
-                if (Convert.ToInt16(dtsetup.Rows[0]["n_almtrazabilidad"]) == 1)
+                if (Convert.ToInt32(dtsetup.Rows[0]["n_almtrazabilidad"]) == 1)
                 {
                     N_INGTRAZABALIDAD = 1;
                 }
-                if (Convert.ToInt16(dtsetup.Rows[0]["n_guipedpre"]) == 1)
+                if (Convert.ToInt32(dtsetup.Rows[0]["n_guipedpre"]) == 1)
                 {
                     N_INGPRECIO = 1;
                 }
@@ -154,13 +155,6 @@ namespace SSF_NET_Contabilidad.Formularios
 
             objTipoExi.mysConec = mysConec;
             dtTipoExis = objTipoExi.Listar();
-
-            ObjAlm.mysConec = mysConec;
-            dtConfiguracionCosto = ObjAlm.ListarNuevo(STU_SISTEMA.EMPRESAID, Convert.ToInt16(funFunciones.NulosN(dtsetup.Rows[0]["n_almunialmacenes"])));                             // 
-            dtAlmacenesDestino = ObjAlm.ListarNuevo(STU_SISTEMA.EMPRESAID, Convert.ToInt16(funFunciones.NulosN(dtsetup.Rows[0]["n_almunialmacenes"])));                             // 
-
-            ObjRes.mysConec = mysConec;
-            dtResponsables = ObjRes.ListarPorCargo(STU_SISTEMA.EMPRESAID, 2);                          // 
 
             objItems.mysConec = mysConec;
             dtItems = objItems.ListarTabla(STU_SISTEMA.EMPRESAID);
@@ -217,7 +211,7 @@ namespace SSF_NET_Contabilidad.Formularios
             FgItems.Rows.Count = 2;
             booAgregando = false;
             FgItems.Cols[2].ComboList = "...";
-            CboConfiguracion.SelectedValue = Convert.ToInt16(N_IDALMACEN);
+            CboConfiguracion.SelectedValue = Convert.ToInt32(N_IDALMACEN);
         }
         void Blanquea()
         {
@@ -236,6 +230,22 @@ namespace SSF_NET_Contabilidad.Formularios
             TxtObs.Enabled = !TxtObs.Enabled;
             CboConfiguracion.Enabled = !CboConfiguracion.Enabled;
             CboResponsable.Enabled = !CboResponsable.Enabled;
+            CboMeses.Enabled = !CboMeses.Enabled;
+
+            if (BtnBuscarParte.Enabled == ComponentFactory.Krypton.Toolkit.ButtonEnabled.True)
+                BtnBuscarParte.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.False;
+            else
+                BtnBuscarParte.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.True;
+
+            if (BtnProcesarMP.Enabled == ComponentFactory.Krypton.Toolkit.ButtonEnabled.True)
+                BtnProcesarMP.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.False;
+            else
+                BtnProcesarMP.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.True;
+
+            if (BtnProcesarModCif.Enabled == ComponentFactory.Krypton.Toolkit.ButtonEnabled.True)
+                BtnProcesarModCif.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.False;
+            else
+                BtnProcesarModCif.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.True;
         }
         void ActivarTool()
         {
@@ -258,7 +268,7 @@ namespace SSF_NET_Contabilidad.Formularios
             Bloquea();
             ActivarTool();
 
-            //int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
+            //int intIdRegistro = Convert.ToInt32(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
 
             VerRegistro();
             LblTitulo2.Text = "Modificando Registro";
@@ -270,7 +280,7 @@ namespace SSF_NET_Contabilidad.Formularios
         {
             try
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns[9].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
                 m_CostoProduccion = CostoProduccion.Fetch(intIdRegistro);
 
@@ -333,11 +343,11 @@ namespace SSF_NET_Contabilidad.Formularios
             m_CostoProduccion.n_idemp = STU_SISTEMA.EMPRESAID;
             m_CostoProduccion.c_numser = TxtNumSer.Text;
             m_CostoProduccion.c_numdoc = TxtNumDoc.Text;
-            m_CostoProduccion.n_idconfigval = Convert.ToInt16(CboConfiguracion.SelectedValue);
+            m_CostoProduccion.n_idconfigval = Convert.ToInt32(CboConfiguracion.SelectedValue);
             m_CostoProduccion.n_anotra = STU_SISTEMA.ANOTRABAJO;
             m_CostoProduccion.n_idmes = STU_SISTEMA.MESTRABAJO;
             m_CostoProduccion.c_obs = TxtObs.Text; ;            
-            m_CostoProduccion.n_idresp =  Convert.ToInt16(CboResponsable.SelectedValue);
+            m_CostoProduccion.n_idresp =  Convert.ToInt32(CboResponsable.SelectedValue);
         }
 
         bool CamposOK()
@@ -503,12 +513,6 @@ namespace SSF_NET_Contabilidad.Formularios
             objTipoExi = null;
             dtTipoExis = null;
 
-            ObjAlm = null;
-            dtConfiguracionCosto = null;
-
-            ObjRes = null;
-            dtResponsables = null;
-
             objFormVis = null;
             objFormVis = null;
 
@@ -523,7 +527,7 @@ namespace SSF_NET_Contabilidad.Formularios
 
             if (tc.SelectedIndex == 1)
             {
-                //int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
+                //int intIdRegistro = Convert.ToInt32(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
                 if (n_QueHace != 1)
                 {
                     booAgregando = true;
@@ -535,7 +539,7 @@ namespace SSF_NET_Contabilidad.Formularios
 
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            //int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
+            //int intIdRegistro = Convert.ToInt32(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             booAgregando = true;
             VerRegistro();
@@ -667,13 +671,12 @@ namespace SSF_NET_Contabilidad.Formularios
 
         private void BtnBuscarParte_Click(object sender, EventArgs e)
         {
-            m_CostoProduccion.CostoProduccionDets = CostoProduccion.ListarPartesdeProduccion(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, STU_SISTEMA.MESTRABAJO);
-            CostoProduccionDetBindingSource.DataSource = m_CostoProduccion.CostoProduccionDets;
+            m_CostoProduccion.ListarPartesdeProduccion(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, STU_SISTEMA.MESTRABAJO - 1);            
         }
 
         private void BtnProcesarMP_Click(object sender, EventArgs e)
         {
-
+            m_CostoProduccion.ProcesarMp(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, STU_SISTEMA.MESTRABAJO - 1);
         }
 
 
@@ -723,8 +726,11 @@ namespace SSF_NET_Contabilidad.Formularios
         {
             if (booAgregando) return;
             CostoProduccionDet costoProduccionDet = (CostoProduccionDet)CostoProduccionDetBindingSource.Current;
-            CostoProduccionDetInsBindingSource.DataSource = costoProduccionDet.CostoProduccionDetInss;
-            CostoProduccionDetModBindingSource.DataSource = costoProduccionDet.CostoProduccionDetMods;
+            if (costoProduccionDet != null)
+            {
+                CostoProduccionDetInsBindingSource.DataSource = costoProduccionDet.CostoProduccionDetInss;
+                CostoProduccionDetModBindingSource.DataSource = costoProduccionDet.CostoProduccionDetMods;
+            }
         }
     }
 }

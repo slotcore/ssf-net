@@ -267,7 +267,7 @@ namespace SSF_NET_Produccion.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -277,7 +277,7 @@ namespace SSF_NET_Produccion.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[9].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -350,65 +350,65 @@ namespace SSF_NET_Produccion.Formularios
                 BE_Registro.n_id = BE_Registro.n_id; 
             }
             
-            BE_Registro.n_idite = Convert.ToInt16(CboMP.SelectedValue);
+            BE_Registro.n_idite = Convert.ToInt32(CboMP.SelectedValue);
             BE_Registro.n_idmp = 0;
             BE_Registro.c_des = CboMP.Text;
 
             c_dato = FgItems.GetData(2, 2).ToString();
             c_dato = funDatos.DataTableBuscar(dtestado, "c_des", "n_id", c_dato, "C").ToString();
-            BE_Registro.n_ene = Convert.ToInt16(c_dato);
+            BE_Registro.n_ene = Convert.ToInt32(c_dato);
 
             c_dato = FgItems.GetData(3, 2).ToString();
             c_dato = funDatos.DataTableBuscar(dtestado, "c_des", "n_id", c_dato, "C").ToString();
-            BE_Registro.n_feb = Convert.ToInt16(c_dato);
+            BE_Registro.n_feb = Convert.ToInt32(c_dato);
 
             c_dato = FgItems.GetData(4, 2).ToString();
             c_dato = funDatos.DataTableBuscar(dtestado, "c_des", "n_id", c_dato, "C").ToString();
-            BE_Registro.n_mar = Convert.ToInt16(c_dato);
+            BE_Registro.n_mar = Convert.ToInt32(c_dato);
 
             c_dato = FgItems.GetData(5, 2).ToString();
             c_dato = funDatos.DataTableBuscar(dtestado, "c_des", "n_id", c_dato, "C").ToString();
-            BE_Registro.n_abr = Convert.ToInt16(c_dato);
+            BE_Registro.n_abr = Convert.ToInt32(c_dato);
 
             c_dato = FgItems.GetData(6, 2).ToString();
             c_dato = funDatos.DataTableBuscar(dtestado, "c_des", "n_id", c_dato, "C").ToString();
-            BE_Registro.n_may = Convert.ToInt16(c_dato);
+            BE_Registro.n_may = Convert.ToInt32(c_dato);
 
             c_dato = FgItems.GetData(7, 2).ToString();
             c_dato = funDatos.DataTableBuscar(dtestado, "c_des", "n_id", c_dato, "C").ToString();
-            BE_Registro.n_jun = Convert.ToInt16(c_dato);
+            BE_Registro.n_jun = Convert.ToInt32(c_dato);
 
             c_dato = FgItems.GetData(8, 2).ToString();
             c_dato = funDatos.DataTableBuscar(dtestado, "c_des", "n_id", c_dato, "C").ToString();
-            BE_Registro.n_jul = Convert.ToInt16(c_dato);
+            BE_Registro.n_jul = Convert.ToInt32(c_dato);
 
             c_dato = FgItems.GetData(9, 2).ToString();
             c_dato = funDatos.DataTableBuscar(dtestado, "c_des", "n_id", c_dato, "C").ToString();
-            BE_Registro.n_ago = Convert.ToInt16(c_dato);
+            BE_Registro.n_ago = Convert.ToInt32(c_dato);
 
             c_dato = FgItems.GetData(10, 2).ToString();
             c_dato = funDatos.DataTableBuscar(dtestado, "c_des", "n_id", c_dato, "C").ToString();
-            BE_Registro.n_set = Convert.ToInt16(c_dato);
+            BE_Registro.n_set = Convert.ToInt32(c_dato);
 
             c_dato = FgItems.GetData(11, 2).ToString();
             c_dato = funDatos.DataTableBuscar(dtestado, "c_des", "n_id", c_dato, "C").ToString();
-            BE_Registro.n_oct = Convert.ToInt16(c_dato);
+            BE_Registro.n_oct = Convert.ToInt32(c_dato);
 
             c_dato = FgItems.GetData(12, 2).ToString();
             c_dato = funDatos.DataTableBuscar(dtestado, "c_des", "n_id", c_dato, "C").ToString();
-            BE_Registro.n_nov = Convert.ToInt16(c_dato);
+            BE_Registro.n_nov = Convert.ToInt32(c_dato);
 
             c_dato = FgItems.GetData(13, 2).ToString();
             c_dato = funDatos.DataTableBuscar(dtestado, "c_des", "n_id", c_dato, "C").ToString();
-            BE_Registro.n_dic = Convert.ToInt16(c_dato);
+            BE_Registro.n_dic = Convert.ToInt32(c_dato);
 
-            //BE_Registro.n = Convert.ToInt16(CboMP.SelectedValue);
+            //BE_Registro.n = Convert.ToInt32(CboMP.SelectedValue);
         }
         bool CamposOK()
         {
             bool booEstado = true;
 
-            if (Convert.ToInt16(CboMP.SelectedValue) == 0)
+            if (Convert.ToInt32(CboMP.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado la unidad e medida de la tarea !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -489,7 +489,7 @@ namespace SSF_NET_Produccion.Formularios
         }
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             booAgregando = true;
             VerRegistro(intIdRegistro);
@@ -513,7 +513,7 @@ namespace SSF_NET_Produccion.Formularios
 
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {

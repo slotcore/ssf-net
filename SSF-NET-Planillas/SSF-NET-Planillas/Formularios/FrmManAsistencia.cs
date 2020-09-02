@@ -200,7 +200,7 @@ namespace SSF_NET_Planillas.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[3].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[3].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -210,7 +210,7 @@ namespace SSF_NET_Planillas.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[9].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -276,7 +276,7 @@ namespace SSF_NET_Planillas.Formularios
             BE_Registro.c_cod = TxtCod.Text;
             BE_Registro.c_des = TxtDes.Text;
             BE_Registro.c_abr = TxtAbr.Text;
-            BE_Registro.n_idunimed = Convert.ToInt16(CboUniMed.SelectedValue);
+            BE_Registro.n_idunimed = Convert.ToInt32(CboUniMed.SelectedValue);
             BE_Registro.n_pre = Convert.ToDouble(TxtPre.Text);
             BE_Registro.c_obs = TxtObs.Text;
 
@@ -314,7 +314,7 @@ namespace SSF_NET_Planillas.Formularios
                 TxtAbr.Focus();
                 return booEstado;
             }
-            if (Convert.ToInt16(CboUniMed.SelectedValue) == 0)
+            if (Convert.ToInt32(CboUniMed.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado la unidad e medida de la tarea !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -420,7 +420,7 @@ namespace SSF_NET_Planillas.Formularios
 
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[3].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[3].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             booAgregando = true;
             VerRegistro(intIdRegistro);
@@ -446,7 +446,7 @@ namespace SSF_NET_Planillas.Formularios
 
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns[3].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns[3].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {

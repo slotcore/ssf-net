@@ -170,11 +170,11 @@ namespace SIAC_NET_Estacionamientos.Formularios
 
                 DataTable dtRes = new DataTable();
                 DataTable dtRes1 = new DataTable();
-                dtRes = funDatos.DataTableFiltrar(dtSer, "n_idpla = " + Convert.ToInt16(CboLocal.SelectedValue) + "");
+                dtRes = funDatos.DataTableFiltrar(dtSer, "n_idpla = " + Convert.ToInt32(CboLocal.SelectedValue) + "");
                 funDatos.ComboBoxCargarDataTable(CboSerDef, dtRes, "n_id", "c_des");
                 CboSerDef.SelectedValue = BE_Registro.n_idserdef;
 
-                dtRes1 = funDatos.DataTableFiltrar(dtSer, "n_idpla = " + Convert.ToInt16(CboLocal.SelectedValue) + "");
+                dtRes1 = funDatos.DataTableFiltrar(dtSer, "n_idpla = " + Convert.ToInt32(CboLocal.SelectedValue) + "");
                 funDatos.ComboBoxCargarDataTable(CboSerCobAdi, dtRes1, "n_id", "c_des");
                 CboSerCobAdi.SelectedValue = BE_Registro.n_idserhor;
 
@@ -195,7 +195,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
             Tab1.SelectedIndex = 1;
             CboSerDef.Enabled = false;
             OptTipCob2.Checked = true;
-            dtSerPla = funDatos.DataTableFiltrar(dtSerPla, "n_idpla = " + Convert.ToInt16(CboLocal.SelectedValue) + "");
+            dtSerPla = funDatos.DataTableFiltrar(dtSerPla, "n_idpla = " + Convert.ToInt32(CboLocal.SelectedValue) + "");
             funDatos.ComboBoxCargarDataTable(CboSerCobAdi, dtSerPla, "n_id", "c_des");
             CboLocal.Focus();
             booAgregando = false;
@@ -250,13 +250,13 @@ namespace SIAC_NET_Estacionamientos.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             VerRegistro(intIdRegistro);       
             CboSerDef.Enabled = true;
             LblTitulo2.Text = "Modificando Registro";
             Tab1.SelectedIndex = 1;
 
-            //dtSerPla = funDatos.DataTableFiltrar(dtSerPla, "n_idpla = " + Convert.ToInt16(CboLocal.SelectedValue) + "");
+            //dtSerPla = funDatos.DataTableFiltrar(dtSerPla, "n_idpla = " + Convert.ToInt32(CboLocal.SelectedValue) + "");
             //funDatos.ComboBoxCargarDataTable(CboSerCobAdi, dtSerPla, "n_id", "c_des");
             CboLocal.Focus();
             booAgregando = false;
@@ -264,7 +264,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -340,10 +340,10 @@ namespace SIAC_NET_Estacionamientos.Formularios
             //}
             //else
             //{
-            //    n_id = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            //    n_id = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             //}
             
-            BE_Registro.n_idloc = Convert.ToInt16(CboLocal.SelectedValue);
+            BE_Registro.n_idloc = Convert.ToInt32(CboLocal.SelectedValue);
             if (OptTipCob1.Checked == true) { BE_Registro.n_idtipcob = 1; }
             if (OptTipCob2.Checked == true) { BE_Registro.n_idtipcob = 2; }
             if (OptTipCob3.Checked == true) { BE_Registro.n_idtipcob = 3; }
@@ -351,10 +351,10 @@ namespace SIAC_NET_Estacionamientos.Formularios
             BE_Registro.c_numserfac = TxtFac.Text;
             BE_Registro.c_numserbol = TxtBol.Text;
             BE_Registro.c_numsertik = TxtTik.Text;
-            BE_Registro.n_iddocdef = Convert.ToInt16(CboDocDef.SelectedValue);
-            BE_Registro.n_idserdef = Convert.ToInt16(CboSerDef.SelectedValue);
-            BE_Registro.n_idserhor = Convert.ToInt16(CboSerCobAdi.SelectedValue);
-            BE_Registro.n_tolmin = Convert.ToInt16(TxtTol.Text);
+            BE_Registro.n_iddocdef = Convert.ToInt32(CboDocDef.SelectedValue);
+            BE_Registro.n_idserdef = Convert.ToInt32(CboSerDef.SelectedValue);
+            BE_Registro.n_idserhor = Convert.ToInt32(CboSerCobAdi.SelectedValue);
+            BE_Registro.n_tolmin = Convert.ToInt32(TxtTol.Text);
 
             if (ChkVisPre.Checked == false) { BE_Registro.n_vispre = 1; }
             if (ChkVisPre.Checked == true) { BE_Registro.n_vispre = 2; }
@@ -363,7 +363,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
         {
             bool booEstado = true;
 
-            if (Convert.ToInt16(CboLocal.SelectedValue) == 0)
+            if (Convert.ToInt32(CboLocal.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el nombre del Local !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -378,14 +378,14 @@ namespace SIAC_NET_Estacionamientos.Formularios
                 return booEstado;
             }
             
-            if (Convert.ToInt16(CboDocDef.SelectedValue) == 0)
+            if (Convert.ToInt32(CboDocDef.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el documento por defecto para este local !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
                 CboDocDef.Focus();
                 return booEstado;
             }
-            if (Convert.ToInt16(CboSerDef.SelectedValue) == 0)
+            if (Convert.ToInt32(CboSerDef.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el servicio por defecto para este local !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -413,7 +413,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
                 TxtTik.Focus();
                 return booEstado;
             }
-            if (Convert.ToInt16(CboSerCobAdi.SelectedValue) == 0)
+            if (Convert.ToInt32(CboSerCobAdi.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el servicio para el cobro adicional de horas !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -498,7 +498,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
         }
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             booAgregando = true;
             VerRegistro(intIdRegistro);
@@ -522,7 +522,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
 
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -551,7 +551,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
             
             CboSerDef.Enabled = true;
             DataTable dtRes = new DataTable();
-            dtRes = funDatos.DataTableFiltrar(dtSer, "n_idpla = " + Convert.ToInt16(CboLocal.SelectedValue) + "");
+            dtRes = funDatos.DataTableFiltrar(dtSer, "n_idpla = " + Convert.ToInt32(CboLocal.SelectedValue) + "");
             funDatos.ComboBoxCargarDataTable(CboSerDef, dtRes, "n_id", "c_des");
             funDatos.ComboBoxCargarDataTable(CboSerCobAdi, dtSerPla, "n_id", "c_des");
         }

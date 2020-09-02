@@ -637,7 +637,7 @@ namespace SSF_NET_Produccion.Formularios
         void Modificar()
         {
             booAgregando = true;
-            int n_cerrado = Convert.ToInt16(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
+            int n_cerrado = Convert.ToInt32(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
 
             if (n_cerrado == 1)
             {
@@ -651,7 +651,7 @@ namespace SSF_NET_Produccion.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[2].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[2].CellValue(DgLista.Row).ToString());
 
 
             VerRegistro(intIdRegistro);
@@ -665,8 +665,8 @@ namespace SSF_NET_Produccion.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[2].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
-            int n_cerrado = Convert.ToInt16(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[2].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int n_cerrado = Convert.ToInt32(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
 
             if (n_cerrado == 1)
             {
@@ -881,7 +881,7 @@ namespace SSF_NET_Produccion.Formularios
                 return booEstado;
             }
 
-            if (Convert.ToInt16(CboSup.SelectedValue) == 0)
+            if (Convert.ToInt32(CboSup.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado en nombre del supervisor de la produccion !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboSup.Focus();
@@ -920,7 +920,7 @@ namespace SSF_NET_Produccion.Formularios
                 return booEstado;
             }
 
-            if (Convert.ToInt16(CboRec.SelectedValue) == 0)
+            if (Convert.ToInt32(CboRec.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado en nombre de la receta para elaborar este producto !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboRec.Focus();
@@ -928,7 +928,7 @@ namespace SSF_NET_Produccion.Formularios
                 return booEstado;
             }
 
-            if (Convert.ToInt16(CboLin.SelectedValue) == 0)
+            if (Convert.ToInt32(CboLin.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado en nombre de la linea para elaborar este producto !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboLin.Focus();
@@ -1039,7 +1039,7 @@ namespace SSF_NET_Produccion.Formularios
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
             if (DgLista.RowCount == 0) { return; }
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[2].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[2].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             booAgregando = true;
             VerRegistro(intIdRegistro);
@@ -1069,7 +1069,7 @@ namespace SSF_NET_Produccion.Formularios
 
             if (tc.SelectedIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns[2].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns[2].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -1182,7 +1182,7 @@ namespace SSF_NET_Produccion.Formularios
         {
             if (n_QueHace == 3) { return; }
 
-            if (Convert.ToInt16(CboTipDocRef.SelectedValue) == 0)
+            if (Convert.ToInt32(CboTipDocRef.SelectedValue) == 0)
             {
                 BuscarProducto();
             }
@@ -1586,7 +1586,7 @@ namespace SSF_NET_Produccion.Formularios
         }
         private void imprimirRecetaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //int intIdRegistro = Convert.ToInt16(DgLista.Columns[2].CellValue(DgLista.Row).ToString());
+            //int intIdRegistro = Convert.ToInt32(DgLista.Columns[2].CellValue(DgLista.Row).ToString());
             //CN_pro_produccion FunSol = new CN_pro_produccion();
             //FunSol.mysConec = mysConec;
             //FunSol.STU_SISTEMA = STU_SISTEMA;
@@ -1941,7 +1941,7 @@ namespace SSF_NET_Produccion.Formularios
                 else
                 {
                     c_dato = lstInsumos[n_row].n_consumido.ToString();
-                    FgInsumo.SetData(FgInsumo.Rows.Count - 1, 8, Convert.ToInt16(c_dato));
+                    FgInsumo.SetData(FgInsumo.Rows.Count - 1, 8, Convert.ToInt32(c_dato));
                 }
             }
             booAgregando = false;
@@ -1951,7 +1951,7 @@ namespace SSF_NET_Produccion.Formularios
             DataTable dtResul = new DataTable();
             DataTable dtSolMatRes = new DataTable();
             CN_pro_solicitudamateriales objSolMat = new CN_pro_solicitudamateriales();
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[2].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[2].CellValue(DgLista.Row).ToString());
             int n_row = 0;
             int n_fila = 0;
             bool b_encontro = false;
@@ -2198,7 +2198,7 @@ namespace SSF_NET_Produccion.Formularios
         }
         private void abrirProduccionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[2].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[2].CellValue(DgLista.Row).ToString());
 
             abrirProduccion(intIdRegistro);
         }
@@ -2410,7 +2410,7 @@ namespace SSF_NET_Produccion.Formularios
             if (n_QueHace == 3) { return;}
             if (booAgregando == true) { return; }
             DataTable dtResLin = new DataTable();
-            int n_idrec = Convert.ToInt16(CboRec.SelectedValue);
+            int n_idrec = Convert.ToInt32(CboRec.SelectedValue);
             dtResLin = funDatos.DataTableFiltrar(dtLineas, "n_idpro = " + Convert.ToInt32(LblIdIte.Text) + " AND n_idrec = " + n_idrec + "");
             funDatos.ComboBoxCargarDataTable(CboLin, dtResLin, "n_id", "c_deslin");
             booAgregando = false;
@@ -2483,7 +2483,7 @@ namespace SSF_NET_Produccion.Formularios
         {
             try
             {
-                int n_IdRegistro = Convert.ToInt16(DgLista.Columns[2].CellValue(DgLista.Row).ToString());
+                int n_IdRegistro = Convert.ToInt32(DgLista.Columns[2].CellValue(DgLista.Row).ToString());
 
                 objRegistro.TraerRegistro(n_IdRegistro);
                 entRegistro = objRegistro.EntProduccion;

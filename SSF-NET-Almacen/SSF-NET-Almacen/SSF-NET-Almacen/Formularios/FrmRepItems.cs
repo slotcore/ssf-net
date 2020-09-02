@@ -80,22 +80,22 @@ namespace SSF_NET_Almacen.Formularios
             if (Opt1.Checked == true)
             {
                 objAlm.STU_SISTEMA = STU_SISTEMA;
-                objAlm.ReporteListaItems(Convert.ToInt16(CboTipExis.SelectedValue), n_EstadoActivo); 
+                objAlm.ReporteListaItems(Convert.ToInt32(CboTipExis.SelectedValue), n_EstadoActivo); 
             }
             if (Opt2.Checked == true)
             {
                 objAlm.STU_SISTEMA = STU_SISTEMA;
-                objAlm.ReporteListaInventario(Convert.ToInt16(CboTipExis.SelectedValue), n_EstadoActivo);
+                objAlm.ReporteListaInventario(Convert.ToInt32(CboTipExis.SelectedValue), n_EstadoActivo);
             }
             if (Opt3.Checked == true)
             {
                 objAlm.STU_SISTEMA = STU_SISTEMA;
-                objAlm.ReporteStckMin(Convert.ToInt16(CboTipExis.SelectedValue), n_EstadoActivo);
+                objAlm.ReporteStckMin(Convert.ToInt32(CboTipExis.SelectedValue), n_EstadoActivo);
             }
             if (Opt4.Checked == true)
             {
                 objAlm.STU_SISTEMA = STU_SISTEMA;
-                objAlm.ReporteStckMax(Convert.ToInt16(CboTipExis.SelectedValue), n_EstadoActivo);
+                objAlm.ReporteStckMax(Convert.ToInt32(CboTipExis.SelectedValue), n_EstadoActivo);
             }
         }
 

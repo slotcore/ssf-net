@@ -39,6 +39,7 @@
             this.PicClos1 = new System.Windows.Forms.PictureBox();
             this.label17 = new System.Windows.Forms.Label();
             this.DgLista = new C1.Win.C1TrueDBGrid.C1TrueDBGrid();
+            this.costoProduccionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.c1DockingTabPage2 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonGroupBox1 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
@@ -48,11 +49,14 @@
             this.BtnProcesarModCif = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
             this.kryptonSplitContainer1 = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
             this.FgItems = new C1.Win.C1FlexGrid.C1FlexGrid();
+            this.CostoProduccionDetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.FgInsumos = new C1.Win.C1FlexGrid.C1FlexGrid();
+            this.CostoProduccionDetInsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.FgManoObra = new C1.Win.C1FlexGrid.C1FlexGrid();
+            this.CostoProduccionDetModBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.FgGastoIndirecto = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.TxtCostoCif = new System.Windows.Forms.TextBox();
@@ -85,16 +89,13 @@
             this.ToolManFun = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolSalir = new System.Windows.Forms.ToolStripButton();
-            this.costoProduccionBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.CostoProduccionDetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.CostoProduccionDetInsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.CostoProduccionDetModBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Tab1.SuspendLayout();
             this.c1DockingTabPage1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicClos1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgLista)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.costoProduccionBindingSource)).BeginInit();
             this.c1DockingTabPage2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).BeginInit();
@@ -112,20 +113,19 @@
             this.kryptonSplitContainer1.Panel2.SuspendLayout();
             this.kryptonSplitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FgItems)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CostoProduccionDetBindingSource)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FgInsumos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CostoProduccionDetInsBindingSource)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FgManoObra)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CostoProduccionDetModBindingSource)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FgGastoIndirecto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicClos2)).BeginInit();
             this.panel3.SuspendLayout();
             this.ToolHerramientas.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.costoProduccionBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CostoProduccionDetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CostoProduccionDetInsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CostoProduccionDetModBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // Tab1
@@ -259,6 +259,10 @@
             this.DgLista.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DgLista_KeyPress);
             this.DgLista.PropBag = resources.GetString("DgLista.PropBag");
             // 
+            // costoProduccionBindingSource
+            // 
+            this.costoProduccionBindingSource.DataSource = typeof(SIAC_DATOS.Models.Contabilidad.CostoProduccion);
+            // 
             // c1DockingTabPage2
             // 
             this.c1DockingTabPage2.Controls.Add(this.panel1);
@@ -305,9 +309,6 @@
             this.kryptonGroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.kryptonGroupBox1.CaptionStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.GroupBoxCaption;
-            this.kryptonGroupBox1.GroupBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.ControlGroupBox;
-            this.kryptonGroupBox1.GroupBorderStyle = ComponentFactory.Krypton.Toolkit.PaletteBorderStyle.ControlGroupBox;
             this.kryptonGroupBox1.Location = new System.Drawing.Point(3, 144);
             this.kryptonGroupBox1.Name = "kryptonGroupBox1";
             // 
@@ -316,7 +317,6 @@
             this.kryptonGroupBox1.Panel.Controls.Add(this.kryptonHeaderGroup1);
             this.kryptonGroupBox1.Size = new System.Drawing.Size(871, 317);
             this.kryptonGroupBox1.StateNormal.Back.Color1 = System.Drawing.Color.Transparent;
-            this.kryptonGroupBox1.StateNormal.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kryptonGroupBox1.TabIndex = 130;
             this.kryptonGroupBox1.Values.Heading = "Listado de Partes de Producción";
             // 
@@ -337,7 +337,6 @@
             this.kryptonHeaderGroup1.Size = new System.Drawing.Size(867, 293);
             this.kryptonHeaderGroup1.StateNormal.HeaderPrimary.Back.Color1 = System.Drawing.SystemColors.Control;
             this.kryptonHeaderGroup1.StateNormal.HeaderPrimary.Back.Color2 = System.Drawing.SystemColors.Control;
-            this.kryptonHeaderGroup1.StateNormal.HeaderPrimary.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kryptonHeaderGroup1.TabIndex = 131;
             this.kryptonHeaderGroup1.ValuesPrimary.Heading = "";
             this.kryptonHeaderGroup1.ValuesPrimary.Image = null;
@@ -348,8 +347,6 @@
             this.BtnBuscarParte.Image = global::SSF_NET_Contabilidad.Properties.Resources.boorderitem_16x16;
             this.BtnBuscarParte.Style = ComponentFactory.Krypton.Toolkit.PaletteButtonStyle.Standalone;
             this.BtnBuscarParte.Text = "Buscar Partes";
-            this.BtnBuscarParte.ToolTipStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.ToolTip;
-            this.BtnBuscarParte.Type = ComponentFactory.Krypton.Toolkit.PaletteButtonSpecStyle.Generic;
             this.BtnBuscarParte.UniqueName = "732F8FBA093C4C7A4FA518682797C959";
             this.BtnBuscarParte.Click += new System.EventHandler(this.BtnBuscarParte_Click);
             // 
@@ -359,8 +356,6 @@
             this.BtnProcesarMP.Image = global::SSF_NET_Contabilidad.Properties.Resources.boproductgroup_16x16;
             this.BtnProcesarMP.Style = ComponentFactory.Krypton.Toolkit.PaletteButtonStyle.Standalone;
             this.BtnProcesarMP.Text = "Procesar MP";
-            this.BtnProcesarMP.ToolTipStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.ToolTip;
-            this.BtnProcesarMP.Type = ComponentFactory.Krypton.Toolkit.PaletteButtonSpecStyle.Generic;
             this.BtnProcesarMP.UniqueName = "21699ADBB6664104808E7FF130F84F81";
             this.BtnProcesarMP.Click += new System.EventHandler(this.BtnProcesarMP_Click);
             // 
@@ -370,8 +365,6 @@
             this.BtnProcesarModCif.Image = global::SSF_NET_Contabilidad.Properties.Resources.bodepartment_16x16;
             this.BtnProcesarModCif.Style = ComponentFactory.Krypton.Toolkit.PaletteButtonStyle.Standalone;
             this.BtnProcesarModCif.Text = "Procesar MOD/CIF";
-            this.BtnProcesarModCif.ToolTipStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.ToolTip;
-            this.BtnProcesarModCif.Type = ComponentFactory.Krypton.Toolkit.PaletteButtonSpecStyle.Generic;
             this.BtnProcesarModCif.UniqueName = "986BE05271AC44A9EFA6A3F002F57D51";
             // 
             // kryptonSplitContainer1
@@ -386,13 +379,11 @@
             // 
             this.kryptonSplitContainer1.Panel1.Controls.Add(this.FgItems);
             this.kryptonSplitContainer1.Panel1.StateNormal.Color1 = System.Drawing.SystemColors.Control;
-            this.kryptonSplitContainer1.Panel1.StateNormal.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             // 
             // kryptonSplitContainer1.Panel2
             // 
             this.kryptonSplitContainer1.Panel2.Controls.Add(this.tabControl1);
             this.kryptonSplitContainer1.Panel2.StateNormal.Color1 = System.Drawing.SystemColors.Control;
-            this.kryptonSplitContainer1.Panel2.StateNormal.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kryptonSplitContainer1.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile;
             this.kryptonSplitContainer1.Size = new System.Drawing.Size(865, 262);
             this.kryptonSplitContainer1.SplitterDistance = 126;
@@ -420,6 +411,10 @@
             this.FgItems.StyleInfo = resources.GetString("FgItems.StyleInfo");
             this.FgItems.TabIndex = 11;
             this.FgItems.SelChange += new System.EventHandler(this.FgItems_SelChange);
+            // 
+            // CostoProduccionDetBindingSource
+            // 
+            this.CostoProduccionDetBindingSource.DataSource = typeof(SIAC_DATOS.Models.Contabilidad.CostoProduccionDet);
             // 
             // tabControl1
             // 
@@ -467,6 +462,10 @@
             this.FgInsumos.StyleInfo = resources.GetString("FgInsumos.StyleInfo");
             this.FgInsumos.TabIndex = 13;
             // 
+            // CostoProduccionDetInsBindingSource
+            // 
+            this.CostoProduccionDetInsBindingSource.DataSource = typeof(SIAC_DATOS.Models.Contabilidad.CostoProduccionDetIns);
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.FgManoObra);
@@ -498,6 +497,10 @@
             this.FgManoObra.Size = new System.Drawing.Size(847, 93);
             this.FgManoObra.StyleInfo = resources.GetString("FgManoObra.StyleInfo");
             this.FgManoObra.TabIndex = 14;
+            // 
+            // CostoProduccionDetModBindingSource
+            // 
+            this.CostoProduccionDetModBindingSource.DataSource = typeof(SIAC_DATOS.Models.Contabilidad.CostoProduccionDetMod);
             // 
             // tabPage3
             // 
@@ -875,22 +878,6 @@
             this.ToolSalir.ToolTipText = "Salir";
             this.ToolSalir.Click += new System.EventHandler(this.ToolSalir_Click);
             // 
-            // costoProduccionBindingSource
-            // 
-            this.costoProduccionBindingSource.DataSource = typeof(SIAC_DATOS.Models.Contabilidad.CostoProduccion);
-            // 
-            // CostoProduccionDetBindingSource
-            // 
-            this.CostoProduccionDetBindingSource.DataSource = typeof(SIAC_DATOS.Models.Contabilidad.CostoProduccionDet);
-            // 
-            // CostoProduccionDetInsBindingSource
-            // 
-            this.CostoProduccionDetInsBindingSource.DataSource = typeof(SIAC_DATOS.Models.Contabilidad.CostoProduccionDetIns);
-            // 
-            // CostoProduccionDetModBindingSource
-            // 
-            this.CostoProduccionDetModBindingSource.DataSource = typeof(SIAC_DATOS.Models.Contabilidad.CostoProduccionDetMod);
-            // 
             // FrmCostoProduccion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -911,6 +898,7 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicClos1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgLista)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.costoProduccionBindingSource)).EndInit();
             this.c1DockingTabPage2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -929,21 +917,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer1)).EndInit();
             this.kryptonSplitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.FgItems)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CostoProduccionDetBindingSource)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.FgInsumos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CostoProduccionDetInsBindingSource)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.FgManoObra)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CostoProduccionDetModBindingSource)).EndInit();
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.FgGastoIndirecto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicClos2)).EndInit();
             this.panel3.ResumeLayout(false);
             this.ToolHerramientas.ResumeLayout(false);
             this.ToolHerramientas.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.costoProduccionBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CostoProduccionDetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CostoProduccionDetInsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CostoProduccionDetModBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

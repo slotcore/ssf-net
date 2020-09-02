@@ -54,15 +54,15 @@ namespace SIAC_Negocio.Tesoreria
             {
                 if (dtResult.Rows.Count != 0)
                 {
-                    e_Conci.n_idemp = Convert.ToInt16(dtResult.Rows[0]["n_idemp"]);
-                    e_Conci.n_id = Convert.ToInt16(dtResult.Rows[0]["n_id"]);
-                    e_Conci.n_idmes = Convert.ToInt16(dtResult.Rows[0]["n_idmes"]);
-                    e_Conci.n_idcue = Convert.ToInt16(dtResult.Rows[0]["n_idcue"]);
+                    e_Conci.n_idemp = Convert.ToInt32(dtResult.Rows[0]["n_idemp"]);
+                    e_Conci.n_id = Convert.ToInt32(dtResult.Rows[0]["n_id"]);
+                    e_Conci.n_idmes = Convert.ToInt32(dtResult.Rows[0]["n_idmes"]);
+                    e_Conci.n_idcue = Convert.ToInt32(dtResult.Rows[0]["n_idcue"]);
                     e_Conci.n_saliniban = Convert.ToDouble(dtResult.Rows[0]["n_saliniban"]);
                     e_Conci.n_salfinban = Convert.ToDouble(funFun.NulosN(dtResult.Rows[0]["n_salfinban"]));
                     e_Conci.d_fchcon = Convert.ToDateTime(dtResult.Rows[0]["d_fchcon"]);
                     e_Conci.c_glo = dtResult.Rows[0]["c_glo"].ToString();
-                    e_Conci.n_idper = Convert.ToInt16(dtResult.Rows[0]["n_idper"]);
+                    e_Conci.n_idper = Convert.ToInt32(dtResult.Rows[0]["n_idper"]);
                     e_Conci.n_salfin = Convert.ToDouble(funFun.NulosN(dtResult.Rows[0]["n_salfin"]));
                     e_Conci.n_toting = Convert.ToDouble(funFun.NulosN(dtResult.Rows[0]["n_toting"]));
                     e_Conci.n_totegr = Convert.ToDouble(funFun.NulosN(dtResult.Rows[0]["n_totegr"]));

@@ -314,8 +314,8 @@ namespace SIAC_DATOS.Models.Contabilidad
             }
         }
 
-        private List<CostoProduccionDet> _CostoProduccionDets;
-        public List<CostoProduccionDet> CostoProduccionDets
+        private ObservableListSource<CostoProduccionDet> _CostoProduccionDets;
+        public ObservableListSource<CostoProduccionDet> CostoProduccionDets
         {
             get
             {
@@ -513,11 +513,82 @@ namespace SIAC_DATOS.Models.Contabilidad
             return m_entidad;
         }
 
-        public static List<CostoProduccionDet> ListarPartesdeProduccion(int idEmp, int anho, int mes)
+        public void ListarPartesdeProduccion(int n_idemp, int n_anotra, int n_idmes)
         {
-            List<CostoProduccionDet> costoProduccionDets = new List<CostoProduccionDet>();
+            if (_CostoProduccionDets == null)
+                _CostoProduccionDets = new ObservableListSource<CostoProduccionDet>();
 
-            return costoProduccionDets;
+            _CostoProduccionDets.Clear();
+
+            using (MySqlConnection connection
+                = new MySqlConnection(
+                    ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.CommandText = "con_costoproddet_listarpartes";
+                    command.Parameters.Add(new MySqlParameter("@n_idemp", n_idemp));
+                    command.Parameters.Add(new MySqlParameter("@n_anotra", n_anotra));
+                    command.Parameters.Add(new MySqlParameter("@n_idmes", n_idmes));
+                    connection.Open();
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            CostoProduccionDet m_entidad = CostoProduccionDet.SetObject(reader);
+                            //insumos
+                            m_entidad.ListarInsumosParteProduccion();
+                            //mano de obra
+                            m_entidad.ListarModParteProduccion();
+                            //
+                            _CostoProduccionDets.Add(m_entidad);
+                        }
+                    }
+                }
+            }
+        }
+
+        public void ProcesarMp(int n_idemp, int n_anotra, int n_idmes)
+        {
+            // Validar movimientos anteriores sin costear
+            // Materiales
+            // Productos Intermedios
+            // Productos Terminados
+            if (_CostoProduccionDets == null)
+                _CostoProduccionDets = new ObservableListSource<CostoProduccionDet>();
+
+            _CostoProduccionDets.Clear();
+
+            using (MySqlConnection connection
+                = new MySqlConnection(
+                    ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.CommandText = "con_costoproddet_listarpartes";
+                    command.Parameters.Add(new MySqlParameter("@n_idemp", n_idemp));
+                    command.Parameters.Add(new MySqlParameter("@n_anotra", n_anotra));
+                    command.Parameters.Add(new MySqlParameter("@n_idmes", n_idmes));
+                    connection.Open();
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            CostoProduccionDet m_entidad = CostoProduccionDet.SetObject(reader);
+                            //insumos
+                            m_entidad.ListarInsumosParteProduccion();
+                            //mano de obra
+                            m_entidad.ListarModParteProduccion();
+                            //
+                            _CostoProduccionDets.Add(m_entidad);
+                        }
+                    }
+                }
+            }
         }
 
         public static bool DocumentoExiste(int idemp, string numser, string numdoc)

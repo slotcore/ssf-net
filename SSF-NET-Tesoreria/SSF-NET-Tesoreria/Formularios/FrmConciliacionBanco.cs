@@ -190,7 +190,7 @@ namespace SSF_NET_Tesoreria.Formularios
         void DataTableCargar()
         {
             objRegistros.mysConec = mysConec;                                    // CARGAMOS LOS DATOS DEL FORMULARIO
-            objRegistros.Listar(STU_SISTEMA.EMPRESAID,STU_SISTEMA.ANOTRABAJO,Convert.ToInt16(STU_SISTEMA.MESTRABAJO));
+            objRegistros.Listar(STU_SISTEMA.EMPRESAID,STU_SISTEMA.ANOTRABAJO,Convert.ToInt32(STU_SISTEMA.MESTRABAJO));
             dtLista = objRegistros.dtLista;
 
             objFormVis.mysConec = mysConec;                                      // CARGAMOS EL ARRAY CON LOS DATOS PARA LA VISTA DE DgLista
@@ -249,7 +249,7 @@ namespace SSF_NET_Tesoreria.Formularios
                 TxtSalFin.Text = BE_Registro.n_salfin.ToString("0.00");
 
                 o_CtaBan.mysConec = mysConec;
-                o_CtaBan.TraerRegistro(Convert.ToInt16(CboCta.SelectedValue));
+                o_CtaBan.TraerRegistro(Convert.ToInt32(CboCta.SelectedValue));
                 e_CtaBaco = o_CtaBan.entBancos;
 
                 CboMon.SelectedValue = e_CtaBaco.n_idmon;
@@ -374,7 +374,7 @@ namespace SSF_NET_Tesoreria.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -387,7 +387,7 @@ namespace SSF_NET_Tesoreria.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -400,7 +400,7 @@ namespace SSF_NET_Tesoreria.Formularios
 
                     // VOLVEMOS A CARGAR EL DATATABLE dtItems CON LOS DATOS DEL SERVIDOR
                     objRegistros.mysConec = mysConec;
-                    objRegistros.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt16(CboMeses.SelectedValue));
+                    objRegistros.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt32(CboMeses.SelectedValue));
                     dtLista = objRegistros.dtLista;
                     // MOSTRAMOS LOS DATOS EN LA GRILLA
                     ListarItems();
@@ -461,13 +461,13 @@ namespace SSF_NET_Tesoreria.Formularios
             if (n_QueHace == 1) { BE_Registro.n_id = 0; }
 		    
 		    BE_Registro.n_ano = STU_SISTEMA.ANOTRABAJO;
-		    BE_Registro.n_idmes = Convert.ToInt16(CboMeses.SelectedValue);
-		    BE_Registro.n_idcue = Convert.ToInt16(CboCta.SelectedValue);
+		    BE_Registro.n_idmes = Convert.ToInt32(CboMeses.SelectedValue);
+		    BE_Registro.n_idcue = Convert.ToInt32(CboCta.SelectedValue);
 		    BE_Registro.n_saliniban = Convert.ToDouble(TxtSalIni.Text);
             BE_Registro.n_salfinban = Convert.ToDouble(TxtSalfinBan.Text);
 		    BE_Registro.d_fchcon = Convert.ToDateTime(TxtFchEmi.Text);
 		    BE_Registro.c_glo = TxtObs.Text;
-            BE_Registro.n_idper = Convert.ToInt16(CboPer.SelectedValue);
+            BE_Registro.n_idper = Convert.ToInt32(CboPer.SelectedValue);
             BE_Registro.n_salfin = Convert.ToDouble(funFunciones.NulosN(TxtSalFinCon.Text));
 
             BE_Registro.n_toting = Convert.ToDouble(TxtTotDebCon.Text);  // HallarTotIng();
@@ -561,7 +561,7 @@ namespace SSF_NET_Tesoreria.Formularios
         {
             bool booEstado = true;
 
-            if (Convert.ToInt16(CboCta.SelectedValue) == 0)
+            if (Convert.ToInt32(CboCta.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el numero de cuenta a conciliar !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -575,7 +575,7 @@ namespace SSF_NET_Tesoreria.Formularios
                 TxtFchEmi.Focus();
                 return booEstado;
             }
-            if (Convert.ToInt16(CboPer.SelectedValue) == 0)
+            if (Convert.ToInt32(CboPer.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificadoel periodo de la conciliacion !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -609,7 +609,7 @@ namespace SSF_NET_Tesoreria.Formularios
             {
                 // VOLVEMOS A CARGAR EL DATATABLE dtItems CON LOS DATOS DEL SERVIDOR
                 objRegistros.mysConec = mysConec;
-                objRegistros.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt16(CboMeses.SelectedValue));
+                objRegistros.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt32(CboMeses.SelectedValue));
                 dtLista = objRegistros.dtLista;
                 // MOSTRAMOS LOS DATOS EN LA GRILLA
                 ListarItems();
@@ -694,7 +694,7 @@ namespace SSF_NET_Tesoreria.Formularios
 
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -706,13 +706,13 @@ namespace SSF_NET_Tesoreria.Formularios
         }
         private void CmdCargar_Click(object sender, EventArgs e)
         {
-            if (Convert.ToInt16(CboCta.SelectedValue) == 0)
+            if (Convert.ToInt32(CboCta.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha indicado el numero de cuenta a conciliar !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboMeses.Focus();
                 return;
             }
-            if (Convert.ToInt16(CboMeses.SelectedValue) == 0)
+            if (Convert.ToInt32(CboMeses.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha indicado el mes a conciliar !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboMeses.Focus();
@@ -734,12 +734,12 @@ namespace SSF_NET_Tesoreria.Formularios
 
             if (CmdCargar.Text == "Cargar Mov.") 
             { 
-                objRegistros.TraerParaConciliacion(STU_SISTEMA.EMPRESAID, Convert.ToInt16(CboPer.SelectedValue), Convert.ToInt16(CboCta.SelectedValue), STU_SISTEMA.ANOTRABAJO);
+                objRegistros.TraerParaConciliacion(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboPer.SelectedValue), Convert.ToInt32(CboCta.SelectedValue), STU_SISTEMA.ANOTRABAJO);
                 dtResult = objRegistros.dtLista;
             }
             else
             {
-                objRegistros.TraerParaConciliacion(STU_SISTEMA.EMPRESAID, Convert.ToInt16(CboPer.SelectedValue), Convert.ToInt16(CboCta.SelectedValue), STU_SISTEMA.ANOTRABAJO);
+                objRegistros.TraerParaConciliacion(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboPer.SelectedValue), Convert.ToInt32(CboCta.SelectedValue), STU_SISTEMA.ANOTRABAJO);
                 dtResult = objRegistros.dtLista;
                 dtResult = MostrarConciliacionPrevia(dtResult);
             }
@@ -780,7 +780,7 @@ namespace SSF_NET_Tesoreria.Formularios
         {
             if (b_Agregando == true) { return; }
             o_CtaBan.mysConec = mysConec;
-            o_CtaBan.TraerRegistro(Convert.ToInt16(CboCta.SelectedValue));
+            o_CtaBan.TraerRegistro(Convert.ToInt32(CboCta.SelectedValue));
             e_CtaBaco = o_CtaBan.entBancos;
 
             CboMon.SelectedValue = e_CtaBaco.n_idmon;
@@ -807,7 +807,7 @@ namespace SSF_NET_Tesoreria.Formularios
             DataTable dtresult  = new DataTable();
             objRegistros.STU_SISTEMA = STU_SISTEMA;
             objRegistros.mysConec = mysConec;
-            dtresult = objRegistros.PendientesOtrosMeses(STU_SISTEMA.EMPRESAID, Convert.ToInt16(CboCta.SelectedValue), Convert.ToInt16(CboPer.SelectedValue));
+            dtresult = objRegistros.PendientesOtrosMeses(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboCta.SelectedValue), Convert.ToInt32(CboPer.SelectedValue));
 
             if (dtresult != null)
             { 
@@ -827,7 +827,7 @@ namespace SSF_NET_Tesoreria.Formularios
                 MessageBox.Show("¡ No hay registros que mostrar!", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 return;
             }
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             b_Agregando = true;
             VerRegistro(intIdRegistro);
@@ -953,7 +953,7 @@ namespace SSF_NET_Tesoreria.Formularios
         void ImprimirConciliacion()
         {
             CN_tes_conciliacion objConci = new CN_tes_conciliacion();
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
             objConci.STU_SISTEMA = STU_SISTEMA;
             objConci.mysConec = mysConec;

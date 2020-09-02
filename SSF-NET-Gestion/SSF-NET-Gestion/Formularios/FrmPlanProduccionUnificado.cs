@@ -89,7 +89,7 @@ namespace SSF_NET_Gestion.Formularios
             if (o_plapro.b_OcurrioError == false)
             {
                 funFlex.b_AlternarColor = true;
-                MostrarCabeceraMes(Convert.ToInt16(dtres.Rows[0]["n_mesini"]), dtresint, dtres);
+                MostrarCabeceraMes(Convert.ToInt32(dtres.Rows[0]["n_mesini"]), dtresint, dtres);
             }
             else
             {

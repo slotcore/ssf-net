@@ -51,7 +51,7 @@ namespace SIAC_DATOS.Sunat
 
             if (DtResultado.Rows.Count != 0)
             {
-                Ent_UniMed.n_id = Convert.ToInt16(DtResultado.Rows[0]["n_id"].ToString());
+                Ent_UniMed.n_id = Convert.ToInt32(DtResultado.Rows[0]["n_id"].ToString());
                 Ent_UniMed.c_codsun = DtResultado.Rows[0]["c_codsun"].ToString();
                 Ent_UniMed.c_des = DtResultado.Rows[0]["c_des"].ToString();
                 Ent_UniMed.c_abr = DtResultado.Rows[0]["c_abr"].ToString();

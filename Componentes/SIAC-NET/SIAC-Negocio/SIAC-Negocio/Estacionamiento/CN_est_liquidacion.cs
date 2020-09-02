@@ -84,21 +84,21 @@ namespace SIAC_Negocio.Estacionamiento
 
                 if (dtListar.Rows.Count != 0)
                 {
-                    e_Liquidacion.n_idemp = Convert.ToInt16(dtListar.Rows[0]["n_idemp"]);
-                    e_Liquidacion.n_idtipdoc = Convert.ToInt16(dtListar.Rows[0]["n_idtipdoc"]);
+                    e_Liquidacion.n_idemp = Convert.ToInt32(dtListar.Rows[0]["n_idemp"]);
+                    e_Liquidacion.n_idtipdoc = Convert.ToInt32(dtListar.Rows[0]["n_idtipdoc"]);
                     e_Liquidacion.c_numser = dtListar.Rows[0]["c_numser"].ToString();
                     e_Liquidacion.c_numdoc = dtListar.Rows[0]["c_numdoc"].ToString();
-		            e_Liquidacion.n_id = Convert.ToInt16(dtListar.Rows[0]["n_idemp"]);
-                    e_Liquidacion.n_idpla = Convert.ToInt16(dtListar.Rows[0]["n_idpla"]);
-                    e_Liquidacion.n_idcaj = Convert.ToInt16(dtListar.Rows[0]["n_idcaj"]);
+		            e_Liquidacion.n_id = Convert.ToInt32(dtListar.Rows[0]["n_idemp"]);
+                    e_Liquidacion.n_idpla = Convert.ToInt32(dtListar.Rows[0]["n_idpla"]);
+                    e_Liquidacion.n_idcaj = Convert.ToInt32(dtListar.Rows[0]["n_idcaj"]);
                     e_Liquidacion.d_fchemi = Convert.ToDateTime(dtListar.Rows[0]["d_fchemi"]);
                     e_Liquidacion.d_fchini = Convert.ToDateTime(dtListar.Rows[0]["d_fchini"]);
                     e_Liquidacion.d_fchfin = Convert.ToDateTime(dtListar.Rows[0]["d_fchfin"]);
                     e_Liquidacion.n_importe = Convert.ToDouble(dtListar.Rows[0]["n_importe"]);
                     e_Liquidacion.c_obs = dtListar.Rows[0]["c_obs"].ToString();
-                    e_Liquidacion.n_numdoccob = Convert.ToInt16(dtListar.Rows[0]["n_numdoccob"]);
+                    e_Liquidacion.n_numdoccob = Convert.ToInt32(dtListar.Rows[0]["n_numdoccob"]);
                     e_Liquidacion.h_horliq = dtListar.Rows[0]["h_horliq"].ToString();
-                    e_Liquidacion.n_tipo = Convert.ToInt16(dtListar.Rows[0]["n_tipo"]);
+                    e_Liquidacion.n_tipo = Convert.ToInt32(dtListar.Rows[0]["n_tipo"]);
                 }
 
                 if (dtliquidadet.Rows.Count != 0)
@@ -107,7 +107,7 @@ namespace SIAC_Negocio.Estacionamiento
                     {
                         BE_EST_LIQUIDACIONDET e_LiquidaDet = new BE_EST_LIQUIDACIONDET();
 
-                        e_LiquidaDet.n_idliq = Convert.ToInt16(dtliquidadet.Rows[n_row]["n_idliq"]);
+                        e_LiquidaDet.n_idliq = Convert.ToInt32(dtliquidadet.Rows[n_row]["n_idliq"]);
                         e_LiquidaDet.n_idven = Convert.ToInt32(dtliquidadet.Rows[n_row]["n_idven"]);
                         e_LiquidaDet.n_impcob = Convert.ToDouble(dtliquidadet.Rows[n_row]["n_impcob"]);
                         

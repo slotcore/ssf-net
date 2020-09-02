@@ -250,7 +250,7 @@ namespace SSF_NET_Ventas.Formularios
                 TxtCliente.Text = funDatos.DataTableBuscar(dtCliente, "n_id", "c_nombre", BE_Registro.n_idcli.ToString(), "N").ToString();
 
                 DataTable dtResult = new DataTable();
-                dtResult = funDatos.DataTableFiltrar(dtPunVen, "n_idcli = " + Convert.ToInt16(LblIdCliente.Text) + "");
+                dtResult = funDatos.DataTableFiltrar(dtPunVen, "n_idcli = " + Convert.ToInt32(LblIdCliente.Text) + "");
                 if (dtResult.Rows.Count != 0)
                 {
                     //CboPunVen.Enabled = true;
@@ -403,8 +403,8 @@ namespace SSF_NET_Ventas.Formularios
         }
         void Modificar()
         {
-            int n_envpro = Convert.ToInt16(DgLista.Columns[3].CellValue(DgLista.Row).ToString());
-            int n_entregado = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int n_envpro = Convert.ToInt32(DgLista.Columns[3].CellValue(DgLista.Row).ToString());
+            int n_entregado = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             if (n_envpro == 1)
             {
                 MessageBox.Show("¡ No se puede modificar un pedido que ha sido enviado a produccion ! " + objRegistros.StrErrorMensaje, "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
@@ -422,7 +422,7 @@ namespace SSF_NET_Ventas.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -434,8 +434,8 @@ namespace SSF_NET_Ventas.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int n_envpro = Convert.ToInt16(DgLista.Columns[3].CellValue(DgLista.Row).ToString());
-            int n_entregado = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int n_envpro = Convert.ToInt32(DgLista.Columns[3].CellValue(DgLista.Row).ToString());
+            int n_entregado = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             if (n_envpro == 1)
             {
                 MessageBox.Show("¡ No se puede eliminar un pedido que ha sido enviado a produccion ! " + objRegistros.StrErrorMensaje, "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
@@ -447,7 +447,7 @@ namespace SSF_NET_Ventas.Formularios
                 return booResult;
             }
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -532,17 +532,17 @@ namespace SSF_NET_Ventas.Formularios
             BE_Registro.n_anotra = STU_SISTEMA.ANOTRABAJO;
             BE_Registro.n_mestra = STU_SISTEMA.MESTRABAJO;
             BE_Registro.n_idcli = Convert.ToInt32(LblIdCliente.Text);
-            BE_Registro.n_idpunven = Convert.ToInt16(CboPunVen.SelectedValue);
+            BE_Registro.n_idpunven = Convert.ToInt32(CboPunVen.SelectedValue);
             BE_Registro.n_idtipodoc = 77;
             BE_Registro.c_numser = TxtNumSer.Text;
             BE_Registro.c_numdoc = TxtNumDoc.Text;
             BE_Registro.d_fchreg = Convert.ToDateTime(TxtFchReg.Text);
             BE_Registro.d_fchped = Convert.ToDateTime(TxtFchPed.Text);
             BE_Registro.d_fchent = Convert.ToDateTime(TxtFchPed.Text);
-            BE_Registro.n_idconpag = Convert.ToInt16(CboConPag.SelectedValue);
-            BE_Registro.n_idven = Convert.ToInt16(CboVen.SelectedValue);
+            BE_Registro.n_idconpag = Convert.ToInt32(CboConPag.SelectedValue);
+            BE_Registro.n_idven = Convert.ToInt32(CboVen.SelectedValue);
             BE_Registro.c_obs = TxtObs.Text;
-            BE_Registro.n_pedidtipdoc = Convert.ToInt16(CboTipDocPed.SelectedValue);
+            BE_Registro.n_pedidtipdoc = Convert.ToInt32(CboTipDocPed.SelectedValue);
             BE_Registro.c_pednumser = ""; //TxtRefNumSer.Text;
             BE_Registro.c_pednumdoc = TxtRefNumDoc.Text;
             BE_Registro.n_impbru = Convert.ToDouble(TxtImpBru.Text);
@@ -552,7 +552,7 @@ namespace SSF_NET_Ventas.Formularios
             //BE_Registro.n_mulent = 0;
             BE_Registro.n_idestent = 1;                             // NO ENTREGADO
             BE_Registro.n_idest = 1;                             // PENDIENTE DE PRODUCIR
-            BE_Registro.n_idmon = Convert.ToInt16(CboMoneda.SelectedValue);
+            BE_Registro.n_idmon = Convert.ToInt32(CboMoneda.SelectedValue);
 
             int n_fila = 0;
             DataTable DtFiltro = new DataTable();
@@ -618,21 +618,21 @@ namespace SSF_NET_Ventas.Formularios
                 TxtNumDoc.Focus();
                 return booEstado;
             }
-            if (Convert.ToInt16(funFunciones.NulosN(LblIdCliente.Text)) == 0)
+            if (Convert.ToInt32(funFunciones.NulosN(LblIdCliente.Text)) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el cliente !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
                 CmdBusCli.Focus();
                 return booEstado;
             }
-            //if (Convert.ToInt16(CboPunVen.SelectedValue) == 0)
+            //if (Convert.ToInt32(CboPunVen.SelectedValue) == 0)
             //{
             //    MessageBox.Show("¡ No ha especificado el punto nombre del venta del cliente !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             //    booEstado = false;
             //    CboPunVen.Focus();
             //    return booEstado;
             //}
-            if (Convert.ToInt16(CboTipDocPed.SelectedValue) == 0)
+            if (Convert.ToInt32(CboTipDocPed.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el tipo de documento del cliente !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -667,14 +667,14 @@ namespace SSF_NET_Ventas.Formularios
             //    TxtFchReg.Focus();
             //    return booEstado;
             //}
-            if (Convert.ToInt16(CboConPag.SelectedValue) == 0)
+            if (Convert.ToInt32(CboConPag.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado la condicion de pago del cliente !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
                 CboConPag.Focus();
                 return booEstado;
             }
-            if (Convert.ToInt16(CboVen.SelectedValue) == 0)
+            if (Convert.ToInt32(CboVen.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el nombre del vendedor !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -861,7 +861,7 @@ namespace SSF_NET_Ventas.Formularios
 
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -885,7 +885,7 @@ namespace SSF_NET_Ventas.Formularios
         }
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             booAgregando = true;
             VerRegistro(intIdRegistro);
@@ -989,7 +989,7 @@ namespace SSF_NET_Ventas.Formularios
                 //dtResul = funDatos.DataTableFiltrar(dtTipoExis, "c_des = '" + strDesTipPro + "'");
                 //if (dtResul.Rows.Count != 0)
                 //{
-                //    n_idtipproducto = Convert.ToInt16(dtResul.Rows[0]["n_id"].ToString());
+                //    n_idtipproducto = Convert.ToInt32(dtResul.Rows[0]["n_id"].ToString());
 
                 //    // FILTRAMOS LOS ITEMS DEL TIPO DE PRODUCTO SELECCIONADO
                 //    dtResul = funDatos.DataTableFiltrar(dtItems, "n_idtipexi = " + n_idtipproducto + "", "c_despro");
@@ -1021,7 +1021,7 @@ namespace SSF_NET_Ventas.Formularios
                 dtResul = funDatos.DataTableFiltrar(dtItems, "c_despro = '" + strDesTipPro + "'");
                 if (dtResul.Rows.Count != 0)
                 {
-                    n_idtipproducto = Convert.ToInt16(dtResul.Rows[0]["n_id"].ToString());
+                    n_idtipproducto = Convert.ToInt32(dtResul.Rows[0]["n_id"].ToString());
 
                     // FILTRAMOS LAS PRESENTACIONES DEL ITEM SELECCIONADO
                     dtResul = funDatos.DataTableFiltrar(dtPresentaItem, "n_idite = " + n_idtipproducto + "");
@@ -1119,7 +1119,7 @@ namespace SSF_NET_Ventas.Formularios
                 dtResul = funDatos.DataTableFiltrar(dtItems, "c_despro = '" + c_despro + "'");
                 if (dtResul.Rows.Count != 0)
                 {
-                    n_idpro = Convert.ToInt16(dtResul.Rows[0]["n_id"].ToString());
+                    n_idpro = Convert.ToInt32(dtResul.Rows[0]["n_id"].ToString());
 
                     // FILTRAMOS LAS PRESENTACIONES DEL ITEM SELECCIONADO
                     dtResul = funDatos.DataTableFiltrar(dtPresentaItem, "n_idite = " + n_idpro + " AND n_default = 1");
@@ -1372,7 +1372,7 @@ namespace SSF_NET_Ventas.Formularios
                     TxtCliente.Text = dtResult.Rows[0]["c_nombre"].ToString();
                     CboVen.SelectedValue = Convert.ToInt32(funFunciones.NulosN(dtResult.Rows[0]["n_idven"]));
                     CboConPag.SelectedValue = Convert.ToInt32(funFunciones.NulosN(dtResult.Rows[0]["n_idcondpag"]));
-                    dtResult = funDatos.DataTableFiltrar(dtPunVen, "n_idcli = " + Convert.ToInt16(LblIdCliente.Text) + "");
+                    dtResult = funDatos.DataTableFiltrar(dtPunVen, "n_idcli = " + Convert.ToInt32(LblIdCliente.Text) + "");
                     if (dtResult.Rows.Count != 0)
                     {
                         CboPunVen.Enabled = true;
@@ -1430,7 +1430,7 @@ namespace SSF_NET_Ventas.Formularios
 
             if (DialogResult.Yes == Rpta)
             {
-                int n_IdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+                int n_IdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
                 objRegistros.mysConec = mysConec;
                 objRegistros.ActualizarEnvioProduccion(n_IdRegistro, 1);
                 dtLista = objRegistros.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO);
@@ -1443,7 +1443,7 @@ namespace SSF_NET_Ventas.Formularios
 
             if (DialogResult.Yes == Rpta)
             {
-                int n_IdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+                int n_IdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
                 objRegistros.mysConec = mysConec;
                 objRegistros.ActualizarEnvioProduccion(n_IdRegistro, 0);
                 dtLista = objRegistros.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO);
@@ -1455,7 +1455,7 @@ namespace SSF_NET_Ventas.Formularios
         {
             DataTable dtResul = new DataTable();
             CN_vta_pedidocli objpedcli = new CN_vta_pedidocli();
-            int n_idreg = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int n_idreg = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
             objpedcli.mysConec = mysConec;
             objpedcli.SeleccionarEntregas(n_idreg, false);
@@ -1465,7 +1465,7 @@ namespace SSF_NET_Ventas.Formularios
         {
             CN_vta_pedidocli objAlm = new CN_vta_pedidocli();
             
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             objAlm.STU_SISTEMA = STU_SISTEMA;
             objAlm.mysConec = mysConec;
             objAlm.ImprimirDocumento(intIdRegistro, 1);
@@ -1475,7 +1475,7 @@ namespace SSF_NET_Ventas.Formularios
         {
             CN_vta_pedidocli objAlm = new CN_vta_pedidocli();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             objAlm.STU_SISTEMA = STU_SISTEMA;
             objAlm.mysConec = mysConec;
             objAlm.ImprimirDocumento(intIdRegistro, 2);
@@ -1489,7 +1489,7 @@ namespace SSF_NET_Ventas.Formularios
 
         private void ToolExportar_Click(object sender, EventArgs e)
         {
-            string c_NomArchivo = STU_SISTEMA.EMPRESARUC + "-VTA-PEDIDOS-" + STU_SISTEMA.ANOTRABAJO.ToString() + Convert.ToInt16(CboMeses.SelectedValue).ToString("00") + ".xls";
+            string c_NomArchivo = STU_SISTEMA.EMPRESARUC + "-VTA-PEDIDOS-" + STU_SISTEMA.ANOTRABAJO.ToString() + Convert.ToInt32(CboMeses.SelectedValue).ToString("00") + ".xls";
             DgLista.ExportTo(c_NomArchivo);
             MessageBox.Show("! Se exporto con exito la informacion en el archivo " + c_NomArchivo + " !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
         }
@@ -1546,7 +1546,7 @@ namespace SSF_NET_Ventas.Formularios
         {
             CN_vta_pedidocli objAlm = new CN_vta_pedidocli();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             objAlm.STU_SISTEMA = STU_SISTEMA;
             objAlm.mysConec = mysConec;
             objAlm.ImprimirDocumento(intIdRegistro, 3);

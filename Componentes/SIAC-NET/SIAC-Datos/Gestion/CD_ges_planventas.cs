@@ -146,7 +146,7 @@ namespace SIAC_DATOS.Gestion
                     for (n_fila = 0; n_fila <= lstDetalle.Count-1; n_fila++)
                     {
                         // AGREGAMOS LOS ITEMS
-                        lstDetalle[n_fila].n_idplan = Convert.ToInt16(xMiFuncion.intIdGenerado);
+                        lstDetalle[n_fila].n_idplan = Convert.ToInt32(xMiFuncion.intIdGenerado);
                         if (xMiFuncion.StoreEjecutar("ges_planventasdet_insertar", lstDetalle[n_fila], mysConec, null) == true)
                         {
                             booOk = true;
@@ -162,7 +162,7 @@ namespace SIAC_DATOS.Gestion
                     // AGREGAMOS LOS AÑOS DEL HISTORICO
                     for (n_fila = 0; n_fila <= lstDetalleAnos.Count - 1; n_fila++)
                     {
-                        lstDetalleAnos[n_fila].n_idplan = Convert.ToInt16(xMiFuncion.intIdGenerado); 
+                        lstDetalleAnos[n_fila].n_idplan = Convert.ToInt32(xMiFuncion.intIdGenerado); 
                         if (xMiFuncion.StoreEjecutar("ges_planventasanos_insertar", lstDetalleAnos[n_fila], mysConec, null) == true)
                         {
                             booOk = true;

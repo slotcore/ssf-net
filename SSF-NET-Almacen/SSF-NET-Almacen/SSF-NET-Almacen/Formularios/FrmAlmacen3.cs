@@ -237,7 +237,7 @@ namespace SSF_NET_Almacen.Formularios
             {
                 if (n_QueHace != 1)
                 {
-                    int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                    int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
                     booAgregando = true;
                     VerRegistro(intIdRegistro);
@@ -252,7 +252,7 @@ namespace SSF_NET_Almacen.Formularios
             //{
             //    if (n_QueHace != 1)
             //    {
-            //        int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            //        int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
             //        booAgregando = true;
             //        VerRegistro(intIdRegistro);
@@ -429,35 +429,35 @@ namespace SSF_NET_Almacen.Formularios
                 }
             }
 
-            if (Convert.ToInt16(CboTipExis.SelectedValue) == 0)
+            if (Convert.ToInt32(CboTipExis.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el tipo de item !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
                 return booEstado;
             }
 
-            if (Convert.ToInt16(CboFamilia.SelectedValue) == 0)
+            if (Convert.ToInt32(CboFamilia.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado la familia para el item !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
                 return booEstado;
             }
 
-            if (Convert.ToInt16(CboClase.SelectedValue) == 0)
+            if (Convert.ToInt32(CboClase.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado la clase para el item !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
                 return booEstado;
             }
 
-            if (Convert.ToInt16(CboSubClase.SelectedValue) == 0)
+            if (Convert.ToInt32(CboSubClase.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado la subclase para el item !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
                 return booEstado;
             }
 
-            if (Convert.ToInt16(CboMoneda.SelectedValue) == 0)
+            if (Convert.ToInt32(CboMoneda.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado la moneda para el item !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -516,7 +516,7 @@ namespace SSF_NET_Almacen.Formularios
                 // VERIFICAMOS SI SE HA ASIGNADO ALGUNA DE LAS PRESENTACIONES COMO PRINCIPAL
                 for (intFila = 2; intFila <= FgUniMed.Rows.Count - 1; intFila++)
                 {
-                    if (Convert.ToInt16(FgUniMed.GetData(intFila, 5)) == 1)
+                    if (Convert.ToInt32(FgUniMed.GetData(intFila, 5)) == 1)
                     {
                         booEligioPrincipal = true;
                     }
@@ -553,12 +553,12 @@ namespace SSF_NET_Almacen.Formularios
             BE_Inventario.n_preini = Convert.ToDouble(funFunciones.NulosN(TxtPreIni.Text));
             BE_Inventario.n_preuni = Convert.ToDouble(funFunciones.NulosN(TxtPreAct.Text));
 
-            BE_Inventario.n_idtipexi = Convert.ToInt16(CboTipExis.SelectedValue);
-            BE_Inventario.n_idfam = Convert.ToInt16(CboFamilia.SelectedValue);
-            BE_Inventario.n_idclas = Convert.ToInt16(CboClase.SelectedValue);
-            BE_Inventario.n_idsubclas = Convert.ToInt16(CboSubClase.SelectedValue);
-            BE_Inventario.n_idmon = Convert.ToInt16(CboMoneda.SelectedValue);
-            BE_Inventario.n_numdiavid = Convert.ToInt16(funFunciones.NulosN(TxtTiemVid.Text));
+            BE_Inventario.n_idtipexi = Convert.ToInt32(CboTipExis.SelectedValue);
+            BE_Inventario.n_idfam = Convert.ToInt32(CboFamilia.SelectedValue);
+            BE_Inventario.n_idclas = Convert.ToInt32(CboClase.SelectedValue);
+            BE_Inventario.n_idsubclas = Convert.ToInt32(CboSubClase.SelectedValue);
+            BE_Inventario.n_idmon = Convert.ToInt32(CboMoneda.SelectedValue);
+            BE_Inventario.n_numdiavid = Convert.ToInt32(funFunciones.NulosN(TxtTiemVid.Text));
             BE_Inventario.c_prelot = funFunciones.NulosC(TxtLotPref.Text);
 
             int n_fila = 0;
@@ -566,7 +566,7 @@ namespace SSF_NET_Almacen.Formularios
 
             if (BE_Inventario.lst_unidadmedida != null)
             {
-                n_NumeroElementos = Convert.ToInt16(BE_Inventario.lst_unidadmedida.Count - 1);
+                n_NumeroElementos = Convert.ToInt32(BE_Inventario.lst_unidadmedida.Count - 1);
 
                 for (n_fila = 0; n_fila <= n_NumeroElementos; n_fila++)
                 {
@@ -586,7 +586,7 @@ namespace SSF_NET_Almacen.Formularios
                     BE_ALM_INVENTARIOUNIMED_CONSULTA BE_UnidadMedida = new BE_ALM_INVENTARIOUNIMED_CONSULTA();
 
                     BE_UnidadMedida.n_idite = 0;
-                    BE_UnidadMedida.n_id = Convert.ToInt16(funFunciones.NulosN(FgUniMed.GetData(n_fila, 6)));
+                    BE_UnidadMedida.n_id = Convert.ToInt32(funFunciones.NulosN(FgUniMed.GetData(n_fila, 6)));
                     BE_UnidadMedida.c_despre = FgUniMed.GetData(n_fila, 2).ToString();
                     BE_UnidadMedida.c_abrpre = FgUniMed.GetData(n_fila, 1).ToString();
 
@@ -621,7 +621,7 @@ namespace SSF_NET_Almacen.Formularios
                 {
                     BE_ALM_INVENTARIOIMAGEN entInventarioImagen = new BE_ALM_INVENTARIOIMAGEN();
                     entInventarioImagen.n_idite = 0;
-                    entInventarioImagen.n_id = Convert.ToInt16(funFunciones.NulosN(FgImagen.GetData(n_fila, 3)));
+                    entInventarioImagen.n_id = Convert.ToInt32(funFunciones.NulosN(FgImagen.GetData(n_fila, 3)));
                     entInventarioImagen.c_des = FgImagen.GetData(n_fila, 1).ToString();
                     entInventarioImagen.c_nomfil = FgImagen.GetData(n_fila, 2).ToString();
 
@@ -761,7 +761,7 @@ namespace SSF_NET_Almacen.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -804,7 +804,7 @@ namespace SSF_NET_Almacen.Formularios
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
             if (DgLista.RowCount == 0) { return; }
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             booAgregando = true;
             VerRegistro(intIdRegistro);
@@ -948,7 +948,7 @@ namespace SSF_NET_Almacen.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -1117,13 +1117,13 @@ namespace SSF_NET_Almacen.Formularios
                 dtFiltrar = funDatos.DataTableFiltrar(dtSubClase, c_CadenaFiltro);
                 c_prefsubcla = dtFiltrar.Rows[0]["c_pre"].ToString();
 
-                dtFiltrar = objItems.ObtenerCodigo(STU_SISTEMA.EMPRESAID, Convert.ToInt16(CboTipExis.SelectedValue), Convert.ToInt16(CboFamilia.SelectedValue), Convert.ToInt16(CboClase.SelectedValue), Convert.ToInt16(CboSubClase.SelectedValue));
+                dtFiltrar = objItems.ObtenerCodigo(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboTipExis.SelectedValue), Convert.ToInt32(CboFamilia.SelectedValue), Convert.ToInt32(CboClase.SelectedValue), Convert.ToInt32(CboSubClase.SelectedValue));
 
                 if (dtFiltrar.Rows.Count != 0)
                 {
-                    if (Convert.ToInt16(dtFiltrar.Rows[0]["c_numite"]) != 0)
+                    if (Convert.ToInt32(dtFiltrar.Rows[0]["c_numite"]) != 0)
                     {
-                        c_numero = "000" + (Convert.ToInt16(dtFiltrar.Rows[0]["c_numite"]) + 1).ToString();
+                        c_numero = "000" + (Convert.ToInt32(dtFiltrar.Rows[0]["c_numite"]) + 1).ToString();
                         c_numero = c_numero.Substring(c_numero.Length - 3, 3);
                     }
                     else
@@ -1139,9 +1139,9 @@ namespace SSF_NET_Almacen.Formularios
 
                 //if (dtFiltrar.Rows[0]["c_numite"].ToString() != "")
                 //{
-                //    if (Convert.ToInt16(dtFiltrar.Rows[0]["c_numite"]) != 0)
+                //    if (Convert.ToInt32(dtFiltrar.Rows[0]["c_numite"]) != 0)
                 //    {
-                //        c_numero = "000" + (Convert.ToInt16(dtFiltrar.Rows[0]["c_numite"]) + 1).ToString();
+                //        c_numero = "000" + (Convert.ToInt32(dtFiltrar.Rows[0]["c_numite"]) + 1).ToString();
                 //        c_numero = c_numero.Substring(c_numero.Length - 3, 3);
                 //    }
                 //    else
@@ -1424,7 +1424,7 @@ namespace SSF_NET_Almacen.Formularios
         }
         void ActivarRegistro(int n_Estado)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
             objItems.mysConec = mysConec;
             if (objItems.Activar(intIdRegistro, n_Estado) == false)
             {

@@ -58,7 +58,7 @@ namespace Helper.Comunes
             string c_hora;
             string c_minuto;
             double n_Minuto = 0;
-            //c_hora = Convert.ToInt16(n_DecimalConvertir).ToString();
+            //c_hora = Convert.ToInt32(n_DecimalConvertir).ToString();
             c_hora = Math.Truncate(n_DecimalConvertir).ToString("00");
             n_Minuto = (n_DecimalConvertir - Convert.ToDouble(c_hora));
             c_minuto = (n_Minuto * 60).ToString("00");

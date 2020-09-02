@@ -57,7 +57,7 @@ namespace SIAC_Negocio.Tesoreria
 
             if (dtResult.Rows.Count != 0)
             {
-                entMedioPago.n_id = Convert.ToInt16(dtResult.Rows[0]["n_id"]);
+                entMedioPago.n_id = Convert.ToInt32(dtResult.Rows[0]["n_id"]);
                 entMedioPago.c_des = dtResult.Rows[0]["c_des"].ToString();
                 entMedioPago.c_codsun = dtResult.Rows[0]["c_codsun"].ToString();
             }

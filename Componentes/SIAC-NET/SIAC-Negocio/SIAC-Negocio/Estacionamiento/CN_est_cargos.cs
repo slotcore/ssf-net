@@ -70,16 +70,16 @@ namespace SIAC_Negocio.Estacionamiento
 
                 if (dtListar.Rows.Count != 0)
                 {
-                    e_Cargos.n_idemp = Convert.ToInt16(dtListar.Rows[0]["n_idemp"]);
-                    e_Cargos.n_id = Convert.ToInt16(dtListar.Rows[0]["n_id"]);
-                    e_Cargos.n_idano = Convert.ToInt16(dtListar.Rows[0]["n_idano"]);
-                    e_Cargos.n_idmes = Convert.ToInt16(dtListar.Rows[0]["n_idmes"]);
-                    e_Cargos.n_idpla = Convert.ToInt16(dtListar.Rows[0]["n_idpla"]);
+                    e_Cargos.n_idemp = Convert.ToInt32(dtListar.Rows[0]["n_idemp"]);
+                    e_Cargos.n_id = Convert.ToInt32(dtListar.Rows[0]["n_id"]);
+                    e_Cargos.n_idano = Convert.ToInt32(dtListar.Rows[0]["n_idano"]);
+                    e_Cargos.n_idmes = Convert.ToInt32(dtListar.Rows[0]["n_idmes"]);
+                    e_Cargos.n_idpla = Convert.ToInt32(dtListar.Rows[0]["n_idpla"]);
                     e_Cargos.d_fchemi = Convert.ToDateTime(dtListar.Rows[0]["d_fchemi"]);
                     e_Cargos.n_impbru = Convert.ToDouble(dtListar.Rows[0]["n_impbru"]);
                     e_Cargos.n_impigv = Convert.ToDouble(dtListar.Rows[0]["n_impigv"]);
                     e_Cargos.n_imptot = Convert.ToDouble(dtListar.Rows[0]["n_imptot"]);
-                    e_Cargos.n_numrec = Convert.ToInt16(dtListar.Rows[0]["n_numrec"]);
+                    e_Cargos.n_numrec = Convert.ToInt32(dtListar.Rows[0]["n_numrec"]);
                     e_Cargos.d_fchini = Convert.ToDateTime(dtListar.Rows[0]["d_fchini"]);
                     e_Cargos.c_obs = fungen.NulosC(dtListar.Rows[0]["c_obs"]);
                 }
@@ -90,20 +90,20 @@ namespace SIAC_Negocio.Estacionamiento
                     { 
                         BE_EST_CARGOSCAB e_CargosCab = new BE_EST_CARGOSCAB();
 
-                        e_CargosCab.n_idemp = Convert.ToInt16(dtCargoCab.Rows[n_row]["n_idemp"]);
-                        e_CargosCab.n_idcar = Convert.ToInt16(dtCargoCab.Rows[n_row]["n_idcar"]);
-                        e_CargosCab.n_id = Convert.ToInt16(dtCargoCab.Rows[n_row]["n_id"]);
-                        e_CargosCab.n_idpla = Convert.ToInt16(dtCargoCab.Rows[n_row]["n_idpla"]);
-                        e_CargosCab.n_idtipdoc = Convert.ToInt16(dtCargoCab.Rows[n_row]["n_idtipdoc"]);
+                        e_CargosCab.n_idemp = Convert.ToInt32(dtCargoCab.Rows[n_row]["n_idemp"]);
+                        e_CargosCab.n_idcar = Convert.ToInt32(dtCargoCab.Rows[n_row]["n_idcar"]);
+                        e_CargosCab.n_id = Convert.ToInt32(dtCargoCab.Rows[n_row]["n_id"]);
+                        e_CargosCab.n_idpla = Convert.ToInt32(dtCargoCab.Rows[n_row]["n_idpla"]);
+                        e_CargosCab.n_idtipdoc = Convert.ToInt32(dtCargoCab.Rows[n_row]["n_idtipdoc"]);
                         e_CargosCab.c_numser = dtCargoCab.Rows[n_row]["c_numser"].ToString();
                         e_CargosCab.c_numdoc = dtCargoCab.Rows[n_row]["c_numdoc"].ToString();
                         e_CargosCab.d_fchemi = Convert.ToDateTime(dtCargoCab.Rows[n_row]["d_fchemi"]);
-                        e_CargosCab.n_idcli = Convert.ToInt16(dtCargoCab.Rows[n_row]["n_idcli"]);
+                        e_CargosCab.n_idcli = Convert.ToInt32(dtCargoCab.Rows[n_row]["n_idcli"]);
                         e_CargosCab.n_impbru = Convert.ToDouble(dtCargoCab.Rows[n_row]["n_impbru"]);
                         e_CargosCab.n_impigv = Convert.ToDouble(dtCargoCab.Rows[n_row]["n_impigv"]);
                         e_CargosCab.n_imptot = Convert.ToDouble(dtCargoCab.Rows[n_row]["n_imptot"]);
                         e_CargosCab.n_impsal = Convert.ToDouble(dtCargoCab.Rows[n_row]["n_impsal"]);
-                        e_CargosCab.n_idtipdocfac = Convert.ToInt16(dtCargoCab.Rows[n_row]["n_idtipdocfac"]);
+                        e_CargosCab.n_idtipdocfac = Convert.ToInt32(dtCargoCab.Rows[n_row]["n_idtipdocfac"]);
                         l_CargosCab.Add(e_CargosCab);
                     }
                 }
@@ -114,10 +114,10 @@ namespace SIAC_Negocio.Estacionamiento
                     {
                         BE_EST_CARGOSDET e_CargosDet = new BE_EST_CARGOSDET();
 
-                        e_CargosDet.n_idcar = Convert.ToInt16(dtCargoDet.Rows[n_row]["n_idcar"]);
-                        e_CargosDet.n_idcab = Convert.ToInt16(dtCargoDet.Rows[n_row]["n_idcab"]);
-                        e_CargosDet.n_idser = Convert.ToInt16(dtCargoDet.Rows[n_row]["n_idser"]);
-                        e_CargosDet.n_idunimed = Convert.ToInt16(dtCargoDet.Rows[n_row]["n_idunimed"]);
+                        e_CargosDet.n_idcar = Convert.ToInt32(dtCargoDet.Rows[n_row]["n_idcar"]);
+                        e_CargosDet.n_idcab = Convert.ToInt32(dtCargoDet.Rows[n_row]["n_idcab"]);
+                        e_CargosDet.n_idser = Convert.ToInt32(dtCargoDet.Rows[n_row]["n_idser"]);
+                        e_CargosDet.n_idunimed = Convert.ToInt32(dtCargoDet.Rows[n_row]["n_idunimed"]);
                         e_CargosDet.n_impbru = Convert.ToDouble(dtCargoDet.Rows[n_row]["n_impbru"]);
                         e_CargosDet.n_impigv = Convert.ToDouble(dtCargoDet.Rows[n_row]["n_impigv"]);
                         e_CargosDet.n_imptot = Convert.ToDouble(dtCargoDet.Rows[n_row]["n_imptot"]);

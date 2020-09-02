@@ -130,47 +130,47 @@ namespace SIAC_Negocio.Ventas
                 dtCab = miFun.dtCabecera;
                 dtDet = miFun.dtDetalle;
                
-                entPedCab.n_idemp = Convert.ToInt16(dtCab.Rows[0]["n_idemp"]);
-                entPedCab.n_id = Convert.ToInt16(dtCab.Rows[0]["n_id"]);
-                entPedCab.n_anotra = Convert.ToInt16(dtCab.Rows[0]["n_anotra"]);
-                entPedCab.n_mestra = Convert.ToInt16(dtCab.Rows[0]["n_mestra"]);
-                entPedCab.n_idcli = Convert.ToInt16(dtCab.Rows[0]["n_idcli"]);
-                entPedCab.n_idpunven = Convert.ToInt16(dtCab.Rows[0]["n_idpunven"]);
-                entPedCab.n_idtipodoc = Convert.ToInt16(dtCab.Rows[0]["n_idtipodoc"]);
+                entPedCab.n_idemp = Convert.ToInt32(dtCab.Rows[0]["n_idemp"]);
+                entPedCab.n_id = Convert.ToInt32(dtCab.Rows[0]["n_id"]);
+                entPedCab.n_anotra = Convert.ToInt32(dtCab.Rows[0]["n_anotra"]);
+                entPedCab.n_mestra = Convert.ToInt32(dtCab.Rows[0]["n_mestra"]);
+                entPedCab.n_idcli = Convert.ToInt32(dtCab.Rows[0]["n_idcli"]);
+                entPedCab.n_idpunven = Convert.ToInt32(dtCab.Rows[0]["n_idpunven"]);
+                entPedCab.n_idtipodoc = Convert.ToInt32(dtCab.Rows[0]["n_idtipodoc"]);
                 entPedCab.c_numser = Convert.ToString(dtCab.Rows[0]["c_numser"]);
                 entPedCab.c_numdoc = Convert.ToString(dtCab.Rows[0]["c_numdoc"]);
                 entPedCab.d_fchreg = Convert.ToDateTime(dtCab.Rows[0]["d_fchreg"]);
                 entPedCab.d_fchped = Convert.ToDateTime(dtCab.Rows[0]["d_fchped"]);
                 entPedCab.d_fchent = Convert.ToDateTime(dtCab.Rows[0]["d_fchent"]);
-                entPedCab.n_idconpag = Convert.ToInt16(dtCab.Rows[0]["n_idconpag"]);
-                entPedCab.n_idven = Convert.ToInt16(dtCab.Rows[0]["n_idven"]);
+                entPedCab.n_idconpag = Convert.ToInt32(dtCab.Rows[0]["n_idconpag"]);
+                entPedCab.n_idven = Convert.ToInt32(dtCab.Rows[0]["n_idven"]);
                 entPedCab.c_obs = Convert.ToString(dtCab.Rows[0]["c_obs"]);
-                entPedCab.n_pedidtipdoc = Convert.ToInt16(dtCab.Rows[0]["n_pedidtipdoc"]);
+                entPedCab.n_pedidtipdoc = Convert.ToInt32(dtCab.Rows[0]["n_pedidtipdoc"]);
                 entPedCab.c_pednumser = Convert.ToString(dtCab.Rows[0]["c_pednumser"]);
                 entPedCab.c_pednumdoc = Convert.ToString(dtCab.Rows[0]["c_pednumdoc"]);
                 entPedCab.n_impbru = Convert.ToDouble(dtCab.Rows[0]["n_impbru"]);
                 entPedCab.n_impigv = Convert.ToDouble(dtCab.Rows[0]["n_impigv"]);
                 entPedCab.n_imptot = Convert.ToDouble(dtCab.Rows[0]["n_imptot"]);
                 entPedCab.n_numite = Convert.ToDouble(dtCab.Rows[0]["n_numite"]);
-                entPedCab.n_mulent = Convert.ToInt16(dtCab.Rows[0]["n_mulent"]);
-                entPedCab.n_idestent = Convert.ToInt16(dtCab.Rows[0]["n_idestent"]);
-                entPedCab.n_idest = Convert.ToInt16(dtCab.Rows[0]["n_idest"]);
-                entPedCab.n_idmon = Convert.ToInt16(xFun.NulosN(dtCab.Rows[0]["n_idmon"]));
+                entPedCab.n_mulent = Convert.ToInt32(dtCab.Rows[0]["n_mulent"]);
+                entPedCab.n_idestent = Convert.ToInt32(dtCab.Rows[0]["n_idestent"]);
+                entPedCab.n_idest = Convert.ToInt32(dtCab.Rows[0]["n_idest"]);
+                entPedCab.n_idmon = Convert.ToInt32(xFun.NulosN(dtCab.Rows[0]["n_idmon"]));
                 int n_row = 0;
 
                 for (n_row = 0; n_row <= dtDet.Rows.Count - 1; n_row++)
                 {
                     BE_VTA_PEDIDOCLIDET detped = new BE_VTA_PEDIDOCLIDET();
 
-                    detped.n_idped = Convert.ToInt16(dtDet.Rows[n_row]["n_idped"]);
-                    detped.n_idite = Convert.ToInt16(dtDet.Rows[n_row]["n_idite"]);
-                    detped.n_idunimed = Convert.ToInt16(dtDet.Rows[n_row]["n_idunimed"]);
+                    detped.n_idped = Convert.ToInt32(dtDet.Rows[n_row]["n_idped"]);
+                    detped.n_idite = Convert.ToInt32(dtDet.Rows[n_row]["n_idite"]);
+                    detped.n_idunimed = Convert.ToInt32(dtDet.Rows[n_row]["n_idunimed"]);
                     detped.n_can = Convert.ToDouble(dtDet.Rows[n_row]["n_can"]);
                     detped.n_impbru = Convert.ToDouble(dtDet.Rows[n_row]["n_impbru"]);
                     detped.n_impigv = Convert.ToDouble(dtDet.Rows[n_row]["n_impigv"]);
                     detped.n_imptot = Convert.ToDouble(dtDet.Rows[n_row]["n_imptot"]);
                     detped.d_fchent = Convert.ToDateTime(dtDet.Rows[n_row]["d_fchent"]);
-                    detped.n_entregado = Convert.ToInt16(dtDet.Rows[n_row]["n_entregado"]);
+                    detped.n_entregado = Convert.ToInt32(dtDet.Rows[n_row]["n_entregado"]);
 
                     lstPedDet.Add(detped);
                 }

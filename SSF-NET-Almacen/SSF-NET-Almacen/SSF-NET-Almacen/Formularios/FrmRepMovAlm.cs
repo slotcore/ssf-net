@@ -279,10 +279,10 @@ namespace SSF_NET_Almacen.Formularios
         }
         private void CboTipExi_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (Convert.ToInt16(CboTipExi.SelectedIndex) == 0) { return; }
+            if (Convert.ToInt32(CboTipExi.SelectedIndex) == 0) { return; }
             DataTable dtResult = new DataTable();
 
-            dtResult = funDatos.DataTableFiltrar(dtItem, "(n_idtipexi = " + Convert.ToInt16(CboTipExi.SelectedValue) + ")");
+            dtResult = funDatos.DataTableFiltrar(dtItem, "(n_idtipexi = " + Convert.ToInt32(CboTipExi.SelectedValue) + ")");
             funDatos.ComboBoxCargarDataTable(CboItem, dtResult, "n_id", "c_despro");
             CboItem.Enabled = true;
         }

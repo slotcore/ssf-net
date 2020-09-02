@@ -55,11 +55,11 @@ namespace SIAC_Negocio.Estacionamiento
 
             if (dtListar.Rows.Count != 0)
             {
-                e_Cajero.n_idemp = Convert.ToInt16(dtListar.Rows[0]["n_idemp"]);
-                e_Cajero.n_idloc = Convert.ToInt16(dtListar.Rows[0]["n_idloc"]);
-                e_Cajero.n_id = Convert.ToInt16(dtListar.Rows[0]["n_id"]);
-                e_Cajero.n_idtra = Convert.ToInt16(dtListar.Rows[0]["n_idtra"]);
-                e_Cajero.n_idusu = Convert.ToInt16(dtListar.Rows[0]["n_idusu"]);
+                e_Cajero.n_idemp = Convert.ToInt32(dtListar.Rows[0]["n_idemp"]);
+                e_Cajero.n_idloc = Convert.ToInt32(dtListar.Rows[0]["n_idloc"]);
+                e_Cajero.n_id = Convert.ToInt32(dtListar.Rows[0]["n_id"]);
+                e_Cajero.n_idtra = Convert.ToInt32(dtListar.Rows[0]["n_idtra"]);
+                e_Cajero.n_idusu = Convert.ToInt32(dtListar.Rows[0]["n_idusu"]);
             }
             if (b_OcurrioError == true)
             {

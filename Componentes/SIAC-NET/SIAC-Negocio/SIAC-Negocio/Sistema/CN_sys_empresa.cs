@@ -93,7 +93,7 @@ namespace SIAC_Negocio.Sistema
             e_Empresa.n_aplife = Convert.ToInt32(dtResult.Rows[0]["n_aplife"]);
             e_Empresa.c_folderimp = dtResult.Rows[0]["c_folderimp"].ToString();
             e_Empresa.n_idclipro = Convert.ToInt32(funFun.NulosN(dtResult.Rows[0]["n_idclipro"]));
-            e_Empresa.n_idtipproven = Convert.ToInt16(funFun.NulosN(dtResult.Rows[0]["n_idtipproven"]));
+            e_Empresa.n_idtipproven = Convert.ToInt32(funFun.NulosN(dtResult.Rows[0]["n_idtipproven"]));
             e_Empresa.c_verfe = dtResult.Rows[0]["c_verfe"].ToString();
             e_Empresa.c_logo = null;
             if (dtResult.Rows[0]["c_logo"] != DBNull.Value)

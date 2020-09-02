@@ -383,9 +383,9 @@ namespace Helper
 
                 xDg.Splits[0].DisplayColumns[colColum].HeadingStyle.HorizontalAlignment = C1.Win.C1TrueDBGrid.AlignHorzEnum.Center;         // centramos el titulo de la columna
                 
-                if (Convert.ToInt16(arrColumnas[A, 1]) > 0) 
+                if (Convert.ToInt32(arrColumnas[A, 1]) > 0) 
                 {
-                    xDg.Splits[0].DisplayColumns[colColum].Width = Convert.ToInt16(arrColumnas[A, 1]) ;                                     // establecemos el ancho de la columna
+                    xDg.Splits[0].DisplayColumns[colColum].Width = Convert.ToInt32(arrColumnas[A, 1]) ;                                     // establecemos el ancho de la columna
                 }
                 else
                 {

@@ -177,7 +177,7 @@ namespace SSF_NET.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -187,7 +187,7 @@ namespace SSF_NET.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int n_IdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int n_IdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -252,7 +252,7 @@ namespace SSF_NET.Formularios
             }
             else
             {
-                e_usuarios.n_id = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                e_usuarios.n_id = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             }
 
             e_usuarios.n_idemp = 0;
@@ -263,13 +263,13 @@ namespace SSF_NET.Formularios
             e_usuarios.c_usuario = TxtUsu.Text;
             e_usuarios.c_pass = TxtPas.Text;
             e_usuarios.n_activo = 1;
-            e_usuarios.n_idperfil = Convert.ToInt16(CboPerfil.SelectedValue);
+            e_usuarios.n_idperfil = Convert.ToInt32(CboPerfil.SelectedValue);
             
             //e_Impuestos.c_des = TxtNom.Text;
             //e_Impuestos.c_abr = TxtApePat.Text;
-            //e_Impuestos.n_tasa = Convert.ToInt16(TxtApeMat.Text);
-            //e_Impuestos.n_idcue = Convert.ToInt16(LblidCueCom.Text);
-            //e_Impuestos.n_idcuevta = Convert.ToInt16(LblidCueVen.Text);
+            //e_Impuestos.n_tasa = Convert.ToInt32(TxtApeMat.Text);
+            //e_Impuestos.n_idcue = Convert.ToInt32(LblidCueCom.Text);
+            //e_Impuestos.n_idcuevta = Convert.ToInt32(LblidCueVen.Text);
         }
         bool CamposOK()
         {
@@ -406,7 +406,7 @@ namespace SSF_NET.Formularios
 
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -417,7 +417,7 @@ namespace SSF_NET.Formularios
 
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             VerRegistro(intIdRegistro);
         }

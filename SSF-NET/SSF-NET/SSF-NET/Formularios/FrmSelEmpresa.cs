@@ -52,19 +52,19 @@ namespace SSF_NET.Formularios
         }
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (Convert.ToInt16(CboMeses.SelectedValue) == 0)
+            if (Convert.ToInt32(CboMeses.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha seleccionado el nombre de la empresa !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 return;
             }
-            if (Convert.ToInt16(TxtAñoTra.Value) == 0)
+            if (Convert.ToInt32(TxtAñoTra.Value) == 0)
             {
                 MessageBox.Show("¡ No ha selecfcionado el nombre de la empresa !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 return;
             }
 
-            Int16 n_IdEmpresa = Convert.ToInt16(CboMeses.SelectedValue);
-            Int16 n_AnoTrabajo = Convert.ToInt16(TxtAñoTra.Value);
+            int n_IdEmpresa = Convert.ToInt32(CboMeses.SelectedValue);
+            int n_AnoTrabajo = Convert.ToInt32(TxtAñoTra.Value);
             CN_sys_setup objSet = new CN_sys_setup();
             DataTable dtResult = new DataTable();
 
@@ -78,19 +78,19 @@ namespace SSF_NET.Formularios
             {
                 FrmIngUsuario MiForm = new FrmIngUsuario();
 
-                Program.STU_SISTEMA.SYS_UNIBD = Convert.ToInt16(dtResult.Rows[0]["n_unimae"]);
-                Program.STU_SISTEMA.SYS_UNIUSU = Convert.ToInt16(dtResult.Rows[0]["n_uniusu"]);
+                Program.STU_SISTEMA.SYS_UNIBD = Convert.ToInt32(dtResult.Rows[0]["n_unimae"]);
+                Program.STU_SISTEMA.SYS_UNIUSU = Convert.ToInt32(dtResult.Rows[0]["n_uniusu"]);
 
                 dtResult = funDatos.DataTableFiltrar(DtResultado, "n_id =" + n_IdEmpresa.ToString() + "");
                 if (dtResult.Rows.Count != 0)
                 { 
-                    Program.STU_SISTEMA.EMPRESAID = Convert.ToInt16(dtResult.Rows[0]["n_id"]);
+                    Program.STU_SISTEMA.EMPRESAID = Convert.ToInt32(dtResult.Rows[0]["n_id"]);
                     Program.STU_SISTEMA.EMPRESANOMBRE = dtResult.Rows[0]["c_nomemp"].ToString();
                     Program.STU_SISTEMA.EMPRESARUC = dtResult.Rows[0]["c_numdoc"].ToString();
                     Program.STU_SISTEMA.ANOTRABAJO = n_AnoTrabajo;
 
                     Program.STU_SISTEMA.SYS_NOMALT = dtResult.Rows[0]["c_nomalt"].ToString();
-                    Program.STU_SISTEMA.SYS_VERDATALT = Convert.ToInt16(dtResult.Rows[0]["n_verdatalt"]);
+                    Program.STU_SISTEMA.SYS_VERDATALT = Convert.ToInt32(dtResult.Rows[0]["n_verdatalt"]);
                 }
                 this.Hide();
                 this.Close();
@@ -115,18 +115,18 @@ namespace SSF_NET.Formularios
             {
                 DataTable dt = new DataTable();
 
-                dt = funDatos.DataTableFiltrar(DtResultado, "n_id = " + Convert.ToInt16(CboMeses.SelectedValue) + "");
+                dt = funDatos.DataTableFiltrar(DtResultado, "n_id = " + Convert.ToInt32(CboMeses.SelectedValue) + "");
                 FrmMenu10 xFrmMenu = new FrmMenu10();
-                Program.STU_SISTEMA.EMPRESAID = Convert.ToInt16(dt.Rows[0]["n_id"]);
+                Program.STU_SISTEMA.EMPRESAID = Convert.ToInt32(dt.Rows[0]["n_id"]);
                 Program.STU_SISTEMA.EMPRESANOMBRE = dt.Rows[0]["c_nomemp"].ToString();
                 Program.STU_SISTEMA.EMPRESARUC = dt.Rows[0]["c_numdoc"].ToString();
                 Program.STU_SISTEMA.ANOTRABAJO = n_AnoTrabajo;
 
                 Program.STU_SISTEMA.SYS_NOMALT = dt.Rows[0]["c_nomalt"].ToString();
-                Program.STU_SISTEMA.SYS_VERDATALT = Convert.ToInt16(dt.Rows[0]["n_verdatalt"]);
+                Program.STU_SISTEMA.SYS_VERDATALT = Convert.ToInt32(dt.Rows[0]["n_verdatalt"]);
 
                 //Program.STU_SISTEMA.USUARIOALIAS = TxtUsuario.Text;
-                //Program.STU_SISTEMA.USUARIOID = Convert.ToInt16(dtResult.Rows[0]["n_id"].ToString());
+                //Program.STU_SISTEMA.USUARIOID = Convert.ToInt32(dtResult.Rows[0]["n_id"].ToString());
                 //Program.GuardarIngreso(1);
 
                 xFrmMenu.ShowDialog();

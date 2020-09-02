@@ -180,7 +180,7 @@ namespace SSF_NET_Contabilidad.Formularios
             {
                 if (n_QueHace != 1)
                 {
-                    int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+                    int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
                     booAgregando = true;
                     VerRegistro(intIdRegistro);
@@ -322,28 +322,28 @@ namespace SSF_NET_Contabilidad.Formularios
         {
             bool booEstado = true;
 
-            if (Convert.ToInt16(CboTipExis.SelectedValue) == 0)
+            if (Convert.ToInt32(CboTipExis.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el tipo de item !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
                 return booEstado;
             }
 
-            //if (Convert.ToInt16(CboFamilia.SelectedValue) == 0)
+            //if (Convert.ToInt32(CboFamilia.SelectedValue) == 0)
             //{
             //    MessageBox.Show("¡ No ha especificado la familia para el item !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             //    booEstado = false;
             //    return booEstado;
             //}
 
-            //if (Convert.ToInt16(CboClase.SelectedValue) == 0)
+            //if (Convert.ToInt32(CboClase.SelectedValue) == 0)
             //{
             //    MessageBox.Show("¡ No ha especificado la clase para el item !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             //    booEstado = false;
             //    return booEstado;
             //}
 
-            //if (Convert.ToInt16(CboSubClase.SelectedValue) == 0)
+            //if (Convert.ToInt32(CboSubClase.SelectedValue) == 0)
             //{
             //    MessageBox.Show("¡ No ha especificado la subclase para el item !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             //    booEstado = false;
@@ -553,7 +553,7 @@ namespace SSF_NET_Contabilidad.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -577,7 +577,7 @@ namespace SSF_NET_Contabilidad.Formularios
         }
         void MostrarDatosItems()
         {
-            int n_idreg = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int n_idreg = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             DataTable dtresult = funDatos.DataTableFiltrar(dtItems, "n_iditem = " + n_idreg.ToString() + "");
             if (dtresult.Rows.Count != 0)
             {
@@ -609,7 +609,7 @@ namespace SSF_NET_Contabilidad.Formularios
         private void FrmAsigCtaConItems_DoubleClick(object sender, EventArgs e)
         {
             if (DgLista.RowCount == 0) { return; }
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             booAgregando = true;
             VerRegistro(intIdRegistro);
@@ -618,7 +618,7 @@ namespace SSF_NET_Contabilidad.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -775,7 +775,7 @@ namespace SSF_NET_Contabilidad.Formularios
 
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             VerRegistro(intIdRegistro);
         }

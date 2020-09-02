@@ -103,16 +103,16 @@ namespace SIAC_Negocio.Tesoreria
 
             if (dtResult.Rows.Count != 0)
             {
-                e_Destino.n_id = Convert.ToInt16(dtResult.Rows[0]["n_id"]);
-                e_Destino.n_idcue = Convert.ToInt16(dtResult.Rows[0]["n_idcue"]);
+                e_Destino.n_id = Convert.ToInt32(dtResult.Rows[0]["n_id"]);
+                e_Destino.n_idcue = Convert.ToInt32(dtResult.Rows[0]["n_idcue"]);
 
                 if (Convert.ToInt32(funFunciones.NulosN(dtResult.Rows[0]["n_idmod"])) != 0)
                 {
-                    e_Destino.n_idmod = Convert.ToInt16(dtResult.Rows[0]["n_idmod"]);
+                    e_Destino.n_idmod = Convert.ToInt32(dtResult.Rows[0]["n_idmod"]);
                 }
-                e_Destino.n_tipo = Convert.ToInt16(dtResult.Rows[0]["n_tipo"]);
-                e_Destino.n_idmon = Convert.ToInt16(dtResult.Rows[0]["n_idmon"]);
-                e_Destino.n_detalla = Convert.ToInt16(dtResult.Rows[0]["n_detalla"]);
+                e_Destino.n_tipo = Convert.ToInt32(dtResult.Rows[0]["n_tipo"]);
+                e_Destino.n_idmon = Convert.ToInt32(dtResult.Rows[0]["n_idmon"]);
+                e_Destino.n_detalla = Convert.ToInt32(dtResult.Rows[0]["n_detalla"]);
             }
             if (booResult == false)
             {

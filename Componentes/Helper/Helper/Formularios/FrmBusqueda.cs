@@ -38,7 +38,7 @@ namespace Helper.Formularios
             int n_NumeroElementos = Convert.ToInt32(arrCabeceraDg1.GetLongLength(0)) - 1;
             for (n_fila = 0; n_fila <= n_NumeroElementos; n_fila++)
             {
-                n_ancho = n_ancho + Convert.ToInt16(arrCabeceraDg1[n_fila, 1].ToString());
+                n_ancho = n_ancho + Convert.ToInt32(arrCabeceraDg1[n_fila, 1].ToString());
             }
             this.Width = n_ancho + 67;
             C1Sizer1.Width = this.Width - 20;

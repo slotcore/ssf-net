@@ -264,7 +264,7 @@ namespace SSF_NET_Gestion.Formularios
         }
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int n_idreg = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int n_idreg = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             booAgregando = true;
             VerRegistro(n_idreg);
@@ -406,7 +406,7 @@ namespace SSF_NET_Gestion.Formularios
 
             if (e.NewIndex == 1)
             {
-                int n_idreg = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                int n_idreg = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -442,7 +442,7 @@ namespace SSF_NET_Gestion.Formularios
             Tab2.SelectedIndex = 0;
             FgProd.Rows.Count = 2;
             CboMesIni.SelectedValue = DateTime.Now.Month;
-            MostrarMeses(Convert.ToInt16(CboMesIni.SelectedValue));
+            MostrarMeses(Convert.ToInt32(CboMesIni.SelectedValue));
             booAgregando = false;
             TxtFchIni.Focus();
         }
@@ -494,7 +494,7 @@ namespace SSF_NET_Gestion.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -510,7 +510,7 @@ namespace SSF_NET_Gestion.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -614,16 +614,16 @@ namespace SSF_NET_Gestion.Formularios
             int n_id = 0;
 
             if (n_QueHace == 1) { n_id = 0; }
-            if (n_QueHace == 2) { n_id = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString()); }
+            if (n_QueHace == 2) { n_id = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString()); }
 
             BE_DETALLE.Clear();
 
             BE_CABECERA.n_idemp = STU_SISTEMA.EMPRESAID;
             BE_CABECERA.n_id = n_id;
             BE_CABECERA.c_des = TxtDes.Text;
-            BE_CABECERA.d_fchini = Convert.ToDateTime("01/" + Convert.ToInt16(CboMesIni.SelectedValue).ToString() + "/" +STU_SISTEMA.ANOTRABAJO.ToString());
+            BE_CABECERA.d_fchini = Convert.ToDateTime("01/" + Convert.ToInt32(CboMesIni.SelectedValue).ToString() + "/" +STU_SISTEMA.ANOTRABAJO.ToString());
             BE_CABECERA.d_fchfin = Convert.ToDateTime( BE_CABECERA.d_fchini.AddMonths(12).ToString("dd/MM/yyyy"));
-            BE_CABECERA.n_mesini = Convert.ToInt16(CboMesIni.SelectedValue);
+            BE_CABECERA.n_mesini = Convert.ToInt32(CboMesIni.SelectedValue);
             BE_CABECERA.n_ano = Convert.ToDateTime(TxtFchIni.Text).Year;
             BE_CABECERA.n_idplapro = Convert.ToInt32(LblIdPlaVen.Text);
             BE_CABECERA.n_activo = 1;
@@ -758,7 +758,7 @@ namespace SSF_NET_Gestion.Formularios
             dtres = o_plan.dtLista;
             if (dtres == null) { return; }
             if (dtres.Rows.Count == 0) { return; }
-            LblIdPlaVen.Text = Convert.ToInt16(dtres.Rows[0]["n_id"]).ToString();
+            LblIdPlaVen.Text = Convert.ToInt32(dtres.Rows[0]["n_id"]).ToString();
             TxtPlaVen.Text = dtres.Rows[0]["c_des"].ToString();
             TxtFchIni.Text = Convert.ToDateTime(dtres.Rows[0]["d_fchini"]).ToString();
             TxtFchFin.Text = Convert.ToDateTime(dtres.Rows[0]["d_fchfin"]).ToString();
@@ -780,9 +780,9 @@ namespace SSF_NET_Gestion.Formularios
             dttod = o_plapro.dtTodo;
             o_plapro = null;
 
-            llenarFlex(FgProd, dtpro, Convert.ToInt16(CboMesIni.SelectedValue));
-            llenarFlex(FgInter, dtint, Convert.ToInt16(CboMesIni.SelectedValue));
-            llenarFlex(FgTodo, dttod, Convert.ToInt16(CboMesIni.SelectedValue));
+            llenarFlex(FgProd, dtpro, Convert.ToInt32(CboMesIni.SelectedValue));
+            llenarFlex(FgInter, dtint, Convert.ToInt32(CboMesIni.SelectedValue));
+            llenarFlex(FgTodo, dttod, Convert.ToInt32(CboMesIni.SelectedValue));
             Tab2.SelectedIndex = 0;
         }
         private void CmdVerRec_Click(object sender, EventArgs e)
@@ -849,7 +849,7 @@ namespace SSF_NET_Gestion.Formularios
         }
         void DesactivarPlanAbastecimiento()
         {
-            int n_idreg = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int n_idreg = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
             objCabecera.mysConec = mysConec;
             objCabecera.CambiarEstadoPlanAbastecimiento(n_idreg, 2);
             if (objCabecera.b_OcurrioError == false)
@@ -914,7 +914,7 @@ namespace SSF_NET_Gestion.Formularios
         {
             int n_col = 0;
             int n_posArray = 3;
-            int n_nummes = Convert.ToInt16(CboMesIni.SelectedValue);
+            int n_nummes = Convert.ToInt32(CboMesIni.SelectedValue);
             DataTable dtResult = new DataTable();
             string c_nommes = "";
 

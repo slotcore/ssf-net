@@ -100,7 +100,7 @@ namespace SIAC_DATOS.Gestion
                     for (n_fila = 0; n_fila <= l_Detalle.Count - 1; n_fila++)
                     {
                         // AGREGAMOS LOS ITEMS
-                        l_Detalle[n_fila].n_idplaaba = Convert.ToInt16(xMiFuncion.intIdGenerado);
+                        l_Detalle[n_fila].n_idplaaba = Convert.ToInt32(xMiFuncion.intIdGenerado);
                         if (xMiFuncion.StoreEjecutar("ges_planabastecimientodet_insertar", l_Detalle[n_fila], mysConec, null) == true)
                         {
                             booOk = true;

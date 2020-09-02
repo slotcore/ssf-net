@@ -69,19 +69,19 @@ namespace SIAC_Negocio.Tesoreria
 
             if (dtResult.Rows.Count != 0)
             {
-                e_Tesoreria.n_idemp = Convert.ToInt16(dtResult.Rows[0]["n_idemp"]);
-                e_Tesoreria.n_ano = Convert.ToInt16(dtResult.Rows[0]["n_ano"]);
-                e_Tesoreria.n_mes = Convert.ToInt16(dtResult.Rows[0]["n_mes"]);
-                e_Tesoreria.n_idlib = Convert.ToInt16(dtResult.Rows[0]["n_idlib"]);
-                e_Tesoreria.n_id = Convert.ToInt16(dtResult.Rows[0]["n_id"]);
+                e_Tesoreria.n_idemp = Convert.ToInt32(dtResult.Rows[0]["n_idemp"]);
+                e_Tesoreria.n_ano = Convert.ToInt32(dtResult.Rows[0]["n_ano"]);
+                e_Tesoreria.n_mes = Convert.ToInt32(dtResult.Rows[0]["n_mes"]);
+                e_Tesoreria.n_idlib = Convert.ToInt32(dtResult.Rows[0]["n_idlib"]);
+                e_Tesoreria.n_id = Convert.ToInt32(dtResult.Rows[0]["n_id"]);
                 e_Tesoreria.c_numreg = dtResult.Rows[0]["c_numreg"].ToString();
                 e_Tesoreria.d_fchope = Convert.ToDateTime(dtResult.Rows[0]["d_fchope"]);
-                e_Tesoreria.n_idmon = Convert.ToInt16(dtResult.Rows[0]["n_idmon"]);
+                e_Tesoreria.n_idmon = Convert.ToInt32(dtResult.Rows[0]["n_idmon"]);
                 e_Tesoreria.c_glo = dtResult.Rows[0]["c_glo"].ToString();
-                e_Tesoreria.n_conciliado = Convert.ToInt16(dtResult.Rows[0]["n_conciliado"]);
+                e_Tesoreria.n_conciliado = Convert.ToInt32(dtResult.Rows[0]["n_conciliado"]);
                 e_Tesoreria.n_tc = Convert.ToDouble(dtResult.Rows[0]["n_tc"]);
-                e_Tesoreria.n_tipreg = Convert.ToInt16(dtResult.Rows[0]["n_tipreg"]);
-                e_Tesoreria.n_dongen = Convert.ToInt16(dtResult.Rows[0]["n_dongen"]);
+                e_Tesoreria.n_tipreg = Convert.ToInt32(dtResult.Rows[0]["n_tipreg"]);
+                e_Tesoreria.n_dongen = Convert.ToInt32(dtResult.Rows[0]["n_dongen"]);
 
                 // CARGAMOS LA LISTA DE ORIGENES
                 for (n_row = 0; n_row <= dtResultOri.Rows.Count - 1; n_row++)
@@ -332,7 +332,7 @@ namespace SIAC_Negocio.Tesoreria
             {
                 miFun.Listar(n_IdEmpresa, n_IdAnoTrabajo, n_IdMesTrabajo, n_TipoRegistro);
                 dtLis = miFun.DtLista;
-                // objRegistros.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt16(CboMeses.SelectedValue), 1);
+                // objRegistros.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt32(CboMeses.SelectedValue), 1);
                 dtLis = funDatos.DataTableOrdenar(dtLis, "c_numreg");
                 for (n_row = 0; n_row <= dtLis.Rows.Count - 1; n_row++)
                 {

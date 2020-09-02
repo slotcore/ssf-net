@@ -76,18 +76,18 @@ namespace SIAC_Negocio.Contabilidad
                 e_Detrac.c_numdet = dtLista.Rows[0]["c_numdet"].ToString();
                 e_Detrac.d_fchpag = Convert.ToDateTime(dtLista.Rows[0]["d_fchpag"]);
                 e_Detrac.n_idgrudet = Convert.ToInt32(dtLista.Rows[0]["n_idgrudet"]);
-                e_Detrac.n_ano = Convert.ToInt16(dtLista.Rows[0]["n_ano"]);
-                e_Detrac.n_mes = Convert.ToInt16(dtLista.Rows[0]["n_mes"]);
+                e_Detrac.n_ano = Convert.ToInt32(dtLista.Rows[0]["n_ano"]);
+                e_Detrac.n_mes = Convert.ToInt32(dtLista.Rows[0]["n_mes"]);
                 e_Detrac.c_numreg = Convert.ToString(dtLista.Rows[0]["c_numreg"]);
-                e_Detrac.n_idlib = Convert.ToInt16(dtLista.Rows[0]["n_idlib"]);
+                e_Detrac.n_idlib = Convert.ToInt32(dtLista.Rows[0]["n_idlib"]);
                 e_Detrac.n_tc = Convert.ToDouble(funfunciones.NulosN(dtLista.Rows[0]["n_tc"]));
-                e_Detrac.n_idtipdoc = Convert.ToInt16(funfunciones.NulosN(dtLista.Rows[0]["n_idtipdoc"]));
-                e_Detrac.n_idtes = Convert.ToInt16(funfunciones.NulosN(dtLista.Rows[0]["n_idtes"]));
-                e_Detrac.n_idtesori = Convert.ToInt16(funfunciones.NulosN(dtLista.Rows[0]["n_idtesori"]));
-                e_Detrac.n_idmedpag = Convert.ToInt16(funfunciones.NulosN(dtLista.Rows[0]["n_idmedpag"]));
-                e_Detrac.n_tippag = Convert.ToInt16(funfunciones.NulosN(dtLista.Rows[0]["n_tippag"]));
-                e_Detrac.n_aplipag = Convert.ToInt16(funfunciones.NulosN(dtLista.Rows[0]["n_aplipag"]));
-                e_Detrac.n_iddes = Convert.ToInt16(funfunciones.NulosN(dtLista.Rows[0]["n_iddes"]));
+                e_Detrac.n_idtipdoc = Convert.ToInt32(funfunciones.NulosN(dtLista.Rows[0]["n_idtipdoc"]));
+                e_Detrac.n_idtes = Convert.ToInt32(funfunciones.NulosN(dtLista.Rows[0]["n_idtes"]));
+                e_Detrac.n_idtesori = Convert.ToInt32(funfunciones.NulosN(dtLista.Rows[0]["n_idtesori"]));
+                e_Detrac.n_idmedpag = Convert.ToInt32(funfunciones.NulosN(dtLista.Rows[0]["n_idmedpag"]));
+                e_Detrac.n_tippag = Convert.ToInt32(funfunciones.NulosN(dtLista.Rows[0]["n_tippag"]));
+                e_Detrac.n_aplipag = Convert.ToInt32(funfunciones.NulosN(dtLista.Rows[0]["n_aplipag"]));
+                e_Detrac.n_iddes = Convert.ToInt32(funfunciones.NulosN(dtLista.Rows[0]["n_iddes"]));
             }
             return;
         }

@@ -51,10 +51,10 @@ namespace SIAC_DATOS.Almacen
  
             if (DtResultado.Rows.Count != 0)
             {
-                EntAlmacenes.n_idemp = Convert.ToInt16(DtResultado.Rows[0]["n_idemp"].ToString());
-                EntAlmacenes.n_id = Convert.ToInt16(DtResultado.Rows[0]["n_id"].ToString());
-                EntAlmacenes.n_idlocal = Convert.ToInt16(DtResultado.Rows[0]["n_idlocal"].ToString());
-                EntAlmacenes.n_idtipexi = Convert.ToInt16(DtResultado.Rows[0]["n_idtipexi"].ToString());
+                EntAlmacenes.n_idemp = Convert.ToInt32(DtResultado.Rows[0]["n_idemp"].ToString());
+                EntAlmacenes.n_id = Convert.ToInt32(DtResultado.Rows[0]["n_id"].ToString());
+                EntAlmacenes.n_idlocal = Convert.ToInt32(DtResultado.Rows[0]["n_idlocal"].ToString());
+                EntAlmacenes.n_idtipexi = Convert.ToInt32(DtResultado.Rows[0]["n_idtipexi"].ToString());
                 EntAlmacenes.c_des = DtResultado.Rows[0]["c_des"].ToString();
                 EntAlmacenes.c_desemploc = DtResultado.Rows[0]["c_desemploc"].ToString();
             }

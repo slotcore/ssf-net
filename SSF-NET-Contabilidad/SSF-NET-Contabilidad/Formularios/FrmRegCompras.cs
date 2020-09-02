@@ -756,7 +756,7 @@ namespace SSF_NET_Contabilidad.Formularios
         }
         void EjecutarConsulta()
         {
-            if (Convert.ToInt16(CboMes.SelectedValue) == 0)
+            if (Convert.ToInt32(CboMes.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el periodo a consultar !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboMes.Focus();
@@ -765,7 +765,7 @@ namespace SSF_NET_Contabilidad.Formularios
 
             if (OptSel.Checked == true)
             {
-                if (Convert.ToInt16(CboPro.SelectedValue) == 0)
+                if (Convert.ToInt32(CboPro.SelectedValue) == 0)
                 {
                     MessageBox.Show("¡ No ha seleccionado el proveedor !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     CboPro.Focus();
@@ -782,15 +782,15 @@ namespace SSF_NET_Contabilidad.Formularios
             bool b_Result = false;
             if (n_Libro == 8)
             {
-                b_Result = funCom.RegistroCompras(STU_SISTEMA.ANOTRABAJO, Convert.ToInt16(CboMes.SelectedValue), n_Libro,  STU_SISTEMA.EMPRESAID);
+                b_Result = funCom.RegistroCompras(STU_SISTEMA.ANOTRABAJO, Convert.ToInt32(CboMes.SelectedValue), n_Libro,  STU_SISTEMA.EMPRESAID);
             }
             if (n_Libro == 32)
             {
-                b_Result = funCom.RegistroHonorarios(STU_SISTEMA.ANOTRABAJO, Convert.ToInt16(CboMes.SelectedValue), n_Libro, STU_SISTEMA.EMPRESAID);
+                b_Result = funCom.RegistroHonorarios(STU_SISTEMA.ANOTRABAJO, Convert.ToInt32(CboMes.SelectedValue), n_Libro, STU_SISTEMA.EMPRESAID);
             }
             if (n_Libro == 14)
             {
-                b_Result = funCom.RegistroVentas(STU_SISTEMA.ANOTRABAJO, Convert.ToInt16(CboMes.SelectedValue), n_Libro, STU_SISTEMA.EMPRESAID);
+                b_Result = funCom.RegistroVentas(STU_SISTEMA.ANOTRABAJO, Convert.ToInt32(CboMes.SelectedValue), n_Libro, STU_SISTEMA.EMPRESAID);
             }
 
             if (b_Result ==true)
@@ -1204,11 +1204,11 @@ namespace SSF_NET_Contabilidad.Formularios
             objLE.STU_SISTEMA = STU_SISTEMA;
             if (n_Libro == 8)
             { 
-                b_result = objLE.LE_81(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt16(CboMes.SelectedValue));
+                b_result = objLE.LE_81(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt32(CboMes.SelectedValue));
             }
             if (n_Libro == 14)
             {
-                b_result = objLE.LE_141(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt16(CboMes.SelectedValue));
+                b_result = objLE.LE_141(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt32(CboMes.SelectedValue));
             }
 
             if (b_result == true)

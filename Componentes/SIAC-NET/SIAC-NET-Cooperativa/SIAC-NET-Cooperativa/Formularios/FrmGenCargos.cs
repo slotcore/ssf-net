@@ -370,7 +370,7 @@ namespace SIAC_NET_Cooperativa.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -380,7 +380,7 @@ namespace SIAC_NET_Cooperativa.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -547,7 +547,7 @@ namespace SIAC_NET_Cooperativa.Formularios
         {
             bool booEstado = true;
 
-            //if (Convert.ToInt16(CboMesTra.SelectedValue) == 0)
+            //if (Convert.ToInt32(CboMesTra.SelectedValue) == 0)
             //{
             //    MessageBox.Show("¡ No ha especificado el el mes de trabajo!", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             //    booEstado = false;
@@ -555,7 +555,7 @@ namespace SIAC_NET_Cooperativa.Formularios
             //    return booEstado;
             //}
 
-            if (Convert.ToInt16(CboTipDoc.SelectedValue) == 0)
+            if (Convert.ToInt32(CboTipDoc.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el tipo de documneto !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -682,7 +682,7 @@ namespace SIAC_NET_Cooperativa.Formularios
             }
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -692,7 +692,7 @@ namespace SIAC_NET_Cooperativa.Formularios
         }
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             VerRegistro(intIdRegistro);
         }
@@ -885,7 +885,7 @@ namespace SIAC_NET_Cooperativa.Formularios
         }
         private void ToolImprimir_Click(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             objRegistros.STU_SISTEMA = STU_SISTEMA;
             objRegistros.EmitirFacturas(intIdRegistro);
         }
@@ -993,7 +993,7 @@ namespace SIAC_NET_Cooperativa.Formularios
             int n_numeracion = Convert.ToInt32(TxtNumMod.Text);
             int n_newnumeracion = Convert.ToInt32(TxtNumEmp.Text);
             int n_row = 0;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             funCarCab.Consulta1(intIdRegistro, n_numeracion);
             dtResult = funCarCab.dtCargosCab;

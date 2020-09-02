@@ -132,8 +132,8 @@ namespace SIAC_DATOS.Logistica
                 {
                     for (intFila = 0; intFila <= l_OrdenCompraDetalle.Count - 1; intFila++)
                     {
-                        e_OrdenCompra.n_id = Convert.ToInt16(xMiFuncion.intIdGenerado);
-                        l_OrdenCompraDetalle[intFila].n_idoc = Convert.ToInt16(xMiFuncion.intIdGenerado);
+                        e_OrdenCompra.n_id = Convert.ToInt32(xMiFuncion.intIdGenerado);
+                        l_OrdenCompraDetalle[intFila].n_idoc = Convert.ToInt32(xMiFuncion.intIdGenerado);
                         if (xMiFuncion.StoreEjecutar("log_ordencompradet_insertar", l_OrdenCompraDetalle[intFila], mysConec, null) == true)
                         {
                             booOk = true;
@@ -203,7 +203,7 @@ namespace SIAC_DATOS.Logistica
                         // SI LOS ITEMS SE ELIMINARON CON EXITO INSERTAMOS LOS NUEVOS ITEMS
                         for (intFila = 0; intFila <= l_OrdenCompraDetalle.Count - 1; intFila++)
                         {
-                            l_OrdenCompraDetalle[intFila].n_idoc = Convert.ToInt16(e_OrdenCompra.n_id);
+                            l_OrdenCompraDetalle[intFila].n_idoc = Convert.ToInt32(e_OrdenCompra.n_id);
                             if (xMiFuncion.StoreEjecutar("log_ordencompradet_insertar", l_OrdenCompraDetalle[intFila], mysConec, null) == true)
                             {
                                 booOk = true;

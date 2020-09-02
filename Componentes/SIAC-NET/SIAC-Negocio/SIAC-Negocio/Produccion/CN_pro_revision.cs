@@ -53,17 +53,17 @@ namespace SIAC_Negocio.Produccion
 
             if (DtResultado.Rows.Count != 0)
             {
-                EntCabecera.n_idemp = Convert.ToInt16(DtResultado.Rows[0]["n_idemp"].ToString());
-                EntCabecera.n_id = Convert.ToInt16(DtResultado.Rows[0]["n_id"].ToString());
-                EntCabecera.n_idpro = Convert.ToInt16(DtResultado.Rows[0]["n_idpro"].ToString());
-                EntCabecera.n_idite = Convert.ToInt16(DtResultado.Rows[0]["n_idite"].ToString());
-                EntCabecera.n_idrec = Convert.ToInt16(DtResultado.Rows[0]["n_idrec"].ToString());
-                EntCabecera.n_idtipdoc = Convert.ToInt16(DtResultado.Rows[0]["n_idtipdoc"].ToString());
+                EntCabecera.n_idemp = Convert.ToInt32(DtResultado.Rows[0]["n_idemp"].ToString());
+                EntCabecera.n_id = Convert.ToInt32(DtResultado.Rows[0]["n_id"].ToString());
+                EntCabecera.n_idpro = Convert.ToInt32(DtResultado.Rows[0]["n_idpro"].ToString());
+                EntCabecera.n_idite = Convert.ToInt32(DtResultado.Rows[0]["n_idite"].ToString());
+                EntCabecera.n_idrec = Convert.ToInt32(DtResultado.Rows[0]["n_idrec"].ToString());
+                EntCabecera.n_idtipdoc = Convert.ToInt32(DtResultado.Rows[0]["n_idtipdoc"].ToString());
                 EntCabecera.c_numser = DtResultado.Rows[0]["c_numser"].ToString();
                 EntCabecera.c_numdoc = DtResultado.Rows[0]["c_numdoc"].ToString();
                 EntCabecera.c_numlot = DtResultado.Rows[0]["c_numlot"].ToString();
                 EntCabecera.n_canpro = Convert.ToDouble(DtResultado.Rows[0]["n_canpro"].ToString());
-                EntCabecera.n_idunimed = Convert.ToInt16(DtResultado.Rows[0]["n_idunimed"].ToString());
+                EntCabecera.n_idunimed = Convert.ToInt32(DtResultado.Rows[0]["n_idunimed"].ToString());
                 EntCabecera.d_fchini = Convert.ToDateTime(DtResultado.Rows[0]["d_fchini"].ToString());
                 EntCabecera.d_fchfin = Convert.ToDateTime(DtResultado.Rows[0]["d_fchfin"].ToString());
                 EntCabecera.h_horini = DtResultado.Rows[0]["h_horini"].ToString();
@@ -72,12 +72,12 @@ namespace SIAC_Negocio.Produccion
                 EntCabecera.n_canpronocon = Convert.ToDouble(DtResultado.Rows[0]["n_canpronocon"].ToString());
                 EntCabecera.c_obsprocon = DtResultado.Rows[0]["c_obsprocon"].ToString();
                 EntCabecera.c_obspronocon = DtResultado.Rows[0]["c_obspronocon"].ToString();
-                EntCabecera.n_idperrev = Convert.ToInt16(DtResultado.Rows[0]["n_idperrev"].ToString());
+                EntCabecera.n_idperrev = Convert.ToInt32(DtResultado.Rows[0]["n_idperrev"].ToString());
                 EntCabecera.d_fchrev = Convert.ToDateTime(DtResultado.Rows[0]["d_fchrev"].ToString());
                 EntCabecera.h_horrev = DtResultado.Rows[0]["h_horrev"].ToString();
-                EntCabecera.n_iddocref = Convert.ToInt16(DtResultado.Rows[0]["n_iddocref"].ToString());
+                EntCabecera.n_iddocref = Convert.ToInt32(DtResultado.Rows[0]["n_iddocref"].ToString());
                 EntCabecera.c_numdocref = DtResultado.Rows[0]["c_numdocref"].ToString();
-                EntCabecera.n_idtipdocref = Convert.ToInt16(DtResultado.Rows[0]["n_idtipdocref"].ToString());
+                EntCabecera.n_idtipdocref = Convert.ToInt32(DtResultado.Rows[0]["n_idtipdocref"].ToString());
             }
 
             return EntCabecera;

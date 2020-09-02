@@ -238,20 +238,20 @@ namespace SSF_NET_Contabilidad.Formularios
         }
         void EjecutarConsulta()
         {
-            if (Convert.ToInt16(CboMesIni.SelectedValue) == 0)
+            if (Convert.ToInt32(CboMesIni.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha indicado el periodo inicial !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboMesIni.Focus();
                 return;
             }
-            if (Convert.ToInt16(CboMesFin.SelectedValue) == 0)
+            if (Convert.ToInt32(CboMesFin.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha indicado el periodo final !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboMesFin.Focus();
                 return;
             }
 
-            if (Convert.ToInt16(CboMesIni.SelectedValue) > Convert.ToInt16(CboMesFin.SelectedValue))
+            if (Convert.ToInt32(CboMesIni.SelectedValue) > Convert.ToInt32(CboMesFin.SelectedValue))
             {
                 MessageBox.Show("¡ El periodo de inicio no puede ser mayor al periodo final de la consulta !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboMesIni.Focus();
@@ -259,7 +259,7 @@ namespace SSF_NET_Contabilidad.Formularios
             }
             
             objdia.mysConec = mysConec;
-            objdia.BalanceComprobacion(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt16(CboMesIni.SelectedValue), Convert.ToInt16(CboMesFin.SelectedValue), Convert.ToInt16(CboLib.SelectedValue));
+            objdia.BalanceComprobacion(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt32(CboMesIni.SelectedValue), Convert.ToInt32(CboMesFin.SelectedValue), Convert.ToInt32(CboLib.SelectedValue));
             dtLista = objdia.dtLista;
             
             funFlex.b_AlternarColor = false;
@@ -470,7 +470,7 @@ namespace SSF_NET_Contabilidad.Formularios
             string c_codcue = FgDatos.GetData(FgDatos.Row, 1).ToString();
             int n_IdCuenta = Convert.ToInt32(funFunciones.NulosN(funDatos.DataTableBuscar(dtLista, "c_cuecon", "n_idcue", c_codcue, "C")));
 
-            objdia.BalanceDetalle(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt16(CboMesIni.SelectedValue), Convert.ToInt16(CboMesFin.SelectedValue), n_IdCuenta);
+            objdia.BalanceDetalle(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt32(CboMesIni.SelectedValue), Convert.ToInt32(CboMesFin.SelectedValue), n_IdCuenta);
 
             if (objdia.b_OcurrioError == true)
             {

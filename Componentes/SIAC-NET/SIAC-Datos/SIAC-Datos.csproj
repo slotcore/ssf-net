@@ -137,10 +137,12 @@
     <Compile Include="Maestros\CD_mae_prioridad.cs" />
     <Compile Include="Maestros\CD_mae_tipoclipro.cs" />
     <Compile Include="Mantenimiento\CD_man_equipos.cs" />
+    <Compile Include="Models\Contabilidad\ConfiguracionValorizacion.cs" />
     <Compile Include="Models\Contabilidad\CostoProduccion.cs" />
     <Compile Include="Models\Contabilidad\CostoProduccionDet.cs" />
     <Compile Include="Models\Contabilidad\CostoProduccionDetIns.cs" />
     <Compile Include="Models\Contabilidad\CostoProduccionDetMod.cs" />
+    <Compile Include="Models\Contabilidad\PersonalContabilidad.cs" />
     <Compile Include="Models\Maestros\Categoria.cs" />
     <Compile Include="Models\Maestros\FinPeriodo.cs" />
     <Compile Include="Models\Planillas\Empleado.cs" />

@@ -50,23 +50,23 @@ namespace SIAC_Negocio.Produccion
 
             if (dtResult.Rows.Count != 0)
             {
-                entEstacion.n_idemp = Convert.ToInt16(dtResult.Rows[0]["n_idemp"]);
-                entEstacion.n_id = Convert.ToInt16(dtResult.Rows[0]["n_id"]);
-                entEstacion.n_idite = Convert.ToInt16(dtResult.Rows[0]["n_idite"]);
-                entEstacion.n_idmp = Convert.ToInt16(dtResult.Rows[0]["n_idmp"]);
+                entEstacion.n_idemp = Convert.ToInt32(dtResult.Rows[0]["n_idemp"]);
+                entEstacion.n_id = Convert.ToInt32(dtResult.Rows[0]["n_id"]);
+                entEstacion.n_idite = Convert.ToInt32(dtResult.Rows[0]["n_idite"]);
+                entEstacion.n_idmp = Convert.ToInt32(dtResult.Rows[0]["n_idmp"]);
                 entEstacion.c_des = dtResult.Rows[0]["c_des"].ToString();
-                entEstacion.n_ene = Convert.ToInt16(dtResult.Rows[0]["n_ene"]);
-                entEstacion.n_feb = Convert.ToInt16(dtResult.Rows[0]["n_feb"]);
-                entEstacion.n_mar = Convert.ToInt16(dtResult.Rows[0]["n_mar"]);
-                entEstacion.n_abr = Convert.ToInt16(dtResult.Rows[0]["n_abr"]);
-                entEstacion.n_may = Convert.ToInt16(dtResult.Rows[0]["n_may"]);
-                entEstacion.n_jun = Convert.ToInt16(dtResult.Rows[0]["n_jun"]);
-                entEstacion.n_jul = Convert.ToInt16(dtResult.Rows[0]["n_jul"]);
-                entEstacion.n_ago = Convert.ToInt16(dtResult.Rows[0]["n_ago"]);
-                entEstacion.n_set = Convert.ToInt16(dtResult.Rows[0]["n_set"]);
-                entEstacion.n_oct = Convert.ToInt16(dtResult.Rows[0]["n_oct"]);
-                entEstacion.n_nov = Convert.ToInt16(dtResult.Rows[0]["n_nov"]);
-                entEstacion.n_dic = Convert.ToInt16(dtResult.Rows[0]["n_dic"]);
+                entEstacion.n_ene = Convert.ToInt32(dtResult.Rows[0]["n_ene"]);
+                entEstacion.n_feb = Convert.ToInt32(dtResult.Rows[0]["n_feb"]);
+                entEstacion.n_mar = Convert.ToInt32(dtResult.Rows[0]["n_mar"]);
+                entEstacion.n_abr = Convert.ToInt32(dtResult.Rows[0]["n_abr"]);
+                entEstacion.n_may = Convert.ToInt32(dtResult.Rows[0]["n_may"]);
+                entEstacion.n_jun = Convert.ToInt32(dtResult.Rows[0]["n_jun"]);
+                entEstacion.n_jul = Convert.ToInt32(dtResult.Rows[0]["n_jul"]);
+                entEstacion.n_ago = Convert.ToInt32(dtResult.Rows[0]["n_ago"]);
+                entEstacion.n_set = Convert.ToInt32(dtResult.Rows[0]["n_set"]);
+                entEstacion.n_oct = Convert.ToInt32(dtResult.Rows[0]["n_oct"]);
+                entEstacion.n_nov = Convert.ToInt32(dtResult.Rows[0]["n_nov"]);
+                entEstacion.n_dic = Convert.ToInt32(dtResult.Rows[0]["n_dic"]);
             }
             if (booResult == false)
             {

@@ -153,7 +153,7 @@ namespace SIAC_NET_Cooperativa.Formularios
 
             if (FgLista.Col == 1)
             {
-                if (Convert.ToInt16(CboPue.SelectedValue) == 0) { return; }
+                if (Convert.ToInt32(CboPue.SelectedValue) == 0) { return; }
                 FgLista.AllowEditing = true;
 
                 if (ChkActivar.Checked == false)
@@ -165,7 +165,7 @@ namespace SIAC_NET_Cooperativa.Formularios
                     dtResult = funDatos.DataTableFiltrar(dtPuestosNA, "n_id = " + CboPue.SelectedValue.ToString() + "");
                 }
 
-                if (Convert.ToInt16(dtResult.Rows[0]["n_idtippue"]) == 1)
+                if (Convert.ToInt32(dtResult.Rows[0]["n_idtippue"]) == 1)
                 {
                     dtResult = funDatos.DataTableFiltrar(dtConcepto, "c_cod like '" + "70" + "*'");
                 }

@@ -83,27 +83,27 @@ namespace SIAC_DATOS.Almacen
                     {
                         BE_ALM_TRANSFERENCIASDET Detalle = new BE_ALM_TRANSFERENCIASDET();
 
-                        Detalle.n_idtrans = Convert.ToInt16(dr["n_idtrans"].ToString());
-                        Detalle.n_idite = Convert.ToInt16(dr["n_idite"].ToString());
-                        Detalle.n_idpre = Convert.ToInt16(dr["n_idpre"].ToString());
+                        Detalle.n_idtrans = Convert.ToInt32(dr["n_idtrans"].ToString());
+                        Detalle.n_idite = Convert.ToInt32(dr["n_idite"].ToString());
+                        Detalle.n_idpre = Convert.ToInt32(dr["n_idpre"].ToString());
                         Detalle.n_can = Convert.ToDouble(dr["n_can"].ToString());
                         Detalle.n_preuni = Convert.ToDouble(dr["n_preuni"]);
                         Detalle.n_pretot = Convert.ToDouble(dr["n_pretot"]);
-                        Detalle.n_idalm = Convert.ToInt16(dr["n_idalm"].ToString());
+                        Detalle.n_idalm = Convert.ToInt32(dr["n_idalm"].ToString());
                         Detalle.c_numlot = dr["c_numlot"].ToString();
                         Detalle.c_itedes = dr["c_itedes"].ToString();
                         Detalle.c_itepredes = dr["c_itepredes"].ToString();
                         Detalle.c_tipexides = dr["c_tipexides"].ToString();
                         //Detalle.d_fchpro = Convert.ToDateTime(dr["d_fchpro"]);
                         //Detalle.d_fchven = Convert.ToDateTime(dr["d_fchven"]);
-                        //Detalle.n_iddep = Convert.ToInt16(dr["n_iddep"].ToString());
-                        //Detalle.n_idpro = Convert.ToInt16(dr["n_idpro"].ToString());
-                        //Detalle.n_iddis = Convert.ToInt16(dr["n_iddis"].ToString());
+                        //Detalle.n_iddep = Convert.ToInt32(dr["n_iddep"].ToString());
+                        //Detalle.n_idpro = Convert.ToInt32(dr["n_idpro"].ToString());
+                        //Detalle.n_iddis = Convert.ToInt32(dr["n_iddis"].ToString());
                         Detalle.c_desori = dr["c_desori"].ToString();
                         Detalle.c_marca = dr["c_marca"].ToString();
                         //Detalle.h_horing = dr["h_horing"].ToString();
                         Detalle.h_horsal = dr["h_horsal"].ToString();
-                        Detalle.n_estpro = Convert.ToInt16(dr["n_estpro"]);
+                        Detalle.n_estpro = Convert.ToInt32(dr["n_estpro"]);
                         EntAlmacenes.lst_items.Add(Detalle);
                     }
                 }
@@ -126,7 +126,7 @@ namespace SIAC_DATOS.Almacen
                 {
                     foreach (BE_ALM_TRANSFERENCIASDET entTransDet in entCabecera.lst_items)
                     {
-                        entTransDet.n_idtrans = Convert.ToInt16(xMiFuncion.intIdGenerado);
+                        entTransDet.n_idtrans = Convert.ToInt32(xMiFuncion.intIdGenerado);
                         if (xMiFuncion.StoreEjecutar("alm_transferenciasdet_insertar", entTransDet, mysConec, 0) == true)
                         {
                             booOk = true;
@@ -347,7 +347,7 @@ namespace SIAC_DATOS.Almacen
                     // SI LOS ITEMS SE ELIMINARON CON EXITO INSERTAMOS LOS NUEVOS ITEMS
                     foreach (BE_ALM_TRANSFERENCIASDET entDet in entCabecera.lst_items)
                     {
-                        //entDet.n_idmov = Convert.ToInt16(xMiFuncion.intIdGenerado);
+                        //entDet.n_idmov = Convert.ToInt32(xMiFuncion.intIdGenerado);
                         if (xMiFuncion.StoreEjecutar("alm_transferenciasdet_insertar", entDet, mysConec, null) == true)
                         {
                             booOk = true;

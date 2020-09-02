@@ -47,9 +47,9 @@ namespace SIAC_Negocio.Cooperativa
 
             if (DtResultado.Rows.Count != 0)
             {
-                entPuestos.n_idemp = Convert.ToInt16(DtResultado.Rows[0]["n_idemp"].ToString());
-                entPuestos.n_id = Convert.ToInt16(DtResultado.Rows[0]["n_id"].ToString());
-                entPuestos.n_idtippue = Convert.ToInt16(DtResultado.Rows[0]["n_idtippue"].ToString());
+                entPuestos.n_idemp = Convert.ToInt32(DtResultado.Rows[0]["n_idemp"].ToString());
+                entPuestos.n_id = Convert.ToInt32(DtResultado.Rows[0]["n_id"].ToString());
+                entPuestos.n_idtippue = Convert.ToInt32(DtResultado.Rows[0]["n_idtippue"].ToString());
                 entPuestos.c_puesto = DtResultado.Rows[0]["c_puesto"].ToString();
             }
 

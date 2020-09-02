@@ -400,18 +400,18 @@ namespace SSF_NET_Tesoreria.Formularios
                 
                 //e_letras.n_tiplet                                          // TIPO DE LETRA 1 = CLIENTE;   2 = PROVEEDORES
                 TxtInterval.Text = e_letras.n_numdiaint.ToString();
-                CboMoneda.SelectedValue = Convert.ToInt16(e_letras.n_idmon);
+                CboMoneda.SelectedValue = Convert.ToInt32(e_letras.n_idmon);
                 TxtNumLet.Text = e_letras.n_numlet.ToString();
                 TxtImpFin.Text = Convert.ToDouble(e_letras.n_impcap).ToString("0.00");
-                CboTipInt.SelectedValue = Convert.ToInt16(e_letras.n_idtipint);
+                CboTipInt.SelectedValue = Convert.ToInt32(e_letras.n_idtipint);
                 TxtTasa.Text = e_letras.n_portas.ToString("0.00");
                 //TxtGlo.Text = e_letras.c_glosa;
                 TxtDiaPla.Text = e_letras.n_numdiapla.ToString();
                 LblTc.Text = e_letras.n_tc.ToString("0.00");
                 TxtPortes.Text = Convert.ToDouble(e_letras.n_imppor).ToString("0.00");
 
-                CboBanco.SelectedValue = Convert.ToInt16(e_letras.n_idban);
-                CboNumCue.SelectedValue = Convert.ToInt16(e_letras.n_idcueban);
+                CboBanco.SelectedValue = Convert.ToInt32(e_letras.n_idban);
+                CboNumCue.SelectedValue = Convert.ToInt32(e_letras.n_idcueban);
             }
 
             for (n_row = 0; n_row <= l_letdet.Count - 1; n_row++)
@@ -439,7 +439,7 @@ namespace SSF_NET_Tesoreria.Formularios
                 FgDocFin.SetData(FgDocFin.Rows.Count - 1, 6, dtDoc.Rows[n_row]["c_nombre"].ToString());
                 FgDocFin.SetData(FgDocFin.Rows.Count - 1, 7, Convert.ToDouble(dtDoc.Rows[n_row]["n_imptotven"]).ToString("0.00"));
 
-                if (Convert.ToInt16(dtDoc.Rows[n_row]["n_idmon"]) == 115)
+                if (Convert.ToInt32(dtDoc.Rows[n_row]["n_idmon"]) == 115)
                 {
                     FgDocFin.SetData(FgDocFin.Rows.Count - 1, 8, Convert.ToDouble(dtDoc.Rows[n_row]["n_impfin"]).ToString("0.00"));
                     
@@ -578,7 +578,7 @@ namespace SSF_NET_Tesoreria.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -590,7 +590,7 @@ namespace SSF_NET_Tesoreria.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -603,7 +603,7 @@ namespace SSF_NET_Tesoreria.Formularios
 
                     // VOLVEMOS A CARGAR EL DATATABLE dtItems CON LOS DATOS DEL SERVIDOR
                     objRegistros.mysConec = mysConec;
-                    objRegistros.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt16(CboMeses.SelectedValue));
+                    objRegistros.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt32(CboMeses.SelectedValue));
                     dtLista = objRegistros.dtLista;
                     // MOSTRAMOS LOS DATOS EN LA GRILLA
                     ListarItems();
@@ -654,11 +654,11 @@ namespace SSF_NET_Tesoreria.Formularios
         void AsignarEntidad()
         {
             if (n_QueHace == 1) {e_letras.n_id = 0;}
-            if (n_QueHace == 2) { e_letras.n_id = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString()); }
+            if (n_QueHace == 2) { e_letras.n_id = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString()); }
 
             e_letras.n_idemp = STU_SISTEMA.EMPRESAID;
             e_letras.n_ano = STU_SISTEMA.ANOTRABAJO;
-            e_letras.n_mes = Convert.ToInt16( CboMeses.SelectedValue);
+            e_letras.n_mes = Convert.ToInt32( CboMeses.SelectedValue);
             e_letras.n_idlib = 999;
 
             l_letdet.Clear();
@@ -669,22 +669,22 @@ namespace SSF_NET_Tesoreria.Formularios
             e_letras.d_fchreg = Convert.ToDateTime(TxtFchEmi.Text);
             e_letras.d_fchini = Convert.ToDateTime(TxtFchIni.Text);
             e_letras.n_idclipro = Convert.ToInt32(LblidCliente.Text);
-            e_letras.n_idmon= Convert.ToInt16(CboMoneda.SelectedValue);
+            e_letras.n_idmon= Convert.ToInt32(CboMoneda.SelectedValue);
             e_letras.n_numlet = Convert.ToInt32(TxtNumLet.Text);
             e_letras.n_impcap = Convert.ToDouble(TxtImpFin.Text);
             e_letras.n_idtipint= Convert.ToInt32(CboTipInt.SelectedValue);
             e_letras.n_portas = Convert.ToDouble(TxtTasa.Text);
             //e_letras.c_glosa= Convert.ToInt32(TxtNumLet.Text);
-            e_letras.n_numdiaint= Convert.ToInt16(TxtInterval.Text);
+            e_letras.n_numdiaint= Convert.ToInt32(TxtInterval.Text);
             e_letras.n_tc = Convert.ToDouble(LblTc.Text);
             e_letras.c_girnumdoc = TxtNumDocIde.Text;
             e_letras.c_girnom = TxtGirA.Text;
             e_letras.c_girtel = TxtNumTel.Text;
             e_letras.c_girdir = TxtDirGir.Text;
             e_letras.n_imppor = Convert.ToDouble(TxtPortes.Text);
-            e_letras.n_numdiapla = Convert.ToInt16(TxtDiaPla.Text);
-            e_letras.n_idban = Convert.ToInt16(CboBanco.SelectedValue);
-            e_letras.n_idcueban = Convert.ToInt16(CboNumCue.SelectedValue);
+            e_letras.n_numdiapla = Convert.ToInt32(TxtDiaPla.Text);
+            e_letras.n_idban = Convert.ToInt32(CboBanco.SelectedValue);
+            e_letras.n_idcueban = Convert.ToInt32(CboNumCue.SelectedValue);
 
             int n_row = 0;
             int N_IDCTADOC = 0;
@@ -723,7 +723,7 @@ namespace SSF_NET_Tesoreria.Formularios
                 e_letdoc.n_idlet =0;
                 e_letdoc.n_iddoc =Convert.ToInt32(FgDocFin.GetData(n_row,10).ToString());
 
-                if (Convert.ToInt16(CboMoneda.SelectedValue) == 115)
+                if (Convert.ToInt32(CboMoneda.SelectedValue) == 115)
                 {
                     e_letdoc.n_impfin = Convert.ToDouble(FgDocFin.GetData(n_row, 8).ToString());
                 }
@@ -747,7 +747,7 @@ namespace SSF_NET_Tesoreria.Formularios
             }
             else
             {
-                //n_idret = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                //n_idret = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
                 c_NumAsi = LblNumAsi.Text;
             }
 
@@ -758,14 +758,14 @@ namespace SSF_NET_Tesoreria.Formularios
                 e_diario1.n_id = 0;
                 e_diario1.n_idemp = STU_SISTEMA.EMPRESAID;
                 e_diario1.n_ano = STU_SISTEMA.ANOTRABAJO;
-                e_diario1.n_mes = Convert.ToInt16(CboMeses.SelectedValue);
+                e_diario1.n_mes = Convert.ToInt32(CboMeses.SelectedValue);
                 e_diario1.n_lib = 35;
                 e_diario1.c_numasi = "";
                 e_diario1.n_idcue = N_IDCTALET;
                 e_diario1.n_tc = Convert.ToDouble(LblTc.Text);
 
                 n_valor = Convert.ToDouble(FgLet.GetData(n_row, 7));
-                if (Convert.ToInt16(CboMoneda.SelectedValue) == 115)
+                if (Convert.ToInt32(CboMoneda.SelectedValue) == 115)
                 {
                     e_diario1.n_impdebsol = n_valor;
                     e_diario1.n_imphabsol = 0;
@@ -783,10 +783,10 @@ namespace SSF_NET_Tesoreria.Formularios
                 e_diario1.d_orifchdoc = Convert.ToDateTime(TxtFchEmi.Text);
                 e_diario1.n_oriid = 0;
                 e_diario1.n_oriidtipdoc = 92;
-                e_diario1.n_oriidtipmon = Convert.ToInt16(CboMoneda.SelectedValue);
+                e_diario1.n_oriidtipmon = Convert.ToInt32(CboMoneda.SelectedValue);
                 e_diario1.c_orinumdoc = FgLet.GetData(n_row, 1).ToString();
                 e_diario1.c_origlo = "";
-                e_diario1.c_oridestipmon = Convert.ToString(funDatos.DataTableBuscar(dtMoneda, "n_id", "c_simbolo", Convert.ToInt16(CboMoneda.SelectedValue).ToString(), "N")).ToString();
+                e_diario1.c_oridestipmon = Convert.ToString(funDatos.DataTableBuscar(dtMoneda, "n_id", "c_simbolo", Convert.ToInt32(CboMoneda.SelectedValue).ToString(), "N")).ToString();
                 e_diario1.c_oridestipdoc = Convert.ToString(funDatos.DataTableBuscar(dtTipDocCom, "n_id", "c_abr", "92", "N")).ToString();
                 e_diario1.c_orinomcli = TxtCliente.Text;
                 e_diario1.c_orinumruc = TxtNumRuc.Text;
@@ -797,21 +797,21 @@ namespace SSF_NET_Tesoreria.Formularios
             for (n_row = 2; n_row <= FgDocFin.Rows.Count - 1; n_row++)
             {
                 N_IDCTADOC = Convert.ToInt32(funDatos.DataTableBuscar(dtTipDocComCtaCon, "n_idtipdoc", "n_idcueven", FgDocFin.GetData(n_row, 10).ToString(), "N"));
-                if (Convert.ToInt16(CboMoneda.SelectedValue) == 115) { n_valor = Convert.ToDouble(FgDocFin.GetData(n_row, 8)); }
-                if (Convert.ToInt16(CboMoneda.SelectedValue) == 151) { n_valor = Convert.ToDouble(FgDocFin.GetData(n_row, 9)); }
+                if (Convert.ToInt32(CboMoneda.SelectedValue) == 115) { n_valor = Convert.ToDouble(FgDocFin.GetData(n_row, 8)); }
+                if (Convert.ToInt32(CboMoneda.SelectedValue) == 151) { n_valor = Convert.ToDouble(FgDocFin.GetData(n_row, 9)); }
                 
                 BE_CON_DIARIO e_diario2 = new BE_CON_DIARIO();
                 e_diario2.n_id = 0;
                 e_diario2.n_idemp = STU_SISTEMA.EMPRESAID;
                 e_diario2.n_ano = STU_SISTEMA.ANOTRABAJO;
-                e_diario2.n_mes = Convert.ToInt16(CboMeses.SelectedValue);
+                e_diario2.n_mes = Convert.ToInt32(CboMeses.SelectedValue);
                 e_diario2.n_lib = 35;
                 e_diario2.c_numasi = "";
                 e_diario2.n_idcue = N_IDCTADOC;
                 e_diario2.n_tc = Convert.ToDouble(LblTc.Text);
 
                 n_valor = Convert.ToDouble(FgLet.GetData(n_row, 7));
-                if (Convert.ToInt16(CboMoneda.SelectedValue) == 115)
+                if (Convert.ToInt32(CboMoneda.SelectedValue) == 115)
                 {
                     e_diario2.n_impdebsol = 0;
                     e_diario2.n_imphabsol = n_valor;
@@ -857,14 +857,14 @@ namespace SSF_NET_Tesoreria.Formularios
                 TxtNumRuc.Focus();
                 return booEstado;
             }
-            if (Convert.ToInt16(CboMoneda.SelectedValue) == 0)
+            if (Convert.ToInt32(CboMoneda.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado la moneda !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
                 CboMoneda.Focus();
                 return booEstado;
             }
-            if (Convert.ToInt16(CboTipInt.SelectedValue) == 0)
+            if (Convert.ToInt32(CboTipInt.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el tipo de interes !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -892,7 +892,7 @@ namespace SSF_NET_Tesoreria.Formularios
                 TxtImpFin.Focus();
                 return booEstado;
             }
-            //if (Convert.ToInt16(TxtDiaPla.Text) == 0)
+            //if (Convert.ToInt32(TxtDiaPla.Text) == 0)
             //{
             //    MessageBox.Show("¡ No ha especificado los dias de plazo para la emision de la letra !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             //    booEstado = false;
@@ -961,7 +961,7 @@ namespace SSF_NET_Tesoreria.Formularios
             {
                 // VOLVEMOS A CARGAR EL DATATABLE dtItems CON LOS DATOS DEL SERVIDOR
                 objRegistros.mysConec = mysConec;
-                objRegistros.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt16(CboMeses.SelectedValue));
+                objRegistros.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt32(CboMeses.SelectedValue));
                 dtLista = objRegistros.dtLista;
                 // MOSTRAMOS LOS DATOS EN LA GRILLA
                 ListarItems();
@@ -1020,7 +1020,7 @@ namespace SSF_NET_Tesoreria.Formularios
 
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             b_Agregando = true;
             VerRegistro(intIdRegistro);
@@ -1046,7 +1046,7 @@ namespace SSF_NET_Tesoreria.Formularios
 
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -1072,7 +1072,7 @@ namespace SSF_NET_Tesoreria.Formularios
                     
                     TxtGirA.Text = dtResult.Rows[0]["c_letnomgir"].ToString();
                     TxtDirGir.Text = dtResult.Rows[0]["c_letgirdir"].ToString();
-                    //CboDocIde.SelectedValue = Convert.ToInt16(funFunciones.NulosN(dtResult.Rows[0]["n_lettipdocide"]));
+                    //CboDocIde.SelectedValue = Convert.ToInt32(funFunciones.NulosN(dtResult.Rows[0]["n_lettipdocide"]));
                     TxtNumDocIde.Text = dtResult.Rows[0]["c_letnumdoc"].ToString();
                     TxtNumTel.Text = dtResult.Rows[0]["c_lettel"].ToString(); 
                 }
@@ -1119,7 +1119,7 @@ namespace SSF_NET_Tesoreria.Formularios
 
                 TxtGirA.Text = dtresul.Rows[0]["c_letnomgir"].ToString();
                 TxtDirGir.Text = dtresul.Rows[0]["c_letgirdir"].ToString();
-                //CboDocIde.SelectedValue = Convert.ToInt16(dtresul.Rows[0]["n_lettipdocide"].ToString());
+                //CboDocIde.SelectedValue = Convert.ToInt32(dtresul.Rows[0]["n_lettipdocide"].ToString());
                 TxtNumDocIde.Text = dtresul.Rows[0]["c_letnumdoc"].ToString();
                 TxtNumTel.Text = dtresul.Rows[0]["c_lettel"].ToString(); 
             }
@@ -1286,11 +1286,11 @@ namespace SSF_NET_Tesoreria.Formularios
             DataTable dtResul = new DataTable();
             int n_row = 0;
             string c_dato = "";
-            int n_idmon = Convert.ToInt16(CboMoneda.SelectedValue);
+            int n_idmon = Convert.ToInt32(CboMoneda.SelectedValue);
             //double n_valor = 0;
             double n_tc = Convert.ToDouble(funFunciones.NulosN(LblTc.Text));
             o_Ventas.mysConec = mysConec;
-            dtResul = o_Ventas.DocumentosConSaldo(STU_SISTEMA.EMPRESAID, Convert.ToInt16(LblidCliente.Text));
+            dtResul = o_Ventas.DocumentosConSaldo(STU_SISTEMA.EMPRESAID, Convert.ToInt32(LblidCliente.Text));
 
             if (dtResul != null)
             {
@@ -1549,7 +1549,7 @@ namespace SSF_NET_Tesoreria.Formularios
             funDatos.ComboBoxCargarDataTable(CboBanco, dtBancos, "n_id", "c_des");
 
             DataTable dtresult = new DataTable();
-            dtresult = funDatos.DataTableFiltrar(dtCueBan, "n_idmon =" + Convert.ToInt16(CboMoneda.SelectedValue).ToString() + "");
+            dtresult = funDatos.DataTableFiltrar(dtCueBan, "n_idmon =" + Convert.ToInt32(CboMoneda.SelectedValue).ToString() + "");
             if (dtresult.Rows.Count != 0)
             { 
                 funDatos.ComboBoxCargarDataTable(CboNumCue, dtCueBan, "n_id", "c_numcue");
@@ -1563,7 +1563,7 @@ namespace SSF_NET_Tesoreria.Formularios
 
             
             DataTable dtresult = new DataTable();
-            dtresult = funDatos.DataTableFiltrar(dtCueBan, "n_idban =" + Convert.ToInt16(CboBanco.SelectedValue).ToString() + " AND  n_idmon = " + Convert.ToInt16(CboMoneda.SelectedValue).ToString() + "");
+            dtresult = funDatos.DataTableFiltrar(dtCueBan, "n_idban =" + Convert.ToInt32(CboBanco.SelectedValue).ToString() + " AND  n_idmon = " + Convert.ToInt32(CboMoneda.SelectedValue).ToString() + "");
             if (dtresult.Rows.Count != 0)
             {
                 funDatos.ComboBoxCargarDataTable(CboNumCue, dtresult, "n_id", "c_numcue");
@@ -1574,12 +1574,12 @@ namespace SSF_NET_Tesoreria.Formularios
         void MostrarCuentaBanco()
         {
             //CboCueBan = null;
-            if (Convert.ToInt16(CboBanco.SelectedValue) == 0) { return; }
-            if (Convert.ToInt16(CboMoneda.SelectedValue) == 0) { return; }
+            if (Convert.ToInt32(CboBanco.SelectedValue) == 0) { return; }
+            if (Convert.ToInt32(CboMoneda.SelectedValue) == 0) { return; }
 
             DataTable dtResul = new DataTable();
-            int n_idmon = Convert.ToInt16(CboMoneda.SelectedValue);
-            int n_idban = Convert.ToInt16(CboBanco.SelectedValue);
+            int n_idmon = Convert.ToInt32(CboMoneda.SelectedValue);
+            int n_idban = Convert.ToInt32(CboBanco.SelectedValue);
             dtResul = funDatos.DataTableFiltrar(dtCueBan, "(n_idmon = " + n_idmon.ToString() + " AND n_idban = " + n_idban.ToString() + ")");
             funDatos.ComboBoxCargarDataTable(CboNumCue, dtResul, "n_id", "c_numcue");
             //funDatos.ComboBoxCargarDataTable(CboMoneda, dtMon, "n_id", "c_des");
@@ -1658,7 +1658,7 @@ namespace SSF_NET_Tesoreria.Formularios
         {
             CN_tes_letras o_tes = new CN_tes_letras();
             o_tes.STU_SISTEMA = STU_SISTEMA;
-            int n_IdReg = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int n_IdReg = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             o_tes.ReportImprimirLetras(n_IdReg);
         }
 

@@ -716,7 +716,7 @@ namespace SSF_NET_Produccion.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[4].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[4].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -731,7 +731,7 @@ namespace SSF_NET_Produccion.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[4].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[4].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -819,7 +819,7 @@ namespace SSF_NET_Produccion.Formularios
             entPrograma.d_fchini = Convert.ToDateTime(TxtFchIni.Text);
             entPrograma.d_fchfin = Convert.ToDateTime(TxtFchFin.Text);
             entPrograma.d_fchemi = Convert.ToDateTime(TxtFchEmi.Text);
-            entPrograma.n_idpro = Convert.ToInt16(CboRes.SelectedValue);
+            entPrograma.n_idpro = Convert.ToInt32(CboRes.SelectedValue);
             entPrograma.c_obs = TxtObs.Text;
             entPrograma.n_numdiapro = Convert.ToInt32(TxtNumDias.Text);
             entPrograma.n_numhordia = Convert.ToInt32(TxtNumHorDia.Text);
@@ -867,7 +867,7 @@ namespace SSF_NET_Produccion.Formularios
                 return booEstado;
             }
 
-            if (Convert.ToInt16(CboRes.SelectedValue) == 0)
+            if (Convert.ToInt32(CboRes.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado en nombre del programador de la produccion !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboRes.Focus();
@@ -1012,7 +1012,7 @@ namespace SSF_NET_Produccion.Formularios
         }
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[4].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[4].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             booAgregando = true;
             VerRegistro(intIdRegistro);
@@ -1037,7 +1037,7 @@ namespace SSF_NET_Produccion.Formularios
             if (DgLista.RowCount == 0) { return; }
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns[4].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns[4].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -1399,7 +1399,7 @@ namespace SSF_NET_Produccion.Formularios
 
             int n_idinspri = 0;                                                                     // PARA ALMACENAR EL INSUMO PRINCIPAL
             double n_caninspri = 0;                                                                 // PARA ALMACENAR LA CANTIDAD DEL INSUMO PRINCIPAL 
-            int n_numdias = Convert.ToInt16(TxtNumDias.Text);
+            int n_numdias = Convert.ToInt32(TxtNumDias.Text);
 
             // LLENAMIOS LA LISTA lstProgramaedetpro CON LOS PRODUCTOS A PRODUCIR
             #region CARGAR_PRODUCTOS
@@ -1744,7 +1744,7 @@ namespace SSF_NET_Produccion.Formularios
                 }
                 c_dato = d_fecha.ToString("dd/MM/yyyy");
 
-                n_numdiapro =  Convert.ToInt16(TxtNumDias.Text);
+                n_numdiapro =  Convert.ToInt32(TxtNumDias.Text);
 
                 CellRange rg;
                 for (n_col = 10; n_col <= FgCrono.Cols.Count - 1; n_col++)

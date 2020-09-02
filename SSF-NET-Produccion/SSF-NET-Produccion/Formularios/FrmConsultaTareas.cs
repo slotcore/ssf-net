@@ -226,7 +226,7 @@ namespace SSF_NET_Produccion.Formularios
 
             for (n_row = 2; n_row <= FgDatos.Rows.Count-1; n_row++)
             {
-                n_numdat = Convert.ToInt16(FgDatos.GetData(n_row, 9));
+                n_numdat = Convert.ToInt32(FgDatos.GetData(n_row, 9));
                 
                 if (n_numdat == 0)
                 {

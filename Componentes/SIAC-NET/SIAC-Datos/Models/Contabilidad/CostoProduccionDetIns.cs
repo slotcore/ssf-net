@@ -209,9 +209,9 @@ namespace SIAC_DATOS.Models.Contabilidad
 
         #region metodos publicos
 
-        public static List<CostoProduccionDetIns> FetchList(int n_idcostoproddet)
+        public static ObservableListSource<CostoProduccionDetIns> FetchList(int n_idcostoproddet)
         {
-            List<CostoProduccionDetIns> m_listentidad = new List<CostoProduccionDetIns>();
+            ObservableListSource<CostoProduccionDetIns> m_listentidad = new ObservableListSource<CostoProduccionDetIns>();
 
             using (MySqlConnection connection
                 = new MySqlConnection(
@@ -381,7 +381,7 @@ namespace SIAC_DATOS.Models.Contabilidad
 
         #region metodos privados
 
-        private static CostoProduccionDetIns SetObject(MySqlDataReader reader)
+        public static CostoProduccionDetIns SetObject(MySqlDataReader reader)
         {
             return new CostoProduccionDetIns
             {

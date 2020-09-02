@@ -129,21 +129,21 @@ namespace SIAC_Negocio.Logistica
                 dtDoc = miFun.dtListaDoc;
                 // CARGAMOS LA CABECERA
                 e_Compras.n_id = Convert.ToInt32(dtCab.Rows[0]["n_id"]);
-                e_Compras.n_idemp = Convert.ToInt16(dtCab.Rows[0]["n_idemp"].ToString());
-                e_Compras.n_anotra = Convert.ToInt16(dtCab.Rows[0]["n_anotra"].ToString());
-                e_Compras.n_idmes = Convert.ToInt16(dtCab.Rows[0]["n_idmes"].ToString());
-                e_Compras.n_idlib = Convert.ToInt16(dtCab.Rows[0]["n_idlib"].ToString());
+                e_Compras.n_idemp = Convert.ToInt32(dtCab.Rows[0]["n_idemp"].ToString());
+                e_Compras.n_anotra = Convert.ToInt32(dtCab.Rows[0]["n_anotra"].ToString());
+                e_Compras.n_idmes = Convert.ToInt32(dtCab.Rows[0]["n_idmes"].ToString());
+                e_Compras.n_idlib = Convert.ToInt32(dtCab.Rows[0]["n_idlib"].ToString());
                 e_Compras.c_numreg = dtCab.Rows[0]["c_numreg"].ToString();
-                e_Compras.n_idtippro = Convert.ToInt16(dtCab.Rows[0]["n_idtippro"].ToString());
-                e_Compras.n_idpro = Convert.ToInt16(dtCab.Rows[0]["n_idpro"].ToString());
-                e_Compras.n_idtipdoc = Convert.ToInt16(dtCab.Rows[0]["n_idtipdoc"].ToString());
+                e_Compras.n_idtippro = Convert.ToInt32(dtCab.Rows[0]["n_idtippro"].ToString());
+                e_Compras.n_idpro = Convert.ToInt32(dtCab.Rows[0]["n_idpro"].ToString());
+                e_Compras.n_idtipdoc = Convert.ToInt32(dtCab.Rows[0]["n_idtipdoc"].ToString());
                 e_Compras.c_numser = dtCab.Rows[0]["c_numser"].ToString();
                 e_Compras.c_numdoc = dtCab.Rows[0]["c_numdoc"].ToString();
                 e_Compras.d_fchdoc = Convert.ToDateTime(dtCab.Rows[0]["d_fchdoc"].ToString());
                 e_Compras.d_fchreg = Convert.ToDateTime(dtCab.Rows[0]["d_fchreg"].ToString());
-                e_Compras.n_idconpag = Convert.ToInt16(dtCab.Rows[0]["n_idconpag"].ToString());
+                e_Compras.n_idconpag = Convert.ToInt32(dtCab.Rows[0]["n_idconpag"].ToString());
                 e_Compras.d_fchven = Convert.ToDateTime(dtCab.Rows[0]["d_fchven"].ToString());
-                e_Compras.n_idmon = Convert.ToInt16(dtCab.Rows[0]["n_idmon"].ToString());
+                e_Compras.n_idmon = Convert.ToInt32(dtCab.Rows[0]["n_idmon"].ToString());
                 e_Compras.n_impbru = Convert.ToDouble(dtCab.Rows[0]["n_impbru"].ToString());
                 e_Compras.n_impbru2 = Convert.ToDouble(dtCab.Rows[0]["n_impbru2"].ToString());
                 e_Compras.n_impbru3 = Convert.ToDouble(dtCab.Rows[0]["n_impbru3"].ToString());
@@ -158,22 +158,22 @@ namespace SIAC_Negocio.Logistica
                 e_Compras.n_impsal = Convert.ToDouble(dtCab.Rows[0]["n_impsal"].ToString());
                 e_Compras.n_tasaigv = Convert.ToDouble(dtCab.Rows[0]["n_tasaigv"].ToString());
                 e_Compras.c_glosa = dtCab.Rows[0]["c_glosa"].ToString();
-                e_Compras.n_estado = Convert.ToInt16(dtCab.Rows[0]["n_estado"].ToString());
-                e_Compras.n_idtipdocref = Convert.ToInt16(dtCab.Rows[0]["n_idtipdocref"].ToString());
-                e_Compras.n_iddocref = Convert.ToInt16(dtCab.Rows[0]["n_iddocref"].ToString());
-                e_Compras.n_idtipope = Convert.ToInt16(dtCab.Rows[0]["n_idtipope"].ToString());
-                e_Compras.n_idtipcom = Convert.ToInt16(dtCab.Rows[0]["n_idtipcom"].ToString());
+                e_Compras.n_estado = Convert.ToInt32(dtCab.Rows[0]["n_estado"].ToString());
+                e_Compras.n_idtipdocref = Convert.ToInt32(dtCab.Rows[0]["n_idtipdocref"].ToString());
+                e_Compras.n_iddocref = Convert.ToInt32(dtCab.Rows[0]["n_iddocref"].ToString());
+                e_Compras.n_idtipope = Convert.ToInt32(dtCab.Rows[0]["n_idtipope"].ToString());
+                e_Compras.n_idtipcom = Convert.ToInt32(dtCab.Rows[0]["n_idtipcom"].ToString());
 
-                e_Compras.n_idtipdocmod = Convert.ToInt16(xFun.NulosN(dtCab.Rows[0]["n_idtipdocmod"]));
-                e_Compras.n_iddocmod = Convert.ToInt16(xFun.NulosN(dtCab.Rows[0]["n_iddocmod"]));
-                e_Compras.n_idmotnc = Convert.ToInt16(xFun.NulosN(dtCab.Rows[0]["n_idmotnc"]));
-                e_Compras.n_idmotnd = Convert.ToInt16(xFun.NulosN(dtCab.Rows[0]["n_idmotnd"]));
+                e_Compras.n_idtipdocmod = Convert.ToInt32(xFun.NulosN(dtCab.Rows[0]["n_idtipdocmod"]));
+                e_Compras.n_iddocmod = Convert.ToInt32(xFun.NulosN(dtCab.Rows[0]["n_iddocmod"]));
+                e_Compras.n_idmotnc = Convert.ToInt32(xFun.NulosN(dtCab.Rows[0]["n_idmotnc"]));
+                e_Compras.n_idmotnd = Convert.ToInt32(xFun.NulosN(dtCab.Rows[0]["n_idmotnd"]));
 
                 e_Compras.n_tasa4ta = Convert.ToDouble(xFun.NulosN(dtCab.Rows[0]["n_tasa4ta"]));
                 e_Compras.n_imp4ta = Convert.ToDouble(xFun.NulosN(dtCab.Rows[0]["n_imp4ta"]));
 
-                e_Compras.n_tipcom = Convert.ToInt16(xFun.NulosN(dtCab.Rows[0]["n_tipcom"]));
-                e_Compras.n_idordpro = Convert.ToInt16(xFun.NulosN(dtCab.Rows[0]["n_idordpro"]));
+                e_Compras.n_tipcom = Convert.ToInt32(xFun.NulosN(dtCab.Rows[0]["n_tipcom"]));
+                e_Compras.n_idordpro = Convert.ToInt32(xFun.NulosN(dtCab.Rows[0]["n_idordpro"]));
 
                 // CARGAMOS EL DETALLE
                 e_ComprasDet.Clear();
@@ -181,16 +181,16 @@ namespace SIAC_Negocio.Logistica
                 {
                     BE_LOG_COMPRASDET Detalle = new BE_LOG_COMPRASDET();
 
-                    Detalle.n_idcom = Convert.ToInt16(dr["n_idcom"].ToString());
-                    Detalle.n_iditem = Convert.ToInt16(dr["n_iditem"].ToString());
-                    Detalle.n_idunimed = Convert.ToInt16(dr["n_idunimed"].ToString());
+                    Detalle.n_idcom = Convert.ToInt32(dr["n_idcom"].ToString());
+                    Detalle.n_iditem = Convert.ToInt32(dr["n_iditem"].ToString());
+                    Detalle.n_idunimed = Convert.ToInt32(dr["n_idunimed"].ToString());
                     Detalle.n_canpro = Convert.ToDouble(dr["n_canpro"].ToString());
                     Detalle.n_preunibru = Convert.ToDouble(dr["n_preunibru"].ToString());
                     Detalle.n_idpordsc = Convert.ToDouble(dr["n_idpordsc"].ToString());
                     Detalle.n_impdsc = Convert.ToDouble(dr["n_impdsc"].ToString());
                     Detalle.n_preuni = Convert.ToDouble(dr["n_preuni"].ToString());
                     Detalle.n_imptot = Convert.ToDouble(dr["n_imptot"].ToString());
-                    Detalle.n_idtipafeigv = Convert.ToInt16(xFun.NulosN(dr["n_idtipafeigv"]));
+                    Detalle.n_idtipafeigv = Convert.ToInt32(xFun.NulosN(dr["n_idtipafeigv"]));
 
                     e_ComprasDet.Add(Detalle);
                 }
@@ -201,9 +201,9 @@ namespace SIAC_Negocio.Logistica
                 {
                     BE_LOG_COMPRASDOC Detalle = new BE_LOG_COMPRASDOC();
 
-                    Detalle.n_idcom = Convert.ToInt16(dr["n_idcom"].ToString());
-                    Detalle.n_idtipdoc = Convert.ToInt16(dr["n_idtipdoc"].ToString());
-                    Detalle.n_iddoc = Convert.ToInt16(dr["n_iddoc"].ToString());
+                    Detalle.n_idcom = Convert.ToInt32(dr["n_idcom"].ToString());
+                    Detalle.n_idtipdoc = Convert.ToInt32(dr["n_idtipdoc"].ToString());
+                    Detalle.n_iddoc = Convert.ToInt32(dr["n_iddoc"].ToString());
 
                     e_ComprasDoc.Add(Detalle);
                 }

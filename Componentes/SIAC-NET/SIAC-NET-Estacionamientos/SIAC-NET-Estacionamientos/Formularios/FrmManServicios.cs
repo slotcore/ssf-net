@@ -172,7 +172,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
                 dtres = funDatos.DataTableFiltrar(dtCajero, "n_idloc = " + C_IDLOCAL + "");
                 if (dtres.Rows.Count != 0)
                 {
-                    int n_idpla = Convert.ToInt16(funDatos.DataTableBuscar(dtres, "n_idusu", "n_idloc", STU_SISTEMA.USUARIOID.ToString(), "N"));
+                    int n_idpla = Convert.ToInt32(funDatos.DataTableBuscar(dtres, "n_idusu", "n_idloc", STU_SISTEMA.USUARIOID.ToString(), "N"));
 
                     dtLista = funDatos.DataTableFiltrar(dtLista, "n_idpla = " + n_idpla.ToString() + "");
                 }
@@ -352,7 +352,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -362,7 +362,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -438,23 +438,23 @@ namespace SIAC_NET_Estacionamientos.Formularios
             }
             else
             {
-                n_id = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+                n_id = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             }
             
             BE_Registro.n_idemp = STU_SISTEMA.EMPRESAID;
             BE_Registro.n_id = n_id;
-            BE_Registro.n_idpla = Convert.ToInt16(CboPlay.SelectedValue);
+            BE_Registro.n_idpla = Convert.ToInt32(CboPlay.SelectedValue);
             BE_Registro.c_des = TxtDesc.Text;
             BE_Registro.c_cod = TxtCodPro.Text;
-            //BE_Registro.n_idunimed = Convert.ToInt16(CboUniMed.SelectedValue);
+            //BE_Registro.n_idunimed = Convert.ToInt32(CboUniMed.SelectedValue);
             BE_Registro.n_idunimed = 0;
             BE_Registro.n_impbru = Convert.ToDouble(funFunciones.NulosN(TxtPrecio.Text));
             BE_Registro.n_imptot = Convert.ToDouble(funFunciones.NulosN(TxtPrecioIGV.Text));
-            BE_Registro.n_idmon = Convert.ToInt16(CboMoneda.SelectedValue);
-            BE_Registro.n_idfan = Convert.ToInt16(CboFam.SelectedValue);
-            BE_Registro.n_idcla = Convert.ToInt16(CboCla.SelectedValue);
-            BE_Registro.n_idsubcla = Convert.ToInt16(CboSubCla.SelectedValue);
-            BE_Registro.n_idtipexi = Convert.ToInt16(CboTipExi.SelectedValue);
+            BE_Registro.n_idmon = Convert.ToInt32(CboMoneda.SelectedValue);
+            BE_Registro.n_idfan = Convert.ToInt32(CboFam.SelectedValue);
+            BE_Registro.n_idcla = Convert.ToInt32(CboCla.SelectedValue);
+            BE_Registro.n_idsubcla = Convert.ToInt32(CboSubCla.SelectedValue);
+            BE_Registro.n_idtipexi = Convert.ToInt32(CboTipExi.SelectedValue);
 
             if (OptSiPagSer.Checked == true) { BE_Registro.n_pagser = 2; }
             if (OptNoPagSer.Checked == true) { BE_Registro.n_pagser = 1; }
@@ -486,7 +486,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
             }
             else
             {
-                BE_Registro.n_numhorser = Convert.ToInt16(TxtNumHor.Text);
+                BE_Registro.n_numhorser = Convert.ToInt32(TxtNumHor.Text);
             }
 
             if (OptAplSiMedPag.Checked == true)
@@ -539,15 +539,15 @@ namespace SIAC_NET_Estacionamientos.Formularios
                 CN_est_conecta o_conec = new CN_est_conecta(STU_SISTEMA);
                 objItems = new CN_alm_inventario();    
                 objItems.mysConec = o_conec.mysConec;
-                dtFiltrar = objItems.ObtenerCodigo(STU_SISTEMA.EMPRESAID, Convert.ToInt16(CboTipExi.SelectedValue), Convert.ToInt16(CboFam.SelectedValue), Convert.ToInt16(CboCla.SelectedValue), Convert.ToInt16(CboSubCla.SelectedValue));
+                dtFiltrar = objItems.ObtenerCodigo(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboTipExi.SelectedValue), Convert.ToInt32(CboFam.SelectedValue), Convert.ToInt32(CboCla.SelectedValue), Convert.ToInt32(CboSubCla.SelectedValue));
                 objItems = null;
                 o_conec = null;
 
                 if (dtFiltrar.Rows.Count != 0)
                 {
-                    if (Convert.ToInt16(dtFiltrar.Rows[0]["c_numite"]) != 0)
+                    if (Convert.ToInt32(dtFiltrar.Rows[0]["c_numite"]) != 0)
                     {
-                        c_numero = "000" + (Convert.ToInt16(dtFiltrar.Rows[0]["c_numite"]) + 1).ToString();
+                        c_numero = "000" + (Convert.ToInt32(dtFiltrar.Rows[0]["c_numite"]) + 1).ToString();
                         c_numero = c_numero.Substring(c_numero.Length - 3, 3);
                     }
                     else
@@ -571,7 +571,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
 
             TxtCodPro.Text = GeneraCodigoProducto();
 
-            if (Convert.ToInt16(CboTipExi.SelectedValue) == 0)
+            if (Convert.ToInt32(CboTipExi.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el tipo de existencia !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -579,7 +579,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
                 return booEstado;
             }
 
-            if (Convert.ToInt16(CboFam.SelectedValue) == 0)
+            if (Convert.ToInt32(CboFam.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado la familia del servicio !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -587,35 +587,35 @@ namespace SIAC_NET_Estacionamientos.Formularios
                 return booEstado;
             }
 
-            if (Convert.ToInt16(CboCla.SelectedValue) == 0)
+            if (Convert.ToInt32(CboCla.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado la clase del servicio !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
                 CboCla.Focus();
                 return booEstado;
             }
-            if (Convert.ToInt16(CboSubCla.SelectedValue) == 0)
+            if (Convert.ToInt32(CboSubCla.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado la sub clase del servicio !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
                 CboSubCla.Focus();
                 return booEstado;
             }
-            //if (Convert.ToInt16(CboUniMed.SelectedValue) == 0)
+            //if (Convert.ToInt32(CboUniMed.SelectedValue) == 0)
             //{
             //    MessageBox.Show("¡ No ha especificado la unidad de medida del servicio !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             //    booEstado = false;
             //    CboUniMed.Focus();
             //    return booEstado;
             //} 
-            if (Convert.ToInt16(CboMoneda.SelectedValue) == 0)
+            if (Convert.ToInt32(CboMoneda.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado la moneda del servicio !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
                 CboMoneda.Focus();
                 return booEstado;
             }
-            if (Convert.ToInt16(CboPlay.SelectedValue) == 0)
+            if (Convert.ToInt32(CboPlay.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado la playa de venta del servicio !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -729,7 +729,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
         }
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             booAgregando = true;
             VerRegistro(intIdRegistro);
@@ -753,7 +753,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
 
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {

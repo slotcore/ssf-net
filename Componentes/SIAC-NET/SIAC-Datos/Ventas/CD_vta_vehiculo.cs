@@ -52,8 +52,8 @@ namespace SIAC_DATOS.Ventas
 
             if (DtResultado.Rows.Count != 0)
             {
-                Ent_Vehiculo.n_id = Convert.ToInt16(DtResultado.Rows[0]["n_id"].ToString());
-                Ent_Vehiculo.n_idemp = Convert.ToInt16(DtResultado.Rows[0]["n_idemp"].ToString());
+                Ent_Vehiculo.n_id = Convert.ToInt32(DtResultado.Rows[0]["n_id"].ToString());
+                Ent_Vehiculo.n_idemp = Convert.ToInt32(DtResultado.Rows[0]["n_idemp"].ToString());
                 Ent_Vehiculo.c_marca = DtResultado.Rows[0]["c_marca"].ToString();
                 Ent_Vehiculo.c_numpla = DtResultado.Rows[0]["c_numpla"].ToString();
             }

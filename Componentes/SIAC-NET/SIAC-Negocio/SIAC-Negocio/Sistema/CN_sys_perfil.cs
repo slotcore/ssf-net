@@ -43,7 +43,7 @@ namespace SIAC_Negocio.Sistema
                 {
                     if (o_Menu.Items[n_row].Text == dtLista.Rows[n_fil]["c_des"].ToString())
                     {
-                        if (Convert.ToInt16(funFunciones.NulosN(dtLista.Rows[n_fil]["n_visible"])) == 1)
+                        if (Convert.ToInt32(funFunciones.NulosN(dtLista.Rows[n_fil]["n_visible"])) == 1)
                         {
                             o_Menu.Items[n_row].Enabled = true;
                         }

@@ -52,9 +52,9 @@ namespace SIAC_DATOS.Ventas
 
             if (DtResultado.Rows.Count != 0)
             {
-                Ent_EmpTra.n_id = Convert.ToInt16(DtResultado.Rows[0]["n_id"].ToString());
-                Ent_EmpTra.n_idpro = Convert.ToInt16(DtResultado.Rows[0]["n_idpro"].ToString());
-                Ent_EmpTra.n_idemp = Convert.ToInt16(DtResultado.Rows[0]["n_idemp"].ToString());
+                Ent_EmpTra.n_id = Convert.ToInt32(DtResultado.Rows[0]["n_id"].ToString());
+                Ent_EmpTra.n_idpro = Convert.ToInt32(DtResultado.Rows[0]["n_idpro"].ToString());
+                Ent_EmpTra.n_idemp = Convert.ToInt32(DtResultado.Rows[0]["n_idemp"].ToString());
             }
             return Ent_EmpTra;
         }

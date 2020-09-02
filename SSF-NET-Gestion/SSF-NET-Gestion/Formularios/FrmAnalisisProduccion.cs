@@ -100,7 +100,7 @@ namespace SSF_NET_Gestion.Formularios
             //SELECCIONAMOS EL AÑO DE TRABAJO ACTUAL
             for (n_row = 0; n_row <= FgMes.Rows.Count - 1; n_row++)
             {
-                if (Convert.ToInt16(FgMes.GetData(n_row, 3).ToString()) <= Convert.ToInt16(STU_SISTEMA.MESTRABAJO))
+                if (Convert.ToInt32(FgMes.GetData(n_row, 3).ToString()) <= Convert.ToInt32(STU_SISTEMA.MESTRABAJO))
                 {
                     FgMes.SetData(n_row, 2, true);
                 }
@@ -622,7 +622,7 @@ namespace SSF_NET_Gestion.Formularios
 
         private void CmdAddIte_Click(object sender, EventArgs e)
         {
-            //if (Convert.ToInt16(CboTipPro.SelectedValue) == 0)
+            //if (Convert.ToInt32(CboTipPro.SelectedValue) == 0)
             //{
             //    MessageBox.Show("¡ No ha especificado el tipo de existencia !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             //    c1DockingTab1.SelectedIndex = 0;

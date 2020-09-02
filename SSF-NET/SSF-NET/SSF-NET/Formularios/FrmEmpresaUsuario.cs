@@ -165,7 +165,7 @@ namespace SSF_NET.Formularios
             TxtFoderImp.Text = e_Empresa.c_folderimp;
 
             //e_Empresa.c_nomemp = TxtEmp.Text;
-            //e_Empresa.n_idtipdoc = Convert.ToInt16(CboTipDoc.SelectedValue);
+            //e_Empresa.n_idtipdoc = Convert.ToInt32(CboTipDoc.SelectedValue);
             //e_Empresa.c_numdoc = TxtNumDoc.Text;
             //e_Empresa.c_nomcorto = txtNomCor.Text;
 
@@ -273,7 +273,7 @@ namespace SSF_NET.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -283,7 +283,7 @@ namespace SSF_NET.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int n_IdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int n_IdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -348,11 +348,11 @@ namespace SSF_NET.Formularios
             }
             else
             {
-                e_Empresa.n_id = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+                e_Empresa.n_id = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             }
             
             e_Empresa.c_nomemp = TxtEmp.Text;
-            e_Empresa.n_idtipdoc = Convert.ToInt16(CboTipDoc.SelectedValue);
+            e_Empresa.n_idtipdoc = Convert.ToInt32(CboTipDoc.SelectedValue);
             e_Empresa.c_numdoc = TxtNumDoc.Text;
             e_Empresa.c_nomcorto = txtNomCor.Text;
 
@@ -503,7 +503,7 @@ namespace SSF_NET.Formularios
 
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -514,7 +514,7 @@ namespace SSF_NET.Formularios
 
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             VerRegistro(intIdRegistro);
         }

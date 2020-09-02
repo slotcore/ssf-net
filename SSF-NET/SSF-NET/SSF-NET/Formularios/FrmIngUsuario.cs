@@ -82,7 +82,7 @@ namespace SSF_NET.Formularios
                 CN_sys_usuarios objUsuario = new CN_sys_usuarios();
                 objUsuario.mysConec = Program.mysConeccion;
 
-                dtResult = objUsuario.TraerUsuario(TxtUsuario.Text, TxtPass.Text, Convert.ToInt16(Program.STU_SISTEMA.EMPRESAID),  Convert.ToInt16(Program.STU_SISTEMA.SYS_UNIUSU));
+                dtResult = objUsuario.TraerUsuario(TxtUsuario.Text, TxtPass.Text, Convert.ToInt32(Program.STU_SISTEMA.EMPRESAID),  Convert.ToInt32(Program.STU_SISTEMA.SYS_UNIUSU));
                 intOportunidades = intOportunidades + 1;
 
                 if (dtResult.Rows.Count == 0)
@@ -92,8 +92,8 @@ namespace SSF_NET.Formularios
                 else
                 {
                     Program.STU_SISTEMA.USUARIOALIAS = TxtUsuario.Text;
-                    Program.STU_SISTEMA.USUARIOID = Convert.ToInt16(dtResult.Rows[0]["n_id"].ToString());
-                    Program.STU_SISTEMA.USUARIOPERFIL = Convert.ToInt16(dtResult.Rows[0]["n_idperfil"].ToString());
+                    Program.STU_SISTEMA.USUARIOID = Convert.ToInt32(dtResult.Rows[0]["n_id"].ToString());
+                    Program.STU_SISTEMA.USUARIOPERFIL = Convert.ToInt32(dtResult.Rows[0]["n_idperfil"].ToString());
 
                     this.Hide();
                     this.Close();
@@ -107,8 +107,8 @@ namespace SSF_NET.Formularios
                     //this.Close();
                     //FrmMenu10 xFrmMenu = new FrmMenu10();
                     //Program.STU_SISTEMA.USUARIOALIAS = TxtUsuario.Text;
-                    //Program.STU_SISTEMA.USUARIOID = Convert.ToInt16(dtResult.Rows[0]["n_id"].ToString());
-                    //Program.STU_SISTEMA.USUARIOPERFIL = Convert.ToInt16(dtResult.Rows[0]["n_idperfil"].ToString());
+                    //Program.STU_SISTEMA.USUARIOID = Convert.ToInt32(dtResult.Rows[0]["n_id"].ToString());
+                    //Program.STU_SISTEMA.USUARIOPERFIL = Convert.ToInt32(dtResult.Rows[0]["n_idperfil"].ToString());
 
                     //objTC.mysConec = mysConeccion;
                     //objTC.TraerTC(DateTime.Now.ToString("dd/MM/yyyy"), 151);

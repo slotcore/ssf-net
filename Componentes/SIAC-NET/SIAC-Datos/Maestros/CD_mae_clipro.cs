@@ -111,10 +111,10 @@ namespace SIAC_DATOS.Maestros
 
             if (DtResultado.Rows.Count != 0)
             {
-                Ent_CliPro.n_id = Convert.ToInt16(DtResultado.Rows[0]["n_id"].ToString());
-                Ent_CliPro.n_idcatemp = Convert.ToInt16(DtResultado.Rows[0]["n_idcatemp"].ToString());
-                Ent_CliPro.n_idtipcon = Convert.ToInt16(DtResultado.Rows[0]["n_idtipcon"].ToString());
-                Ent_CliPro.n_idtipdoc = Convert.ToInt16(DtResultado.Rows[0]["n_idtipdoc"].ToString());
+                Ent_CliPro.n_id = Convert.ToInt32(DtResultado.Rows[0]["n_id"].ToString());
+                Ent_CliPro.n_idcatemp = Convert.ToInt32(DtResultado.Rows[0]["n_idcatemp"].ToString());
+                Ent_CliPro.n_idtipcon = Convert.ToInt32(DtResultado.Rows[0]["n_idtipcon"].ToString());
+                Ent_CliPro.n_idtipdoc = Convert.ToInt32(DtResultado.Rows[0]["n_idtipdoc"].ToString());
                 Ent_CliPro.c_numdoc = DtResultado.Rows[0]["c_numdoc"].ToString();
                 Ent_CliPro.c_nombre = DtResultado.Rows[0]["c_nombre"].ToString();
                 Ent_CliPro.c_nomcli1 = DtResultado.Rows[0]["c_nomcli1"].ToString();
@@ -133,44 +133,44 @@ namespace SIAC_DATOS.Maestros
                     Ent_CliPro.d_fchini = Convert.ToDateTime(DtResultado.Rows[0]["d_fchini"].ToString());
                 }
 
-                Ent_CliPro.n_tipreg = Convert.ToInt16(DtResultado.Rows[0]["n_tipreg"].ToString());
+                Ent_CliPro.n_tipreg = Convert.ToInt32(DtResultado.Rows[0]["n_tipreg"].ToString());
                 Ent_CliPro.c_letnumdoc = DtResultado.Rows[0]["c_letnumdoc"].ToString();
                 Ent_CliPro.c_letgirdir = DtResultado.Rows[0]["c_letgirdir"].ToString();
                 Ent_CliPro.c_letnomgir = DtResultado.Rows[0]["c_letnomgir"].ToString();
                 
                 if (DtResultado.Rows[0]["n_idpro"].ToString() != "")
                 {
-                    Ent_CliPro.n_idpro = Convert.ToInt16(DtResultado.Rows[0]["n_idpro"].ToString());
+                    Ent_CliPro.n_idpro = Convert.ToInt32(DtResultado.Rows[0]["n_idpro"].ToString());
                 }
 
-                Ent_CliPro.n_estado = Convert.ToInt16(DtResultado.Rows[0]["n_estado"].ToString());
+                Ent_CliPro.n_estado = Convert.ToInt32(DtResultado.Rows[0]["n_estado"].ToString());
 
                 if (DtResultado.Rows[0]["n_iddep"].ToString() != "")
                 {
-                    Ent_CliPro.n_iddep = Convert.ToInt16(DtResultado.Rows[0]["n_iddep"].ToString());
+                    Ent_CliPro.n_iddep = Convert.ToInt32(DtResultado.Rows[0]["n_iddep"].ToString());
                 }
 
 
                 if (DtResultado.Rows[0]["n_iddis"].ToString() != "")
                 {
-                    Ent_CliPro.n_iddis = Convert.ToInt16(DtResultado.Rows[0]["n_iddis"].ToString());
+                    Ent_CliPro.n_iddis = Convert.ToInt32(DtResultado.Rows[0]["n_iddis"].ToString());
                 }
 
-                Ent_CliPro.n_ageret = Convert.ToInt16(fun.NulosN(DtResultado.Rows[0]["n_ageret"]));
+                Ent_CliPro.n_ageret = Convert.ToInt32(fun.NulosN(DtResultado.Rows[0]["n_ageret"]));
                 Ent_CliPro.c_codcen = DtResultado.Rows[0]["c_codcen"].ToString();
 
                 if (DtResultado.Rows[0]["n_idven"].ToString() != "")
                 {
-                    Ent_CliPro.n_idven = Convert.ToInt16(DtResultado.Rows[0]["n_idven"].ToString());
+                    Ent_CliPro.n_idven = Convert.ToInt32(DtResultado.Rows[0]["n_idven"].ToString());
                 }
                 
                 if (DtResultado.Rows[0]["n_idcondpag"].ToString() != "")
                 {
-                    Ent_CliPro.n_idcondpag = Convert.ToInt16(DtResultado.Rows[0]["n_idcondpag"].ToString());
+                    Ent_CliPro.n_idcondpag = Convert.ToInt32(DtResultado.Rows[0]["n_idcondpag"].ToString());
                 }
 
                 Ent_CliPro.c_lettel = DtResultado.Rows[0]["c_lettel"].ToString();
-                Ent_CliPro.n_idemp = Convert.ToInt16(DtResultado.Rows[0]["n_idemp"].ToString());
+                Ent_CliPro.n_idemp = Convert.ToInt32(DtResultado.Rows[0]["n_idemp"].ToString());
             }
             return Ent_CliPro;
         }

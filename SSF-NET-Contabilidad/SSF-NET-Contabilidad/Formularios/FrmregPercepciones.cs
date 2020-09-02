@@ -418,7 +418,7 @@ namespace SSF_NET_Contabilidad.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -428,7 +428,7 @@ namespace SSF_NET_Contabilidad.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int n_IdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int n_IdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -494,24 +494,24 @@ namespace SSF_NET_Contabilidad.Formularios
             }
             else
             {
-                e_Per.n_id = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                e_Per.n_id = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             }
 
             e_Per.n_idemp = STU_SISTEMA.EMPRESAID;
             e_Per.n_ano = STU_SISTEMA.ANOTRABAJO;
-            e_Per.n_mes = Convert.ToInt16(CboMeses.SelectedValue);
+            e_Per.n_mes = Convert.ToInt32(CboMeses.SelectedValue);
 
             e_Per.n_idlib = 16;
             e_Per.n_idtipdoc = 86;
-            e_Per.n_idper = Convert.ToInt16(CboTipRet.SelectedValue);
+            e_Per.n_idper = Convert.ToInt32(CboTipRet.SelectedValue);
             e_Per.n_tas = Convert.ToDouble(TxtTasRet.Text);
             e_Per.n_tip = 1;
-            e_Per.n_idcli = Convert.ToInt16(LblIdPro.Text);
+            e_Per.n_idcli = Convert.ToInt32(LblIdPro.Text);
             e_Per.c_numser = TxtNumSer.Text;
             e_Per.c_numdoc = TxtNumDoc.Text;
             e_Per.d_fchemi = Convert.ToDateTime(TxtFchEmi.Text);
             e_Per.d_fchreg = Convert.ToDateTime(TxtFchEmi.Text);
-            e_Per.n_idmon = Convert.ToInt16(CboMon.SelectedValue);
+            e_Per.n_idmon = Convert.ToInt32(CboMon.SelectedValue);
             e_Per.n_impper = Convert.ToDouble(TxtTot2.Text);
             e_Per.c_glo = TxtGlo.Text;
             e_Per.n_tc = Convert.ToDouble(TxtTc.Text);
@@ -572,14 +572,14 @@ namespace SSF_NET_Contabilidad.Formularios
                 return booEstado;
             }
 
-            if (Convert.ToInt16(CboMon.SelectedValue) == 0)
+            if (Convert.ToInt32(CboMon.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado la moneda de la retencion !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
                 CboMon.Focus();
                 return booEstado;
             }
-            if (Convert.ToInt16(CboTipRet.SelectedValue) == 0)
+            if (Convert.ToInt32(CboTipRet.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el tipo de retencion !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -691,7 +691,7 @@ namespace SSF_NET_Contabilidad.Formularios
 
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -701,7 +701,7 @@ namespace SSF_NET_Contabilidad.Formularios
         }
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             VerRegistro(intIdRegistro);
         }
@@ -879,9 +879,9 @@ namespace SSF_NET_Contabilidad.Formularios
         private void CboTipRet_SelectedValueChanged(object sender, EventArgs e)
         {
             if (booAgregando == true) { return; }
-            if (Convert.ToInt16(CboTipRet.SelectedValue) != 0)
+            if (Convert.ToInt32(CboTipRet.SelectedValue) != 0)
             {
-                TxtTasRet.Text = Convert.ToDouble(funDatos.DataTableBuscar(dtPer, "n_id", "n_tasa", Convert.ToInt16(CboTipRet.SelectedValue).ToString(), "N")).ToString("0.00");
+                TxtTasRet.Text = Convert.ToDouble(funDatos.DataTableBuscar(dtPer, "n_id", "n_tasa", Convert.ToInt32(CboTipRet.SelectedValue).ToString(), "N")).ToString("0.00");
             }
             else
             {
@@ -896,13 +896,13 @@ namespace SSF_NET_Contabilidad.Formularios
                 CmdBusCli.Focus();
                 return;
             }
-            if (Convert.ToInt16(CboTipRet.SelectedValue) == 0)
+            if (Convert.ToInt32(CboTipRet.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el tipo de retencion que se aplicara !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboTipRet.Focus();
                 return;
             }
-            if (Convert.ToInt16(CboMon.SelectedValue) == 0)
+            if (Convert.ToInt32(CboMon.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado la moneda !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboMon.Focus();
@@ -1132,7 +1132,7 @@ namespace SSF_NET_Contabilidad.Formularios
             SSF_NET_Contabilidad.CLS_Contabilidad objConta = new SSF_NET_Contabilidad.CLS_Contabilidad();
             objConta.mysConec = mysConec;
             objConta.STU_SISTEMA = STU_SISTEMA;
-            objConta.VerAsiento(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt16(CboMeses.SelectedValue), 16, LblNumAsi.Text);
+            objConta.VerAsiento(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt32(CboMeses.SelectedValue), 16, LblNumAsi.Text);
             objConta = null;
         }
         private void TxtNumRuc_KeyPress(object sender, KeyPressEventArgs e)
@@ -1177,11 +1177,11 @@ namespace SSF_NET_Contabilidad.Formularios
             string c_NomArchivo = "";
             if (n_TipoRegistro == 1)
             {
-                c_NomArchivo = STU_SISTEMA.EMPRESARUC + "-CON-PERCEPCIONES-VENTAS-" + STU_SISTEMA.ANOTRABAJO.ToString() + Convert.ToInt16(CboMeses.SelectedValue).ToString("00") + ".xls";
+                c_NomArchivo = STU_SISTEMA.EMPRESARUC + "-CON-PERCEPCIONES-VENTAS-" + STU_SISTEMA.ANOTRABAJO.ToString() + Convert.ToInt32(CboMeses.SelectedValue).ToString("00") + ".xls";
             }
             else
             {
-                c_NomArchivo = STU_SISTEMA.EMPRESARUC + "-CON-PERCEPCIONES-COMPRAS-" + STU_SISTEMA.ANOTRABAJO.ToString() + Convert.ToInt16(CboMeses.SelectedValue).ToString("00") + ".xls";
+                c_NomArchivo = STU_SISTEMA.EMPRESARUC + "-CON-PERCEPCIONES-COMPRAS-" + STU_SISTEMA.ANOTRABAJO.ToString() + Convert.ToInt32(CboMeses.SelectedValue).ToString("00") + ".xls";
             }
             DgLista.ExportTo(c_NomArchivo);
             MessageBox.Show("! Se exporto con exito la informacion en el archivo " + c_NomArchivo + " !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);

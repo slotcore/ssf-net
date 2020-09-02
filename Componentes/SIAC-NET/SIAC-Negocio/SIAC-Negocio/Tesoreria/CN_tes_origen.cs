@@ -102,20 +102,20 @@ namespace SIAC_Negocio.Tesoreria
 
             if (dtResult.Rows.Count != 0)
             {
-                e_Origen.n_id = Convert.ToInt16(dtResult.Rows[0]["n_id"]);
-                e_Origen.n_idcue = Convert.ToInt16(dtResult.Rows[0]["n_idcue"]);
+                e_Origen.n_id = Convert.ToInt32(dtResult.Rows[0]["n_id"]);
+                e_Origen.n_idcue = Convert.ToInt32(dtResult.Rows[0]["n_idcue"]);
 
                 if (Convert.ToInt32(funFunciones.NulosN(dtResult.Rows[0]["n_idmod"])) != 0)
                 { 
-                    e_Origen.n_idmod = Convert.ToInt16(dtResult.Rows[0]["n_idmod"]);
+                    e_Origen.n_idmod = Convert.ToInt32(dtResult.Rows[0]["n_idmod"]);
                 }
-                e_Origen.n_tipo = Convert.ToInt16(dtResult.Rows[0]["n_tipo"]);
-                e_Origen.n_idmon = Convert.ToInt16(dtResult.Rows[0]["n_idmon"]);
-                e_Origen.n_detalla = Convert.ToInt16(dtResult.Rows[0]["n_detalla"]);
-                e_Origen.n_oridin = Convert.ToInt16(dtResult.Rows[0]["n_oridin"]);
-                e_Origen.n_idemp = Convert.ToInt16(dtResult.Rows[0]["n_idemp"]);
-                e_Origen.n_idbanco = Convert.ToInt16(funFunciones.NulosN(dtResult.Rows[0]["n_idbanco"]));
-                e_Origen.n_idcueban = Convert.ToInt16(funFunciones.NulosN(dtResult.Rows[0]["n_idcueban"]));
+                e_Origen.n_tipo = Convert.ToInt32(dtResult.Rows[0]["n_tipo"]);
+                e_Origen.n_idmon = Convert.ToInt32(dtResult.Rows[0]["n_idmon"]);
+                e_Origen.n_detalla = Convert.ToInt32(dtResult.Rows[0]["n_detalla"]);
+                e_Origen.n_oridin = Convert.ToInt32(dtResult.Rows[0]["n_oridin"]);
+                e_Origen.n_idemp = Convert.ToInt32(dtResult.Rows[0]["n_idemp"]);
+                e_Origen.n_idbanco = Convert.ToInt32(funFunciones.NulosN(dtResult.Rows[0]["n_idbanco"]));
+                e_Origen.n_idcueban = Convert.ToInt32(funFunciones.NulosN(dtResult.Rows[0]["n_idcueban"]));
             }
             if (booResult == false)
             {

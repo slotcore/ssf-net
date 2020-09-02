@@ -51,10 +51,10 @@ namespace SIAC_DATOS.Maestros
 
             if (DtResultado.Rows.Count != 0)
             {
-                Ent_Clase.n_id = Convert.ToInt16(DtResultado.Rows[0]["n_id"].ToString());
-                Ent_Clase.n_idemp = Convert.ToInt16(DtResultado.Rows[0]["n_idemp"].ToString());
-                Ent_Clase.n_idtipexi = Convert.ToInt16(DtResultado.Rows[0]["n_idtipexi"].ToString());
-                Ent_Clase.n_idfam = Convert.ToInt16(DtResultado.Rows[0]["n_idfam"].ToString());
+                Ent_Clase.n_id = Convert.ToInt32(DtResultado.Rows[0]["n_id"].ToString());
+                Ent_Clase.n_idemp = Convert.ToInt32(DtResultado.Rows[0]["n_idemp"].ToString());
+                Ent_Clase.n_idtipexi = Convert.ToInt32(DtResultado.Rows[0]["n_idtipexi"].ToString());
+                Ent_Clase.n_idfam = Convert.ToInt32(DtResultado.Rows[0]["n_idfam"].ToString());
                 Ent_Clase.c_des = DtResultado.Rows[0]["c_des"].ToString();
                 Ent_Clase.c_pre = DtResultado.Rows[0]["c_pre"].ToString();
             }

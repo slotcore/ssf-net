@@ -258,8 +258,8 @@ namespace SIAC_DATOS.Ventas
                 {
                     for (intFila = 0; intFila <= lstDetalle.Count - 1; intFila++)
                     {
-                        entCabecera.n_id = Convert.ToInt16(xMiFuncion.intIdGenerado);
-                        lstDetalle[intFila].n_idped = Convert.ToInt16(xMiFuncion.intIdGenerado);
+                        entCabecera.n_id = Convert.ToInt32(xMiFuncion.intIdGenerado);
+                        lstDetalle[intFila].n_idped = Convert.ToInt32(xMiFuncion.intIdGenerado);
                         if (xMiFuncion.StoreEjecutar("vta_pedidoclidet_insertar", lstDetalle[intFila], mysConec, null) == true)
                         {
                             booOk = true;
@@ -331,7 +331,7 @@ namespace SIAC_DATOS.Ventas
                         // SI LOS ITEMS SE ELIMINARON CON EXITO INSERTAMOS LOS NUEVOS ITEMS
                         for (intFila = 0; intFila <= lstDetalle.Count - 1; intFila++)
                         {
-                            lstDetalle[intFila].n_idped = Convert.ToInt16(entCabecera.n_id);
+                            lstDetalle[intFila].n_idped = Convert.ToInt32(entCabecera.n_id);
                             if (xMiFuncion.StoreEjecutar("vta_pedidoclidet_insertar", lstDetalle[intFila], mysConec, null) == true)
                             {
                                 booOk = true;

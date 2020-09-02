@@ -196,7 +196,7 @@ namespace SSF_NET_Ventas.Formularios
             }
             if (OptPen.Checked == true)
             {
-                if (Convert.ToInt16(CboTipPro.SelectedValue) == 0)
+                if (Convert.ToInt32(CboTipPro.SelectedValue) == 0)
                 { 
                     MessageBox.Show("¡ Debe de seleccionar una empresa !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     CboTipPro.Focus();
@@ -221,13 +221,13 @@ namespace SSF_NET_Ventas.Formularios
 
             if (n_TipoReporte == 1)
             { 
-                o_ventas.VentasAnualesxCliente(Convert.ToInt16(CboTipPro.SelectedValue), TxtFchIni.Text, TxtFchFin.Text);
+                o_ventas.VentasAnualesxCliente(Convert.ToInt32(CboTipPro.SelectedValue), TxtFchIni.Text, TxtFchFin.Text);
                 dtLista = o_ventas.dtLista1;
                 funFlex.FlexMostrarDatos(FgDatos, arrCabecera1, dtLista, 2, true);
             }
             if (n_TipoReporte == 2)
             {
-                o_ventas.VentasAnualesxItems(Convert.ToInt16(CboTipPro.SelectedValue), TxtFchIni.Text, TxtFchFin.Text);
+                o_ventas.VentasAnualesxItems(Convert.ToInt32(CboTipPro.SelectedValue), TxtFchIni.Text, TxtFchFin.Text);
                 dtLista = o_ventas.dtLista1;
                 funFlex.FlexMostrarDatos(FgDatos, arrCabecera2, dtLista, 2, true);
             }

@@ -85,11 +85,11 @@ namespace SIAC_Negocio.Tesoreria
 
             if (dtResult.Rows.Count != 0)
             {
-                e_Documentos.n_id = Convert.ToInt16(dtResult.Rows[0]["n_id"]);
+                e_Documentos.n_id = Convert.ToInt32(dtResult.Rows[0]["n_id"]);
                 e_Documentos.c_des = dtResult.Rows[0]["c_des"].ToString();
                 e_Documentos.c_abr = dtResult.Rows[0]["c_abr"].ToString();
-                e_Documentos.n_tipo = Convert.ToInt16(dtResult.Rows[0]["n_tipo"]);
-                e_Documentos.n_sel = Convert.ToInt16(dtResult.Rows[0]["n_sel"]);
+                e_Documentos.n_tipo = Convert.ToInt32(dtResult.Rows[0]["n_tipo"]);
+                e_Documentos.n_sel = Convert.ToInt32(dtResult.Rows[0]["n_sel"]);
             }
             if (booResult == false)
             {

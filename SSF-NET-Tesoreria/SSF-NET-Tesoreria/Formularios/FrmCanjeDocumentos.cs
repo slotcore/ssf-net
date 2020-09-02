@@ -311,7 +311,7 @@ namespace SSF_NET_Tesoreria.Formularios
         {
             // VOLVEMOS A CARGAR EL DATATABLE dtItems CON LOS DATOS DEL SERVIDOR
             objRegistros.mysConec = mysConec;
-            objRegistros.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt16(CboMeses.SelectedValue));
+            objRegistros.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt32(CboMeses.SelectedValue));
 
             MostrarEstadoMes(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO);
 
@@ -408,21 +408,21 @@ namespace SSF_NET_Tesoreria.Formularios
             }
             else
             {
-                e_Canje.n_id = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                e_Canje.n_id = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             }
 
             e_Canje.n_idemp = STU_SISTEMA.EMPRESAID;
             e_Canje.n_idlib = 1;
             e_Canje.n_ano = STU_SISTEMA.ANOTRABAJO;
-            e_Canje.n_mes = Convert.ToInt16(CboMeses.SelectedValue);
+            e_Canje.n_mes = Convert.ToInt32(CboMeses.SelectedValue);
             e_Canje.d_fchreg = Convert.ToDateTime(TxtFchEmi.Text);
             e_Canje.c_numreg = "";
             e_Canje.c_numser = TxtNumSer.Text;
             e_Canje.c_numdoc = TxtNumDoc.Text;
             e_Canje.d_fchemi = Convert.ToDateTime(TxtFchEmi.Text);
-            e_Canje.n_idpro = Convert.ToInt16(LblIdPro.Text);
-            e_Canje.n_idcli = Convert.ToInt16(LblIdCli.Text);
-            e_Canje.n_idmon = Convert.ToInt16(CboMon.SelectedValue);
+            e_Canje.n_idpro = Convert.ToInt32(LblIdPro.Text);
+            e_Canje.n_idcli = Convert.ToInt32(LblIdCli.Text);
+            e_Canje.n_idmon = Convert.ToInt32(CboMon.SelectedValue);
             e_Canje.n_impcan = Convert.ToDouble(TxtImpCanje.Text);
             e_Canje.c_glosa = TxtGlo.Text;
 
@@ -433,10 +433,10 @@ namespace SSF_NET_Tesoreria.Formularios
 
                 e_CanjeDet.n_idcan = 0;
                 e_CanjeDet.n_tipo = 1;
-                e_CanjeDet.n_iddoc = Convert.ToInt16(FgDocVen.GetData(n_row,11));
+                e_CanjeDet.n_iddoc = Convert.ToInt32(FgDocVen.GetData(n_row,11));
                 e_CanjeDet.n_impdoc = Convert.ToDouble(FgDocVen.GetData(n_row, 5)); 
                 e_CanjeDet.n_saldo = Convert.ToDouble(FgDocVen.GetData(n_row, 6)); ;
-                e_CanjeDet.n_caniddoc = Convert.ToInt16(FgDocVen.GetData(n_row, 12));
+                e_CanjeDet.n_caniddoc = Convert.ToInt32(FgDocVen.GetData(n_row, 12));
                 e_CanjeDet.n_canimpdoc = Convert.ToDouble(FgDocVen.GetData(n_row, 8));
                 e_CanjeDet.n_canimpsal = Convert.ToDouble(FgDocVen.GetData(n_row, 9)); 
 
@@ -450,7 +450,7 @@ namespace SSF_NET_Tesoreria.Formularios
 
                 e_CanjeDet.n_idcan = 0;
                 e_CanjeDet.n_tipo = 2;
-                e_CanjeDet.n_iddoc = Convert.ToInt16(FgDocCom.GetData(n_row, 8));
+                e_CanjeDet.n_iddoc = Convert.ToInt32(FgDocCom.GetData(n_row, 8));
                 e_CanjeDet.n_impdoc = Convert.ToDouble(FgDocCom.GetData(n_row, 6));
                 e_CanjeDet.n_saldo = Convert.ToDouble(FgDocCom.GetData(n_row, 7)); ;
                 e_CanjeDet.n_caniddoc = 0;
@@ -471,7 +471,7 @@ namespace SSF_NET_Tesoreria.Formularios
                 TxtFchEmi.Focus();
                 return booEstado;
             }
-            if (Convert.ToInt16(CboMon.SelectedValue) == 0)
+            if (Convert.ToInt32(CboMon.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado la moneda !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -653,7 +653,7 @@ namespace SSF_NET_Tesoreria.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -664,7 +664,7 @@ namespace SSF_NET_Tesoreria.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int n_IdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int n_IdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -989,7 +989,7 @@ namespace SSF_NET_Tesoreria.Formularios
             int n_row = 0;
             DataTable dtResul = new DataTable();
             objCompras.mysConec = mysConec;
-            dtResul = objCompras.DocumentosConSaldo(STU_SISTEMA.EMPRESAID, Convert.ToInt16(LblIdPro.Text));
+            dtResul = objCompras.DocumentosConSaldo(STU_SISTEMA.EMPRESAID, Convert.ToInt32(LblIdPro.Text));
             booAgregando = true;
             if (dtResul != null)
             {
@@ -1046,7 +1046,7 @@ namespace SSF_NET_Tesoreria.Formularios
             int n_row = 0;
             DataTable dtResul = new DataTable();
             objVentas.mysConec = mysConec;
-            dtResul = objVentas.DocumentosConSaldo(STU_SISTEMA.EMPRESAID, Convert.ToInt16(LblIdCli.Text));
+            dtResul = objVentas.DocumentosConSaldo(STU_SISTEMA.EMPRESAID, Convert.ToInt32(LblIdCli.Text));
 
             if (dtResul != null)
             {
@@ -1114,7 +1114,7 @@ namespace SSF_NET_Tesoreria.Formularios
                 n_impdeuven = Convert.ToDouble(FgDocVen.GetData(n_row, 6));
                 for (n_rowcom = 2; n_rowcom <= FgDocCom.Rows.Count - 1; n_rowcom++)
                 {
-                    n_iddoccom = Convert.ToInt16(FgDocCom.GetData(n_rowcom, 8).ToString());
+                    n_iddoccom = Convert.ToInt32(FgDocCom.GetData(n_rowcom, 8).ToString());
                     n_impdocven = Convert.ToDouble(FgDocCom.GetData(n_rowcom, 6).ToString());
                     n_saldo = Convert.ToDouble(FgDocCom.GetData(n_rowcom, 6).ToString());
                     n_saldopag = n_impdeuven - n_saldo;
@@ -1162,7 +1162,7 @@ namespace SSF_NET_Tesoreria.Formularios
 
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             VerRegistro(intIdRegistro);
         }
@@ -1186,7 +1186,7 @@ namespace SSF_NET_Tesoreria.Formularios
 
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {

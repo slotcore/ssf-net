@@ -78,18 +78,18 @@ namespace SIAC_NET_Estacionamientos.Formularios
             C_IDCAJERO = funGen.IniLeerSeccion(c_nomarc, "INFORMACION", "CAJERO").ToString();
             b_agregando = true;
             funGen.ComboBoxCargarDataTable(CboLocal, dtLocal, "n_id", "c_des");
-            CboLocal.SelectedValue = Convert.ToInt16(C_IDLOCAL);
+            CboLocal.SelectedValue = Convert.ToInt32(C_IDLOCAL);
 
             DataTable dtResul = new DataTable();
-            dtResul = funGen.DataTableFiltrar(dtCajero, "n_idloc = " + Convert.ToInt16(CboLocal.SelectedValue).ToString() + "");
+            dtResul = funGen.DataTableFiltrar(dtCajero, "n_idloc = " + Convert.ToInt32(CboLocal.SelectedValue).ToString() + "");
             funGen.ComboBoxCargarDataTable(CboCajero, dtResul, "n_id", "c_cajapenom");
-            CboCajero.SelectedValue = Convert.ToInt16(C_IDCAJERO);
+            CboCajero.SelectedValue = Convert.ToInt32(C_IDCAJERO);
             b_agregando = false;
         }
 
         private void CmdAce_Click(object sender, EventArgs e)
         {
-            if (Convert.ToInt16(CboCajero.SelectedValue) == 0)
+            if (Convert.ToInt32(CboCajero.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el nombre del cajero !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboCajero.Focus();
@@ -97,8 +97,8 @@ namespace SIAC_NET_Estacionamientos.Formularios
             }
             
             string c_nomarc = @"C:\SSF-NET\estacionamiento.ini";
-            funGen.IniEscribirSeccion(c_nomarc, "INFORMACION", "LOCAL", Convert.ToInt16(CboLocal.SelectedValue).ToString());
-            funGen.IniEscribirSeccion(c_nomarc, "INFORMACION", "CAJERO", Convert.ToInt16(CboCajero.SelectedValue).ToString());
+            funGen.IniEscribirSeccion(c_nomarc, "INFORMACION", "LOCAL", Convert.ToInt32(CboLocal.SelectedValue).ToString());
+            funGen.IniEscribirSeccion(c_nomarc, "INFORMACION", "CAJERO", Convert.ToInt32(CboCajero.SelectedValue).ToString());
 
             CmdCan_Click(sender, e);
         }
@@ -110,9 +110,9 @@ namespace SIAC_NET_Estacionamientos.Formularios
                 return;
             }
             DataTable dtResul = new DataTable();
-            dtResul = funGen.DataTableFiltrar(dtCajero, "n_idloc = " + Convert.ToInt16(CboLocal.SelectedValue).ToString() + "");
+            dtResul = funGen.DataTableFiltrar(dtCajero, "n_idloc = " + Convert.ToInt32(CboLocal.SelectedValue).ToString() + "");
             funGen.ComboBoxCargarDataTable(CboCajero, dtResul, "n_id", "c_cajapenom");
-            //CboCajero.SelectedValue = Convert.ToInt16(C_IDCAJERO);
+            //CboCajero.SelectedValue = Convert.ToInt32(C_IDCAJERO);
         }
     }
 }

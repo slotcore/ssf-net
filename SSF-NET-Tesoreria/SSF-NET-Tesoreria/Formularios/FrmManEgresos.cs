@@ -396,7 +396,7 @@ namespace SSF_NET_Tesoreria.Formularios
         {
             // VOLVEMOS A CARGAR EL DATATABLE dtItems CON LOS DATOS DEL SERVIDOR
             objRegistros.mysConec = mysConec;
-            objRegistros.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt16(CboMeses.SelectedValue), 2);
+            objRegistros.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt32(CboMeses.SelectedValue), 2);
 
             MostrarEstadoMes(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO);
 
@@ -541,7 +541,7 @@ namespace SSF_NET_Tesoreria.Formularios
         }
         void Modificar()
         {
-            int n_dongen = Convert.ToInt16(DgLista.Columns["n_dongen"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int n_dongen = Convert.ToInt32(DgLista.Columns["n_dongen"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             if (n_dongen == 2)
             {
@@ -555,7 +555,7 @@ namespace SSF_NET_Tesoreria.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -567,8 +567,8 @@ namespace SSF_NET_Tesoreria.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int n_IdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
-            int n_dongen = Convert.ToInt16(DgLista.Columns["n_dongen"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int n_IdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int n_dongen = Convert.ToInt32(DgLista.Columns["n_dongen"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             if (n_dongen == 2)
             {
@@ -641,16 +641,16 @@ namespace SSF_NET_Tesoreria.Formularios
             }
             else
             {
-                e_Tesoreria.n_id = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                e_Tesoreria.n_id = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             }
 
             e_Tesoreria.n_idemp = STU_SISTEMA.EMPRESAID;
             e_Tesoreria.n_ano = STU_SISTEMA.ANOTRABAJO;
-            e_Tesoreria.n_mes = Convert.ToInt16(CboMeses.SelectedValue);
+            e_Tesoreria.n_mes = Convert.ToInt32(CboMeses.SelectedValue);
             e_Tesoreria.n_idlib = 1;
             e_Tesoreria.c_numreg = "";
             e_Tesoreria.d_fchope = Convert.ToDateTime(TxtFchEmi.Text);
-            e_Tesoreria.n_idmon = Convert.ToInt16(CboMon.SelectedValue);
+            e_Tesoreria.n_idmon = Convert.ToInt32(CboMon.SelectedValue);
             e_Tesoreria.c_glo = TxtGlo.Text;
             e_Tesoreria.n_conciliado = 0;
             e_Tesoreria.n_tc = Convert.ToDouble(LblTc.Text);
@@ -665,7 +665,7 @@ namespace SSF_NET_Tesoreria.Formularios
                 BE_TES_TESORERIAORI e_TesOri = new BE_TES_TESORERIAORI();
                 e_TesOri.n_idtes = 0;
                 e_TesOri.n_idori = Convert.ToInt32(FgOriIng.GetData(n_row, 5));
-                if (Convert.ToInt16(CboMon.SelectedValue) == 115)
+                if (Convert.ToInt32(CboMon.SelectedValue) == 115)
                 {
                     e_TesOri.n_imp = Convert.ToDouble(FgOriIng.GetData(n_row, 3));
                 }
@@ -687,7 +687,7 @@ namespace SSF_NET_Tesoreria.Formularios
                 BE_TES_TESORERIADES e_TesDes = new BE_TES_TESORERIADES();
                 e_TesDes.n_idtes = 0;
                 e_TesDes.n_iddes = Convert.ToInt32(FgDesIng.GetData(n_row, 5));
-                if (Convert.ToInt16(CboMon.SelectedValue) == 115)
+                if (Convert.ToInt32(CboMon.SelectedValue) == 115)
                 {
                     e_TesDes.n_imp = Convert.ToDouble(FgDesIng.GetData(n_row, 3));
                 }
@@ -706,7 +706,7 @@ namespace SSF_NET_Tesoreria.Formularios
         {
             bool booEstado = true;
 
-            if (Convert.ToDateTime(TxtFchEmi.Text).Month != Convert.ToInt16(CboMeses.SelectedValue))
+            if (Convert.ToDateTime(TxtFchEmi.Text).Month != Convert.ToInt32(CboMeses.SelectedValue))
             {
                 MessageBox.Show("¡ La fecha de la operacion no coincide con el mes de registro !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -720,7 +720,7 @@ namespace SSF_NET_Tesoreria.Formularios
                 TxtFchEmi.Focus();
                 return booEstado;
             }
-            if (Convert.ToInt16(CboMon.SelectedValue) == 0)
+            if (Convert.ToInt32(CboMon.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado la moneda !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -877,7 +877,7 @@ namespace SSF_NET_Tesoreria.Formularios
 
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -901,7 +901,7 @@ namespace SSF_NET_Tesoreria.Formularios
 
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             VerRegistro(intIdRegistro);
         }
@@ -1018,7 +1018,7 @@ namespace SSF_NET_Tesoreria.Formularios
 
             int n_row = 0;
             booAgregando = true;
-            int n_idori = Convert.ToInt16(FgOriIng.GetData(FgOriIng.Row, 5));
+            int n_idori = Convert.ToInt32(FgOriIng.GetData(FgOriIng.Row, 5));
             // ELIMINAMOS EL ORIGEN
             FgOriIng.RemoveItem(FgOriIng.Row);
 
@@ -1049,7 +1049,7 @@ namespace SSF_NET_Tesoreria.Formularios
 
             booAgregando = true;
             int n_row = 0;
-            int n_iddes = Convert.ToInt16(FgDesIng.GetData(FgDesIng.Row, 5));
+            int n_iddes = Convert.ToInt32(FgDesIng.GetData(FgDesIng.Row, 5));
             // ELIMINAMOS EL ORIGEN
             FgDesIng.RemoveItem(FgDesIng.Row);
 
@@ -1071,7 +1071,7 @@ namespace SSF_NET_Tesoreria.Formularios
             SSF_NET_Contabilidad.CLS_Contabilidad objConta = new SSF_NET_Contabilidad.CLS_Contabilidad();
             objConta.mysConec = mysConec;
             objConta.STU_SISTEMA = STU_SISTEMA;
-            objConta.VerAsiento(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt16(CboMeses.SelectedValue), 1, LblNumAsi.Text);
+            objConta.VerAsiento(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt32(CboMeses.SelectedValue), 1, LblNumAsi.Text);
             objConta = null;
         }
 
@@ -1093,7 +1093,7 @@ namespace SSF_NET_Tesoreria.Formularios
 
                 b_Agregando = true;
                 //c_dato = DocumentosAdicionados();
-                dtResul = funDatos.DataTableFiltrar(dtOri, "n_idmon = " + Convert.ToInt16(CboMon.SelectedValue) + "");
+                dtResul = funDatos.DataTableFiltrar(dtOri, "n_idmon = " + Convert.ToInt32(CboMon.SelectedValue) + "");
                 if (b_chequeanulado == true)
                 {
                     dtResul = funDatos.DataTableFiltrar(dtResul, "n_idbanco >= 1");
@@ -1173,7 +1173,7 @@ namespace SSF_NET_Tesoreria.Formularios
 
             if (FgOriIng.Col == 3)
             {
-                if (Convert.ToInt16(CboMon.SelectedValue) == 115)
+                if (Convert.ToInt32(CboMon.SelectedValue) == 115)
                 {
                     c_dato = funFunciones.NulosC(FgOriIng.GetData(FgOriIng.Row, 5));
                     c_dato = funDatos.DataTableBuscar(dtOri, "n_id", "n_detalla", c_dato, "N").ToString();
@@ -1198,7 +1198,7 @@ namespace SSF_NET_Tesoreria.Formularios
 
             if (FgOriIng.Col == 4)
             {
-                if (Convert.ToInt16(CboMon.SelectedValue) == 151)
+                if (Convert.ToInt32(CboMon.SelectedValue) == 151)
                 {
                     c_dato = FgOriIng.GetData(FgOriIng.Row, 5).ToString();
                     c_dato = funDatos.DataTableBuscar(dtOri, "n_id", "n_detalla", c_dato, "N").ToString();
@@ -1226,7 +1226,7 @@ namespace SSF_NET_Tesoreria.Formularios
             if (FgOriIng.Col == 1) { FgOriIng.AllowEditing = true; return; }
             if (FgOriIng.Col == 2) { FgOriIng.AllowEditing = false; return; }
 
-            if (Convert.ToInt16(CboMon.SelectedValue) == 115)
+            if (Convert.ToInt32(CboMon.SelectedValue) == 115)
             {
                 if (FgOriIng.Col == 3) { FgOriIng.AllowEditing = true; return; }
                 if (FgOriIng.Col == 4) { FgOriIng.AllowEditing = false; return; }
@@ -1288,7 +1288,7 @@ namespace SSF_NET_Tesoreria.Formularios
 
                 b_Agregando = true;
                 //c_dato = DocumentosAdicionados();
-                dtResul = funDatos.DataTableFiltrar(dtDes, "n_idmon = " + Convert.ToInt16(CboMon.SelectedValue) + "");
+                dtResul = funDatos.DataTableFiltrar(dtDes, "n_idmon = " + Convert.ToInt32(CboMon.SelectedValue) + "");
 
                 dtResul = objDes.BuscarDestino(dtResul);
                 if (dtResul != null)
@@ -1365,7 +1365,7 @@ namespace SSF_NET_Tesoreria.Formularios
 
             if (FgDesIng.Col == 3)
             {
-                if (Convert.ToInt16(CboMon.SelectedValue) == 115)
+                if (Convert.ToInt32(CboMon.SelectedValue) == 115)
                 {
                     c_dato = funFunciones.NulosC(FgDesIng.GetData(FgDesIng.Row, 5)); // .ToString();
                     c_dato = funDatos.DataTableBuscar(dtDes, "n_id", "n_detalla", c_dato, "N").ToString();
@@ -1390,7 +1390,7 @@ namespace SSF_NET_Tesoreria.Formularios
 
             if (FgDesIng.Col == 4)
             {
-                if (Convert.ToInt16(CboMon.SelectedValue) == 151)
+                if (Convert.ToInt32(CboMon.SelectedValue) == 151)
                 {
                     c_dato = FgDesIng.GetData(FgDesIng.Row, 5).ToString();
                     c_dato = funDatos.DataTableBuscar(dtDes, "n_id", "n_detalla", c_dato, "N").ToString();
@@ -1417,7 +1417,7 @@ namespace SSF_NET_Tesoreria.Formularios
             if (FgDesIng.Col == 1) { FgDesIng.AllowEditing = true; return; }
             if (FgDesIng.Col == 2) { FgDesIng.AllowEditing = false; return; }
 
-            if (Convert.ToInt16(CboMon.SelectedValue) == 115)
+            if (Convert.ToInt32(CboMon.SelectedValue) == 115)
             {
                 if (FgDesIng.Col == 3) { FgDesIng.AllowEditing = true; return; }
                 if (FgDesIng.Col == 4) { FgDesIng.AllowEditing = false; return; }
@@ -1487,7 +1487,7 @@ namespace SSF_NET_Tesoreria.Formularios
             }
             if (LblidCliente.Text != "")
             { 
-                dtResul = objCompras.DocumentosConSaldo(STU_SISTEMA.EMPRESAID, Convert.ToInt16(LblidCliente.Text));
+                dtResul = objCompras.DocumentosConSaldo(STU_SISTEMA.EMPRESAID, Convert.ToInt32(LblidCliente.Text));
             }
             booAgregando = true;
             if (dtResul != null)
@@ -1521,9 +1521,9 @@ namespace SSF_NET_Tesoreria.Formularios
 
                         double n_valor = Convert.ToDouble(dtResul.Rows[n_row]["n_saldo"]);
                         double n_tc = Convert.ToDouble(LblTc.Text);
-                        int n_idmon = Convert.ToInt16(dtResul.Rows[n_row]["n_idmon"]);
+                        int n_idmon = Convert.ToInt32(dtResul.Rows[n_row]["n_idmon"]);
 
-                        if (Convert.ToInt16(CboMon.SelectedValue) == 115)                       // SI ES SOLES
+                        if (Convert.ToInt32(CboMon.SelectedValue) == 115)                       // SI ES SOLES
                         {
                             if (n_idmon == 115)
                             {
@@ -1632,12 +1632,12 @@ namespace SSF_NET_Tesoreria.Formularios
 
             int n_cor = 0;
             int n_corgrid;
-            int n_idmod = Convert.ToInt16(funFunciones.NulosN(funDatos.DataTableBuscar(dtDes, "n_id", "n_idmod", LblIdDes.Text, "N")));
+            int n_idmod = Convert.ToInt32(funFunciones.NulosN(funDatos.DataTableBuscar(dtDes, "n_id", "n_idmod", LblIdDes.Text, "N")));
 
             for (n_fil = 2; n_fil <= fgDocCli.Rows.Count - 1; n_fil++)
             {
-                n_corgrid = Convert.ToInt16(funFunciones.NulosN(fgDocCli.GetData(n_fil, 13)).ToString());
-                if (BuscarEliminarDestinoDoc(Convert.ToInt16(LblIdDes.Text), n_corgrid) == true)
+                n_corgrid = Convert.ToInt32(funFunciones.NulosN(fgDocCli.GetData(n_fil, 13)).ToString());
+                if (BuscarEliminarDestinoDoc(Convert.ToInt32(LblIdDes.Text), n_corgrid) == true)
                 {
                     n_cor = n_corgrid;
                 }
@@ -1649,12 +1649,12 @@ namespace SSF_NET_Tesoreria.Formularios
                 BE_TES_TESORERIADESDET e_DesDet = new BE_TES_TESORERIADESDET();
 
                 e_DesDet.n_idtes = 0;
-                e_DesDet.n_iddes = Convert.ToInt16(LblIdDes.Text);
+                e_DesDet.n_iddes = Convert.ToInt32(LblIdDes.Text);
                 e_DesDet.n_idtipper = 0;
                 e_DesDet.n_idmod = n_idmod;
                 e_DesDet.n_iddoc = Convert.ToInt32(fgDocCli.GetData(n_fil, 11)); ;
                 e_DesDet.n_idper = 0;
-                e_DesDet.n_idtipdoc = Convert.ToInt16(fgDocCli.GetData(n_fil, 14).ToString());
+                e_DesDet.n_idtipdoc = Convert.ToInt32(fgDocCli.GetData(n_fil, 14).ToString());
                 e_DesDet.c_numser = fgDocCli.GetData(n_fil, 5).ToString().Substring(0, 4); ;
                 e_DesDet.c_numdoc = fgDocCli.GetData(n_fil, 5).ToString().Substring(5, 10);
                 e_DesDet.n_imp = Convert.ToDouble(fgDocCli.GetData(n_fil, 6));
@@ -1665,9 +1665,9 @@ namespace SSF_NET_Tesoreria.Formularios
                 e_DesDet.n_cor = n_cor;
                 string c_dato = fgDocCli.GetData(n_fil, 4).ToString();
 
-                e_DesDet.n_idmon = Convert.ToInt16(funDatos.DataTableBuscar(dtMon,"c_simbolo","n_id",c_dato,"C").ToString());
-                e_DesDet.n_idlib = Convert.ToInt16(fgDocCli.GetData(n_fil, 15).ToString());
-                //e_DesDet.n_idmedpag = Convert.ToInt16(fgDocCli.GetData(n_fil, 6).ToString());
+                e_DesDet.n_idmon = Convert.ToInt32(funDatos.DataTableBuscar(dtMon,"c_simbolo","n_id",c_dato,"C").ToString());
+                e_DesDet.n_idlib = Convert.ToInt32(fgDocCli.GetData(n_fil, 15).ToString());
+                //e_DesDet.n_idmedpag = Convert.ToInt32(fgDocCli.GetData(n_fil, 6).ToString());
 
                 l_TesDesDet.Add(e_DesDet);
             }
@@ -1678,7 +1678,7 @@ namespace SSF_NET_Tesoreria.Formularios
                 n_valor = (n_valor + l_TesDesDet[n_fil].n_acuenta);
             }
 
-            if (Convert.ToInt16(CboMon.SelectedValue) == 115)
+            if (Convert.ToInt32(CboMon.SelectedValue) == 115)
             {
                 FgDesIng.SetData(FgDesIng.Row, 3, n_valor.ToString("0.0000"));
 
@@ -1751,9 +1751,9 @@ namespace SSF_NET_Tesoreria.Formularios
             int n_corgrid;
             for (n_fil = 2; n_fil <= FgDocOri.Rows.Count - 1; n_fil++)
             {
-                n_corgrid = Convert.ToInt16(funFunciones.NulosN(FgDocOri.GetData(n_fil, 8)).ToString());
+                n_corgrid = Convert.ToInt32(funFunciones.NulosN(FgDocOri.GetData(n_fil, 8)).ToString());
                 
-                if (BuscarEliminarOrigenDoc(Convert.ToInt16(LblIdOri.Text), n_corgrid) == true)
+                if (BuscarEliminarOrigenDoc(Convert.ToInt32(LblIdOri.Text), n_corgrid) == true)
                 {
                     n_cor = n_corgrid;
                 }
@@ -1765,12 +1765,12 @@ namespace SSF_NET_Tesoreria.Formularios
                 BE_TES_TESORERIAORIDET e_OriDet = new BE_TES_TESORERIAORIDET();
 
                 e_OriDet.n_idtes = 0;
-                e_OriDet.n_idori = Convert.ToInt16(LblIdOri.Text);
+                e_OriDet.n_idori = Convert.ToInt32(LblIdOri.Text);
                 e_OriDet.n_idtipper = 0;
                 e_OriDet.n_idmod = 0;
                 e_OriDet.n_iddoc = 0;
                 e_OriDet.n_idper = 0;
-                e_OriDet.n_idtipdoc = Convert.ToInt16(FgDocOri.GetData(n_fil, 7).ToString());
+                e_OriDet.n_idtipdoc = Convert.ToInt32(FgDocOri.GetData(n_fil, 7).ToString());
                 e_OriDet.c_numser = "";
                 e_OriDet.c_numdoc = FgDocOri.GetData(n_fil, 4).ToString();
                 e_OriDet.n_imp = 0;
@@ -1779,8 +1779,8 @@ namespace SSF_NET_Tesoreria.Formularios
                 e_OriDet.d_fchdoc = Convert.ToDateTime(TxtFchEmi.Text);
                 e_OriDet.c_glo = "";
                 e_OriDet.n_cor = n_cor;
-                e_OriDet.n_idmon = Convert.ToInt16(CboMon.SelectedValue);
-                e_OriDet.n_idmedpag = Convert.ToInt16(FgDocOri.GetData(n_fil, 6).ToString());
+                e_OriDet.n_idmon = Convert.ToInt32(CboMon.SelectedValue);
+                e_OriDet.n_idmedpag = Convert.ToInt32(FgDocOri.GetData(n_fil, 6).ToString());
 
                 l_TesOriDet.Add(e_OriDet);
             }
@@ -1791,7 +1791,7 @@ namespace SSF_NET_Tesoreria.Formularios
                 n_valor = (n_valor + l_TesOriDet[n_fil].n_acuenta);
             }
 
-            if (Convert.ToInt16(CboMon.SelectedValue) == 115)
+            if (Convert.ToInt32(CboMon.SelectedValue) == 115)
             {
                 FgOriIng.SetData(FgOriIng.Row, 3, n_valor.ToString("0.00"));
 
@@ -1961,21 +1961,21 @@ namespace SSF_NET_Tesoreria.Formularios
                     CN_con_regpercepcion o_Percep = new CN_con_regpercepcion();
                     BE_CON_REGPERCEPCION e_Percep = new BE_CON_REGPERCEPCION();
 
-                    //if (Convert.ToInt16(l_TesDesDet[n_fil].n_idtipdoc) == 2)
+                    //if (Convert.ToInt32(l_TesDesDet[n_fil].n_idtipdoc) == 2)
                     //{ 
                     //    objcom.mysConec = mysConec;
                     //    objcom.TraerRegistro(l_TesDesDet[n_fil].n_iddoc);
                     //    e_compra = objcom.e_Compras;
                     //    c_dato = funDatos.DataTableBuscar(dtCliPro, "n_id", "c_nombre", e_compra.n_idpro.ToString(), "N").ToString();
                     //}
-                    //if (Convert.ToInt16(l_TesDesDet[n_fil].n_idtipdoc) == 86)
+                    //if (Convert.ToInt32(l_TesDesDet[n_fil].n_idtipdoc) == 86)
                     //{
                     //    o_Percep.mysConec = mysConec;
                     //    o_Percep.TraerRegistro(l_TesDesDet[n_fil].n_iddoc, 2);
                     //    e_Percep = o_Percep.e_Percepcion;
                     //    c_dato = funDatos.DataTableBuscar(dtCliPro, "n_id", "c_nombre", e_Percep.n_idcli.ToString(), "N").ToString();
                     //}
-                    if (Convert.ToInt16(l_TesDesDet[n_fil].n_idlib) == 8)
+                    if (Convert.ToInt32(l_TesDesDet[n_fil].n_idlib) == 8)
                     {
                         objcom.mysConec = mysConec;
                         objcom.TraerRegistro(l_TesDesDet[n_fil].n_iddoc);
@@ -1983,7 +1983,7 @@ namespace SSF_NET_Tesoreria.Formularios
                         c_dato = funDatos.DataTableBuscar(dtCliPro, "n_id", "c_nombre", e_compra.n_idpro.ToString(), "N").ToString();
                     }
 
-                    if (Convert.ToInt16(l_TesDesDet[n_fil].n_idtipdoc) == 86)
+                    if (Convert.ToInt32(l_TesDesDet[n_fil].n_idtipdoc) == 86)
                     {
                         o_Percep.mysConec = mysConec;
                         o_Percep.TraerRegistro(l_TesDesDet[n_fil].n_iddoc, 2);
@@ -2011,7 +2011,7 @@ namespace SSF_NET_Tesoreria.Formularios
                     c_dato = Convert.ToDouble(l_TesDesDet[n_fil].n_sal).ToString("0.00");
                     fgDocCli.SetData(fgDocCli.Rows.Count - 1, 7, c_dato);
 
-                    if (Convert.ToInt16(CboMon.SelectedValue) == 115)
+                    if (Convert.ToInt32(CboMon.SelectedValue) == 115)
                     {
                         if (l_TesDesDet[n_fil].n_idmon == 115)
                         {
@@ -2108,7 +2108,7 @@ namespace SSF_NET_Tesoreria.Formularios
                     c_dato = funDatos.DataTableBuscar(dtTesDoc, "n_id", "c_abr", l_TesOriDet[n_fil].n_idtipdoc.ToString(), "N").ToString();
                     FgDocOri.SetData(FgDocOri.Rows.Count - 1, 2, c_dato);
 
-                    c_dato = funDatos.DataTableBuscar(dtMon, "n_id", "c_codsun", Convert.ToInt16(CboMon.SelectedValue).ToString(), "N").ToString();
+                    c_dato = funDatos.DataTableBuscar(dtMon, "n_id", "c_codsun", Convert.ToInt32(CboMon.SelectedValue).ToString(), "N").ToString();
                     FgDocOri.SetData(FgDocOri.Rows.Count - 1, 3, c_dato);
 
                     c_dato = l_TesOriDet[n_fil].c_numdoc;
@@ -2333,7 +2333,7 @@ namespace SSF_NET_Tesoreria.Formularios
         }
         private void ToolExportarExcel_Click(object sender, EventArgs e)
         {
-            string c_NomArchivo = STU_SISTEMA.EMPRESARUC + "-TES-EGR-" + STU_SISTEMA.ANOTRABAJO.ToString() + Convert.ToInt16(CboMeses.SelectedValue).ToString("00") + ".xls";
+            string c_NomArchivo = STU_SISTEMA.EMPRESARUC + "-TES-EGR-" + STU_SISTEMA.ANOTRABAJO.ToString() + Convert.ToInt32(CboMeses.SelectedValue).ToString("00") + ".xls";
             DgLista.ExportTo(c_NomArchivo);
             MessageBox.Show("! Se exporto con exito la informacion en el archivo " + c_NomArchivo + " !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
         }
@@ -2365,7 +2365,7 @@ namespace SSF_NET_Tesoreria.Formularios
         {
             CN_tes_tesoreria objAlm = new CN_tes_tesoreria();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
             objAlm.STU_SISTEMA = STU_SISTEMA;
             objAlm.mysConec = mysConec;
             objAlm.ImprimirDocumento(intIdRegistro, 1);

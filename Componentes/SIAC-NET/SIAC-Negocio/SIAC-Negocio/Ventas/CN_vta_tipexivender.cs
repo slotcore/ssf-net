@@ -70,8 +70,8 @@ namespace SIAC_Negocio.Ventas
 
             if (dtresul.Rows.Count != 9)
             {
-                e_obj.n_idemp = Convert.ToInt16(dtresul.Rows[0]["n_idemp"]);
-                e_obj.n_idtipexi = Convert.ToInt16(dtresul.Rows[0]["n_idtipexi"]);
+                e_obj.n_idemp = Convert.ToInt32(dtresul.Rows[0]["n_idemp"]);
+                e_obj.n_idtipexi = Convert.ToInt32(dtresul.Rows[0]["n_idtipexi"]);
             }
             return e_obj;
         }

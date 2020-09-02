@@ -174,7 +174,7 @@ namespace SSF_NET_Ventas.Formularios
         private void CmdCargar_Click(object sender, EventArgs e)
         {
             
-            if (Convert.ToInt16(CboDoc.SelectedValue) == 0) 
+            if (Convert.ToInt32(CboDoc.SelectedValue) == 0) 
             {
                 MessageBox.Show("¡ El ha especificado el tipo de documento a exportar !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 return; 
@@ -183,7 +183,7 @@ namespace SSF_NET_Ventas.Formularios
             DataTable dtresul = new DataTable();
             CN_vta_ventas o_vetas = new CN_vta_ventas();
             o_vetas.mysConec = mysConec;
-            o_vetas.Consulta25(STU_SISTEMA.EMPRESAID, Convert.ToInt16(CboDoc.SelectedValue), TxtFchEmiDoc.Text);
+            o_vetas.Consulta25(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboDoc.SelectedValue), TxtFchEmiDoc.Text);
             dtresul = o_vetas.dtLista1;
             LblNumDoc.Text = dtresul.Rows.Count.ToString();
             double n_numpag = Math.Round((Convert.ToDouble(dtresul.Rows.Count) / 100),0);
@@ -346,7 +346,7 @@ namespace SSF_NET_Ventas.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -356,7 +356,7 @@ namespace SSF_NET_Ventas.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -432,10 +432,10 @@ namespace SSF_NET_Ventas.Formularios
             e_boleta.n_mes = STU_SISTEMA.MESTRABAJO;
             e_boleta.d_fchdoc = Convert.ToDateTime(TxtFchDec.Text);
             e_boleta.d_fchven = Convert.ToDateTime(TxtFchEmiDoc.Text);
-            e_boleta.n_idtipdoc = Convert.ToInt16(CboDoc.SelectedValue);
-            e_boleta.n_numdoc = Convert.ToInt16( LblNumDoc.Text);
+            e_boleta.n_idtipdoc = Convert.ToInt32(CboDoc.SelectedValue);
+            e_boleta.n_numdoc = Convert.ToInt32( LblNumDoc.Text);
             e_boleta.n_importe = 0;
-            e_boleta.n_numarc = Convert.ToInt16(TxtNumArchGen.Text);
+            e_boleta.n_numarc = Convert.ToInt32(TxtNumArchGen.Text);
             
             int n_row=0;
             int n_iddoc = 0;
@@ -472,7 +472,7 @@ namespace SSF_NET_Ventas.Formularios
                 return booEstado;
             }
 
-            if (Convert.ToInt16(CboDoc.SelectedValue) == 0)
+            if (Convert.ToInt32(CboDoc.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el tipo de documento !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -541,7 +541,7 @@ namespace SSF_NET_Ventas.Formularios
 
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             //VerRegistro(intIdRegistro);
         }
@@ -565,7 +565,7 @@ namespace SSF_NET_Ventas.Formularios
 
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -609,7 +609,7 @@ namespace SSF_NET_Ventas.Formularios
         {
             if (Tab1.SelectedIndex == 0)
             { 
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
                 Tab1.SelectedIndex = 1;
                 VerRegistro(intIdRegistro);
             }
@@ -619,8 +619,8 @@ namespace SSF_NET_Ventas.Formularios
 
         private void ToolEnviar_Click(object sender, EventArgs e)
         {
-            int n_idreg = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
-            int n_numarch = Convert.ToInt16(DgLista.Columns["n_numarc"].CellValue(DgLista.Row).ToString());
+            int n_idreg = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int n_numarch = Convert.ToInt32(DgLista.Columns["n_numarc"].CellValue(DgLista.Row).ToString());
             string c_fchven = DgLista.Columns["d_fchven"].CellValue(DgLista.Row).ToString();
             string c_RutaArchPla = entEmpresa.c_vtafearcdat;
             CN_vta_boletaresumen o_bol = new CN_vta_boletaresumen();
@@ -652,7 +652,7 @@ namespace SSF_NET_Ventas.Formularios
             STU_SISTEMA.MESTRABAJO = Convert.ToInt32(CboMeses.SelectedValue);
 
             //ToolImpoApertura.Visible = false;
-            //if (Convert.ToInt16(CboMeses.SelectedValue) == 0) { ToolImpoApertura.Visible = true; }
+            //if (Convert.ToInt32(CboMeses.SelectedValue) == 0) { ToolImpoApertura.Visible = true; }
 
             // MostrarEstadoMes(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO);
             DgLista.DataSource = dtRegistros;

@@ -346,11 +346,11 @@ namespace SSF_NET_Logistica.Formularios
             }
             DataTable dtResult = new DataTable();
 
-            dtResult = funDatos.DataTableFiltrar(dtPunPar, "n_idcli = " + Convert.ToInt16(LblIdCliente.Text) + "");
+            dtResult = funDatos.DataTableFiltrar(dtPunPar, "n_idcli = " + Convert.ToInt32(LblIdCliente.Text) + "");
             funDatos.ComboBoxCargarDataTable(CboPunPar, dtResult, "n_id", "c_des");
             CboPunPar.SelectedValue = BE_Registro.n_idpunpar;             // ID DEL PUNTO DE PARTIDA
 
-            dtResult = funDatos.DataTableFiltrar(dtPunVen, "n_idcli = " + Convert.ToInt16(LblIdCliente2.Text) + "");
+            dtResult = funDatos.DataTableFiltrar(dtPunVen, "n_idcli = " + Convert.ToInt32(LblIdCliente2.Text) + "");
             funDatos.ComboBoxCargarDataTable(CboPunVen, dtResult, "n_id", "c_des");
             CboPunVen.SelectedValue = BE_Registro.n_idpunlle;             // ID DEL PUNTO DE LLEGADA
 
@@ -482,10 +482,10 @@ namespace SSF_NET_Logistica.Formularios
             TxtCliente.Text = funDatos.DataTableBuscar(dtCliPro, "n_id", "c_nombre", LblIdCliente.Text, "N").ToString();
             TxtNumRuc.Text = funDatos.DataTableBuscar(dtCliPro, "n_id", "c_numdoc", LblIdCliente.Text, "N").ToString();
 
-            //dtResult = funDatos.DataTableFiltrar(dtPunVen, "n_idcli = " + Convert.ToInt16(LblIdCliente.Text) + "");
+            //dtResult = funDatos.DataTableFiltrar(dtPunVen, "n_idcli = " + Convert.ToInt32(LblIdCliente.Text) + "");
             //funDatos.ComboBoxCargarDataTable(CboPunVen, dtResult, "n_id", "c_des");
 
-            dtResult = funDatos.DataTableFiltrar(dtPunPar, "n_idcli = " + Convert.ToInt16(LblIdCliente.Text) + "");
+            dtResult = funDatos.DataTableFiltrar(dtPunPar, "n_idcli = " + Convert.ToInt32(LblIdCliente.Text) + "");
             funDatos.ComboBoxCargarDataTable(CboPunPar, dtResult, "n_id", "c_des");
 
             // CARGAMOS LOS PUNTOS DE LLEGADA SEGUN EL DESTINO DE LOS ITEMS
@@ -493,7 +493,7 @@ namespace SSF_NET_Logistica.Formularios
             TxtCliente2.Text = funDatos.DataTableBuscar(dtCliPro, "n_id", "c_nombre", LblIdCliente2.Text, "N").ToString();
             TxtNumRuc2.Text = funDatos.DataTableBuscar(dtCliPro, "n_id", "c_numdoc", LblIdCliente2.Text, "N").ToString();
 
-            dtResult = funDatos.DataTableFiltrar(dtPunVen, "n_idcli = " + Convert.ToInt16(LblIdCliente2.Text) + "");
+            dtResult = funDatos.DataTableFiltrar(dtPunVen, "n_idcli = " + Convert.ToInt32(LblIdCliente2.Text) + "");
             funDatos.ComboBoxCargarDataTable(CboPunVen, dtResult, "n_id", "c_des");
             booAgregando = false;
             OptSinDoc.Checked = true;
@@ -591,7 +591,7 @@ namespace SSF_NET_Logistica.Formularios
             Bloquea();
             ActivarTool();
             booAgregando = true;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -602,7 +602,7 @@ namespace SSF_NET_Logistica.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             BE_Registro = objRegistros.TraerRegistro(intIdRegistro);
             if (BE_Registro.n_anulado == 2)
@@ -692,24 +692,24 @@ namespace SSF_NET_Logistica.Formularios
             BE_ListaReg.n_idemp = STU_SISTEMA.EMPRESAID;
             BE_ListaReg.n_id = BE_Registro.n_id;
             BE_ListaReg.n_idano = STU_SISTEMA.ANOTRABAJO;
-            BE_ListaReg.n_idmes = Convert.ToInt16(CboMeses.SelectedValue);
-            BE_ListaReg.n_idcli = Convert.ToInt16(LblIdCliente.Text);
-            //BE_ListaReg.n_idcli = Convert.ToInt16(LblIdCliente2.Text);
+            BE_ListaReg.n_idmes = Convert.ToInt32(CboMeses.SelectedValue);
+            BE_ListaReg.n_idcli = Convert.ToInt32(LblIdCliente.Text);
+            //BE_ListaReg.n_idcli = Convert.ToInt32(LblIdCliente2.Text);
             BE_ListaReg.n_idtipdoc = 10;
             BE_ListaReg.c_numser = TxtNumSer.Text;
             BE_ListaReg.c_numdoc = TxtNumDoc.Text;
             BE_ListaReg.d_fchdoc = Convert.ToDateTime(TxtFchEmiDoc.Text);
-            BE_ListaReg.n_idemptra = Convert.ToInt16(CboTra.SelectedValue);
-            BE_ListaReg.n_idmottra = Convert.ToInt16(CboMotTras.SelectedValue);
+            BE_ListaReg.n_idemptra = Convert.ToInt32(CboTra.SelectedValue);
+            BE_ListaReg.n_idmottra = Convert.ToInt32(CboMotTras.SelectedValue);
             BE_ListaReg.c_numdocref = TxtNumDocRef.Text;
             BE_ListaReg.c_dirpunpar = TxtLugPar.Text;
             BE_ListaReg.c_dirpunlle = TxtLugEnt.Text;
-            BE_ListaReg.n_idemptra = Convert.ToInt16(CboTra.SelectedValue);
-            BE_ListaReg.n_idcho = Convert.ToInt16(CboCho.SelectedValue);
-            BE_ListaReg.n_idvehtra = Convert.ToInt16(CboVeh.SelectedValue);
+            BE_ListaReg.n_idemptra = Convert.ToInt32(CboTra.SelectedValue);
+            BE_ListaReg.n_idcho = Convert.ToInt32(CboCho.SelectedValue);
+            BE_ListaReg.n_idvehtra = Convert.ToInt32(CboVeh.SelectedValue);
             BE_ListaReg.n_anulado = 0;
-            BE_ListaReg.n_idpunpar = Convert.ToInt16(CboPunPar.SelectedValue);
-            BE_ListaReg.n_idpunlle = Convert.ToInt16(CboPunVen.SelectedValue);
+            BE_ListaReg.n_idpunpar = Convert.ToInt32(CboPunPar.SelectedValue);
+            BE_ListaReg.n_idpunlle = Convert.ToInt32(CboPunVen.SelectedValue);
 
             if (OptSinDoc.Checked == true)
             { 
@@ -727,7 +727,7 @@ namespace SSF_NET_Logistica.Formularios
             //}
             BE_ListaReg.n_idpunvencli = Convert.ToInt32(CboPunVen.SelectedValue);
             BE_ListaReg.n_tipori = 2;
-            BE_ListaReg.n_idclides = Convert.ToInt16(LblIdCliente2.Text);
+            BE_ListaReg.n_idclides = Convert.ToInt32(LblIdCliente2.Text);
 
             if (ChkOtroCliente.Checked == true)
             {
@@ -823,7 +823,7 @@ namespace SSF_NET_Logistica.Formularios
         {
             bool booEstado = true;
 
-            if (Convert.ToInt16(LblIdCliente.Text) == 0)
+            if (Convert.ToInt32(LblIdCliente.Text) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el cliente !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -851,28 +851,28 @@ namespace SSF_NET_Logistica.Formularios
                 TxtFchEmiDoc.Focus();
                 return booEstado;
             }
-            if (Convert.ToInt16(CboMotTras.SelectedValue) == 0)
+            if (Convert.ToInt32(CboMotTras.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el motivo de traslado !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
                 CboMotTras.Focus();
                 return booEstado;
             }
-            if (Convert.ToInt16(CboTra.SelectedValue) == 0)
+            if (Convert.ToInt32(CboTra.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado la empresa de tranporte !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
                 CboTra.Focus();
                 return booEstado;
             }
-            if (Convert.ToInt16(CboCho.SelectedValue) == 0)
+            if (Convert.ToInt32(CboCho.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el nombe del chofer !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
                 CboCho.Focus();
                 return booEstado;
             }
-            if (Convert.ToInt16(CboVeh.SelectedValue) == 0)
+            if (Convert.ToInt32(CboVeh.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el vehiculo de transporte !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -880,7 +880,7 @@ namespace SSF_NET_Logistica.Formularios
                 return booEstado;
             }
 
-            if (Convert.ToInt16(CboPunVen.SelectedValue) == 0)
+            if (Convert.ToInt32(CboPunVen.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el punto de llegada de la mercaderia !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -888,7 +888,7 @@ namespace SSF_NET_Logistica.Formularios
                 return booEstado;
             }
 
-            if (Convert.ToInt16(CboPunVen.SelectedValue) == Convert.ToInt16(CboPunPar.SelectedValue))
+            if (Convert.ToInt32(CboPunVen.SelectedValue) == Convert.ToInt32(CboPunPar.SelectedValue))
             {
                 MessageBox.Show("¡ El punto de partida no puede ser igual al punto de llegada !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -989,7 +989,7 @@ namespace SSF_NET_Logistica.Formularios
 
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -999,7 +999,7 @@ namespace SSF_NET_Logistica.Formularios
         }
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             VerRegistro(intIdRegistro);
         }
@@ -1142,7 +1142,7 @@ namespace SSF_NET_Logistica.Formularios
                 dtResul = funDatos.DataTableFiltrar(dtTipoExis, "c_des = '" + strDesTipPro + "'");
                 if (dtResul.Rows.Count != 0)
                 {
-                    n_idtipproducto = Convert.ToInt16(dtResul.Rows[0]["n_id"].ToString());
+                    n_idtipproducto = Convert.ToInt32(dtResul.Rows[0]["n_id"].ToString());
                 }
                 FgItems.Cols[2].ComboList = "...";
             }
@@ -1162,7 +1162,7 @@ namespace SSF_NET_Logistica.Formularios
                 dtResul = funDatos.DataTableFiltrar(dtItems, "c_despro = '" + strDesTipPro + "'");
                 if (dtResul.Rows.Count != 0)
                 {
-                    n_idtipproducto = Convert.ToInt16(dtResul.Rows[0]["n_id"].ToString());
+                    n_idtipproducto = Convert.ToInt32(dtResul.Rows[0]["n_id"].ToString());
 
                     // FILTRAMOS LAS PRESENTACIONES DEL ITEM SELECCIONADO
                     dtResul = funDatos.DataTableFiltrar(dtPresentaItem, "n_idite = " + n_idtipproducto + "");
@@ -1291,7 +1291,7 @@ namespace SSF_NET_Logistica.Formularios
         private void ToolImprimir_ButtonClick(object sender, EventArgs e)
         {
             CN_vta_guias objAlm = new CN_vta_guias();
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             objAlm.STU_SISTEMA = STU_SISTEMA;
             objAlm.mysConec = mysConec;
             objAlm.ReportImprimirGuia(intIdRegistro); 
@@ -1299,7 +1299,7 @@ namespace SSF_NET_Logistica.Formularios
         private void emitirGuiaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CN_vta_guias objAlm = new CN_vta_guias();
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             objAlm.STU_SISTEMA = STU_SISTEMA;
             objAlm.mysConec = mysConec;
             objAlm.ReportImprimirGuia(intIdRegistro);
@@ -1307,7 +1307,7 @@ namespace SSF_NET_Logistica.Formularios
         private void guiasDelMesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CN_vta_guias objAlm = new CN_vta_guias();
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             objAlm.STU_SISTEMA = STU_SISTEMA;
             objAlm.ReportGuiasMes(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, STU_SISTEMA.MESTRABAJO);
         }
@@ -1323,15 +1323,15 @@ namespace SSF_NET_Logistica.Formularios
         //{
         //    //if (booAgregando == true) { return; }
 
-        //    //if (Convert.ToInt16(CboCliente.SelectedValue) !=0 )
+        //    //if (Convert.ToInt32(CboCliente.SelectedValue) !=0 )
         //    //    { 
         //    //    DataTable dtfiltrar = new DataTable();
-        //    //    dtfiltrar = funDatos.DataTableFiltrar(dtCliPro, "n_id = "+ Convert.ToInt16(CboCliente.SelectedValue) +"");
+        //    //    dtfiltrar = funDatos.DataTableFiltrar(dtCliPro, "n_id = "+ Convert.ToInt32(CboCliente.SelectedValue) +"");
         //    //    if (dtfiltrar.Rows.Count != 0)
         //    //    {
         //    //        DataTable dtResult = new DataTable();
 
-        //    //        dtResult = funDatos.DataTableFiltrar(dtPunPar, "n_idcli = " + Convert.ToInt16(CboCliente.SelectedValue) + "");
+        //    //        dtResult = funDatos.DataTableFiltrar(dtPunPar, "n_idcli = " + Convert.ToInt32(CboCliente.SelectedValue) + "");
         //    //        if (dtResult.Rows.Count != 0)
         //    //        {
         //    //            funDatos.ComboBoxCargarDataTable(CboPunPar, dtResult, "n_id", "c_des");
@@ -1383,7 +1383,7 @@ namespace SSF_NET_Logistica.Formularios
             dtResult = funDatos.DataTableFiltrar(dtTipoExis, "c_des = '" + c_tipoitem + "'");
             if (dtResult.Rows.Count != 0)
             {
-                n_idtipexi = Convert.ToInt16(dtResult.Rows[0]["n_id"].ToString());
+                n_idtipexi = Convert.ToInt32(dtResult.Rows[0]["n_id"].ToString());
             }
             dtResult = funDatos.DataTableFiltrar(dtItems, "n_idtipexi = " + n_idtipexi + "");
 
@@ -1415,7 +1415,7 @@ namespace SSF_NET_Logistica.Formularios
             if (dtResult == null) { return; }
             if (dtResult.Rows.Count == 0) { return; }
             
-            n_iditem = Convert.ToInt16(dtResult.Rows[0]["n_id"].ToString());
+            n_iditem = Convert.ToInt32(dtResult.Rows[0]["n_id"].ToString());
             FgItems.SetData(FgItems.Row, 2, dtResult.Rows[0]["c_despro"].ToString());
 
             //MOSTRAMOS LA PRESENTACION DEL ITEM
@@ -1681,12 +1681,12 @@ namespace SSF_NET_Logistica.Formularios
                 TxtNumRuc2.Text = funDatos.DataTableBuscar(dtCliPro, "n_id", "c_numdoc", LblIdCliente2.Text, "N").ToString();
                 TxtCliente2.Text = funDatos.DataTableBuscar(dtCliPro, "n_id", "c_nombre", LblIdCliente2.Text, "N").ToString();
 
-                dtResult = funDatos.DataTableFiltrar(dtPunPar, "n_idcli = " + Convert.ToInt16(LblIdCliente.Text) + "");
+                dtResult = funDatos.DataTableFiltrar(dtPunPar, "n_idcli = " + Convert.ToInt32(LblIdCliente.Text) + "");
                 funDatos.ComboBoxCargarDataTable(CboPunPar, dtResult, "n_id", "c_des");
                 TxtLugPar.Text = "";
                 CboPunPar.SelectedValue = 0;
 
-                dtResult = funDatos.DataTableFiltrar(dtPunVen, "n_idcli = " + Convert.ToInt16(LblIdCliente2.Text) + "");
+                dtResult = funDatos.DataTableFiltrar(dtPunVen, "n_idcli = " + Convert.ToInt32(LblIdCliente2.Text) + "");
                 funDatos.ComboBoxCargarDataTable(CboPunVen, dtResult, "n_id", "c_des");
                 TxtLugEnt.Text = "";
                 CboPunVen.SelectedValue = 0;
@@ -1853,7 +1853,7 @@ namespace SSF_NET_Logistica.Formularios
         bool AnularGuia()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
             
             BE_Registro = objRegistros.TraerRegistro(intIdRegistro);
             if (BE_Registro.n_anulado == 2)
@@ -1897,7 +1897,7 @@ namespace SSF_NET_Logistica.Formularios
 
         private void modificarRegistroToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
             BE_Registro = objRegistros.TraerRegistro(intIdRegistro);
             if (BE_Registro.n_anulado == 2)
             {
@@ -1920,7 +1920,7 @@ namespace SSF_NET_Logistica.Formularios
         bool ActivarGuia()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de activar el registro anulado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -2156,15 +2156,15 @@ namespace SSF_NET_Logistica.Formularios
                 LblIdCliente.Text = dtresul.Rows[0]["n_id"].ToString();
 
                 
-                if (Convert.ToInt16(LblIdCliente.Text) != 0)
+                if (Convert.ToInt32(LblIdCliente.Text) != 0)
                 {
                     DataTable dtfiltrar = new DataTable();
-                    dtfiltrar = funDatos.DataTableFiltrar(dtCliPro, "n_id = " + Convert.ToInt16(LblIdCliente.Text) + "");
+                    dtfiltrar = funDatos.DataTableFiltrar(dtCliPro, "n_id = " + Convert.ToInt32(LblIdCliente.Text) + "");
                     if (dtfiltrar.Rows.Count != 0)
                     {
                         DataTable dtResult = new DataTable();
 
-                        dtResult = funDatos.DataTableFiltrar(dtPunPar, "n_idcli = " + Convert.ToInt16(LblIdCliente.Text) + "");
+                        dtResult = funDatos.DataTableFiltrar(dtPunPar, "n_idcli = " + Convert.ToInt32(LblIdCliente.Text) + "");
                         if (dtResult.Rows.Count != 0)
                         {
                             funDatos.ComboBoxCargarDataTable(CboPunPar, dtResult, "n_id", "c_des");
@@ -2238,7 +2238,7 @@ namespace SSF_NET_Logistica.Formularios
             DataTable dtResult = new DataTable();
             dtResult = funDatos.DataTableFiltrar(dtPunPar, "n_idcli = " + LblIdCliente.Text + "");
 
-            TxtLugPar.Text = funDatos.DataTableBuscar(dtResult, "n_id", "c_dir", Convert.ToInt16(CboPunPar.SelectedValue).ToString(), "N").ToString();
+            TxtLugPar.Text = funDatos.DataTableBuscar(dtResult, "n_id", "c_dir", Convert.ToInt32(CboPunPar.SelectedValue).ToString(), "N").ToString();
         }
 
         private void CboPunVen_SelectedValueChanged(object sender, EventArgs e)
@@ -2249,7 +2249,7 @@ namespace SSF_NET_Logistica.Formularios
             DataTable dtResult = new DataTable();
             dtResult = funDatos.DataTableFiltrar(dtPunVen, "n_idcli = " + LblIdCliente2.Text + "");
 
-            TxtLugEnt.Text = funDatos.DataTableBuscar(dtResult, "n_id", "c_dir", Convert.ToInt16(CboPunVen.SelectedValue).ToString(), "N").ToString();
+            TxtLugEnt.Text = funDatos.DataTableBuscar(dtResult, "n_id", "c_dir", Convert.ToInt32(CboPunVen.SelectedValue).ToString(), "N").ToString();
         }
     }
 }

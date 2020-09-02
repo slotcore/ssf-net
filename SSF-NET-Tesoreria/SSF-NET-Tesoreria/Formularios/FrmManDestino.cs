@@ -242,7 +242,7 @@ namespace SSF_NET_Tesoreria.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -252,7 +252,7 @@ namespace SSF_NET_Tesoreria.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -317,9 +317,9 @@ namespace SSF_NET_Tesoreria.Formularios
         }
         void AsignarEntidad()
         {
-            BE_Registro.n_idcue = Convert.ToInt16(LblidCueCom.Text);
-            BE_Registro.n_idmod = Convert.ToInt16(CboModulo.SelectedValue);
-            BE_Registro.n_idmon = Convert.ToInt16(CboMoneda.SelectedValue);
+            BE_Registro.n_idcue = Convert.ToInt32(LblidCueCom.Text);
+            BE_Registro.n_idmod = Convert.ToInt32(CboModulo.SelectedValue);
+            BE_Registro.n_idmon = Convert.ToInt32(CboMoneda.SelectedValue);
             BE_Registro.n_idemp = STU_SISTEMA.EMPRESAID;
             if (n_tipo == 1)
             {
@@ -345,7 +345,7 @@ namespace SSF_NET_Tesoreria.Formularios
                 TxtCtaCom.Focus();
                 return booEstado;
             }
-            if (Convert.ToInt16(CboMoneda.SelectedValue) == 0)
+            if (Convert.ToInt32(CboMoneda.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado la moneda del origen !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboMoneda.Focus();
@@ -450,7 +450,7 @@ namespace SSF_NET_Tesoreria.Formularios
 
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             booAgregando = true;
             VerRegistro(intIdRegistro);
@@ -476,7 +476,7 @@ namespace SSF_NET_Tesoreria.Formularios
 
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {

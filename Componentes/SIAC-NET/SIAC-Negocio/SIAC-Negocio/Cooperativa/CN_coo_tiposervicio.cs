@@ -54,7 +54,7 @@ namespace SIAC_Negocio.Cooperativa
                 DtResultado = miFun.dtTipSer;
                 if (DtResultado.Rows.Count != 0)
                 {
-                    entTipoServicio.n_id = Convert.ToInt16(DtResultado.Rows[0]["n_id"].ToString());
+                    entTipoServicio.n_id = Convert.ToInt32(DtResultado.Rows[0]["n_id"].ToString());
                     entTipoServicio.c_des = DtResultado.Rows[0]["c_des"].ToString();
                 }
             }

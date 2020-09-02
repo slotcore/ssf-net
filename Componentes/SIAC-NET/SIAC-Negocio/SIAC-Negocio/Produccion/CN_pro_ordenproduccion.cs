@@ -116,21 +116,21 @@ namespace SIAC_Negocio.Produccion
             dtDet = miFun.dtOrdenProdDet;
             if (dtCab.Rows.Count != 0)
             {
-                entOrdenProd.n_idemp = Convert.ToInt16(dtCab.Rows[0]["n_idemp"]);
-                entOrdenProd.n_id = Convert.ToInt16(dtCab.Rows[0]["n_id"]);
-                entOrdenProd.n_idtipdoc = Convert.ToInt16(dtCab.Rows[0]["n_idtipdoc"]);
+                entOrdenProd.n_idemp = Convert.ToInt32(dtCab.Rows[0]["n_idemp"]);
+                entOrdenProd.n_id = Convert.ToInt32(dtCab.Rows[0]["n_id"]);
+                entOrdenProd.n_idtipdoc = Convert.ToInt32(dtCab.Rows[0]["n_idtipdoc"]);
                 entOrdenProd.c_numser = dtCab.Rows[0]["c_numser"].ToString();
                 entOrdenProd.c_numdoc = dtCab.Rows[0]["c_numdoc"].ToString();
                 entOrdenProd.d_fchemi = Convert.ToDateTime(dtCab.Rows[0]["d_fchemi"]);
-                entOrdenProd.n_anotra = Convert.ToInt16(dtCab.Rows[0]["n_anotra"]);
-                entOrdenProd.n_mestra = Convert.ToInt16(dtCab.Rows[0]["n_mestra"]);
-                entOrdenProd.n_idres = Convert.ToInt16(dtCab.Rows[0]["n_idres"]);
-                entOrdenProd.n_idtipdocref = Convert.ToInt16(dtCab.Rows[0]["n_idtipdocref"]);
-                entOrdenProd.n_iddocref = Convert.ToInt16(dtCab.Rows[0]["n_iddocref"]);
-                entOrdenProd.n_idpri = Convert.ToInt16(dtCab.Rows[0]["n_idpri"]);
+                entOrdenProd.n_anotra = Convert.ToInt32(dtCab.Rows[0]["n_anotra"]);
+                entOrdenProd.n_mestra = Convert.ToInt32(dtCab.Rows[0]["n_mestra"]);
+                entOrdenProd.n_idres = Convert.ToInt32(dtCab.Rows[0]["n_idres"]);
+                entOrdenProd.n_idtipdocref = Convert.ToInt32(dtCab.Rows[0]["n_idtipdocref"]);
+                entOrdenProd.n_iddocref = Convert.ToInt32(dtCab.Rows[0]["n_iddocref"]);
+                entOrdenProd.n_idpri = Convert.ToInt32(dtCab.Rows[0]["n_idpri"]);
                 entOrdenProd.c_obs = dtCab.Rows[0]["c_obs"].ToString();
                 entOrdenProd.d_fchent = Convert.ToDateTime(dtCab.Rows[0]["d_fchent"].ToString());
-                entOrdenProd.n_idest = Convert.ToInt16(dtCab.Rows[0]["n_idest"]);
+                entOrdenProd.n_idest = Convert.ToInt32(dtCab.Rows[0]["n_idest"]);
             }
 
             if (dtDet.Rows.Count != 0)
@@ -138,13 +138,13 @@ namespace SIAC_Negocio.Produccion
                 for (n_row = 0; n_row <= dtDet.Rows.Count-1; n_row++)
                 {
                     BE_PRO_ORDENPRODUCCIONDET entDetalle = new BE_PRO_ORDENPRODUCCIONDET();
-                    entDetalle.n_idord = Convert.ToInt16(dtDet.Rows[n_row]["n_idord"]);
-                    entDetalle.n_idpro = Convert.ToInt16(dtDet.Rows[n_row]["n_idpro"]);
-                    entDetalle.n_idrec = Convert.ToInt16(dtDet.Rows[n_row]["n_idrec"]);
-                    entDetalle.n_idunimed = Convert.ToInt16(dtDet.Rows[n_row]["n_idunimed"]);
+                    entDetalle.n_idord = Convert.ToInt32(dtDet.Rows[n_row]["n_idord"]);
+                    entDetalle.n_idpro = Convert.ToInt32(dtDet.Rows[n_row]["n_idpro"]);
+                    entDetalle.n_idrec = Convert.ToInt32(dtDet.Rows[n_row]["n_idrec"]);
+                    entDetalle.n_idunimed = Convert.ToInt32(dtDet.Rows[n_row]["n_idunimed"]);
                     entDetalle.n_can = Convert.ToDouble(dtDet.Rows[n_row]["n_can"]);
                     entDetalle.c_obs = dtDet.Rows[n_row]["c_obs"].ToString();
-                    entDetalle.n_numarm = Convert.ToInt16(dtDet.Rows[n_row]["n_numarm"].ToString());
+                    entDetalle.n_numarm = Convert.ToInt32(dtDet.Rows[n_row]["n_numarm"].ToString());
 
                     if (xFun.NulosC(dtDet.Rows[n_row]["d_fchent"]) != "")
                     {

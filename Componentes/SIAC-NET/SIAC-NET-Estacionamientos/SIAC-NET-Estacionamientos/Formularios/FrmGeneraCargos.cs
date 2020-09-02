@@ -364,7 +364,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
             Blanquea();
             Bloquea();
             ActivarTool();
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
             Tab1.SelectedIndex = 1;
@@ -374,7 +374,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
             CN_est_cargos objRegistros = new CN_est_cargos(STU_SISTEMA);
             objRegistros.STU_SISTEMA = STU_SISTEMA;
             if (objRegistros.TieneCargosPagados(intIdRegistro) == true)
@@ -461,12 +461,12 @@ namespace SIAC_NET_Estacionamientos.Formularios
             }
             else
             {
-                n_id = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+                n_id = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             }
 
             BE_Registro.n_idemp = STU_SISTEMA.EMPRESAID;
             BE_Registro.n_id = n_id;
-            BE_Registro.n_idpla = Convert.ToInt16(CboPla.SelectedValue);
+            BE_Registro.n_idpla = Convert.ToInt32(CboPla.SelectedValue);
             BE_Registro.n_idano = STU_SISTEMA.ANOTRABAJO;
             BE_Registro.n_idmes = STU_SISTEMA.MESTRABAJO;
             BE_Registro.d_fchemi = Convert.ToDateTime(TxtFchEmi.Text);
@@ -485,9 +485,9 @@ namespace SIAC_NET_Estacionamientos.Formularios
                 e_carcab.n_idcar = n_id;
 
                 c_dato = FgPlacas.GetData(n_row, 11).ToString();
-                e_carcab.n_id = Convert.ToInt16(c_dato);
+                e_carcab.n_id = Convert.ToInt32(c_dato);
 
-                e_carcab.n_idpla = Convert.ToInt16(CboPla.SelectedValue);
+                e_carcab.n_idpla = Convert.ToInt32(CboPla.SelectedValue);
                 
                 
                 e_carcab.n_idtipdoc = 83;
@@ -501,7 +501,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
                 e_carcab.d_fchemi = Convert.ToDateTime(TxtFchEmi.Text);
                 
                 c_dato = FgPlacas.GetData(n_row, 8).ToString();
-                e_carcab.n_idcli = Convert.ToInt16(c_dato);
+                e_carcab.n_idcli = Convert.ToInt32(c_dato);
 
                 c_dato = FgPlacas.GetData(n_row, 5).ToString();
                 e_carcab.n_impbru = Convert.ToDouble(c_dato);
@@ -515,7 +515,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
                 e_carcab.n_impsal = Convert.ToDouble(c_dato);
 
                 c_dato = FgPlacas.GetData(n_row, 9).ToString();
-                e_carcab.n_idtipdocfac = Convert.ToInt16(c_dato);
+                e_carcab.n_idtipdocfac = Convert.ToInt32(c_dato);
 
                 l_carcab.Add(e_carcab);
             }
@@ -546,13 +546,13 @@ namespace SIAC_NET_Estacionamientos.Formularios
                 e_cardet.n_idcar = n_id;
 
                 c_dato = FgPlacas.GetData(n_row, 11).ToString();
-                e_cardet.n_idcab = Convert.ToInt16(c_dato);
+                e_cardet.n_idcab = Convert.ToInt32(c_dato);
 
                 c_dato = FgPlacas.GetData(n_row, 10).ToString();
-                e_cardet.n_idser= Convert.ToInt16(c_dato);
+                e_cardet.n_idser= Convert.ToInt32(c_dato);
 
                 c_dato = funDatos.DataTableBuscar(dtSer, "n_id", "n_idunimed", c_dato, "N").ToString();
-                e_cardet.n_idunimed = Convert.ToInt16(c_dato);
+                e_cardet.n_idunimed = Convert.ToInt32(c_dato);
 
                 c_dato = FgPlacas.GetData(n_row, 5).ToString();
                 e_cardet.n_impbru = Convert.ToDouble(c_dato);
@@ -571,7 +571,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
         {
             bool booEstado = true;
 
-            if (Convert.ToInt16(CboPla.SelectedValue) == 0)
+            if (Convert.ToInt32(CboPla.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el nombre de laplaya !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -678,7 +678,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
         }
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             booAgregando = true;
             VerRegistro(intIdRegistro);
@@ -702,7 +702,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
 
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -725,7 +725,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
             DataTable dtCli = new DataTable();
             CN_est_clientes o_Cliente = new CN_est_clientes(STU_SISTEMA);
             o_Cliente.STU_SISTEMA = STU_SISTEMA;
-            o_Cliente.Consulta1(STU_SISTEMA.EMPRESAID, Convert.ToInt16(CboPla.SelectedValue));
+            o_Cliente.Consulta1(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboPla.SelectedValue));
             dtCli = o_Cliente.dtListar;
 
             CN_est_conecta o_conec = new CN_est_conecta(STU_SISTEMA);
@@ -770,13 +770,13 @@ namespace SIAC_NET_Estacionamientos.Formularios
 
                     FgPlacas.SetData(FgPlacas.Rows.Count - 1, 7, n_imptot.ToString("0.00"));
 
-                    c_dato = Convert.ToInt16(dtCli.Rows[n_row]["n_id"]).ToString();
+                    c_dato = Convert.ToInt32(dtCli.Rows[n_row]["n_id"]).ToString();
                     FgPlacas.SetData(FgPlacas.Rows.Count - 1, 8, c_dato);
 
-                    c_dato = Convert.ToInt16(dtCli.Rows[n_row]["n_tipdocfac"]).ToString();
+                    c_dato = Convert.ToInt32(dtCli.Rows[n_row]["n_tipdocfac"]).ToString();
                     FgPlacas.SetData(FgPlacas.Rows.Count - 1, 9, c_dato);
 
-                    c_dato = Convert.ToInt16(dtCli.Rows[n_row]["n_idser"]).ToString();
+                    c_dato = Convert.ToInt32(dtCli.Rows[n_row]["n_idser"]).ToString();
                     FgPlacas.SetData(FgPlacas.Rows.Count - 1, 10, c_dato);
 
                     c_dato = n_corr.ToString();
@@ -841,7 +841,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
         private void emitirGuiaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CN_est_cargos o_liq = new CN_est_cargos(STU_SISTEMA);
-            int n_idreg = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString()); ;
+            int n_idreg = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString()); ;
             o_liq.STU_SISTEMA = STU_SISTEMA;
             o_liq.ImprimirCargo(n_idreg);
         }

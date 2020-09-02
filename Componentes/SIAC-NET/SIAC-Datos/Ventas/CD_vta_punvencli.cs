@@ -71,15 +71,15 @@ namespace SIAC_DATOS.Ventas
 
             if (DtResultado.Rows.Count != 0)
             {
-                Ent_PunVenCli.n_idemp = Convert.ToInt16(DtResultado.Rows[0]["n_idemp"].ToString());
-                Ent_PunVenCli.n_idcli = Convert.ToInt16(DtResultado.Rows[0]["n_idcli"].ToString());
-                Ent_PunVenCli.n_id = Convert.ToInt16(DtResultado.Rows[0]["n_id"].ToString());
+                Ent_PunVenCli.n_idemp = Convert.ToInt32(DtResultado.Rows[0]["n_idemp"].ToString());
+                Ent_PunVenCli.n_idcli = Convert.ToInt32(DtResultado.Rows[0]["n_idcli"].ToString());
+                Ent_PunVenCli.n_id = Convert.ToInt32(DtResultado.Rows[0]["n_id"].ToString());
                 Ent_PunVenCli.c_codcen = DtResultado.Rows[0]["c_codcen"].ToString();
                 Ent_PunVenCli.c_des = DtResultado.Rows[0]["c_des"].ToString();
                 Ent_PunVenCli.c_dir = DtResultado.Rows[0]["c_dir"].ToString();
-                Ent_PunVenCli.n_iddis = Convert.ToInt16(DtResultado.Rows[0]["n_iddis"].ToString());
-                Ent_PunVenCli.n_idpro = Convert.ToInt16(DtResultado.Rows[0]["n_idpro"].ToString());
-                Ent_PunVenCli.n_iddep = Convert.ToInt16(DtResultado.Rows[0]["n_iddep"].ToString());
+                Ent_PunVenCli.n_iddis = Convert.ToInt32(DtResultado.Rows[0]["n_iddis"].ToString());
+                Ent_PunVenCli.n_idpro = Convert.ToInt32(DtResultado.Rows[0]["n_idpro"].ToString());
+                Ent_PunVenCli.n_iddep = Convert.ToInt32(DtResultado.Rows[0]["n_iddep"].ToString());
             }
             return Ent_PunVenCli;
         }

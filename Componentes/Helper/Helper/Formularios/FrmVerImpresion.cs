@@ -45,7 +45,7 @@ namespace Helper.Formularios
 
             iConnectionInfo.Type = ConnectionInfoType.SQL;
 
-            n_NumeroElementos = Convert.ToInt16(arrParametros.GetLongLength(0));
+            n_NumeroElementos = Convert.ToInt32(arrParametros.GetLongLength(0));
 
             for (n_fila = 0; n_fila <= n_NumeroElementos - 1; n_fila++)
             {

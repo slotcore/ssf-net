@@ -231,7 +231,7 @@ namespace SSF_NET_Produccion.Formularios
         private void CboLin_SelectedValueChanged(object sender, EventArgs e)
         {
             if (booAgregando == true) { return; }
-            if (Convert.ToInt16(CboLin.SelectedValue) == 0) { return; }
+            if (Convert.ToInt32(CboLin.SelectedValue) == 0) { return; }
 
             lstLineaDet.Clear();
             objRegistro.TraerRegistro(Convert.ToInt32(CboLin.SelectedValue));
@@ -244,10 +244,10 @@ namespace SSF_NET_Produccion.Formularios
         private void CboPro_SelectedValueChanged(object sender, EventArgs e)
         {
             if (booAgregando == true) { return; }
-            if (Convert.ToInt16(CboPro.SelectedValue) == 0) { return; }
+            if (Convert.ToInt32(CboPro.SelectedValue) == 0) { return; }
             DataTable dtResult = new DataTable();
             booAgregando = true;
-            dtResult = funDatos.DataTableFiltrar(dtLineas, "n_idpro = " + Convert.ToInt16(CboPro.SelectedValue) + "");
+            dtResult = funDatos.DataTableFiltrar(dtLineas, "n_idpro = " + Convert.ToInt32(CboPro.SelectedValue) + "");
             if (dtResult.Rows.Count != 0)
             {
                 funDatos.ComboBoxCargarDataTable(CboLin, dtResult, "n_id", "c_deslin");

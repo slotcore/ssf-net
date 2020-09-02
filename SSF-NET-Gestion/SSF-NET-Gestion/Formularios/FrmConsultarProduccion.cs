@@ -92,8 +92,8 @@ namespace SSF_NET_Gestion.Formularios
                 o_proint.mysConec = mysConec;
                 o_proter.mysConec = mysConec;
                 
-                o_proint.Consulta12(Convert.ToInt16(dtEmpresa.Rows[n_row]["n_id"]), STU_SISTEMA.ANOTRABAJO,1);  // CARGAMOS PRODUCTOS INTERMEDIOS
-                o_proter.Consulta12(Convert.ToInt16(dtEmpresa.Rows[n_row]["n_id"]), STU_SISTEMA.ANOTRABAJO,2);  // CARGAMOS PRODUCTOS TERMINADOS
+                o_proint.Consulta12(Convert.ToInt32(dtEmpresa.Rows[n_row]["n_id"]), STU_SISTEMA.ANOTRABAJO,1);  // CARGAMOS PRODUCTOS INTERMEDIOS
+                o_proter.Consulta12(Convert.ToInt32(dtEmpresa.Rows[n_row]["n_id"]), STU_SISTEMA.ANOTRABAJO,2);  // CARGAMOS PRODUCTOS TERMINADOS
                 dtInt = o_proint.dtListar;
                 dtTer = o_proter.dtListar;
 

@@ -78,17 +78,17 @@ namespace SIAC_Negocio.Produccion
 
                 if (DtResultado.Rows.Count != 0)
                 {
-                    entRegistro.n_idemp = Convert.ToInt16(DtResultado.Rows[0]["n_idemp"].ToString());
-                    entRegistro.n_id = Convert.ToInt16(DtResultado.Rows[0]["n_id"].ToString());
+                    entRegistro.n_idemp = Convert.ToInt32(DtResultado.Rows[0]["n_idemp"].ToString());
+                    entRegistro.n_id = Convert.ToInt32(DtResultado.Rows[0]["n_id"].ToString());
                     entRegistro.c_cod = DtResultado.Rows[0]["c_cod"].ToString();
                     entRegistro.c_despro = DtResultado.Rows[0]["c_despro"].ToString();
-                    entRegistro.n_idunimed = Convert.ToInt16(DtResultado.Rows[0]["n_idunimed"].ToString());
-                    entRegistro.n_idfam = Convert.ToInt16(DtResultado.Rows[0]["n_idfam"].ToString());
-                    entRegistro.n_idcla = Convert.ToInt16(DtResultado.Rows[0]["n_idcla"].ToString());
-                    entRegistro.n_idsubcla = Convert.ToInt16(DtResultado.Rows[0]["n_idsubcla"].ToString());
-                    entRegistro.n_idtip = Convert.ToInt16(DtResultado.Rows[0]["n_idtip"].ToString());
+                    entRegistro.n_idunimed = Convert.ToInt32(DtResultado.Rows[0]["n_idunimed"].ToString());
+                    entRegistro.n_idfam = Convert.ToInt32(DtResultado.Rows[0]["n_idfam"].ToString());
+                    entRegistro.n_idcla = Convert.ToInt32(DtResultado.Rows[0]["n_idcla"].ToString());
+                    entRegistro.n_idsubcla = Convert.ToInt32(DtResultado.Rows[0]["n_idsubcla"].ToString());
+                    entRegistro.n_idtip = Convert.ToInt32(DtResultado.Rows[0]["n_idtip"].ToString());
                     entRegistro.c_obs = DtResultado.Rows[0]["c_obs"].ToString();
-                    entRegistro.n_act = Convert.ToInt16(DtResultado.Rows[0]["n_act"]);
+                    entRegistro.n_act = Convert.ToInt32(DtResultado.Rows[0]["n_act"]);
                 }
 
                 // ********************************
@@ -102,15 +102,15 @@ namespace SIAC_Negocio.Produccion
                     {
                         BE_PRO_PRODUCTOSRECETAS entRecetas = new BE_PRO_PRODUCTOSRECETAS();
 
-                        entRecetas.n_idpro = Convert.ToInt16(DtResultado.Rows[n_fila]["n_idpro"].ToString());
-                        entRecetas.n_id = Convert.ToInt16(DtResultado.Rows[n_fila]["n_id"].ToString());
+                        entRecetas.n_idpro = Convert.ToInt32(DtResultado.Rows[n_fila]["n_idpro"].ToString());
+                        entRecetas.n_id = Convert.ToInt32(DtResultado.Rows[n_fila]["n_id"].ToString());
                         entRecetas.c_codrec = DtResultado.Rows[n_fila]["c_codrec"].ToString();
                         entRecetas.c_des = DtResultado.Rows[n_fila]["c_des"].ToString();
-                        entRecetas.n_idunimed = Convert.ToInt16(DtResultado.Rows[n_fila]["n_idunimed"].ToString());
-                        entRecetas.n_can = Convert.ToInt16(DtResultado.Rows[n_fila]["n_can"].ToString());
-                        entRecetas.n_prirec = Convert.ToInt16(miFunFun.NulosN(DtResultado.Rows[n_fila]["n_prirec"]));
+                        entRecetas.n_idunimed = Convert.ToInt32(DtResultado.Rows[n_fila]["n_idunimed"].ToString());
+                        entRecetas.n_can = Convert.ToInt32(DtResultado.Rows[n_fila]["n_can"].ToString());
+                        entRecetas.n_prirec = Convert.ToInt32(miFunFun.NulosN(DtResultado.Rows[n_fila]["n_prirec"]));
                         entRecetas.c_obs = DtResultado.Rows[n_fila]["c_obs"].ToString();
-                        entRecetas.n_act = Convert.ToInt16(DtResultado.Rows[n_fila]["n_act"].ToString());
+                        entRecetas.n_act = Convert.ToInt32(DtResultado.Rows[n_fila]["n_act"].ToString());
 
                         lstRecetas.Add(entRecetas);
                     }
@@ -125,19 +125,19 @@ namespace SIAC_Negocio.Produccion
                         {
                             BE_PRO_PRODUCTOSRECETASLINEAS entLineas = new BE_PRO_PRODUCTOSRECETASLINEAS();
 
-                            entLineas.n_idpro = Convert.ToInt16(DtResultado.Rows[n_fila]["n_idpro"].ToString());
-                            entLineas.n_idrec = Convert.ToInt16(DtResultado.Rows[n_fila]["n_idrec"].ToString());
-                            entLineas.n_id = Convert.ToInt16(DtResultado.Rows[n_fila]["n_id"].ToString());
+                            entLineas.n_idpro = Convert.ToInt32(DtResultado.Rows[n_fila]["n_idpro"].ToString());
+                            entLineas.n_idrec = Convert.ToInt32(DtResultado.Rows[n_fila]["n_idrec"].ToString());
+                            entLineas.n_id = Convert.ToInt32(DtResultado.Rows[n_fila]["n_id"].ToString());
                             entLineas.c_codlin = DtResultado.Rows[n_fila]["c_codlin"].ToString();
                             entLineas.c_deslin = DtResultado.Rows[n_fila]["c_deslin"].ToString();
-                            entLineas.n_idunimed = Convert.ToInt16(DtResultado.Rows[n_fila]["n_idunimed"].ToString());
-                            entLineas.n_idite = Convert.ToInt16(DtResultado.Rows[n_fila]["n_idite"].ToString());
-                            entLineas.n_can = Convert.ToInt16(DtResultado.Rows[n_fila]["n_can"].ToString());
-                            entLineas.n_numope = Convert.ToInt16(DtResultado.Rows[n_fila]["n_numope"].ToString());
+                            entLineas.n_idunimed = Convert.ToInt32(DtResultado.Rows[n_fila]["n_idunimed"].ToString());
+                            entLineas.n_idite = Convert.ToInt32(DtResultado.Rows[n_fila]["n_idite"].ToString());
+                            entLineas.n_can = Convert.ToInt32(DtResultado.Rows[n_fila]["n_can"].ToString());
+                            entLineas.n_numope = Convert.ToInt32(DtResultado.Rows[n_fila]["n_numope"].ToString());
                             entLineas.n_efi = Convert.ToDouble(DtResultado.Rows[n_fila]["n_efi"].ToString());
                             entLineas.n_tiepro = Convert.ToDouble(DtResultado.Rows[n_fila]["n_tiepro"]);
                             entLineas.n_prehorjor = Convert.ToDouble(DtResultado.Rows[n_fila]["n_prehorjor"].ToString());
-                            entLineas.n_act = Convert.ToInt16(DtResultado.Rows[n_fila]["n_act"].ToString());
+                            entLineas.n_act = Convert.ToInt32(DtResultado.Rows[n_fila]["n_act"].ToString());
                             entLineas.c_obs = DtResultado.Rows[n_fila]["c_obs"].ToString();
                             lstLineas.Add(entLineas);
                         }
@@ -152,14 +152,14 @@ namespace SIAC_Negocio.Produccion
                             {
                                 BE_PRO_PRODUCTOSRECETASINSUMOS entRectasIns = new BE_PRO_PRODUCTOSRECETASINSUMOS();
 
-                                entRectasIns.n_idpro = Convert.ToInt16(DtResultado.Rows[n_fila]["n_idpro"].ToString());
-                                entRectasIns.n_idrec = Convert.ToInt16(DtResultado.Rows[n_fila]["n_idrec"].ToString());
-                                entRectasIns.n_idite = Convert.ToInt16(DtResultado.Rows[n_fila]["n_idite"].ToString());
-                                entRectasIns.n_idunimed = Convert.ToInt16(DtResultado.Rows[n_fila]["n_idunimed"].ToString());
+                                entRectasIns.n_idpro = Convert.ToInt32(DtResultado.Rows[n_fila]["n_idpro"].ToString());
+                                entRectasIns.n_idrec = Convert.ToInt32(DtResultado.Rows[n_fila]["n_idrec"].ToString());
+                                entRectasIns.n_idite = Convert.ToInt32(DtResultado.Rows[n_fila]["n_idite"].ToString());
+                                entRectasIns.n_idunimed = Convert.ToInt32(DtResultado.Rows[n_fila]["n_idunimed"].ToString());
                                 entRectasIns.n_can = Convert.ToDouble(DtResultado.Rows[n_fila]["n_can"].ToString());
                                 if (DtResultado.Rows[n_fila]["n_inspri"].ToString() != "")
                                 {
-                                    entRectasIns.n_inspri = Convert.ToInt16(DtResultado.Rows[n_fila]["n_inspri"].ToString());
+                                    entRectasIns.n_inspri = Convert.ToInt32(DtResultado.Rows[n_fila]["n_inspri"].ToString());
                                 }
                                 else
                                 {
@@ -177,19 +177,19 @@ namespace SIAC_Negocio.Produccion
                                 {
                                     BE_PRO_PRODUCTOSRECETASLINEASTAREAS entLineasTar = new BE_PRO_PRODUCTOSRECETASLINEASTAREAS();
                                     
-                                    entLineasTar.n_idpro = Convert.ToInt16(DtResultado.Rows[n_fila]["n_idpro"].ToString());
-                                    entLineasTar.n_idrec = Convert.ToInt16(DtResultado.Rows[n_fila]["n_idrec"].ToString());
-                                    entLineasTar.n_idlin = Convert.ToInt16(DtResultado.Rows[n_fila]["n_idlin"].ToString());
-                                    entLineasTar.n_idtar = Convert.ToInt16(DtResultado.Rows[n_fila]["n_idtar"].ToString());
+                                    entLineasTar.n_idpro = Convert.ToInt32(DtResultado.Rows[n_fila]["n_idpro"].ToString());
+                                    entLineasTar.n_idrec = Convert.ToInt32(DtResultado.Rows[n_fila]["n_idrec"].ToString());
+                                    entLineasTar.n_idlin = Convert.ToInt32(DtResultado.Rows[n_fila]["n_idlin"].ToString());
+                                    entLineasTar.n_idtar = Convert.ToInt32(DtResultado.Rows[n_fila]["n_idtar"].ToString());
                                     entLineasTar.n_porefi = Convert.ToDouble(DtResultado.Rows[n_fila]["n_porefi"].ToString());
-                                    entLineasTar.n_numpertar = Convert.ToInt16(DtResultado.Rows[n_fila]["n_numpertar"].ToString());
-                                    entLineasTar.n_idequipo = Convert.ToInt16(DtResultado.Rows[n_fila]["n_idequipo"].ToString());
-                                    entLineasTar.n_canequi = Convert.ToInt16(DtResultado.Rows[n_fila]["n_canequi"].ToString());
-                                    entLineasTar.n_numpertarequ = Convert.ToInt16(DtResultado.Rows[n_fila]["n_numpertarequ"].ToString());
+                                    entLineasTar.n_numpertar = Convert.ToInt32(DtResultado.Rows[n_fila]["n_numpertar"].ToString());
+                                    entLineasTar.n_idequipo = Convert.ToInt32(DtResultado.Rows[n_fila]["n_idequipo"].ToString());
+                                    entLineasTar.n_canequi = Convert.ToInt32(DtResultado.Rows[n_fila]["n_canequi"].ToString());
+                                    entLineasTar.n_numpertarequ = Convert.ToInt32(DtResultado.Rows[n_fila]["n_numpertarequ"].ToString());
                                     entLineasTar.n_capkilporper = Convert.ToDouble(DtResultado.Rows[n_fila]["n_capkilporper"].ToString());
                                     entLineasTar.n_capkilporhorlin = Convert.ToDouble(DtResultado.Rows[n_fila]["n_capkilporhorlin"].ToString());
                                     entLineasTar.n_capkilporlintietra = Convert.ToDouble(DtResultado.Rows[n_fila]["n_capkilporlintietra"].ToString());
-                                    entLineasTar.n_numpercal = Convert.ToInt16(DtResultado.Rows[n_fila]["n_numpercal"].ToString());
+                                    entLineasTar.n_numpercal = Convert.ToInt32(DtResultado.Rows[n_fila]["n_numpercal"].ToString());
                                     entLineasTar.n_totprotietra = Convert.ToDouble(DtResultado.Rows[n_fila]["n_totprotietra"].ToString());
                                     entLineasTar.n_porefiuni = Convert.ToDouble(DtResultado.Rows[n_fila]["n_porefiuni"].ToString());
                                     entLineasTar.n_porefitot = Convert.ToDouble(DtResultado.Rows[n_fila]["n_porefitot"].ToString());
@@ -203,7 +203,7 @@ namespace SIAC_Negocio.Produccion
                                     }
                                     
                                     entLineasTar.n_costar = Convert.ToDouble(DtResultado.Rows[n_fila]["n_costar"].ToString());
-                                    entLineasTar.n_ord = Convert.ToInt16(DtResultado.Rows[n_fila]["n_ord"].ToString());
+                                    entLineasTar.n_ord = Convert.ToInt32(DtResultado.Rows[n_fila]["n_ord"].ToString());
 
                                     lstLineasTar.Add(entLineasTar);
                                 }
@@ -217,8 +217,8 @@ namespace SIAC_Negocio.Produccion
                                     {
                                         BE_PRO_PRODUCTOSUBILOC entUbiLoc = new BE_PRO_PRODUCTOSUBILOC();
 
-                                        entUbiLoc.n_idpro = Convert.ToInt16(DtResultado.Rows[n_fila]["n_idpro"].ToString());
-                                        entUbiLoc.n_idloc = Convert.ToInt16(DtResultado.Rows[n_fila]["n_idloc"].ToString());
+                                        entUbiLoc.n_idpro = Convert.ToInt32(DtResultado.Rows[n_fila]["n_idpro"].ToString());
+                                        entUbiLoc.n_idloc = Convert.ToInt32(DtResultado.Rows[n_fila]["n_idloc"].ToString());
                                         
                                         lstUbiLoc.Add(entUbiLoc);
                                     }
@@ -232,9 +232,9 @@ namespace SIAC_Negocio.Produccion
                                         {
                                             BE_PRO_PRODUCTOSUBILOCALM entUbiLocAlm = new BE_PRO_PRODUCTOSUBILOCALM();
 
-                                            entUbiLocAlm.n_idpro = Convert.ToInt16(DtResultado.Rows[n_fila]["n_idpro"].ToString());
-                                            entUbiLocAlm.n_idloc = Convert.ToInt16(DtResultado.Rows[n_fila]["n_idloc"].ToString());
-                                            entUbiLocAlm.n_idalm = Convert.ToInt16(DtResultado.Rows[n_fila]["n_idalm"].ToString());
+                                            entUbiLocAlm.n_idpro = Convert.ToInt32(DtResultado.Rows[n_fila]["n_idpro"].ToString());
+                                            entUbiLocAlm.n_idloc = Convert.ToInt32(DtResultado.Rows[n_fila]["n_idloc"].ToString());
+                                            entUbiLocAlm.n_idalm = Convert.ToInt32(DtResultado.Rows[n_fila]["n_idalm"].ToString());
                                             entUbiLocAlm.n_canalmmin = Convert.ToDouble(DtResultado.Rows[n_fila]["n_canalmmin"].ToString());
                                             entUbiLocAlm.n_canalmmax = Convert.ToDouble(DtResultado.Rows[n_fila]["n_canalmmax"].ToString());
                                             lstUbiLocAlm.Add(entUbiLocAlm);

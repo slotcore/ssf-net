@@ -262,7 +262,7 @@ namespace SSF_NET_Gestion.Formularios
         }
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int n_idreg = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int n_idreg = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             booAgregando = true;
             VerRegistro(n_idreg);
@@ -379,7 +379,7 @@ namespace SSF_NET_Gestion.Formularios
 
             if (e.NewIndex == 1)
             {
-                int n_idreg = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                int n_idreg = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -412,7 +412,7 @@ namespace SSF_NET_Gestion.Formularios
             Tab2.SelectedIndex = 0;
             FgProd.Rows.Count = 2;
             CboMesIni.SelectedValue = DateTime.Now.Month;
-            MostrarMeses(Convert.ToInt16(CboMesIni.SelectedValue));
+            MostrarMeses(Convert.ToInt32(CboMesIni.SelectedValue));
             booAgregando = false;
             TxtFchIni.Focus();
         }
@@ -460,7 +460,7 @@ namespace SSF_NET_Gestion.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -476,7 +476,7 @@ namespace SSF_NET_Gestion.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -580,16 +580,16 @@ namespace SSF_NET_Gestion.Formularios
             int n_id = 0;
 
             if (n_QueHace == 1) { n_id = 0; }
-            if (n_QueHace == 2) { n_id = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString()); }
+            if (n_QueHace == 2) { n_id = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString()); }
 
             BE_DETALLE.Clear();
 
             BE_CABECERA.n_idemp = STU_SISTEMA.EMPRESAID;
             BE_CABECERA.n_id = n_id;
             BE_CABECERA.c_des = TxtDes.Text;
-            BE_CABECERA.d_fchini = Convert.ToDateTime("01/" + Convert.ToInt16(CboMesIni.SelectedValue).ToString() + "/" + STU_SISTEMA.ANOTRABAJO.ToString());             
+            BE_CABECERA.d_fchini = Convert.ToDateTime("01/" + Convert.ToInt32(CboMesIni.SelectedValue).ToString() + "/" + STU_SISTEMA.ANOTRABAJO.ToString());             
             BE_CABECERA.d_fchfin = BE_CABECERA.d_fchini.AddMonths(12);            
-            BE_CABECERA.n_mesini = Convert.ToInt16(CboMesIni.SelectedValue);
+            BE_CABECERA.n_mesini = Convert.ToInt32(CboMesIni.SelectedValue);
             BE_CABECERA.n_ano= Convert.ToDateTime(TxtFchIni.Text).Year;
             BE_CABECERA.n_idplaven = Convert.ToInt32(LblIdPlaVen.Text);
             BE_CABECERA.n_activo = 1;
@@ -727,11 +727,11 @@ namespace SSF_NET_Gestion.Formularios
             CN_ges_planventas o_planven = new CN_ges_planventas();
             DataTable dtres = new DataTable();
 
-            int n_idreg = Convert.ToInt16(LblIdPlaVen.Text);
+            int n_idreg = Convert.ToInt32(LblIdPlaVen.Text);
             o_planven.mysConec = mysConec;
             o_planven.Consulta2(n_idreg);
             dtres = o_planven.dtLista;
-            MostrarPlanVentas(dtres, Convert.ToInt16(CboMesIni.SelectedValue));
+            MostrarPlanVentas(dtres, Convert.ToInt32(CboMesIni.SelectedValue));
             HallarIntermedios2();
         }
         void HallarIntermedios2()
@@ -930,7 +930,7 @@ namespace SSF_NET_Gestion.Formularios
             for (n_col = 2; n_col <= dtEstacionalidad.Columns.Count - 1; n_col++)
             {
                 c_mes = dtEstacionalidad.Columns[n_col].ColumnName;
-                n_valest = Convert.ToInt16(dtEstacionalidad.Rows[0][n_col]);
+                n_valest = Convert.ToInt32(dtEstacionalidad.Rows[0][n_col]);
 
                 for (n_fgcol = 4; n_fgcol <= 15; n_fgcol++)
                 {
@@ -957,18 +957,18 @@ namespace SSF_NET_Gestion.Formularios
         int NumMesAbundancia(DataTable dtEstacionalidad)
         {
             int n_nummes = 0;
-            if (Convert.ToInt16(funFunciones.NulosN(dtEstacionalidad.Rows[0]["enero"])) == 5) { n_nummes = n_nummes + 1; }
-            if (Convert.ToInt16(funFunciones.NulosN(dtEstacionalidad.Rows[0]["febrero"])) == 5) { n_nummes = n_nummes + 1; }
-            if (Convert.ToInt16(funFunciones.NulosN(dtEstacionalidad.Rows[0]["marzo"])) == 5) { n_nummes = n_nummes + 1; }
-            if (Convert.ToInt16(funFunciones.NulosN(dtEstacionalidad.Rows[0]["abril"])) == 5) { n_nummes = n_nummes + 1; }
-            if (Convert.ToInt16(funFunciones.NulosN(dtEstacionalidad.Rows[0]["mayo"])) == 5) { n_nummes = n_nummes + 1; }
-            if (Convert.ToInt16(funFunciones.NulosN(dtEstacionalidad.Rows[0]["junio"])) == 5) { n_nummes = n_nummes + 1; }
-            if (Convert.ToInt16(funFunciones.NulosN(dtEstacionalidad.Rows[0]["julio"])) == 5) { n_nummes = n_nummes + 1; }
-            if (Convert.ToInt16(funFunciones.NulosN(dtEstacionalidad.Rows[0]["agosto"])) == 5) { n_nummes = n_nummes + 1; }
-            if (Convert.ToInt16(funFunciones.NulosN(dtEstacionalidad.Rows[0]["setiembre"])) == 5) { n_nummes = n_nummes + 1; }
-            if (Convert.ToInt16(funFunciones.NulosN(dtEstacionalidad.Rows[0]["octubre"])) == 5) { n_nummes = n_nummes + 1; }
-            if (Convert.ToInt16(funFunciones.NulosN(dtEstacionalidad.Rows[0]["noviembre"])) == 5) { n_nummes = n_nummes + 1; }
-            if (Convert.ToInt16(funFunciones.NulosN(dtEstacionalidad.Rows[0]["diciembre"])) == 5) { n_nummes = n_nummes + 1; }
+            if (Convert.ToInt32(funFunciones.NulosN(dtEstacionalidad.Rows[0]["enero"])) == 5) { n_nummes = n_nummes + 1; }
+            if (Convert.ToInt32(funFunciones.NulosN(dtEstacionalidad.Rows[0]["febrero"])) == 5) { n_nummes = n_nummes + 1; }
+            if (Convert.ToInt32(funFunciones.NulosN(dtEstacionalidad.Rows[0]["marzo"])) == 5) { n_nummes = n_nummes + 1; }
+            if (Convert.ToInt32(funFunciones.NulosN(dtEstacionalidad.Rows[0]["abril"])) == 5) { n_nummes = n_nummes + 1; }
+            if (Convert.ToInt32(funFunciones.NulosN(dtEstacionalidad.Rows[0]["mayo"])) == 5) { n_nummes = n_nummes + 1; }
+            if (Convert.ToInt32(funFunciones.NulosN(dtEstacionalidad.Rows[0]["junio"])) == 5) { n_nummes = n_nummes + 1; }
+            if (Convert.ToInt32(funFunciones.NulosN(dtEstacionalidad.Rows[0]["julio"])) == 5) { n_nummes = n_nummes + 1; }
+            if (Convert.ToInt32(funFunciones.NulosN(dtEstacionalidad.Rows[0]["agosto"])) == 5) { n_nummes = n_nummes + 1; }
+            if (Convert.ToInt32(funFunciones.NulosN(dtEstacionalidad.Rows[0]["setiembre"])) == 5) { n_nummes = n_nummes + 1; }
+            if (Convert.ToInt32(funFunciones.NulosN(dtEstacionalidad.Rows[0]["octubre"])) == 5) { n_nummes = n_nummes + 1; }
+            if (Convert.ToInt32(funFunciones.NulosN(dtEstacionalidad.Rows[0]["noviembre"])) == 5) { n_nummes = n_nummes + 1; }
+            if (Convert.ToInt32(funFunciones.NulosN(dtEstacionalidad.Rows[0]["diciembre"])) == 5) { n_nummes = n_nummes + 1; }
             return n_nummes;
         }
         void MostrarIntermedios(DataTable dtDatos, int n_Vuelta)
@@ -1105,9 +1105,9 @@ namespace SSF_NET_Gestion.Formularios
             dtres = o_plan.dtLista;
             if (dtres == null) { return; }
             if (dtres.Rows.Count == 0) { return; }
-            LblIdPlaVen.Text = Convert.ToInt16(dtres.Rows[0]["n_id"]).ToString();
+            LblIdPlaVen.Text = Convert.ToInt32(dtres.Rows[0]["n_id"]).ToString();
             TxtPlaVen.Text = dtres.Rows[0]["c_des"].ToString();
-            MostrarMeses(Convert.ToInt16(dtres.Rows[0]["n_idmesini"]));
+            MostrarMeses(Convert.ToInt32(dtres.Rows[0]["n_idmesini"]));
         }
         private void CmdVerRec_Click(object sender, EventArgs e)
         {
@@ -1196,7 +1196,7 @@ namespace SSF_NET_Gestion.Formularios
         }
         void DesactivarPlanVentas()
         {
-            int n_idreg = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int n_idreg = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
             objCabecera.mysConec = mysConec;
             objCabecera.CambiarEstadoPlanProduccion(n_idreg, 2);
             if (objCabecera.b_OcurrioError == false)
@@ -1241,7 +1241,7 @@ namespace SSF_NET_Gestion.Formularios
         {
             int n_col = 0;
             int n_posArray = 3;
-            int n_nummes = Convert.ToInt16(CboMesIni.SelectedValue);
+            int n_nummes = Convert.ToInt32(CboMesIni.SelectedValue);
             DataTable dtResult = new DataTable();
             string c_nommes = "";
 

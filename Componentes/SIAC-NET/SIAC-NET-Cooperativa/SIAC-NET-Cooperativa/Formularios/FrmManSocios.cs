@@ -243,7 +243,7 @@ namespace SIAC_NET_Cooperativa.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -253,7 +253,7 @@ namespace SIAC_NET_Cooperativa.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -360,7 +360,7 @@ namespace SIAC_NET_Cooperativa.Formularios
         {
             bool booEstado = true;
 
-            if (Convert.ToInt16(CboTipDocIde.SelectedValue) == 0)
+            if (Convert.ToInt32(CboTipDocIde.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el tipo de documento de identidad !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -408,7 +408,7 @@ namespace SIAC_NET_Cooperativa.Formularios
             //    return booEstado;
             //}
 
-            if (Convert.ToInt16(CboDis.SelectedValue) == 0)
+            if (Convert.ToInt32(CboDis.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el distrito de residencia del socio !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -424,7 +424,7 @@ namespace SIAC_NET_Cooperativa.Formularios
                 return booEstado;
             }
 
-            if (Convert.ToInt16(CboTipSoc.SelectedValue) == 0)
+            if (Convert.ToInt32(CboTipSoc.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el tipo de socio !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -523,7 +523,7 @@ namespace SIAC_NET_Cooperativa.Formularios
 
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -533,7 +533,7 @@ namespace SIAC_NET_Cooperativa.Formularios
         }
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             VerRegistro(intIdRegistro);
         }

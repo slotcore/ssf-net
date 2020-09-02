@@ -45,9 +45,9 @@ namespace SIAC_Negocio.Tesoreria
             { 
                 dtResult = miFun.dtLista;
 
-                e_TipPla.n_id = Convert.ToInt16(dtResult.Rows[0]["n_id"]);
+                e_TipPla.n_id = Convert.ToInt32(dtResult.Rows[0]["n_id"]);
                 e_TipPla.c_des = dtResult.Rows[0]["c_des"].ToString();
-                e_TipPla.n_numdia = Convert.ToInt16(dtResult.Rows[0]["n_numdia"]);
+                e_TipPla.n_numdia = Convert.ToInt32(dtResult.Rows[0]["n_numdia"]);
             }
             else
             {

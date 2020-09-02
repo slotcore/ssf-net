@@ -278,8 +278,8 @@ namespace SIAC_DATOS.Logistica
                 {
                     for (intFila = 0; intFila <= lstDetalle.Count - 1; intFila++)
                     {
-                        entCabecera.n_id = Convert.ToInt16(xMiFuncion.intIdGenerado);
-                        lstDetalle[intFila].n_idreq = Convert.ToInt16(xMiFuncion.intIdGenerado);
+                        entCabecera.n_id = Convert.ToInt32(xMiFuncion.intIdGenerado);
+                        lstDetalle[intFila].n_idreq = Convert.ToInt32(xMiFuncion.intIdGenerado);
                         if (xMiFuncion.StoreEjecutar("log_ordenrequerimientodet_insertar", lstDetalle[intFila], mysConec, null) == true)
                         {
                             booOk = true;
@@ -349,7 +349,7 @@ namespace SIAC_DATOS.Logistica
                         // SI LOS ITEMS SE ELIMINARON CON EXITO INSERTAMOS LOS NUEVOS ITEMS
                         for (intFila = 0; intFila <= lstDetalle.Count - 1; intFila++)
                         {
-                            lstDetalle[intFila].n_idreq = Convert.ToInt16(entCabecera.n_id);
+                            lstDetalle[intFila].n_idreq = Convert.ToInt32(entCabecera.n_id);
                             if (xMiFuncion.StoreEjecutar("log_ordenrequerimientodet_insertar", lstDetalle[intFila], mysConec, null) == true)
                             {
                                 booOk = true;

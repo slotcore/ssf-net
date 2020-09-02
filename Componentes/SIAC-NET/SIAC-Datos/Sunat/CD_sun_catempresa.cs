@@ -49,7 +49,7 @@ namespace SIAC_DATOS.Sunat
 
             if (DtResultado.Rows.Count != 0)
             {
-                Ent_CatEmpresa.n_id = Convert.ToInt16(DtResultado.Rows[0]["n_id"].ToString());
+                Ent_CatEmpresa.n_id = Convert.ToInt32(DtResultado.Rows[0]["n_id"].ToString());
                 Ent_CatEmpresa.c_codsun = DtResultado.Rows[0]["c_codsun"].ToString();
                 Ent_CatEmpresa.c_des = DtResultado.Rows[0]["c_des"].ToString();
             }

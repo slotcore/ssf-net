@@ -71,18 +71,18 @@ namespace SIAC_Negocio.Sunat
             else
             {
                 dtResul = miFun.dtLista;
-                e_DocCom.n_id = Convert.ToInt16(dtResul.Rows[0]["n_id"]);
+                e_DocCom.n_id = Convert.ToInt32(dtResul.Rows[0]["n_id"]);
                 e_DocCom.c_codsun = dtResul.Rows[0]["c_codsun"].ToString();
                 e_DocCom.c_des = dtResul.Rows[0]["c_des"].ToString();
                 e_DocCom.c_abr = dtResul.Rows[0]["c_abr"].ToString();
-                e_DocCom.n_idtipo = Convert.ToInt16(dtResul.Rows[0]["n_idtipo"]);
-                e_DocCom.n_essal = Convert.ToInt16(funfunciones.NulosN(dtResul.Rows[0]["n_essal"]));
-                e_DocCom.n_esent = Convert.ToInt16(funfunciones.NulosN(dtResul.Rows[0]["n_esent"]));
-                e_DocCom.n_seimp = Convert.ToInt16(dtResul.Rows[0]["n_seimp"]);
-                e_DocCom.n_numfil = Convert.ToInt16(dtResul.Rows[0]["n_numfil"]);
-                e_DocCom.n_activo = Convert.ToInt16(dtResul.Rows[0]["n_activo"]);
-                //e_DocCom.c_preser = Convert.ToInt16(dtResul.Rows[0]["c_preser"]);
-                e_DocCom.n_escom = Convert.ToInt16(dtResul.Rows[0]["n_escom"]);
+                e_DocCom.n_idtipo = Convert.ToInt32(dtResul.Rows[0]["n_idtipo"]);
+                e_DocCom.n_essal = Convert.ToInt32(funfunciones.NulosN(dtResul.Rows[0]["n_essal"]));
+                e_DocCom.n_esent = Convert.ToInt32(funfunciones.NulosN(dtResul.Rows[0]["n_esent"]));
+                e_DocCom.n_seimp = Convert.ToInt32(dtResul.Rows[0]["n_seimp"]);
+                e_DocCom.n_numfil = Convert.ToInt32(dtResul.Rows[0]["n_numfil"]);
+                e_DocCom.n_activo = Convert.ToInt32(dtResul.Rows[0]["n_activo"]);
+                //e_DocCom.c_preser = Convert.ToInt32(dtResul.Rows[0]["c_preser"]);
+                e_DocCom.n_escom = Convert.ToInt32(dtResul.Rows[0]["n_escom"]);
             }
 
             return dtResul;

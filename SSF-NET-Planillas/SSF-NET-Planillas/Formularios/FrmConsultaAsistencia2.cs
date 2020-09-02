@@ -165,14 +165,14 @@ namespace SSF_NET_Planillas.Formularios
 
         private void CmdBuscar_Click(object sender, EventArgs e)
         {
-            if (Convert.ToInt16(CboMeses.SelectedValue) == 0)
+            if (Convert.ToInt32(CboMeses.SelectedValue) == 0)
             {
                 MessageBox.Show("No se ha especificado el mes a consultar", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboMeses.Focus();
                 return;
             }
 
-            if (Convert.ToInt16(CboAño.SelectedValue) == 0)
+            if (Convert.ToInt32(CboAño.SelectedValue) == 0)
             {
                 MessageBox.Show("No se ha especificado el año de trabajo", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboAño.Focus();
@@ -188,8 +188,8 @@ namespace SSF_NET_Planillas.Formularios
 
             DataTable dtResultIng = new DataTable();
             DataTable dtResultSal = new DataTable();
-            int n_mes = Convert.ToInt16(CboMeses.SelectedValue);
-            int n_ano = Convert.ToInt16(CboAño.SelectedValue);
+            int n_mes = Convert.ToInt32(CboMeses.SelectedValue);
+            int n_ano = Convert.ToInt32(CboAño.SelectedValue);
             string c_codempresa = Convert.ToString(CboEmpresa.SelectedValue);
 
             objCabecera.mysConec = mysConec;
@@ -348,14 +348,14 @@ namespace SSF_NET_Planillas.Formularios
 
         private void ToolImprimir_Click(object sender, EventArgs e)
         {
-            if (Convert.ToInt16(CboMeses.SelectedValue) == 0)
+            if (Convert.ToInt32(CboMeses.SelectedValue) == 0)
             {
                 MessageBox.Show("No se ha especificado el mes a consultar", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboMeses.Focus();
                 return;
             }
 
-            if (Convert.ToInt16(CboAño.SelectedValue) == 0)
+            if (Convert.ToInt32(CboAño.SelectedValue) == 0)
             {
                 MessageBox.Show("No se ha especificado el año de trabajo", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboAño.Focus();
@@ -375,7 +375,7 @@ namespace SSF_NET_Planillas.Formularios
             if (OptImp2.Checked == true) { n_opcion = 2; }
             if (OptImp3.Checked == true) { n_opcion = 3; }
 
-            objCabecera.RptAsistencia(n_opcion, Convert.ToInt16(CboAño.SelectedValue), Convert.ToInt16(CboMeses.SelectedValue), Convert.ToString(CboEmpresa.SelectedValue));
+            objCabecera.RptAsistencia(n_opcion, Convert.ToInt32(CboAño.SelectedValue), Convert.ToInt32(CboMeses.SelectedValue), Convert.ToString(CboEmpresa.SelectedValue));
 
         }
 

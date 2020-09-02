@@ -114,9 +114,9 @@ namespace SIAC_Negocio.Produccion
                     EntProduccion.d_fchreg = Convert.ToDateTime(DtResultado.Rows[0]["d_fchreg"]);
                     EntProduccion.n_idsup = Convert.ToInt32(DtResultado.Rows[0]["n_idsup"]);
                     EntProduccion.n_idestado = Convert.ToInt32(DtResultado.Rows[0]["n_idestado"]);
-                    EntProduccion.n_tipreg = Convert.ToInt16(DtResultado.Rows[0]["n_tipreg"]);
+                    EntProduccion.n_tipreg = Convert.ToInt32(DtResultado.Rows[0]["n_tipreg"]);
                     EntProduccion.n_renpor = Convert.ToDouble(funFunciones.NulosN( DtResultado.Rows[0]["n_renpor"]));
-                    EntProduccion.n_idnoting = Convert.ToInt16(funFunciones.NulosN(DtResultado.Rows[0]["n_idnoting"]));
+                    EntProduccion.n_idnoting = Convert.ToInt32(funFunciones.NulosN(DtResultado.Rows[0]["n_idnoting"]));
                     EntProduccion.n_conmp =  Convert.ToDouble(funFunciones.NulosN(DtResultado.Rows[0]["n_conmp"]));
                     EntProduccion.n_caningmp = Convert.ToDouble(funFunciones.NulosN(DtResultado.Rows[0]["n_caningmp"]));
 

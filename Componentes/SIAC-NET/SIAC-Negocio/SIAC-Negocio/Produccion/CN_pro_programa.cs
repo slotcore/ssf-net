@@ -84,12 +84,12 @@ namespace SIAC_Negocio.Produccion
                 {
                     entPrograma.n_idemp = Convert.ToInt32(dtPro.Rows[0]["n_idemp"]);
                     entPrograma.n_id = Convert.ToInt32(dtPro.Rows[0]["n_id"]);
-                    entPrograma.n_idtipdoc = Convert.ToInt16(dtPro.Rows[0]["n_idtipdoc"]);
-                    entPrograma.n_idpro = Convert.ToInt16(dtPro.Rows[0]["n_idpro"]);
+                    entPrograma.n_idtipdoc = Convert.ToInt32(dtPro.Rows[0]["n_idtipdoc"]);
+                    entPrograma.n_idpro = Convert.ToInt32(dtPro.Rows[0]["n_idpro"]);
                     entPrograma.c_numser = dtPro.Rows[0]["c_numser"].ToString();
                     entPrograma.c_numdoc = dtPro.Rows[0]["c_numdoc"].ToString();
-                    entPrograma.n_anotra = Convert.ToInt16(dtPro.Rows[0]["n_anotra"]);
-                    entPrograma.n_mestra = Convert.ToInt16(dtPro.Rows[0]["n_mestra"]);
+                    entPrograma.n_anotra = Convert.ToInt32(dtPro.Rows[0]["n_anotra"]);
+                    entPrograma.n_mestra = Convert.ToInt32(dtPro.Rows[0]["n_mestra"]);
                     entPrograma.d_fchini = Convert.ToDateTime(dtPro.Rows[0]["d_fchini"]);
                     entPrograma.d_fchfin = Convert.ToDateTime(dtPro.Rows[0]["d_fchfin"]);
                     entPrograma.d_fchemi = Convert.ToDateTime(dtPro.Rows[0]["d_fchemi"]);

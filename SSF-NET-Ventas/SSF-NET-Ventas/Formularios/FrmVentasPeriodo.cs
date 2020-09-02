@@ -179,7 +179,7 @@ namespace SSF_NET_Ventas.Formularios
                 return;
             }
 
-            if (Convert.ToInt16(CboLocal.SelectedValue) != 0) { n_idlocal = Convert.ToInt16(CboLocal.SelectedValue); }
+            if (Convert.ToInt32(CboLocal.SelectedValue) != 0) { n_idlocal = Convert.ToInt32(CboLocal.SelectedValue); }
 
             CN_vta_ventas o_ventas = new CN_vta_ventas();
             o_ventas.mysConec = mysConec;

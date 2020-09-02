@@ -49,12 +49,12 @@ namespace SIAC_Negocio.Produccion
 
             if (dtResult.Rows.Count != 0)
             {
-                entTareas.n_idemp = Convert.ToInt16(dtResult.Rows[0]["n_idemp"]);
-                entTareas.n_id = Convert.ToInt16(dtResult.Rows[0]["n_id"]);
+                entTareas.n_idemp = Convert.ToInt32(dtResult.Rows[0]["n_idemp"]);
+                entTareas.n_id = Convert.ToInt32(dtResult.Rows[0]["n_id"]);
                 entTareas.c_cod = dtResult.Rows[0]["c_cod"].ToString();
                 entTareas.c_des = dtResult.Rows[0]["c_des"].ToString();
-                entTareas.n_idunimed = Convert.ToInt16(dtResult.Rows[0]["n_idunimed"]);
-                entTareas.n_div = Convert.ToInt16(dtResult.Rows[0]["n_div"]);
+                entTareas.n_idunimed = Convert.ToInt32(dtResult.Rows[0]["n_idunimed"]);
+                entTareas.n_div = Convert.ToInt32(dtResult.Rows[0]["n_div"]);
                 entTareas.c_abr = dtResult.Rows[0]["c_abr"].ToString();
                 entTareas.c_obs = dtResult.Rows[0]["c_obs"].ToString();
                 entTareas.n_pre = Convert.ToDouble(dtResult.Rows[0]["n_pre"]);

@@ -149,8 +149,8 @@ namespace SSF_NET_Contabilidad.Formularios
         }
         void ListarEstado()
         {
-            if (Convert.ToInt16(CboModulo.SelectedValue) == 0) { return; }
-            int n_idmodulo = Convert.ToInt16(CboModulo.SelectedValue);
+            if (Convert.ToInt32(CboModulo.SelectedValue) == 0) { return; }
+            int n_idmodulo = Convert.ToInt32(CboModulo.SelectedValue);
             int n_row = 0;
             string c_dato = "";
             int n_valor = 0;
@@ -168,7 +168,7 @@ namespace SSF_NET_Contabilidad.Formularios
                     c_dato = dtresult.Rows[n_row]["c_mesdes"].ToString();
                     FgItems.SetData(FgItems.Rows.Count - 1, 1, c_dato);
 
-                    n_valor = Convert.ToInt16(dtresult.Rows[n_row]["n_estado"]);
+                    n_valor = Convert.ToInt32(dtresult.Rows[n_row]["n_estado"]);
                     if (n_valor == 0) { FgItems.SetData(FgItems.Rows.Count - 1, 2, false); }
                     if (n_valor == 1) { FgItems.SetData(FgItems.Rows.Count - 1, 2, true); }
 
@@ -197,14 +197,14 @@ namespace SSF_NET_Contabilidad.Formularios
         {
             List<BE_CON_CERRARMES> l_cerrarmes = new List<BE_CON_CERRARMES>();
             int n_row = 0;
-            int n_idmodulo = Convert.ToInt16(CboModulo.SelectedValue);
+            int n_idmodulo = Convert.ToInt32(CboModulo.SelectedValue);
             int n_idmes = 0;
             bool b_estado = false;
 
             for(n_row =2; n_row<= FgItems.Rows.Count-1; n_row++)
             {
                 BE_CON_CERRARMES e_cerrarmes = new BE_CON_CERRARMES();
-                n_idmes = Convert.ToInt16(FgItems.GetData(n_row, 3));
+                n_idmes = Convert.ToInt32(FgItems.GetData(n_row, 3));
                 b_estado = Convert.ToBoolean(FgItems.GetData(n_row, 2));
                 e_cerrarmes.n_idmod = n_idmodulo;
                 e_cerrarmes.n_idmes = n_idmes;

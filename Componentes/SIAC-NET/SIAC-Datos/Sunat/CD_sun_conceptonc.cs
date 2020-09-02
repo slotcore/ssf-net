@@ -51,11 +51,11 @@ namespace SIAC_DATOS.Sunat
 
             if (DtResultado.Rows.Count != 0)
             {
-                Ent_ConceptpNC.n_id = Convert.ToInt16(DtResultado.Rows[0]["n_id"].ToString());
+                Ent_ConceptpNC.n_id = Convert.ToInt32(DtResultado.Rows[0]["n_id"].ToString());
                 Ent_ConceptpNC.c_codsun = DtResultado.Rows[0]["c_codsun"].ToString();
                 Ent_ConceptpNC.c_des = DtResultado.Rows[0]["c_des"].ToString();
-                Ent_ConceptpNC.n_tipo = Convert.ToInt16(DtResultado.Rows[0]["n_tipo"].ToString());
-                Ent_ConceptpNC.n_hackar = Convert.ToInt16(DtResultado.Rows[0]["n_hackar"].ToString());
+                Ent_ConceptpNC.n_tipo = Convert.ToInt32(DtResultado.Rows[0]["n_tipo"].ToString());
+                Ent_ConceptpNC.n_hackar = Convert.ToInt32(DtResultado.Rows[0]["n_hackar"].ToString());
             }
             return Ent_ConceptpNC;
         }

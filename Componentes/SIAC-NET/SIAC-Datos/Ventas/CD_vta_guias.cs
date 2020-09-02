@@ -66,19 +66,19 @@ namespace SIAC_DATOS.Ventas
 
             if (DtResultado.Rows.Count != 0)
             {
-                Ent_Guias.n_idemp = Convert.ToInt16(DtResultado.Rows[0]["n_idemp"].ToString());
+                Ent_Guias.n_idemp = Convert.ToInt32(DtResultado.Rows[0]["n_idemp"].ToString());
 
-                Ent_Guias.n_idano = Convert.ToInt16(DtResultado.Rows[0]["n_idano"].ToString());
-                Ent_Guias.n_idmes = Convert.ToInt16(DtResultado.Rows[0]["n_idmes"].ToString());
+                Ent_Guias.n_idano = Convert.ToInt32(DtResultado.Rows[0]["n_idano"].ToString());
+                Ent_Guias.n_idmes = Convert.ToInt32(DtResultado.Rows[0]["n_idmes"].ToString());
 
-                Ent_Guias.n_id = Convert.ToInt16(DtResultado.Rows[0]["n_id"].ToString());
-                Ent_Guias.n_idcli = Convert.ToInt16(DtResultado.Rows[0]["n_idcli"].ToString());
-                Ent_Guias.n_idtipdoc = Convert.ToInt16(DtResultado.Rows[0]["n_idtipdoc"].ToString());
+                Ent_Guias.n_id = Convert.ToInt32(DtResultado.Rows[0]["n_id"].ToString());
+                Ent_Guias.n_idcli = Convert.ToInt32(DtResultado.Rows[0]["n_idcli"].ToString());
+                Ent_Guias.n_idtipdoc = Convert.ToInt32(DtResultado.Rows[0]["n_idtipdoc"].ToString());
                 Ent_Guias.c_numser = DtResultado.Rows[0]["c_numser"].ToString();
                 Ent_Guias.c_numdoc = DtResultado.Rows[0]["c_numdoc"].ToString();
                 Ent_Guias.d_fchdoc = Convert.ToDateTime(DtResultado.Rows[0]["d_fchdoc"].ToString());
-                Ent_Guias.n_idemptra = Convert.ToInt16(DtResultado.Rows[0]["n_idemptra"].ToString());
-                Ent_Guias.n_idmottra = Convert.ToInt16(DtResultado.Rows[0]["n_idmottra"].ToString());
+                Ent_Guias.n_idemptra = Convert.ToInt32(DtResultado.Rows[0]["n_idemptra"].ToString());
+                Ent_Guias.n_idmottra = Convert.ToInt32(DtResultado.Rows[0]["n_idmottra"].ToString());
                 Ent_Guias.c_numordcom =DtResultado.Rows[0]["c_numordcom"].ToString();
                 Ent_Guias.n_idtipdocref = Convert.ToInt32(DtResultado.Rows[0]["n_idtipdocref"]);
                 Ent_Guias.n_iddocref =  Convert.ToInt32(DtResultado.Rows[0]["n_iddocref"]);
@@ -101,23 +101,23 @@ namespace SIAC_DATOS.Ventas
                     Ent_Guias.d_fchentdocref = null;
                 }
 
-                Ent_Guias.n_idpunvencli = Convert.ToInt16(DtResultado.Rows[0]["n_idpunvencli"].ToString());
+                Ent_Guias.n_idpunvencli = Convert.ToInt32(DtResultado.Rows[0]["n_idpunvencli"].ToString());
                 Ent_Guias.c_dirpunlle = DtResultado.Rows[0]["c_dirpunlle"].ToString();
                 Ent_Guias.c_dirpunpar = DtResultado.Rows[0]["c_dirpunpar"].ToString();
-                Ent_Guias.n_idemptra = Convert.ToInt16(DtResultado.Rows[0]["n_idemptra"].ToString());
-                Ent_Guias.n_idcho = Convert.ToInt16(DtResultado.Rows[0]["n_idcho"].ToString());
-                Ent_Guias.n_idvehtra = Convert.ToInt16(DtResultado.Rows[0]["n_idvehtra"].ToString());
-                Ent_Guias.n_anulado = Convert.ToInt16(DtResultado.Rows[0]["n_anulado"].ToString());
-                Ent_Guias.n_tipgui = Convert.ToInt16(DtResultado.Rows[0]["n_tipgui"]);
+                Ent_Guias.n_idemptra = Convert.ToInt32(DtResultado.Rows[0]["n_idemptra"].ToString());
+                Ent_Guias.n_idcho = Convert.ToInt32(DtResultado.Rows[0]["n_idcho"].ToString());
+                Ent_Guias.n_idvehtra = Convert.ToInt32(DtResultado.Rows[0]["n_idvehtra"].ToString());
+                Ent_Guias.n_anulado = Convert.ToInt32(DtResultado.Rows[0]["n_anulado"].ToString());
+                Ent_Guias.n_tipgui = Convert.ToInt32(DtResultado.Rows[0]["n_tipgui"]);
 
-                Ent_Guias.n_idpunpar = Convert.ToInt16(DtResultado.Rows[0]["n_idpunpar"]);
-                Ent_Guias.n_idpunlle = Convert.ToInt16(DtResultado.Rows[0]["n_idpunlle"]);
+                Ent_Guias.n_idpunpar = Convert.ToInt32(DtResultado.Rows[0]["n_idpunpar"]);
+                Ent_Guias.n_idpunlle = Convert.ToInt32(DtResultado.Rows[0]["n_idpunlle"]);
 
-                Ent_Guias.n_chkalming = Convert.ToInt16(DtResultado.Rows[0]["n_chkalming"]);
-                Ent_Guias.n_chkalmsal = Convert.ToInt16(DtResultado.Rows[0]["n_chkalmsal"]);
-                Ent_Guias.n_idclides = Convert.ToInt16(funFunciones.NulosN(DtResultado.Rows[0]["n_idclides"]));
-                Ent_Guias.n_aplotrpro = Convert.ToInt16(funFunciones.NulosN(DtResultado.Rows[0]["n_aplotrpro"]));
-                Ent_Guias.n_tipori = Convert.ToInt16(funFunciones.NulosN(DtResultado.Rows[0]["n_tipori"]));
+                Ent_Guias.n_chkalming = Convert.ToInt32(DtResultado.Rows[0]["n_chkalming"]);
+                Ent_Guias.n_chkalmsal = Convert.ToInt32(DtResultado.Rows[0]["n_chkalmsal"]);
+                Ent_Guias.n_idclides = Convert.ToInt32(funFunciones.NulosN(DtResultado.Rows[0]["n_idclides"]));
+                Ent_Guias.n_aplotrpro = Convert.ToInt32(funFunciones.NulosN(DtResultado.Rows[0]["n_aplotrpro"]));
+                Ent_Guias.n_tipori = Convert.ToInt32(funFunciones.NulosN(DtResultado.Rows[0]["n_tipori"]));
             }
 
             //arrParametros = "";
@@ -137,10 +137,10 @@ namespace SIAC_DATOS.Ventas
                 {                
                     BE_VTA_GUIASDET BE_Detalle = new BE_VTA_GUIASDET();
 
-                    BE_Detalle.n_idgui = Convert.ToInt16(DtResultado.Rows[n_fila]["n_idgui"].ToString());
-                    BE_Detalle.n_idite = Convert.ToInt16(DtResultado.Rows[n_fila]["n_idite"].ToString());
-                    BE_Detalle.n_idtipexi = Convert.ToInt16(DtResultado.Rows[n_fila]["n_idtipexi"].ToString());
-                    BE_Detalle.n_idunimed = Convert.ToInt16(DtResultado.Rows[n_fila]["n_idunimed"].ToString());
+                    BE_Detalle.n_idgui = Convert.ToInt32(DtResultado.Rows[n_fila]["n_idgui"].ToString());
+                    BE_Detalle.n_idite = Convert.ToInt32(DtResultado.Rows[n_fila]["n_idite"].ToString());
+                    BE_Detalle.n_idtipexi = Convert.ToInt32(DtResultado.Rows[n_fila]["n_idtipexi"].ToString());
+                    BE_Detalle.n_idunimed = Convert.ToInt32(DtResultado.Rows[n_fila]["n_idunimed"].ToString());
                     BE_Detalle.n_canpro = Convert.ToDouble(DtResultado.Rows[n_fila]["n_canpro"].ToString());
                     BE_Detalle.c_numlot = DtResultado.Rows[n_fila]["c_numlot"].ToString();
 
@@ -184,11 +184,11 @@ namespace SIAC_DATOS.Ventas
 
             if (xMiFuncion.StoreEjecutar("vta_guias_insertar", entGuias, mysConec, 1) == true)
             {
-                n_IdGenerado = Convert.ToInt16(xMiFuncion.intIdGenerado);
+                n_IdGenerado = Convert.ToInt32(xMiFuncion.intIdGenerado);
                 // INSERTAMOS EL DETALLE DE LA GUIA
                 for (intFila = 0; intFila <= LstDetalle.Count - 1; intFila++)
                 {
-                    LstDetalle[intFila].n_idgui = Convert.ToInt16(xMiFuncion.intIdGenerado);
+                    LstDetalle[intFila].n_idgui = Convert.ToInt32(xMiFuncion.intIdGenerado);
                     if (xMiFuncion.StoreEjecutar("vta_guiasdet_insertar", LstDetalle[intFila], mysConec, null) == true)
                     {
                         booOk = true;
@@ -257,7 +257,7 @@ namespace SIAC_DATOS.Ventas
                 // INSERTAMOS LOS DOCUMENTOS DE REFERENCIA
                 for (intFila = 0; intFila <= lstGuiasDoc.Count - 1; intFila++)
                 {
-                    lstGuiasDoc[intFila].n_idgui = Convert.ToInt16(n_IdGenerado);
+                    lstGuiasDoc[intFila].n_idgui = Convert.ToInt32(n_IdGenerado);
 
                     string[,] arrParametros = new string[5, 3] {
                                             {"n_idgui", "System.INT16",lstGuiasDoc[intFila].n_idgui.ToString()},
@@ -268,7 +268,7 @@ namespace SIAC_DATOS.Ventas
                                       };
 
                     if (xMiFuncion.StoreEjecutar("vta_guiasdoc_insertar", arrParametros, mysConec) == true)
-                    //lstGuiasDoc[intFila].n_idgui = Convert.ToInt16(n_IdGenerado);
+                    //lstGuiasDoc[intFila].n_idgui = Convert.ToInt32(n_IdGenerado);
                     //if (xMiFuncion.StoreEjecutar("vta_guiasdoc_insertar", lstGuiasDoc[intFila], mysConec, null) == true)
                     {
                         booOk = true;

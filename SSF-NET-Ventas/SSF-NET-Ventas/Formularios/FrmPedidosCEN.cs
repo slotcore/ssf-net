@@ -205,14 +205,14 @@ namespace SSF_NET_Ventas.Formularios
             //c_dato = funDatos.DataTableBuscar(dtPunVen, "c_codcen", "c_des", c_dato, "C").ToString();
             TxtPunVen.Text = c_dato;
             c_dato = entRegistro.c_codpunven;
-            n_dato = Convert.ToInt16(funDatos.DataTableBuscar(dtPunVen, "c_codcen", "n_id", c_dato, "C"));
+            n_dato = Convert.ToInt32(funDatos.DataTableBuscar(dtPunVen, "c_codcen", "n_id", c_dato, "C"));
             CboPunVen.SelectedValue = n_dato;
 
             c_dato = entRegistro.c_codpunent;
             //c_dato = funDatos.DataTableBuscar(dtPunVen, "c_codcen", "c_des", c_dato, "C").ToString();
             TxtLugEnt.Text = c_dato;
             c_dato = entRegistro.c_codpunent;
-            n_dato = Convert.ToInt16(funDatos.DataTableBuscar(dtPunVen, "c_codcen", "n_id", c_dato, "C"));
+            n_dato = Convert.ToInt32(funDatos.DataTableBuscar(dtPunVen, "c_codcen", "n_id", c_dato, "C"));
             CboPunlle.SelectedValue = n_dato;
 
             TcxtFchPed.Text = Convert.ToDateTime(entRegistro.d_fchemi).ToString("dd/MM/yyyy");
@@ -296,8 +296,8 @@ namespace SSF_NET_Ventas.Formularios
         }
         void Modificar()
         {
-            int n_despachado = Convert.ToInt16(DgLista.Columns["n_des"].CellValue(DgLista.Row).ToString());
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int n_despachado = Convert.ToInt32(DgLista.Columns["n_des"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
             if (n_despachado == 1)
             {
@@ -319,8 +319,8 @@ namespace SSF_NET_Ventas.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
-            int n_despachado = Convert.ToInt16(DgLista.Columns["n_des"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int n_despachado = Convert.ToInt32(DgLista.Columns["n_des"].CellValue(DgLista.Row).ToString());
 
             if (n_despachado == 1)
             {
@@ -391,7 +391,7 @@ namespace SSF_NET_Ventas.Formularios
         }
         void AsignarEntidad()
         {
-            int n_id = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());  
+            int n_id = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());  
             
             entRegistro.n_idemp = STU_SISTEMA.EMPRESAID;
             entRegistro.n_id = n_id;
@@ -437,7 +437,7 @@ namespace SSF_NET_Ventas.Formularios
             //    booEstado = false;
             //    return booEstado;
             //}
-            //if (Convert.ToInt16(CboMotTras.SelectedValue) == 0)
+            //if (Convert.ToInt32(CboMotTras.SelectedValue) == 0)
             //{
             //    MessageBox.Show("¡ No ha especificado el motivo de traslado !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             //    booEstado = false;
@@ -458,19 +458,19 @@ namespace SSF_NET_Ventas.Formularios
             //        return booEstado;
             //    }
             //}
-            //if (Convert.ToInt16(CboTra.SelectedValue) == 0)
+            //if (Convert.ToInt32(CboTra.SelectedValue) == 0)
             //{
             //    MessageBox.Show("¡ No ha especificado la empresa de tranporte !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             //    booEstado = false;
             //    return booEstado;
             //}
-            //if (Convert.ToInt16(CboCho.SelectedValue) == 0)
+            //if (Convert.ToInt32(CboCho.SelectedValue) == 0)
             //{
             //    MessageBox.Show("¡ No ha especificado el nombe del chofer !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             //    booEstado = false;
             //    return booEstado;
             //}
-            //if (Convert.ToInt16(CboVeh.SelectedValue) == 0)
+            //if (Convert.ToInt32(CboVeh.SelectedValue) == 0)
             //{
             //    MessageBox.Show("¡ No ha especificado el vehiculo de transporte !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             //    booEstado = false;
@@ -597,7 +597,7 @@ namespace SSF_NET_Ventas.Formularios
 
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -607,7 +607,7 @@ namespace SSF_NET_Ventas.Formularios
         }
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             VerRegistro(intIdRegistro);
         }
@@ -770,8 +770,8 @@ namespace SSF_NET_Ventas.Formularios
         {
             bool booResult = false;
             
-            int n_IdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
-            int n_despachado = Convert.ToInt16(DgLista.Columns["n_des"].CellValue(DgLista.Row).ToString());
+            int n_IdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int n_despachado = Convert.ToInt32(DgLista.Columns["n_des"].CellValue(DgLista.Row).ToString());
 
             if (n_despachado == 0)
             {
@@ -803,7 +803,7 @@ namespace SSF_NET_Ventas.Formularios
             DataTable dtResul = new DataTable();
             if (booAgregando == true) { return; }
 
-            objRegistros.Listar(STU_SISTEMA.EMPRESAID, Convert.ToInt16(CboMeses.SelectedValue), STU_SISTEMA.ANOTRABAJO);     // CARGAMOS LOS DATOS DEL FORMULARIO
+            objRegistros.Listar(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboMeses.SelectedValue), STU_SISTEMA.ANOTRABAJO);     // CARGAMOS LOS DATOS DEL FORMULARIO
             dtLista = objRegistros.dtLista;
 
             STU_SISTEMA.MESTRABAJO = Convert.ToInt32(CboMeses.SelectedValue);
@@ -835,7 +835,7 @@ namespace SSF_NET_Ventas.Formularios
 
         private void ToolExportar_Click(object sender, EventArgs e)
         {
-            string c_NomArchivo = STU_SISTEMA.EMPRESARUC + "-VTA-PEDIDOSCEN-" + STU_SISTEMA.ANOTRABAJO.ToString() + Convert.ToInt16(CboMeses.SelectedValue).ToString("00") + ".xls";
+            string c_NomArchivo = STU_SISTEMA.EMPRESARUC + "-VTA-PEDIDOSCEN-" + STU_SISTEMA.ANOTRABAJO.ToString() + Convert.ToInt32(CboMeses.SelectedValue).ToString("00") + ".xls";
             DgLista.ExportTo(c_NomArchivo);
             MessageBox.Show("! Se exporto con exito la informacion en el archivo " + c_NomArchivo + " !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
         }
@@ -848,7 +848,7 @@ namespace SSF_NET_Ventas.Formularios
         private void emitirGuiaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CN_vta_pedidocen o_ped = new CN_vta_pedidocen();
-            int n_IdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());  
+            int n_IdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());  
             o_ped.STU_SISTEMA = STU_SISTEMA;
             o_ped.ImprimirPedido(n_IdRegistro);
         }
@@ -856,7 +856,7 @@ namespace SSF_NET_Ventas.Formularios
         private void imprimirPedidosDelMesDetalladoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CN_vta_pedidocen o_ped = new CN_vta_pedidocen();
-            int n_IdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int n_IdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             o_ped.STU_SISTEMA = STU_SISTEMA;
             o_ped.mysConec = mysConec;
             o_ped.ImprimirPedidoDet(n_IdRegistro);

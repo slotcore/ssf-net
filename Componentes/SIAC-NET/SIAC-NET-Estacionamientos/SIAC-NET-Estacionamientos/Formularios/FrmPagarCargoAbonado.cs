@@ -129,10 +129,10 @@ namespace SIAC_NET_Estacionamientos.Formularios
             {
                 TxtNumPla.Text = dtRes.Rows[0]["c_numpla"].ToString();
                 TxtApeNom.Text = dtRes.Rows[0]["c_nom"].ToString();
-                CboTipCliCli.SelectedValue = Convert.ToInt16(dtRes.Rows[0]["n_idtipcli"]);
+                CboTipCliCli.SelectedValue = Convert.ToInt32(dtRes.Rows[0]["n_idtipcli"]);
                 LbIdCliente.Text = dtRes.Rows[0]["n_id"].ToString();
-                CboTipDoc.SelectedValue = Convert.ToInt16(dtRes.Rows[0]["n_tipdocfac"]);
-                if (Convert.ToInt16(CboTipDoc.SelectedValue) == 90)
+                CboTipDoc.SelectedValue = Convert.ToInt32(dtRes.Rows[0]["n_tipdocfac"]);
+                if (Convert.ToInt32(CboTipDoc.SelectedValue) == 90)
                 {
                     N_IDLIBRO = 33;
                 }
@@ -141,13 +141,13 @@ namespace SIAC_NET_Estacionamientos.Formularios
                     N_IDLIBRO = 14;
                 }   
 
-                if (Convert.ToInt16(CboTipDoc.SelectedValue) == 2) { TxtNumSer.Text = c_NUMSERFAC; }
-                if (Convert.ToInt16(CboTipDoc.SelectedValue) == 4) { TxtNumSer.Text = c_NUMSERBOL; }
-                if (Convert.ToInt16(CboTipDoc.SelectedValue) == 90) { TxtNumSer.Text = c_NUMSERTIC; }
+                if (Convert.ToInt32(CboTipDoc.SelectedValue) == 2) { TxtNumSer.Text = c_NUMSERFAC; }
+                if (Convert.ToInt32(CboTipDoc.SelectedValue) == 4) { TxtNumSer.Text = c_NUMSERBOL; }
+                if (Convert.ToInt32(CboTipDoc.SelectedValue) == 90) { TxtNumSer.Text = c_NUMSERTIC; }
 
                 CN_est_cargos o_cargo = new CN_est_cargos(STU_SISTEMA);
                 o_cargo.STU_SISTEMA = STU_SISTEMA;
-                o_cargo.Consulta1(Convert.ToInt16(LbIdCliente.Text));
+                o_cargo.Consulta1(Convert.ToInt32(LbIdCliente.Text));
                 dtRes = o_cargo.dtListar;
                 o_cargo = null;
 
@@ -162,7 +162,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
 
             CN_est_conecta o_conec = new CN_est_conecta(STU_SISTEMA);
             objTipDoc.mysConec = o_conec.mysConec;
-            TxtNumDoc.Text = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, Convert.ToInt16(CboTipDoc.SelectedValue), TxtNumSer.Text);
+            TxtNumDoc.Text = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboTipDoc.SelectedValue), TxtNumSer.Text);
             o_conec = null;
             //TxtAbono.Focus();
         }
@@ -176,17 +176,17 @@ namespace SIAC_NET_Estacionamientos.Formularios
             {
                 TxtNumPla.Text = dtRes.Rows[0]["c_numpla"].ToString();
                 TxtApeNom.Text = dtRes.Rows[0]["c_nom"].ToString();
-                CboTipCliCli.SelectedValue = Convert.ToInt16(dtRes.Rows[0]["n_idtipcli"]);
+                CboTipCliCli.SelectedValue = Convert.ToInt32(dtRes.Rows[0]["n_idtipcli"]);
                 LbIdCliente.Text = dtRes.Rows[0]["n_id"].ToString();
-                CboTipDoc.SelectedValue = Convert.ToInt16(dtRes.Rows[0]["n_tipdocfac"]);
+                CboTipDoc.SelectedValue = Convert.ToInt32(dtRes.Rows[0]["n_tipdocfac"]);
 
-                if (Convert.ToInt16(CboTipDoc.SelectedValue) == 2) { TxtNumSer.Text = c_NUMSERFAC; }
-                if (Convert.ToInt16(CboTipDoc.SelectedValue) == 4) { TxtNumSer.Text = c_NUMSERBOL; }
-                if (Convert.ToInt16(CboTipDoc.SelectedValue) == 90) { TxtNumSer.Text = c_NUMSERTIC; }
+                if (Convert.ToInt32(CboTipDoc.SelectedValue) == 2) { TxtNumSer.Text = c_NUMSERFAC; }
+                if (Convert.ToInt32(CboTipDoc.SelectedValue) == 4) { TxtNumSer.Text = c_NUMSERBOL; }
+                if (Convert.ToInt32(CboTipDoc.SelectedValue) == 90) { TxtNumSer.Text = c_NUMSERTIC; }
 
                 CN_est_cargos o_cargo = new CN_est_cargos(STU_SISTEMA);
                 o_cargo.STU_SISTEMA = STU_SISTEMA;
-                o_cargo.Consulta1(Convert.ToInt16(LbIdCliente.Text));
+                o_cargo.Consulta1(Convert.ToInt32(LbIdCliente.Text));
                 dtRes = o_cargo.dtListar;
                 o_cargo = null;
 
@@ -201,7 +201,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
 
             CN_est_conecta o_conec = new CN_est_conecta(STU_SISTEMA);
             objTipDoc.mysConec = o_conec.mysConec;
-            TxtNumDoc.Text = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, Convert.ToInt16(CboTipDoc.SelectedValue), TxtNumSer.Text);
+            TxtNumDoc.Text = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboTipDoc.SelectedValue), TxtNumSer.Text);
             o_conec = null;
         }
         void HallarTotales()
@@ -374,23 +374,23 @@ namespace SIAC_NET_Estacionamientos.Formularios
             LblTc.Text = objFunciones.ObtenerTC(dtTC, DateTime.Now.ToString("dd/MM/yyyy")).ToString("0.000");
 
             dtLocSet = funGen.DataTableFiltrar(dtLocSet, "n_idloc = " + C_IDLOCAL + "");
-            N_IDSERVICIODEFAULT = Convert.ToInt16(dtLocSet.Rows[0]["n_idserdef"]);
+            N_IDSERVICIODEFAULT = Convert.ToInt32(dtLocSet.Rows[0]["n_idserdef"]);
             c_NUMSERFAC = dtLocSet.Rows[0]["c_numserfac"].ToString();
             c_NUMSERBOL = dtLocSet.Rows[0]["c_numserbol"].ToString();
             c_NUMSERTIC = dtLocSet.Rows[0]["c_numsertik"].ToString();
-            N_VISTAPREVIA = Convert.ToInt16(dtLocSet.Rows[0]["n_vispre"]);
-            N_IDDOCUMENTODEFAULT = Convert.ToInt16(dtLocSet.Rows[0]["n_iddocdef"]);
-            N_TIPOCOBRANZA = Convert.ToInt16(dtLocSet.Rows[0]["n_idtipcob"]);
+            N_VISTAPREVIA = Convert.ToInt32(dtLocSet.Rows[0]["n_vispre"]);
+            N_IDDOCUMENTODEFAULT = Convert.ToInt32(dtLocSet.Rows[0]["n_iddocdef"]);
+            N_TIPOCOBRANZA = Convert.ToInt32(dtLocSet.Rows[0]["n_idtipcob"]);
 
             CboTipDoc.SelectedValue = N_IDDOCUMENTODEFAULT;
 
             string c_nomarc2 = ConfigurationManager.AppSettings["PathIniFile"];
-            //N_IDALMACEN = Convert.ToInt16(funDatos.IniLeerSeccion(c_nomarc, "SISTEMA", "ALMACEN").ToString());
+            //N_IDALMACEN = Convert.ToInt32(funDatos.IniLeerSeccion(c_nomarc, "SISTEMA", "ALMACEN").ToString());
             c_NUMSERFAC = funGen.IniLeerSeccion(c_nomarc2, "SISTEMA", "SERFAC").ToString();
             c_NUMSERBOL = funGen.IniLeerSeccion(c_nomarc2, "SISTEMA", "SERBOL").ToString();
             c_NUMSERTIC = funGen.IniLeerSeccion(c_nomarc2, "SISTEMA", "SERVAL").ToString();
 
-            TxtNumDoc.Text = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, Convert.ToInt16(CboTipDoc.SelectedValue), TxtNumSer.Text);
+            TxtNumDoc.Text = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboTipDoc.SelectedValue), TxtNumSer.Text);
 
             this.Text = "ESTACIONAMIENTOS - COBRANZA DE ABONADOS";
             douIGVTasa = 18;
@@ -431,7 +431,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
                 FgReg.Focus();
                 return;
             }
-            if (Convert.ToInt16(CboTipDoc.SelectedValue) == 0)
+            if (Convert.ToInt32(CboTipDoc.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el tipo de documento que se emitira, debe definir el documento en el maestro de clientes !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboTipDoc.Focus();
@@ -500,8 +500,8 @@ namespace SIAC_NET_Estacionamientos.Formularios
                 if (c_dato == "True")
                 { 
                     C_RECIBO = FgReg.GetData(n_row, 2).ToString();
-                    N_SERVICIO = Convert.ToInt16(FgReg.GetData(n_row, 10).ToString());
-                    N_UNIMED = Convert.ToInt16(FgReg.GetData(n_row, 11).ToString());
+                    N_SERVICIO = Convert.ToInt32(FgReg.GetData(n_row, 10).ToString());
+                    N_UNIMED = Convert.ToInt32(FgReg.GetData(n_row, 11).ToString());
                     //C_PERIODO = "DEL " + Convert.ToDateTime(FgReg.GetData(n_row, 4)).ToString("dd/MM/yy") + " AL " + Convert.ToDateTime(FgReg.GetData(n_row, 4)).AddDays(30).ToString("dd/MM/yy");
 
                     c_dato = FgReg.GetData(n_row, 4).ToString();
@@ -520,9 +520,9 @@ namespace SIAC_NET_Estacionamientos.Formularios
             e_Documento.n_idlib = N_IDLIBRO;
             e_Documento.c_numreg = "";
             e_Documento.n_idtippro = 23;
-            e_Documento.n_idcli = Convert.ToInt16(LbIdCliente.Text);
+            e_Documento.n_idcli = Convert.ToInt32(LbIdCliente.Text);
             e_Documento.n_idpunvencli = 0;
-            e_Documento.n_idtipdoc = Convert.ToInt16(CboTipDoc.SelectedValue);
+            e_Documento.n_idtipdoc = Convert.ToInt32(CboTipDoc.SelectedValue);
             e_Documento.c_numser = TxtNumSer.Text;
             e_Documento.c_numdoc = TxtNumDoc.Text;
             if (e_Documento.n_idmes == 0)
@@ -536,7 +536,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
             e_Documento.d_fchdoc = Convert.ToDateTime(TxtFecha.Text);
             e_Documento.d_fchven = Convert.ToDateTime(TxtFecha.Text);
             e_Documento.n_idconpag = 1;
-            e_Documento.n_idmon = Convert.ToInt16(CboMoneda.SelectedValue);
+            e_Documento.n_idmon = Convert.ToInt32(CboMoneda.SelectedValue);
             e_Documento.n_impbru = (Convert.ToDouble(TxtImpPag.Text) / ((douIGVTasa / 100) + 1));
             e_Documento.n_impbru2 = 0;
             e_Documento.n_impbru3 = 0;
@@ -607,9 +607,9 @@ namespace SIAC_NET_Estacionamientos.Formularios
             l_DetDat.Clear();
             BE_VTA_VENTASDAT entDat = new BE_VTA_VENTASDAT();
             entDat.n_idvta = 0;
-            entDat.n_idcaj = Convert.ToInt16(CboCajero.SelectedValue);
+            entDat.n_idcaj = Convert.ToInt32(CboCajero.SelectedValue);
             entDat.c_cajnom = STU_SISTEMA.USUARIOALIAS; //CboCajero.Text;
-            entDat.n_idloc = Convert.ToInt16(N_LOCAL);
+            entDat.n_idloc = Convert.ToInt32(N_LOCAL);
             entDat.c_locdes = C_LOCAL;
             entDat.h_horemi = DateTime.Now.ToString("HH:mm:ss");
             entDat.c_numpla = TxtNumPla.Text;
@@ -635,22 +635,22 @@ namespace SIAC_NET_Estacionamientos.Formularios
 
 
             // OBTENEMOS EL ID DE LA CUENTA CONTABLE DEL DOCUMENTO DE VENTA
-            dtResult = funGen.DataTableFiltrar(dtdoccuecon, "n_idtipdoc = " + Convert.ToInt16(CboTipDoc.SelectedValue) + " AND n_idmon = " + Convert.ToInt16(CboMoneda.SelectedValue) + "");
+            dtResult = funGen.DataTableFiltrar(dtdoccuecon, "n_idtipdoc = " + Convert.ToInt32(CboTipDoc.SelectedValue) + " AND n_idmon = " + Convert.ToInt32(CboMoneda.SelectedValue) + "");
             if (dtResult.Rows.Count == 0)
             {
                 MessageBox.Show("¡ El tipo de documento seleccionado no tiene cuenta contable asignada, asignele una cuenta contable en el menu contabilidad !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 return;
             }
-            n_idcuedoc = Convert.ToInt16(dtResult.Rows[0]["n_idcueven"]);
+            n_idcuedoc = Convert.ToInt32(dtResult.Rows[0]["n_idcueven"]);
 
             // OBTENEMOS EL ID DE LA CUENTA CONTABLE DEL IMPUESTO DE LA VENTA
-            dtResult = funGen.DataTableFiltrar(dtdocimp, "n_idtipdoc = " + Convert.ToInt16(CboTipDoc.SelectedValue) + "");
+            dtResult = funGen.DataTableFiltrar(dtdocimp, "n_idtipdoc = " + Convert.ToInt32(CboTipDoc.SelectedValue) + "");
             if (dtResult.Rows.Count == 0)
             {
                 MessageBox.Show("¡ El tipo de documento seleccionado no tiene un impuesto asignado, asignele una cuenta contable en el menu contabilidad !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 return;
             }
-            n_idcueigv = Convert.ToInt16(dtResult.Rows[0]["n_idcueven"]);
+            n_idcueigv = Convert.ToInt32(dtResult.Rows[0]["n_idcueven"]);
 
             // OBTENEMOS EL ID DE LA CUENTA CONTABLE DEL SERVICIO
             dtResult = funGen.DataTableFiltrar(dtpcite, "n_iditem = " + N_SERVICIO + "");
@@ -659,10 +659,10 @@ namespace SIAC_NET_Estacionamientos.Formularios
                 MessageBox.Show("¡ El item seleccionado no tiene cuenta contable asignada, asignele una cuenta contable en el menu contabilidad !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 return;
             }
-            n_idcueite = Convert.ToInt16(dtResult.Rows[0]["n_idpcven"]);
+            n_idcueite = Convert.ToInt32(dtResult.Rows[0]["n_idpcven"]);
 
             // OBTENEMOS LA ABREVIATURA DEL TIPO DE DOUCMENTO
-            dtResult = funGen.DataTableFiltrar(dtTipDocumento, "n_id = " + Convert.ToInt16(CboTipDoc.SelectedValue) + "");
+            dtResult = funGen.DataTableFiltrar(dtTipDocumento, "n_id = " + Convert.ToInt32(CboTipDoc.SelectedValue) + "");
             c_abrtipdoc = dtResult.Rows[0]["c_abr"].ToString();
 
 
@@ -683,7 +683,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
             ediario.n_idcue = n_idcuedoc;
             ediario.n_tc = Convert.ToDouble(LblTc.Text);
 
-            if (Convert.ToInt16(CboMoneda.SelectedValue) == 115)
+            if (Convert.ToInt32(CboMoneda.SelectedValue) == 115)
             {
                 ediario.n_impdebsol = Convert.ToDouble(TxtImpPag.Text);
                 ediario.n_imphabsol = 0;
@@ -703,8 +703,8 @@ namespace SIAC_NET_Estacionamientos.Formularios
             ediario.d_fchasi = Convert.ToDateTime(TxtFecha.Text);
             ediario.d_orifchdoc = Convert.ToDateTime(TxtFecha.Text);
             ediario.n_oriid = 0;
-            ediario.n_oriidtipdoc = Convert.ToInt16(CboTipDoc.SelectedValue);
-            ediario.n_oriidtipmon = Convert.ToInt16(CboMoneda.SelectedValue);
+            ediario.n_oriidtipdoc = Convert.ToInt32(CboTipDoc.SelectedValue);
+            ediario.n_oriidtipmon = Convert.ToInt32(CboMoneda.SelectedValue);
             ediario.c_orinumdoc = TxtNumSer.Text + "-" + TxtNumDoc.Text;
             ediario.c_origlo = "";
             ediario.c_oridestipmon = CboMoneda.Text;
@@ -731,7 +731,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
                 ediario2.n_idcue = n_idcueigv;
                 ediario2.n_tc = Convert.ToDouble(LblTc.Text);
 
-                if (Convert.ToInt16(CboMoneda.SelectedValue) == 115)
+                if (Convert.ToInt32(CboMoneda.SelectedValue) == 115)
                 {
                     ediario2.n_impdebsol = 0;
                     ediario2.n_imphabsol = n_valor;
@@ -751,8 +751,8 @@ namespace SIAC_NET_Estacionamientos.Formularios
                 ediario2.d_fchasi = Convert.ToDateTime(TxtFecha.Text);
                 ediario2.d_orifchdoc = Convert.ToDateTime(TxtFecha.Text);
                 ediario2.n_oriid = 0;
-                ediario2.n_oriidtipdoc = Convert.ToInt16(CboTipDoc.SelectedValue);
-                ediario2.n_oriidtipmon = Convert.ToInt16(CboMoneda.SelectedValue);
+                ediario2.n_oriidtipdoc = Convert.ToInt32(CboTipDoc.SelectedValue);
+                ediario2.n_oriidtipmon = Convert.ToInt32(CboMoneda.SelectedValue);
                 ediario2.c_orinumdoc = TxtNumSer.Text + "-" + TxtNumDoc.Text;
                 ediario2.c_origlo = "";
                 ediario.c_oridestipmon = CboMoneda.Text;
@@ -785,7 +785,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
             ediario3.n_idcue = n_idcueite;
             ediario3.n_tc = Convert.ToDouble(LblTc.Text);
 
-            if (Convert.ToInt16(CboMoneda.SelectedValue) == 115)
+            if (Convert.ToInt32(CboMoneda.SelectedValue) == 115)
             {
                 ediario3.n_impdebsol = 0;
                 ediario3.n_imphabsol = n_valor;
@@ -805,8 +805,8 @@ namespace SIAC_NET_Estacionamientos.Formularios
             ediario3.d_fchasi = Convert.ToDateTime(TxtFecha.Text);
             ediario3.d_orifchdoc = Convert.ToDateTime(TxtFecha.Text);
             ediario3.n_oriid = 0;
-            ediario3.n_oriidtipdoc = Convert.ToInt16(CboTipDoc.SelectedValue);
-            ediario3.n_oriidtipmon = Convert.ToInt16(CboMoneda.SelectedValue);
+            ediario3.n_oriidtipdoc = Convert.ToInt32(CboTipDoc.SelectedValue);
+            ediario3.n_oriidtipmon = Convert.ToInt32(CboMoneda.SelectedValue);
             ediario3.c_orinumdoc = TxtNumSer.Text + "-" + TxtNumDoc.Text;
             ediario3.c_origlo = "";
             ediario.c_oridestipmon = CboMoneda.Text;
@@ -861,9 +861,9 @@ namespace SIAC_NET_Estacionamientos.Formularios
                     CargarDatos2();
                     //TxtHorIni.Text = DateTime.Now.ToString("HH:mm:ss");
 
-                    //if (Convert.ToInt16(dtResul.Rows[0]["n_idtipcli"]) == 2)
+                    //if (Convert.ToInt32(dtResul.Rows[0]["n_idtipcli"]) == 2)
                     //{
-                    //    CboSer.SelectedValue = Convert.ToInt16(dtResul.Rows[0]["n_idser"]);
+                    //    CboSer.SelectedValue = Convert.ToInt32(dtResul.Rows[0]["n_idser"]);
                     //}
 
                     //DataTable dtResul2 = new DataTable();
@@ -893,16 +893,16 @@ namespace SIAC_NET_Estacionamientos.Formularios
         {
             if (booAgregando == true) { return; }
 
-            if (Convert.ToInt16(CboTipDoc.SelectedValue) == 2) { TxtNumSer.Text = c_NUMSERFAC; }
-            if (Convert.ToInt16(CboTipDoc.SelectedValue) == 4) { TxtNumSer.Text = c_NUMSERBOL; }
-            if (Convert.ToInt16(CboTipDoc.SelectedValue) == 90) { TxtNumSer.Text = c_NUMSERTIC; }
+            if (Convert.ToInt32(CboTipDoc.SelectedValue) == 2) { TxtNumSer.Text = c_NUMSERFAC; }
+            if (Convert.ToInt32(CboTipDoc.SelectedValue) == 4) { TxtNumSer.Text = c_NUMSERBOL; }
+            if (Convert.ToInt32(CboTipDoc.SelectedValue) == 90) { TxtNumSer.Text = c_NUMSERTIC; }
 
             CN_est_conecta o_conec = new CN_est_conecta(STU_SISTEMA);
             objTipDoc.mysConec = o_conec.mysConec;
-            TxtNumDoc.Text = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, Convert.ToInt16(CboTipDoc.SelectedValue), TxtNumSer.Text);
+            TxtNumDoc.Text = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboTipDoc.SelectedValue), TxtNumSer.Text);
             o_conec = null;
 
-            if (Convert.ToInt16(CboTipDoc.SelectedValue) == 90)
+            if (Convert.ToInt32(CboTipDoc.SelectedValue) == 90)
             {
                 N_IDLIBRO = 33;
             }

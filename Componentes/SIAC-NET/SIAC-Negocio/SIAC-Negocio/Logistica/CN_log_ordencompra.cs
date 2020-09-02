@@ -140,13 +140,13 @@ namespace SIAC_Negocio.Logistica
                 {
                     BE_LOG_ORDENCOMPRADET e_ocdet = new BE_LOG_ORDENCOMPRADET();
 
-                    e_ocdet.n_idoc = Convert.ToInt16(dtDet.Rows[n_row]["n_idoc"]);
-                    e_ocdet.n_idite = Convert.ToInt16(dtDet.Rows[n_row]["n_idite"]);
-                    e_ocdet.n_idunimed = Convert.ToInt16(dtDet.Rows[n_row]["n_idunimed"]);
+                    e_ocdet.n_idoc = Convert.ToInt32(dtDet.Rows[n_row]["n_idoc"]);
+                    e_ocdet.n_idite = Convert.ToInt32(dtDet.Rows[n_row]["n_idite"]);
+                    e_ocdet.n_idunimed = Convert.ToInt32(dtDet.Rows[n_row]["n_idunimed"]);
                     e_ocdet.n_can = Convert.ToDouble(dtDet.Rows[n_row]["n_can"]);
                     e_ocdet.n_preuni = Convert.ToDouble(dtDet.Rows[n_row]["n_preuni"]);
                     e_ocdet.n_imptot = Convert.ToDouble(dtDet.Rows[n_row]["n_imptot"]);
-                    e_ocdet.n_idtipafeigv = Convert.ToInt16(dtDet.Rows[n_row]["n_idtipafeigv"]);
+                    e_ocdet.n_idtipafeigv = Convert.ToInt32(dtDet.Rows[n_row]["n_idtipafeigv"]);
                     if (string.IsNullOrEmpty(dtDet.Rows[n_row]["n_canat"].ToString()))
                     {
                         e_ocdet.n_canat = 0;

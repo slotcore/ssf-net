@@ -158,8 +158,8 @@ namespace SSF_NET_Ventas.Formularios
             Bloquea();
             ActivarTool();
 
-            int n_IdEmp = Convert.ToInt16(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
-            int n_IdTipExi = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int n_IdEmp = Convert.ToInt32(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
+            int n_IdTipExi = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
             VerRegistro(n_IdEmp, n_IdTipExi);
             LblTitulo2.Text = "Modificando Registro";
@@ -169,8 +169,8 @@ namespace SSF_NET_Ventas.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int n_IdEmp = Convert.ToInt16(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
-            int n_IdTipExi = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int n_IdEmp = Convert.ToInt32(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
+            int n_IdTipExi = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -234,14 +234,14 @@ namespace SSF_NET_Ventas.Formularios
         void AsignarEntidad()
         {
             BE_Registro.n_idemp = STU_SISTEMA.EMPRESAID;
-            BE_Registro.n_idtipexi = Convert.ToInt16(CboTipExi.SelectedValue);
+            BE_Registro.n_idtipexi = Convert.ToInt32(CboTipExi.SelectedValue);
 
         }
         bool CamposOK()
         {
             bool booEstado = true;
 
-            if (Convert.ToInt16(CboTipExi.SelectedValue) == 0)
+            if (Convert.ToInt32(CboTipExi.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado tipo de existencia !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -342,8 +342,8 @@ namespace SSF_NET_Ventas.Formularios
 
             if (e.NewIndex == 1)
             {
-                int n_IdEmp = Convert.ToInt16(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
-                int n_IdTipExi = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+                int n_IdEmp = Convert.ToInt32(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
+                int n_IdTipExi = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -353,8 +353,8 @@ namespace SSF_NET_Ventas.Formularios
         }
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int n_IdEmp = Convert.ToInt16(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
-            int n_IdTipExi = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int n_IdEmp = Convert.ToInt32(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
+            int n_IdTipExi = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             VerRegistro(n_IdEmp, n_IdTipExi);
         }

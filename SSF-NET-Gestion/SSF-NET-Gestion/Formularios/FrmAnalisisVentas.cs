@@ -626,7 +626,7 @@ namespace SSF_NET_Gestion.Formularios
                 {
                     if (FgHisAno.GetData(n_row, 2).ToString() == "True")
                     {
-                        n_anover = Convert.ToInt16(FgHisAno.GetData(n_row, 1));
+                        n_anover = Convert.ToInt32(FgHisAno.GetData(n_row, 1));
                     }
                 }
                 Cabecera2();
@@ -643,7 +643,7 @@ namespace SSF_NET_Gestion.Formularios
                 {
                     if (FgHisAno.GetData(n_row, 2).ToString() == "True")
                     {
-                        n_anover = Convert.ToInt16(FgHisAno.GetData(n_row, 1));
+                        n_anover = Convert.ToInt32(FgHisAno.GetData(n_row, 1));
                     }
                 }
                 Cabecera3();
@@ -679,7 +679,7 @@ namespace SSF_NET_Gestion.Formularios
                 {
                     if (FgHisAno.GetData(n_row, 2).ToString() == "True")
                     {
-                        n_anover = Convert.ToInt16(FgHisAno.GetData(n_row, 1));
+                        n_anover = Convert.ToInt32(FgHisAno.GetData(n_row, 1));
                     }
                 }
                 Cabecera4();
@@ -758,7 +758,7 @@ namespace SSF_NET_Gestion.Formularios
         }
         private void CmdAddIte_Click(object sender, EventArgs e)
         {
-            if (Convert.ToInt16(CboTipPro.SelectedValue) == 0)
+            if (Convert.ToInt32(CboTipPro.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el tipo de existencia !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 c1DockingTab1.SelectedIndex = 0;
@@ -810,7 +810,7 @@ namespace SSF_NET_Gestion.Formularios
         {
             if (FgItem.Col == 1)
             {
-                if (Convert.ToInt16(CboTipPro.SelectedValue) == 0)
+                if (Convert.ToInt32(CboTipPro.SelectedValue) == 0)
                 {
                     MessageBox.Show("¡ No ha especificado el tipo de existencia !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     c1DockingTab1.SelectedIndex = 0;
@@ -820,7 +820,7 @@ namespace SSF_NET_Gestion.Formularios
 
                 DataTable dtResul = new DataTable();
                 string c_dato = "";
-                int n_idtippro = Convert.ToInt16(CboTipPro.SelectedValue);
+                int n_idtippro = Convert.ToInt32(CboTipPro.SelectedValue);
                 if (n_idtippro == 0)
                 {
                     dtResul = objItems.BuscarItem("", "n_id", dtItem, n_idtippro);

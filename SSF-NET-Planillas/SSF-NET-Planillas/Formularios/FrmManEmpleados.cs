@@ -470,7 +470,7 @@ namespace SSF_NET_Planillas.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
 
@@ -484,7 +484,7 @@ namespace SSF_NET_Planillas.Formularios
         {
             try
             {
-                int n_IdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+                int n_IdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
                 CN_pla_empleados objRegistros = new CN_pla_empleados(STU_SISTEMA);
                 objRegistros.STU_SISTEMA = STU_SISTEMA;
@@ -520,7 +520,7 @@ namespace SSF_NET_Planillas.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -615,7 +615,7 @@ namespace SSF_NET_Planillas.Formularios
             int n_id = 0;
             if (n_QueHace == 2)
             {
-                n_id = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+                n_id = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             }
 
             entRegistro.n_idemp = STU_SISTEMA.EMPRESAID;
@@ -713,7 +713,7 @@ namespace SSF_NET_Planillas.Formularios
                 TxtNom1.Focus();
                 return booEstado;
             }
-            if (Convert.ToInt16(CboSex.SelectedValue) == 0)
+            if (Convert.ToInt32(CboSex.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el sexo del empleado !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -839,7 +839,7 @@ namespace SSF_NET_Planillas.Formularios
         }
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             booAgregando = true;
             VerRegistro(intIdRegistro);
@@ -865,7 +865,7 @@ namespace SSF_NET_Planillas.Formularios
 
             if (tc.SelectedIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -1282,7 +1282,7 @@ namespace SSF_NET_Planillas.Formularios
         bool DesactivarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de desactivar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -1348,7 +1348,7 @@ namespace SSF_NET_Planillas.Formularios
         bool ActivarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de activar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -1403,7 +1403,7 @@ namespace SSF_NET_Planillas.Formularios
             BE_PLA_EMPLEADOS e_emp = new BE_PLA_EMPLEADOS();
             CN_pla_empleados objRegistros = new CN_pla_empleados(STU_SISTEMA);
             objRegistros.STU_SISTEMA = STU_SISTEMA;
-            int n_idreg = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int n_idreg = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             objRegistros.TraerRegistro(n_idreg);
             e_emp = objRegistros.entEmpleado;
             objRegistros = null;
@@ -1416,7 +1416,7 @@ namespace SSF_NET_Planillas.Formularios
         }
         private void CmdAce_Click(object sender, EventArgs e)
         {
-            int n_idreg = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int n_idreg = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             DialogResult Rpta = MessageBox.Show("¿ Desea dar de baja al empleado ? ", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
             if (DialogResult.Yes == Rpta)

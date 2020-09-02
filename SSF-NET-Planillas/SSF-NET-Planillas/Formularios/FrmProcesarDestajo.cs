@@ -91,7 +91,7 @@ namespace SSF_NET_Planillas.Formularios
                 return;
             }
             objRegistro.mysConec = mysConec;
-            if (objRegistro.PuedeImportarTareasParaPlanillaDestajo(STU_SISTEMA.EMPRESAID,TxtFchIni.Text,TxtFchFin.Text,Convert.ToInt16(CboLocal.SelectedValue)) == false)
+            if (objRegistro.PuedeImportarTareasParaPlanillaDestajo(STU_SISTEMA.EMPRESAID,TxtFchIni.Text,TxtFchFin.Text,Convert.ToInt32(CboLocal.SelectedValue)) == false)
             {
                 MessageBox.Show("¡ No hay tareas enviadas a produccion en el periodo especificado, vaya al modulos de tareas y chequee tareas a produccion !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 TxtObs.Focus();
@@ -329,7 +329,7 @@ namespace SSF_NET_Planillas.Formularios
             int n_fil = 2;
             string c_dato = "";
             int n_col = 0;
-            int n_numdias = Convert.ToInt16((Convert.ToDateTime(TxtFchFin.Text) - Convert.ToDateTime(TxtFchIni.Text)).ToString(@"dd"));
+            int n_numdias = Convert.ToInt32((Convert.ToDateTime(TxtFchFin.Text) - Convert.ToDateTime(TxtFchIni.Text)).ToString(@"dd"));
             n_numdias = n_numdias + 1;
             DateTime d_fecha = Convert.ToDateTime(TxtFchIni.Text);
             FgLisPer.Cols.Count = 5;
@@ -423,7 +423,7 @@ namespace SSF_NET_Planillas.Formularios
             int n_fil = 2;
             string c_dato = "";
             int n_col = 0;
-            int n_numdias = Convert.ToInt16((Convert.ToDateTime(TxtFchFin.Text) - Convert.ToDateTime(TxtFchIni.Text)).ToString(@"dd"));
+            int n_numdias = Convert.ToInt32((Convert.ToDateTime(TxtFchFin.Text) - Convert.ToDateTime(TxtFchIni.Text)).ToString(@"dd"));
             n_numdias = n_numdias + 1;
             DateTime d_fecha = Convert.ToDateTime(TxtFchIni.Text);
             FgLisHor.Rows.Count = 2;
@@ -566,7 +566,7 @@ namespace SSF_NET_Planillas.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -577,7 +577,7 @@ namespace SSF_NET_Planillas.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[1].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[1].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
@@ -650,7 +650,7 @@ namespace SSF_NET_Planillas.Formularios
 
             entCargos.n_id = 0;
 
-            if (n_QueHace == 2) { entCargos.n_id = Convert.ToInt16(DgLista.Columns[1].CellValue(DgLista.Row).ToString()); }
+            if (n_QueHace == 2) { entCargos.n_id = Convert.ToInt32(DgLista.Columns[1].CellValue(DgLista.Row).ToString()); }
       
             entCargos.n_idemp = STU_SISTEMA.EMPRESAID;
             entCargos.n_idtipdoc = 80;
@@ -711,7 +711,7 @@ namespace SSF_NET_Planillas.Formularios
                 return booEstado;
             }
 
-            if (Convert.ToInt16(CboRes.SelectedValue) == 0)
+            if (Convert.ToInt32(CboRes.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el nombre de la persona responsable de este proceso !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboRes.Focus();
@@ -797,7 +797,7 @@ namespace SSF_NET_Planillas.Formularios
         }
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             booAgregando = true;
             VerRegistro(intIdRegistro);
@@ -821,7 +821,7 @@ namespace SSF_NET_Planillas.Formularios
 
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -1039,7 +1039,7 @@ namespace SSF_NET_Planillas.Formularios
             string c_fchcon = "";
             int n_idper = 0;
 
-            n_idpla = Convert.ToInt16(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
+            n_idpla = Convert.ToInt32(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
 
             if (TabDetalle.SelectedIndex == 0)
             {
@@ -1058,7 +1058,7 @@ namespace SSF_NET_Planillas.Formularios
         private void exportarPagosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Tab1.SelectedIndex = 1;
-            string c_NomArchivo = STU_SISTEMA.EMPRESARUC + "-PLA-PLANILLA DESTAJO IMPORTES-" + STU_SISTEMA.ANOTRABAJO.ToString() + Convert.ToInt16(CboMeses.SelectedValue).ToString("00") + ".xls";
+            string c_NomArchivo = STU_SISTEMA.EMPRESARUC + "-PLA-PLANILLA DESTAJO IMPORTES-" + STU_SISTEMA.ANOTRABAJO.ToString() + Convert.ToInt32(CboMeses.SelectedValue).ToString("00") + ".xls";
 
             if (FgLisPer.Rows.Count == 2)
             {
@@ -1074,7 +1074,7 @@ namespace SSF_NET_Planillas.Formularios
         private void exportarHorasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Tab1.SelectedIndex = 1;
-            string c_NomArchivo = STU_SISTEMA.EMPRESARUC + "-PLA-PLANILLA DESTAJO HORAS-" + STU_SISTEMA.ANOTRABAJO.ToString() + Convert.ToInt16(CboMeses.SelectedValue).ToString("00") + ".xls";
+            string c_NomArchivo = STU_SISTEMA.EMPRESARUC + "-PLA-PLANILLA DESTAJO HORAS-" + STU_SISTEMA.ANOTRABAJO.ToString() + Convert.ToInt32(CboMeses.SelectedValue).ToString("00") + ".xls";
 
             if (FgLisHor.Rows.Count == 2)
             {

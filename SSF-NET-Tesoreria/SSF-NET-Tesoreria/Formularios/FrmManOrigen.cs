@@ -273,7 +273,7 @@ namespace SSF_NET_Tesoreria.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -284,7 +284,7 @@ namespace SSF_NET_Tesoreria.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -350,10 +350,10 @@ namespace SSF_NET_Tesoreria.Formularios
         void AsignarEntidad()
         {
             BE_Registro.n_idemp = STU_SISTEMA.EMPRESAID;
-            BE_Registro.n_idcue = Convert.ToInt16(LblidCueCom.Text);
-            BE_Registro.n_idmod = Convert.ToInt16(CboModulo.SelectedValue);
-            BE_Registro.n_idmon = Convert.ToInt16(CboMoneda.SelectedValue);
-            BE_Registro.n_idcueban = Convert.ToInt16(CboCueBan.SelectedValue);
+            BE_Registro.n_idcue = Convert.ToInt32(LblidCueCom.Text);
+            BE_Registro.n_idmod = Convert.ToInt32(CboModulo.SelectedValue);
+            BE_Registro.n_idmon = Convert.ToInt32(CboMoneda.SelectedValue);
+            BE_Registro.n_idcueban = Convert.ToInt32(CboCueBan.SelectedValue);
             BE_Registro.n_idemp = STU_SISTEMA.EMPRESAID;
 
             if (n_tipo == 1)
@@ -374,7 +374,7 @@ namespace SSF_NET_Tesoreria.Formularios
             if (OptBan.Checked == true) { BE_Registro.n_oridin = 2; }
 
             BE_Registro.n_idbanco = 0;
-            if (Convert.ToInt16(CboBanco.SelectedValue) != 0) { BE_Registro.n_idbanco = Convert.ToInt16(CboBanco.SelectedValue); }
+            if (Convert.ToInt32(CboBanco.SelectedValue) != 0) { BE_Registro.n_idbanco = Convert.ToInt32(CboBanco.SelectedValue); }
         }
         bool CamposOK()
         {
@@ -386,7 +386,7 @@ namespace SSF_NET_Tesoreria.Formularios
                 TxtCtaCom.Focus();
                 return booEstado;
             }
-            if (Convert.ToInt16(CboMoneda.SelectedValue) == 0)
+            if (Convert.ToInt32(CboMoneda.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado la moneda del origen !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboMoneda.Focus();
@@ -404,9 +404,9 @@ namespace SSF_NET_Tesoreria.Formularios
                 OptSiDet.Focus();
                 return booEstado;
             }
-            if (Convert.ToInt16(CboBanco.SelectedValue) != 0)
+            if (Convert.ToInt32(CboBanco.SelectedValue) != 0)
             {
-                if (Convert.ToInt16(CboCueBan.SelectedValue) == 0)
+                if (Convert.ToInt32(CboCueBan.SelectedValue) == 0)
                 {
                     MessageBox.Show("¡ No ha especificado el numero de cuenta bancario para esta cuenta contable !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     CboCueBan.Focus();
@@ -491,7 +491,7 @@ namespace SSF_NET_Tesoreria.Formularios
         }
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             booAgregando = true;
             VerRegistro(intIdRegistro);
@@ -515,7 +515,7 @@ namespace SSF_NET_Tesoreria.Formularios
 
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -556,12 +556,12 @@ namespace SSF_NET_Tesoreria.Formularios
         void MostrarCuentaBanco()
         {
             //CboCueBan = null;
-            if (Convert.ToInt16(CboBanco.SelectedValue) == 0) { return; }
-            if (Convert.ToInt16(CboMoneda.SelectedValue) == 0) { return; }
+            if (Convert.ToInt32(CboBanco.SelectedValue) == 0) { return; }
+            if (Convert.ToInt32(CboMoneda.SelectedValue) == 0) { return; }
 
             DataTable dtResul = new DataTable();
-            int n_idmon = Convert.ToInt16(CboMoneda.SelectedValue);
-            int n_idban = Convert.ToInt16(CboBanco.SelectedValue);
+            int n_idmon = Convert.ToInt32(CboMoneda.SelectedValue);
+            int n_idban = Convert.ToInt32(CboBanco.SelectedValue);
             dtResul = funDatos.DataTableFiltrar(dtCueBan, "(n_idmon = " + n_idmon.ToString() + " AND n_idban = " + n_idban.ToString() + ")");
             funDatos.ComboBoxCargarDataTable(CboCueBan, dtResul, "n_id", "c_numcue");
             //funDatos.ComboBoxCargarDataTable(CboMoneda, dtMon, "n_id", "c_des");

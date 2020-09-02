@@ -144,8 +144,8 @@ namespace SIAC_DATOS.Contabilidad
                 {
                     for (n_row = 0; n_row <= l_ProvicionesDet.Count - 1; n_row++)
                     {
-                        e_Proviciones.n_id = Convert.ToInt16(xMiFuncion.intIdGenerado);
-                        l_ProvicionesDet[n_row].n_idpro = Convert.ToInt16(xMiFuncion.intIdGenerado);
+                        e_Proviciones.n_id = Convert.ToInt32(xMiFuncion.intIdGenerado);
+                        l_ProvicionesDet[n_row].n_idpro = Convert.ToInt32(xMiFuncion.intIdGenerado);
                         if (xMiFuncion.StoreEjecutar("con_provicionesdet_insertar", l_ProvicionesDet[n_row], mysConec, null) == false)
                         {
                             b_OcurrioError = xMiFuncion.booOcurrioError;

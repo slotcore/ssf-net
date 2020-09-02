@@ -45,7 +45,7 @@ namespace SIAC_Objetos
             dtresult = funDatos.DataTableFiltrar(dtresult, "((n_idmod = " + n_IdModulo.ToString() + ") AND (n_idmes = " + n_IdMes.ToString() + ") AND (n_idemp = " + n_IdEmpresa.ToString() + "))");
             if (dtresult.Rows.Count != 0)
             {
-                if (Convert.ToInt16(dtresult.Rows[0]["n_estado"]) == 1)
+                if (Convert.ToInt32(dtresult.Rows[0]["n_estado"]) == 1)
                 {
                     b_estado = true;
                 }

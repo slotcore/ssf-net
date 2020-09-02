@@ -170,7 +170,7 @@ namespace SSF_NET_Almacen.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -180,7 +180,7 @@ namespace SSF_NET_Almacen.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -245,8 +245,8 @@ namespace SSF_NET_Almacen.Formularios
             BE_ListaReg.n_idemp = 0;
             if (STU_SISTEMA.SYS_UNIBD == 0) { BE_ListaReg.n_idemp = STU_SISTEMA.EMPRESAID; }
 
-            BE_ListaReg.n_idtipexi = Convert.ToInt16(CboTipExi.SelectedValue);
-            BE_ListaReg.n_idfam = Convert.ToInt16(CboFam.SelectedValue);
+            BE_ListaReg.n_idtipexi = Convert.ToInt32(CboTipExi.SelectedValue);
+            BE_ListaReg.n_idfam = Convert.ToInt32(CboFam.SelectedValue);
             BE_ListaReg.n_id = BE_Registro.n_id;
             BE_ListaReg.c_des = TxtDes.Text;
             BE_ListaReg.c_pre = TxtPrefijo.Text;
@@ -256,13 +256,13 @@ namespace SSF_NET_Almacen.Formularios
         {
             bool booEstado = true;
 
-            if (Convert.ToInt16(CboTipExi.SelectedValue) == 0)
+            if (Convert.ToInt32(CboTipExi.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el tipo de existencia !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
                 return booEstado;
             }
-            if (Convert.ToInt16(CboFam.SelectedValue) == 0)
+            if (Convert.ToInt32(CboFam.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado la familia !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -381,7 +381,7 @@ namespace SSF_NET_Almacen.Formularios
 
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -392,7 +392,7 @@ namespace SSF_NET_Almacen.Formularios
 
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             VerRegistro(intIdRegistro);
         }

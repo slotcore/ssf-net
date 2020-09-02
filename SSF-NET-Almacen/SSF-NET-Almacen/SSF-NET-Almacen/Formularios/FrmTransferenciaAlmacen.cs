@@ -124,15 +124,15 @@ namespace SSF_NET_Almacen.Formularios
         {
             Tab1.SelectedIndex = 0;
             string c_nomarc = ConfigurationManager.AppSettings["PathIniFile"];
-            N_IDALMACEN = Convert.ToInt16(funDatos.IniLeerSeccion(c_nomarc, "SISTEMA", "ALMACEN").ToString());
+            N_IDALMACEN = Convert.ToInt32(funDatos.IniLeerSeccion(c_nomarc, "SISTEMA", "ALMACEN").ToString());
 
             if (dtsetup.Rows.Count != 0)
             {
-                if (Convert.ToInt16(dtsetup.Rows[0]["n_almtrazabilidad"]) == 1)
+                if (Convert.ToInt32(dtsetup.Rows[0]["n_almtrazabilidad"]) == 1)
                 {
                     N_INGTRAZABALIDAD = 1;
                 }
-                if (Convert.ToInt16(dtsetup.Rows[0]["n_guipedpre"]) == 1)
+                if (Convert.ToInt32(dtsetup.Rows[0]["n_guipedpre"]) == 1)
                 {
                     N_INGPRECIO = 1;
                 }
@@ -219,8 +219,8 @@ namespace SSF_NET_Almacen.Formularios
             dtTipoExis = objTipoExi.Listar();
 
             ObjAlm.mysConec = mysConec;
-            dtAlmacenesOrigen = ObjAlm.ListarNuevo(STU_SISTEMA.EMPRESAID, Convert.ToInt16(funFunciones.NulosN(dtsetup.Rows[0]["n_almunialmacenes"])));                             // 
-            dtAlmacenesDestino = ObjAlm.ListarNuevo(STU_SISTEMA.EMPRESAID, Convert.ToInt16(funFunciones.NulosN(dtsetup.Rows[0]["n_almunialmacenes"])));                             // 
+            dtAlmacenesOrigen = ObjAlm.ListarNuevo(STU_SISTEMA.EMPRESAID, Convert.ToInt32(funFunciones.NulosN(dtsetup.Rows[0]["n_almunialmacenes"])));                             // 
+            dtAlmacenesDestino = ObjAlm.ListarNuevo(STU_SISTEMA.EMPRESAID, Convert.ToInt32(funFunciones.NulosN(dtsetup.Rows[0]["n_almunialmacenes"])));                             // 
 
             ObjRes.mysConec = mysConec;
             dtResponsables = ObjRes.ListarPorCargo(STU_SISTEMA.EMPRESAID, 2);                          // 
@@ -306,7 +306,7 @@ namespace SSF_NET_Almacen.Formularios
             FgItems.Rows.Count = 2;
             booAgregando = false;
             FgItems.Cols[2].ComboList = "...";
-            CboAlmacenOrigen.SelectedValue = Convert.ToInt16(N_IDALMACEN);
+            CboAlmacenOrigen.SelectedValue = Convert.ToInt32(N_IDALMACEN);
             txtFchIng.Focus();
         }
         void Blanquea()
@@ -391,7 +391,7 @@ namespace SSF_NET_Almacen.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -402,7 +402,7 @@ namespace SSF_NET_Almacen.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[9].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             objTransferencias.mysConec = mysConec;
             BE_Transferencia = objTransferencias.TraerRegistro(intIdRegistro);
@@ -474,12 +474,12 @@ namespace SSF_NET_Almacen.Formularios
             BE_Transferencia.d_fching = Convert.ToDateTime(txtFchIng.Text);
             BE_Transferencia.c_numser = TxtNumSer.Text;
             BE_Transferencia.c_numdoc = TxtNumDoc.Text;
-            BE_Transferencia.n_idalmorig = Convert.ToInt16(CboAlmacenOrigen.SelectedValue);
-            BE_Transferencia.n_idalmdest = Convert.ToInt16(CboAlmacenDestino.SelectedValue);
+            BE_Transferencia.n_idalmorig = Convert.ToInt32(CboAlmacenOrigen.SelectedValue);
+            BE_Transferencia.n_idalmdest = Convert.ToInt32(CboAlmacenDestino.SelectedValue);
             BE_Transferencia.n_anotra = STU_SISTEMA.ANOTRABAJO;
             BE_Transferencia.n_idmes = STU_SISTEMA.MESTRABAJO;
             BE_Transferencia.c_obs = TxtObs.Text; ;            
-            BE_Transferencia.n_idresp =  Convert.ToInt16(CboResponsable.SelectedValue);
+            BE_Transferencia.n_idresp =  Convert.ToInt32(CboResponsable.SelectedValue);
             booAgregando = true;
 
             if (FgItems.Rows.Count > 2)
@@ -561,7 +561,7 @@ namespace SSF_NET_Almacen.Formularios
                 return booEstado;
             }
 
-            if (Convert.ToInt16(CboAlmacenOrigen.SelectedValue) == 0)
+            if (Convert.ToInt32(CboAlmacenOrigen.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el almacen de Origen !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboAlmacenOrigen.Focus();
@@ -569,7 +569,7 @@ namespace SSF_NET_Almacen.Formularios
                 return booEstado;
             }
 
-            if (Convert.ToInt16(CboAlmacenDestino.SelectedValue) == 0)
+            if (Convert.ToInt32(CboAlmacenDestino.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el almacen de Destino !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboAlmacenDestino.Focus();
@@ -577,7 +577,7 @@ namespace SSF_NET_Almacen.Formularios
                 return booEstado;
             }
 
-            if (Convert.ToInt16(CboAlmacenDestino.SelectedValue) == Convert.ToInt16(CboAlmacenOrigen.SelectedValue))
+            if (Convert.ToInt32(CboAlmacenDestino.SelectedValue) == Convert.ToInt32(CboAlmacenOrigen.SelectedValue))
             {
                 MessageBox.Show("¡ Almacén origen y destino no pueden ser iguales !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboAlmacenDestino.Focus();
@@ -585,7 +585,7 @@ namespace SSF_NET_Almacen.Formularios
                 return booEstado;
             }
 
-            if (Convert.ToInt16(Convert.ToDateTime(TxtFchDoc.Text).ToString("MM")) != Convert.ToInt16(CboMeses.SelectedValue))
+            if (Convert.ToInt32(Convert.ToDateTime(TxtFchDoc.Text).ToString("MM")) != Convert.ToInt32(CboMeses.SelectedValue))
             {
                 MessageBox.Show("¡ La fecha del documento de salida no coincide con el mes de trabajo !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 TxtFchDoc.Focus();
@@ -746,7 +746,7 @@ namespace SSF_NET_Almacen.Formularios
 
             if (tc.SelectedIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -759,7 +759,7 @@ namespace SSF_NET_Almacen.Formularios
 
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[9].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             booAgregando = true;
             VerRegistro(intIdRegistro);
@@ -821,7 +821,7 @@ namespace SSF_NET_Almacen.Formularios
                 dtResul = funDatos.DataTableFiltrar(dtItems, "c_despro = '" + strDesTipPro + "'");
                 if (dtResul.Rows.Count != 0)
                 {
-                    n_idtipproducto = Convert.ToInt16(dtResul.Rows[0]["n_id"].ToString());
+                    n_idtipproducto = Convert.ToInt32(dtResul.Rows[0]["n_id"].ToString());
 
                     // FILTRAMOS LAS PRESENTACIONES DEL ITEM SELECCIONADO
                     dtResul = funDatos.DataTableFiltrar(dtPresentaItem, "n_idite = " + n_idtipproducto + "");
@@ -974,7 +974,7 @@ namespace SSF_NET_Almacen.Formularios
                 dtResul = funDatos.DataTableFiltrar(dtItems, "c_despro = '" + c_despro + "'");
                 if (dtResul.Rows.Count != 0)
                 {
-                    n_idpro = Convert.ToInt16(dtResul.Rows[0]["n_id"].ToString());
+                    n_idpro = Convert.ToInt32(dtResul.Rows[0]["n_id"].ToString());
 
                     // FILTRAMOS LAS PRESENTACIONES DEL ITEM SELECCIONADO
                     dtResul = funDatos.DataTableFiltrar(dtPresentaItem, "n_idite = " + n_idpro + " AND n_default = 1");
@@ -1069,8 +1069,8 @@ namespace SSF_NET_Almacen.Formularios
             if (booAgregando == true) { return; }
 
             objTransferencias.mysConec = mysConec;
-            dtTransferencias = objTransferencias.Listar(STU_SISTEMA.EMPRESAID, Convert.ToInt16(CboMeses.SelectedValue), STU_SISTEMA.ANOTRABAJO);
-            STU_SISTEMA.MESTRABAJO = Convert.ToInt16(CboMeses.SelectedValue);
+            dtTransferencias = objTransferencias.Listar(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboMeses.SelectedValue), STU_SISTEMA.ANOTRABAJO);
+            STU_SISTEMA.MESTRABAJO = Convert.ToInt32(CboMeses.SelectedValue);
             ListarItems();
 
             if (dtTransferencias.Rows.Count == 0)
@@ -1136,7 +1136,7 @@ namespace SSF_NET_Almacen.Formularios
                 dtResul = funDatos.DataTableFiltrar(dtTipoExis, "c_des = '" + strDesTipPro + "'");
                 if (dtResul.Rows.Count != 0)
                 {
-                    n_idtipexi = Convert.ToInt16(dtResul.Rows[0]["n_id"].ToString());
+                    n_idtipexi = Convert.ToInt32(dtResul.Rows[0]["n_id"].ToString());
                 }
 
                 booAgregando = true;

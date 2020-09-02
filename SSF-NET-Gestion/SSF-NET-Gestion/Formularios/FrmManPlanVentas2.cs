@@ -291,7 +291,7 @@ namespace SSF_NET_Gestion.Formularios
         }
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             booAgregando = true;
             VerRegistro(intIdRegistro);
@@ -371,7 +371,7 @@ namespace SSF_NET_Gestion.Formularios
 
             if (tc.SelectedIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -424,7 +424,7 @@ namespace SSF_NET_Gestion.Formularios
                 }
             }
             CboMesIni.SelectedValue =  DateTime.Now.Month;
-            MostrarMeses(Convert.ToInt16(CboMesIni.SelectedValue));
+            MostrarMeses(Convert.ToInt32(CboMesIni.SelectedValue));
             booAgregando = false;
             TxtFchIni.Focus();
         }
@@ -515,7 +515,7 @@ namespace SSF_NET_Gestion.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -530,7 +530,7 @@ namespace SSF_NET_Gestion.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             objCabecera.mysConec = mysConec;
             objCabecera.TraerRegistro(intIdRegistro);
@@ -619,7 +619,7 @@ namespace SSF_NET_Gestion.Formularios
             }
             if (n_QueHace == 2)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
                 objCabecera.entCabecera.n_id = intIdRegistro;
                 booResultado = objCabecera.Actualizar();
             }
@@ -646,13 +646,13 @@ namespace SSF_NET_Gestion.Formularios
             BE_CABECERA.n_idmes = STU_SISTEMA.MESTRABAJO;
             BE_CABECERA.d_fchcre = Convert.ToDateTime(TxtFchCre.Text);
             BE_CABECERA.c_des = TxtDes.Text;
-            BE_CABECERA.n_idmesini = Convert.ToInt16(CboMesIni.SelectedValue);
+            BE_CABECERA.n_idmesini = Convert.ToInt32(CboMesIni.SelectedValue);
             BE_CABECERA.n_activo = 1;
 
             // LIMPIAMOS LA LISTA
             if (LS_DETALLE != null)
             {
-                n_NumeroElementos = Convert.ToInt16(LS_DETALLE.Count - 1);
+                n_NumeroElementos = Convert.ToInt32(LS_DETALLE.Count - 1);
 
                 for (n_fila = 0; n_fila <= n_NumeroElementos; n_fila++)
                 {
@@ -711,7 +711,7 @@ namespace SSF_NET_Gestion.Formularios
                     { 
                         BE_GES_PLANVENTASANOS BE_DetalleAnos = new BE_GES_PLANVENTASANOS();
                         BE_DetalleAnos.n_idplan = 0;
-                        BE_DetalleAnos.n_idano = Convert.ToInt16(funFunciones.NulosN(FgHisAno.GetData(n_fila, 1)));
+                        BE_DetalleAnos.n_idano = Convert.ToInt32(funFunciones.NulosN(FgHisAno.GetData(n_fila, 1)));
                         LS_DETALLEANOS.Add(BE_DetalleAnos);
                     }
                 }
@@ -835,7 +835,7 @@ namespace SSF_NET_Gestion.Formularios
 
             //if (dtresult.Rows.Count != 0)
             //{
-            //    n_iditem = Convert.ToInt16(dtresult.Rows[0]["n_id"].ToString());
+            //    n_iditem = Convert.ToInt32(dtresult.Rows[0]["n_id"].ToString());
             //    FrmManPlanVentasHistorico FrmVista = new FrmManPlanVentasHistorico();
             //    FrmVista.dtHistorico = dtVenHisDet;
             //    FrmVista.dtItems = dtresult;
@@ -867,7 +867,7 @@ namespace SSF_NET_Gestion.Formularios
             {
                 if (FgHisAno.GetData(n_row, 2).ToString() == "True")
                 {
-                    n_anotra = Convert.ToInt16(FgHisAno.GetData(n_row, 1));
+                    n_anotra = Convert.ToInt32(FgHisAno.GetData(n_row, 1));
                 }
             }
 
@@ -894,7 +894,7 @@ namespace SSF_NET_Gestion.Formularios
         {
             int n_col = 0;
             int n_posArray = 5;
-            int n_nummes = Convert.ToInt16(CboMesIni.SelectedValue);
+            int n_nummes = Convert.ToInt32(CboMesIni.SelectedValue);
             DataTable dtResult = new DataTable();
             string c_nommes = "";
 
@@ -928,7 +928,7 @@ namespace SSF_NET_Gestion.Formularios
             if (dtres == null) { return; }
             if (dtres.Rows.Count == 0) { return; }
 
-            int n_idplavenant = Convert.ToInt16(dtres.Rows[0]["n_id"]);
+            int n_idplavenant = Convert.ToInt32(dtres.Rows[0]["n_id"]);
             int n_row = 0;
 
             CN_ges_planventas o_plaven = new CN_ges_planventas();
@@ -1233,7 +1233,7 @@ namespace SSF_NET_Gestion.Formularios
         }
         void DesactivarPlanVentas()
         {
-            int n_idreg = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int n_idreg = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
             objCabecera.mysConec = mysConec;
             objCabecera.CambiarEstadoPlanVentas(n_idreg, 2);
             if (objCabecera.booOcurrioError == false)

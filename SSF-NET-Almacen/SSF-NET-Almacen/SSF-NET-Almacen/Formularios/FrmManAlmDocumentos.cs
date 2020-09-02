@@ -133,7 +133,7 @@ namespace SSF_NET_Almacen.Formularios
             CboLocal.SelectedValue = e_AlmDoc.n_idloc;
             CboTipDoc.SelectedValue = e_AlmDoc.n_idtipdoc;
 
-            string c_idloc = Convert.ToInt16(CboLocal.SelectedValue).ToString();
+            string c_idloc = Convert.ToInt32(CboLocal.SelectedValue).ToString();
             DataTable dtResul = new DataTable();
             dtResul = funDatos.DataTableFiltrar(dtAlm, "n_idlocal = " + c_idloc + "");
             funDatos.ComboBoxCargarDataTable(CboAlm, dtResul, "n_id", "c_des");
@@ -184,7 +184,7 @@ namespace SSF_NET_Almacen.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -194,7 +194,7 @@ namespace SSF_NET_Almacen.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -263,7 +263,7 @@ namespace SSF_NET_Almacen.Formularios
             }
             else
             {
-                e_AlmDoc.n_idemp = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                e_AlmDoc.n_idemp = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             }
             e_AlmDoc.n_idemp = STU_SISTEMA.EMPRESAID;
             e_AlmDoc.n_idalm = Convert.ToInt32(CboAlm.SelectedValue);
@@ -397,7 +397,7 @@ namespace SSF_NET_Almacen.Formularios
 
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -408,7 +408,7 @@ namespace SSF_NET_Almacen.Formularios
 
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             VerRegistro(intIdRegistro);
         }
@@ -458,7 +458,7 @@ namespace SSF_NET_Almacen.Formularios
         {
             if (n_QueHace == 3) { return; }
 
-            string c_idloc = Convert.ToInt16(CboLocal.SelectedValue).ToString();
+            string c_idloc = Convert.ToInt32(CboLocal.SelectedValue).ToString();
             DataTable dtResul = new DataTable();
             dtResul = funDatos.DataTableFiltrar(dtAlm, "n_idlocal = " + c_idloc + "");
             funDatos.ComboBoxCargarDataTable(CboAlm, dtResul, "n_id", "c_des");

@@ -50,7 +50,7 @@ namespace Helper.Comunes
             //if (ObValor.ToString() != "") 
             //{
             //    objValorretorno = ObValor;
-            //    //if (intTipoDato == 1) objValorretorno = Convert.ToInt16(ObValor);
+            //    //if (intTipoDato == 1) objValorretorno = Convert.ToInt32(ObValor);
             //    //if (intTipoDato == 2) objValorretorno = Convert.ToInt32(ObValor);
             //    //if (intTipoDato == 3) objValorretorno = Convert.ToInt64(ObValor);
             //    //if (intTipoDato == 4) objValorretorno = Convert.ToDouble(ObValor);

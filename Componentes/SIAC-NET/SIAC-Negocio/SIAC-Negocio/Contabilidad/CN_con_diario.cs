@@ -92,9 +92,9 @@ namespace SIAC_Negocio.Contabilidad
             e_DiarioH.n_mes = STU_SISTEMA.MESTRABAJO;
             e_DiarioH.n_lib = n_IdLibro;
             e_DiarioH.c_numasi = c_numasi;
-            e_DiarioH.n_idcue = Convert.ToInt16(funfunciones.NulosN(dtComCab.Rows[0]["n_idcuecom"]));
+            e_DiarioH.n_idcue = Convert.ToInt32(funfunciones.NulosN(dtComCab.Rows[0]["n_idcuecom"]));
             e_DiarioH.n_tc = Convert.ToDouble(dtComCab.Rows[0]["n_imptc"]);
-            if (Convert.ToInt16(dtComCab.Rows[0]["n_idtipdoc"]) == 8)
+            if (Convert.ToInt32(dtComCab.Rows[0]["n_idtipdoc"]) == 8)
             {
                 e_DiarioH.n_impdebsol = Convert.ToDouble(dtComCab.Rows[0]["n_impcomsol"]); ;
                 e_DiarioH.n_imphabsol = 0;
@@ -114,9 +114,9 @@ namespace SIAC_Negocio.Contabilidad
             //e_DiarioH.n_imphabdol = Convert.ToDouble(funfunciones.NulosN(dtComCab.Rows[0]["n_impcomdol"]));
             e_DiarioH.d_fchasi = Convert.ToDateTime(dtComCab.Rows[0]["d_fchreg"]);
             e_DiarioH.d_orifchdoc = Convert.ToDateTime(dtComCab.Rows[0]["d_fchdoc"]);
-            e_DiarioH.n_oriid = Convert.ToInt16(dtComCab.Rows[0]["n_iddoccom"]);
-            e_DiarioH.n_oriidtipdoc = Convert.ToInt16(dtComCab.Rows[0]["n_idtipdoc"]);
-            e_DiarioH.n_oriidtipmon = Convert.ToInt16(dtComCab.Rows[0]["n_idmon"]);
+            e_DiarioH.n_oriid = Convert.ToInt32(dtComCab.Rows[0]["n_iddoccom"]);
+            e_DiarioH.n_oriidtipdoc = Convert.ToInt32(dtComCab.Rows[0]["n_idtipdoc"]);
+            e_DiarioH.n_oriidtipmon = Convert.ToInt32(dtComCab.Rows[0]["n_idmon"]);
             e_DiarioH.c_orinumdoc = dtComCab.Rows[0]["c_numdoc"].ToString();
             e_DiarioH.c_origlo = dtComCab.Rows[0]["c_glosa"].ToString();
             e_DiarioH.c_oridestipmon = dtComCab.Rows[0]["c_destipmon"].ToString();
@@ -136,10 +136,10 @@ namespace SIAC_Negocio.Contabilidad
                 e_DiarioD.n_mes = STU_SISTEMA.MESTRABAJO;
                 e_DiarioD.n_lib = n_IdLibro;
                 e_DiarioD.c_numasi = c_numasi;
-                e_DiarioD.n_idcue = Convert.ToInt16(funfunciones.NulosN(dtComCab.Rows[0]["n_idcueigv"]));
+                e_DiarioD.n_idcue = Convert.ToInt32(funfunciones.NulosN(dtComCab.Rows[0]["n_idcueigv"]));
                 e_DiarioD.n_tc = Convert.ToDouble(dtComCab.Rows[0]["n_imptc"]);
 
-                if (Convert.ToInt16(dtComCab.Rows[0]["n_idtipdoc"]) == 8)
+                if (Convert.ToInt32(dtComCab.Rows[0]["n_idtipdoc"]) == 8)
                 {
                     if (n_IdLibro == 8)
                     {
@@ -175,9 +175,9 @@ namespace SIAC_Negocio.Contabilidad
                 }
                 e_DiarioD.d_fchasi = Convert.ToDateTime(dtComCab.Rows[0]["d_fchreg"]);
                 e_DiarioD.d_orifchdoc = Convert.ToDateTime(dtComCab.Rows[0]["d_fchdoc"]);
-                e_DiarioD.n_oriid = Convert.ToInt16(dtComCab.Rows[0]["n_iddoccom"]);
-                e_DiarioD.n_oriidtipdoc = Convert.ToInt16(dtComCab.Rows[0]["n_idtipdoc"]);
-                e_DiarioD.n_oriidtipmon = Convert.ToInt16(dtComCab.Rows[0]["n_idmon"]);
+                e_DiarioD.n_oriid = Convert.ToInt32(dtComCab.Rows[0]["n_iddoccom"]);
+                e_DiarioD.n_oriidtipdoc = Convert.ToInt32(dtComCab.Rows[0]["n_idtipdoc"]);
+                e_DiarioD.n_oriidtipmon = Convert.ToInt32(dtComCab.Rows[0]["n_idmon"]);
                 e_DiarioD.c_orinumdoc = dtComCab.Rows[0]["c_numdoc"].ToString();
                 e_DiarioD.c_origlo = dtComCab.Rows[0]["c_glosa"].ToString();
                 e_DiarioD.c_oridestipmon = dtComCab.Rows[0]["c_destipmon"].ToString();
@@ -196,10 +196,10 @@ namespace SIAC_Negocio.Contabilidad
                 e_DiarioA.n_mes = STU_SISTEMA.MESTRABAJO;
                 e_DiarioA.n_lib = n_IdLibro;
                 e_DiarioA.c_numasi = c_numasi;
-                e_DiarioA.n_idcue = Convert.ToInt16(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idcuecon"]));
+                e_DiarioA.n_idcue = Convert.ToInt32(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idcuecon"]));
                 e_DiarioA.n_tc = Convert.ToDouble(dtComCab.Rows[0]["n_imptc"]);
 
-                if (Convert.ToInt16(dtComCab.Rows[0]["n_idtipdoc"]) == 8)
+                if (Convert.ToInt32(dtComCab.Rows[0]["n_idtipdoc"]) == 8)
                 {
                     if (Convert.ToDouble(funfunciones.NulosN(dtComDet.Rows[n_row]["n_impdebsol"])) != 0)
                     {
@@ -235,9 +235,9 @@ namespace SIAC_Negocio.Contabilidad
                 //e_DiarioA.n_imphabdol = Convert.ToDouble(funfunciones.NulosN(dtComDet.Rows[n_row]["n_imphabdol"]));
                 e_DiarioA.d_fchasi = Convert.ToDateTime(dtComCab.Rows[0]["d_fchreg"]);
                 e_DiarioA.d_orifchdoc = Convert.ToDateTime(dtComCab.Rows[0]["d_fchdoc"]);
-                e_DiarioA.n_oriid = Convert.ToInt16(dtComCab.Rows[0]["n_iddoccom"]);
-                e_DiarioA.n_oriidtipdoc = Convert.ToInt16(dtComCab.Rows[0]["n_idtipdoc"]);
-                e_DiarioA.n_oriidtipmon = Convert.ToInt16(dtComCab.Rows[0]["n_idmon"]);
+                e_DiarioA.n_oriid = Convert.ToInt32(dtComCab.Rows[0]["n_iddoccom"]);
+                e_DiarioA.n_oriidtipdoc = Convert.ToInt32(dtComCab.Rows[0]["n_idtipdoc"]);
+                e_DiarioA.n_oriidtipmon = Convert.ToInt32(dtComCab.Rows[0]["n_idmon"]);
                 e_DiarioA.c_orinumdoc = dtComCab.Rows[0]["c_numdoc"].ToString();
                 e_DiarioA.c_origlo = dtComCab.Rows[0]["c_glosa"].ToString();
                 e_DiarioA.c_oridestipmon = dtComCab.Rows[0]["c_destipmon"].ToString();
@@ -302,7 +302,7 @@ namespace SIAC_Negocio.Contabilidad
         //    e_DiarioH.n_mes = STU_SISTEMA.MESTRABAJO;
         //    e_DiarioH.n_lib = n_IdLibro;
         //    e_DiarioH.c_numasi = c_numasi;
-        //    e_DiarioH.n_idcue = Convert.ToInt16(funfunciones.NulosN(dtComCab.Rows[0]["n_idcuecom"]));
+        //    e_DiarioH.n_idcue = Convert.ToInt32(funfunciones.NulosN(dtComCab.Rows[0]["n_idcuecom"]));
         //    e_DiarioH.n_tc = Convert.ToDouble(dtComCab.Rows[0]["n_imptc"]);
         //    e_DiarioH.n_impdebsol = 0;
         //    e_DiarioH.n_imphabsol = Convert.ToDouble(dtComCab.Rows[0]["n_impcomsol"]);
@@ -310,9 +310,9 @@ namespace SIAC_Negocio.Contabilidad
         //    e_DiarioH.n_imphabdol = Convert.ToDouble(funfunciones.NulosN(dtComCab.Rows[0]["n_impcomdol"]));
         //    e_DiarioH.d_fchasi = Convert.ToDateTime(dtComCab.Rows[0]["d_fchreg"]);
         //    e_DiarioH.d_orifchdoc = Convert.ToDateTime(dtComCab.Rows[0]["d_fchdoc"]);
-        //    e_DiarioH.n_oriid = Convert.ToInt16(dtComCab.Rows[0]["n_iddoccom"]);
-        //    e_DiarioH.n_oriidtipdoc = Convert.ToInt16(dtComCab.Rows[0]["n_idtipdoc"]);
-        //    e_DiarioH.n_oriidtipmon = Convert.ToInt16(dtComCab.Rows[0]["n_idmon"]);
+        //    e_DiarioH.n_oriid = Convert.ToInt32(dtComCab.Rows[0]["n_iddoccom"]);
+        //    e_DiarioH.n_oriidtipdoc = Convert.ToInt32(dtComCab.Rows[0]["n_idtipdoc"]);
+        //    e_DiarioH.n_oriidtipmon = Convert.ToInt32(dtComCab.Rows[0]["n_idmon"]);
         //    e_DiarioH.c_orinumdoc = dtComCab.Rows[0]["c_numdoc"].ToString();
         //    e_DiarioH.c_origlo = dtComCab.Rows[0]["c_glosa"].ToString();
         //    e_DiarioH.c_oridestipmon = dtComCab.Rows[0]["c_destipmon"].ToString();
@@ -332,7 +332,7 @@ namespace SIAC_Negocio.Contabilidad
         //        e_DiarioD.n_mes = STU_SISTEMA.MESTRABAJO;
         //        e_DiarioD.n_lib = n_IdLibro;
         //        e_DiarioD.c_numasi = c_numasi;
-        //        e_DiarioD.n_idcue = Convert.ToInt16(funfunciones.NulosN(dtComCab.Rows[0]["n_idcueigv"]));
+        //        e_DiarioD.n_idcue = Convert.ToInt32(funfunciones.NulosN(dtComCab.Rows[0]["n_idcueigv"]));
         //        e_DiarioD.n_tc = Convert.ToDouble(dtComCab.Rows[0]["n_imptc"]);
 
         //        if (n_IdLibro == 8)
@@ -352,9 +352,9 @@ namespace SIAC_Negocio.Contabilidad
 
         //        e_DiarioD.d_fchasi = Convert.ToDateTime(dtComCab.Rows[0]["d_fchreg"]);
         //        e_DiarioD.d_orifchdoc = Convert.ToDateTime(dtComCab.Rows[0]["d_fchdoc"]);
-        //        e_DiarioD.n_oriid = Convert.ToInt16(dtComCab.Rows[0]["n_iddoccom"]);
-        //        e_DiarioD.n_oriidtipdoc = Convert.ToInt16(dtComCab.Rows[0]["n_idtipdoc"]);
-        //        e_DiarioD.n_oriidtipmon = Convert.ToInt16(dtComCab.Rows[0]["n_idmon"]);
+        //        e_DiarioD.n_oriid = Convert.ToInt32(dtComCab.Rows[0]["n_iddoccom"]);
+        //        e_DiarioD.n_oriidtipdoc = Convert.ToInt32(dtComCab.Rows[0]["n_idtipdoc"]);
+        //        e_DiarioD.n_oriidtipmon = Convert.ToInt32(dtComCab.Rows[0]["n_idmon"]);
         //        e_DiarioD.c_orinumdoc = dtComCab.Rows[0]["c_numdoc"].ToString();
         //        e_DiarioD.c_origlo = dtComCab.Rows[0]["c_glosa"].ToString();
         //        e_DiarioD.c_oridestipmon = dtComCab.Rows[0]["c_destipmon"].ToString();
@@ -373,7 +373,7 @@ namespace SIAC_Negocio.Contabilidad
         //        e_DiarioA.n_mes = STU_SISTEMA.MESTRABAJO;
         //        e_DiarioA.n_lib = n_IdLibro;
         //        e_DiarioA.c_numasi = c_numasi;
-        //        e_DiarioA.n_idcue = Convert.ToInt16(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idcuecon"]));
+        //        e_DiarioA.n_idcue = Convert.ToInt32(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idcuecon"]));
         //        e_DiarioA.n_tc = Convert.ToDouble(dtComCab.Rows[0]["n_imptc"]);
         //        e_DiarioA.n_impdebsol = Convert.ToDouble(funfunciones.NulosN(dtComDet.Rows[n_row]["n_impdebsol"]));
         //        e_DiarioA.n_imphabsol = Convert.ToDouble(funfunciones.NulosN(dtComDet.Rows[n_row]["n_imphabsol"]));
@@ -381,9 +381,9 @@ namespace SIAC_Negocio.Contabilidad
         //        e_DiarioA.n_imphabdol = Convert.ToDouble(funfunciones.NulosN(dtComDet.Rows[n_row]["n_imphabdol"]));
         //        e_DiarioA.d_fchasi = Convert.ToDateTime(dtComCab.Rows[0]["d_fchreg"]);
         //        e_DiarioA.d_orifchdoc = Convert.ToDateTime(dtComCab.Rows[0]["d_fchdoc"]);
-        //        e_DiarioA.n_oriid = Convert.ToInt16(dtComCab.Rows[0]["n_iddoccom"]);
-        //        e_DiarioA.n_oriidtipdoc = Convert.ToInt16(dtComCab.Rows[0]["n_idtipdoc"]);
-        //        e_DiarioA.n_oriidtipmon = Convert.ToInt16(dtComCab.Rows[0]["n_idmon"]);
+        //        e_DiarioA.n_oriid = Convert.ToInt32(dtComCab.Rows[0]["n_iddoccom"]);
+        //        e_DiarioA.n_oriidtipdoc = Convert.ToInt32(dtComCab.Rows[0]["n_idtipdoc"]);
+        //        e_DiarioA.n_oriidtipmon = Convert.ToInt32(dtComCab.Rows[0]["n_idmon"]);
         //        e_DiarioA.c_orinumdoc = dtComCab.Rows[0]["c_numdoc"].ToString();
         //        e_DiarioA.c_origlo = dtComCab.Rows[0]["c_glosa"].ToString();
         //        e_DiarioA.c_oridestipmon = dtComCab.Rows[0]["c_destipmon"].ToString();
@@ -452,10 +452,10 @@ namespace SIAC_Negocio.Contabilidad
             e_DiarioH.n_mes = STU_SISTEMA.MESTRABAJO;
             e_DiarioH.n_lib = n_IdLibro;
             e_DiarioH.c_numasi = c_numasi;
-            e_DiarioH.n_idcue = Convert.ToInt16(funfunciones.NulosN(dtComCab.Rows[0]["n_idcueven"]));
+            e_DiarioH.n_idcue = Convert.ToInt32(funfunciones.NulosN(dtComCab.Rows[0]["n_idcueven"]));
             e_DiarioH.n_tc = Convert.ToDouble(dtComCab.Rows[0]["n_tc"]);
 
-            if (Convert.ToInt16(dtComCab.Rows[0]["n_idtipdocven"]) == 8)
+            if (Convert.ToInt32(dtComCab.Rows[0]["n_idtipdocven"]) == 8)
             {
                 e_DiarioH.n_impdebsol = 0;
                 e_DiarioH.n_imphabsol = Convert.ToDouble(dtComCab.Rows[0]["n_impvensol"]);
@@ -472,8 +472,8 @@ namespace SIAC_Negocio.Contabilidad
             e_DiarioH.d_fchasi = Convert.ToDateTime(dtComCab.Rows[0]["d_fchreg"]);
             e_DiarioH.d_orifchdoc = Convert.ToDateTime(dtComCab.Rows[0]["d_fchdoc"]);
             e_DiarioH.n_oriid = Convert.ToInt32(dtComCab.Rows[0]["n_iddocven"]);
-            e_DiarioH.n_oriidtipdoc = Convert.ToInt16(dtComCab.Rows[0]["n_idtipdocven"]);
-            e_DiarioH.n_oriidtipmon = Convert.ToInt16(dtComCab.Rows[0]["n_idmon"]);
+            e_DiarioH.n_oriidtipdoc = Convert.ToInt32(dtComCab.Rows[0]["n_idtipdocven"]);
+            e_DiarioH.n_oriidtipmon = Convert.ToInt32(dtComCab.Rows[0]["n_idmon"]);
             e_DiarioH.c_orinumdoc = dtComCab.Rows[0]["c_numdoc"].ToString();
             e_DiarioH.c_origlo = dtComCab.Rows[0]["c_glosa"].ToString();
             e_DiarioH.c_oridestipmon = dtComCab.Rows[0]["c_destipmon"].ToString();
@@ -492,10 +492,10 @@ namespace SIAC_Negocio.Contabilidad
                 e_DiarioD.n_mes = STU_SISTEMA.MESTRABAJO;
                 e_DiarioD.n_lib = n_IdLibro;
                 e_DiarioD.c_numasi = c_numasi;
-                e_DiarioD.n_idcue = Convert.ToInt16(funfunciones.NulosN(dtComCab.Rows[0]["n_idcueigv"]));
+                e_DiarioD.n_idcue = Convert.ToInt32(funfunciones.NulosN(dtComCab.Rows[0]["n_idcueigv"]));
                 e_DiarioD.n_tc = Convert.ToDouble(dtComCab.Rows[0]["n_tc"]);
 
-                if (Convert.ToInt16(dtComCab.Rows[0]["n_idtipdocven"]) == 8)
+                if (Convert.ToInt32(dtComCab.Rows[0]["n_idtipdocven"]) == 8)
                 {
                     e_DiarioD.n_impdebsol = Convert.ToDouble(dtComCab.Rows[0]["n_impigvsol"]);
                     e_DiarioD.n_imphabsol = 0;
@@ -512,8 +512,8 @@ namespace SIAC_Negocio.Contabilidad
                 e_DiarioD.d_fchasi = Convert.ToDateTime(dtComCab.Rows[0]["d_fchreg"]);
                 e_DiarioD.d_orifchdoc = Convert.ToDateTime(dtComCab.Rows[0]["d_fchdoc"]);
                 e_DiarioD.n_oriid = Convert.ToInt32(dtComCab.Rows[0]["n_iddocven"]);
-                e_DiarioD.n_oriidtipdoc = Convert.ToInt16(dtComCab.Rows[0]["n_idtipdocven"]);
-                e_DiarioD.n_oriidtipmon = Convert.ToInt16(dtComCab.Rows[0]["n_idmon"]);
+                e_DiarioD.n_oriidtipdoc = Convert.ToInt32(dtComCab.Rows[0]["n_idtipdocven"]);
+                e_DiarioD.n_oriidtipmon = Convert.ToInt32(dtComCab.Rows[0]["n_idmon"]);
                 e_DiarioD.c_orinumdoc = dtComCab.Rows[0]["c_numdoc"].ToString();
                 e_DiarioD.c_origlo = dtComCab.Rows[0]["c_glosa"].ToString();
                 e_DiarioD.c_oridestipmon = dtComCab.Rows[0]["c_destipmon"].ToString();
@@ -532,10 +532,10 @@ namespace SIAC_Negocio.Contabilidad
                 e_DiarioA.n_mes = STU_SISTEMA.MESTRABAJO;
                 e_DiarioA.n_lib = n_IdLibro;
                 e_DiarioA.c_numasi = c_numasi;
-                e_DiarioA.n_idcue = Convert.ToInt16(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idcuecon"]));
+                e_DiarioA.n_idcue = Convert.ToInt32(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idcuecon"]));
                 e_DiarioA.n_tc = Convert.ToDouble(dtComCab.Rows[0]["n_tc"]);
 
-                if (Convert.ToInt16(dtComCab.Rows[0]["n_idtipdocven"]) == 8)
+                if (Convert.ToInt32(dtComCab.Rows[0]["n_idtipdocven"]) == 8)
                 {
                     e_DiarioA.n_impdebsol = Convert.ToDouble(funfunciones.NulosN(dtComDet.Rows[n_row]["n_impsol"]));
                     e_DiarioA.n_imphabsol = 0;
@@ -552,8 +552,8 @@ namespace SIAC_Negocio.Contabilidad
                 e_DiarioA.d_fchasi = Convert.ToDateTime(dtComCab.Rows[0]["d_fchreg"]);
                 e_DiarioA.d_orifchdoc = Convert.ToDateTime(dtComCab.Rows[0]["d_fchdoc"]);
                 e_DiarioA.n_oriid = Convert.ToInt32(dtComCab.Rows[0]["n_iddocven"]);
-                e_DiarioA.n_oriidtipdoc = Convert.ToInt16(dtComCab.Rows[0]["n_idtipdocven"]);
-                e_DiarioA.n_oriidtipmon = Convert.ToInt16(dtComCab.Rows[0]["n_idmon"]);
+                e_DiarioA.n_oriidtipdoc = Convert.ToInt32(dtComCab.Rows[0]["n_idtipdocven"]);
+                e_DiarioA.n_oriidtipmon = Convert.ToInt32(dtComCab.Rows[0]["n_idmon"]);
                 e_DiarioA.c_orinumdoc = dtComCab.Rows[0]["c_numdoc"].ToString();
                 e_DiarioA.c_origlo = dtComCab.Rows[0]["c_glosa"].ToString();
                 e_DiarioA.c_oridestipmon = dtComCab.Rows[0]["c_destipmon"].ToString();
@@ -621,7 +621,7 @@ namespace SIAC_Negocio.Contabilidad
             e_DiarioH.n_mes = STU_SISTEMA.MESTRABAJO;
             e_DiarioH.n_lib = n_IdLibro;
             e_DiarioH.c_numasi = c_numasi;
-            e_DiarioH.n_idcue = Convert.ToInt16(funfunciones.NulosN(dtComCab.Rows[0]["n_idcueven"]));
+            e_DiarioH.n_idcue = Convert.ToInt32(funfunciones.NulosN(dtComCab.Rows[0]["n_idcueven"]));
             e_DiarioH.n_tc = Convert.ToDouble(dtComCab.Rows[0]["n_tc"]);
             e_DiarioH.n_impdebsol = 0;
             e_DiarioH.n_imphabsol = Convert.ToDouble(dtComCab.Rows[0]["n_impvensol"]);
@@ -629,9 +629,9 @@ namespace SIAC_Negocio.Contabilidad
             e_DiarioH.n_imphabdol = Convert.ToDouble(funfunciones.NulosN(dtComCab.Rows[0]["n_impvendol"]));
             e_DiarioH.d_fchasi = Convert.ToDateTime(dtComCab.Rows[0]["d_fchreg"]);
             e_DiarioH.d_orifchdoc = Convert.ToDateTime(dtComCab.Rows[0]["d_fchdoc"]);
-            e_DiarioH.n_oriid = Convert.ToInt16(dtComCab.Rows[0]["n_iddocven"]);
-            e_DiarioH.n_oriidtipdoc = Convert.ToInt16(dtComCab.Rows[0]["n_idtipdocven"]);
-            e_DiarioH.n_oriidtipmon = Convert.ToInt16(dtComCab.Rows[0]["n_idmon"]);
+            e_DiarioH.n_oriid = Convert.ToInt32(dtComCab.Rows[0]["n_iddocven"]);
+            e_DiarioH.n_oriidtipdoc = Convert.ToInt32(dtComCab.Rows[0]["n_idtipdocven"]);
+            e_DiarioH.n_oriidtipmon = Convert.ToInt32(dtComCab.Rows[0]["n_idmon"]);
             e_DiarioH.c_orinumdoc = dtComCab.Rows[0]["c_numdoc"].ToString();
             e_DiarioH.c_origlo = dtComCab.Rows[0]["c_glosa"].ToString();
 
@@ -651,7 +651,7 @@ namespace SIAC_Negocio.Contabilidad
                 e_DiarioA.n_mes = STU_SISTEMA.MESTRABAJO;
                 e_DiarioA.n_lib = n_IdLibro;
                 e_DiarioA.c_numasi = c_numasi;
-                e_DiarioA.n_idcue = Convert.ToInt16(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idcueven"]));
+                e_DiarioA.n_idcue = Convert.ToInt32(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idcueven"]));
                 e_DiarioA.n_tc = Convert.ToDouble(dtComCab.Rows[0]["n_tc"]);
                 e_DiarioA.n_impdebsol = Convert.ToDouble(funfunciones.NulosN(dtComDet.Rows[n_row]["n_impvensol"]));
                 e_DiarioA.n_imphabsol = 0;
@@ -659,9 +659,9 @@ namespace SIAC_Negocio.Contabilidad
                 e_DiarioA.n_imphabdol = 0;
                 e_DiarioA.d_fchasi = Convert.ToDateTime(dtComDet.Rows[n_row]["d_fchreg"]);
                 e_DiarioA.d_orifchdoc = Convert.ToDateTime(dtComDet.Rows[n_row]["d_fchdoc"]);
-                e_DiarioA.n_oriid = Convert.ToInt16(dtComDet.Rows[n_row]["n_iddocven"]);
-                e_DiarioA.n_oriidtipdoc = Convert.ToInt16(dtComDet.Rows[n_row]["n_idtipdocven"]);
-                e_DiarioA.n_oriidtipmon = Convert.ToInt16(dtComDet.Rows[n_row]["n_idmon"]);
+                e_DiarioA.n_oriid = Convert.ToInt32(dtComDet.Rows[n_row]["n_iddocven"]);
+                e_DiarioA.n_oriidtipdoc = Convert.ToInt32(dtComDet.Rows[n_row]["n_idtipdocven"]);
+                e_DiarioA.n_oriidtipmon = Convert.ToInt32(dtComDet.Rows[n_row]["n_idmon"]);
                 e_DiarioA.c_orinumdoc = dtComDet.Rows[n_row]["c_numdoc"].ToString();
                 e_DiarioA.c_origlo = dtComDet.Rows[n_row]["c_glosa"].ToString();
 
@@ -729,7 +729,7 @@ namespace SIAC_Negocio.Contabilidad
             e_DiarioH.n_mes = STU_SISTEMA.MESTRABAJO;
             e_DiarioH.n_lib = n_IdLibro;
             e_DiarioH.c_numasi = c_numasi;
-            e_DiarioH.n_idcue = Convert.ToInt16(funfunciones.NulosN(dtComCab.Rows[0]["n_idcueven"]));
+            e_DiarioH.n_idcue = Convert.ToInt32(funfunciones.NulosN(dtComCab.Rows[0]["n_idcueven"]));
             e_DiarioH.n_tc = Convert.ToDouble(dtComCab.Rows[0]["n_tc"]);
 
             if (n_TipoRegistro == 1)
@@ -748,9 +748,9 @@ namespace SIAC_Negocio.Contabilidad
             }
             e_DiarioH.d_fchasi = Convert.ToDateTime(dtComCab.Rows[0]["d_fchreg"]);
             e_DiarioH.d_orifchdoc = Convert.ToDateTime(dtComCab.Rows[0]["d_fchdoc"]);
-            e_DiarioH.n_oriid = Convert.ToInt16(dtComCab.Rows[0]["n_iddocven"]);
-            e_DiarioH.n_oriidtipdoc = Convert.ToInt16(dtComCab.Rows[0]["n_idtipdocven"]);
-            e_DiarioH.n_oriidtipmon = Convert.ToInt16(dtComCab.Rows[0]["n_idmon"]);
+            e_DiarioH.n_oriid = Convert.ToInt32(dtComCab.Rows[0]["n_iddocven"]);
+            e_DiarioH.n_oriidtipdoc = Convert.ToInt32(dtComCab.Rows[0]["n_idtipdocven"]);
+            e_DiarioH.n_oriidtipmon = Convert.ToInt32(dtComCab.Rows[0]["n_idmon"]);
             e_DiarioH.c_orinumdoc = dtComCab.Rows[0]["c_numdoc"].ToString();
             e_DiarioH.c_origlo = dtComCab.Rows[0]["c_glosa"].ToString();
             l_Diario.Add(e_DiarioH);
@@ -765,7 +765,7 @@ namespace SIAC_Negocio.Contabilidad
                 e_DiarioA.n_mes = STU_SISTEMA.MESTRABAJO;
                 e_DiarioA.n_lib = n_IdLibro;
                 e_DiarioA.c_numasi = c_numasi;
-                e_DiarioA.n_idcue = Convert.ToInt16(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idcueven"]));
+                e_DiarioA.n_idcue = Convert.ToInt32(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idcueven"]));
                 e_DiarioA.n_tc = Convert.ToDouble(dtComCab.Rows[0]["n_tc"]);
                 if (n_TipoRegistro == 1)
                 {
@@ -783,9 +783,9 @@ namespace SIAC_Negocio.Contabilidad
                 }
                 e_DiarioA.d_fchasi = Convert.ToDateTime(dtComDet.Rows[n_row]["d_fchreg"]);
                 e_DiarioA.d_orifchdoc = Convert.ToDateTime(dtComDet.Rows[n_row]["d_fchdoc"]);
-                e_DiarioA.n_oriid = Convert.ToInt16(dtComDet.Rows[n_row]["n_iddocven"]);
-                e_DiarioA.n_oriidtipdoc = Convert.ToInt16(dtComDet.Rows[n_row]["n_idtipdocven"]);
-                e_DiarioA.n_oriidtipmon = Convert.ToInt16(dtComDet.Rows[n_row]["n_idmon"]);
+                e_DiarioA.n_oriid = Convert.ToInt32(dtComDet.Rows[n_row]["n_iddocven"]);
+                e_DiarioA.n_oriidtipdoc = Convert.ToInt32(dtComDet.Rows[n_row]["n_idtipdocven"]);
+                e_DiarioA.n_oriidtipmon = Convert.ToInt32(dtComDet.Rows[n_row]["n_idmon"]);
                 e_DiarioA.c_orinumdoc = dtComDet.Rows[n_row]["c_numdoc"].ToString();
                 e_DiarioA.c_origlo = dtComDet.Rows[n_row]["c_glosa"].ToString();
                 l_Diario.Add(e_DiarioA);
@@ -848,7 +848,7 @@ namespace SIAC_Negocio.Contabilidad
             e_DiarioH.n_mes = STU_SISTEMA.MESTRABAJO;
             e_DiarioH.n_lib = n_IdLibro;
             e_DiarioH.c_numasi = c_numasi;
-            e_DiarioH.n_idcue = Convert.ToInt16(funfunciones.NulosN(dtComCab.Rows[0]["n_idcueven"]));
+            e_DiarioH.n_idcue = Convert.ToInt32(funfunciones.NulosN(dtComCab.Rows[0]["n_idcueven"]));
             e_DiarioH.n_tc = Convert.ToDouble(dtComCab.Rows[0]["n_tc"]);
             e_DiarioH.n_impdebsol = 0;
             e_DiarioH.n_imphabsol = Convert.ToDouble(dtComCab.Rows[0]["n_impvensol"]);
@@ -856,9 +856,9 @@ namespace SIAC_Negocio.Contabilidad
             e_DiarioH.n_imphabdol = Convert.ToDouble(funfunciones.NulosN(dtComCab.Rows[0]["n_impvendol"]));
             e_DiarioH.d_fchasi = Convert.ToDateTime(dtComCab.Rows[0]["d_fchreg"]);
             e_DiarioH.d_orifchdoc = Convert.ToDateTime(dtComCab.Rows[0]["d_fchdoc"]);
-            e_DiarioH.n_oriid = Convert.ToInt16(dtComCab.Rows[0]["n_iddocven"]);
-            e_DiarioH.n_oriidtipdoc = Convert.ToInt16(dtComCab.Rows[0]["n_idtipdocven"]);
-            e_DiarioH.n_oriidtipmon = Convert.ToInt16(dtComCab.Rows[0]["n_idmon"]);
+            e_DiarioH.n_oriid = Convert.ToInt32(dtComCab.Rows[0]["n_iddocven"]);
+            e_DiarioH.n_oriidtipdoc = Convert.ToInt32(dtComCab.Rows[0]["n_idtipdocven"]);
+            e_DiarioH.n_oriidtipmon = Convert.ToInt32(dtComCab.Rows[0]["n_idmon"]);
             e_DiarioH.c_orinumdoc = dtComCab.Rows[0]["c_numdoc"].ToString();
             e_DiarioH.c_origlo = dtComCab.Rows[0]["c_glosa"].ToString();
             l_Diario.Add(e_DiarioH);
@@ -873,7 +873,7 @@ namespace SIAC_Negocio.Contabilidad
                 e_DiarioA.n_mes = STU_SISTEMA.MESTRABAJO;
                 e_DiarioA.n_lib = n_IdLibro;
                 e_DiarioA.c_numasi = c_numasi;
-                e_DiarioA.n_idcue = Convert.ToInt16(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idcueven"]));
+                e_DiarioA.n_idcue = Convert.ToInt32(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idcueven"]));
                 e_DiarioA.n_tc = Convert.ToDouble(dtComCab.Rows[0]["n_tc"]);
                 e_DiarioA.n_impdebsol = Convert.ToDouble(funfunciones.NulosN(dtComDet.Rows[n_row]["n_impvensol"]));
                 e_DiarioA.n_imphabsol = 0;
@@ -881,9 +881,9 @@ namespace SIAC_Negocio.Contabilidad
                 e_DiarioA.n_imphabdol = 0;
                 e_DiarioA.d_fchasi = Convert.ToDateTime(dtComDet.Rows[n_row]["d_fchreg"]);
                 e_DiarioA.d_orifchdoc = Convert.ToDateTime(dtComDet.Rows[n_row]["d_fchdoc"]);
-                e_DiarioA.n_oriid = Convert.ToInt16(dtComDet.Rows[n_row]["n_iddocven"]);
-                e_DiarioA.n_oriidtipdoc = Convert.ToInt16(dtComDet.Rows[n_row]["n_idtipdocven"]);
-                e_DiarioA.n_oriidtipmon = Convert.ToInt16(dtComDet.Rows[n_row]["n_idmon"]);
+                e_DiarioA.n_oriid = Convert.ToInt32(dtComDet.Rows[n_row]["n_iddocven"]);
+                e_DiarioA.n_oriidtipdoc = Convert.ToInt32(dtComDet.Rows[n_row]["n_idtipdocven"]);
+                e_DiarioA.n_oriidtipmon = Convert.ToInt32(dtComDet.Rows[n_row]["n_idmon"]);
                 e_DiarioA.c_orinumdoc = dtComDet.Rows[n_row]["c_numdoc"].ToString();
                 e_DiarioA.c_origlo = dtComDet.Rows[n_row]["c_glosa"].ToString();
                 l_Diario.Add(e_DiarioA);
@@ -949,7 +949,7 @@ namespace SIAC_Negocio.Contabilidad
                 e_DiarioH.n_mes = n_MesTrabajo;
                 e_DiarioH.n_lib = n_IdLibro;
                 e_DiarioH.c_numasi = c_numasi;
-                e_DiarioH.n_idcue = Convert.ToInt16(funfunciones.NulosN(dtComCab.Rows[n_row]["n_idcueven"]));
+                e_DiarioH.n_idcue = Convert.ToInt32(funfunciones.NulosN(dtComCab.Rows[n_row]["n_idcueven"]));
                 e_DiarioH.n_tc = Convert.ToDouble(dtComCab.Rows[0]["n_tc"]);
 
                 if (dtComCab.Rows[n_row]["c_tip"].ToString() == "D")
@@ -982,17 +982,17 @@ namespace SIAC_Negocio.Contabilidad
                 //}
                 e_DiarioH.d_fchasi = Convert.ToDateTime(dtComCab.Rows[n_row]["d_fchreg"]);
                 e_DiarioH.d_orifchdoc = Convert.ToDateTime(dtComCab.Rows[n_row]["d_fchdoc"]);
-                e_DiarioH.n_oriid = Convert.ToInt16(dtComCab.Rows[n_row]["n_iddocven"]);
+                e_DiarioH.n_oriid = Convert.ToInt32(dtComCab.Rows[n_row]["n_iddocven"]);
 
-                if (Convert.ToInt16(funfunciones.NulosN(dtComCab.Rows[n_row]["n_idtipdocven"])) != 0)
+                if (Convert.ToInt32(funfunciones.NulosN(dtComCab.Rows[n_row]["n_idtipdocven"])) != 0)
                 {
-                    e_DiarioH.n_oriidtipdoc = Convert.ToInt16(dtComCab.Rows[n_row]["n_idtipdocven"]);
+                    e_DiarioH.n_oriidtipdoc = Convert.ToInt32(dtComCab.Rows[n_row]["n_idtipdocven"]);
                 }
                 else
                 {
                     e_DiarioH.n_oriidtipdoc = 0;
                 }
-                e_DiarioH.n_oriidtipmon = Convert.ToInt16(dtComCab.Rows[n_row]["n_idmon"]);
+                e_DiarioH.n_oriidtipmon = Convert.ToInt32(dtComCab.Rows[n_row]["n_idmon"]);
                 e_DiarioH.c_orinumdoc = dtComCab.Rows[n_row]["c_numdoc"].ToString();
                 e_DiarioH.c_origlo = dtComCab.Rows[n_row]["c_glosa"].ToString();
 
@@ -1014,7 +1014,7 @@ namespace SIAC_Negocio.Contabilidad
                 e_DiarioA.n_mes = n_MesTrabajo;
                 e_DiarioA.n_lib = n_IdLibro;
                 e_DiarioA.c_numasi = c_numasi;
-                e_DiarioA.n_idcue = Convert.ToInt16(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idcueven"]));
+                e_DiarioA.n_idcue = Convert.ToInt32(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idcueven"]));
                 e_DiarioA.n_tc = Convert.ToDouble(dtComCab.Rows[0]["n_tc"]);
                 if (n_TipoRegistro == 2)
                 {
@@ -1049,8 +1049,8 @@ namespace SIAC_Negocio.Contabilidad
                     e_DiarioA.d_orifchdoc = Convert.ToDateTime(dtComDet.Rows[n_row]["d_fchdoc"]);
                 }
                 e_DiarioA.n_oriid = Convert.ToInt32(funfunciones.NulosN(dtComDet.Rows[n_row]["n_iddocven"]));
-                e_DiarioA.n_oriidtipdoc = Convert.ToInt16(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idtipdocven"]));
-                e_DiarioA.n_oriidtipmon = Convert.ToInt16(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idmon"]));
+                e_DiarioA.n_oriidtipdoc = Convert.ToInt32(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idtipdocven"]));
+                e_DiarioA.n_oriidtipmon = Convert.ToInt32(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idmon"]));
                 e_DiarioA.c_orinumdoc = dtComDet.Rows[n_row]["c_numdoc"].ToString();
                 e_DiarioA.c_origlo = dtComDet.Rows[n_row]["c_glosa"].ToString();
 
@@ -1129,7 +1129,7 @@ namespace SIAC_Negocio.Contabilidad
             //    e_DiarioH.n_mes = n_MesTrabajo;
             //    e_DiarioH.n_lib = n_IdLibro;
             //    e_DiarioH.c_numasi = c_numasi;
-            //    e_DiarioH.n_idcue = Convert.ToInt16(funfunciones.NulosN(dtComCab.Rows[n_row]["n_idcueven"]));
+            //    e_DiarioH.n_idcue = Convert.ToInt32(funfunciones.NulosN(dtComCab.Rows[n_row]["n_idcueven"]));
             //    e_DiarioH.n_tc = Convert.ToDouble(dtComCab.Rows[0]["n_tc"]);
 
             //    if (dtComCab.Rows[n_row]["c_tip"].ToString() == "D")
@@ -1162,17 +1162,17 @@ namespace SIAC_Negocio.Contabilidad
             //    //}
             //    e_DiarioH.d_fchasi = Convert.ToDateTime(dtComCab.Rows[n_row]["d_fchreg"]);
             //    e_DiarioH.d_orifchdoc = Convert.ToDateTime(dtComCab.Rows[n_row]["d_fchdoc"]);
-            //    e_DiarioH.n_oriid = Convert.ToInt16(dtComCab.Rows[n_row]["n_iddocven"]);
+            //    e_DiarioH.n_oriid = Convert.ToInt32(dtComCab.Rows[n_row]["n_iddocven"]);
 
-            //    if (Convert.ToInt16(funfunciones.NulosN(dtComCab.Rows[n_row]["n_idtipdocven"])) != 0)
+            //    if (Convert.ToInt32(funfunciones.NulosN(dtComCab.Rows[n_row]["n_idtipdocven"])) != 0)
             //    {
-            //        e_DiarioH.n_oriidtipdoc = Convert.ToInt16(dtComCab.Rows[n_row]["n_idtipdocven"]);
+            //        e_DiarioH.n_oriidtipdoc = Convert.ToInt32(dtComCab.Rows[n_row]["n_idtipdocven"]);
             //    }
             //    else
             //    {
             //        e_DiarioH.n_oriidtipdoc = 0;
             //    }
-            //    e_DiarioH.n_oriidtipmon = Convert.ToInt16(dtComCab.Rows[n_row]["n_idmon"]);
+            //    e_DiarioH.n_oriidtipmon = Convert.ToInt32(dtComCab.Rows[n_row]["n_idmon"]);
             //    e_DiarioH.c_orinumdoc = dtComCab.Rows[n_row]["c_numdoc"].ToString();
             //    e_DiarioH.c_origlo = dtComCab.Rows[n_row]["c_glosa"].ToString();
 
@@ -1194,7 +1194,7 @@ namespace SIAC_Negocio.Contabilidad
             //    e_DiarioA.n_mes = n_MesTrabajo;
             //    e_DiarioA.n_lib = n_IdLibro;
             //    e_DiarioA.c_numasi = c_numasi;
-            //    e_DiarioA.n_idcue = Convert.ToInt16(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idcueven"]));
+            //    e_DiarioA.n_idcue = Convert.ToInt32(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idcueven"]));
             //    e_DiarioA.n_tc = Convert.ToDouble(dtComCab.Rows[0]["n_tc"]);
             //    if (n_TipoRegistro == 2)
             //    {
@@ -1229,8 +1229,8 @@ namespace SIAC_Negocio.Contabilidad
             //        e_DiarioA.d_orifchdoc = Convert.ToDateTime(dtComDet.Rows[n_row]["d_fchdoc"]);
             //    }
             //    e_DiarioA.n_oriid = Convert.ToInt32(funfunciones.NulosN(dtComDet.Rows[n_row]["n_iddocven"]));
-            //    e_DiarioA.n_oriidtipdoc = Convert.ToInt16(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idtipdocven"]));
-            //    e_DiarioA.n_oriidtipmon = Convert.ToInt16(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idmon"]));
+            //    e_DiarioA.n_oriidtipdoc = Convert.ToInt32(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idtipdocven"]));
+            //    e_DiarioA.n_oriidtipmon = Convert.ToInt32(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idmon"]));
             //    e_DiarioA.c_orinumdoc = dtComDet.Rows[n_row]["c_numdoc"].ToString();
             //    e_DiarioA.c_origlo = dtComDet.Rows[n_row]["c_glosa"].ToString();
 
@@ -1311,7 +1311,7 @@ namespace SIAC_Negocio.Contabilidad
         //        e_DiarioH.n_mes = n_MesTrabajo;
         //        e_DiarioH.n_lib = n_IdLibro;
         //        e_DiarioH.c_numasi = c_numasi;
-        //        e_DiarioH.n_idcue = Convert.ToInt16(funfunciones.NulosN(dtComCab.Rows[n_row]["n_idcueven"]));
+        //        e_DiarioH.n_idcue = Convert.ToInt32(funfunciones.NulosN(dtComCab.Rows[n_row]["n_idcueven"]));
         //        e_DiarioH.n_tc = Convert.ToDouble(dtComCab.Rows[0]["n_tc"]);
 
         //        if (n_TipoRegistro == 2)
@@ -1330,17 +1330,17 @@ namespace SIAC_Negocio.Contabilidad
         //        }
         //        e_DiarioH.d_fchasi = Convert.ToDateTime(dtComCab.Rows[n_row]["d_fchreg"]);
         //        e_DiarioH.d_orifchdoc = Convert.ToDateTime(dtComCab.Rows[n_row]["d_fchdoc"]);
-        //        e_DiarioH.n_oriid = Convert.ToInt16(dtComCab.Rows[n_row]["n_iddocven"]);
+        //        e_DiarioH.n_oriid = Convert.ToInt32(dtComCab.Rows[n_row]["n_iddocven"]);
 
-        //        if (Convert.ToInt16(funfunciones.NulosN(dtComCab.Rows[n_row]["n_idtipdocven"])) != 0)
+        //        if (Convert.ToInt32(funfunciones.NulosN(dtComCab.Rows[n_row]["n_idtipdocven"])) != 0)
         //        {
-        //            e_DiarioH.n_oriidtipdoc = Convert.ToInt16(dtComCab.Rows[n_row]["n_idtipdocven"]);
+        //            e_DiarioH.n_oriidtipdoc = Convert.ToInt32(dtComCab.Rows[n_row]["n_idtipdocven"]);
         //        }
         //        else
         //        {
         //            e_DiarioH.n_oriidtipdoc = 0;
         //        }
-        //        e_DiarioH.n_oriidtipmon = Convert.ToInt16(dtComCab.Rows[n_row]["n_idmon"]);
+        //        e_DiarioH.n_oriidtipmon = Convert.ToInt32(dtComCab.Rows[n_row]["n_idmon"]);
         //        e_DiarioH.c_orinumdoc = dtComCab.Rows[n_row]["c_numdoc"].ToString();
         //        e_DiarioH.c_origlo = dtComCab.Rows[n_row]["c_glosa"].ToString();
 
@@ -1362,7 +1362,7 @@ namespace SIAC_Negocio.Contabilidad
         //        e_DiarioA.n_mes = n_MesTrabajo;
         //        e_DiarioA.n_lib = n_IdLibro;
         //        e_DiarioA.c_numasi = c_numasi;
-        //        e_DiarioA.n_idcue = Convert.ToInt16(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idcueven"]));
+        //        e_DiarioA.n_idcue = Convert.ToInt32(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idcueven"]));
         //        e_DiarioA.n_tc = Convert.ToDouble(dtComCab.Rows[0]["n_tc"]);
         //        if (n_TipoRegistro == 2)
         //        {
@@ -1397,8 +1397,8 @@ namespace SIAC_Negocio.Contabilidad
         //            e_DiarioA.d_orifchdoc = Convert.ToDateTime(dtComDet.Rows[n_row]["d_fchdoc"]);
         //        }
         //        e_DiarioA.n_oriid = Convert.ToInt32(funfunciones.NulosN(dtComDet.Rows[n_row]["n_iddocven"]));
-        //        e_DiarioA.n_oriidtipdoc = Convert.ToInt16(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idtipdocven"]));
-        //        e_DiarioA.n_oriidtipmon = Convert.ToInt16(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idmon"]));
+        //        e_DiarioA.n_oriidtipdoc = Convert.ToInt32(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idtipdocven"]));
+        //        e_DiarioA.n_oriidtipmon = Convert.ToInt32(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idmon"]));
         //        e_DiarioA.c_orinumdoc = dtComDet.Rows[n_row]["c_numdoc"].ToString();
         //        e_DiarioA.c_origlo = dtComDet.Rows[n_row]["c_glosa"].ToString();
 
@@ -1479,7 +1479,7 @@ namespace SIAC_Negocio.Contabilidad
         //        e_DiarioH.n_mes = n_MesTrabajo;
         //        e_DiarioH.n_lib = n_IdLibro;
         //        e_DiarioH.c_numasi = c_numasi;
-        //        e_DiarioH.n_idcue = Convert.ToInt16(funfunciones.NulosN(dtComCab.Rows[n_row]["n_idcueven"]));
+        //        e_DiarioH.n_idcue = Convert.ToInt32(funfunciones.NulosN(dtComCab.Rows[n_row]["n_idcueven"]));
         //        e_DiarioH.n_tc = Convert.ToDouble(dtComCab.Rows[0]["n_tc"]);
 
         //        if (n_TipoRegistro == 2)
@@ -1498,17 +1498,17 @@ namespace SIAC_Negocio.Contabilidad
         //        }
         //        e_DiarioH.d_fchasi = Convert.ToDateTime(dtComCab.Rows[n_row]["d_fchreg"]);
         //        e_DiarioH.d_orifchdoc = Convert.ToDateTime(dtComCab.Rows[n_row]["d_fchdoc"]);
-        //        e_DiarioH.n_oriid = Convert.ToInt16(dtComCab.Rows[n_row]["n_iddocven"]);
+        //        e_DiarioH.n_oriid = Convert.ToInt32(dtComCab.Rows[n_row]["n_iddocven"]);
 
-        //        if (Convert.ToInt16(funfunciones.NulosN(dtComCab.Rows[n_row]["n_idtipdocven"])) != 0)
+        //        if (Convert.ToInt32(funfunciones.NulosN(dtComCab.Rows[n_row]["n_idtipdocven"])) != 0)
         //        {
-        //            e_DiarioH.n_oriidtipdoc = Convert.ToInt16(dtComCab.Rows[n_row]["n_idtipdocven"]);
+        //            e_DiarioH.n_oriidtipdoc = Convert.ToInt32(dtComCab.Rows[n_row]["n_idtipdocven"]);
         //        }
         //        else 
         //        {
         //            e_DiarioH.n_oriidtipdoc = 0;
         //        }
-        //        e_DiarioH.n_oriidtipmon = Convert.ToInt16(dtComCab.Rows[n_row]["n_idmon"]);
+        //        e_DiarioH.n_oriidtipmon = Convert.ToInt32(dtComCab.Rows[n_row]["n_idmon"]);
         //        e_DiarioH.c_orinumdoc = dtComCab.Rows[n_row]["c_numdoc"].ToString();
         //        e_DiarioH.c_origlo = dtComCab.Rows[n_row]["c_glosa"].ToString();
 
@@ -1530,7 +1530,7 @@ namespace SIAC_Negocio.Contabilidad
         //        e_DiarioA.n_mes = n_MesTrabajo;
         //        e_DiarioA.n_lib = n_IdLibro;
         //        e_DiarioA.c_numasi = c_numasi;
-        //        e_DiarioA.n_idcue = Convert.ToInt16(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idcueven"]));
+        //        e_DiarioA.n_idcue = Convert.ToInt32(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idcueven"]));
         //        e_DiarioA.n_tc = Convert.ToDouble(dtComCab.Rows[0]["n_tc"]);
         //        if (n_TipoRegistro == 2)
         //        {
@@ -1555,8 +1555,8 @@ namespace SIAC_Negocio.Contabilidad
         //            e_DiarioA.d_orifchdoc = Convert.ToDateTime(dtComDet.Rows[n_row]["d_fchdoc"]);
         //        }
         //        e_DiarioA.n_oriid = Convert.ToInt32(funfunciones.NulosN(dtComDet.Rows[n_row]["n_iddocven"]));
-        //        e_DiarioA.n_oriidtipdoc = Convert.ToInt16(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idtipdocven"]));
-        //        e_DiarioA.n_oriidtipmon = Convert.ToInt16(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idmon"]));
+        //        e_DiarioA.n_oriidtipdoc = Convert.ToInt32(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idtipdocven"]));
+        //        e_DiarioA.n_oriidtipmon = Convert.ToInt32(funfunciones.NulosN(dtComDet.Rows[n_row]["n_idmon"]));
         //        e_DiarioA.c_orinumdoc = dtComDet.Rows[n_row]["c_numdoc"].ToString();
         //        e_DiarioA.c_origlo = dtComDet.Rows[n_row]["c_glosa"].ToString();
 

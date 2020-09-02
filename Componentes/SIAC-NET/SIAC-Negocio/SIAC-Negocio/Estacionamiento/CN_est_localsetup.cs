@@ -56,16 +56,16 @@ namespace SIAC_Negocio.Estacionamiento
 
             if (dtListar.Rows.Count != 0)
             {
-                e_Local.n_idloc = Convert.ToInt16(dtListar.Rows[0]["n_idloc"]);
-                e_Local.n_idtipcob = Convert.ToInt16(dtListar.Rows[0]["n_idtipcob"]);
+                e_Local.n_idloc = Convert.ToInt32(dtListar.Rows[0]["n_idloc"]);
+                e_Local.n_idtipcob = Convert.ToInt32(dtListar.Rows[0]["n_idtipcob"]);
                 e_Local.c_numserfac = dtListar.Rows[0]["c_numserfac"].ToString();
                 e_Local.c_numserbol = dtListar.Rows[0]["c_numserbol"].ToString();
                 e_Local.c_numsertik = dtListar.Rows[0]["c_numsertik"].ToString();
-                e_Local.n_iddocdef = Convert.ToInt16(dtListar.Rows[0]["n_iddocdef"]);
-                e_Local.n_idserdef = Convert.ToInt16(dtListar.Rows[0]["n_idserdef"]);
-                e_Local.n_vispre = Convert.ToInt16(dtListar.Rows[0]["n_vispre"]);
-                e_Local.n_idserhor = Convert.ToInt16(dtListar.Rows[0]["n_idserhor"]);
-                e_Local.n_tolmin = Convert.ToInt16(dtListar.Rows[0]["n_tolmin"]);
+                e_Local.n_iddocdef = Convert.ToInt32(dtListar.Rows[0]["n_iddocdef"]);
+                e_Local.n_idserdef = Convert.ToInt32(dtListar.Rows[0]["n_idserdef"]);
+                e_Local.n_vispre = Convert.ToInt32(dtListar.Rows[0]["n_vispre"]);
+                e_Local.n_idserhor = Convert.ToInt32(dtListar.Rows[0]["n_idserhor"]);
+                e_Local.n_tolmin = Convert.ToInt32(dtListar.Rows[0]["n_tolmin"]);
             }
             if (b_OcurrioError == true)
             {

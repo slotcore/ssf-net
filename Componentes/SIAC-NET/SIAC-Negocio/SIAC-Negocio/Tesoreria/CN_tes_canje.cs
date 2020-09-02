@@ -64,19 +64,19 @@ namespace SIAC_Negocio.Tesoreria
             dtDocVenta = miFun.dtDocVenta;
             if (dtResult.Rows.Count != 0)
             {
-                e_Canje.n_idemp = Convert.ToInt16(dtResult.Rows[0]["n_idemp"]);
-                e_Canje.n_id = Convert.ToInt16(dtResult.Rows[0]["n_id"]);
-                e_Canje.n_idlib = Convert.ToInt16(dtResult.Rows[0]["n_idlib"]);
-                e_Canje.n_ano = Convert.ToInt16(dtResult.Rows[0]["n_ano"]);
-                e_Canje.n_mes = Convert.ToInt16(dtResult.Rows[0]["n_mes"]);
+                e_Canje.n_idemp = Convert.ToInt32(dtResult.Rows[0]["n_idemp"]);
+                e_Canje.n_id = Convert.ToInt32(dtResult.Rows[0]["n_id"]);
+                e_Canje.n_idlib = Convert.ToInt32(dtResult.Rows[0]["n_idlib"]);
+                e_Canje.n_ano = Convert.ToInt32(dtResult.Rows[0]["n_ano"]);
+                e_Canje.n_mes = Convert.ToInt32(dtResult.Rows[0]["n_mes"]);
                 e_Canje.d_fchreg = Convert.ToDateTime(dtResult.Rows[0]["d_fchreg"]);
                 e_Canje.c_numreg = dtResult.Rows[0]["c_numreg"].ToString();
                 e_Canje.c_numser = dtResult.Rows[0]["c_numser"].ToString();
                 e_Canje.c_numdoc = dtResult.Rows[0]["c_numdoc"].ToString();
                 e_Canje.d_fchemi = Convert.ToDateTime(dtResult.Rows[0]["d_fchemi"]);
-                e_Canje.n_idpro = Convert.ToInt16(dtResult.Rows[0]["n_idpro"]);
-                e_Canje.n_idcli = Convert.ToInt16(dtResult.Rows[0]["n_idcli"]);
-                e_Canje.n_idmon = Convert.ToInt16(dtResult.Rows[0]["n_idmon"]);
+                e_Canje.n_idpro = Convert.ToInt32(dtResult.Rows[0]["n_idpro"]);
+                e_Canje.n_idcli = Convert.ToInt32(dtResult.Rows[0]["n_idcli"]);
+                e_Canje.n_idmon = Convert.ToInt32(dtResult.Rows[0]["n_idmon"]);
                 e_Canje.n_impcan = Convert.ToDouble(dtResult.Rows[0]["n_impcan"]);
                 e_Canje.n_tc = Convert.ToDouble(dtResult.Rows[0]["n_tc"]);
             }

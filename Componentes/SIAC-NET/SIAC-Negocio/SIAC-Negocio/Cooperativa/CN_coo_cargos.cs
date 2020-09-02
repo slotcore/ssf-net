@@ -84,18 +84,18 @@ namespace SIAC_Negocio.Cooperativa
 
             if (dtCargos.Rows.Count != 0)
             {
-                entCargos.n_idemp = Convert.ToInt16(dtCargos.Rows[0]["n_idemp"].ToString());
+                entCargos.n_idemp = Convert.ToInt32(dtCargos.Rows[0]["n_idemp"].ToString());
                 entCargos.n_id = Convert.ToInt32(dtCargos.Rows[0]["n_id"].ToString());
-                entCargos.n_anotra = Convert.ToInt16(dtCargos.Rows[0]["n_anotra"].ToString());
-                entCargos.n_mestra = Convert.ToInt16(dtCargos.Rows[0]["n_mestra"].ToString());
+                entCargos.n_anotra = Convert.ToInt32(dtCargos.Rows[0]["n_anotra"].ToString());
+                entCargos.n_mestra = Convert.ToInt32(dtCargos.Rows[0]["n_mestra"].ToString());
                 entCargos.d_fchemi = Convert.ToDateTime(dtCargos.Rows[0]["d_fchemi"]);
                 entCargos.d_fchini = Convert.ToDateTime(dtCargos.Rows[0]["d_fchini"]);
                 entCargos.d_fchfin = Convert.ToDateTime(dtCargos.Rows[0]["d_fchfin"]);
-                entCargos.n_numsoc = Convert.ToInt16(dtCargos.Rows[0]["n_numsoc"].ToString());
+                entCargos.n_numsoc = Convert.ToInt32(dtCargos.Rows[0]["n_numsoc"].ToString());
                 entCargos.n_impbru = Convert.ToDouble(dtCargos.Rows[0]["n_impbru"].ToString());
                 entCargos.n_impigv = Convert.ToDouble(dtCargos.Rows[0]["n_impigv"].ToString());
                 entCargos.n_imptot = Convert.ToDouble(dtCargos.Rows[0]["n_imptot"].ToString());
-                entCargos.n_idtipdoc = Convert.ToInt16(dtCargos.Rows[0]["n_idtipdoc"].ToString());
+                entCargos.n_idtipdoc = Convert.ToInt32(dtCargos.Rows[0]["n_idtipdoc"].ToString());
             }
 
             if (dtCargosCab.Rows.Count != 0)
@@ -104,11 +104,11 @@ namespace SIAC_Negocio.Cooperativa
                 {
                     BE_COO_CARGOSCAB entCargosCab = new BE_COO_CARGOSCAB();
 
-                    entCargosCab.n_idemp = Convert.ToInt16(dtCargosCab.Rows[n_row]["n_idemp"].ToString());
-                    entCargosCab.n_idcar = Convert.ToInt16(dtCargosCab.Rows[n_row]["n_idcar"].ToString());
-                    entCargosCab.n_idsoc = Convert.ToInt16(dtCargosCab.Rows[n_row]["n_idsoc"].ToString());
-                    entCargosCab.n_idsocpue = Convert.ToInt16(dtCargosCab.Rows[n_row]["n_idsocpue"].ToString());
-                    entCargosCab.n_idtipdoc = Convert.ToInt16(dtCargosCab.Rows[n_row]["n_idtipdoc"].ToString());
+                    entCargosCab.n_idemp = Convert.ToInt32(dtCargosCab.Rows[n_row]["n_idemp"].ToString());
+                    entCargosCab.n_idcar = Convert.ToInt32(dtCargosCab.Rows[n_row]["n_idcar"].ToString());
+                    entCargosCab.n_idsoc = Convert.ToInt32(dtCargosCab.Rows[n_row]["n_idsoc"].ToString());
+                    entCargosCab.n_idsocpue = Convert.ToInt32(dtCargosCab.Rows[n_row]["n_idsocpue"].ToString());
+                    entCargosCab.n_idtipdoc = Convert.ToInt32(dtCargosCab.Rows[n_row]["n_idtipdoc"].ToString());
                     entCargosCab.c_numser = dtCargosCab.Rows[n_row]["c_numser"].ToString();
                     entCargosCab.c_numdoc = dtCargosCab.Rows[n_row]["c_numdoc"].ToString();
                     entCargosCab.d_fchemi = Convert.ToDateTime(dtCargosCab.Rows[n_row]["d_fchemi"].ToString());
@@ -118,8 +118,8 @@ namespace SIAC_Negocio.Cooperativa
                     entCargosCab.n_imptot = Convert.ToDouble(dtCargosCab.Rows[n_row]["n_imptot"].ToString());
                     entCargosCab.c_glosa = dtCargosCab.Rows[n_row]["c_glosa"].ToString();
                     entCargosCab.n_impsal = Convert.ToDouble(dtCargosCab.Rows[n_row]["n_impsal"].ToString());
-                    entCargosCab.n_anotra = Convert.ToInt16(dtCargosCab.Rows[n_row]["n_anotra"].ToString());
-                    entCargosCab.n_mestra = Convert.ToInt16(dtCargosCab.Rows[n_row]["n_mestra"].ToString());
+                    entCargosCab.n_anotra = Convert.ToInt32(dtCargosCab.Rows[n_row]["n_anotra"].ToString());
+                    entCargosCab.n_mestra = Convert.ToInt32(dtCargosCab.Rows[n_row]["n_mestra"].ToString());
 
                     lstCargosCab.Add(entCargosCab);
                 }
@@ -130,16 +130,16 @@ namespace SIAC_Negocio.Cooperativa
                 {
                     BE_COO_CARGOSDET entCargosDet = new BE_COO_CARGOSDET();
 
-                    entCargosDet.n_idemp = Convert.ToInt16(dtCargosDet.Rows[n_row]["n_idemp"].ToString());
-                    entCargosDet.n_idcar = Convert.ToInt16(dtCargosDet.Rows[n_row]["n_idcar"].ToString());
-                    entCargosDet.n_idsoc = Convert.ToInt16(dtCargosDet.Rows[n_row]["n_idsoc"].ToString());
-                    entCargosDet.n_idcon = Convert.ToInt16(dtCargosDet.Rows[n_row]["n_idcon"].ToString());
+                    entCargosDet.n_idemp = Convert.ToInt32(dtCargosDet.Rows[n_row]["n_idemp"].ToString());
+                    entCargosDet.n_idcar = Convert.ToInt32(dtCargosDet.Rows[n_row]["n_idcar"].ToString());
+                    entCargosDet.n_idsoc = Convert.ToInt32(dtCargosDet.Rows[n_row]["n_idsoc"].ToString());
+                    entCargosDet.n_idcon = Convert.ToInt32(dtCargosDet.Rows[n_row]["n_idcon"].ToString());
                     entCargosDet.n_can = Convert.ToDouble(dtCargosDet.Rows[n_row]["n_can"].ToString());
                     entCargosDet.n_impbru = Convert.ToDouble(dtCargosDet.Rows[n_row]["n_impbru"].ToString());
                     entCargosDet.n_impnet = Convert.ToDouble(dtCargosDet.Rows[n_row]["n_impnet"].ToString());
                     entCargosDet.n_imptotbru = Convert.ToDouble(dtCargosDet.Rows[n_row]["n_imptotbru"].ToString());
                     entCargosDet.n_imptotnet = Convert.ToDouble(dtCargosDet.Rows[n_row]["n_imptotnet"].ToString());
-                    entCargosDet.n_idpue = Convert.ToInt16(dtCargosDet.Rows[n_row]["n_idpue"].ToString());
+                    entCargosDet.n_idpue = Convert.ToInt32(dtCargosDet.Rows[n_row]["n_idpue"].ToString());
 
                     lstCargosDet.Add(entCargosDet);
                 }

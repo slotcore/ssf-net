@@ -460,7 +460,7 @@ namespace SSF_NET_Contabilidad.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -470,8 +470,8 @@ namespace SSF_NET_Contabilidad.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int n_IdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
-            int n_IdTesoreria = Convert.ToInt16(funFunciones.NulosN(DgLista.Columns["n_idtes"].CellValue(DgLista.Row)));       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int n_IdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int n_IdTesoreria = Convert.ToInt32(funFunciones.NulosN(DgLista.Columns["n_idtes"].CellValue(DgLista.Row)));       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -543,13 +543,13 @@ namespace SSF_NET_Contabilidad.Formularios
             }
             else
             {
-                e_Detracciones.n_id = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                e_Detracciones.n_id = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             }
                         
             e_Detracciones.n_idemp = STU_SISTEMA.EMPRESAID;
-            e_Detracciones.n_iddet = Convert.ToInt16(CboDet.SelectedValue);
+            e_Detracciones.n_iddet = Convert.ToInt32(CboDet.SelectedValue);
             e_Detracciones.n_por = Convert.ToDouble(TxtTas.Text);
-            e_Detracciones.n_iddoccom = Convert.ToInt16(LblIdDoc.Text);
+            e_Detracciones.n_iddoccom = Convert.ToInt32(LblIdDoc.Text);
             e_Detracciones.n_idmon = 115;
             e_Detracciones.n_tipmov = n_Tipo;   
             e_Detracciones.d_fchmov = Convert.ToDateTime(TxtFchPag.Text);
@@ -559,14 +559,14 @@ namespace SSF_NET_Contabilidad.Formularios
             e_Detracciones.d_fchpag = Convert.ToDateTime(TxtFchPag.Text);
             e_Detracciones.n_idgrudet = 0;
             e_Detracciones.n_ano = STU_SISTEMA.ANOTRABAJO;
-            e_Detracciones.n_mes = Convert.ToInt16(CboMeses.SelectedValue);
+            e_Detracciones.n_mes = Convert.ToInt32(CboMeses.SelectedValue);
             e_Detracciones.n_idlib = 33;
             e_Detracciones.c_numreg = "";
             e_Detracciones.n_tc = Convert.ToDouble(TxtTc2.Text);
             e_Detracciones.n_idtipdoc = 86;
-            e_Detracciones.n_idtesori = Convert.ToInt16(LblIdDocCue.Text);
-            e_Detracciones.n_idmedpag = Convert.ToInt16(CboTipOpe.SelectedValue);
-            e_Detracciones.n_iddes = Convert.ToInt16(LblIdDestino.Text);
+            e_Detracciones.n_idtesori = Convert.ToInt32(LblIdDocCue.Text);
+            e_Detracciones.n_idmedpag = Convert.ToInt32(CboTipOpe.SelectedValue);
+            e_Detracciones.n_iddes = Convert.ToInt32(LblIdDestino.Text);
 
             if (OptTipPagEfe.Checked == true) { e_Detracciones.n_tippag = 1; }
             if (OptTipPagTra.Checked == true) { e_Detracciones.n_tippag = 2; } 
@@ -597,11 +597,11 @@ namespace SSF_NET_Contabilidad.Formularios
 
             e_Tesoreria.n_idemp = STU_SISTEMA.EMPRESAID;
             e_Tesoreria.n_ano = STU_SISTEMA.ANOTRABAJO;
-            e_Tesoreria.n_mes = Convert.ToInt16(CboMeses.SelectedValue);
+            e_Tesoreria.n_mes = Convert.ToInt32(CboMeses.SelectedValue);
             e_Tesoreria.n_idlib = 1;
             e_Tesoreria.c_numreg = "";
             e_Tesoreria.d_fchope = Convert.ToDateTime(TxtFchPag.Text);
-            e_Tesoreria.n_idmon = Convert.ToInt16(CboMon.SelectedValue);
+            e_Tesoreria.n_idmon = Convert.ToInt32(CboMon.SelectedValue);
             e_Tesoreria.c_glo = "PAGO DETRACCION CLIENTE : " + TxtPro.Text + ",  " + CboTipDoc.Text + " Nº " + TxtNumDocCom.Text;
             e_Tesoreria.n_conciliado = 0;
             e_Tesoreria.n_tc = Convert.ToDouble(TxtTc2.Text);
@@ -611,7 +611,7 @@ namespace SSF_NET_Contabilidad.Formularios
             // *********************
             // CARGAMOS EL ORIGEN
             BE_TES_TESORERIAORI e_TesOri = new BE_TES_TESORERIAORI();
-            int n_idmod = Convert.ToInt16(funFunciones.NulosN(funDatos.DataTableBuscar(dtOri, "n_id", "n_idmod", LblIdDocCue.Text, "N").ToString()));
+            int n_idmod = Convert.ToInt32(funFunciones.NulosN(funDatos.DataTableBuscar(dtOri, "n_id", "n_idmod", LblIdDocCue.Text, "N").ToString()));
             e_TesOri.n_idtes = 0;
             e_TesOri.n_idori = Convert.ToInt32(LblIdDocCue.Text);
             e_TesOri.n_imp = Convert.ToDouble(TxtImpDet.Text);
@@ -623,7 +623,7 @@ namespace SSF_NET_Contabilidad.Formularios
             if (OptTipPagTra.Checked == true)
             {
                 BE_TES_TESORERIAORIDET e_TesOriDet = new BE_TES_TESORERIAORIDET();
-                //n_idmod = Convert.ToInt16(funDatos.DataTableBuscar(dtOri, "n_id", "n_idmod", LblIdDocCue.Text, "N"));
+                //n_idmod = Convert.ToInt32(funDatos.DataTableBuscar(dtOri, "n_id", "n_idmod", LblIdDocCue.Text, "N"));
 
                 e_TesOriDet.n_idtes = 0;
                 e_TesOriDet.n_idori = Convert.ToInt32(LblIdDocCue.Text);                         // LE INDICAMOS QUE ES FACTURAS POR PAGAR
@@ -640,8 +640,8 @@ namespace SSF_NET_Contabilidad.Formularios
                 e_TesOriDet.d_fchdoc = Convert.ToDateTime(TxtFchPag.Text);
                 e_TesOriDet.c_glo = "";
                 e_TesOriDet.n_cor = 0;
-                e_TesOriDet.n_idmon = 115; //Convert.ToInt16(CboMon.SelectedValue);
-                e_TesOriDet.n_idmedpag = Convert.ToInt16(CboTipOpe.SelectedValue);
+                e_TesOriDet.n_idmon = 115; //Convert.ToInt32(CboMon.SelectedValue);
+                e_TesOriDet.n_idmedpag = Convert.ToInt32(CboTipOpe.SelectedValue);
                 
                 l_TesOriDet.Add(e_TesOriDet);
             }
@@ -649,9 +649,9 @@ namespace SSF_NET_Contabilidad.Formularios
             // *********************
             // CARGAMOS LOS DESTINOS
             BE_TES_TESORERIADES e_TesDes = new BE_TES_TESORERIADES();
-            n_idmod = Convert.ToInt16(funFunciones.NulosN(funDatos.DataTableBuscar(dtDes, "n_id", "n_idmod", "5", "N").ToString()));
+            n_idmod = Convert.ToInt32(funFunciones.NulosN(funDatos.DataTableBuscar(dtDes, "n_id", "n_idmod", "5", "N").ToString()));
             e_TesDes.n_idtes = 0;
-            e_TesDes.n_iddes = Convert.ToInt16(LblIdDestino.Text);                             // LE INDICAMOS QUE ES FACTURAS POR PAGAR POR DEFAULT
+            e_TesDes.n_iddes = Convert.ToInt32(LblIdDestino.Text);                             // LE INDICAMOS QUE ES FACTURAS POR PAGAR POR DEFAULT
             e_TesDes.n_imp = Convert.ToDouble(TxtImpDet.Text);
             e_TesDes.n_idmod = n_idmod;
             e_TesDes.n_idbcocta = 0;
@@ -659,15 +659,15 @@ namespace SSF_NET_Contabilidad.Formularios
             l_TesDes.Add(e_TesDes);
 
             BE_TES_TESORERIADESDET e_TesDesDet = new BE_TES_TESORERIADESDET();
-            //n_idmod = Convert.ToInt16(funDatos.DataTableBuscar(dtOri, "n_id", "n_idmod", LblIdDocCue.Text, "N"));
+            //n_idmod = Convert.ToInt32(funDatos.DataTableBuscar(dtOri, "n_id", "n_idmod", LblIdDocCue.Text, "N"));
 
             e_TesDesDet.n_idtes = 0;
-            e_TesDesDet.n_iddes = Convert.ToInt16(LblIdDestino.Text); ;                         // LE INDICAMOS QUE ES FACTURAS POR PAGAR
+            e_TesDesDet.n_iddes = Convert.ToInt32(LblIdDestino.Text); ;                         // LE INDICAMOS QUE ES FACTURAS POR PAGAR
             e_TesDesDet.n_idtipper = 0;
             e_TesDesDet.n_idmod = n_idmod;
             e_TesDesDet.n_iddoc = Convert.ToInt32(LblIdDoc.Text);
             e_TesDesDet.n_idper = 0;
-            e_TesDesDet.n_idtipdoc = Convert.ToInt16(CboTipDoc.SelectedValue);
+            e_TesDesDet.n_idtipdoc = Convert.ToInt32(CboTipDoc.SelectedValue);
             e_TesDesDet.c_numser = TxtNumDocCom.Text.Substring(0, 4);
             e_TesDesDet.c_numdoc = TxtNumDocCom.Text.Substring(5, 10);
             e_TesDesDet.n_imp = Convert.ToDouble(TxtImpDoc.Text);
@@ -677,7 +677,7 @@ namespace SSF_NET_Contabilidad.Formularios
             e_TesDesDet.d_fchdoc = Convert.ToDateTime(TxtFchEmi.Text);
             e_TesDesDet.c_glo = "";
             e_TesDesDet.n_cor = 0;
-            e_TesDesDet.n_idmon = Convert.ToInt16(CboMon.SelectedValue);
+            e_TesDesDet.n_idmon = Convert.ToInt32(CboMon.SelectedValue);
             e_TesDesDet.n_idlib = 34;
 
             l_TesDesDet.Add(e_TesDesDet);
@@ -691,11 +691,11 @@ namespace SSF_NET_Contabilidad.Formularios
 
             e_Tesoreria.n_idemp = STU_SISTEMA.EMPRESAID;
             e_Tesoreria.n_ano = STU_SISTEMA.ANOTRABAJO;
-            e_Tesoreria.n_mes = Convert.ToInt16(CboMeses.SelectedValue);
+            e_Tesoreria.n_mes = Convert.ToInt32(CboMeses.SelectedValue);
             e_Tesoreria.n_idlib = 1;
             e_Tesoreria.c_numreg = "";
             e_Tesoreria.d_fchope = Convert.ToDateTime(TxtFchPag.Text);
-            e_Tesoreria.n_idmon = 115; //Convert.ToInt16(CboMon.SelectedValue);
+            e_Tesoreria.n_idmon = 115; //Convert.ToInt32(CboMon.SelectedValue);
             e_Tesoreria.c_glo = "PAGO DETRACCION PROVEEDOR : " + TxtPro.Text + ",  " + CboTipDoc.Text + " Nº " + TxtNumDocCom.Text;
             e_Tesoreria.n_conciliado = 0;
             e_Tesoreria.n_tc = Convert.ToDouble(TxtTc2.Text);
@@ -705,7 +705,7 @@ namespace SSF_NET_Contabilidad.Formularios
             // *********************
             // CARGAMOS EL ORIGEN
             BE_TES_TESORERIAORI e_TesOri = new BE_TES_TESORERIAORI();
-            int n_idmod = Convert.ToInt16(funFunciones.NulosN(funDatos.DataTableBuscar(dtOri, "n_id", "n_idmod", LblIdDocCue.Text, "N").ToString()));
+            int n_idmod = Convert.ToInt32(funFunciones.NulosN(funDatos.DataTableBuscar(dtOri, "n_id", "n_idmod", LblIdDocCue.Text, "N").ToString()));
             e_TesOri.n_idtes = 0;
             e_TesOri.n_idori = Convert.ToInt32(LblIdDocCue.Text);
             e_TesOri.n_imp = Convert.ToDouble(TxtImpDet.Text);
@@ -717,7 +717,7 @@ namespace SSF_NET_Contabilidad.Formularios
             if (OptTipPagTra.Checked == true)
             {
                 BE_TES_TESORERIAORIDET e_TesOriDet = new BE_TES_TESORERIAORIDET();
-                //n_idmod = Convert.ToInt16(funDatos.DataTableBuscar(dtOri, "n_id", "n_idmod", LblIdDocCue.Text, "N"));
+                //n_idmod = Convert.ToInt32(funDatos.DataTableBuscar(dtOri, "n_id", "n_idmod", LblIdDocCue.Text, "N"));
 
                 e_TesOriDet.n_idtes = 0;
                 e_TesOriDet.n_idori = Convert.ToInt32(LblIdDocCue.Text);                         // LE INDICAMOS QUE ES FACTURAS POR PAGAR
@@ -734,8 +734,8 @@ namespace SSF_NET_Contabilidad.Formularios
                 e_TesOriDet.d_fchdoc = Convert.ToDateTime(TxtFchPag.Text);
                 e_TesOriDet.c_glo = "";
                 e_TesOriDet.n_cor = 0;
-                e_TesOriDet.n_idmon = 115; //Convert.ToInt16(CboMon.SelectedValue);
-                e_TesOriDet.n_idmedpag = Convert.ToInt16(CboTipOpe.SelectedValue);
+                e_TesOriDet.n_idmon = 115; //Convert.ToInt32(CboMon.SelectedValue);
+                e_TesOriDet.n_idmedpag = Convert.ToInt32(CboTipOpe.SelectedValue);
                 //e_TesOriDet.n_idlib = 0;
 
                 l_TesOriDet.Add(e_TesOriDet);
@@ -744,9 +744,9 @@ namespace SSF_NET_Contabilidad.Formularios
             // *********************
             // CARGAMOS LOS DESTINOS
             BE_TES_TESORERIADES e_TesDes = new BE_TES_TESORERIADES();
-            n_idmod = Convert.ToInt16(funFunciones.NulosN(funDatos.DataTableBuscar(dtDes, "n_id", "n_idmod", "5", "N").ToString()));
+            n_idmod = Convert.ToInt32(funFunciones.NulosN(funDatos.DataTableBuscar(dtDes, "n_id", "n_idmod", "5", "N").ToString()));
             e_TesDes.n_idtes = 0;
-            e_TesDes.n_iddes = Convert.ToInt16(LblIdDestino.Text);                             // LE INDICAMOS QUE ES FACTURAS POR PAGAR POR DEFAULT
+            e_TesDes.n_iddes = Convert.ToInt32(LblIdDestino.Text);                             // LE INDICAMOS QUE ES FACTURAS POR PAGAR POR DEFAULT
             e_TesDes.n_imp = Convert.ToDouble(TxtImpDet.Text);
             e_TesDes.n_idmod = n_idmod;
             e_TesDes.n_idbcocta = 0;
@@ -754,15 +754,15 @@ namespace SSF_NET_Contabilidad.Formularios
             l_TesDes.Add(e_TesDes);
 
             BE_TES_TESORERIADESDET e_TesDesDet = new BE_TES_TESORERIADESDET();
-            //n_idmod = Convert.ToInt16(funDatos.DataTableBuscar(dtOri, "n_id", "n_idmod", LblIdDocCue.Text, "N"));
+            //n_idmod = Convert.ToInt32(funDatos.DataTableBuscar(dtOri, "n_id", "n_idmod", LblIdDocCue.Text, "N"));
 
             e_TesDesDet.n_idtes = 0;
-            e_TesDesDet.n_iddes = Convert.ToInt16(LblIdDestino.Text); ;                         // LE INDICAMOS QUE ES FACTURAS POR PAGAR
+            e_TesDesDet.n_iddes = Convert.ToInt32(LblIdDestino.Text); ;                         // LE INDICAMOS QUE ES FACTURAS POR PAGAR
             e_TesDesDet.n_idtipper = 0;
             e_TesDesDet.n_idmod = n_idmod;
             e_TesDesDet.n_iddoc = Convert.ToInt32(LblIdDoc.Text);
             e_TesDesDet.n_idper = 0;
-            e_TesDesDet.n_idtipdoc = Convert.ToInt16(CboTipDoc.SelectedValue);
+            e_TesDesDet.n_idtipdoc = Convert.ToInt32(CboTipDoc.SelectedValue);
             e_TesDesDet.c_numser = TxtNumDocCom.Text.Substring(0, 4);
             e_TesDesDet.c_numdoc = TxtNumDocCom.Text.Substring(5, 10);
             e_TesDesDet.n_imp = Convert.ToDouble(TxtImpDoc.Text);
@@ -772,7 +772,7 @@ namespace SSF_NET_Contabilidad.Formularios
             e_TesDesDet.d_fchdoc = Convert.ToDateTime(TxtFchEmi.Text);
             e_TesDesDet.c_glo = "";
             e_TesDesDet.n_cor = 0;
-            e_TesDesDet.n_idmon = Convert.ToInt16(CboMon.SelectedValue);
+            e_TesDesDet.n_idmon = Convert.ToInt32(CboMon.SelectedValue);
             e_TesDesDet.n_idlib = 34;
 
             l_TesDesDet.Add(e_TesDesDet);
@@ -794,7 +794,7 @@ namespace SSF_NET_Contabilidad.Formularios
                 TxtNumDocCom.Focus();
                 return booEstado;
             }
-            if (Convert.ToInt16(CboDet.SelectedValue) == 0)
+            if (Convert.ToInt32(CboDet.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el tipo de detraccion que se aplicara !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -822,7 +822,7 @@ namespace SSF_NET_Contabilidad.Formularios
                 TxtTc2.Focus();
                 return booEstado;
             }
-            if (Convert.ToInt16(Convert.ToDateTime(TxtFchPag.Text).Month) != Convert.ToInt16(CboMeses.SelectedValue))
+            if (Convert.ToInt32(Convert.ToDateTime(TxtFchPag.Text).Month) != Convert.ToInt32(CboMeses.SelectedValue))
             {
                 MessageBox.Show("¡ La fecha de pago no corresponde al mes de registro !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -831,14 +831,14 @@ namespace SSF_NET_Contabilidad.Formularios
             }
             if (ChkAplPag.Checked == true)
             {
-                if (Convert.ToInt16(funFunciones.NulosN(LblIdDocCue.Text)) == 0)
+                if (Convert.ToInt32(funFunciones.NulosN(LblIdDocCue.Text)) == 0)
                 {
                     MessageBox.Show("¡ No ha especificado el origen del abono !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     booEstado = false;
                     CmdBusCta.Focus();
                     return booEstado;
                 }
-                if (Convert.ToInt16(funFunciones.NulosN(LblIdDestino.Text)) == 0)
+                if (Convert.ToInt32(funFunciones.NulosN(LblIdDestino.Text)) == 0)
                 {
                     MessageBox.Show("¡ No ha especificado el destino del abono !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     booEstado = false;
@@ -941,7 +941,7 @@ namespace SSF_NET_Contabilidad.Formularios
 
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -951,7 +951,7 @@ namespace SSF_NET_Contabilidad.Formularios
         }
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             VerRegistro(intIdRegistro);
         }
@@ -1074,7 +1074,7 @@ namespace SSF_NET_Contabilidad.Formularios
             double n_detra = 0;
 
             n_valor = Convert.ToDouble(TxtImpExpMN.Text);
-            n_tasa = Convert.ToDouble(funDatos.DataTableBuscar(dtDet, "n_id", "n_tasa", Convert.ToInt16(CboDet.SelectedValue).ToString(), "N").ToString());
+            n_tasa = Convert.ToDouble(funDatos.DataTableBuscar(dtDet, "n_id", "n_tasa", Convert.ToInt32(CboDet.SelectedValue).ToString(), "N").ToString());
             n_detra = (n_valor * (n_tasa / 100));
 
             TxtTas.Text = n_tasa.ToString("0.00");
@@ -1252,7 +1252,7 @@ namespace SSF_NET_Contabilidad.Formularios
 
         private void CmdBusCta_Click(object sender, EventArgs e)
         {
-            if (Convert.ToInt16(CboMon.SelectedValue) == 0)
+            if (Convert.ToInt32(CboMon.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado la moneda de la detraccion !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 return;
@@ -1262,12 +1262,12 @@ namespace SSF_NET_Contabilidad.Formularios
 
             if (OptTipPagEfe.Checked == true)
             {
-                //dtResul = funDatos.DataTableFiltrar(dtOri, "n_idmon = " + Convert.ToInt16(CboMon.SelectedValue) + " AND n_oridin = 1");
+                //dtResul = funDatos.DataTableFiltrar(dtOri, "n_idmon = " + Convert.ToInt32(CboMon.SelectedValue) + " AND n_oridin = 1");
                 dtResul = funDatos.DataTableFiltrar(dtOri, "n_idmon = 115 AND n_oridin = 1");
             }
             if (OptTipPagTra.Checked == true)
             {
-                //dtResul = funDatos.DataTableFiltrar(dtOri, "n_idmon = " + Convert.ToInt16(CboMon.SelectedValue) + " AND n_oridin = 2");
+                //dtResul = funDatos.DataTableFiltrar(dtOri, "n_idmon = " + Convert.ToInt32(CboMon.SelectedValue) + " AND n_oridin = 2");
                 dtResul = funDatos.DataTableFiltrar(dtOri, "n_idmon = 115 AND n_oridin = 2");
             }
 
@@ -1286,7 +1286,7 @@ namespace SSF_NET_Contabilidad.Formularios
                     TxtNumCta.Text = c_dato;
 
                     CboTipOpe.SelectedValue = 0;
-                    if (Convert.ToInt16(dtResul.Rows[0]["n_oridin"]) == 2)
+                    if (Convert.ToInt32(dtResul.Rows[0]["n_oridin"]) == 2)
                     {
                         CboTipOpe.Enabled = true;
                         CboTipOpe.SelectedValue = 1;
@@ -1389,7 +1389,7 @@ namespace SSF_NET_Contabilidad.Formularios
         }
         private void CboBusDes_Click(object sender, EventArgs e)
         {
-            if (Convert.ToInt16(CboMon.SelectedValue) == 0)
+            if (Convert.ToInt32(CboMon.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado la moneda de la detraccion !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 return;
@@ -1399,12 +1399,12 @@ namespace SSF_NET_Contabilidad.Formularios
 
             if (OptTipPagEfe.Checked == true)
             {
-                //dtResul = funDatos.DataTableFiltrar(dtDes, "n_idmon = " + Convert.ToInt16(CboMon.SelectedValue) + " ");
+                //dtResul = funDatos.DataTableFiltrar(dtDes, "n_idmon = " + Convert.ToInt32(CboMon.SelectedValue) + " ");
                 dtResul = funDatos.DataTableFiltrar(dtDes, "n_idmon = 115");
             }
             if (OptTipPagTra.Checked == true)
             {
-                //dtResul = funDatos.DataTableFiltrar(dtDes, "n_idmon = " + Convert.ToInt16(CboMon.SelectedValue) + " ");
+                //dtResul = funDatos.DataTableFiltrar(dtDes, "n_idmon = " + Convert.ToInt32(CboMon.SelectedValue) + " ");
                 dtResul = funDatos.DataTableFiltrar(dtDes, "n_idmon = 115");
             }
 
@@ -1430,11 +1430,11 @@ namespace SSF_NET_Contabilidad.Formularios
             string c_NomArchivo = "";
             if (n_Tipo == 1)
             {
-                c_NomArchivo = STU_SISTEMA.EMPRESARUC + "-CON-DETRACCION-COMPRAS-" + STU_SISTEMA.ANOTRABAJO.ToString() + Convert.ToInt16(CboMeses.SelectedValue).ToString("00") + ".xls";
+                c_NomArchivo = STU_SISTEMA.EMPRESARUC + "-CON-DETRACCION-COMPRAS-" + STU_SISTEMA.ANOTRABAJO.ToString() + Convert.ToInt32(CboMeses.SelectedValue).ToString("00") + ".xls";
             }
             else
             {
-                c_NomArchivo = STU_SISTEMA.EMPRESARUC + "-CON-DETRACCION-VENTAS-" + STU_SISTEMA.ANOTRABAJO.ToString() + Convert.ToInt16(CboMeses.SelectedValue).ToString("00") + ".xls";
+                c_NomArchivo = STU_SISTEMA.EMPRESARUC + "-CON-DETRACCION-VENTAS-" + STU_SISTEMA.ANOTRABAJO.ToString() + Convert.ToInt32(CboMeses.SelectedValue).ToString("00") + ".xls";
             }
             DgLista.ExportTo(c_NomArchivo);
             MessageBox.Show("! Se exporto con exito la informacion en el archivo " + c_NomArchivo + " !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);

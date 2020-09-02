@@ -246,19 +246,19 @@ namespace SSF_NET_Contabilidad.Formularios
         }
         void EjecutarConsulta()
         {
-            if (Convert.ToInt16(CboPerIni.SelectedValue) == 0)
+            if (Convert.ToInt32(CboPerIni.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el periodo de inicio a consultar !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboPerIni.Focus();
                 return;
             }
-            if (Convert.ToInt16(CboPerFin.SelectedValue) == 0)
+            if (Convert.ToInt32(CboPerFin.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el periodo final a consultar !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboPerFin.Focus();
                 return;
             }
-            if (Convert.ToInt16(CboPerIni.SelectedValue) > Convert.ToInt16(CboPerFin.SelectedValue))
+            if (Convert.ToInt32(CboPerIni.SelectedValue) > Convert.ToInt32(CboPerFin.SelectedValue))
             {
                 MessageBox.Show("¡ El periodo de inicio no puede ser mayor al periodo final !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboPerFin.Focus();
@@ -266,7 +266,7 @@ namespace SSF_NET_Contabilidad.Formularios
             }
             if (OptLibro.Checked == true)
             {
-                if (Convert.ToInt16(CboLibro.SelectedValue) == 0)
+                if (Convert.ToInt32(CboLibro.SelectedValue) == 0)
                 {
                     MessageBox.Show("¡ No ha seleccionado el libro a consultar !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     CboPro.Focus();
@@ -280,7 +280,7 @@ namespace SSF_NET_Contabilidad.Formularios
             funCom.STU_SISTEMA = STU_SISTEMA;
 
             bool b_Result = false;
-            b_Result = funCom.ConsultaDiario(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt16(CboLibro.SelectedValue), Convert.ToInt16(CboPerIni.SelectedValue), Convert.ToInt16(CboPerFin.SelectedValue));
+            b_Result = funCom.ConsultaDiario(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt32(CboLibro.SelectedValue), Convert.ToInt32(CboPerIni.SelectedValue), Convert.ToInt32(CboPerFin.SelectedValue));
             
             if (b_Result == true)
             {
@@ -333,13 +333,13 @@ namespace SSF_NET_Contabilidad.Formularios
             if (Tab02.SelectedIndex == 0)
             {
                 funFlex.ExportToExcel_NumFilaCabecera = 3;
-                string c_nomarch = STU_SISTEMA.EMPRESARUC + "-" + STU_SISTEMA.ANOTRABAJO.ToString() + "-LIBRO_DIARIO-" + Convert.ToInt16(CboPerIni.SelectedValue).ToString("00") + "-AL-" + Convert.ToInt16(CboPerIni.SelectedValue).ToString("00") + ".xls";
+                string c_nomarch = STU_SISTEMA.EMPRESARUC + "-" + STU_SISTEMA.ANOTRABAJO.ToString() + "-LIBRO_DIARIO-" + Convert.ToInt32(CboPerIni.SelectedValue).ToString("00") + "-AL-" + Convert.ToInt32(CboPerIni.SelectedValue).ToString("00") + ".xls";
                 funFlex.ExportToExcel(FgDatos, STU_SISTEMA.EMPRESANOMBRE, STU_SISTEMA.EMPRESARUC, "LIBRO DIARIO - " + CboLibro.Text.ToUpper(), "DE " + CboPerIni.Text.ToUpper() + " A " + CboPerFin.Text.ToUpper(), c_nomarch);
             }
             else
             {
                 funFlex.ExportToExcel_NumFilaCabecera = 3;
-                string c_nomarch = STU_SISTEMA.EMPRESARUC + "-" + STU_SISTEMA.ANOTRABAJO.ToString() + "-LIBRO_DIARIO-" + Convert.ToInt16(CboPerIni.SelectedValue).ToString("00") + "-AL-" + Convert.ToInt16(CboPerIni.SelectedValue).ToString("00") + ".xls";
+                string c_nomarch = STU_SISTEMA.EMPRESARUC + "-" + STU_SISTEMA.ANOTRABAJO.ToString() + "-LIBRO_DIARIO-" + Convert.ToInt32(CboPerIni.SelectedValue).ToString("00") + "-AL-" + Convert.ToInt32(CboPerIni.SelectedValue).ToString("00") + ".xls";
                 funFlex.ExportToExcel(FgRes, STU_SISTEMA.EMPRESANOMBRE, STU_SISTEMA.EMPRESARUC, "RESUMEN LIBRO DIARIO - " + CboLibro.Text.ToUpper(), "DE " + CboPerIni.Text.ToUpper() + " A " + CboPerFin.Text.ToUpper(), c_nomarch);
             }
         }
@@ -351,11 +351,11 @@ namespace SSF_NET_Contabilidad.Formularios
             objLE.STU_SISTEMA = STU_SISTEMA;
             if (n_Libro == 8)
             {
-                b_result = objLE.LE_81(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt16(CboPerIni.SelectedValue));
+                b_result = objLE.LE_81(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt32(CboPerIni.SelectedValue));
             }
             if (n_Libro == 14)
             {
-                b_result = objLE.LE_141(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt16(CboPerIni.SelectedValue));
+                b_result = objLE.LE_141(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt32(CboPerIni.SelectedValue));
             }
 
             if (b_result == true)
@@ -376,7 +376,7 @@ namespace SSF_NET_Contabilidad.Formularios
         {
             CN_con_diario o_dia = new CN_con_diario();
             o_dia.mysConec= mysConec;
-            o_dia.VerDescuadrados(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt16(CboPerIni.SelectedValue), Convert.ToInt16(CboLibro.SelectedValue));
+            o_dia.VerDescuadrados(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt32(CboPerIni.SelectedValue), Convert.ToInt32(CboLibro.SelectedValue));
         }
     }
 }

@@ -314,8 +314,8 @@ namespace SIAC_DATOS.Models.Contabilidad
             }
         }
 
-        private List<CostoProduccionDetIns> _CostoProduccionDetInss;
-        public List<CostoProduccionDetIns> CostoProduccionDetInss
+        private ObservableListSource<CostoProduccionDetIns> _CostoProduccionDetInss;
+        public ObservableListSource<CostoProduccionDetIns> CostoProduccionDetInss
         {
             get
             {
@@ -336,8 +336,8 @@ namespace SIAC_DATOS.Models.Contabilidad
             }
         }
 
-        private List<CostoProduccionDetMod> _CostoProduccionDetMods;
-        public List<CostoProduccionDetMod> CostoProduccionDetMods
+        private ObservableListSource<CostoProduccionDetMod> _CostoProduccionDetMods;
+        public ObservableListSource<CostoProduccionDetMod> CostoProduccionDetMods
         {
             get
             {
@@ -361,9 +361,9 @@ namespace SIAC_DATOS.Models.Contabilidad
 
         #region metodos publicos
 
-        public static List<CostoProduccionDet> FetchList(int n_idcostoprod)
+        public static ObservableListSource<CostoProduccionDet> FetchList(int n_idcostoprod)
         {
-            List<CostoProduccionDet> m_listentidad = new List<CostoProduccionDet>();
+            ObservableListSource<CostoProduccionDet> m_listentidad = new ObservableListSource<CostoProduccionDet>();
 
             using (MySqlConnection connection
                 = new MySqlConnection(
@@ -529,11 +529,71 @@ namespace SIAC_DATOS.Models.Contabilidad
             }
         }
 
+        public void ListarInsumosParteProduccion()
+        {
+            if (_CostoProduccionDetInss == null)
+                _CostoProduccionDetInss = new ObservableListSource<CostoProduccionDetIns>();
+
+            _CostoProduccionDetInss.Clear();
+
+            using (MySqlConnection connection
+                = new MySqlConnection(
+                    ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.CommandText = "con_costoproddet_listarinsumosparte";
+                    command.Parameters.Add(new MySqlParameter("@n_idpro", _n_idparteprod));
+                    connection.Open();
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            CostoProduccionDetIns m_entidad = CostoProduccionDetIns.SetObject(reader);
+                            _CostoProduccionDetInss.Add(m_entidad);
+                        }
+                    }
+                }
+            }
+        }
+
+        public void ListarModParteProduccion()
+        {
+            if (_CostoProduccionDetMods == null)
+                _CostoProduccionDetMods = new ObservableListSource<CostoProduccionDetMod>();
+
+            _CostoProduccionDetMods.Clear();
+
+            using (MySqlConnection connection
+                = new MySqlConnection(
+                    ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.CommandText = "con_costoproddet_listarmodparte";
+                    command.Parameters.Add(new MySqlParameter("@n_idpro", _n_idparteprod));
+                    connection.Open();
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            CostoProduccionDetMod m_entidad = CostoProduccionDetMod.SetObject(reader);
+                            _CostoProduccionDetMods.Add(m_entidad);
+                        }
+                    }
+                }
+            }
+        }
+
         #endregion
 
         #region metodos privados
 
-        private static CostoProduccionDet SetObject(MySqlDataReader reader)
+        public static CostoProduccionDet SetObject(MySqlDataReader reader)
         {
             CostoProduccionDet costoProduccionDet = new CostoProduccionDet
             {

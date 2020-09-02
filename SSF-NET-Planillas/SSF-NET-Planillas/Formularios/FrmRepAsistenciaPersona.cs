@@ -72,25 +72,25 @@ namespace SSF_NET_Planillas.Formularios
         }
         private void CmdImp_Click(object sender, EventArgs e)
         {
-            if (Convert.ToInt16(CboEmp.SelectedValue) == 0)
+            if (Convert.ToInt32(CboEmp.SelectedValue) == 0)
             {
                MessageBox.Show("No se ha especificado la empresa a consultar", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                CboEmp.Focus();
                return;
             }
-            if (Convert.ToInt16(CboAnoTra.SelectedValue) == 0)
+            if (Convert.ToInt32(CboAnoTra.SelectedValue) == 0)
             {
                 MessageBox.Show("No se ha especificado el año de trabajo", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboMesIni.Focus();
                 return;
             }
-            if (Convert.ToInt16(CboMesIni.SelectedValue) == 0)
+            if (Convert.ToInt32(CboMesIni.SelectedValue) == 0)
             {
                 MessageBox.Show("No se ha especificado el mes de inicio", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboMesIni.Focus();
                 return;
             }
-            if (Convert.ToInt16(CboMesFin.SelectedValue) == 0)
+            if (Convert.ToInt32(CboMesFin.SelectedValue) == 0)
             {
                 MessageBox.Show("No se ha especificado el mes de termino", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboMesIni.Focus();
@@ -102,7 +102,7 @@ namespace SSF_NET_Planillas.Formularios
                 TxtApeNom.Focus();
                 return;
             }
-            if (Convert.ToInt16(CboMesIni.SelectedValue) > Convert.ToInt16(CboMesFin.SelectedValue))
+            if (Convert.ToInt32(CboMesIni.SelectedValue) > Convert.ToInt32(CboMesFin.SelectedValue))
             {
                 MessageBox.Show("El mes de termino no puede ser menor al mes de inicio", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboMesIni.Focus();
@@ -110,7 +110,7 @@ namespace SSF_NET_Planillas.Formularios
             }
             objCabecera.STU_SISTEMA = STU_SISTEMA;
             objCabecera.mysConec = mysConec;
-            objCabecera.RptAsistenciaPersona(Convert.ToInt16(CboAnoTra.SelectedValue), Convert.ToInt16(CboMesIni.SelectedValue), Convert.ToInt16(CboMesFin.SelectedValue), Convert.ToString(CboEmp.SelectedValue), lblcodpersona.Text);
+            objCabecera.RptAsistenciaPersona(Convert.ToInt32(CboAnoTra.SelectedValue), Convert.ToInt32(CboMesIni.SelectedValue), Convert.ToInt32(CboMesFin.SelectedValue), Convert.ToString(CboEmp.SelectedValue), lblcodpersona.Text);
         }
         private void CmdSalir_Click(object sender, EventArgs e)
         {
@@ -118,7 +118,7 @@ namespace SSF_NET_Planillas.Formularios
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            if (Convert.ToInt16(CboEmp.SelectedValue) == 0)
+            if (Convert.ToInt32(CboEmp.SelectedValue) == 0)
             {
                 MessageBox.Show("No se ha especificado el nombre de la empresa", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 TxtApeNom.Focus();

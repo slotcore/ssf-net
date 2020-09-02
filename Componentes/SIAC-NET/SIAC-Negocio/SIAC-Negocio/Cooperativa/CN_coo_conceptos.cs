@@ -52,12 +52,12 @@ namespace SIAC_Negocio.Cooperativa
                 DtResultado = miFun.dtConceptos;
                 if (DtResultado.Rows.Count != 0)
                 {
-                    entConceptos.n_idemp = Convert.ToInt16(DtResultado.Rows[0]["n_idemp"].ToString());
-                    entConceptos.n_id = Convert.ToInt16(DtResultado.Rows[0]["n_id"].ToString());
+                    entConceptos.n_idemp = Convert.ToInt32(DtResultado.Rows[0]["n_idemp"].ToString());
+                    entConceptos.n_id = Convert.ToInt32(DtResultado.Rows[0]["n_id"].ToString());
                     entConceptos.c_cod = DtResultado.Rows[0]["c_cod"].ToString();
                     entConceptos.c_des = DtResultado.Rows[0]["c_des"].ToString();
                     entConceptos.n_imp = Convert.ToDouble(DtResultado.Rows[0]["n_imp"]);
-                    entConceptos.n_afeigv = Convert.ToInt16(DtResultado.Rows[0]["n_afeigv"]);
+                    entConceptos.n_afeigv = Convert.ToInt32(DtResultado.Rows[0]["n_afeigv"]);
                 }
             }
             return;

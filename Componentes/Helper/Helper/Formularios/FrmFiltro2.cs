@@ -40,7 +40,7 @@ namespace Helper.Formularios
             int n_NumeroElementos = Convert.ToInt32(arrCabeceraDg1.GetLongLength(0)) - 1;
             for (n_fila = 0; n_fila <= n_NumeroElementos; n_fila++)
             {
-                n_ancho = n_ancho + Convert.ToInt16(arrCabeceraDg1[n_fila, 1].ToString());
+                n_ancho = n_ancho + Convert.ToInt32(arrCabeceraDg1[n_fila, 1].ToString());
                 if (arrCabeceraDg1[n_fila, 2] == "B")
                 {
                     N_COLCHECK = n_fila + 1;
@@ -109,7 +109,7 @@ namespace Helper.Formularios
             //    {
             //        if (arrCabeceraDg1[n_Fila, 2] == "N")
             //        {
-            //            int intIdRegistro = Convert.ToInt16(DgLista.Columns[Buscar_CampoBusqueda].CellValue(DgLista.Row).ToString());
+            //            int intIdRegistro = Convert.ToInt32(DgLista.Columns[Buscar_CampoBusqueda].CellValue(DgLista.Row).ToString());
             //            c_criterio = "(" + Buscar_CampoBusqueda.Trim() + " = " + intIdRegistro.ToString() + ")";
             //        }
             //        if (arrCabeceraDg1[n_Fila, 2] == "C")

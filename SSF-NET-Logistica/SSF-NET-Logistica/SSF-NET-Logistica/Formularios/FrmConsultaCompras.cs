@@ -483,9 +483,9 @@ namespace SSF_NET_Logistica.Formularios
             funCom.Consulta2(STU_SISTEMA.EMPRESAID, TxtFchIni.Text, TxtFchFin.Text, n_idmon, n_tipfch, n_tipsal, n_Libro, n_tipoconsulta);
             dtLista = funCom.dtLista;
 
-            if (Convert.ToInt16(CboTipPro.SelectedValue) != 0)
+            if (Convert.ToInt32(CboTipPro.SelectedValue) != 0)
             {
-                dtLista = funDatos.DataTableFiltrar(dtLista, "n_idtipexi  = " + Convert.ToInt16(CboTipPro.SelectedValue).ToString() + "");
+                dtLista = funDatos.DataTableFiltrar(dtLista, "n_idtipexi  = " + Convert.ToInt32(CboTipPro.SelectedValue).ToString() + "");
             }
 
             if (OptRes.Checked == true) { dtLista = dtLista; }
@@ -767,7 +767,7 @@ namespace SSF_NET_Logistica.Formularios
             {
                 DataTable dtResul = new DataTable();
                 string c_dato = "";
-                int n_idtippro = Convert.ToInt16(CboTipPro.SelectedValue);
+                int n_idtippro = Convert.ToInt32(CboTipPro.SelectedValue);
                 if (n_idtippro == 0)
                 {
                     dtResul = objItems.BuscarItem("", "n_id", dtItem, n_idtippro);

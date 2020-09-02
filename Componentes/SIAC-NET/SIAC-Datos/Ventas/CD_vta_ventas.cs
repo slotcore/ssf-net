@@ -78,21 +78,21 @@ namespace SIAC_DATOS.Ventas
             if (DtResultado.Rows.Count != 0)
             {
                 Ent_Ventas.n_id = Convert.ToInt32(DtResultado.Rows[0]["n_id"].ToString());
-                Ent_Ventas.n_idemp = Convert.ToInt16(DtResultado.Rows[0]["n_idemp"].ToString());
-                Ent_Ventas.n_anotra = Convert.ToInt16(DtResultado.Rows[0]["n_anotra"].ToString());
-                Ent_Ventas.n_idmes = Convert.ToInt16(DtResultado.Rows[0]["n_idmes"].ToString());
-                Ent_Ventas.n_idlib = Convert.ToInt16(DtResultado.Rows[0]["n_idlib"].ToString());
+                Ent_Ventas.n_idemp = Convert.ToInt32(DtResultado.Rows[0]["n_idemp"].ToString());
+                Ent_Ventas.n_anotra = Convert.ToInt32(DtResultado.Rows[0]["n_anotra"].ToString());
+                Ent_Ventas.n_idmes = Convert.ToInt32(DtResultado.Rows[0]["n_idmes"].ToString());
+                Ent_Ventas.n_idlib = Convert.ToInt32(DtResultado.Rows[0]["n_idlib"].ToString());
                 Ent_Ventas.c_numreg = DtResultado.Rows[0]["c_numreg"].ToString();
-                Ent_Ventas.n_idtippro = Convert.ToInt16(funBas.NulosN(DtResultado.Rows[0]["n_idtippro"]));
-                Ent_Ventas.n_idcli = Convert.ToInt16(DtResultado.Rows[0]["n_idcli"].ToString());
-                Ent_Ventas.n_idtipdoc = Convert.ToInt16(DtResultado.Rows[0]["n_idtipdoc"].ToString());
+                Ent_Ventas.n_idtippro = Convert.ToInt32(funBas.NulosN(DtResultado.Rows[0]["n_idtippro"]));
+                Ent_Ventas.n_idcli = Convert.ToInt32(DtResultado.Rows[0]["n_idcli"].ToString());
+                Ent_Ventas.n_idtipdoc = Convert.ToInt32(DtResultado.Rows[0]["n_idtipdoc"].ToString());
                 Ent_Ventas.c_numser = DtResultado.Rows[0]["c_numser"].ToString();
                 Ent_Ventas.c_numdoc = DtResultado.Rows[0]["c_numdoc"].ToString();
                 Ent_Ventas.d_fchreg = Convert.ToDateTime(DtResultado.Rows[0]["d_fchreg"].ToString());
                 Ent_Ventas.d_fchdoc = Convert.ToDateTime(DtResultado.Rows[0]["d_fchdoc"].ToString());
                 Ent_Ventas.d_fchven = Convert.ToDateTime(DtResultado.Rows[0]["d_fchven"].ToString());
-                Ent_Ventas.n_idconpag = Convert.ToInt16(DtResultado.Rows[0]["n_idconpag"].ToString());
-                Ent_Ventas.n_idmon = Convert.ToInt16(DtResultado.Rows[0]["n_idmon"].ToString());
+                Ent_Ventas.n_idconpag = Convert.ToInt32(DtResultado.Rows[0]["n_idconpag"].ToString());
+                Ent_Ventas.n_idmon = Convert.ToInt32(DtResultado.Rows[0]["n_idmon"].ToString());
                 Ent_Ventas.n_impbru = Convert.ToDouble(DtResultado.Rows[0]["n_impbru"].ToString());
                 Ent_Ventas.n_impbru2 = Convert.ToDouble(DtResultado.Rows[0]["n_impbru2"].ToString());
                 Ent_Ventas.n_impbru3 = Convert.ToDouble(DtResultado.Rows[0]["n_impbru3"].ToString());
@@ -103,11 +103,11 @@ namespace SIAC_DATOS.Ventas
                 Ent_Ventas.n_imptotven = Convert.ToDouble(DtResultado.Rows[0]["n_imptotven"].ToString());
                 Ent_Ventas.n_tc = Convert.ToDouble(funBas.NulosN(DtResultado.Rows[0]["n_tc"]));
                 Ent_Ventas.n_impsal = Convert.ToDouble(DtResultado.Rows[0]["n_impsal"].ToString());
-                Ent_Ventas.n_idven = Convert.ToInt16(DtResultado.Rows[0]["n_idven"].ToString());
+                Ent_Ventas.n_idven = Convert.ToInt32(DtResultado.Rows[0]["n_idven"].ToString());
                 Ent_Ventas.n_tasaigv = Convert.ToDouble(DtResultado.Rows[0]["n_tasaigv"].ToString());
                 Ent_Ventas.c_glosa = DtResultado.Rows[0]["c_glosa"].ToString();
-                Ent_Ventas.n_anulado = Convert.ToInt16(DtResultado.Rows[0]["n_anulado"].ToString());
-                Ent_Ventas.n_oriitem = Convert.ToInt16(DtResultado.Rows[0]["n_oriitem"].ToString());
+                Ent_Ventas.n_anulado = Convert.ToInt32(DtResultado.Rows[0]["n_anulado"].ToString());
+                Ent_Ventas.n_oriitem = Convert.ToInt32(DtResultado.Rows[0]["n_oriitem"].ToString());
 
                 Ent_Ventas.n_impsubtot = Convert.ToDouble(funBas.NulosN(DtResultado.Rows[0]["n_impsubtot"]));
                 Ent_Ventas.n_pordsc = Convert.ToDouble(funBas.NulosN(DtResultado.Rows[0]["n_pordsc"]));
@@ -117,8 +117,8 @@ namespace SIAC_DATOS.Ventas
                 Ent_Ventas.n_idtipmot = Convert.ToInt32(funBas.NulosN(DtResultado.Rows[0]["n_idtipmot"]));
                 Ent_Ventas.n_idtipope = Convert.ToInt32(funBas.NulosN(DtResultado.Rows[0]["n_idtipope"]));
 
-                Ent_Ventas.n_idtipdocref = Convert.ToInt16(DtResultado.Rows[0]["n_idtipdocref"].ToString());
-                Ent_Ventas.n_iddocref = Convert.ToInt16(DtResultado.Rows[0]["n_iddocref"].ToString());
+                Ent_Ventas.n_idtipdocref = Convert.ToInt32(DtResultado.Rows[0]["n_idtipdocref"].ToString());
+                Ent_Ventas.n_iddocref = Convert.ToInt32(DtResultado.Rows[0]["n_iddocref"].ToString());
                 Ent_Ventas.c_numdocref = DtResultado.Rows[0]["c_numdocref"].ToString();
                 Ent_Ventas.c_serdocref = DtResultado.Rows[0]["c_serdocref"].ToString();
                 Ent_Ventas.c_motnc = DtResultado.Rows[0]["c_motnc"].ToString();
@@ -140,17 +140,17 @@ namespace SIAC_DATOS.Ventas
                     BE_VTA_VENTASDET BE_Detalle = new BE_VTA_VENTASDET();
 
                     BE_Detalle.n_idvta = Convert.ToInt32(DtResultado.Rows[n_fila]["n_idvta"].ToString());
-                    BE_Detalle.n_iditem = Convert.ToInt16(DtResultado.Rows[n_fila]["n_iditem"].ToString());
+                    BE_Detalle.n_iditem = Convert.ToInt32(DtResultado.Rows[n_fila]["n_iditem"].ToString());
                     BE_Detalle.c_desusu = DtResultado.Rows[n_fila]["c_desusu"].ToString();
-                    BE_Detalle.n_idunimed = Convert.ToInt16(DtResultado.Rows[n_fila]["n_idunimed"].ToString());
+                    BE_Detalle.n_idunimed = Convert.ToInt32(DtResultado.Rows[n_fila]["n_idunimed"].ToString());
                     BE_Detalle.n_canpro = Convert.ToDouble(DtResultado.Rows[n_fila]["n_canpro"].ToString());
                     BE_Detalle.n_preunibru = Convert.ToDouble(DtResultado.Rows[n_fila]["n_preunibru"].ToString());
                     BE_Detalle.n_impdes = Convert.ToDouble(DtResultado.Rows[n_fila]["n_impdes"].ToString());
                     BE_Detalle.n_preuninet = Convert.ToDouble(DtResultado.Rows[n_fila]["n_preuninet"].ToString());
                     BE_Detalle.n_imptot = Convert.ToDouble(DtResultado.Rows[n_fila]["n_imptot"].ToString());
                     BE_Detalle.n_pordsc = Convert.ToDouble(funBas.NulosN(DtResultado.Rows[n_fila]["n_pordsc"]));
-                    BE_Detalle.n_idtipven = Convert.ToInt16(funBas.NulosN(DtResultado.Rows[n_fila]["n_idtipven"]));
-                    BE_Detalle.n_idtipafeigv = Convert.ToInt16(funBas.NulosN(DtResultado.Rows[n_fila]["n_idtipafeigv"]));
+                    BE_Detalle.n_idtipven = Convert.ToInt32(funBas.NulosN(DtResultado.Rows[n_fila]["n_idtipven"]));
+                    BE_Detalle.n_idtipafeigv = Convert.ToInt32(funBas.NulosN(DtResultado.Rows[n_fila]["n_idtipafeigv"]));
                     BE_Detalle.c_datadi = funBas.NulosC(DtResultado.Rows[n_fila]["c_datadi"]).ToString();
                     BE_Detalle.n_preuninetigv = Convert.ToDouble(funBas.NulosN(DtResultado.Rows[n_fila]["n_preuninetigv"]));
                     BE_Detalle.n_imptotigv = Convert.ToDouble(funBas.NulosN(DtResultado.Rows[n_fila]["n_imptotigv"]));
@@ -168,9 +168,9 @@ namespace SIAC_DATOS.Ventas
                 {
                     BE_VTA_VENTASDOC BE_Ddocumento = new BE_VTA_VENTASDOC();
 
-                    BE_Ddocumento.n_idvta = Convert.ToInt16(DtResultado.Rows[n_fila]["n_idvta"].ToString());
-                    BE_Ddocumento.n_idtipdoc = Convert.ToInt16(DtResultado.Rows[n_fila]["n_idtipdoc"].ToString());
-                    BE_Ddocumento.n_iddoc = Convert.ToInt16(DtResultado.Rows[n_fila]["n_iddoc"].ToString());
+                    BE_Ddocumento.n_idvta = Convert.ToInt32(DtResultado.Rows[n_fila]["n_idvta"].ToString());
+                    BE_Ddocumento.n_idtipdoc = Convert.ToInt32(DtResultado.Rows[n_fila]["n_idtipdoc"].ToString());
+                    BE_Ddocumento.n_iddoc = Convert.ToInt32(DtResultado.Rows[n_fila]["n_iddoc"].ToString());
                     LstDocumentos.Add(BE_Ddocumento);
                 }
             }

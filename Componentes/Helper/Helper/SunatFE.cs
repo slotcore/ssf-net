@@ -184,9 +184,9 @@ namespace Helper
                     c_arbol = dtResul.Rows[n_row]["c_arbol"].ToString();
                     c_prefi = dtResul.Rows[n_row]["c_prefijo"].ToString();
                     c_dirur = dtResul.Rows[n_row]["c_dirurl"].ToString();
-                    n_tipnod = Convert.ToInt16(dtResul.Rows[n_row]["n_tipo"]);
+                    n_tipnod = Convert.ToInt32(dtResul.Rows[n_row]["n_tipo"]);
                     c_NewRutaArbol = dtResul.Rows[n_row]["c_arbol"].ToString();
-                    n_eslista = Convert.ToInt16(Fun.NulosN(dtResul.Rows[n_row]["n_lista"]));
+                    n_eslista = Convert.ToInt32(Fun.NulosN(dtResul.Rows[n_row]["n_lista"]));
                     arrAtributo = LlenarArrayAtributos(Convert.ToInt32(dtResul.Rows[n_row]["n_id"]), dtAtributos);
 
                     FunXml.DocXml = DocXml;
@@ -318,9 +318,9 @@ namespace Helper
                     c_arbol = dtResul.Rows[n_row]["c_arbol"].ToString();
                     c_prefi = dtResul.Rows[n_row]["c_prefijo"].ToString();
                     c_dirur = dtResul.Rows[n_row]["c_dirurl"].ToString();
-                    n_tipnod = Convert.ToInt16(dtResul.Rows[n_row]["n_tipo"]);
+                    n_tipnod = Convert.ToInt32(dtResul.Rows[n_row]["n_tipo"]);
                     c_NewRutaArbol = dtResul.Rows[n_row]["c_arbol"].ToString();
-                    n_eslista = Convert.ToInt16(Fun.NulosN(dtResul.Rows[n_row]["n_lista"]));
+                    n_eslista = Convert.ToInt32(Fun.NulosN(dtResul.Rows[n_row]["n_lista"]));
                     arrAtributo = LlenarArrayAtributos(Convert.ToInt32(dtResul.Rows[n_row]["n_id"]), dtAtributos);
 
                     FunXml.DocXml = DocXml;

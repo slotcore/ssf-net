@@ -68,13 +68,13 @@ namespace SIAC_Negocio.Almacen
 
             if (miFun.b_OcurrioError == false)
             {
-                e_AlmDoc.n_idemp = Convert.ToInt16(dtResul.Rows[0]["n_idemp"].ToString());
-                e_AlmDoc.n_idalm = Convert.ToInt16(dtResul.Rows[0]["n_idalm"].ToString());
-                e_AlmDoc.n_idloc = Convert.ToInt16(dtResul.Rows[0]["n_idloc"].ToString());
-                e_AlmDoc.n_idtipdoc = Convert.ToInt16(dtResul.Rows[0]["n_idtipdoc"].ToString());
+                e_AlmDoc.n_idemp = Convert.ToInt32(dtResul.Rows[0]["n_idemp"].ToString());
+                e_AlmDoc.n_idalm = Convert.ToInt32(dtResul.Rows[0]["n_idalm"].ToString());
+                e_AlmDoc.n_idloc = Convert.ToInt32(dtResul.Rows[0]["n_idloc"].ToString());
+                e_AlmDoc.n_idtipdoc = Convert.ToInt32(dtResul.Rows[0]["n_idtipdoc"].ToString());
                 e_AlmDoc.c_numser = dtResul.Rows[0]["c_numser"].ToString();
                 e_AlmDoc.c_numdoc = "";
-                e_AlmDoc.n_id = Convert.ToInt16(dtResul.Rows[0]["n_id"].ToString());
+                e_AlmDoc.n_id = Convert.ToInt32(dtResul.Rows[0]["n_id"].ToString());
                 b_result = true;
             }
             else

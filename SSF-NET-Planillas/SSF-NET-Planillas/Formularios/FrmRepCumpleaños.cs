@@ -92,7 +92,7 @@ namespace SSF_NET_Planillas.Formularios
         {
             //if (OptSelMes.Checked == true)
             //{
-            //    if (Convert.ToInt16(CboMes.SelectedValue) == 0)
+            //    if (Convert.ToInt32(CboMes.SelectedValue) == 0)
             //    {
             //        MessageBox.Show("No se ha especificado el mes a consultar", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             //        CboMes.Focus();
@@ -106,7 +106,7 @@ namespace SSF_NET_Planillas.Formularios
             CN_pla_empleados objCabecera = new CN_pla_empleados(STU_SISTEMA);                            // CABECERA DEL REGISTRO
             objCabecera.STU_SISTEMA = STU_SISTEMA;
             //objCabecera.mysConec = mysConec;
-            objCabecera.ReporteCumpleaños(Convert.ToInt16(CboEmp.SelectedValue), Convert.ToInt16(CboMes.SelectedValue), b_destacado);
+            objCabecera.ReporteCumpleaños(Convert.ToInt32(CboEmp.SelectedValue), Convert.ToInt32(CboMes.SelectedValue), b_destacado);
         }
         private void OptTodMes_CheckedChanged(object sender, EventArgs e)
         {

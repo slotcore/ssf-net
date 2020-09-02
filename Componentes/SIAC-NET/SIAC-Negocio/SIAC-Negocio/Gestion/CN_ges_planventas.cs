@@ -124,14 +124,14 @@ namespace SIAC_Negocio.Gestion
                 if (dtCabecera.Rows.Count != 0)
                 {
                     entCabecera = new BE_GES_PLANVENTAS();
-                    entCabecera.n_idemp = Convert.ToInt16(dtCabecera.Rows[0]["n_idemp"].ToString());
-                    entCabecera.n_id = Convert.ToInt16(dtCabecera.Rows[0]["n_id"].ToString());
-                    entCabecera.n_idano = Convert.ToInt16(dtCabecera.Rows[0]["n_idano"].ToString());
-                    entCabecera.n_idmes = Convert.ToInt16(dtCabecera.Rows[0]["n_idmes"].ToString());
+                    entCabecera.n_idemp = Convert.ToInt32(dtCabecera.Rows[0]["n_idemp"].ToString());
+                    entCabecera.n_id = Convert.ToInt32(dtCabecera.Rows[0]["n_id"].ToString());
+                    entCabecera.n_idano = Convert.ToInt32(dtCabecera.Rows[0]["n_idano"].ToString());
+                    entCabecera.n_idmes = Convert.ToInt32(dtCabecera.Rows[0]["n_idmes"].ToString());
                     entCabecera.c_des = dtCabecera.Rows[0]["c_des"].ToString();
-                    entCabecera.n_idmesini = Convert.ToInt16(dtCabecera.Rows[0]["n_idmesini"].ToString());
+                    entCabecera.n_idmesini = Convert.ToInt32(dtCabecera.Rows[0]["n_idmesini"].ToString());
                     entCabecera.d_fchcre = Convert.ToDateTime(dtCabecera.Rows[0]["d_fchcre"]);
-                    entCabecera.n_activo = Convert.ToInt16(dtCabecera.Rows[0]["n_activo"].ToString());
+                    entCabecera.n_activo = Convert.ToInt32(dtCabecera.Rows[0]["n_activo"].ToString());
                 }
             }
             else

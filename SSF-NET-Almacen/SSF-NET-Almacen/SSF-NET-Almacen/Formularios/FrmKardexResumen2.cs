@@ -143,10 +143,10 @@ namespace SSF_NET_Almacen.Formularios
         }
         void MostrarDatos()
         {
-            int n_idalm = Convert.ToInt16(CboAlmacen.SelectedValue);
-            int n_tipexit = Convert.ToInt16(CboTipExi.SelectedValue);
+            int n_idalm = Convert.ToInt32(CboAlmacen.SelectedValue);
+            int n_tipexit = Convert.ToInt32(CboTipExi.SelectedValue);
             obMov.mysConec = mysConec;
-            DtMovimientos = obMov.VerKardexResumido(STU_SISTEMA.EMPRESAID, Convert.ToInt16(TxtAñoTra.Value), TxtFchIni.Text, TxtFchFin.Text, n_tipexit, n_idalm);
+            DtMovimientos = obMov.VerKardexResumido(STU_SISTEMA.EMPRESAID, Convert.ToInt32(TxtAñoTra.Value), TxtFchIni.Text, TxtFchFin.Text, n_tipexit, n_idalm);
 
             if (DtMovimientos != null)
             {
@@ -179,7 +179,7 @@ namespace SSF_NET_Almacen.Formularios
             CN_alm_movimientos objMov = new CN_alm_movimientos();
 
             objMov.STU_SISTEMA = STU_SISTEMA;
-            objMov.ReportKardexResumen(TxtFchIni.Text, TxtFchFin.Text, Convert.ToInt16(CboTipExi.SelectedValue), Convert.ToInt16(CboAlmacen.SelectedValue));
+            objMov.ReportKardexResumen(TxtFchIni.Text, TxtFchFin.Text, Convert.ToInt32(CboTipExi.SelectedValue), Convert.ToInt32(CboAlmacen.SelectedValue));
         }
         private void ToolHerramientas_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -290,7 +290,7 @@ namespace SSF_NET_Almacen.Formularios
                 CmdBuscar.Focus();
                 return;
             }
-            int n_IdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int n_IdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             string c_producto = DgLista.Columns["c_despro"].CellValue(DgLista.Row).ToString();
 
             FrmKardexDetalle2 frm = new FrmKardexDetalle2();

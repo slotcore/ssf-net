@@ -55,7 +55,7 @@ namespace Helper.Formularios
 
             for (n_fila = 0; n_fila <= n_NumeroElementos; n_fila++)
             {
-                n_ancho = n_ancho + Convert.ToInt16(arrCabeceraFlex[n_fila, 1].ToString());
+                n_ancho = n_ancho + Convert.ToInt32(arrCabeceraFlex[n_fila, 1].ToString());
 
                 if (arrCabeceraFlex[n_fila, 2].ToString() == "B")
                 {

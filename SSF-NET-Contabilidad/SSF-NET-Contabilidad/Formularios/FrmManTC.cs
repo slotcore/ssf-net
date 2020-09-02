@@ -175,7 +175,7 @@ namespace SSF_NET_Contabilidad.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -185,7 +185,7 @@ namespace SSF_NET_Contabilidad.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int n_IdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int n_IdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -197,7 +197,7 @@ namespace SSF_NET_Contabilidad.Formularios
                     MessageBox.Show("¡ El registro se elimino con exito !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
 
                     // MOSTRAMOS LOS DATOS EN LA GRILLA
-                    ListarItems(Convert.ToInt16(CboMeses.SelectedValue));
+                    ListarItems(Convert.ToInt32(CboMeses.SelectedValue));
                 }
                 else
                 {
@@ -250,10 +250,10 @@ namespace SSF_NET_Contabilidad.Formularios
             }
             else
             {
-                e_Tc.n_id = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                e_Tc.n_id = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             }
             e_Tc.d_fecha = Convert.ToDateTime(TxtFchTC.Text);
-            e_Tc.n_idmon = Convert.ToInt16(CboMoneda.SelectedValue);
+            e_Tc.n_idmon = Convert.ToInt32(CboMoneda.SelectedValue);
             e_Tc.n_impcom = Convert.ToDouble(TxtImpCom.Text);
             e_Tc.n_impven = Convert.ToDouble(TxtImpVen.Text);
         }
@@ -261,7 +261,7 @@ namespace SSF_NET_Contabilidad.Formularios
         {
             bool booEstado = true;
 
-            if (Convert.ToInt16(CboMoneda.SelectedValue) == 0)
+            if (Convert.ToInt32(CboMoneda.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado la moneda !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -296,7 +296,7 @@ namespace SSF_NET_Contabilidad.Formularios
             {
                 CboMeses.SelectedValue = STU_SISTEMA.MESTRABAJO;
                 booSeEjecuto = true;
-                ListarItems(Convert.ToInt16(STU_SISTEMA.MESTRABAJO));
+                ListarItems(Convert.ToInt32(STU_SISTEMA.MESTRABAJO));
 
                 if (dtLista.Rows.Count == 0)
                 {
@@ -338,7 +338,7 @@ namespace SSF_NET_Contabilidad.Formularios
                // dtRegistros = objRegistros.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.SYS_UNIBD);
                 DialogResult Rpta;
                 // MOSTRAMOS LOS DATOS EN LA GRILLA
-                ListarItems(Convert.ToInt16(CboMeses.SelectedValue));
+                ListarItems(Convert.ToInt32(CboMeses.SelectedValue));
 
                 if (n_QueHace == 1)
                 {
@@ -378,7 +378,7 @@ namespace SSF_NET_Contabilidad.Formularios
 
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -388,7 +388,7 @@ namespace SSF_NET_Contabilidad.Formularios
         }
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             VerRegistro(intIdRegistro);
         }
@@ -441,7 +441,7 @@ namespace SSF_NET_Contabilidad.Formularios
         {
             if (booAgregando == true) { return; }
 
-            ListarItems(Convert.ToInt16(CboMeses.SelectedValue));
+            ListarItems(Convert.ToInt32(CboMeses.SelectedValue));
 
             if (dtLista.Rows.Count == 0)
             {

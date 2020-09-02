@@ -142,13 +142,13 @@ namespace SSF_NET_Almacen.Formularios
         }
         void MostrarDatos()
         {
-            //int n_idalm = Convert.ToInt16(CboAlmacen.SelectedValue);
-            //int n_tipexit = Convert.ToInt16(CboTipExi.SelectedValue);
-            //int n_idper = Convert.ToInt16(CboPer.SelectedValue);
+            //int n_idalm = Convert.ToInt32(CboAlmacen.SelectedValue);
+            //int n_tipexit = Convert.ToInt32(CboTipExi.SelectedValue);
+            //int n_idper = Convert.ToInt32(CboPer.SelectedValue);
             //FgKar.Rows.Count = 2;
             //obMov.mysConec = mysConec;
 
-            //DtMovimientos = obMov.VerKardexResumido(STU_SISTEMA.EMPRESAID, Convert.ToInt16(TxtAñoTra.Value),n_idper, n_tipexit, n_idalm);
+            //DtMovimientos = obMov.VerKardexResumido(STU_SISTEMA.EMPRESAID, Convert.ToInt32(TxtAñoTra.Value),n_idper, n_tipexit, n_idalm);
 
             //if (DtMovimientos != null)
             //{
@@ -181,7 +181,7 @@ namespace SSF_NET_Almacen.Formularios
             CN_alm_movimientos objMov = new CN_alm_movimientos();
 
             objMov.STU_SISTEMA = STU_SISTEMA;
-            //objMov.ReporteKardexResumen(TxtFchIni.Text, TxtFchFin.Text, Convert.ToInt16(CboTipExi.SelectedValue));
+            //objMov.ReporteKardexResumen(TxtFchIni.Text, TxtFchFin.Text, Convert.ToInt32(CboTipExi.SelectedValue));
         }
         private void CmdBuscar_Click(object sender, System.EventArgs e)
         {
@@ -205,7 +205,7 @@ namespace SSF_NET_Almacen.Formularios
             //    TxtFchFin.Focus();
             //    return;
             //}
-            if (Convert.ToInt16(CboPer.SelectedValue) == 0)
+            if (Convert.ToInt32(CboPer.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha indicado el periodo a consultar !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboPer.Focus();
@@ -229,7 +229,7 @@ namespace SSF_NET_Almacen.Formularios
                 CboPer.Focus();
                 return;
             }
-            int n_IdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int n_IdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             string c_producto = DgLista.Columns["c_despro"].CellValue(DgLista.Row).ToString();
 
             FrmKardexDetalle frm = new FrmKardexDetalle();

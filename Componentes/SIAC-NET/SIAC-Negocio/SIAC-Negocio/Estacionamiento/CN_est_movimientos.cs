@@ -77,23 +77,23 @@ namespace SIAC_Negocio.Estacionamiento
             {
                 Helper.Comunes.Funciones funGen = new Helper.Comunes.Funciones();
 
-                e_Movimiento.n_idemp = Convert.ToInt16(dtListar.Rows[0]["n_idemp"]);
-                e_Movimiento.n_idloc = Convert.ToInt16(dtListar.Rows[0]["n_idloc"]);
+                e_Movimiento.n_idemp = Convert.ToInt32(dtListar.Rows[0]["n_idemp"]);
+                e_Movimiento.n_idloc = Convert.ToInt32(dtListar.Rows[0]["n_idloc"]);
                 e_Movimiento.n_id = Convert.ToInt32(dtListar.Rows[0]["n_id"]);
-                e_Movimiento.n_idcaj = Convert.ToInt16(dtListar.Rows[0]["n_idcaj"]);
-                e_Movimiento.n_idcli = Convert.ToInt16(dtListar.Rows[0]["n_idcli"]);
+                e_Movimiento.n_idcaj = Convert.ToInt32(dtListar.Rows[0]["n_idcaj"]);
+                e_Movimiento.n_idcli = Convert.ToInt32(dtListar.Rows[0]["n_idcli"]);
                 e_Movimiento.d_fchdoc = Convert.ToDateTime(dtListar.Rows[0]["d_fchdoc"]);
                 e_Movimiento.c_horini = dtListar.Rows[0]["c_horini"].ToString();
                 e_Movimiento.c_horfin = dtListar.Rows[0]["c_horfin"].ToString();
-                e_Movimiento.n_tieuti = Convert.ToInt16(dtListar.Rows[0]["n_tieuti"]);
-                e_Movimiento.n_idser = Convert.ToInt16(dtListar.Rows[0]["n_idser"]);
+                e_Movimiento.n_tieuti = Convert.ToInt32(dtListar.Rows[0]["n_tieuti"]);
+                e_Movimiento.n_idser = Convert.ToInt32(dtListar.Rows[0]["n_idser"]);
                 e_Movimiento.n_importe = Convert.ToDouble(dtListar.Rows[0]["n_importe"]);
                 e_Movimiento.n_impser = Convert.ToDouble(funGen.NulosN(dtListar.Rows[0]["n_impser"]));
                 e_Movimiento.c_tieuit = dtListar.Rows[0]["c_tieuit"].ToString();
                 e_Movimiento.c_numpla = dtListar.Rows[0]["c_numpla"].ToString();
                 e_Movimiento.c_numdoc = dtListar.Rows[0]["c_numdoc"].ToString();
-                e_Movimiento.n_idtipdoc = Convert.ToInt16(dtListar.Rows[0]["n_idtipdoc"]);
-                e_Movimiento.n_finalizado = Convert.ToInt16(dtListar.Rows[0]["n_finalizado"]);
+                e_Movimiento.n_idtipdoc = Convert.ToInt32(dtListar.Rows[0]["n_idtipdoc"]);
+                e_Movimiento.n_finalizado = Convert.ToInt32(dtListar.Rows[0]["n_finalizado"]);
             }
             if (b_OcurrioError == true)
             {

@@ -201,11 +201,11 @@ namespace SIAC_NET_Estacionamientos.Formularios
             int n_idusu = 0;
             for (n_row = 0; n_row <= dtResul.Rows.Count - 1; n_row++)
             {
-                n_idusu = Convert.ToInt16(dtResul.Rows[n_row]["n_idusu"]);
+                n_idusu = Convert.ToInt32(dtResul.Rows[n_row]["n_idusu"]);
                 
                 if (STU_SISTEMA.USUARIOID == n_idusu)
                 {
-                    C_IDCAJERO = Convert.ToInt16(dtResul.Rows[n_row]["n_id"]).ToString();
+                    C_IDCAJERO = Convert.ToInt32(dtResul.Rows[n_row]["n_id"]).ToString();
                     b_seencontro = true;
                     break;
                 }
@@ -214,7 +214,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
             if (b_seencontro == true)
             {
                 CboPla.Enabled = false;
-                CboCajero.SelectedValue = Convert.ToInt16(C_IDCAJERO);
+                CboCajero.SelectedValue = Convert.ToInt32(C_IDCAJERO);
             }
             else
             {
@@ -274,7 +274,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
         {
             if (STU_SISTEMA.USUARIOPERFIL == 10)
             {
-                //int n_idpla = Convert.ToInt16(funDatos.DataTableBuscar(dtCajero, "n_idusu", "n_idloc", STU_SISTEMA.USUARIOID.ToString(), "N"));
+                //int n_idpla = Convert.ToInt32(funDatos.DataTableBuscar(dtCajero, "n_idusu", "n_idloc", STU_SISTEMA.USUARIOID.ToString(), "N"));
 
                 dtLista = funDatos.DataTableFiltrar(dtLista, "n_idpla = " + C_IDLOCAL + "");
             }
@@ -382,8 +382,8 @@ namespace SIAC_NET_Estacionamientos.Formularios
             LblTitulo2.Text = "Agregando Nuevo Registro";
             Tab1.SelectedIndex = 1;
             FgPlacas.AllowEditing = true;
-            CboPla.SelectedValue = Convert.ToInt16(C_IDLOCAL);
-            CboCajero.SelectedValue = Convert.ToInt16(C_IDCAJERO);
+            CboPla.SelectedValue = Convert.ToInt32(C_IDLOCAL);
+            CboCajero.SelectedValue = Convert.ToInt32(C_IDCAJERO);
             TxtNumSer.Text = "0001";
 
             CN_est_conecta o_conec = new CN_est_conecta(STU_SISTEMA);
@@ -451,7 +451,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
             Blanquea();
             Bloquea();
             ActivarTool();
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
             Tab1.SelectedIndex = 1;
@@ -461,7 +461,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[1].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[1].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -550,7 +550,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
             }
             else
             {
-                n_id = Convert.ToInt16(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
+                n_id = Convert.ToInt32(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
             }
 
             BE_Registro.n_idemp = STU_SISTEMA.EMPRESAID;
@@ -558,8 +558,8 @@ namespace SIAC_NET_Estacionamientos.Formularios
             BE_Registro.c_numser = TxtNumSer.Text;
             BE_Registro.c_numdoc = TxtNumDoc.Text;
             BE_Registro.n_idtipdoc = 91;
-            BE_Registro.n_idpla = Convert.ToInt16(CboPla.SelectedValue);
-            BE_Registro.n_idcaj = Convert.ToInt16(CboCajero.SelectedValue);
+            BE_Registro.n_idpla = Convert.ToInt32(CboPla.SelectedValue);
+            BE_Registro.n_idcaj = Convert.ToInt32(CboCajero.SelectedValue);
             BE_Registro.n_ano = STU_SISTEMA.ANOTRABAJO;
             BE_Registro.n_mes = STU_SISTEMA.MESTRABAJO;
             BE_Registro.d_fchemi = Convert.ToDateTime(TxtFchEmi.Text);
@@ -668,7 +668,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
         {
             bool booEstado = true;
 
-            if (Convert.ToInt16(CboPla.SelectedValue) == 0)
+            if (Convert.ToInt32(CboPla.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el nombre de la playa !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -775,7 +775,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
         }
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             //booAgregando = true;
             //VerRegistro(intIdRegistro);
@@ -799,7 +799,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
 
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns[1].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -817,9 +817,9 @@ namespace SIAC_NET_Estacionamientos.Formularios
         {
             if (booAgregando == true) { return; }
             DataTable dtResul = new DataTable();
-            dtResul = funDatos.DataTableFiltrar(dtCajero, "n_idloc = " + Convert.ToInt16(CboPla.SelectedValue).ToString() + "");
+            dtResul = funDatos.DataTableFiltrar(dtCajero, "n_idloc = " + Convert.ToInt32(CboPla.SelectedValue).ToString() + "");
             funDatos.ComboBoxCargarDataTable(CboCajero, dtResul, "n_id", "c_cajapenom");
-            CboCajero.SelectedValue = Convert.ToInt16(C_IDCAJERO);
+            CboCajero.SelectedValue = Convert.ToInt32(C_IDCAJERO);
         }
         private void CmdCargar_Click(object sender, EventArgs e)
         {
@@ -838,7 +838,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
             FgPlacas.Rows.Count = 2;
             if (OptTipo1.Checked == true) { n_tipo = 1; }
             if (OptTipo2.Checked == true) { n_tipo = 2; }
-            o_Liquidacion.Consulta1(STU_SISTEMA.EMPRESAID, Convert.ToInt16(C_IDLOCAL), Convert.ToInt16(C_IDCAJERO), TxtFchIni.Text, TxtFchFin.Text, n_tipo);
+            o_Liquidacion.Consulta1(STU_SISTEMA.EMPRESAID, Convert.ToInt32(C_IDLOCAL), Convert.ToInt32(C_IDCAJERO), TxtFchIni.Text, TxtFchFin.Text, n_tipo);
             dtdocumento = o_Liquidacion.dtListar;
             o_Liquidacion = null;
 
@@ -884,10 +884,10 @@ namespace SIAC_NET_Estacionamientos.Formularios
                     c_dato = Convert.ToInt32(dtdocumento.Rows[n_row]["n_venid"]).ToString();
                     FgPlacas.SetData(FgPlacas.Rows.Count - 1, 8, c_dato);
 
-                    c_dato = Convert.ToInt16(dtdocumento.Rows[n_row]["n_idtipdoc"]).ToString();
+                    c_dato = Convert.ToInt32(dtdocumento.Rows[n_row]["n_idtipdoc"]).ToString();
                     FgPlacas.SetData(FgPlacas.Rows.Count - 1, 9, c_dato);
 
-                    c_dato = Convert.ToInt16(dtdocumento.Rows[n_row]["n_tipo"]).ToString();
+                    c_dato = Convert.ToInt32(dtdocumento.Rows[n_row]["n_tipo"]).ToString();
                     FgPlacas.SetData(FgPlacas.Rows.Count - 1, 10, c_dato);
 
                     c_dato = Convert.ToInt32(dtdocumento.Rows[n_row]["n_iddocori"]).ToString();
@@ -916,7 +916,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
         {
             CN_est_liquidacion o_liq = new CN_est_liquidacion(STU_SISTEMA);
             o_liq.STU_SISTEMA = STU_SISTEMA;
-            int n_idreg = Convert.ToInt16(DgLista.Columns[1].CellValue(DgLista.Row).ToString()); ;
+            int n_idreg = Convert.ToInt32(DgLista.Columns[1].CellValue(DgLista.Row).ToString()); ;
             o_liq.STU_SISTEMA = STU_SISTEMA;
             o_liq.ImprimirLiquidacion(n_idreg,1);
             o_liq = null;
@@ -967,7 +967,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
             CN_est_liquidacion o_liq = new CN_est_liquidacion(STU_SISTEMA);
             o_liq.STU_SISTEMA = STU_SISTEMA;
 
-            int n_idreg = Convert.ToInt16(DgLista.Columns[1].CellValue(DgLista.Row).ToString()); ;
+            int n_idreg = Convert.ToInt32(DgLista.Columns[1].CellValue(DgLista.Row).ToString()); ;
             o_liq.STU_SISTEMA = STU_SISTEMA;
             o_liq.ImprimirLiquidacion(n_idreg, 2);
             o_liq = null;
@@ -977,7 +977,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
         {
             CN_est_liquidacion o_liq = new CN_est_liquidacion(STU_SISTEMA);
             o_liq.STU_SISTEMA = STU_SISTEMA;
-            int n_idpla = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());    // ID DE LA PLAYA
+            int n_idpla = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());    // ID DE LA PLAYA
             string c_fecha = DgLista.Columns[4].CellValue(DgLista.Row).ToString().Substring(0,10); 
             o_liq.STU_SISTEMA = STU_SISTEMA;
             o_liq.ImprimirLiquidacionDia(STU_SISTEMA.EMPRESAID, n_idpla, c_fecha);
@@ -986,7 +986,7 @@ namespace SIAC_NET_Estacionamientos.Formularios
 
         private void ToolExportar_Click(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             string c_numliq = DgLista.Columns["c_liqnumdoc"].CellValue(DgLista.Row).ToString();
             string c_nompla = DgLista.Columns["c_plades"].CellValue(DgLista.Row).ToString();
             Tab1.SelectedIndex = 1;

@@ -71,7 +71,7 @@ namespace SIAC_Negocio.Ventas
             dtCab = miFun.dtLista;
             dtDet = miFun.dtDetalle;
 
-            entRegistro.n_idemp = Convert.ToInt16(dtCab.Rows[0]["n_idemp"]);
+            entRegistro.n_idemp = Convert.ToInt32(dtCab.Rows[0]["n_idemp"]);
             entRegistro.n_id = Convert.ToInt32(dtCab.Rows[0]["n_id"]);
             entRegistro.c_codcli = dtCab.Rows[0]["c_codcli"].ToString();
             entRegistro.c_codpunven = dtCab.Rows[0]["c_codpunven"].ToString();
@@ -89,7 +89,7 @@ namespace SIAC_Negocio.Ventas
 
                 detped.n_idped = Convert.ToInt32(dtDet.Rows[n_row]["n_idped"]);
                 detped.c_coditecen = dtDet.Rows[n_row]["c_coditecen"].ToString();
-                detped.n_canpro = Convert.ToInt16(dtDet.Rows[n_row]["n_canpro"]);
+                detped.n_canpro = Convert.ToInt32(dtDet.Rows[n_row]["n_canpro"]);
                 detped.c_codunimedcen = dtDet.Rows[n_row]["c_codunimedcen"].ToString();
 
                 LstDetalle.Add(detped);

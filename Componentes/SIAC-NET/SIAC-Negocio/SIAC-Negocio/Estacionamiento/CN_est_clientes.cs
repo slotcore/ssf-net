@@ -98,10 +98,10 @@ namespace SIAC_Negocio.Estacionamiento
 
             if (dtListar.Rows.Count != 0)
             {
-                e_Cliente.n_idemp = Convert.ToInt16(dtListar.Rows[0]["n_idemp"]);
-                e_Cliente.n_idpla = Convert.ToInt16(dtListar.Rows[0]["n_idpla"]);
-                e_Cliente.n_id = Convert.ToInt16(dtListar.Rows[0]["n_id"]);
-                e_Cliente.n_idtipdocide = Convert.ToInt16(dtListar.Rows[0]["n_idtipdocide"]);
+                e_Cliente.n_idemp = Convert.ToInt32(dtListar.Rows[0]["n_idemp"]);
+                e_Cliente.n_idpla = Convert.ToInt32(dtListar.Rows[0]["n_idpla"]);
+                e_Cliente.n_id = Convert.ToInt32(dtListar.Rows[0]["n_id"]);
+                e_Cliente.n_idtipdocide = Convert.ToInt32(dtListar.Rows[0]["n_idtipdocide"]);
                 e_Cliente.c_numdocide = dtListar.Rows[0]["c_numdocide"].ToString();
                 e_Cliente.c_nom = dtListar.Rows[0]["c_nom"].ToString();
                 e_Cliente.c_ape1 = dtListar.Rows[0]["c_ape1"].ToString();
@@ -109,15 +109,15 @@ namespace SIAC_Negocio.Estacionamiento
                 e_Cliente.c_nom1 = dtListar.Rows[0]["c_nom1"].ToString();
                 e_Cliente.c_nom2 = dtListar.Rows[0]["c_nom2"].ToString();
                 e_Cliente.c_dir = dtListar.Rows[0]["c_dir"].ToString();
-                e_Cliente.n_iddep = Convert.ToInt16(funFunciones.NulosN(dtListar.Rows[0]["n_iddep"]));
-                e_Cliente.n_idpro = Convert.ToInt16(funFunciones.NulosN(dtListar.Rows[0]["n_idpro"]));
-                e_Cliente.n_iddis = Convert.ToInt16(funFunciones.NulosN(dtListar.Rows[0]["n_iddis"]));
+                e_Cliente.n_iddep = Convert.ToInt32(funFunciones.NulosN(dtListar.Rows[0]["n_iddep"]));
+                e_Cliente.n_idpro = Convert.ToInt32(funFunciones.NulosN(dtListar.Rows[0]["n_idpro"]));
+                e_Cliente.n_iddis = Convert.ToInt32(funFunciones.NulosN(dtListar.Rows[0]["n_iddis"]));
                 e_Cliente.c_numtel = dtListar.Rows[0]["c_numtel"].ToString();
-                e_Cliente.n_idtipcli = Convert.ToInt16(dtListar.Rows[0]["n_idtipcli"]);
+                e_Cliente.n_idtipcli = Convert.ToInt32(dtListar.Rows[0]["n_idtipcli"]);
                 e_Cliente.d_fching = Convert.ToDateTime(dtListar.Rows[0]["d_fching"]);
-                e_Cliente.n_tipdocfac = Convert.ToInt16(dtListar.Rows[0]["n_tipdocfac"]);
-                e_Cliente.n_idser = Convert.ToInt16(dtListar.Rows[0]["n_idser"]);
-                e_Cliente.n_idtipcon = Convert.ToInt16(funFunciones.NulosN(dtListar.Rows[0]["n_idtipcon"]));
+                e_Cliente.n_tipdocfac = Convert.ToInt32(dtListar.Rows[0]["n_tipdocfac"]);
+                e_Cliente.n_idser = Convert.ToInt32(dtListar.Rows[0]["n_idser"]);
+                e_Cliente.n_idtipcon = Convert.ToInt32(funFunciones.NulosN(dtListar.Rows[0]["n_idtipcon"]));
                 e_Cliente.n_importe = Convert.ToDouble(dtListar.Rows[0]["n_importe"]);
             }
             if (b_OcurrioError == true)

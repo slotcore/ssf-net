@@ -287,7 +287,7 @@ namespace SSF_NET_Contabilidad.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -297,7 +297,7 @@ namespace SSF_NET_Contabilidad.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int n_IdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int n_IdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -362,21 +362,21 @@ namespace SSF_NET_Contabilidad.Formularios
             }
             else
             {
-                e_Pc.n_id = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                e_Pc.n_id = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             }
 
             e_Pc.c_cuecon = TxtCueCon.Text;
             e_Pc.c_des = TxtDes.Text;
-            if (Convert.ToInt16(funFunciones.NulosN(LblidCueDesDeb.Text)) != 0)
+            if (Convert.ToInt32(funFunciones.NulosN(LblidCueDesDeb.Text)) != 0)
             { 
-                e_Pc.n_ctadesdeb = Convert.ToInt16(LblidCueDesDeb.Text);
+                e_Pc.n_ctadesdeb = Convert.ToInt32(LblidCueDesDeb.Text);
             }
-            if (Convert.ToInt16(funFunciones.NulosN(LblidCueDesHab.Text)) != 0)
+            if (Convert.ToInt32(funFunciones.NulosN(LblidCueDesHab.Text)) != 0)
             { 
-                e_Pc.n_ctadeshab = Convert.ToInt16(LblidCueDesHab.Text);
+                e_Pc.n_ctadeshab = Convert.ToInt32(LblidCueDesHab.Text);
             }
-            e_Pc.n_iddes = Convert.ToInt16(CboDis1.SelectedValue);
-            e_Pc.n_iddes2= Convert.ToInt16(CboDis2.SelectedValue);
+            e_Pc.n_iddes = Convert.ToInt32(CboDis1.SelectedValue);
+            e_Pc.n_iddes2= Convert.ToInt32(CboDis2.SelectedValue);
             //e_Pc.n_iddes3
             //e_Pc.n_tipo
             if (OptDebe.Checked == true){ e_Pc.c_tipsal = "D";}
@@ -386,7 +386,7 @@ namespace SSF_NET_Contabilidad.Formularios
             if (OptSi.Checked == true) { e_Pc.n_documentar = 1; }
             if (OptNo.Checked == true) { e_Pc.n_documentar = 0; }
             //
-            e_Pc.n_idmodulo = Convert.ToInt16(CboModulo.SelectedValue);
+            e_Pc.n_idmodulo = Convert.ToInt32(CboModulo.SelectedValue);
             
             if ((ChkAct.Checked == false) && (ChkPas.Checked == false)) { e_Pc.n_desctabal = 0; }
             if (ChkAct.Checked == true) { e_Pc.n_desctabal = 1; }
@@ -518,7 +518,7 @@ namespace SSF_NET_Contabilidad.Formularios
 
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -529,7 +529,7 @@ namespace SSF_NET_Contabilidad.Formularios
 
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             VerRegistro(intIdRegistro);
         }

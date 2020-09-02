@@ -85,7 +85,7 @@ namespace SIAC_Negocio.Cooperativa
                 entSocios.c_numcel = DtResultado.Rows[0]["c_numcel"].ToString();
                 entSocios.c_email = DtResultado.Rows[0]["c_email"].ToString();
                 
-                if (Convert.ToInt16(xFun.NulosN(DtResultado.Rows[0]["n_idsex"])) == 0)
+                if (Convert.ToInt32(xFun.NulosN(DtResultado.Rows[0]["n_idsex"])) == 0)
                 {
                     entSocios.n_idsex = 0;
                 }
@@ -94,7 +94,7 @@ namespace SIAC_Negocio.Cooperativa
                     entSocios.n_idsex = Convert.ToInt32(DtResultado.Rows[0]["n_idsex"]);
                 }
 
-                if (Convert.ToInt16(xFun.NulosN(DtResultado.Rows[0]["n_idtipsoc"])) == 0)
+                if (Convert.ToInt32(xFun.NulosN(DtResultado.Rows[0]["n_idtipsoc"])) == 0)
                 {
                     entSocios.n_idtipsoc = 0;
                 }

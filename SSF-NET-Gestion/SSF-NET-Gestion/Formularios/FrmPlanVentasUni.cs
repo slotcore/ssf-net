@@ -87,7 +87,7 @@ namespace SSF_NET_Gestion.Formularios
             if (o_plaven.booOcurrioError == false)
             {
                 funFlex.b_AlternarColor = true;
-                MostrarCabeceraMes(Convert.ToInt16(dtres.Rows[0]["n_idmesini"]), dtres);
+                MostrarCabeceraMes(Convert.ToInt32(dtres.Rows[0]["n_idmesini"]), dtres);
 
                 //funFlex.FlexMostrarDatos(FgProEmp1, arrCabeceraFlex1, dtres, 2, true);
             }

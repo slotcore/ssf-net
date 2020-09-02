@@ -648,7 +648,7 @@ namespace SSF_NET_Produccion.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -663,7 +663,7 @@ namespace SSF_NET_Produccion.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DE LA RECETA PARA ELIMINAR LAS LINEAS
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DE LA RECETA PARA ELIMINAR LAS LINEAS
 
             //objRegistro.mysConec = mysConec;
             //objRegistro.obternerlineas(STU_SISTEMA.EMPRESAID, intIdRegistro);
@@ -806,28 +806,28 @@ namespace SSF_NET_Produccion.Formularios
                 booEstado = false;
                 return booEstado;
             }
-            if (Convert.ToInt16(CboFam.SelectedValue) == 0)
+            if (Convert.ToInt32(CboFam.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado la familia del producto !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboFam.Focus();
                 booEstado = false;
                 return booEstado;
             }
-            if (Convert.ToInt16(CboCla.SelectedValue) == 0)
+            if (Convert.ToInt32(CboCla.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado la clase del producto !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboCla.Focus();
                 booEstado = false;
                 return booEstado;
             }
-            if (Convert.ToInt16(CboSubCla.SelectedValue) == 0)
+            if (Convert.ToInt32(CboSubCla.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado la sub clase del producto !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboSubCla.Focus();
                 booEstado = false;
                 return booEstado;
             }
-            if (Convert.ToInt16(CboUniMed.SelectedValue) == 0)
+            if (Convert.ToInt32(CboUniMed.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado la unidad de medida del producto !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboUniMed.Focus();
@@ -933,7 +933,7 @@ namespace SSF_NET_Produccion.Formularios
         }
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             booAgregando = true;
             //VerRegistro(intIdRegistro);
@@ -975,7 +975,7 @@ namespace SSF_NET_Produccion.Formularios
             }
             if (n_numlin == 0) { return; }
             
-            MostrarLineas(Convert.ToInt16(FgRec.GetData(FgRec.Row,7).ToString()), FgRec.GetData(FgRec.Row,2).ToString());
+            MostrarLineas(Convert.ToInt32(FgRec.GetData(FgRec.Row,7).ToString()), FgRec.GetData(FgRec.Row,2).ToString());
         }
         private void CmdVerRec_Click(object sender, EventArgs e)
         {
@@ -1301,7 +1301,7 @@ namespace SSF_NET_Produccion.Formularios
         {
             if (booAgregando == true) { return; }
 
-            MostrarLocalAlmacenUbicacion(Convert.ToInt16(FgLocal.GetData(FgLocal.Row,2)));
+            MostrarLocalAlmacenUbicacion(Convert.ToInt32(FgLocal.GetData(FgLocal.Row,2)));
         }
         private void AmdAddLin_Click(object sender, EventArgs e)
         {
@@ -1532,7 +1532,7 @@ namespace SSF_NET_Produccion.Formularios
 
             if (FgRec.Col == 5)                     // PRIORIDAD
             {
-                lstRecetas[n_Indice].n_prirec = Convert.ToInt16(FgRec.GetData(FgRec.Row, 5).ToString());
+                lstRecetas[n_Indice].n_prirec = Convert.ToInt32(FgRec.GetData(FgRec.Row, 5).ToString());
             }
 
             if (FgRec.Col == 6)                     // OBSERVACIONES
@@ -1984,7 +1984,7 @@ namespace SSF_NET_Produccion.Formularios
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            string c_NomArchivo = STU_SISTEMA.EMPRESARUC + "-PRO-PRODUCTOS" + STU_SISTEMA.ANOTRABAJO.ToString() + Convert.ToInt16(CboMeses.SelectedValue).ToString("00") + ".xls";
+            string c_NomArchivo = STU_SISTEMA.EMPRESARUC + "-PRO-PRODUCTOS" + STU_SISTEMA.ANOTRABAJO.ToString() + Convert.ToInt32(CboMeses.SelectedValue).ToString("00") + ".xls";
             DgLista.ExportTo(c_NomArchivo);
             MessageBox.Show("! Se exporto con exito la informacion en el archivo " + c_NomArchivo + " !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
         }
@@ -1997,7 +1997,7 @@ namespace SSF_NET_Produccion.Formularios
 
             if (tc.SelectedIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {

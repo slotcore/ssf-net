@@ -52,12 +52,12 @@ namespace SIAC_DATOS.Ventas
 
             if (DtResultado.Rows.Count != 0)
             {
-                Ent_Chofer.n_idemp = Convert.ToInt16(DtResultado.Rows[0]["n_idemp"].ToString());
-                Ent_Chofer.n_id = Convert.ToInt16(DtResultado.Rows[0]["n_id"].ToString());
-                Ent_Chofer.n_idper = Convert.ToInt16(DtResultado.Rows[0]["n_idper"].ToString());
+                Ent_Chofer.n_idemp = Convert.ToInt32(DtResultado.Rows[0]["n_idemp"].ToString());
+                Ent_Chofer.n_id = Convert.ToInt32(DtResultado.Rows[0]["n_id"].ToString());
+                Ent_Chofer.n_idper = Convert.ToInt32(DtResultado.Rows[0]["n_idper"].ToString());
                 Ent_Chofer.c_cat = DtResultado.Rows[0]["c_cat"].ToString();
                 Ent_Chofer.c_numbre = DtResultado.Rows[0]["c_numbre"].ToString();
-                Ent_Chofer.n_idveh = Convert.ToInt16(DtResultado.Rows[0]["n_idveh"].ToString());
+                Ent_Chofer.n_idveh = Convert.ToInt32(DtResultado.Rows[0]["n_idveh"].ToString());
             }
             return Ent_Chofer;
         }

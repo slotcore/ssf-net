@@ -310,11 +310,11 @@ namespace SIAC_DATOS.Logistica
                         }
                     }
 
-                    entCabecera.n_id = Convert.ToInt16(xMiFuncion.intIdGenerado);
+                    entCabecera.n_id = Convert.ToInt32(xMiFuncion.intIdGenerado);
                     // GRABAMOS EL DETALLE DE LA COMPRA
                     for (n_Fila = 0; n_Fila <= lstDetalle.Count - 1; n_Fila++)
                     {
-                        lstDetalle[n_Fila].n_idcom = Convert.ToInt16(xMiFuncion.intIdGenerado);
+                        lstDetalle[n_Fila].n_idcom = Convert.ToInt32(xMiFuncion.intIdGenerado);
                         if (xMiFuncion.StoreEjecutar("log_comprasdet_insertar", lstDetalle[n_Fila], mysConec, null) == false)
                         {
                             b_ocurrioError = xMiFuncion.booOcurrioError;
@@ -328,7 +328,7 @@ namespace SIAC_DATOS.Logistica
                     // GRABAMOS LOS DOUMENTOS ASIGNADOS A LA COMPRA
                     for (n_Fila = 0; n_Fila <= lstDocumentos.Count - 1; n_Fila++)
                     {
-                        lstDocumentos[n_Fila].n_idcom = Convert.ToInt16(xMiFuncion.intIdGenerado);
+                        lstDocumentos[n_Fila].n_idcom = Convert.ToInt32(xMiFuncion.intIdGenerado);
                         if (xMiFuncion.StoreEjecutar("log_comprasdoc_insertar", lstDocumentos[n_Fila], mysConec, null) == false)
                         {
                             b_ocurrioError = xMiFuncion.booOcurrioError;
@@ -490,7 +490,7 @@ namespace SIAC_DATOS.Logistica
                         // SI LOS ITEMS SE ELIMINARON CON EXITO INSERTAMOS LOS NUEVOS ITEMS
                         for (n_Fila = 0; n_Fila <= lstDetalle.Count - 1; n_Fila++)
                         {
-                            lstDetalle[n_Fila].n_idcom = Convert.ToInt16(entCabecera.n_id);
+                            lstDetalle[n_Fila].n_idcom = Convert.ToInt32(entCabecera.n_id);
                             if (xMiFuncion.StoreEjecutar("log_comprasdet_insertar", lstDetalle[n_Fila], mysConec, null) == false)
                             {
                                 b_ocurrioError = xMiFuncion.booOcurrioError;
@@ -516,7 +516,7 @@ namespace SIAC_DATOS.Logistica
                         // SI LOS DOCUMENTOS DE LA COMPRA
                         for (n_Fila = 0; n_Fila <= lstDocumentos.Count - 1; n_Fila++)
                         {
-                            lstDocumentos[n_Fila].n_idcom = Convert.ToInt16(entCabecera.n_id);
+                            lstDocumentos[n_Fila].n_idcom = Convert.ToInt32(entCabecera.n_id);
                             if (xMiFuncion.StoreEjecutar("log_comprasdoc_insertar", lstDocumentos[n_Fila], mysConec, null) == false)
                             {
                                 b_ocurrioError = xMiFuncion.booOcurrioError;

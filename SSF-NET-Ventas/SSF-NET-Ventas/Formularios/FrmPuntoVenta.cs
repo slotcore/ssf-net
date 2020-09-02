@@ -83,7 +83,7 @@ namespace SSF_NET_Ventas.Formularios
         {
             LimpiarControles();
             
-            LblNumDoc.Text = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, Convert.ToInt16(CboTipDocumento.SelectedValue), LblSerDoc.Text);
+            LblNumDoc.Text = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboTipDocumento.SelectedValue), LblSerDoc.Text);
             if (Convert.ToInt32(CboTipDocumento.SelectedValue) == 2) { TxtNumRuc.Focus(); }
             if (Convert.ToInt32(CboTipDocumento.SelectedValue) == 4) { TxtNomCli.Focus(); }
         }
@@ -100,9 +100,9 @@ namespace SSF_NET_Ventas.Formularios
             e_Documento.n_idlib = 14;
             e_Documento.c_numreg = "";
             e_Documento.n_idtippro = 2;
-            e_Documento.n_idcli = Convert.ToInt16(LblIdCliente.Text);
+            e_Documento.n_idcli = Convert.ToInt32(LblIdCliente.Text);
             e_Documento.n_idpunvencli = 0;
-            e_Documento.n_idtipdoc = Convert.ToInt16(CboTipDocumento.SelectedValue);
+            e_Documento.n_idtipdoc = Convert.ToInt32(CboTipDocumento.SelectedValue);
             e_Documento.c_numser = LblSerDoc.Text;
             e_Documento.c_numdoc = LblNumDoc.Text;
             if (e_Documento.n_idmes == 0)
@@ -116,7 +116,7 @@ namespace SSF_NET_Ventas.Formularios
             e_Documento.d_fchdoc = Convert.ToDateTime(LblFchEmi.Text);
             e_Documento.d_fchven = Convert.ToDateTime(LblFchEmi.Text);
             e_Documento.n_idconpag = 1;
-            e_Documento.n_idmon = Convert.ToInt16(CboMoneda.SelectedValue);
+            e_Documento.n_idmon = Convert.ToInt32(CboMoneda.SelectedValue);
             e_Documento.n_impbru = Convert.ToDouble(LblImpBru.Text);
             e_Documento.n_impbru2 = 0;
             e_Documento.n_impbru3 = 0;
@@ -240,7 +240,7 @@ namespace SSF_NET_Ventas.Formularios
             {
                 funFunciones.MensajeMostrarAviso("El documento se guardo con exito", strTituloFormulario);
                 LimpiarControles();
-                LblNumDoc.Text = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, Convert.ToInt16(CboTipDocumento.SelectedValue), LblSerDoc.Text);
+                LblNumDoc.Text = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboTipDocumento.SelectedValue), LblSerDoc.Text);
                 if (Convert.ToInt32(CboTipDocumento.SelectedValue) == 2) { TxtNumRuc.Focus(); }
                 if (Convert.ToInt32(CboTipDocumento.SelectedValue) == 4) { TxtNomCli.Focus(); }
             }
@@ -544,7 +544,7 @@ namespace SSF_NET_Ventas.Formularios
 
             //OBTENEMOS EL NUEVO NUMERO DE DOCUMENTO ANTES DE GUARDAR LA OPERACION
             AsignarEntidad();
-            strNumeroDocumento = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, Convert.ToInt16(CboTipDocumento.SelectedValue), LblSerDoc.Text);
+            strNumeroDocumento = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboTipDocumento.SelectedValue), LblSerDoc.Text);
                         
             objVentas.mysConec = mysConec;
             objVentas.LstDetalle = l_DocumentoDet;    // ASIGNAMOS EL DETALLE DE LA GUIA
@@ -575,7 +575,7 @@ namespace SSF_NET_Ventas.Formularios
             if (booAgregando == true) { return; }
 
             LblTipDocumento.Text = CboTipDocumento.Text;
-            LblNumDoc.Text = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, Convert.ToInt16(CboTipDocumento.SelectedValue), LblSerDoc.Text);
+            LblNumDoc.Text = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboTipDocumento.SelectedValue), LblSerDoc.Text);
             TxtNumRuc.Focus();
         }
 
@@ -596,9 +596,9 @@ namespace SSF_NET_Ventas.Formularios
 
                 booAgregando = true;
                 dtResul = dtItems;
-                //if (Convert.ToInt16(CboTipExi.SelectedValue) != 0)
+                //if (Convert.ToInt32(CboTipExi.SelectedValue) != 0)
                 //{
-                //    n_idtipexi = Convert.ToInt16(CboTipExi.SelectedValue);
+                //    n_idtipexi = Convert.ToInt32(CboTipExi.SelectedValue);
                 //    dtResul = funGen.DataTableFiltrar(dtItems, "n_idtipexi = " + n_idtipexi + "");
                 //}
                 
@@ -669,7 +669,7 @@ namespace SSF_NET_Ventas.Formularios
 
             if (c_numruc != "")
             {
-                int n_idtipcon = Convert.ToInt16(funGen.DataTableBuscar(dtTipCon, "c_des", "n_id", c_tipcon, "C"));
+                int n_idtipcon = Convert.ToInt32(funGen.DataTableBuscar(dtTipCon, "c_des", "n_id", c_tipcon, "C"));
 
                 if ((n_idtipcon == 1) || (n_idtipcon == 2))
                 {
@@ -739,7 +739,7 @@ namespace SSF_NET_Ventas.Formularios
             if (e.KeyCode.ToString() == "F3")
             {
                 LimpiarControles();
-                LblNumDoc.Text = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, Convert.ToInt16(CboTipDocumento.SelectedValue), LblSerDoc.Text);
+                LblNumDoc.Text = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboTipDocumento.SelectedValue), LblSerDoc.Text);
                 if (Convert.ToInt32(CboTipDocumento.SelectedValue) == 2) { TxtNumRuc.Focus(); }
                 if (Convert.ToInt32(CboTipDocumento.SelectedValue) == 4) { TxtNomCli.Focus(); }
             }
@@ -755,8 +755,8 @@ namespace SSF_NET_Ventas.Formularios
             {
                 int n_num = 0;
 
-                n_num = Convert.ToInt16(CboTipDocumento.Items.Count);
-                if (Convert.ToInt16(CboTipDocumento.SelectedIndex) < n_num - 1)
+                n_num = Convert.ToInt32(CboTipDocumento.Items.Count);
+                if (Convert.ToInt32(CboTipDocumento.SelectedIndex) < n_num - 1)
                 {
                     CboTipDocumento.SelectedIndex = CboTipDocumento.SelectedIndex + 1;
                 }

@@ -48,11 +48,11 @@ namespace SIAC_Negocio.Tesoreria
 
             if (dtResult.Rows.Count != 0)
             {
-                entBancos.n_id = Convert.ToInt16(dtResult.Rows[0]["n_id"]);
-                entBancos.n_idemp = Convert.ToInt16(dtResult.Rows[0]["n_idemp"]);
-                entBancos.n_idban = Convert.ToInt16(dtResult.Rows[0]["n_idban"]);
+                entBancos.n_id = Convert.ToInt32(dtResult.Rows[0]["n_id"]);
+                entBancos.n_idemp = Convert.ToInt32(dtResult.Rows[0]["n_idemp"]);
+                entBancos.n_idban = Convert.ToInt32(dtResult.Rows[0]["n_idban"]);
                 entBancos.c_numcue = dtResult.Rows[0]["c_numcue"].ToString();
-                entBancos.n_idmon = Convert.ToInt16(dtResult.Rows[0]["n_idmon"]);
+                entBancos.n_idmon = Convert.ToInt32(dtResult.Rows[0]["n_idmon"]);
             }
             if (booResult == false)
             {

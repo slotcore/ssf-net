@@ -128,16 +128,16 @@ namespace SIAC_DATOS.Almacen
                      BE_ALM_INVENTARIOUNIMED_CONSULTA Unidades = new BE_ALM_INVENTARIOUNIMED_CONSULTA();
 
                     Unidades.n_idite = Convert.ToInt64(dr["n_idite"].ToString());
-                    Unidades.n_id = Convert.ToInt16(dr["n_id"].ToString());
+                    Unidades.n_id = Convert.ToInt32(dr["n_id"].ToString());
                     Unidades.c_despre = dr["c_despre"].ToString();
                     Unidades.c_abrpre = dr["c_abrpre"].ToString();
-                    Unidades.n_idunimedbas = Convert.ToInt16(dr["n_idunimedbas"].ToString());
+                    Unidades.n_idunimedbas = Convert.ToInt32(dr["n_idunimedbas"].ToString());
                     Unidades.n_canunimedbas = Convert.ToDouble(dr["n_canunimedbas"].ToString());
-                    Unidades.n_default = Convert.ToInt16(dr["n_default"].ToString());
+                    Unidades.n_default = Convert.ToInt32(dr["n_default"].ToString());
                     Unidades.n_preuni = Convert.ToDouble(dr["n_preuni"].ToString());
                     Unidades.n_preuniigv = Convert.ToDouble(dr["n_preuniigv"].ToString());
 		            
-                    //Unidades.n_idunimed = Convert.ToInt16(dr["n_idunimed"]);
+                    //Unidades.n_idunimed = Convert.ToInt32(dr["n_idunimed"]);
                     //Unidades.c_abrsun = dr["c_abrsun"].ToString();
                     //Unidades.c_dessun = dr["c_dessun"].ToString();
                     //Unidades.c_desunimedbas = dr["c_desunimedbas"].ToString();
@@ -147,13 +147,13 @@ namespace SIAC_DATOS.Almacen
 
             if (DtResultado.Rows.Count != 0)
             {
-                EntInventario.n_idemp = Convert.ToInt16(DtResultado.Rows[0]["n_idemp"].ToString());
-                EntInventario.n_id = Convert.ToInt16(DtResultado.Rows[0]["n_id"].ToString());
-                EntInventario.n_idtipexi = Convert.ToInt16(DtResultado.Rows[0]["n_idtipexi"].ToString());
-                //EntInventario.n_idtippro = Convert.ToInt16(DtResultado.Rows[0]["n_idtippro"].ToString());
-                EntInventario.n_idfam = Convert.ToInt16(DtResultado.Rows[0]["n_idfam"].ToString());
-                EntInventario.n_idclas = Convert.ToInt16(DtResultado.Rows[0]["n_idclas"].ToString());
-                EntInventario.n_idsubclas = Convert.ToInt16(DtResultado.Rows[0]["n_idsubclas"].ToString());
+                EntInventario.n_idemp = Convert.ToInt32(DtResultado.Rows[0]["n_idemp"].ToString());
+                EntInventario.n_id = Convert.ToInt32(DtResultado.Rows[0]["n_id"].ToString());
+                EntInventario.n_idtipexi = Convert.ToInt32(DtResultado.Rows[0]["n_idtipexi"].ToString());
+                //EntInventario.n_idtippro = Convert.ToInt32(DtResultado.Rows[0]["n_idtippro"].ToString());
+                EntInventario.n_idfam = Convert.ToInt32(DtResultado.Rows[0]["n_idfam"].ToString());
+                EntInventario.n_idclas = Convert.ToInt32(DtResultado.Rows[0]["n_idclas"].ToString());
+                EntInventario.n_idsubclas = Convert.ToInt32(DtResultado.Rows[0]["n_idsubclas"].ToString());
                 EntInventario.c_codpro = DtResultado.Rows[0]["c_codpro"].ToString();
                 EntInventario.c_despro = DtResultado.Rows[0]["c_despro"].ToString();
                 EntInventario.c_destec = DtResultado.Rows[0]["c_destec"].ToString();
@@ -167,21 +167,21 @@ namespace SIAC_DATOS.Almacen
                 EntInventario.n_porgan = Convert.ToDouble(DtResultado.Rows[0]["n_porgan"].ToString());
                 EntInventario.n_preuni = Convert.ToDouble(DtResultado.Rows[0]["n_preuni"].ToString());
                 EntInventario.n_preven = Convert.ToDouble(DtResultado.Rows[0]["n_preven"].ToString());
-                EntInventario.n_idmon = Convert.ToInt16(DtResultado.Rows[0]["n_idmon"].ToString());
+                EntInventario.n_idmon = Convert.ToInt32(DtResultado.Rows[0]["n_idmon"].ToString());
                 EntInventario.n_precom = Convert.ToDouble(xFun.NulosN(DtResultado.Rows[0]["n_precom"]));
-                EntInventario.n_estado = Convert.ToInt16(DtResultado.Rows[0]["n_estado"].ToString());
-                EntInventario.n_idcueconcom = Convert.ToInt16(DtResultado.Rows[0]["n_idcueconcom"].ToString());
-                EntInventario.n_idcueconven = Convert.ToInt16(DtResultado.Rows[0]["n_idcueconven"].ToString());
-                EntInventario.n_idret = Convert.ToInt16(DtResultado.Rows[0]["n_idret"].ToString());
-                EntInventario.n_iddet = Convert.ToInt16(DtResultado.Rows[0]["n_iddet"].ToString());
-                EntInventario.n_idper = Convert.ToInt16(DtResultado.Rows[0]["n_idper"].ToString());
-                EntInventario.n_idtipcom = Convert.ToInt16(DtResultado.Rows[0]["n_idtipcom"].ToString());
-                EntInventario.n_idtipven = Convert.ToInt16(DtResultado.Rows[0]["n_idtipven"].ToString());
-                EntInventario.n_idimpsel = Convert.ToInt16(DtResultado.Rows[0]["n_idimpsel"].ToString());
-                EntInventario.n_tipope = Convert.ToInt16(xFun.NulosN(DtResultado.Rows[0]["n_tipope"].ToString()));
+                EntInventario.n_estado = Convert.ToInt32(DtResultado.Rows[0]["n_estado"].ToString());
+                EntInventario.n_idcueconcom = Convert.ToInt32(DtResultado.Rows[0]["n_idcueconcom"].ToString());
+                EntInventario.n_idcueconven = Convert.ToInt32(DtResultado.Rows[0]["n_idcueconven"].ToString());
+                EntInventario.n_idret = Convert.ToInt32(DtResultado.Rows[0]["n_idret"].ToString());
+                EntInventario.n_iddet = Convert.ToInt32(DtResultado.Rows[0]["n_iddet"].ToString());
+                EntInventario.n_idper = Convert.ToInt32(DtResultado.Rows[0]["n_idper"].ToString());
+                EntInventario.n_idtipcom = Convert.ToInt32(DtResultado.Rows[0]["n_idtipcom"].ToString());
+                EntInventario.n_idtipven = Convert.ToInt32(DtResultado.Rows[0]["n_idtipven"].ToString());
+                EntInventario.n_idimpsel = Convert.ToInt32(DtResultado.Rows[0]["n_idimpsel"].ToString());
+                EntInventario.n_tipope = Convert.ToInt32(xFun.NulosN(DtResultado.Rows[0]["n_tipope"].ToString()));
                 EntInventario.lst_unidadmedida = LstUnidades;
                 EntInventario.c_prelot = xFun.NulosC(DtResultado.Rows[0]["c_prelot"].ToString());
-                EntInventario.n_numdiavid = Convert.ToInt16(xFun.NulosN(DtResultado.Rows[0]["n_numdiavid"]));
+                EntInventario.n_numdiavid = Convert.ToInt32(xFun.NulosN(DtResultado.Rows[0]["n_numdiavid"]));
             }
             return EntInventario;
         }

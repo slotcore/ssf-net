@@ -254,7 +254,7 @@ namespace Helper
                 intCol = 1;
                 for (A = 0; A <= IntNumeroElementos; A++)
                 {
-                    intAncho = Convert.ToInt16(strColumnasGrid[A, 1]);
+                    intAncho = Convert.ToInt32(strColumnasGrid[A, 1]);
                     AddColumn(strColumnasGrid[A, 0], strColumnasGrid[A, 2], intAncho, objControl);  // AGREGAMOS LAS COLUMNAS REQUERIDAS Y LOS PROPIEDADES DE LAS MISMA
                     // HACEMOS EL MERGING
                     objControl.Cols[intCol].AllowMerging = true;
@@ -299,7 +299,7 @@ namespace Helper
                 intCol = 1;
                 for(A=0; A <= IntNumeroElementos;A++)
                 {
-                    intAncho = Convert.ToInt16(strColumnasGrid[A,1]);
+                    intAncho = Convert.ToInt32(strColumnasGrid[A,1]);
                     AddColumn(strColumnasGrid[A, 0], strColumnasGrid[A, 2], intAncho, objControl);  // AGREGAMOS LAS COLUMNAS REQUERIDAS Y LOS PROPIEDADES DE LAS MISMA
                     // HACEMOS EL MERGING
                     objControl.Cols[intCol].AllowMerging = true;
@@ -347,7 +347,7 @@ namespace Helper
                 intCol = 1;
                 for(A = 0; A <= IntNumeroElementos; A++)
                 {
-                    intAncho = Convert.ToInt16(strColumnasGrid[A, 1]);
+                    intAncho = Convert.ToInt32(strColumnasGrid[A, 1]);
                     AddColumn(strColumnasGrid[A, 0], strColumnasGrid[A, 2], intAncho, objControl);  // AGREGAMOS LAS COLUMNAS REQUERIDAS Y LOS PROPIEDADES DE LAS MISMA
                     
                     // COPIAMOS LOS TITULOS EN CADA FILA DE LA COLUMNA
@@ -636,7 +636,7 @@ namespace Helper
                 intCol = 1;
                 for (A = 0; A <= IntNumeroElementos; A++)
                 {
-                    intAncho = Convert.ToInt16(strColumnasGrid[A, 1]);
+                    intAncho = Convert.ToInt32(strColumnasGrid[A, 1]);
                     AddColumn(strColumnasGrid[A, 0], strColumnasGrid[A, 2], intAncho, objControl);  // AGREGAMOS LAS COLUMNAS REQUERIDAS Y LOS PROPIEDADES DE LAS MISMA
                     // HACEMOS EL MERGING
                     objControl.Cols[intCol].AllowMerging = true;
@@ -681,7 +681,7 @@ namespace Helper
                 intCol = 1;
                 for (A = 0; A <= IntNumeroElementos; A++)
                 {
-                    intAncho = Convert.ToInt16(strColumnasGrid[A, 1]);
+                    intAncho = Convert.ToInt32(strColumnasGrid[A, 1]);
                     AddColumn(strColumnasGrid[A, 0], strColumnasGrid[A, 2], intAncho, objControl);  // AGREGAMOS LAS COLUMNAS REQUERIDAS Y LOS PROPIEDADES DE LAS MISMA
                     // HACEMOS EL MERGING
                     objControl.Cols[intCol].AllowMerging = true;

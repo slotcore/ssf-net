@@ -46,14 +46,14 @@ namespace SIAC_Negocio.Sistema
 
             if (dtResult.Rows.Count != 0)
             {
-                entAuditoria.n_idemp = Convert.ToInt16(dtResult.Rows[0]["n_idemp"].ToString());
-                entAuditoria.n_id = Convert.ToInt16(dtResult.Rows[0]["n_id"].ToString());
-                entAuditoria.n_idano = Convert.ToInt16(dtResult.Rows[0]["n_idano"].ToString());
-                entAuditoria.n_idmes = Convert.ToInt16(dtResult.Rows[0]["n_idmes"].ToString());
+                entAuditoria.n_idemp = Convert.ToInt32(dtResult.Rows[0]["n_idemp"].ToString());
+                entAuditoria.n_id = Convert.ToInt32(dtResult.Rows[0]["n_id"].ToString());
+                entAuditoria.n_idano = Convert.ToInt32(dtResult.Rows[0]["n_idano"].ToString());
+                entAuditoria.n_idmes = Convert.ToInt32(dtResult.Rows[0]["n_idmes"].ToString());
                 entAuditoria.d_fchreg = Convert.ToDateTime(dtResult.Rows[0]["d_fchreg"].ToString());
                 entAuditoria.h_horreg = Convert.ToDateTime(dtResult.Rows[0]["h_horreg"].ToString());
-                entAuditoria.n_idtipope = Convert.ToInt16(dtResult.Rows[0]["n_idtipope"].ToString());
-                entAuditoria.n_idusu = Convert.ToInt16(dtResult.Rows[0]["n_idusu"].ToString());
+                entAuditoria.n_idtipope = Convert.ToInt32(dtResult.Rows[0]["n_idtipope"].ToString());
+                entAuditoria.n_idusu = Convert.ToInt32(dtResult.Rows[0]["n_idusu"].ToString());
             }
             return entAuditoria;
         }

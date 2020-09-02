@@ -232,7 +232,7 @@ namespace SIAC_DATOS.Estacionamiento
                         // OBTENEMOS EL ULTIMO ASIENTO
                         funCon.ObtenerUltimoAsiento(e_Documento.n_anotra, e_Documento.n_idmes, 14, e_Documento.n_idemp);
                         dtresul = funCon.dtLista;
-                        c_numasi = Convert.ToInt16(dtresul.Rows[0]["c_newnumero"]).ToString("0000");
+                        c_numasi = Convert.ToInt32(dtresul.Rows[0]["c_newnumero"]).ToString("0000");
                     }
 
                     e_Documento.c_numreg = c_numasi;

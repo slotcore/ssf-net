@@ -477,7 +477,7 @@ namespace SSF_NET_Produccion.Formularios
             OptProPen.Visible = true;
             OptProConTar.Visible = true;
             label20.Visible = true;
-            CboLocal.SelectedValue = Convert.ToInt16(C_IDLOCAL);
+            CboLocal.SelectedValue = Convert.ToInt32(C_IDLOCAL);
             booAgregando = false;
             CboSol.Focus();
         }
@@ -585,7 +585,7 @@ namespace SSF_NET_Produccion.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -596,7 +596,7 @@ namespace SSF_NET_Produccion.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -680,7 +680,7 @@ namespace SSF_NET_Produccion.Formularios
             }
             else
             {
-                intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+                intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             }
 
             entTar.n_idemp = STU_SISTEMA.EMPRESAID;
@@ -786,7 +786,7 @@ namespace SSF_NET_Produccion.Formularios
             for (n_fila = 2; n_fila <= FgTar.Rows.Count - 1; n_fila++)
             {
                 n_cantidad = Convert.ToDouble(FgTar.GetData(n_fila, 7));
-                n_idtar= Convert.ToInt16(FgTar.GetData(n_fila, 9));
+                n_idtar= Convert.ToInt32(FgTar.GetData(n_fila, 9));
                 n_cantidaddet = CantidadDetalle(n_idtar);
                 c_nomtar = FgTar.GetData(n_fila, 1).ToString();
                 if (n_cantidad != n_cantidaddet)
@@ -894,7 +894,7 @@ namespace SSF_NET_Produccion.Formularios
         }
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             booAgregando = true;
             VerRegistro(intIdRegistro);
@@ -1057,7 +1057,7 @@ namespace SSF_NET_Produccion.Formularios
             }
             int n_row = 0;
             string c_CadIn = "";
-            int n_Idregistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int n_Idregistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             int n_numsel = 0;
             if (FgTar.Rows.Count != 0)
             {
@@ -1607,7 +1607,7 @@ namespace SSF_NET_Produccion.Formularios
             }
             int n_row = 0;
             string c_CadIn = "";
-            int n_Idregistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int n_Idregistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             int n_numsel = 0;
             if (FgTar.Rows.Count != 0)
             {
@@ -1637,7 +1637,7 @@ namespace SSF_NET_Produccion.Formularios
         {
             if (FgPer.Rows.Count - 1 == 1) { return; }
             int n_idtarea = Convert.ToInt32(FgTar.GetData(FgTar.Row, 9));
-            int n_IdPersonal = Convert.ToInt16(FgPer.GetData(FgPer.Row, 8));
+            int n_IdPersonal = Convert.ToInt32(FgPer.GetData(FgPer.Row, 8));
             FgPer.RemoveItem(FgPer.Row);
             EliminarEmpleado(n_IdPersonal, n_idtarea);
             LblTotal.Text = funFlex.FlexSumarCol(FgPer, 7, 2, FgPer.Rows.Count - 1).ToString("0.00");
@@ -2001,7 +2001,7 @@ namespace SSF_NET_Produccion.Formularios
         {
             try
             {
-                int n_IdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+                int n_IdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
                 objRegistro.TraerRegistro(n_IdRegistro);
                 entTar = objRegistro.entSolicitud;
@@ -2023,19 +2023,19 @@ namespace SSF_NET_Produccion.Formularios
 
                     for (var n_fila = 0; n_fila <= DtResultado.Rows.Count - 1; n_fila++)
                     {
-                        var n_id = Convert.ToInt16(DtResultado.Rows[n_fila]["n_id"].ToString());
+                        var n_id = Convert.ToInt32(DtResultado.Rows[n_fila]["n_id"].ToString());
                         if (n_id == entRegistroProd.n_idrec)
                         {
                             entRegistroRec = new BE_PRO_PRODUCTOSRECETAS
                             {
-                                n_id = Convert.ToInt16(DtResultado.Rows[n_fila]["n_id"].ToString()),
-                                n_idpro = Convert.ToInt16(DtResultado.Rows[n_fila]["n_idpro"].ToString()),
+                                n_id = Convert.ToInt32(DtResultado.Rows[n_fila]["n_id"].ToString()),
+                                n_idpro = Convert.ToInt32(DtResultado.Rows[n_fila]["n_idpro"].ToString()),
                                 c_codrec = DtResultado.Rows[n_fila]["c_codrec"].ToString(),
                                 c_des = DtResultado.Rows[n_fila]["c_des"].ToString(),
-                                n_idunimed = Convert.ToInt16(DtResultado.Rows[n_fila]["n_idunimed"].ToString()),
-                                n_can = Convert.ToInt16(DtResultado.Rows[n_fila]["n_can"].ToString()),
+                                n_idunimed = Convert.ToInt32(DtResultado.Rows[n_fila]["n_idunimed"].ToString()),
+                                n_can = Convert.ToInt32(DtResultado.Rows[n_fila]["n_can"].ToString()),
                                 c_obs = DtResultado.Rows[n_fila]["c_obs"].ToString(),
-                                n_act = Convert.ToInt16(DtResultado.Rows[n_fila]["n_act"].ToString())
+                                n_act = Convert.ToInt32(DtResultado.Rows[n_fila]["n_act"].ToString())
                             };
                         }
                     }

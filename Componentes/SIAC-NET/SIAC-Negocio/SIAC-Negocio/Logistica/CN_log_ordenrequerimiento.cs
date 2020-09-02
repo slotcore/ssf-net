@@ -315,8 +315,8 @@ namespace SIAC_Negocio.Logistica
                 entReqCab.n_idtipdoc = Convert.ToInt32(dtCab.Rows[0]["n_idtipdoc"]);
                 entReqCab.c_numser = dtCab.Rows[0]["c_numser"].ToString();
                 entReqCab.c_numdoc = dtCab.Rows[0]["c_numdoc"].ToString();
-                entReqCab.n_anotra = Convert.ToInt16(dtCab.Rows[0]["n_anotra"]);
-                entReqCab.n_mestra = Convert.ToInt16(dtCab.Rows[0]["n_mestra"]);
+                entReqCab.n_anotra = Convert.ToInt32(dtCab.Rows[0]["n_anotra"]);
+                entReqCab.n_mestra = Convert.ToInt32(dtCab.Rows[0]["n_mestra"]);
 
                 if (xFun.NulosC(dtCab.Rows[0]["d_fchemi"].ToString()) != "")
                 {
@@ -339,10 +339,10 @@ namespace SIAC_Negocio.Logistica
                 { 
                     BE_LOG_ORDENREQUERIMIENTODET detreq = new BE_LOG_ORDENREQUERIMIENTODET();
 
-                    detreq.n_idreq = Convert.ToInt16(dtDet.Rows[n_row]["n_idreq"]);
-                    detreq.n_idite = Convert.ToInt16(dtDet.Rows[n_row]["n_idite"]);
-                    detreq.n_idunimed = Convert.ToInt16(dtDet.Rows[n_row]["n_idunimed"]);
-                    detreq.n_can = Convert.ToInt16(dtDet.Rows[n_row]["n_can"]);
+                    detreq.n_idreq = Convert.ToInt32(dtDet.Rows[n_row]["n_idreq"]);
+                    detreq.n_idite = Convert.ToInt32(dtDet.Rows[n_row]["n_idite"]);
+                    detreq.n_idunimed = Convert.ToInt32(dtDet.Rows[n_row]["n_idunimed"]);
+                    detreq.n_can = Convert.ToInt32(dtDet.Rows[n_row]["n_can"]);
                     lstReqDet.Add(detreq);
                 }
                 booresult = true;

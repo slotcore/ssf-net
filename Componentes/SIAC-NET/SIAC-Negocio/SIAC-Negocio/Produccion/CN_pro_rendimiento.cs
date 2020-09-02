@@ -54,10 +54,10 @@ namespace SIAC_Negocio.Produccion
 
             if (dtResult.Rows.Count != 0)
             {
-                entRendimiento.n_idemp = Convert.ToInt16(dtResult.Rows[0]["n_idemp"]);
-                entRendimiento.n_id = Convert.ToInt16(dtResult.Rows[0]["n_id"]);
-                entRendimiento.n_idmatpri = Convert.ToInt16(dtResult.Rows[0]["n_idmatpri"]);
-                entRendimiento.n_idpro = Convert.ToInt16(dtResult.Rows[0]["n_idpro"]);
+                entRendimiento.n_idemp = Convert.ToInt32(dtResult.Rows[0]["n_idemp"]);
+                entRendimiento.n_id = Convert.ToInt32(dtResult.Rows[0]["n_id"]);
+                entRendimiento.n_idmatpri = Convert.ToInt32(dtResult.Rows[0]["n_idmatpri"]);
+                entRendimiento.n_idpro = Convert.ToInt32(dtResult.Rows[0]["n_idpro"]);
                 entRendimiento.n_porren = Convert.ToDouble(dtResult.Rows[0]["n_porren"]);
 
                 booResult = true;

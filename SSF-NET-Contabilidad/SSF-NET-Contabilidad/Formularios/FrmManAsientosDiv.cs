@@ -298,7 +298,7 @@ namespace SSF_NET_Contabilidad.Formularios
             ActivarTool();
             LblTitulo2.Text = "Agregando Nuevo Registro";
             FgItems.Cols[1].ComboList = "...";
-            if (Convert.ToInt16(CboMeses.SelectedValue) == 0)
+            if (Convert.ToInt32(CboMeses.SelectedValue) == 0)
             {
                 DataTable dttctem = new DataTable();
                 ObjTC.mysConec = mysConec;
@@ -318,7 +318,7 @@ namespace SSF_NET_Contabilidad.Formularios
             booAgregando = true;
             CboSubLib.Enabled = true;
             DataTable dtResul = new DataTable();
-            dtResul = funDatos.DataTableFiltrar(dtSubLibro, "n_idlib = " + Convert.ToInt16(CboLib.SelectedValue) + "");
+            dtResul = funDatos.DataTableFiltrar(dtSubLibro, "n_idlib = " + Convert.ToInt32(CboLib.SelectedValue) + "");
             funDatos.ComboBoxCargarDataTable(CboSubLib, dtResul, "n_id", "c_des");
             booAgregando = false;
 
@@ -414,7 +414,7 @@ namespace SSF_NET_Contabilidad.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -423,7 +423,7 @@ namespace SSF_NET_Contabilidad.Formularios
             booAgregando = true;
             CboSubLib.Enabled = true;
             DataTable dtResul = new DataTable();
-            dtResul = funDatos.DataTableFiltrar(dtSubLibro, "n_idlib = " + Convert.ToInt16(CboLib.SelectedValue) + "");
+            dtResul = funDatos.DataTableFiltrar(dtSubLibro, "n_idlib = " + Convert.ToInt32(CboLib.SelectedValue) + "");
             funDatos.ComboBoxCargarDataTable(CboSubLib, dtResul, "n_id", "c_des");
 
             booAgregando = false;
@@ -434,7 +434,7 @@ namespace SSF_NET_Contabilidad.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int n_IdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int n_IdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             e_Proviciones.n_id = n_IdRegistro;
             e_Proviciones.n_idlib = 5;
@@ -506,22 +506,22 @@ namespace SSF_NET_Contabilidad.Formularios
             }
             else
             {
-                e_Proviciones.n_id = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                e_Proviciones.n_id = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             }
 
             //e_Proviciones.n_id
-            e_Proviciones.n_idlib= Convert.ToInt16(CboLib.SelectedValue);
-            e_Proviciones.n_idsublib = Convert.ToInt16(CboSubLib.SelectedValue);
+            e_Proviciones.n_idlib= Convert.ToInt32(CboLib.SelectedValue);
+            e_Proviciones.n_idsublib = Convert.ToInt32(CboSubLib.SelectedValue);
             e_Proviciones.n_ano = STU_SISTEMA.ANOTRABAJO;
             e_Proviciones.n_mes = STU_SISTEMA.MESTRABAJO;
             e_Proviciones.d_fchreg = DateTime.Now;
             e_Proviciones.d_fchdoc = Convert.ToDateTime(TxtFchDoc.Text);
-            e_Proviciones.n_idtipdoc = Convert.ToInt16(CboTipDoc.SelectedValue);
+            e_Proviciones.n_idtipdoc = Convert.ToInt32(CboTipDoc.SelectedValue);
             e_Proviciones.c_numser = TxtNumSer.Text;
             e_Proviciones.c_numdoc = TxtNumDoc.Text;
             e_Proviciones.n_idcli = 0;
             e_Proviciones.c_nomcli = "";
-            e_Proviciones.n_idmon = Convert.ToInt16(CboMon.SelectedValue);
+            e_Proviciones.n_idmon = Convert.ToInt32(CboMon.SelectedValue);
             
             if (e_Proviciones.n_idmon == 115)
             {
@@ -554,7 +554,7 @@ namespace SSF_NET_Contabilidad.Formularios
                     c_dato = funDatos.DataTableBuscar(dtPlaCue, "c_cuecon", "n_id", c_dato, "C").ToString();
                     e_Det.n_idcuecon = Convert.ToInt32(c_dato);
 
-                    if (Convert.ToInt16(CboMon.SelectedValue) == 151)
+                    if (Convert.ToInt32(CboMon.SelectedValue) == 151)
                     {
                         c_dato = funFunciones.NulosN(FgItems.GetData(n_row, 5)).ToString();
                         if (Convert.ToDouble(funFunciones.NulosN(c_dato)) != 0)
@@ -601,21 +601,21 @@ namespace SSF_NET_Contabilidad.Formularios
         bool CamposOK()
         {
             bool booEstado = true;
-            if (Convert.ToInt16(CboLib.SelectedValue) == 0)
+            if (Convert.ToInt32(CboLib.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el libro !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
                 CboLib.Focus();
                 return booEstado;
             }
-            //if (Convert.ToInt16(CboSubLib.SelectedValue) == 0)
+            //if (Convert.ToInt32(CboSubLib.SelectedValue) == 0)
             //{
             //    MessageBox.Show("¡ No ha especificado el sub libro !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             //    booEstado = false;
             //    CboSubLib.Focus();
             //    return booEstado;
             //}
-            if (Convert.ToInt16(CboMon.SelectedValue) == 0)
+            if (Convert.ToInt32(CboMon.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado la moneda !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -629,7 +629,7 @@ namespace SSF_NET_Contabilidad.Formularios
                 TxtFchDoc.Focus();
                 return booEstado;
             }
-            if (Convert.ToInt16(CboTipDoc.SelectedValue) == 0)
+            if (Convert.ToInt32(CboTipDoc.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el tipo de documento !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -742,7 +742,7 @@ namespace SSF_NET_Contabilidad.Formularios
 
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -752,7 +752,7 @@ namespace SSF_NET_Contabilidad.Formularios
         }
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             VerRegistro(intIdRegistro);
         }
@@ -861,7 +861,7 @@ namespace SSF_NET_Contabilidad.Formularios
 
             if (FgItems.Col >= 3)
             {
-                if (Convert.ToInt16(CboMon.SelectedValue) == 151)
+                if (Convert.ToInt32(CboMon.SelectedValue) == 151)
                 {
                     if ((FgItems.Col == 3) || (FgItems.Col == 4))
                     {
@@ -985,7 +985,7 @@ namespace SSF_NET_Contabilidad.Formularios
                 string strCad = "0000" + TxtNumSer.Text;
 
                 TxtNumSer.Text = "0" + strCad.Substring(strCad.Length - 3, 3);
-                //TxtNumDoc.Text = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, Convert.ToInt16(CboTipDoc.SelectedValue), TxtNumSer.Text);
+                //TxtNumDoc.Text = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboTipDoc.SelectedValue), TxtNumSer.Text);
             }
         }
 
@@ -1061,7 +1061,7 @@ namespace SSF_NET_Contabilidad.Formularios
             DataTable dtResul = new DataTable();
             CboSubLib.Enabled = true;
 
-            dtResul = funDatos.DataTableFiltrar(dtSubLibro, "n_idlib = "+ Convert.ToInt16(CboLib.SelectedValue) +"");
+            dtResul = funDatos.DataTableFiltrar(dtSubLibro, "n_idlib = "+ Convert.ToInt32(CboLib.SelectedValue) +"");
             funDatos.ComboBoxCargarDataTable(CboSubLib, dtResul, "n_id", "c_des");
         }
 

@@ -46,8 +46,8 @@ namespace SIAC_Negocio.Planilla
 
             if (dtresult.Rows.Count != 0)
             {
-                entarea.n_id = Convert.ToInt16(dtresult.Rows[0]["n_id"].ToString());
-                entarea.n_idemp = Convert.ToInt16(dtresult.Rows[0]["n_idemp"].ToString());
+                entarea.n_id = Convert.ToInt32(dtresult.Rows[0]["n_id"].ToString());
+                entarea.n_idemp = Convert.ToInt32(dtresult.Rows[0]["n_idemp"].ToString());
                 entarea.c_des = dtresult.Rows[0]["c_des"].ToString();
             }
 

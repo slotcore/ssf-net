@@ -105,7 +105,7 @@ namespace SSF_NET_Gestion.Formularios
             if (o_plapro.b_OcurrioError == false)
             {
                 funFlex.b_AlternarColor = true;
-                MostrarCabeceraMes(Convert.ToInt16(dtrespro.Rows[0]["n_mesini"]), dtrespro, dtinspro, dtresint, dtinsint, dtinsint, dtinstod);
+                MostrarCabeceraMes(Convert.ToInt32(dtrespro.Rows[0]["n_mesini"]), dtrespro, dtinspro, dtresint, dtinsint, dtinsint, dtinstod);
             }
             else
             {

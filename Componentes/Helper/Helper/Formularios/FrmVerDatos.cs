@@ -52,7 +52,7 @@ namespace Helper.Formularios
 
             for (n_fila = 0; n_fila <= n_NumeroElementos; n_fila++)
             {
-                n_ancho = n_ancho + Convert.ToInt16(arrCabeceraFlex[n_fila, 1].ToString());
+                n_ancho = n_ancho + Convert.ToInt32(arrCabeceraFlex[n_fila, 1].ToString());
 
                 if (arrCabeceraFlex[n_fila, 2].ToString() == "B")
                 {
@@ -104,9 +104,9 @@ namespace Helper.Formularios
             int n_NumeroElementos = Convert.ToInt32(arrCabeceraFlexFix.GetLongLength(0)) - 1;
             for (n_row = 0; n_row <= n_NumeroElementos; n_row++)
             {
-                n_fila = Convert.ToInt16(arrCabeceraFlexFix[n_row, 0]);
-                n_col1 = Convert.ToInt16(arrCabeceraFlexFix[n_row, 1]);
-                n_col2 = Convert.ToInt16(arrCabeceraFlexFix[n_row, 2]);
+                n_fila = Convert.ToInt32(arrCabeceraFlexFix[n_row, 0]);
+                n_col1 = Convert.ToInt32(arrCabeceraFlexFix[n_row, 1]);
+                n_col2 = Convert.ToInt32(arrCabeceraFlexFix[n_row, 2]);
                 c_titu = funfun.NulosC(arrCabeceraFlexFix[n_row, 3]).ToString();
                 funFlex.Flex_FixUniColumnas(FgFiltro, n_fila, n_col1, n_col2, c_titu, 1);
             }

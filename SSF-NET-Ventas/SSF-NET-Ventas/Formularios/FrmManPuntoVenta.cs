@@ -158,9 +158,9 @@ namespace SSF_NET_Ventas.Formularios
             TxtCodCEN.Text = BE_Registro.c_codcen.ToString();
             TxtDescripcion.Text = BE_Registro.c_des.ToString();
             TxtDir.Text = BE_Registro.c_dir.ToString();
-            CboDep.SelectedValue = Convert.ToInt16(BE_Registro.n_iddep);
-            CboPro.SelectedValue = Convert.ToInt16(BE_Registro.n_idpro);
-            CboDis.SelectedValue = Convert.ToInt16(BE_Registro.n_iddis);
+            CboDep.SelectedValue = Convert.ToInt32(BE_Registro.n_iddep);
+            CboPro.SelectedValue = Convert.ToInt32(BE_Registro.n_idpro);
+            CboDis.SelectedValue = Convert.ToInt32(BE_Registro.n_iddis);
         }
         void Nuevo()
         {
@@ -212,7 +212,7 @@ namespace SSF_NET_Ventas.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -222,7 +222,7 @@ namespace SSF_NET_Ventas.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             DialogResult Rpta = MessageBox.Show("Esta seguro de eliminar el registro seleccionado", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
@@ -285,20 +285,20 @@ namespace SSF_NET_Ventas.Formularios
         void AsignarEntidad()
         {
             BE_ListaReg.n_idemp = STU_SISTEMA.EMPRESAID;
-            BE_ListaReg.n_idcli = Convert.ToInt16(CboCliente.SelectedValue);
+            BE_ListaReg.n_idcli = Convert.ToInt32(CboCliente.SelectedValue);
             BE_ListaReg.n_id = BE_Registro.n_id;
             BE_ListaReg.c_codcen = TxtCodCEN.Text;
             BE_ListaReg.c_des = TxtDescripcion.Text;
             BE_ListaReg.c_dir = TxtDir.Text;
-            BE_ListaReg.n_iddep = Convert.ToInt16(CboDep.SelectedValue);
-            BE_ListaReg.n_iddis = Convert.ToInt16(CboDis.SelectedValue);
-            BE_ListaReg.n_idpro = Convert.ToInt16(CboPro.SelectedValue);
+            BE_ListaReg.n_iddep = Convert.ToInt32(CboDep.SelectedValue);
+            BE_ListaReg.n_iddis = Convert.ToInt32(CboDis.SelectedValue);
+            BE_ListaReg.n_idpro = Convert.ToInt32(CboPro.SelectedValue);
         }
         bool CamposOK()
         {
             bool booEstado = true;
 
-            if (Convert.ToInt16(CboCliente.SelectedValue) == 0)
+            if (Convert.ToInt32(CboCliente.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el cliente !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -322,19 +322,19 @@ namespace SSF_NET_Ventas.Formularios
                 booEstado = false;
                 return booEstado;
             }
-            if (Convert.ToInt16(CboDep.SelectedValue) == 0)
+            if (Convert.ToInt32(CboDep.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el departamento de ubicacion del punto de venta !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
                 return booEstado;
             } 
-            if (Convert.ToInt16(CboPro.SelectedValue) == 0)
+            if (Convert.ToInt32(CboPro.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado la provincia de ubicacion del punto de venta !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
                 return booEstado;
             }
-            if (Convert.ToInt16(CboDis.SelectedValue) == 0)
+            if (Convert.ToInt32(CboDis.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el distrito de ubicacion del punto de venta !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
@@ -440,7 +440,7 @@ namespace SSF_NET_Ventas.Formularios
 
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -451,7 +451,7 @@ namespace SSF_NET_Ventas.Formularios
 
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             VerRegistro(intIdRegistro);
         }

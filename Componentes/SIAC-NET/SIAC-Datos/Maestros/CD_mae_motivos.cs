@@ -49,11 +49,11 @@ namespace SIAC_DATOS.Maestros
 
             if (DtResultado.Rows.Count != 0)
             {
-                e_motivo.n_id = Convert.ToInt16(DtResultado.Rows[0]["n_id"].ToString());
-                e_motivo.n_idemp = Convert.ToInt16(DtResultado.Rows[0]["n_idemp"].ToString());
+                e_motivo.n_id = Convert.ToInt32(DtResultado.Rows[0]["n_id"].ToString());
+                e_motivo.n_idemp = Convert.ToInt32(DtResultado.Rows[0]["n_idemp"].ToString());
                 e_motivo.c_des = DtResultado.Rows[0]["c_des"].ToString();
-                e_motivo.n_idmod = Convert.ToInt16(DtResultado.Rows[0]["n_idmod"].ToString());
-                e_motivo.n_activo = Convert.ToInt16(DtResultado.Rows[0]["n_activo"].ToString());
+                e_motivo.n_idmod = Convert.ToInt32(DtResultado.Rows[0]["n_idmod"].ToString());
+                e_motivo.n_activo = Convert.ToInt32(DtResultado.Rows[0]["n_activo"].ToString());
             }
             return e_motivo;
         }

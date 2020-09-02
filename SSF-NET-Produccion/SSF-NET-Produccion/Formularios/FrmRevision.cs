@@ -279,7 +279,7 @@ namespace SSF_NET_Produccion.Formularios
             Bloquea();
             ActivarTool();
 
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
             VerRegistro(intIdRegistro);
             LblTitulo2.Text = "Modificando Registro";
@@ -290,7 +290,7 @@ namespace SSF_NET_Produccion.Formularios
         bool EliminarRegistro()
         {
             bool booResult = false;
-            int n_IdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            int n_IdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
 
             objRegistro.mysConec = mysConec;
             BE_Revision = objRegistro.TraerRegistro(n_IdRegistro);
@@ -344,7 +344,7 @@ namespace SSF_NET_Produccion.Formularios
 
             if (n_QueHace == 2)
             {
-                BE_Revision.n_id = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+                BE_Revision.n_id = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
                 booResultado = objRegistro.Actualizar(BE_Revision);
             }
 
@@ -362,17 +362,17 @@ namespace SSF_NET_Produccion.Formularios
             BE_Revision.n_idtipdoc = 74;
             BE_Revision.c_numser = TxtNumSer.Text;
             BE_Revision.c_numdoc = TxtNumDoc.Text;
-            BE_Revision.n_idtipdocref = Convert.ToInt16(CboTipDoc.SelectedValue);
+            BE_Revision.n_idtipdocref = Convert.ToInt32(CboTipDoc.SelectedValue);
             BE_Revision.n_iddocref = Convert.ToInt32(LblIdProducion.Text);
             BE_Revision.c_numdocref = TxtNumParteProd.Text;
             BE_Revision.n_idpro = Convert.ToInt32(LblIdProducion.Text);
             //BE_Revision.c_numdoc = TxtNumParteProd.Text;
             BE_Revision.n_idpro = Convert.ToInt32(LblIdProducion.Text);
-            BE_Revision.n_idite = Convert.ToInt16(CboProducto.SelectedValue);
-            BE_Revision.n_idrec = Convert.ToInt16(CboReceta.SelectedValue);
+            BE_Revision.n_idite = Convert.ToInt32(CboProducto.SelectedValue);
+            BE_Revision.n_idrec = Convert.ToInt32(CboReceta.SelectedValue);
             BE_Revision.c_numlot = TxtNumLot.Text;
             BE_Revision.n_canpro = Convert.ToDouble(funFunciones.NulosN(TxtCantidad.Text));
-            BE_Revision.n_idunimed = Convert.ToInt16(CboUniMed.SelectedValue);
+            BE_Revision.n_idunimed = Convert.ToInt32(CboUniMed.SelectedValue);
             BE_Revision.d_fchini = Convert.ToDateTime(TxtFchIni.Text);
             BE_Revision.d_fchfin = Convert.ToDateTime(TxtFchFin.Text);
             BE_Revision.h_horini = TxtHorIni.Text;
@@ -381,7 +381,7 @@ namespace SSF_NET_Produccion.Formularios
             BE_Revision.n_canpronocon = Convert.ToDouble(funFunciones.NulosN(TxtCanProNoCon.Text));
             BE_Revision.c_obsprocon = TxtObsProCon.Text;
             BE_Revision.c_obspronocon = TxtObsProNoCon.Text;
-            BE_Revision.n_idperrev = Convert.ToInt16(CboPerRes.SelectedValue);
+            BE_Revision.n_idperrev = Convert.ToInt32(CboPerRes.SelectedValue);
             BE_Revision.d_fchrev = Convert.ToDateTime(TxtFchRev.Text);
             BE_Revision.h_horrev = TxtHorRev.Text;
         }
@@ -408,7 +408,7 @@ namespace SSF_NET_Produccion.Formularios
                 }
             }
 
-            if (Convert.ToInt16(CboPerRes.SelectedValue) == 0)
+            if (Convert.ToInt32(CboPerRes.SelectedValue) == 0)
             {
                 MessageBox.Show("¡ No ha especificado el nombre de la persona que realizo la revision del producto !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 CboPerRes.Focus();
@@ -511,7 +511,7 @@ namespace SSF_NET_Produccion.Formularios
 
             if (e.NewIndex == 1)
             {
-                int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
@@ -523,7 +523,7 @@ namespace SSF_NET_Produccion.Formularios
         }
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
-            int intIdRegistro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             booAgregando = true;
             VerRegistro(intIdRegistro);
@@ -557,7 +557,7 @@ namespace SSF_NET_Produccion.Formularios
             DataTable DtProdDet = new DataTable();
             CN_pro_produccion objProDet = new CN_pro_produccion();
             objProDet.mysConec = mysConec;
-            objProDet.ProductosTerminados(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt16(CboMeses.SelectedValue));
+            objProDet.ProductosTerminados(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, Convert.ToInt32(CboMeses.SelectedValue));
             DtProdDet = objProDet.dtListar;
 
             arrCabeceraDg1[0, 0] = "Nº Parte Producion";
@@ -833,8 +833,8 @@ namespace SSF_NET_Produccion.Formularios
             if (booAgregando == true) { return; }
 
             objRegistro.mysConec = mysConec;
-            dtMovimientos = objRegistro.Listar(STU_SISTEMA.EMPRESAID, Convert.ToInt16(CboMeses.SelectedValue), STU_SISTEMA.ANOTRABAJO);  // EL PARAMETROS N_IDTIPITEM = 0  MOSTRARA TODAS LAS SALIDAS
-            STU_SISTEMA.MESTRABAJO = Convert.ToInt16(CboMeses.SelectedValue);
+            dtMovimientos = objRegistro.Listar(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboMeses.SelectedValue), STU_SISTEMA.ANOTRABAJO);  // EL PARAMETROS N_IDTIPITEM = 0  MOSTRARA TODAS LAS SALIDAS
+            STU_SISTEMA.MESTRABAJO = Convert.ToInt32(CboMeses.SelectedValue);
             ListarItems();
 
             if (dtMovimientos.Rows.Count == 0)
@@ -871,7 +871,7 @@ namespace SSF_NET_Produccion.Formularios
         private void imprimirParteDeProduccionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CN_pro_revision FunRev = new CN_pro_revision();
-            int n_registro = Convert.ToInt16(DgLista.Columns[0].CellValue(DgLista.Row).ToString()); 
+            int n_registro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString()); 
             FunRev.mysConec = mysConec;
             FunRev.STU_SISTEMA = STU_SISTEMA;
             FunRev.ParteProduccion(n_registro);

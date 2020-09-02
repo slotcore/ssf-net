@@ -53,8 +53,8 @@ namespace SIAC_Negocio.Produccion
 
             if (dtResult.Rows.Count != 0)
             {
-                entTipProducto.n_idemp = Convert.ToInt16(dtResult.Rows[0]["n_idemp"]);
-                entTipProducto.n_id = Convert.ToInt16(dtResult.Rows[0]["n_id"]);
+                entTipProducto.n_idemp = Convert.ToInt32(dtResult.Rows[0]["n_idemp"]);
+                entTipProducto.n_id = Convert.ToInt32(dtResult.Rows[0]["n_id"]);
                 entTipProducto.c_des = dtResult.Rows[0]["c_des"].ToString();
               
             }

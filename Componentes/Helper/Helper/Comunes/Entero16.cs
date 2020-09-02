@@ -10,13 +10,13 @@ namespace Helper.Comunes
     {
         public object NulosN(object objValorNUmerico)
         {
-            if (objValorNUmerico == null) return Convert.ToInt16(0);
+            if (objValorNUmerico == null) return Convert.ToInt32(0);
 
-            if (objValorNUmerico.ToString() == "") { return Convert.ToInt16(0); }
+            if (objValorNUmerico.ToString() == "") { return Convert.ToInt32(0); }
 
-            if (objValorNUmerico.ToString() != "") { return Convert.ToInt16(0); }
+            if (objValorNUmerico.ToString() != "") { return Convert.ToInt32(0); }
 
-            return Convert.ToInt16(0);
+            return Convert.ToInt32(0);
         }
     }
 }
