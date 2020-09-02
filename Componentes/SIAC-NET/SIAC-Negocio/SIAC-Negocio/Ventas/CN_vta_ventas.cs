@@ -824,6 +824,17 @@ namespace SIAC_Negocio.Ventas
                     return b_Result;
                 }
             }
+            if (c_VersionFacturador == "1.3")
+            {
+                if (miFun.CargarVentasPendEnvioV13(n_IdEmpresa, n_IdTipoDocumento, STU_SISTEMA.MESTRABAJO) == false)
+                {
+                    StrErrorMensaje = miFun.StrErrorMensaje;
+                    IntErrorNumber = miFun.IntErrorNumber;
+                    booOcurrioError = miFun.booOcurrioError;
+                    b_Result = false;
+                    return b_Result;
+                }
+            }
             dtCab = miFun.dtLista1;
             dtDet = miFun.dtLista2;
             dtLey = miFun.dtLista3;

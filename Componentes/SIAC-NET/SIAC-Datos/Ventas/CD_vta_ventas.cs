@@ -1547,6 +1547,80 @@ namespace SIAC_DATOS.Ventas
             b_Result = true;
             return b_Result;
         }
+        public bool CargarVentasPendEnvioV13(int n_idempresa, int n_IdTipoDocumento, int n_IdMes)
+        {
+            DataTable DtResultado = new DataTable();
+            bool b_Result = false;
+
+            string[,] arrVtaPar = new string[3, 3] {
+                                            {"n_idemp", "System.INT64", n_idempresa.ToString()},
+                                            {"n_idtipdoc", "System.INT32", n_IdTipoDocumento.ToString()},
+                                            {"n_idmes", "System.INT32", n_IdMes.ToString()}
+                                      };
+            if ((n_IdTipoDocumento == 2) || (n_IdTipoDocumento == 4))
+            {
+                dtLista1 = xMiFuncion.StoreDTLLenar("vta_ventas_sunarchpla_cab_v13", arrVtaPar, mysConec);
+            }
+
+            if ((n_IdTipoDocumento == 8) || (n_IdTipoDocumento == 9))
+            {
+                dtLista1 = xMiFuncion.StoreDTLLenar("vta_ventas_sunarchpla_cab_ncnd_v13", arrVtaPar, mysConec);
+            }
+
+            if (xMiFuncion.IntErrorNumber == 0)
+            {
+                dtLista2 = xMiFuncion.StoreDTLLenar("vta_ventas_sunarchpla_det_v13", arrVtaPar, mysConec);
+                if (xMiFuncion.IntErrorNumber == 0)
+                {
+                    dtLista3 = xMiFuncion.StoreDTLLenar("vta_ventas_sunarchpla_ley_v13", arrVtaPar, mysConec);
+                    if (xMiFuncion.IntErrorNumber == 0)
+                    {
+                        dtLista4 = xMiFuncion.StoreDTLLenar("vta_ventas_sunarchpla_rel_v13", arrVtaPar, mysConec);
+                        if (xMiFuncion.IntErrorNumber == 0)
+                        {
+                            dtLista5 = xMiFuncion.StoreDTLLenar("vta_ventas_sunarchpla_tri_v13", arrVtaPar, mysConec);
+                            if (xMiFuncion.IntErrorNumber != 0)
+                            {
+                                booOcurrioError = xMiFuncion.booOcurrioError;
+                                StrErrorMensaje = xMiFuncion.StrErrorMensaje;
+                                IntErrorNumber = xMiFuncion.IntErrorNumber;
+                                return b_Result;
+                            }
+                        }
+                        else
+                        {
+                            booOcurrioError = xMiFuncion.booOcurrioError;
+                            StrErrorMensaje = xMiFuncion.StrErrorMensaje;
+                            IntErrorNumber = xMiFuncion.IntErrorNumber;
+                            return b_Result;
+                        }
+                    }
+                    else
+                    {
+                        booOcurrioError = xMiFuncion.booOcurrioError;
+                        StrErrorMensaje = xMiFuncion.StrErrorMensaje;
+                        IntErrorNumber = xMiFuncion.IntErrorNumber;
+                        return b_Result;
+                    }
+                }
+                else
+                {
+                    booOcurrioError = xMiFuncion.booOcurrioError;
+                    StrErrorMensaje = xMiFuncion.StrErrorMensaje;
+                    IntErrorNumber = xMiFuncion.IntErrorNumber;
+                    return b_Result;
+                }
+            }
+            else
+            {
+                booOcurrioError = xMiFuncion.booOcurrioError;
+                StrErrorMensaje = xMiFuncion.StrErrorMensaje;
+                IntErrorNumber = xMiFuncion.IntErrorNumber;
+                return b_Result;
+            }
+            b_Result = true;
+            return b_Result;
+        }
         public bool CargarVentasPendEnvioV12PorDias(int n_idempresa, int n_IdTipoDocumento, string c_FechaEmisionDocumento)
         {
             DataTable DtResultado = new DataTable();
