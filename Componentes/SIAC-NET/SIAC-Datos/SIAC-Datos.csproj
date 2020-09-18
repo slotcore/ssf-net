@@ -71,6 +71,7 @@
     <Compile Include="Almacen\CD_alm_responsable.cs" />
     <Compile Include="Almacen\CD_alm_personal.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Classes\Contabilidad\ItemProceso.cs" />
     <Compile Include="Classes\ObjectBase.cs" />
     <Compile Include="Classes\ObservableListSource.cs" />
     <Compile Include="Contabilidad\CD_con_cerrarmes.cs" />
@@ -142,6 +143,9 @@
     <Compile Include="Models\Contabilidad\CostoProduccionDet.cs" />
     <Compile Include="Models\Contabilidad\CostoProduccionDetIns.cs" />
     <Compile Include="Models\Contabilidad\CostoProduccionDetMod.cs" />
+    <Compile Include="Models\Contabilidad\CostoProduccionMovimiento.cs" />
+    <Compile Include="Models\Contabilidad\ItemMovimiento.cs" />
+    <Compile Include="Models\Contabilidad\ItemMovimientoDetalle.cs" />
     <Compile Include="Models\Contabilidad\PersonalContabilidad.cs" />
     <Compile Include="Models\Maestros\Categoria.cs" />
     <Compile Include="Models\Maestros\FinPeriodo.cs" />

@@ -42,8 +42,11 @@ namespace SIAC_DATOS.Planilla
         }
         ~CD_pla_empleados()
         {
-            mysConec.Close();
-            mysConec = null; 
+            if (mysConec != null)
+            {
+                mysConec.Close();
+                mysConec = null;
+            }
         }
         public DataTable dtLista
         {

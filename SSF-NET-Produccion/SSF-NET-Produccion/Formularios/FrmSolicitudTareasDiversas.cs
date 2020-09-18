@@ -257,14 +257,14 @@ namespace SSF_NET_Produccion.Formularios
             CboMeses.SelectedValue = STU_SISTEMA.MESTRABAJO;
 
             objFormVis.mysConec = mysConec;                                 // CARGAMOS EL ARRAY CON LOS DATOS PARA LA VISTA DE DgLista
-            objFormVis.ObtenerCabeceraLista(45, ref arrCabeceraDg1);
+            objFormVis.ObtenerCabeceraLista(100, ref arrCabeceraDg1);
         }
         void DataTableCargar()
         {
             bool b_result = false;
 
             objForm.mysConec = mysConec;                                    // CARGAMOS LOS DATOS DEL FORMULARIO
-            dtForm = objForm.TraerRegistro(45);                             // INDICAMOS QUE ES EL FORMULARIO MAESTRO DE RECETAS
+            dtForm = objForm.TraerRegistro(100);                             // INDICAMOS QUE ES EL FORMULARIO MAESTRO DE RECETAS
 
             objMeses.mysConec = mysConec;
             dtMeses = objMeses.Listar();
@@ -658,7 +658,11 @@ namespace SSF_NET_Produccion.Formularios
             entTar.n_idpro = 0;
             entTar.n_idtipdoc = 82;
             entTar.c_numser = TxtNumSer.Text;
+
+            //Se actualiza el # documento por errores de repetidos
+            TxtNumDoc.Text = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, 96, TxtNumSer.Text);
             entTar.c_numdoc = TxtNumDoc.Text;
+
             entTar.d_fchreg = Convert.ToDateTime(TxtFchReg.Text);
             entTar.n_idsol = Convert.ToInt32(CboSol.SelectedValue);
             entTar.c_obs = funFunciones.NulosC(TxtObs.Text);
@@ -1591,7 +1595,7 @@ namespace SSF_NET_Produccion.Formularios
             {
                 string strCad = "0000" + TxtNumSer.Text;
                 TxtNumSer.Text = strCad.Substring(strCad.Length - 4, 4);
-                TxtNumDoc.Text = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, 82, TxtNumSer.Text);
+                TxtNumDoc.Text = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, 96, TxtNumSer.Text);
             } 
         }
         private void ToolVisar_Click(object sender, EventArgs e)

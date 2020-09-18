@@ -1,7 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
 using SIAC_Datos.Classes;
+using SIAC_DATOS.Classes.Contabilidad;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
 using System.Linq;
 using System.Text;
@@ -242,6 +244,32 @@ namespace SIAC_DATOS.Models.Contabilidad
             }
         }
 
+        public DateTime d_fchini
+        {
+            get
+            {
+                DateTime fchIni = new DateTime(n_anotra, n_idmes, 1);
+                return fchIni;
+            }
+        }
+
+        public DateTime d_fchfin
+        {
+            get
+            {
+                int m_mesactual = n_idmes;
+                int m_anhoactual = n_anotra;
+                if (m_mesactual == 12)
+                {
+                    m_anhoactual += 1;
+                    m_mesactual = 0;
+                }
+                    
+                DateTime fchIni = new DateTime(m_anhoactual, m_mesactual + 1, 1);
+                return fchIni;
+            }
+        }
+
         private string _c_desmes;
         public string c_desmes
         {
@@ -331,6 +359,24 @@ namespace SIAC_DATOS.Models.Contabilidad
                 if (value != _CostoProduccionDets)
                 {
                     _CostoProduccionDets = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private ObservableListSource<CostoProduccionMovimiento> _CostoProduccionMovimientos;
+        public ObservableListSource<CostoProduccionMovimiento> CostoProduccionMovimientos
+        {
+            get
+            {
+                return _CostoProduccionMovimientos;
+            }
+
+            set
+            {
+                if (value != _CostoProduccionMovimientos)
+                {
+                    _CostoProduccionMovimientos = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -550,17 +596,11 @@ namespace SIAC_DATOS.Models.Contabilidad
             }
         }
 
-        public void ProcesarMp(int n_idemp, int n_anotra, int n_idmes)
+        public void ProcesarMp(int n_idemp, DateTime d_fchini, DateTime d_fchfin)
         {
             // Validar movimientos anteriores sin costear
             // Materiales
-            // Productos Intermedios
-            // Productos Terminados
-            if (_CostoProduccionDets == null)
-                _CostoProduccionDets = new ObservableListSource<CostoProduccionDet>();
-
-            _CostoProduccionDets.Clear();
-
+            List<ItemProceso> itemProcesos = new List<ItemProceso>();
             using (MySqlConnection connection
                 = new MySqlConnection(
                     ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
@@ -578,17 +618,295 @@ namespace SIAC_DATOS.Models.Contabilidad
                     {
                         while (reader.Read())
                         {
-                            CostoProduccionDet m_entidad = CostoProduccionDet.SetObject(reader);
-                            //insumos
-                            m_entidad.ListarInsumosParteProduccion();
-                            //mano de obra
-                            m_entidad.ListarModParteProduccion();
-                            //
-                            _CostoProduccionDets.Add(m_entidad);
+                            itemProcesos.Add(new ItemProceso(reader));
                         }
                     }
                 }
             }
+
+            foreach (ItemProceso itemProceso in itemProcesos)
+            {
+                try
+                {
+                    CosteaItem(itemProceso.n_idite, itemProceso.n_idalm, d_fchini, d_fchfin);
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+            }
+        }
+
+        public void GrabaCostoMovimiento(int n_idite, ItemMovimientoDetalle MovimientoItem)
+        {
+            CostoProduccionMovimiento costoProduccionMovimiento 
+                = CostoProduccionMovimientos
+                .Where(o => o.n_idite == n_idite && o.n_idmov == MovimientoItem.n_idmov)
+                .FirstOrDefault();
+
+            if (costoProduccionMovimiento == null)
+            {
+                costoProduccionMovimiento = new CostoProduccionMovimiento();
+                costoProduccionMovimiento.n_idmov = MovimientoItem.n_idmov;
+                costoProduccionMovimiento.n_idite = n_idite;
+                costoProduccionMovimiento.n_can = MovimientoItem.n_can;
+                costoProduccionMovimiento.n_costounit = MovimientoItem.n_costounit;
+                costoProduccionMovimiento.n_costounitprom = MovimientoItem.n_costounitprom;
+                costoProduccionMovimiento.n_costomp = MovimientoItem.n_costomp;
+                costoProduccionMovimiento.n_costomod = MovimientoItem.n_costomod;
+                costoProduccionMovimiento.n_costocif = MovimientoItem.n_costocif;
+            }
+        }
+
+        public double ObtenerCostoMovimiento(int n_idite, int n_idmov)
+        {
+            double m_costoMovimiento = 0;
+            CostoProduccionMovimiento costoProduccionMovimiento
+                = CostoProduccionMovimientos
+                .Where(o => o.n_idite == n_idite && o.n_idmov == n_idmov)
+                .FirstOrDefault();
+
+            if (costoProduccionMovimiento != null)
+            {
+                m_costoMovimiento 
+                    = costoProduccionMovimiento.n_can * costoProduccionMovimiento.n_costounitprom;
+            }
+
+            return m_costoMovimiento;
+        }
+
+        public void CosteaItem(int n_idite, int n_idalm, DateTime d_fchini, DateTime d_fchfin)
+        {
+            ItemMovimiento itemMovimiento 
+                = ItemMovimiento.TraerMovimientoPorFecha(n_idite, n_idalm, d_fchini, d_fchfin);
+
+            double mCantidadAcumulada = itemMovimiento.n_saldoini;
+            double mCantidadAcumuladaEntrada = itemMovimiento.n_saldoini;
+            double mCostoAcumulado = itemMovimiento.n_costoini;
+            double mCostoUnitarioPromedio = itemMovimiento.n_costounipromini;
+
+            double mCostoMovimiento = 0;
+            double mCostoUnitarioMovimiento = 0;
+            double mCantidadAcumuladaSalida = 0;
+
+            foreach (ItemMovimientoDetalle itemMovimientoDet
+                        in itemMovimiento.ItemMovimientoDetalles)
+            {
+                // Se busca errores de busqueda de items
+                if (itemMovimientoDet.n_can <= 0)
+                {
+                    throw new Exception("Movimiento con cantidad igual (o menor) a cero. ");
+                }
+                //**********
+                // INGRESOS
+                //**********
+                if (itemMovimientoDet.c_destipmov == "I")
+                {
+                    mCantidadAcumulada = mCantidadAcumulada + itemMovimientoDet.n_can;
+                    mCantidadAcumuladaEntrada = mCantidadAcumuladaEntrada + itemMovimientoDet.n_can;
+                    // MOVIMIENTO SIN COSTEAR
+                    if (ObtenerCostoMovimiento(n_idite, itemMovimientoDet.n_idmov) == 0)
+                    {
+                        itemMovimientoDet.n_costounitprom = mCostoUnitarioPromedio;
+                        mCostoMovimiento = CosteaMovimientoDetalle(itemMovimiento.n_idite,
+                                                itemMovimiento.n_idalm,
+                                                d_fchini,
+                                                itemMovimientoDet);
+                        mCostoUnitarioMovimiento = mCostoMovimiento / itemMovimientoDet.n_can;
+
+
+                        // Validamos el costo unitario del movimiento
+                        if (mCostoUnitarioMovimiento <= 0)
+                        {
+                            throw new Exception("Costo Unitario de movimiento igual (o menor) a cero. ");
+                        }
+
+                        mCostoAcumulado = mCostoAcumulado + mCostoMovimiento;
+                        mCostoUnitarioPromedio = mCostoAcumulado / mCantidadAcumulada;
+                        // Costeamos el movimiento
+                        itemMovimientoDet.n_costomp = mCostoMovimiento;
+                        itemMovimientoDet.n_costounit = mCostoUnitarioMovimiento;
+                        itemMovimientoDet.n_costounitprom = mCostoUnitarioPromedio;
+
+                        GrabaCostoMovimiento(itemMovimiento.n_idite, itemMovimientoDet);
+                    }
+                    // MOVIMIENTO COSTEADO
+                    else
+                    {
+                        // Buscamos el importe del movimiento
+                        mCostoAcumulado = mCostoAcumulado + itemMovimientoDet.n_costo;
+                        mCostoMovimiento = itemMovimientoDet.n_costo;
+                        mCostoUnitarioMovimiento = itemMovimientoDet.n_costounit;
+                        mCostoUnitarioPromedio = mCostoAcumulado / mCantidadAcumulada;
+
+
+                        // Se valida que este bien costeado
+                        if (mCostoUnitarioPromedio != itemMovimientoDet.n_costounitprom) // Si esta mal costeado
+                        {
+                            // Actualizamos el costo unitario promedio
+                            itemMovimientoDet.n_costounitprom = mCostoUnitarioPromedio;
+                            GrabaCostoMovimiento(itemMovimiento.n_idite, itemMovimientoDet);
+                        }
+                    }
+                }
+                //**********
+                // SALIDAS
+                //**********
+                else
+                {
+                    mCostoMovimiento = mCostoUnitarioPromedio * itemMovimientoDet.n_can;
+                    mCantidadAcumulada = mCantidadAcumulada - itemMovimientoDet.n_can;
+                    mCantidadAcumuladaSalida = mCantidadAcumuladaSalida + itemMovimientoDet.n_can;
+                    mCostoUnitarioMovimiento = mCostoUnitarioPromedio;
+
+
+                    // Se valida que no hayan saldos negativos
+                    if (Math.Round(mCantidadAcumulada, 2) < 0)
+                    {
+                        throw new Exception("Cantidad acumulada menor a cero. ");
+                    }
+
+
+                    // MOVIMIENTO NO COSTEADO
+                    if (itemMovimientoDet.n_costo == 0)
+                    {
+                        // Costeamos el movimiento
+                        itemMovimientoDet.n_costomp = mCostoMovimiento;
+                        itemMovimientoDet.n_costounit = mCostoUnitarioMovimiento;
+                        itemMovimientoDet.n_costounitprom = mCostoUnitarioPromedio;
+
+                        GrabaCostoMovimiento(itemMovimiento.n_idite, itemMovimientoDet);
+                    // MOVIMIENTO COSTEADO
+                    }
+                    else
+                    {
+                        // Si ha cambiado el costo unitario promedio
+                        if (mCostoUnitarioPromedio != itemMovimientoDet.n_costounitprom)
+                        {
+                            // Costeamos el movimiento
+                            itemMovimientoDet.n_costomp = mCostoMovimiento;
+                            itemMovimientoDet.n_costounit = mCostoUnitarioMovimiento;
+                            itemMovimientoDet.n_costounitprom = mCostoUnitarioPromedio;
+
+                            GrabaCostoMovimiento(itemMovimiento.n_idite, itemMovimientoDet);
+                        }
+                    }
+
+
+                    // Actualizamos el costo acumulado
+                    mCostoAcumulado = mCostoAcumulado - mCostoMovimiento;
+                }
+            }
+        }
+
+        public double CosteaParteProduccion(int n_idprod)
+        {
+            double costoParte = 0;
+            List<ItemMovimiento> itemMovimientos
+                = ItemMovimiento.TraerMovimientoPorParte(n_idprod);
+
+            foreach (ItemMovimiento itemMovimiento in itemMovimientos)
+            {
+                foreach (ItemMovimientoDetalle itemMovimientoDetalle in itemMovimiento.ItemMovimientoDetalles)
+                {
+                    double costoMovimiento = ObtenerCostoMovimiento(itemMovimiento.n_idite, itemMovimientoDetalle.n_idmov);
+                    if (costoMovimiento == 0)
+                    {
+                        costoParte += CosteaMovimientoDetalle(itemMovimiento.n_idite
+                            , itemMovimiento.n_idalm
+                            , d_fchini
+                            , itemMovimientoDetalle);
+                    }
+                    else
+                    {
+                        costoParte += costoMovimiento;
+                    }
+                }
+            }
+
+            return costoParte;
+        }
+
+        public double CosteaInventarioInicial(ItemMovimientoDetalle MovimientoItem)
+        {
+            return 0;
+        }
+
+        public double CosteaAjusteInventario(ItemMovimientoDetalle MovimientoItem)
+        {
+            return 0;
+        }
+
+        public double ObtenerCostoUnitarioUltimaCompra(ItemMovimientoDetalle MovimientoItem)
+        {
+            return 0;
+        }
+
+        public double CosteaMovimientoDetalle(int n_idite, int n_idalm, DateTime d_fchini, ItemMovimientoDetalle MovimientoItem)
+        {
+            double mCostoMovimientoDetalle = 0;
+            // INGRESOS
+            if (MovimientoItem.c_destipmov == "I")
+            {
+                switch (MovimientoItem.n_idtipdocref)
+                {
+                    // PARTE DE PRODUCCION
+                    case 1:
+                        mCostoMovimientoDetalle = CosteaParteProduccion(MovimientoItem.n_iddocref);
+                        break;
+
+
+                    // SOLICITUD DE MATERIALES
+                    case 2:
+                        //Validamos el costo promedio
+                        if (MovimientoItem.n_costounitprom == 0)
+                        {
+                            throw new Exception("Costo Unitario Promedio igual a cero al intentar costear Factura.");
+                        }
+                        mCostoMovimientoDetalle = MovimientoItem.n_costounitprom * MovimientoItem.n_can;
+                        break;
+
+
+                    // INVENTARIO INICIAL
+                    case 3:
+                        mCostoMovimientoDetalle = CosteaInventarioInicial(MovimientoItem);
+                        break;
+
+
+                    // AJUSTE DE INVENTARIO
+                    case 4:
+                        mCostoMovimientoDetalle = CosteaAjusteInventario(MovimientoItem);
+                        break;
+
+
+                    //NOTAS DE CREDITO
+                    case 5:
+                        // Validamos el costo promedio
+                        if (MovimientoItem.n_costounitprom == 0)
+                        {
+                            throw new Exception("Costo Unitario Promedio igual a cero al intentar costear Factura.");
+                        }
+                        mCostoMovimientoDetalle = MovimientoItem.n_costounitprom * MovimientoItem.n_can;
+                        break;
+
+
+                    default:
+
+                        mCostoMovimientoDetalle = ObtenerCostoUnitarioUltimaCompra(MovimientoItem) * MovimientoItem.n_can;
+                        break;
+                }
+            }
+            // SALIDAS
+            else
+            {
+                // Se calculan los costos unitarios hasta la fecha del movimiento
+                CosteaItem(n_idite, n_idalm, d_fchini, MovimientoItem.d_fechmov);
+                //                
+                mCostoMovimientoDetalle = ObtenerCostoMovimiento(n_idite, MovimientoItem.n_idmov);
+            }
+
+
+            return mCostoMovimientoDetalle;
         }
 
         public static bool DocumentoExiste(int idemp, string numser, string numdoc)

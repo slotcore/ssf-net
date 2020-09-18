@@ -40,6 +40,8 @@
             this.ToolImprimir = new System.Windows.Forms.ToolStripSplitButton();
             this.emitirGuiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imprimirTareasConPersonalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnSubirRegistro = new System.Windows.Forms.ToolStripButton();
             this.ToolVisar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolSalir = new System.Windows.Forms.ToolStripButton();
@@ -96,8 +98,6 @@
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.FgSele = new C1.Win.C1FlexGrid.C1FlexGrid();
-            this.btnSubirRegistro = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolHerramientas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Tab1)).BeginInit();
             this.Tab1.SuspendLayout();
@@ -249,6 +249,21 @@
             this.imprimirTareasConPersonalToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
             this.imprimirTareasConPersonalToolStripMenuItem.Text = "Imprimir Tareas con Personal";
             this.imprimirTareasConPersonalToolStripMenuItem.Click += new System.EventHandler(this.imprimirTareasConPersonalToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 39);
+            // 
+            // btnSubirRegistro
+            // 
+            this.btnSubirRegistro.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnSubirRegistro.Image = global::SSF_NET_Produccion.Properties.Resources.publish_32x32;
+            this.btnSubirRegistro.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSubirRegistro.Name = "btnSubirRegistro";
+            this.btnSubirRegistro.Size = new System.Drawing.Size(36, 36);
+            this.btnSubirRegistro.Text = "Subir Registro";
+            this.btnSubirRegistro.Click += new System.EventHandler(this.btnSubirRegistro_Click);
             // 
             // ToolVisar
             // 
@@ -927,21 +942,6 @@
             this.FgSele.Size = new System.Drawing.Size(780, 352);
             this.FgSele.TabIndex = 0;
             this.FgSele.EnterCell += new System.EventHandler(this.FgSele_EnterCell);
-            // 
-            // btnSubirRegistro
-            // 
-            this.btnSubirRegistro.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnSubirRegistro.Image = global::SSF_NET_Produccion.Properties.Resources.publish_32x32;
-            this.btnSubirRegistro.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnSubirRegistro.Name = "btnSubirRegistro";
-            this.btnSubirRegistro.Size = new System.Drawing.Size(36, 36);
-            this.btnSubirRegistro.Text = "Subir Registro";
-            this.btnSubirRegistro.Click += new System.EventHandler(this.btnSubirRegistro_Click);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 39);
             // 
             // FrmSolicitudTareasDiversas
             // 

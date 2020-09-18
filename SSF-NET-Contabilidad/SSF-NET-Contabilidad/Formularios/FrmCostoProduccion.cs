@@ -676,7 +676,7 @@ namespace SSF_NET_Contabilidad.Formularios
 
         private void BtnProcesarMP_Click(object sender, EventArgs e)
         {
-            m_CostoProduccion.ProcesarMp(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, STU_SISTEMA.MESTRABAJO - 1);
+            //m_CostoProduccion.ProcesarMp(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, STU_SISTEMA.MESTRABAJO - 1);
         }
 
 

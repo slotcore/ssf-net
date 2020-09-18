@@ -1330,10 +1330,10 @@ namespace SSF_NET_Ventas.Formularios
                     {
                         Nuevo();
                     }
-                    else
-                    {
-                        this.Close();
-                    }
+                    //else
+                    //{
+                    //    this.Close();
+                    //}
                 }
                 else
                 {
