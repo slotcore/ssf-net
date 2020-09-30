@@ -115,6 +115,7 @@ namespace SIAC_DATOS.Almacen
         public bool Insertar(BE_ALM_TRANSFERENCIAS entCabecera)
         {
             bool booOk = false;
+            int n_idtrans = 0;
             DatosMySql xMiFuncion = new DatosMySql();
             MySqlTransaction trans;
             xMiFuncion.ReAbrirConeccion(mysConec);
@@ -124,9 +125,10 @@ namespace SIAC_DATOS.Almacen
             {
                 if (xMiFuncion.StoreEjecutar("alm_transferencias_insertar", entCabecera, mysConec, 0) == true)
                 {
+                    n_idtrans = Convert.ToInt32(xMiFuncion.intIdGenerado);
                     foreach (BE_ALM_TRANSFERENCIASDET entTransDet in entCabecera.lst_items)
                     {
-                        entTransDet.n_idtrans = Convert.ToInt32(xMiFuncion.intIdGenerado);
+                        entTransDet.n_idtrans = n_idtrans;
                         if (xMiFuncion.StoreEjecutar("alm_transferenciasdet_insertar", entTransDet, mysConec, 0) == true)
                         {
                             booOk = true;

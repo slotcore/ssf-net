@@ -708,31 +708,38 @@ namespace SSF_NET_Almacen.Formularios
         bool Grabar()
         {
             bool booResultado = false;
-            if (CamposOK() == false)
+            try
             {
-                return booResultado;
-            }
-            AsignarEntidad();
-            //objMovimientos.AccConec = AccConec;
-
-            if (n_QueHace == 1)
-            {
-                if (objMovimientos.DocumentoExiste(STU_SISTEMA.EMPRESAID, BE_Movimiento.n_idclipro, Convert.ToInt32(CboTipDoc.SelectedValue), TxtNumSer.Text, TxtNumDoc.Text, 1) == true)
+                if (CamposOK() == false)
                 {
-                    MessageBox.Show(" El numero de documento " + TxtNumSer.Text + "-" + TxtNumDoc.Text + " ya existe, ingrese otro ", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     return booResultado;
                 }
-                booResultado = objMovimientos.Insertar(BE_Movimiento, 2);   // INDICAMOS 2 = ENTRADA
-            }
+                AsignarEntidad();
+                //objMovimientos.AccConec = AccConec;
 
-            if (n_QueHace == 2)
-            {
-                booResultado = objMovimientos.Actualizar(BE_Movimiento);
-            }
+                if (n_QueHace == 1)
+                {
+                    if (objMovimientos.DocumentoExiste(STU_SISTEMA.EMPRESAID, BE_Movimiento.n_idclipro, Convert.ToInt32(CboTipDoc.SelectedValue), TxtNumSer.Text, TxtNumDoc.Text, 1) == true)
+                    {
+                        MessageBox.Show(" El numero de documento " + TxtNumSer.Text + "-" + TxtNumDoc.Text + " ya existe, ingrese otro ", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                        return booResultado;
+                    }
+                    booResultado = objMovimientos.Insertar(BE_Movimiento, 2);   // INDICAMOS 2 = ENTRADA
+                }
 
-            if (booResultado == false)
+                if (n_QueHace == 2)
+                {
+                    booResultado = objMovimientos.Actualizar(BE_Movimiento);
+                }
+
+                if (booResultado == false)
+                {
+                    MessageBox.Show(" No se pudo guardar el registro por el siguiente motivo: " + objMovimientos.StrErrorMensaje, "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                }
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show(" No se pudo guardar el registro por el siguiente motivo: " + objMovimientos.StrErrorMensaje, "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                MessageBox.Show(string.Format("Ocurrió un error: {0}", ex.Message), "Grabar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return booResultado;
         }
@@ -831,6 +838,11 @@ namespace SSF_NET_Almacen.Formularios
                         // FILTRAMOS LA PRESENTACION PARA OBTENER SU ID
                         strCadenaFiltro = "c_abrpre = '" + BE_Detalle.c_itepredes + "' AND n_idite = " + BE_Detalle.n_idite + "";
                         DtFiltro = funDatos.DataTableFiltrar(dtPresentaItem, strCadenaFiltro);
+
+                        if (DtFiltro.Rows.Count == 0)
+                        {
+                            throw new Exception(string.Format("No existe la presentacion: {0} para el item: {1}", BE_Detalle.c_itepredes, BE_Detalle.c_itedes));
+                        }
                         BE_Detalle.n_idpre = Convert.ToInt32(DtFiltro.Rows[0]["n_id"].ToString());
 
                         // FILTRAMOS EL TIPO DE PRODUCTO PARA OBTENER SU id
