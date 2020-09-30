@@ -71,6 +71,7 @@
     <Compile Include="Almacen\CD_alm_responsable.cs" />
     <Compile Include="Almacen\CD_alm_personal.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Classes\Contabilidad\CosteoProdException.cs" />
     <Compile Include="Classes\Contabilidad\ItemProceso.cs" />
     <Compile Include="Classes\ObjectBase.cs" />
     <Compile Include="Classes\ObservableListSource.cs" />
@@ -138,7 +139,10 @@
     <Compile Include="Maestros\CD_mae_prioridad.cs" />
     <Compile Include="Maestros\CD_mae_tipoclipro.cs" />
     <Compile Include="Mantenimiento\CD_man_equipos.cs" />
+    <Compile Include="Models\Almacen\InventarioInicial.cs" />
+    <Compile Include="Models\Almacen\InventarioInicialDet.cs" />
     <Compile Include="Models\Contabilidad\ConfiguracionValorizacion.cs" />
+    <Compile Include="Classes\Contabilidad\CostoProduccionError.cs" />
     <Compile Include="Models\Contabilidad\CostoProduccion.cs" />
     <Compile Include="Models\Contabilidad\CostoProduccionDet.cs" />
     <Compile Include="Models\Contabilidad\CostoProduccionDetIns.cs" />
@@ -146,7 +150,10 @@
     <Compile Include="Models\Contabilidad\CostoProduccionMovimiento.cs" />
     <Compile Include="Models\Contabilidad\ItemMovimiento.cs" />
     <Compile Include="Models\Contabilidad\ItemMovimientoDetalle.cs" />
+    <Compile Include="Models\Contabilidad\KardexResumen.cs" />
     <Compile Include="Models\Contabilidad\PersonalContabilidad.cs" />
+    <Compile Include="Models\Logistica\OrdenCompra.cs" />
+    <Compile Include="Models\Logistica\OrdenCompraDetalle.cs" />
     <Compile Include="Models\Maestros\Categoria.cs" />
     <Compile Include="Models\Maestros\FinPeriodo.cs" />
     <Compile Include="Models\Planillas\Empleado.cs" />

@@ -86,6 +86,12 @@
     <Compile Include="Formularios\FrmCostoProduccion.Designer.cs">
       <DependentUpon>FrmCostoProduccion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FrmCostoProduccionError.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmCostoProduccionError.Designer.cs">
+      <DependentUpon>FrmCostoProduccionError.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FrmLibroDiario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,6 +217,9 @@
     <EmbeddedResource Include="Formularios\FrmCostoProduccion.resx">
       <DependentUpon>FrmCostoProduccion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmCostoProduccionError.resx">
+      <DependentUpon>FrmCostoProduccionError.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmLibroDiario.resx">
       <DependentUpon>FrmLibroDiario.cs</DependentUpon>
     </EmbeddedResource>
@@ -291,6 +300,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\DataSources\SIAC_DATOS.Classes.Contabilidad.CostoProduccionError.datasource" />
     <None Include="Properties\DataSources\SIAC_DATOS.Models.Contabilidad.CostoProduccion.datasource" />
     <None Include="Properties\DataSources\SIAC_DATOS.Models.Contabilidad.CostoProduccionDet.datasource" />
     <None Include="Properties\DataSources\SIAC_DATOS.Models.Contabilidad.CostoProduccionDetIns.datasource" />
@@ -302,6 +312,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bodepartment_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exporttoxls_16x16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

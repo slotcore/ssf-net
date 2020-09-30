@@ -834,7 +834,7 @@ namespace SSF_NET_Tesoreria.Formularios
                 return booEstado;
             }
 
-            if (Convert.ToDouble(LblDebTotSol.Text) != Convert.ToDouble(LblHabTotSol.Text))
+            if (Math.Round(Convert.ToDouble(LblDebTotSol.Text), 4) != Math.Round(Convert.ToDouble(LblHabTotSol.Text), 4))
             {
                 MessageBox.Show("¡ EL importe debe en soles no corresponder al importe haber en soles !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;

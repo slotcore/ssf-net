@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SIAC_DATOS.Models.Contabilidad
+namespace SIAC_DATOS.Models.Almacen
 {
 
-    public class ItemMovimientoDetalle : ObjectBase
+    public class InventarioInicialDet : ObjectBase
     {
         #region constructor
-        public ItemMovimientoDetalle()
+        public InventarioInicialDet()
         {
             _IsNew = true;
         }
@@ -22,36 +22,79 @@ namespace SIAC_DATOS.Models.Contabilidad
 
         #region propiedades
 
-        private int _n_idmov;
+        private int _n_id;
+        private int _n_idinvini;
+        private int _n_idite;
+        private int _n_idunimed;
         private double _n_can;
-        private DateTime _d_fechmov;
-        private string _desmov;
-        private string _c_destipmov;
-        private string _c_desunimed;
-        private int _n_idtipdocref;
-        private string _c_destipdocref;
-        private int _n_iddocref;
-        private string _c_desdocref;
         private double _n_costounit;
-        private double _n_costounitprom;
-        private double _n_costoprom;
-        private double _n_costomp;
-        private double _n_costomod;
-        private double _n_costocif;
+        private string _c_codite;
+        private string _c_desite;
+        private string _c_desunimed;
 
-
-        public int n_idmov
+        public int n_id
         {
             get
             {
-                return _n_idmov;
+                return _n_id;
             }
 
             set
             {
-                if (value != _n_idmov)
+                if (value != _n_id)
                 {
-                    _n_idmov = value;
+                    _n_id = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public int n_idinvini
+        {
+            get
+            {
+                return _n_idinvini;
+            }
+
+            set
+            {
+                if (value != _n_idinvini)
+                {
+                    _n_idinvini = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public int n_idite
+        {
+            get
+            {
+                return _n_idite;
+            }
+
+            set
+            {
+                if (value != _n_idite)
+                {
+                    _n_idite = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public int n_idunimed
+        {
+            get
+            {
+                return _n_idunimed;
+            }
+
+            set
+            {
+                if (value != _n_idunimed)
+                {
+                    _n_idunimed = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -74,52 +117,52 @@ namespace SIAC_DATOS.Models.Contabilidad
             }
         }
 
-        public DateTime d_fechmov
+        public double n_costounit
         {
             get
             {
-                return _d_fechmov;
+                return _n_costounit;
             }
 
             set
             {
-                if (value != _d_fechmov)
+                if (value != _n_costounit)
                 {
-                    _d_fechmov = value;
+                    _n_costounit = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        public string desmov
+        public string c_codite
         {
             get
             {
-                return _desmov;
+                return _c_codite;
             }
 
             set
             {
-                if (value != _desmov)
+                if (value != _c_codite)
                 {
-                    _desmov = value;
+                    _c_codite = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        public string c_destipmov
+        public string c_desite
         {
             get
             {
-                return _c_destipmov;
+                return _c_desite;
             }
 
             set
             {
-                if (value != _c_destipmov)
+                if (value != _c_desite)
                 {
-                    _c_destipmov = value;
+                    _c_desite = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -141,191 +184,13 @@ namespace SIAC_DATOS.Models.Contabilidad
                 }
             }
         }
-
-        public int n_idtipdocref
-        {
-            get
-            {
-                return _n_idtipdocref;
-            }
-
-            set
-            {
-                if (value != _n_idtipdocref)
-                {
-                    _n_idtipdocref = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        public string c_destipdocref
-        {
-            get
-            {
-                return _c_destipdocref;
-            }
-
-            set
-            {
-                if (value != _c_destipdocref)
-                {
-                    _c_destipdocref = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        public int n_iddocref
-        {
-            get
-            {
-                return _n_iddocref;
-            }
-
-            set
-            {
-                if (value != _n_iddocref)
-                {
-                    _n_iddocref = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        public string c_desdocref
-        {
-            get
-            {
-                return _c_desdocref;
-            }
-
-            set
-            {
-                if (value != _c_desdocref)
-                {
-                    _c_desdocref = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        public double n_costounit
-        {
-            get
-            {
-                return _n_costounit;
-            }
-
-            set
-            {
-                if (value != _n_costounit)
-                {
-                    _n_costounit = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        public double n_costounitprom
-        {
-            get
-            {
-                return _n_costounitprom;
-            }
-
-            set
-            {
-                if (value != _n_costounitprom)
-                {
-                    _n_costounitprom = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        public double n_costoprom
-        {
-            get
-            {
-                return _n_costoprom;
-            }
-
-            set
-            {
-                if (value != _n_costoprom)
-                {
-                    _n_costoprom = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        public double n_costomp
-        {
-            get
-            {
-                return _n_costomp;
-            }
-
-            set
-            {
-                if (value != _n_costomp)
-                {
-                    _n_costomp = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        public double n_costomod
-        {
-            get
-            {
-                return _n_costomod;
-            }
-
-            set
-            {
-                if (value != _n_costomod)
-                {
-                    _n_costomod = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        public double n_costocif
-        {
-            get
-            {
-                return _n_costocif;
-            }
-
-            set
-            {
-                if (value != _n_costocif)
-                {
-                    _n_costocif = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        public double n_costo
-        {
-            get
-            {
-                return n_costomp + n_costomod + n_costocif;
-            }
-        }
         #endregion
 
         #region metodos publicos
 
-        public static List<ItemMovimientoDetalle> FetchList(int n_idemp, int n_anotra)
+        public static ObservableListSource<InventarioInicialDet> FetchList(int n_idinvini)
         {
-            List<ItemMovimientoDetalle> m_listentidad = new List<ItemMovimientoDetalle>();
+            ObservableListSource<InventarioInicialDet> m_listentidad = new ObservableListSource<InventarioInicialDet>();
 
             using (MySqlConnection connection
                 = new MySqlConnection(
@@ -335,15 +200,14 @@ namespace SIAC_DATOS.Models.Contabilidad
                 {
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.CommandText = "con_movimientoitemdetalle_listar";
-                    command.Parameters.Add(new MySqlParameter("@n_idemp", n_idemp));
-                    command.Parameters.Add(new MySqlParameter("@n_anotra", n_anotra));
+                    command.CommandText = "alm_inventarioinidet_listar";
+                    command.Parameters.Add(new MySqlParameter("@n_idinvini", n_idinvini));
                     connection.Open();
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            ItemMovimientoDetalle m_entidad = SetObject(reader);
+                            InventarioInicialDet m_entidad = SetObject(reader);
                             m_listentidad.Add(m_entidad);
                         }
                     }
@@ -352,9 +216,9 @@ namespace SIAC_DATOS.Models.Contabilidad
             return m_listentidad;
         }
 
-        public static ItemMovimientoDetalle Fetch(int id)
+        public static InventarioInicialDet Fetch(int id)
         {
-            ItemMovimientoDetalle m_entidad = new ItemMovimientoDetalle();
+            InventarioInicialDet m_entidad = new InventarioInicialDet();
 
             using (MySqlConnection connection
                 = new MySqlConnection(
@@ -364,7 +228,7 @@ namespace SIAC_DATOS.Models.Contabilidad
                 {
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.CommandText = "con_movimientoitemdetalle_traerregistro";
+                    command.CommandText = "alm_inventarioinidet_traerregistro";
                     command.Parameters.Add(new MySqlParameter("@n_id", id));
                     connection.Open();
                     using (MySqlDataReader reader = command.ExecuteReader())
@@ -393,7 +257,7 @@ namespace SIAC_DATOS.Models.Contabilidad
                         try
                         {
                             command.CommandType = System.Data.CommandType.StoredProcedure;
-                            command.CommandText = "con_movimientoitemdetalle_insertar";
+                            command.CommandText = "alm_inventarioinidet_insertar";
                             AddParameters(command);
                             int rows = command.ExecuteNonQuery();
                             transaction.Commit();
@@ -414,7 +278,7 @@ namespace SIAC_DATOS.Models.Contabilidad
             {
                 command.Transaction = transaction;
                 command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.CommandText = "con_movimientoitemdetalle_insertar";
+                command.CommandText = "alm_inventarioinidet_insertar";
                 AddParameters(command);
                 int rows = command.ExecuteNonQuery();
             }
@@ -435,7 +299,7 @@ namespace SIAC_DATOS.Models.Contabilidad
                         {
                             command.Transaction = transaction;
                             command.CommandType = System.Data.CommandType.StoredProcedure;
-                            command.CommandText = "con_movimientoitemdetalle_actualizar";
+                            command.CommandText = "alm_inventarioinidet_actualizar";
                             AddParameters(command);
                             int rows = command.ExecuteNonQuery();
                             transaction.Commit();
@@ -456,7 +320,7 @@ namespace SIAC_DATOS.Models.Contabilidad
             {
                 command.Transaction = transaction;
                 command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.CommandText = "con_movimientoitemdetalle_actualizar";
+                command.CommandText = "alm_inventarioinidet_actualizar";
                 AddParameters(command);
                 int rows = command.ExecuteNonQuery();
             }
@@ -477,8 +341,8 @@ namespace SIAC_DATOS.Models.Contabilidad
                         {
                             command.Transaction = transaction;
                             command.CommandType = System.Data.CommandType.StoredProcedure;
-                            command.CommandText = "con_movimientoitemdetalle_eliminar";
-                            //command.Parameters.Add(new MySqlParameter("@n_id", n_id));
+                            command.CommandText = "alm_inventarioinidet_eliminar";
+                            command.Parameters.Add(new MySqlParameter("@n_id", n_id));
                             int rows = command.ExecuteNonQuery();
                             transaction.Commit();
                         }
@@ -496,27 +360,30 @@ namespace SIAC_DATOS.Models.Contabilidad
 
         #region metodos privados
 
-        public static ItemMovimientoDetalle SetObject(MySqlDataReader reader)
+        private static InventarioInicialDet SetObject(MySqlDataReader reader)
         {
-            return new ItemMovimientoDetalle
+            return new InventarioInicialDet
             {
-                n_idmov = reader.GetInt32("n_idmov"),
+                n_id = reader.GetInt32("n_id"),
+                n_idinvini = reader.GetInt32("n_idinvini"),
+                n_idite = reader.GetInt32("n_idite"),
+                n_idunimed = reader.GetInt32("n_idunimed"),
                 n_can = reader.GetDouble("n_can"),
-                d_fechmov = reader.GetDateTime("d_fechmov"),
-                desmov = reader.GetString("desmov"),
-                c_destipmov = reader.GetString("c_destipmov"),
-                c_desunimed = reader.GetString("c_desunimed"),
-                n_idtipdocref = reader.GetInt32("n_idtipdocref"),
-                c_destipdocref = reader.GetString("c_destipdocref"),
-                n_iddocref = reader.GetInt32("n_iddocref"),
-                c_desdocref = reader.GetString("c_desdocref")
+                n_costounit = reader.GetDouble("n_costounit"),
+                c_codite = reader.GetString("c_codite"),
+                c_desite = reader.GetString("c_desite"),
+                c_desunimed = reader.GetString("c_desunimed")
             };
         }
 
         private void AddParameters(MySqlCommand command)
         {
-            command.Parameters.Add(new MySqlParameter("@n_idmov", n_idmov));
+            command.Parameters.Add(new MySqlParameter("@n_id", n_id));
+            command.Parameters.Add(new MySqlParameter("@n_idinvini", n_idinvini));
+            command.Parameters.Add(new MySqlParameter("@n_idite", n_idite));
+            command.Parameters.Add(new MySqlParameter("@n_idunimed", n_idunimed));
             command.Parameters.Add(new MySqlParameter("@n_can", n_can));
+            command.Parameters.Add(new MySqlParameter("@n_costounit", n_costounit));
         }
 
         #endregion

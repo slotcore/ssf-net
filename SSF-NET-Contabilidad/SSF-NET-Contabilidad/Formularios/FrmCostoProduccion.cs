@@ -208,7 +208,7 @@ namespace SSF_NET_Contabilidad.Formularios
             ActivarTool();
             LblTitulo2.Text = "Agregando Nuevo Registro";
             Tab1.SelectedIndex = 1;
-            FgItems.Rows.Count = 2;
+            //FgItems.Rows.Count = 2;
             booAgregando = false;
             FgItems.Cols[2].ComboList = "...";
             CboConfiguracion.SelectedValue = Convert.ToInt32(N_IDALMACEN);
@@ -671,25 +671,83 @@ namespace SSF_NET_Contabilidad.Formularios
 
         private void BtnBuscarParte_Click(object sender, EventArgs e)
         {
-            m_CostoProduccion.ListarPartesdeProduccion(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, STU_SISTEMA.MESTRABAJO - 1);            
+            try
+            {
+                CargarCabecera();
+                Cursor.Current = Cursors.WaitCursor;
+                m_CostoProduccion.ListarPartesdeProduccion(m_CostoProduccion.n_idemp
+                    , m_CostoProduccion.n_anotra
+                    , m_CostoProduccion.n_idmes);
+
+                CostoProduccionDetBindingSource.DataSource = m_CostoProduccion.CostoProduccionDets;
+
+                MessageBox.Show("Partes de producción listado correctamente"
+                    , "Listar Partes"
+                    , MessageBoxButtons.OK
+                    , MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Ocurrio un error al buscar partes de producción, error: {0}", ex.Message)
+                    , "Buscar Partes"
+                    , MessageBoxButtons.OK
+                    , MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
         }
 
         private void BtnProcesarMP_Click(object sender, EventArgs e)
         {
-            //m_CostoProduccion.ProcesarMp(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, STU_SISTEMA.MESTRABAJO - 1);
+            try
+            {
+                CargarCabecera();
+                Cursor.Current = Cursors.WaitCursor;
+                m_CostoProduccion.ProcesarMp(STU_SISTEMA.EMPRESAID
+                    , m_CostoProduccion.d_fchini
+                    , m_CostoProduccion.d_fchfin);
+
+                if (m_CostoProduccion.CostoProduccionErrors.Count > 0)
+                {
+                    MessageBox.Show(string.Format("Se han producido errores al procesar MP, por favor revisar y corregir")
+                        , "Procesar MP"
+                        , MessageBoxButtons.OK
+                        , MessageBoxIcon.Error);
+
+                    using (FrmCostoProduccionError xForm = new FrmCostoProduccionError(m_CostoProduccion.CostoProduccionErrors))
+                    {
+                        xForm.ShowDialog(this);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("MP procesado correctamente"
+                        , "Procesar MP"
+                        , MessageBoxButtons.OK
+                        , MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Ocurrio un error al procesar MP, error: {0}", ex.Message)
+                    , "Procesar MP"
+                    , MessageBoxButtons.OK
+                    , MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
         }
 
-
-        //private void ProcesarMp()
-        //{
-        //    foreach (CostoProduccionUCCIONDET costOrdenProduccionViewModel in BE_CostoProduccion.lst_items)
-        //    {
-        //        ProcesaInsumos(costoProduccion, fechaInicioDateTimePicker.Value, fechaFinDateTimePicker.Value);
-        //        ProcesaIntermedios(ViewModel.FechaInicio, ViewModel.FechaFin);
-        //        ProcesaTerminados(ViewModel.FechaInicio, ViewModel.FechaFin);
-        //        CosteaMercaderia(costoProduccion, costOrdenProduccionViewModel.CodigoMercaderia, ViewModel.FechaInicio, ViewModel.FechaFin);
-        //    }
-        //}
+        private void CargarCabecera()
+        {
+            m_CostoProduccion.n_idemp = STU_SISTEMA.EMPRESAID;
+            m_CostoProduccion.n_anotra = STU_SISTEMA.ANOTRABAJO;
+            m_CostoProduccion.n_idmes = Convert.ToInt32(CboMeses.SelectedValue.ToString());
+        }
 
 
         //private void ProcesaInsumos(Common.Models.Contabilidad.CostoProduccion costoProduccion, DateTime fechaInicio, DateTime fechaFin)

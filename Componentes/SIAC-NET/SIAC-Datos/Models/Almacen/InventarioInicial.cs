@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SIAC_DATOS.Models.Contabilidad
+namespace SIAC_DATOS.Models.Almacen
 {
 
-    public class ItemMovimiento : ObjectBase
+    public class InventarioInicial : ObjectBase
     {
         #region constructor
-        public ItemMovimiento()
+        public InventarioInicial()
         {
             _IsNew = true;
         }
@@ -22,27 +22,48 @@ namespace SIAC_DATOS.Models.Contabilidad
 
         #region propiedades
 
-        private int _n_idite;
+        private int _n_id;
+        private int _n_idemp;
         private int _n_idalm;
-        private double _n_saldoini;
-        private double _n_costoini;
-        private double _n_costounipromini;
-        private string _c_codite;
-        private string _c_desite;
+        private int _n_idmon;
+        private string _c_numser;
+        private string _c_numdoc;
+        private string _c_des;
+        private DateTime _d_fchvig;
+        private int _n_activo;
+        private string _c_desemp;
         private string _c_desalm;
+        private string _c_desmon;
 
-        public int n_idite
+        public int n_id
         {
             get
             {
-                return _n_idite;
+                return _n_id;
             }
 
             set
             {
-                if (value != _n_idite)
+                if (value != _n_id)
                 {
-                    _n_idite = value;
+                    _n_id = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public int n_idemp
+        {
+            get
+            {
+                return _n_idemp;
+            }
+
+            set
+            {
+                if (value != _n_idemp)
+                {
+                    _n_idemp = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -65,86 +86,120 @@ namespace SIAC_DATOS.Models.Contabilidad
             }
         }
 
-        public double n_saldoini
+        public int n_idmon
         {
             get
             {
-                return _n_saldoini;
+                return _n_idmon;
             }
 
             set
             {
-                if (value != _n_saldoini)
+                if (value != _n_idmon)
                 {
-                    _n_saldoini = value;
+                    _n_idmon = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        public double n_costoini
+        public string c_numser
         {
             get
             {
-                return _n_costoini;
+                return _c_numser;
             }
 
             set
             {
-                if (value != _n_costoini)
+                if (value != _c_numser)
                 {
-                    _n_costoini = value;
+                    _c_numser = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        public double n_costounipromini
+        public string c_numdoc
         {
             get
             {
-                return _n_costounipromini;
+                return _c_numdoc;
             }
 
             set
             {
-                if (value != _n_costounipromini)
+                if (value != _c_numdoc)
                 {
-                    _n_costounipromini = value;
+                    _c_numdoc = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        public string c_codite
+        public string c_des
         {
             get
             {
-                return _c_codite;
+                return _c_des;
             }
 
             set
             {
-                if (value != _c_codite)
+                if (value != _c_des)
                 {
-                    _c_codite = value;
+                    _c_des = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        public string c_desite
+        public DateTime d_fchvig
         {
             get
             {
-                return _c_desite;
+                return _d_fchvig;
             }
 
             set
             {
-                if (value != _c_desite)
+                if (value != _d_fchvig)
                 {
-                    _c_desite = value;
+                    _d_fchvig = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public int n_activo
+        {
+            get
+            {
+                return _n_activo;
+            }
+
+            set
+            {
+                if (value != _n_activo)
+                {
+                    _n_activo = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public string c_desemp
+        {
+            get
+            {
+                return _c_desemp;
+            }
+
+            set
+            {
+                if (value != _c_desemp)
+                {
+                    _c_desemp = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -167,19 +222,40 @@ namespace SIAC_DATOS.Models.Contabilidad
             }
         }
 
-        private ObservableListSource<ItemMovimientoDetalle> _ItemMovimientoDetalles;
-        public ObservableListSource<ItemMovimientoDetalle> ItemMovimientoDetalles
+        public string c_desmon
         {
             get
             {
-                return _ItemMovimientoDetalles;
+                return _c_desmon;
             }
 
             set
             {
-                if (value != _ItemMovimientoDetalles)
+                if (value != _c_desmon)
                 {
-                    _ItemMovimientoDetalles = value;
+                    _c_desmon = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private ObservableListSource<InventarioInicialDet> _InventarioInicialDets;
+        public ObservableListSource<InventarioInicialDet> InventarioInicialDets
+        {
+            get
+            {
+                if (_InventarioInicialDets == null)
+                {
+                    _InventarioInicialDets = InventarioInicialDet.FetchList(_n_id);
+                }
+                return _InventarioInicialDets;
+            }
+
+            set
+            {
+                if (value != _InventarioInicialDets)
+                {
+                    _InventarioInicialDets = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -188,9 +264,9 @@ namespace SIAC_DATOS.Models.Contabilidad
 
         #region metodos publicos
 
-        public static List<ItemMovimiento> FetchList(int n_idemp, int n_anotra)
+        public static List<InventarioInicial> FetchList(int n_idemp, int n_anotra)
         {
-            List<ItemMovimiento> m_listentidad = new List<ItemMovimiento>();
+            List<InventarioInicial> m_listentidad = new List<InventarioInicial>();
 
             using (MySqlConnection connection
                 = new MySqlConnection(
@@ -200,7 +276,7 @@ namespace SIAC_DATOS.Models.Contabilidad
                 {
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.CommandText = "con_costoproduccionmovimiento_listar";
+                    command.CommandText = "alm_inventarioini_listar";
                     command.Parameters.Add(new MySqlParameter("@n_idemp", n_idemp));
                     command.Parameters.Add(new MySqlParameter("@n_anotra", n_anotra));
                     connection.Open();
@@ -208,7 +284,7 @@ namespace SIAC_DATOS.Models.Contabilidad
                     {
                         while (reader.Read())
                         {
-                            ItemMovimiento m_entidad = SetObject(reader);
+                            InventarioInicial m_entidad = SetObject(reader);
                             m_listentidad.Add(m_entidad);
                         }
                     }
@@ -217,9 +293,9 @@ namespace SIAC_DATOS.Models.Contabilidad
             return m_listentidad;
         }
 
-        public static List<ItemMovimiento> TraerMovimientosPorTipo(int n_idemp, int n_anotra, int n_idmes, int n_idTipoItem)
+        public static InventarioInicial Fetch(int id)
         {
-            List<ItemMovimiento> m_listentidad = new List<ItemMovimiento>();
+            InventarioInicial m_entidad = new InventarioInicial();
 
             using (MySqlConnection connection
                 = new MySqlConnection(
@@ -229,118 +305,24 @@ namespace SIAC_DATOS.Models.Contabilidad
                 {
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.CommandText = "con_costoproduccionmovimiento_listar";
-                    command.Parameters.Add(new MySqlParameter("@n_idemp", n_idemp));
+                    command.CommandText = "alm_inventarioini_traerregistro";
+                    command.Parameters.Add(new MySqlParameter("@n_id", id));
                     connection.Open();
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
-                        while (reader.Read())
+                        if (reader.Read())
                         {
-                            ItemMovimiento m_entidad = SetObject(reader);
-                            m_listentidad.Add(m_entidad);
+                            m_entidad = SetObject(reader);
                         }
                     }
                 }
             }
-            return m_listentidad;
-        }
-
-        public static List<ItemMovimiento> TraerMovimientoPorParte(int n_idprod)
-        {
-            List<ItemMovimiento> m_lstentidad = new List<ItemMovimiento>();
-
-            using (MySqlConnection connection
-                = new MySqlConnection(
-                    ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
-            {
-                using (MySqlCommand command = new MySqlCommand())
-                {
-                    command.Connection = connection;
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.CommandText = "con_costoproduccion_listar_movimientos_por_parte";
-                    command.Parameters.Add(new MySqlParameter("@n_idprod", n_idprod));
-                    connection.Open();
-                    using (MySqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            m_lstentidad.Add(SetObject(reader));
-                        }
-                    }
-                }
-            }
-            return m_lstentidad;
-        }
-
-
-        public static ItemMovimiento TraerMovimientoPorFecha(int n_idemp
-            , int n_idite
-            , int n_idalm
-            , DateTime d_fchini
-            , DateTime d_fchfin)
-        {
-            ItemMovimiento m_entidad = new ItemMovimiento();
-
-            using (MySqlConnection connection
-                = new MySqlConnection(
-                    ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
-            {
-                using (MySqlCommand command = new MySqlCommand())
-                {
-                    command.Connection = connection;
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.CommandText = "con_costoprod_movimiento_item_porfecha";
-                    command.Parameters.Add(new MySqlParameter("@n_idemp", n_idemp));
-                    command.Parameters.Add(new MySqlParameter("@n_idite", n_idite));
-                    command.Parameters.Add(new MySqlParameter("@n_idalm", n_idalm));
-                    command.Parameters.Add(new MySqlParameter("@c_fchini", d_fchini.ToString("dd/MM/yyyy")));
-                    command.Parameters.Add(new MySqlParameter("@c_fchfin", d_fchfin.ToString("dd/MM/yyyy")));
-                    connection.Open();
-                    using (MySqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            if (string.IsNullOrEmpty(m_entidad.c_codite))
-                            {
-                                m_entidad = SetObject(reader);
-                            }
-                            if (m_entidad.ItemMovimientoDetalles == null)
-                            {
-                                m_entidad.ItemMovimientoDetalles = new ObservableListSource<ItemMovimientoDetalle>();
-                            }
-                            m_entidad.ItemMovimientoDetalles.Add(ItemMovimientoDetalle.SetObject(reader));
-                        }
-                    }
-                }
-            }
-            //Se cargan los valores iniciales
-            KardexResumen kardexResumen = KardexResumen.TraerKardexResumenPorItemMovimiento(n_idemp
-                                            , n_idalm
-                                            , n_idite
-                                            , d_fchini
-                                            , d_fchfin);
-            if (kardexResumen != null)
-            {
-                m_entidad.n_saldoini = kardexResumen.n_stkini;
-                m_entidad.n_costoini = kardexResumen.n_costoini;
-                if (kardexResumen.n_stkini == 0)
-                    m_entidad.n_costounipromini = 0;
-                else
-                    m_entidad.n_costounipromini = kardexResumen.n_costopromini / kardexResumen.n_stkini;
-            }
-            else
-            {
-                m_entidad.n_saldoini = 0;
-                m_entidad.n_costoini = 0;
-                m_entidad.n_costounipromini = 0;
-            }
-
             return m_entidad;
         }
 
-        public static ItemMovimiento Fetch(int id)
+        public static InventarioInicial TraerInventario(int id)
         {
-            ItemMovimiento m_entidad = new ItemMovimiento();
+            InventarioInicial m_entidad = new InventarioInicial();
 
             using (MySqlConnection connection
                 = new MySqlConnection(
@@ -350,7 +332,7 @@ namespace SIAC_DATOS.Models.Contabilidad
                 {
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.CommandText = "con_costoprod_movimiento_porfecha";
+                    command.CommandText = "alm_inventarioini_traerregistro";
                     command.Parameters.Add(new MySqlParameter("@n_id", id));
                     connection.Open();
                     using (MySqlDataReader reader = command.ExecuteReader())
@@ -379,7 +361,7 @@ namespace SIAC_DATOS.Models.Contabilidad
                         try
                         {
                             command.CommandType = System.Data.CommandType.StoredProcedure;
-                            command.CommandText = "con_costoproduccionmovimiento_insertar";
+                            command.CommandText = "alm_inventarioini_insertar";
                             AddParameters(command);
                             int rows = command.ExecuteNonQuery();
                             transaction.Commit();
@@ -400,7 +382,7 @@ namespace SIAC_DATOS.Models.Contabilidad
             {
                 command.Transaction = transaction;
                 command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.CommandText = "con_costoproduccionmovimiento_insertar";
+                command.CommandText = "alm_inventarioini_insertar";
                 AddParameters(command);
                 int rows = command.ExecuteNonQuery();
             }
@@ -421,7 +403,7 @@ namespace SIAC_DATOS.Models.Contabilidad
                         {
                             command.Transaction = transaction;
                             command.CommandType = System.Data.CommandType.StoredProcedure;
-                            command.CommandText = "con_costoproduccionmovimiento_actualizar";
+                            command.CommandText = "alm_inventarioini_actualizar";
                             AddParameters(command);
                             int rows = command.ExecuteNonQuery();
                             transaction.Commit();
@@ -442,7 +424,7 @@ namespace SIAC_DATOS.Models.Contabilidad
             {
                 command.Transaction = transaction;
                 command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.CommandText = "con_costoproduccionmovimiento_actualizar";
+                command.CommandText = "alm_inventarioini_actualizar";
                 AddParameters(command);
                 int rows = command.ExecuteNonQuery();
             }
@@ -463,8 +445,8 @@ namespace SIAC_DATOS.Models.Contabilidad
                         {
                             command.Transaction = transaction;
                             command.CommandType = System.Data.CommandType.StoredProcedure;
-                            command.CommandText = "con_costoproduccionmovimiento_eliminar";
-                            //command.Parameters.Add(new MySqlParameter("@n_id", n_id));
+                            command.CommandText = "alm_inventarioini_eliminar";
+                            command.Parameters.Add(new MySqlParameter("@n_id", n_id));
                             int rows = command.ExecuteNonQuery();
                             transaction.Commit();
                         }
@@ -482,22 +464,36 @@ namespace SIAC_DATOS.Models.Contabilidad
 
         #region metodos privados
 
-        public static ItemMovimiento SetObject(MySqlDataReader reader)
+        private static InventarioInicial SetObject(MySqlDataReader reader)
         {
-            return new ItemMovimiento
+            return new InventarioInicial
             {
-                n_idite = reader.GetInt32("n_idite"),
+                n_id = reader.GetInt32("n_id"),
+                n_idemp = reader.GetInt32("n_idemp"),
                 n_idalm = reader.GetInt32("n_idalm"),
-                c_codite = reader.GetString("c_codite"),
-                c_desite = reader.GetString("c_desite"),
-                c_desalm = reader.GetString("c_desalm")
+                n_idmon = reader.GetInt32("n_idmon"),
+                c_numser = reader.GetString("c_numser"),
+                c_numdoc = reader.GetString("c_numdoc"),
+                c_des = reader.GetString("c_des"),
+                d_fchvig = reader.GetDateTime("d_fchvig"),
+                n_activo = reader.GetInt32("n_activo"),
+                c_desemp = reader.GetString("c_desemp"),
+                c_desalm = reader.GetString("c_desalm"),
+                c_desmon = reader.GetString("c_desmon")
             };
         }
 
         private void AddParameters(MySqlCommand command)
         {
-            command.Parameters.Add(new MySqlParameter("@n_idite", n_idite));
+            command.Parameters.Add(new MySqlParameter("@n_id", n_id));
+            command.Parameters.Add(new MySqlParameter("@n_idemp", n_idemp));
             command.Parameters.Add(new MySqlParameter("@n_idalm", n_idalm));
+            command.Parameters.Add(new MySqlParameter("@n_idmon", n_idmon));
+            command.Parameters.Add(new MySqlParameter("@c_numser", c_numser));
+            command.Parameters.Add(new MySqlParameter("@c_numdoc", c_numdoc));
+            command.Parameters.Add(new MySqlParameter("@c_des", c_des));
+            command.Parameters.Add(new MySqlParameter("@d_fchvig", d_fchvig));
+            command.Parameters.Add(new MySqlParameter("@n_activo", n_activo));
         }
 
         #endregion

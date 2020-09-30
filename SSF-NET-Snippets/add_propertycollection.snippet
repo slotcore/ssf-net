@@ -1,0 +1,41 @@
+﻿<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>AddPropertyCollection</Title>
+    <Author>Jose Chacon</Author>
+    <Description>Define una Propiedad para un objeto ViewModel.</Description>
+    <Shortcut>ssfpropcoll</Shortcut>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>NombreEntidad</ID>
+        <ToolTip>Reemplazar por el Nombre de la propiedad</ToolTip>
+        <Default>NombreEntidad</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="csharp">
+      <![CDATA[
+        private ObservableListSource<$NombreEntidad$> _$NombreEntidad$s;
+        public ObservableListSource<$NombreEntidad$> $NombreEntidad$s
+        {
+            get
+            {
+                if (_$NombreEntidad$s == null)
+                {
+                    _$NombreEntidad$s = $NombreEntidad$.FetchList(_n_id);
+                }
+                return _$NombreEntidad$s;
+            }
+
+            set
+            {
+                if (value != _$NombreEntidad$s)
+                {
+                    _$NombreEntidad$s = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }]]>
+    </Code>
+  </Snippet>  
+</CodeSnippet>

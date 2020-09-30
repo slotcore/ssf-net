@@ -765,14 +765,14 @@ namespace SSF_NET_Tesoreria.Formularios
                 //    return booEstado;
                 //}
 
-                if (Convert.ToDouble(LblDebTotSol.Text) != Convert.ToDouble(LblHabTotSol.Text))
+                if (Math.Round(Convert.ToDouble(LblDebTotSol.Text), 4) != Math.Round(Convert.ToDouble(LblHabTotSol.Text), 4))
                 {
                     MessageBox.Show("¡ EL importe debe en soles no corresponder al importe haber en soles !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     booEstado = false;
                     FgOriIng.Focus();
                     return booEstado;
                 }
-                if (Convert.ToDouble(LblDebTotDol.Text) != Convert.ToDouble(LblHabTotDol.Text))
+                if (Math.Round(Convert.ToDouble(LblDebTotDol.Text), 4) != Math.Round(Convert.ToDouble(LblHabTotDol.Text), 4))
                 {
                     MessageBox.Show("¡ EL importe debe en dolares no corresponder al importe haber en dolares !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     booEstado = false;
@@ -1884,13 +1884,13 @@ namespace SSF_NET_Tesoreria.Formularios
         }
         void SumarTotDestino()
         {
-            LblHabTotSol.Text = funFlex.FlexSumarCol(FgDesIng, 3, 2, FgDesIng.Rows.Count - 1).ToString("0.00");
-            LblHabTotDol.Text = funFlex.FlexSumarCol(FgDesIng, 4, 2, FgDesIng.Rows.Count - 1).ToString("0.000000");
+            LblHabTotSol.Text = Math.Round(funFlex.FlexSumarCol(FgDesIng, 3, 2, FgDesIng.Rows.Count - 1), 3).ToString("0.0000");
+            LblHabTotDol.Text = Math.Round(funFlex.FlexSumarCol(FgDesIng, 4, 2, FgDesIng.Rows.Count - 1), 4).ToString("0.0000");
         }
         void SumarTotOrigen()
         {
-            LblDebTotSol.Text = funFlex.FlexSumarCol(FgOriIng, 3, 2, FgOriIng.Rows.Count - 1).ToString("0.00");
-            LblDebTotDol.Text = funFlex.FlexSumarCol(FgOriIng, 4, 2, FgOriIng.Rows.Count - 1).ToString("0.000000");
+            LblDebTotSol.Text = Math.Round(funFlex.FlexSumarCol(FgOriIng, 3, 2, FgOriIng.Rows.Count - 1), 3).ToString("0.0000");
+            LblDebTotDol.Text = Math.Round(funFlex.FlexSumarCol(FgOriIng, 4, 2, FgOriIng.Rows.Count - 1), 4).ToString("0.0000");
         }
         void SumarColDocumentos()
         {

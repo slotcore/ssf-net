@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 namespace SIAC_DATOS.Models.Contabilidad
 {
 
-    public class ItemMovimiento : ObjectBase
+    public class KardexResumen : ObjectBase
     {
         #region constructor
-        public ItemMovimiento()
+        public KardexResumen()
         {
             _IsNew = true;
         }
@@ -22,61 +22,238 @@ namespace SIAC_DATOS.Models.Contabilidad
 
         #region propiedades
 
-        private int _n_idite;
-        private int _n_idalm;
-        private double _n_saldoini;
+        private int _n_id;
+        private int _n_idemp;
+        private int _n_anotra;
+        private int _n_idtipexi;
+        private string _c_tipexides;
+        private string _c_codpro;
+        private string _c_abrepre;
+        private string _c_despro;
+        private double _n_totmov;
+        private double _n_stkini;
+        private double _n_toting;
+        private double _n_totsal;
+        private double _n_saldo;
         private double _n_costoini;
-        private double _n_costounipromini;
-        private string _c_codite;
-        private string _c_desite;
-        private string _c_desalm;
+        private double _n_costopromini;
 
-        public int n_idite
+        public int n_id
         {
             get
             {
-                return _n_idite;
+                return _n_id;
             }
 
             set
             {
-                if (value != _n_idite)
+                if (value != _n_id)
                 {
-                    _n_idite = value;
+                    _n_id = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        public int n_idalm
+        public int n_idemp
         {
             get
             {
-                return _n_idalm;
+                return _n_idemp;
             }
 
             set
             {
-                if (value != _n_idalm)
+                if (value != _n_idemp)
                 {
-                    _n_idalm = value;
+                    _n_idemp = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        public double n_saldoini
+        public int n_anotra
         {
             get
             {
-                return _n_saldoini;
+                return _n_anotra;
             }
 
             set
             {
-                if (value != _n_saldoini)
+                if (value != _n_anotra)
                 {
-                    _n_saldoini = value;
+                    _n_anotra = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public int n_idtipexi
+        {
+            get
+            {
+                return _n_idtipexi;
+            }
+
+            set
+            {
+                if (value != _n_idtipexi)
+                {
+                    _n_idtipexi = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public string c_tipexides
+        {
+            get
+            {
+                return _c_tipexides;
+            }
+
+            set
+            {
+                if (value != _c_tipexides)
+                {
+                    _c_tipexides = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public string c_codpro
+        {
+            get
+            {
+                return _c_codpro;
+            }
+
+            set
+            {
+                if (value != _c_codpro)
+                {
+                    _c_codpro = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public string c_despro
+        {
+            get
+            {
+                return _c_despro;
+            }
+
+            set
+            {
+                if (value != _c_despro)
+                {
+                    _c_despro = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public string c_abrepre
+        {
+            get
+            {
+                return _c_abrepre;
+            }
+
+            set
+            {
+                if (value != _c_abrepre)
+                {
+                    _c_abrepre = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public double n_totmov
+        {
+            get
+            {
+                return _n_totmov;
+            }
+
+            set
+            {
+                if (value != _n_totmov)
+                {
+                    _n_totmov = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public double n_stkini
+        {
+            get
+            {
+                return _n_stkini;
+            }
+
+            set
+            {
+                if (value != _n_stkini)
+                {
+                    _n_stkini = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public double n_toting
+        {
+            get
+            {
+                return _n_toting;
+            }
+
+            set
+            {
+                if (value != _n_toting)
+                {
+                    _n_toting = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public double n_totsal
+        {
+            get
+            {
+                return _n_totsal;
+            }
+
+            set
+            {
+                if (value != _n_totsal)
+                {
+                    _n_totsal = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public double n_saldo
+        {
+            get
+            {
+                return _n_saldo;
+            }
+
+            set
+            {
+                if (value != _n_saldo)
+                {
+                    _n_saldo = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -99,87 +276,18 @@ namespace SIAC_DATOS.Models.Contabilidad
             }
         }
 
-        public double n_costounipromini
+        public double n_costopromini
         {
             get
             {
-                return _n_costounipromini;
+                return _n_costopromini;
             }
 
             set
             {
-                if (value != _n_costounipromini)
+                if (value != _n_costopromini)
                 {
-                    _n_costounipromini = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        public string c_codite
-        {
-            get
-            {
-                return _c_codite;
-            }
-
-            set
-            {
-                if (value != _c_codite)
-                {
-                    _c_codite = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        public string c_desite
-        {
-            get
-            {
-                return _c_desite;
-            }
-
-            set
-            {
-                if (value != _c_desite)
-                {
-                    _c_desite = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        public string c_desalm
-        {
-            get
-            {
-                return _c_desalm;
-            }
-
-            set
-            {
-                if (value != _c_desalm)
-                {
-                    _c_desalm = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private ObservableListSource<ItemMovimientoDetalle> _ItemMovimientoDetalles;
-        public ObservableListSource<ItemMovimientoDetalle> ItemMovimientoDetalles
-        {
-            get
-            {
-                return _ItemMovimientoDetalles;
-            }
-
-            set
-            {
-                if (value != _ItemMovimientoDetalles)
-                {
-                    _ItemMovimientoDetalles = value;
+                    _n_costopromini = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -188,9 +296,9 @@ namespace SIAC_DATOS.Models.Contabilidad
 
         #region metodos publicos
 
-        public static List<ItemMovimiento> FetchList(int n_idemp, int n_anotra)
+        public static List<KardexResumen> FetchList(int n_idemp, int n_anotra)
         {
-            List<ItemMovimiento> m_listentidad = new List<ItemMovimiento>();
+            List<KardexResumen> m_listentidad = new List<KardexResumen>();
 
             using (MySqlConnection connection
                 = new MySqlConnection(
@@ -200,7 +308,7 @@ namespace SIAC_DATOS.Models.Contabilidad
                 {
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.CommandText = "con_costoproduccionmovimiento_listar";
+                    command.CommandText = "alm_kardexresumen_listar";
                     command.Parameters.Add(new MySqlParameter("@n_idemp", n_idemp));
                     command.Parameters.Add(new MySqlParameter("@n_anotra", n_anotra));
                     connection.Open();
@@ -208,7 +316,7 @@ namespace SIAC_DATOS.Models.Contabilidad
                     {
                         while (reader.Read())
                         {
-                            ItemMovimiento m_entidad = SetObject(reader);
+                            KardexResumen m_entidad = SetObject(reader);
                             m_listentidad.Add(m_entidad);
                         }
                     }
@@ -217,9 +325,9 @@ namespace SIAC_DATOS.Models.Contabilidad
             return m_listentidad;
         }
 
-        public static List<ItemMovimiento> TraerMovimientosPorTipo(int n_idemp, int n_anotra, int n_idmes, int n_idTipoItem)
+        public static KardexResumen Fetch(int id)
         {
-            List<ItemMovimiento> m_listentidad = new List<ItemMovimiento>();
+            KardexResumen m_entidad = new KardexResumen();
 
             using (MySqlConnection connection
                 = new MySqlConnection(
@@ -229,118 +337,28 @@ namespace SIAC_DATOS.Models.Contabilidad
                 {
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.CommandText = "con_costoproduccionmovimiento_listar";
-                    command.Parameters.Add(new MySqlParameter("@n_idemp", n_idemp));
+                    command.CommandText = "alm_kardexresumen_traerregistro";
+                    command.Parameters.Add(new MySqlParameter("@n_id", id));
                     connection.Open();
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
-                        while (reader.Read())
+                        if (reader.Read())
                         {
-                            ItemMovimiento m_entidad = SetObject(reader);
-                            m_listentidad.Add(m_entidad);
+                            m_entidad = SetObject(reader);
                         }
                     }
                 }
             }
-            return m_listentidad;
-        }
-
-        public static List<ItemMovimiento> TraerMovimientoPorParte(int n_idprod)
-        {
-            List<ItemMovimiento> m_lstentidad = new List<ItemMovimiento>();
-
-            using (MySqlConnection connection
-                = new MySqlConnection(
-                    ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
-            {
-                using (MySqlCommand command = new MySqlCommand())
-                {
-                    command.Connection = connection;
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.CommandText = "con_costoproduccion_listar_movimientos_por_parte";
-                    command.Parameters.Add(new MySqlParameter("@n_idprod", n_idprod));
-                    connection.Open();
-                    using (MySqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            m_lstentidad.Add(SetObject(reader));
-                        }
-                    }
-                }
-            }
-            return m_lstentidad;
-        }
-
-
-        public static ItemMovimiento TraerMovimientoPorFecha(int n_idemp
-            , int n_idite
-            , int n_idalm
-            , DateTime d_fchini
-            , DateTime d_fchfin)
-        {
-            ItemMovimiento m_entidad = new ItemMovimiento();
-
-            using (MySqlConnection connection
-                = new MySqlConnection(
-                    ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
-            {
-                using (MySqlCommand command = new MySqlCommand())
-                {
-                    command.Connection = connection;
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.CommandText = "con_costoprod_movimiento_item_porfecha";
-                    command.Parameters.Add(new MySqlParameter("@n_idemp", n_idemp));
-                    command.Parameters.Add(new MySqlParameter("@n_idite", n_idite));
-                    command.Parameters.Add(new MySqlParameter("@n_idalm", n_idalm));
-                    command.Parameters.Add(new MySqlParameter("@c_fchini", d_fchini.ToString("dd/MM/yyyy")));
-                    command.Parameters.Add(new MySqlParameter("@c_fchfin", d_fchfin.ToString("dd/MM/yyyy")));
-                    connection.Open();
-                    using (MySqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            if (string.IsNullOrEmpty(m_entidad.c_codite))
-                            {
-                                m_entidad = SetObject(reader);
-                            }
-                            if (m_entidad.ItemMovimientoDetalles == null)
-                            {
-                                m_entidad.ItemMovimientoDetalles = new ObservableListSource<ItemMovimientoDetalle>();
-                            }
-                            m_entidad.ItemMovimientoDetalles.Add(ItemMovimientoDetalle.SetObject(reader));
-                        }
-                    }
-                }
-            }
-            //Se cargan los valores iniciales
-            KardexResumen kardexResumen = KardexResumen.TraerKardexResumenPorItemMovimiento(n_idemp
-                                            , n_idalm
-                                            , n_idite
-                                            , d_fchini
-                                            , d_fchfin);
-            if (kardexResumen != null)
-            {
-                m_entidad.n_saldoini = kardexResumen.n_stkini;
-                m_entidad.n_costoini = kardexResumen.n_costoini;
-                if (kardexResumen.n_stkini == 0)
-                    m_entidad.n_costounipromini = 0;
-                else
-                    m_entidad.n_costounipromini = kardexResumen.n_costopromini / kardexResumen.n_stkini;
-            }
-            else
-            {
-                m_entidad.n_saldoini = 0;
-                m_entidad.n_costoini = 0;
-                m_entidad.n_costounipromini = 0;
-            }
-
             return m_entidad;
         }
 
-        public static ItemMovimiento Fetch(int id)
+        public static KardexResumen TraerKardexResumenPorItemMovimiento(int n_idemp
+            , int n_idalm
+            , int n_idite
+            , DateTime d_fchini
+            , DateTime d_fchfin)
         {
-            ItemMovimiento m_entidad = new ItemMovimiento();
+            KardexResumen m_entidad = null;
 
             using (MySqlConnection connection
                 = new MySqlConnection(
@@ -350,8 +368,12 @@ namespace SIAC_DATOS.Models.Contabilidad
                 {
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.CommandText = "con_costoprod_movimiento_porfecha";
-                    command.Parameters.Add(new MySqlParameter("@n_id", id));
+                    command.CommandText = "alm_kardex_resumen_poritem_mov";
+                    command.Parameters.Add(new MySqlParameter("@n_idemp", n_idemp));
+                    command.Parameters.Add(new MySqlParameter("@n_idalm", n_idalm));
+                    command.Parameters.Add(new MySqlParameter("@n_idite", n_idite));
+                    command.Parameters.Add(new MySqlParameter("@c_fchini", d_fchini.ToString("dd/MM/yyyy")));
+                    command.Parameters.Add(new MySqlParameter("@c_fchfin", d_fchfin.ToString("dd/MM/yyyy")));
                     connection.Open();
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
@@ -379,7 +401,7 @@ namespace SIAC_DATOS.Models.Contabilidad
                         try
                         {
                             command.CommandType = System.Data.CommandType.StoredProcedure;
-                            command.CommandText = "con_costoproduccionmovimiento_insertar";
+                            command.CommandText = "alm_kardexresumen_insertar";
                             AddParameters(command);
                             int rows = command.ExecuteNonQuery();
                             transaction.Commit();
@@ -400,7 +422,7 @@ namespace SIAC_DATOS.Models.Contabilidad
             {
                 command.Transaction = transaction;
                 command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.CommandText = "con_costoproduccionmovimiento_insertar";
+                command.CommandText = "alm_kardexresumen_insertar";
                 AddParameters(command);
                 int rows = command.ExecuteNonQuery();
             }
@@ -421,7 +443,7 @@ namespace SIAC_DATOS.Models.Contabilidad
                         {
                             command.Transaction = transaction;
                             command.CommandType = System.Data.CommandType.StoredProcedure;
-                            command.CommandText = "con_costoproduccionmovimiento_actualizar";
+                            command.CommandText = "alm_kardexresumen_actualizar";
                             AddParameters(command);
                             int rows = command.ExecuteNonQuery();
                             transaction.Commit();
@@ -442,7 +464,7 @@ namespace SIAC_DATOS.Models.Contabilidad
             {
                 command.Transaction = transaction;
                 command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.CommandText = "con_costoproduccionmovimiento_actualizar";
+                command.CommandText = "alm_kardexresumen_actualizar";
                 AddParameters(command);
                 int rows = command.ExecuteNonQuery();
             }
@@ -463,8 +485,8 @@ namespace SIAC_DATOS.Models.Contabilidad
                         {
                             command.Transaction = transaction;
                             command.CommandType = System.Data.CommandType.StoredProcedure;
-                            command.CommandText = "con_costoproduccionmovimiento_eliminar";
-                            //command.Parameters.Add(new MySqlParameter("@n_id", n_id));
+                            command.CommandText = "alm_kardexresumen_eliminar";
+                            command.Parameters.Add(new MySqlParameter("@n_id", n_id));
                             int rows = command.ExecuteNonQuery();
                             transaction.Commit();
                         }
@@ -482,22 +504,34 @@ namespace SIAC_DATOS.Models.Contabilidad
 
         #region metodos privados
 
-        public static ItemMovimiento SetObject(MySqlDataReader reader)
+        private static KardexResumen SetObject(MySqlDataReader reader)
         {
-            return new ItemMovimiento
+            return new KardexResumen
             {
-                n_idite = reader.GetInt32("n_idite"),
-                n_idalm = reader.GetInt32("n_idalm"),
-                c_codite = reader.GetString("c_codite"),
-                c_desite = reader.GetString("c_desite"),
-                c_desalm = reader.GetString("c_desalm")
+                n_id = reader.GetInt32("n_id"),
+                n_idemp = reader.GetInt32("n_idemp"),
+                n_anotra = reader.GetInt32("n_anotra"),
+                n_idtipexi = reader.GetInt32("n_idtipexi"),
+                c_tipexides = reader.GetString("c_tipexides"),
+                c_codpro = reader.GetString("c_codpro"),
+                c_despro = reader.GetString("c_despro"),
+                c_abrepre = reader.GetString("c_abrepre"),
+                n_totmov = reader.GetDouble("n_totmov"),
+                n_stkini = reader.GetDouble("n_stkini"),
+                n_toting = reader.GetDouble("n_toting"),
+                n_totsal = reader.GetDouble("n_totsal"),
+                n_saldo = reader.GetDouble("n_saldo"),
+                n_costoini = reader.GetDouble("n_costoini"),
+                n_costopromini = reader.GetDouble("n_costopromini")
             };
         }
 
         private void AddParameters(MySqlCommand command)
         {
-            command.Parameters.Add(new MySqlParameter("@n_idite", n_idite));
-            command.Parameters.Add(new MySqlParameter("@n_idalm", n_idalm));
+            command.Parameters.Add(new MySqlParameter("@n_id", n_id));
+            command.Parameters.Add(new MySqlParameter("@n_idemp", n_idemp));
+            command.Parameters.Add(new MySqlParameter("@n_anotra", n_anotra));
+            command.Parameters.Add(new MySqlParameter("@n_idtipexi", n_idtipexi));
         }
 
         #endregion
