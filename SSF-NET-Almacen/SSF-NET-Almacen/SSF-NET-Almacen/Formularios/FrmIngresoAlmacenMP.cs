@@ -480,6 +480,7 @@ namespace SSF_NET_Almacen.Formularios
             LblIdPro.Text = "";
             TxtNumRuc.Text = "";
             TxtProv.Text = "";
+            LblIdDocRef.Text = "";
 
             CboTipOpe.SelectedValue = 0;
             CboTipDoc.SelectedValue = 0;
