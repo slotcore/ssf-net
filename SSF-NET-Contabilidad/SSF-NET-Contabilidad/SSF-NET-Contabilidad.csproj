@@ -47,7 +47,22 @@
     <Reference Include="ComponentFactory.Krypton.Toolkit">
       <HintPath>..\..\Dlls\ComponentFactory.Krypton.Toolkit.dll</HintPath>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.0.0.999, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\..\SSF-NET\SSF-NET\packages\SharpZipLib.1.0.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="NPOI, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\..\SSF-NET\SSF-NET\packages\NPOI.2.4.1\lib\net45\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\..\SSF-NET\SSF-NET\packages\NPOI.2.4.1\lib\net45\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\..\SSF-NET\SSF-NET\packages\NPOI.2.4.1\lib\net45\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\..\SSF-NET\SSF-NET\packages\NPOI.2.4.1\lib\net45\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -80,6 +95,12 @@
     <Compile Include="Formularios\FrmCerrarModulo.Designer.cs">
       <DependentUpon>FrmCerrarModulo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FrmConfigVal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmConfigVal.Designer.cs">
+      <DependentUpon>FrmConfigVal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FrmCostoProduccion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +112,12 @@
     </Compile>
     <Compile Include="Formularios\FrmCostoProduccionError.Designer.cs">
       <DependentUpon>FrmCostoProduccionError.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmInventarioIni.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmInventarioIni.Designer.cs">
+      <DependentUpon>FrmInventarioIni.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\FrmLibroDiario.cs">
       <SubType>Form</SubType>
@@ -214,11 +241,17 @@
     <EmbeddedResource Include="Formularios\FrmCerrarModulo.resx">
       <DependentUpon>FrmCerrarModulo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmConfigVal.resx">
+      <DependentUpon>FrmConfigVal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmCostoProduccion.resx">
       <DependentUpon>FrmCostoProduccion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmCostoProduccionError.resx">
       <DependentUpon>FrmCostoProduccionError.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmInventarioIni.resx">
+      <DependentUpon>FrmInventarioIni.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmLibroDiario.resx">
       <DependentUpon>FrmLibroDiario.cs</DependentUpon>
@@ -300,9 +333,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Properties\DataSources\SIAC_DATOS.Classes.Contabilidad.CostoProduccionError.datasource" />
+    <None Include="Properties\DataSources\SIAC_DATOS.Models.Contabilidad.ConfigVal.datasource" />
     <None Include="Properties\DataSources\SIAC_DATOS.Models.Contabilidad.CostoProduccion.datasource" />
+    <None Include="Properties\DataSources\SIAC_DATOS.Models.Contabilidad.CostoProduccionCue.datasource" />
     <None Include="Properties\DataSources\SIAC_DATOS.Models.Contabilidad.CostoProduccionDet.datasource" />
+    <None Include="Properties\DataSources\SIAC_DATOS.Models.Contabilidad.CostoProduccionDetCif.datasource" />
     <None Include="Properties\DataSources\SIAC_DATOS.Models.Contabilidad.CostoProduccionDetIns.datasource" />
     <None Include="Properties\DataSources\SIAC_DATOS.Models.Contabilidad.CostoProduccionDetMod.datasource" />
     <None Include="Resources\boorderitem_16x16.png" />
@@ -315,6 +352,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\exporttoxls_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trash_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pagesetup_16x16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

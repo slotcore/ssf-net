@@ -264,7 +264,7 @@ namespace SIAC_DATOS.Models.Almacen
 
         #region metodos publicos
 
-        public static List<InventarioInicial> FetchList(int n_idemp, int n_anotra)
+        public static List<InventarioInicial> FetchList(int n_idemp)
         {
             List<InventarioInicial> m_listentidad = new List<InventarioInicial>();
 
@@ -278,7 +278,6 @@ namespace SIAC_DATOS.Models.Almacen
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.CommandText = "alm_inventarioini_listar";
                     command.Parameters.Add(new MySqlParameter("@n_idemp", n_idemp));
-                    command.Parameters.Add(new MySqlParameter("@n_anotra", n_anotra));
                     connection.Open();
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
@@ -406,6 +405,23 @@ namespace SIAC_DATOS.Models.Almacen
                             command.CommandText = "alm_inventarioini_actualizar";
                             AddParameters(command);
                             int rows = command.ExecuteNonQuery();
+
+                            foreach (var inventarioInicialDet in InventarioInicialDets)
+                            {
+                                if (inventarioInicialDet.n_id > 0)
+                                {
+                                    inventarioInicialDet.IsNew = false;
+                                    inventarioInicialDet.IsOld = true;
+                                }
+                                else
+                                {
+                                    inventarioInicialDet.IsNew = true;
+                                    inventarioInicialDet.IsOld = false;
+                                }
+
+                                inventarioInicialDet.Save(connection, transaction);
+                            }
+
                             transaction.Commit();
                         }
                         catch (Exception ex)

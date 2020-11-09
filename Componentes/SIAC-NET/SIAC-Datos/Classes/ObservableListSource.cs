@@ -29,5 +29,14 @@ namespace SIAC_Datos.Classes
         {
             return _removeList;
         }
+
+        public void RemoveAll()
+        {
+            foreach (var item in this)
+            {
+                _removeList.Add(item);
+            }
+            this.Clear();
+        }
     }
 }

@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SIAC_DATOS.Models.Contabilidad
+namespace SIAC_DATOS.Models.Almacen
 {
 
-    public class ConfiguracionValorizacion : ObjectBase
+    public class Almacen : ObjectBase
     {
         #region constructor
-        public ConfiguracionValorizacion()
+        public Almacen()
         {
             _IsNew = true;
         }
@@ -26,9 +26,9 @@ namespace SIAC_DATOS.Models.Contabilidad
 
         private int _n_idemp;
 
-        private string _c_des;
+        private int _n_idlocal;
 
-        private string _c_obs;
+        private string _c_des;
 
         public int n_id
         {
@@ -64,6 +64,23 @@ namespace SIAC_DATOS.Models.Contabilidad
             }
         }
 
+        public int n_idlocal
+        {
+            get
+            {
+                return _n_idlocal;
+            }
+
+            set
+            {
+                if (value != _n_idlocal)
+                {
+                    _n_idlocal = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
         public string c_des
         {
             get
@@ -81,72 +98,73 @@ namespace SIAC_DATOS.Models.Contabilidad
             }
         }
 
-        public string c_obs
+        private int _n_estado;
+        public int n_estado
         {
             get
             {
-                return _c_obs;
+                return _n_estado;
             }
 
             set
             {
-                if (value != _c_obs)
+                if (value != _n_estado)
                 {
-                    _c_obs = value;
+                    _n_estado = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        private string _c_metval;
-        public string c_metval
+        private int _n_idtipexi;
+        public int n_idtipexi
         {
             get
             {
-                return _c_metval;
+                return _n_idtipexi;
             }
 
             set
             {
-                if (value != _c_metval)
+                if (value != _n_idtipexi)
                 {
-                    _c_metval = value;
+                    _n_idtipexi = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        private string _c_factdist;
-        public string c_factdist
+        private string _c_deslocal;
+        public string c_deslocal
         {
             get
             {
-                return _c_factdist;
+                return _c_deslocal;
             }
 
             set
             {
-                if (value != _c_factdist)
+                if (value != _c_deslocal)
                 {
-                    _c_factdist = value;
+                    _c_deslocal = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        private string _c_tipdist;
-        public string c_tipdist
+        private string _c_desemp;
+        public string c_desemp
         {
             get
             {
-                return _c_tipdist;
+                return _c_desemp;
             }
 
             set
             {
-                if (value != _c_tipdist)
+                if (value != _c_desemp)
                 {
-                    _c_tipdist = value;
+                    _c_desemp = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -155,9 +173,9 @@ namespace SIAC_DATOS.Models.Contabilidad
 
         #region metodos publicos
 
-        public static List<ConfiguracionValorizacion> FetchList(int n_idemp)
+        public static List<Almacen> FetchList()
         {
-            List<ConfiguracionValorizacion> m_listentidad = new List<ConfiguracionValorizacion>();
+            List<Almacen> m_listentidad = new List<Almacen>();
 
             using (MySqlConnection connection
                 = new MySqlConnection(
@@ -167,14 +185,13 @@ namespace SIAC_DATOS.Models.Contabilidad
                 {
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.CommandText = "con_configval_listar";
-                    command.Parameters.Add(new MySqlParameter("@n_idemp", n_idemp));
+                    command.CommandText = "alm_almacenes_listar";
                     connection.Open();
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            ConfiguracionValorizacion m_entidad = SetObject(reader);
+                            Almacen m_entidad = SetObject(reader);
                             m_listentidad.Add(m_entidad);
                         }
                     }
@@ -183,9 +200,9 @@ namespace SIAC_DATOS.Models.Contabilidad
             return m_listentidad;
         }
 
-        public static ConfiguracionValorizacion Fetch(int id)
+        public static Almacen Fetch(int id)
         {
-            ConfiguracionValorizacion m_entidad = new ConfiguracionValorizacion();
+            Almacen m_entidad = new Almacen();
 
             using (MySqlConnection connection
                 = new MySqlConnection(
@@ -195,7 +212,7 @@ namespace SIAC_DATOS.Models.Contabilidad
                 {
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.CommandText = "con_configval_traerregistro";
+                    command.CommandText = "alm_almacenes_traerregistro";
                     command.Parameters.Add(new MySqlParameter("@n_id", id));
                     connection.Open();
                     using (MySqlDataReader reader = command.ExecuteReader())
@@ -224,7 +241,7 @@ namespace SIAC_DATOS.Models.Contabilidad
                         try
                         {
                             command.CommandType = System.Data.CommandType.StoredProcedure;
-                            command.CommandText = "con_configval_insertar";
+                            command.CommandText = "alm_almacenes_insertar";
                             AddParameters(command);
                             int rows = command.ExecuteNonQuery();
                             transaction.Commit();
@@ -245,7 +262,7 @@ namespace SIAC_DATOS.Models.Contabilidad
             {
                 command.Transaction = transaction;
                 command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.CommandText = "con_configval_insertar";
+                command.CommandText = "alm_almacenes_insertar";
                 AddParameters(command);
                 int rows = command.ExecuteNonQuery();
             }
@@ -266,7 +283,7 @@ namespace SIAC_DATOS.Models.Contabilidad
                         {
                             command.Transaction = transaction;
                             command.CommandType = System.Data.CommandType.StoredProcedure;
-                            command.CommandText = "con_configval_actualizar";
+                            command.CommandText = "alm_almacenes_actualizar";
                             AddParameters(command);
                             int rows = command.ExecuteNonQuery();
                             transaction.Commit();
@@ -287,7 +304,7 @@ namespace SIAC_DATOS.Models.Contabilidad
             {
                 command.Transaction = transaction;
                 command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.CommandText = "con_configval_actualizar";
+                command.CommandText = "alm_almacenes_actualizar";
                 AddParameters(command);
                 int rows = command.ExecuteNonQuery();
             }
@@ -308,7 +325,7 @@ namespace SIAC_DATOS.Models.Contabilidad
                         {
                             command.Transaction = transaction;
                             command.CommandType = System.Data.CommandType.StoredProcedure;
-                            command.CommandText = "con_configval_eliminar";
+                            command.CommandText = "alm_almacenes_eliminar";
                             command.Parameters.Add(new MySqlParameter("@n_id", n_id));
                             int rows = command.ExecuteNonQuery();
                             transaction.Commit();
@@ -327,17 +344,18 @@ namespace SIAC_DATOS.Models.Contabilidad
 
         #region metodos privados
 
-        private static ConfiguracionValorizacion SetObject(MySqlDataReader reader)
+        private static Almacen SetObject(MySqlDataReader reader)
         {
-            return new ConfiguracionValorizacion
+            return new Almacen
             {
                 n_id = reader.GetInt32("n_id"),
                 n_idemp = reader.GetInt32("n_idemp"),
+                n_idlocal = reader.GetInt32("n_idlocal"),
                 c_des = reader.GetString("c_des"),
-                c_obs = reader.GetString("c_obs"),
-                c_metval = reader.GetString("c_metval"),
-                c_factdist = reader.GetString("c_factdist"),
-                c_tipdist = reader.GetString("c_tipdist")
+                n_estado = reader.GetInt32("n_estado"),
+                n_idtipexi = reader.GetInt32("n_idtipexi"),
+                c_deslocal = reader.GetString("c_deslocal"),
+                c_desemp = reader.GetString("c_desemp")
             };
         }
 
@@ -345,11 +363,10 @@ namespace SIAC_DATOS.Models.Contabilidad
         {
             command.Parameters.Add(new MySqlParameter("@n_id", n_id));
             command.Parameters.Add(new MySqlParameter("@n_idemp", n_idemp));
+            command.Parameters.Add(new MySqlParameter("@n_idlocal", n_idlocal));
             command.Parameters.Add(new MySqlParameter("@c_des", c_des));
-            command.Parameters.Add(new MySqlParameter("@c_obs", c_obs));
-            command.Parameters.Add(new MySqlParameter("@c_metval", c_metval));
-            command.Parameters.Add(new MySqlParameter("@c_factdist", c_factdist));
-            command.Parameters.Add(new MySqlParameter("@c_tipdist", c_tipdist));
+            command.Parameters.Add(new MySqlParameter("@n_estado", n_estado));
+            command.Parameters.Add(new MySqlParameter("@n_idtipexi", n_idtipexi));
         }
 
         #endregion

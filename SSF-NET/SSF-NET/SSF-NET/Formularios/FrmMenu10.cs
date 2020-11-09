@@ -1696,5 +1696,21 @@ namespace SSF_NET.Formularios
             objForm.STU_SISTEMA = Program.STU_SISTEMA;
             objForm.CostoProduccion();
         }
+
+        private void configuraciónValorizaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SSF_NET_Contabilidad.CLS_Contabilidad objForm = new SSF_NET_Contabilidad.CLS_Contabilidad();
+            objForm.mysConec = Program.mysConeccion;
+            objForm.STU_SISTEMA = Program.STU_SISTEMA;
+            objForm.ConfiguracionValorizacion();
+        }
+
+        private void inventarioInicialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SSF_NET_Contabilidad.CLS_Contabilidad objForm = new SSF_NET_Contabilidad.CLS_Contabilidad();
+            objForm.mysConec = Program.mysConeccion;
+            objForm.STU_SISTEMA = Program.STU_SISTEMA;
+            objForm.InventarioInicial();
+        }
     }
 }

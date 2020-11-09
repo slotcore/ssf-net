@@ -16,6 +16,7 @@ namespace SIAC_DATOS.Models.Contabilidad
         public ItemMovimiento()
         {
             _IsNew = true;
+            //_ItemMovimientoDetalles = new ObservableListSource<ItemMovimientoDetalle>();
         }
 
         #endregion

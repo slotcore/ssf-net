@@ -3,6 +3,7 @@ using SIAC_Datos.Classes;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,10 +11,10 @@ using System.Threading.Tasks;
 namespace SIAC_DATOS.Models.Contabilidad
 {
 
-    public class CostoProduccionDetIns : ObjectBase
+    public class CostoProduccionCue : ObjectBase
     {
         #region constructor
-        public CostoProduccionDetIns()
+        public CostoProduccionCue()
         {
             _IsNew = true;
         }
@@ -23,12 +24,10 @@ namespace SIAC_DATOS.Models.Contabilidad
         #region propiedades
 
         private int _n_id;
-
-        private int _n_idcostoproddet;
-
-        private int _n_idmov;
-
-        private double _n_costoprom;
+        private int _n_idcostoprod;
+        private int _n_idcue;
+        private double _n_impt;
+        private string _c_descue;
 
         public int n_id
         {
@@ -47,160 +46,69 @@ namespace SIAC_DATOS.Models.Contabilidad
             }
         }
 
-        public int n_idcostoproddet
+        public int n_idcostoprod
         {
             get
             {
-                return _n_idcostoproddet;
+                return _n_idcostoprod;
             }
 
             set
             {
-                if (value != _n_idcostoproddet)
+                if (value != _n_idcostoprod)
                 {
-                    _n_idcostoproddet = value;
+                    _n_idcostoprod = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        private int _n_idite;
-        public int n_idite
+        public int n_idcue
         {
             get
             {
-                return _n_idite;
+                return _n_idcue;
             }
 
             set
             {
-                if (value != _n_idite)
+                if (value != _n_idcue)
                 {
-                    _n_idite = value;
+                    _n_idcue = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        public int n_idmov
+        public double n_impt
         {
             get
             {
-                return _n_idmov;
+                return _n_impt;
             }
 
             set
             {
-                if (value != _n_idmov)
+                if (value != _n_impt)
                 {
-                    _n_idmov = value;
+                    _n_impt = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        public double n_costoprom
+        public string c_descue
         {
             get
             {
-                return _n_costoprom;
+                return _c_descue;
             }
 
             set
             {
-                if (value != _n_costoprom)
+                if (value != _c_descue)
                 {
-                    _n_costoprom = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private double _n_can;
-        public double n_can
-        {
-            get
-            {
-                return _n_can;
-            }
-
-            set
-            {
-                if (value != _n_can)
-                {
-                    _n_can = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private string _c_descodins;
-        public string c_descodins
-        {
-            get
-            {
-                return _c_descodins;
-            }
-
-            set
-            {
-                if (value != _c_descodins)
-                {
-                    _c_descodins = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private string _c_desins;
-        public string c_desins
-        {
-            get
-            {
-                return _c_desins;
-            }
-
-            set
-            {
-                if (value != _c_desins)
-                {
-                    _c_desins = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private string _c_destipmov;
-        public string c_destipmov
-        {
-            get
-            {
-                return _c_destipmov;
-            }
-
-            set
-            {
-                if (value != _c_destipmov)
-                {
-                    _c_destipmov = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private string _c_desunimed;
-        public string c_desunimed
-        {
-            get
-            {
-                return _c_desunimed;
-            }
-
-            set
-            {
-                if (value != _c_desunimed)
-                {
-                    _c_desunimed = value;
+                    _c_descue = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -209,9 +117,9 @@ namespace SIAC_DATOS.Models.Contabilidad
 
         #region metodos publicos
 
-        public static ObservableListSource<CostoProduccionDetIns> FetchList(int n_idcostoproddet)
+        public static ObservableListSource<CostoProduccionCue> FetchList(int n_idcostoprod)
         {
-            ObservableListSource<CostoProduccionDetIns> m_listentidad = new ObservableListSource<CostoProduccionDetIns>();
+            ObservableListSource<CostoProduccionCue> m_listentidad = new ObservableListSource<CostoProduccionCue>();
 
             using (MySqlConnection connection
                 = new MySqlConnection(
@@ -221,14 +129,14 @@ namespace SIAC_DATOS.Models.Contabilidad
                 {
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.CommandText = "con_costoproddetins_listar";
-                    command.Parameters.Add(new MySqlParameter("@n_idcostoproddet", n_idcostoproddet));
+                    command.CommandText = "con_costoprodcue_listar";
+                    command.Parameters.Add(new MySqlParameter("@n_idcostoprod", n_idcostoprod));
                     connection.Open();
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            CostoProduccionDetIns m_entidad = SetObject(reader);
+                            CostoProduccionCue m_entidad = SetObject(reader);
                             m_entidad.IsNew = false;
                             m_listentidad.Add(m_entidad);
                         }
@@ -238,9 +146,62 @@ namespace SIAC_DATOS.Models.Contabilidad
             return m_listentidad;
         }
 
-        public static CostoProduccionDetIns Fetch(int id)
+        public static ObservableListSource<CostoProduccionCue> TraerListaPorConfiguracion(int n_idemp
+            , int n_anotra
+            , int n_mes
+            , int n_idconfigval)
         {
-            CostoProduccionDetIns m_entidad = new CostoProduccionDetIns();
+            // Se trae la lista de cuenta de la configuracion
+            ConfigVal configVal = ConfigVal.Fetch(n_idconfigval);
+
+            //Se trae el listado de cuentas del periodo
+            DataTable DtResul = new DataTable();
+            using (MySqlConnection connection
+                = new MySqlConnection(
+                    ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.CommandText = "con_diario_balancecomprobacion_v2";
+                    command.Parameters.Add(new MySqlParameter("@n_idemp", n_idemp));
+                    command.Parameters.Add(new MySqlParameter("@n_anotra", n_anotra));
+                    command.Parameters.Add(new MySqlParameter("@n_mesini", n_mes));
+                    command.Parameters.Add(new MySqlParameter("@n_mesfin", n_mes));
+                    command.Parameters.Add(new MySqlParameter("@n_idlib", 0));
+                    connection.Open();
+
+                    MySqlDataAdapter adp = new MySqlDataAdapter(command);
+                    adp.Fill(DtResul);
+                }
+            }
+
+            //Se agregan registros
+            ObservableListSource<CostoProduccionCue> m_listentidad = new ObservableListSource<CostoProduccionCue>();
+
+            foreach (var configValCue in configVal.ConfigValCues)
+            { 
+                //Se busca el registro en la tabla
+                DataRow row = DtResul.AsEnumerable()
+                    .SingleOrDefault(r => r.Field<int>("n_idcue") == configValCue.n_idcue);
+
+                if (row != null)
+                {
+                    CostoProduccionCue m_entidad = new CostoProduccionCue();
+                    m_entidad.n_idcue = Convert.ToInt32(row["n_idcue"]);
+                    m_entidad.n_impt = Convert.ToDouble(row["n_movperhab"]);
+                    m_entidad.c_descue = configValCue.c_descue;
+
+                    m_listentidad.Add(m_entidad);
+                }
+            }
+            return m_listentidad;
+        }
+
+        public static CostoProduccionCue Fetch(int id)
+        {
+            CostoProduccionCue m_entidad = new CostoProduccionCue();
 
             using (MySqlConnection connection
                 = new MySqlConnection(
@@ -250,7 +211,7 @@ namespace SIAC_DATOS.Models.Contabilidad
                 {
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.CommandText = "con_costoproddetins_traerregistro";
+                    command.CommandText = "con_costoprodcue_traerregistro";
                     command.Parameters.Add(new MySqlParameter("@n_id", id));
                     connection.Open();
                     using (MySqlDataReader reader = command.ExecuteReader())
@@ -280,7 +241,7 @@ namespace SIAC_DATOS.Models.Contabilidad
                         {
                             command.Transaction = transaction;
                             command.CommandType = System.Data.CommandType.StoredProcedure;
-                            command.CommandText = "con_costoproddetins_insertar";
+                            command.CommandText = "con_costoprodcue_insertar";
                             AddParameters(command);
                             command.Parameters["@n_id"].Direction = System.Data.ParameterDirection.Output;
                             int rows = command.ExecuteNonQuery();
@@ -303,7 +264,7 @@ namespace SIAC_DATOS.Models.Contabilidad
             {
                 command.Transaction = transaction;
                 command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.CommandText = "con_costoproddetins_insertar";
+                command.CommandText = "con_costoprodcue_insertar";
                 AddParameters(command);
                 command.Parameters["@n_id"].Direction = System.Data.ParameterDirection.Output;
                 int rows = command.ExecuteNonQuery();
@@ -326,7 +287,7 @@ namespace SIAC_DATOS.Models.Contabilidad
                         {
                             command.Transaction = transaction;
                             command.CommandType = System.Data.CommandType.StoredProcedure;
-                            command.CommandText = "con_costoproddetins_actualizar";
+                            command.CommandText = "con_costoprodcue_actualizar";
                             AddParameters(command);
                             int rows = command.ExecuteNonQuery();
                         }
@@ -347,7 +308,7 @@ namespace SIAC_DATOS.Models.Contabilidad
             {
                 command.Transaction = transaction;
                 command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.CommandText = "con_costoproddetins_actualizar";
+                command.CommandText = "con_costoprodcue_actualizar";
                 AddParameters(command);
                 int rows = command.ExecuteNonQuery();
             }
@@ -368,7 +329,7 @@ namespace SIAC_DATOS.Models.Contabilidad
                         {
                             command.Transaction = transaction;
                             command.CommandType = System.Data.CommandType.StoredProcedure;
-                            command.CommandText = "con_costoproddetins_eliminar";
+                            command.CommandText = "con_costoprodcue_eliminar";
                             command.Parameters.Add(new MySqlParameter("@n_id", n_id));
                             int rows = command.ExecuteNonQuery();
                         }
@@ -389,20 +350,8 @@ namespace SIAC_DATOS.Models.Contabilidad
             {
                 command.Transaction = transaction;
                 command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.CommandText = "con_costoproddetins_eliminar";
+                command.CommandText = "con_costoprodcue_eliminar";
                 command.Parameters.Add(new MySqlParameter("@n_id", n_id));
-                int rows = command.ExecuteNonQuery();
-            }
-        }
-
-        public static void DeleteAll(int n_idcostoproddet, MySqlConnection connection, MySqlTransaction transaction)
-        {
-            using (MySqlCommand command = connection.CreateCommand())
-            {
-                command.Transaction = transaction;
-                command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.CommandText = "con_costoproddetins_eliminar_todo";
-                command.Parameters.Add(new MySqlParameter("@n_idcostoproddet", n_idcostoproddet));
                 int rows = command.ExecuteNonQuery();
             }
         }
@@ -411,31 +360,24 @@ namespace SIAC_DATOS.Models.Contabilidad
 
         #region metodos privados
 
-        public static CostoProduccionDetIns SetObject(MySqlDataReader reader)
+        private static CostoProduccionCue SetObject(MySqlDataReader reader)
         {
-            return new CostoProduccionDetIns
+            return new CostoProduccionCue
             {
                 n_id = reader.GetInt32("n_id"),
-                n_idcostoproddet = reader.GetInt32("n_idcostoproddet"),
-                n_idite = reader.GetInt32("n_idite"),
-                n_idmov = reader.GetInt32("n_idmov"),
-                n_costoprom = reader.GetDouble("n_costoprom"),
-                n_can = reader.GetDouble("n_can"),
-                c_descodins = reader.GetString("c_descodins"),
-                c_desins = reader.GetString("c_desins"),
-                c_destipmov = reader.GetString("c_destipmov"),
-                c_desunimed = reader.GetString("c_desunimed")
+                n_idcostoprod = reader.GetInt32("n_idcostoprod"),
+                n_idcue = reader.GetInt32("n_idcue"),
+                n_impt = reader.GetDouble("n_impt"),
+                c_descue = reader.GetString("c_descue")
             };
         }
 
         private void AddParameters(MySqlCommand command)
         {
             command.Parameters.Add(new MySqlParameter("@n_id", n_id));
-            command.Parameters.Add(new MySqlParameter("@n_idcostoproddet", n_idcostoproddet));
-            command.Parameters.Add(new MySqlParameter("@n_idite", n_idite));
-            command.Parameters.Add(new MySqlParameter("@n_idmov", n_idmov));
-            command.Parameters.Add(new MySqlParameter("@n_costoprom", n_costoprom));
-            command.Parameters.Add(new MySqlParameter("@n_can", n_can));
+            command.Parameters.Add(new MySqlParameter("@n_idcostoprod", n_idcostoprod));
+            command.Parameters.Add(new MySqlParameter("@n_idcue", n_idcue));
+            command.Parameters.Add(new MySqlParameter("@n_impt", n_impt));
         }
 
         #endregion

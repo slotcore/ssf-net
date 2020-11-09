@@ -9,12 +9,15 @@ namespace SIAC_Datos.Classes
     {
 
         #region Propiedades Privadas
-        protected bool _IsNew;
 
+        protected bool _IsNew;
         protected bool _IsOld;
+        protected bool _IsValid;
+
         #endregion
 
         #region Propiedades Publicas
+
         public bool IsNew
         {
             get
@@ -48,7 +51,34 @@ namespace SIAC_Datos.Classes
                 }
             }
         }
+
+        public bool IsValid
+        {
+            get
+            {
+                return _IsValid;
+            }
+
+            set
+            {
+                if (value != _IsValid)
+                {
+                    _IsValid = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public bool HasOldOrNewChildren
+        {
+            get
+            {
+                return CheckHasOldOrNewChildren();
+            }
+        }
         #endregion
+
+        #region EventHandler
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -61,7 +91,12 @@ namespace SIAC_Datos.Classes
             }
         }
 
-        protected virtual void Insert(MySqlConnection connection, MySqlTransaction mySqlTransaction) {
+        #endregion
+
+        #region Virtual Methods
+
+        protected virtual void Insert(MySqlConnection connection, MySqlTransaction mySqlTransaction)
+        {
             throw new NotImplementedException();
         }
 
@@ -70,13 +105,34 @@ namespace SIAC_Datos.Classes
             throw new NotImplementedException();
         }
 
-        protected virtual void Update(MySqlConnection connection, MySqlTransaction mySqlTransaction) {
+        protected virtual void Update(MySqlConnection connection, MySqlTransaction mySqlTransaction)
+        {
             throw new NotImplementedException();
         }
 
-        protected virtual void Update() {
+        protected virtual void Update()
+        {
             throw new NotImplementedException();
         }
+
+        public virtual void Delete(MySqlConnection connection, MySqlTransaction mySqlTransaction)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual void Delete()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected virtual bool CheckHasOldOrNewChildren()
+        {
+            return false;
+        }
+
+        #endregion
+
+        #region Public Methods
 
         public void Save(MySqlConnection connection, MySqlTransaction mySqlTransaction)
         {
@@ -86,7 +142,7 @@ namespace SIAC_Datos.Classes
             }
             else
             {
-                if (IsOld)
+                if (IsOld || HasOldOrNewChildren)
                 {
                     Update(connection, mySqlTransaction);
                 }
@@ -101,21 +157,19 @@ namespace SIAC_Datos.Classes
             }
             else
             {
-                if (IsOld)
+                if (IsOld || HasOldOrNewChildren)
                 {
                     Update();
                 }
             }
         }
 
-        protected virtual void Delete(MySqlConnection connection, MySqlTransaction mySqlTransaction)
+        public void MarkAsOld()
         {
-            throw new NotImplementedException();
+            _IsNew = false;
+            _IsOld = true;
         }
 
-        public virtual void Delete()
-        {
-            throw new NotImplementedException();
-        }
+        #endregion
     }
 }

@@ -39,30 +39,31 @@
             this.PicClos1 = new System.Windows.Forms.PictureBox();
             this.label17 = new System.Windows.Forms.Label();
             this.DgLista = new C1.Win.C1TrueDBGrid.C1TrueDBGrid();
-            this.costoProduccionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.c1DockingTabPage2 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.kryptonGroupBox1 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.kryptonHeaderGroup1 = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
             this.BtnBuscarParte = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
-            this.BtnProcesarMP = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
             this.BtnProcesarModCif = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
+            this.BtnProcesarMP = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
+            this.BtnVerErroresMP = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
             this.kryptonSplitContainer1 = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
             this.FgItems = new C1.Win.C1FlexGrid.C1FlexGrid();
-            this.CostoProduccionDetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.FgInsumos = new C1.Win.C1FlexGrid.C1FlexGrid();
-            this.CostoProduccionDetInsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.FgManoObra = new C1.Win.C1FlexGrid.C1FlexGrid();
-            this.CostoProduccionDetModBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.FgGastoIndirecto = new C1.Win.C1FlexGrid.C1FlexGrid();
-            this.TxtCostoCif = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.TxtCostoMod = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.kryptonHeaderGroup2 = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
+            this.BtnAgregarCuenta = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
+            this.BtnEliminarCuenta = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
+            this.c1FlexGrid1 = new C1.Win.C1FlexGrid.C1FlexGrid();
+            this.costoProduccionCuesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.CboMeses = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.CboConfiguracion = new System.Windows.Forms.ComboBox();
@@ -89,15 +90,21 @@
             this.ToolManFun = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolSalir = new System.Windows.Forms.ToolStripButton();
+            this.costoProduccionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.CostoProduccionDetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.costoProduccionDetInsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.CostoProduccionDetModBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.costoProduccionDetCifBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Tab1.SuspendLayout();
             this.c1DockingTabPage1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicClos1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgLista)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.costoProduccionBindingSource)).BeginInit();
             this.c1DockingTabPage2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.tabControl2.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).BeginInit();
             this.kryptonGroupBox1.Panel.SuspendLayout();
@@ -113,19 +120,28 @@
             this.kryptonSplitContainer1.Panel2.SuspendLayout();
             this.kryptonSplitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FgItems)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CostoProduccionDetBindingSource)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FgInsumos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CostoProduccionDetInsBindingSource)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FgManoObra)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CostoProduccionDetModBindingSource)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FgGastoIndirecto)).BeginInit();
+            this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup2.Panel)).BeginInit();
+            this.kryptonHeaderGroup2.Panel.SuspendLayout();
+            this.kryptonHeaderGroup2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1FlexGrid1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.costoProduccionCuesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicClos2)).BeginInit();
             this.panel3.SuspendLayout();
             this.ToolHerramientas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.costoProduccionBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CostoProduccionDetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.costoProduccionDetInsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CostoProduccionDetModBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.costoProduccionDetCifBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // Tab1
@@ -259,10 +275,6 @@
             this.DgLista.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DgLista_KeyPress);
             this.DgLista.PropBag = resources.GetString("DgLista.PropBag");
             // 
-            // costoProduccionBindingSource
-            // 
-            this.costoProduccionBindingSource.DataSource = typeof(SIAC_DATOS.Models.Contabilidad.CostoProduccion);
-            // 
             // c1DockingTabPage2
             // 
             this.c1DockingTabPage2.Controls.Add(this.panel1);
@@ -281,11 +293,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.kryptonGroupBox1);
-            this.panel1.Controls.Add(this.TxtCostoCif);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.TxtCostoMod);
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.tabControl2);
             this.panel1.Controls.Add(this.CboMeses);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.CboConfiguracion);
@@ -304,29 +312,56 @@
             this.panel1.Size = new System.Drawing.Size(877, 461);
             this.panel1.TabIndex = 0;
             // 
+            // tabControl2
+            // 
+            this.tabControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl2.Controls.Add(this.tabPage4);
+            this.tabControl2.Controls.Add(this.tabPage5);
+            this.tabControl2.Location = new System.Drawing.Point(3, 146);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(871, 313);
+            this.tabControl2.TabIndex = 131;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.kryptonGroupBox1);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(863, 287);
+            this.tabPage4.TabIndex = 0;
+            this.tabPage4.Text = "Listado de Partes de Producción";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
             // kryptonGroupBox1
             // 
             this.kryptonGroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.kryptonGroupBox1.Location = new System.Drawing.Point(3, 144);
+            this.kryptonGroupBox1.CaptionVisible = false;
+            this.kryptonGroupBox1.Location = new System.Drawing.Point(-4, 0);
             this.kryptonGroupBox1.Name = "kryptonGroupBox1";
             // 
             // kryptonGroupBox1.Panel
             // 
             this.kryptonGroupBox1.Panel.Controls.Add(this.kryptonHeaderGroup1);
-            this.kryptonGroupBox1.Size = new System.Drawing.Size(871, 317);
+            this.kryptonGroupBox1.Size = new System.Drawing.Size(871, 302);
             this.kryptonGroupBox1.StateNormal.Back.Color1 = System.Drawing.Color.Transparent;
-            this.kryptonGroupBox1.TabIndex = 130;
+            this.kryptonGroupBox1.TabIndex = 131;
             this.kryptonGroupBox1.Values.Heading = "Listado de Partes de Producción";
             // 
             // kryptonHeaderGroup1
             // 
             this.kryptonHeaderGroup1.ButtonSpecs.AddRange(new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup[] {
             this.BtnBuscarParte,
+            this.BtnProcesarModCif,
             this.BtnProcesarMP,
-            this.BtnProcesarModCif});
+            this.BtnVerErroresMP});
             this.kryptonHeaderGroup1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonHeaderGroup1.GroupBorderStyle = ComponentFactory.Krypton.Toolkit.PaletteBorderStyle.ButtonForm;
             this.kryptonHeaderGroup1.HeaderVisibleSecondary = false;
             this.kryptonHeaderGroup1.Location = new System.Drawing.Point(0, 0);
             this.kryptonHeaderGroup1.Name = "kryptonHeaderGroup1";
@@ -334,7 +369,7 @@
             // kryptonHeaderGroup1.Panel
             // 
             this.kryptonHeaderGroup1.Panel.Controls.Add(this.kryptonSplitContainer1);
-            this.kryptonHeaderGroup1.Size = new System.Drawing.Size(867, 293);
+            this.kryptonHeaderGroup1.Size = new System.Drawing.Size(867, 298);
             this.kryptonHeaderGroup1.StateNormal.HeaderPrimary.Back.Color1 = System.Drawing.SystemColors.Control;
             this.kryptonHeaderGroup1.StateNormal.HeaderPrimary.Back.Color2 = System.Drawing.SystemColors.Control;
             this.kryptonHeaderGroup1.TabIndex = 131;
@@ -350,6 +385,15 @@
             this.BtnBuscarParte.UniqueName = "732F8FBA093C4C7A4FA518682797C959";
             this.BtnBuscarParte.Click += new System.EventHandler(this.BtnBuscarParte_Click);
             // 
+            // BtnProcesarModCif
+            // 
+            this.BtnProcesarModCif.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.False;
+            this.BtnProcesarModCif.Image = global::SSF_NET_Contabilidad.Properties.Resources.bodepartment_16x16;
+            this.BtnProcesarModCif.Style = ComponentFactory.Krypton.Toolkit.PaletteButtonStyle.Standalone;
+            this.BtnProcesarModCif.Text = "Procesar CIF";
+            this.BtnProcesarModCif.UniqueName = "986BE05271AC44A9EFA6A3F002F57D51";
+            this.BtnProcesarModCif.Click += new System.EventHandler(this.BtnProcesarModCif_Click);
+            // 
             // BtnProcesarMP
             // 
             this.BtnProcesarMP.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.False;
@@ -359,13 +403,13 @@
             this.BtnProcesarMP.UniqueName = "21699ADBB6664104808E7FF130F84F81";
             this.BtnProcesarMP.Click += new System.EventHandler(this.BtnProcesarMP_Click);
             // 
-            // BtnProcesarModCif
+            // BtnVerErroresMP
             // 
-            this.BtnProcesarModCif.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.False;
-            this.BtnProcesarModCif.Image = global::SSF_NET_Contabilidad.Properties.Resources.bodepartment_16x16;
-            this.BtnProcesarModCif.Style = ComponentFactory.Krypton.Toolkit.PaletteButtonStyle.Standalone;
-            this.BtnProcesarModCif.Text = "Procesar MOD/CIF";
-            this.BtnProcesarModCif.UniqueName = "986BE05271AC44A9EFA6A3F002F57D51";
+            this.BtnVerErroresMP.Image = global::SSF_NET_Contabilidad.Properties.Resources.pagesetup_16x16;
+            this.BtnVerErroresMP.Style = ComponentFactory.Krypton.Toolkit.PaletteButtonStyle.Standalone;
+            this.BtnVerErroresMP.Text = "Ver Errores MP";
+            this.BtnVerErroresMP.UniqueName = "3E3CDDC5CF8E4E394181AF06202E30A3";
+            this.BtnVerErroresMP.Click += new System.EventHandler(this.BtnVerErroresMP_Click);
             // 
             // kryptonSplitContainer1
             // 
@@ -385,8 +429,8 @@
             this.kryptonSplitContainer1.Panel2.Controls.Add(this.tabControl1);
             this.kryptonSplitContainer1.Panel2.StateNormal.Color1 = System.Drawing.SystemColors.Control;
             this.kryptonSplitContainer1.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile;
-            this.kryptonSplitContainer1.Size = new System.Drawing.Size(865, 262);
-            this.kryptonSplitContainer1.SplitterDistance = 126;
+            this.kryptonSplitContainer1.Size = new System.Drawing.Size(863, 266);
+            this.kryptonSplitContainer1.SplitterDistance = 127;
             this.kryptonSplitContainer1.TabIndex = 11;
             // 
             // FgItems
@@ -407,14 +451,10 @@
             this.FgItems.Rows.Count = 1;
             this.FgItems.Rows.DefaultSize = 17;
             this.FgItems.SelectionMode = C1.Win.C1FlexGrid.SelectionModeEnum.Row;
-            this.FgItems.Size = new System.Drawing.Size(865, 126);
+            this.FgItems.Size = new System.Drawing.Size(863, 127);
             this.FgItems.StyleInfo = resources.GetString("FgItems.StyleInfo");
             this.FgItems.TabIndex = 11;
             this.FgItems.SelChange += new System.EventHandler(this.FgItems_SelChange);
-            // 
-            // CostoProduccionDetBindingSource
-            // 
-            this.CostoProduccionDetBindingSource.DataSource = typeof(SIAC_DATOS.Models.Contabilidad.CostoProduccionDet);
             // 
             // tabControl1
             // 
@@ -428,7 +468,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.Padding = new System.Drawing.Point(10, 3);
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(861, 125);
+            this.tabControl1.Size = new System.Drawing.Size(859, 128);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -437,13 +477,14 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(853, 99);
+            this.tabPage1.Size = new System.Drawing.Size(851, 102);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Insumos";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // FgInsumos
             // 
+            this.FgInsumos.AllowEditing = false;
             this.FgInsumos.AllowFiltering = true;
             this.FgInsumos.AutoClipboard = true;
             this.FgInsumos.AutoGenerateColumns = false;
@@ -451,20 +492,16 @@
             this.FgInsumos.BackColor = System.Drawing.Color.White;
             this.FgInsumos.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
             this.FgInsumos.ColumnInfo = resources.GetString("FgInsumos.ColumnInfo");
-            this.FgInsumos.DataSource = this.CostoProduccionDetInsBindingSource;
+            this.FgInsumos.DataSource = this.costoProduccionDetInsBindingSource;
             this.FgInsumos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FgInsumos.ForeColor = System.Drawing.Color.Black;
             this.FgInsumos.Location = new System.Drawing.Point(3, 3);
             this.FgInsumos.Name = "FgInsumos";
             this.FgInsumos.Rows.Count = 1;
             this.FgInsumos.Rows.DefaultSize = 17;
-            this.FgInsumos.Size = new System.Drawing.Size(847, 93);
+            this.FgInsumos.Size = new System.Drawing.Size(845, 96);
             this.FgInsumos.StyleInfo = resources.GetString("FgInsumos.StyleInfo");
             this.FgInsumos.TabIndex = 13;
-            // 
-            // CostoProduccionDetInsBindingSource
-            // 
-            this.CostoProduccionDetInsBindingSource.DataSource = typeof(SIAC_DATOS.Models.Contabilidad.CostoProduccionDetIns);
             // 
             // tabPage2
             // 
@@ -472,7 +509,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(853, 99);
+            this.tabPage2.Size = new System.Drawing.Size(851, 102);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mano de Obra";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -494,20 +531,16 @@
             this.FgManoObra.Name = "FgManoObra";
             this.FgManoObra.Rows.Count = 1;
             this.FgManoObra.Rows.DefaultSize = 17;
-            this.FgManoObra.Size = new System.Drawing.Size(847, 93);
+            this.FgManoObra.Size = new System.Drawing.Size(845, 96);
             this.FgManoObra.StyleInfo = resources.GetString("FgManoObra.StyleInfo");
             this.FgManoObra.TabIndex = 14;
-            // 
-            // CostoProduccionDetModBindingSource
-            // 
-            this.CostoProduccionDetModBindingSource.DataSource = typeof(SIAC_DATOS.Models.Contabilidad.CostoProduccionDetMod);
             // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.FgGastoIndirecto);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(853, 99);
+            this.tabPage3.Size = new System.Drawing.Size(851, 102);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Gastos Indirectos";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -515,67 +548,95 @@
             // FgGastoIndirecto
             // 
             this.FgGastoIndirecto.AllowSorting = C1.Win.C1FlexGrid.AllowSortingEnum.None;
+            this.FgGastoIndirecto.AutoGenerateColumns = false;
+            this.FgGastoIndirecto.AutoResize = true;
             this.FgGastoIndirecto.BackColor = System.Drawing.Color.White;
             this.FgGastoIndirecto.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
             this.FgGastoIndirecto.ColumnInfo = resources.GetString("FgGastoIndirecto.ColumnInfo");
-            this.FgGastoIndirecto.DataSource = this.CostoProduccionDetInsBindingSource;
+            this.FgGastoIndirecto.DataSource = this.costoProduccionDetCifBindingSource;
             this.FgGastoIndirecto.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FgGastoIndirecto.ForeColor = System.Drawing.Color.Black;
             this.FgGastoIndirecto.Location = new System.Drawing.Point(0, 0);
             this.FgGastoIndirecto.Name = "FgGastoIndirecto";
             this.FgGastoIndirecto.Rows.Count = 1;
             this.FgGastoIndirecto.Rows.DefaultSize = 17;
-            this.FgGastoIndirecto.Size = new System.Drawing.Size(853, 99);
+            this.FgGastoIndirecto.Size = new System.Drawing.Size(851, 102);
             this.FgGastoIndirecto.StyleInfo = resources.GetString("FgGastoIndirecto.StyleInfo");
             this.FgGastoIndirecto.TabIndex = 14;
             // 
-            // TxtCostoCif
+            // tabPage5
             // 
-            this.TxtCostoCif.BackColor = System.Drawing.Color.White;
-            this.TxtCostoCif.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtCostoCif.Enabled = false;
-            this.TxtCostoCif.ForeColor = System.Drawing.Color.Black;
-            this.TxtCostoCif.Location = new System.Drawing.Point(755, 64);
-            this.TxtCostoCif.MaxLength = 4;
-            this.TxtCostoCif.Name = "TxtCostoCif";
-            this.TxtCostoCif.Size = new System.Drawing.Size(111, 20);
-            this.TxtCostoCif.TabIndex = 129;
+            this.tabPage5.Controls.Add(this.kryptonHeaderGroup2);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(863, 287);
+            this.tabPage5.TabIndex = 1;
+            this.tabPage5.Text = "Listado de Cuentas";
+            this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // kryptonHeaderGroup2
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(684, 66);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 13);
-            this.label2.TabIndex = 128;
-            this.label2.Text = "Costo CIF";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.kryptonHeaderGroup2.ButtonSpecs.AddRange(new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup[] {
+            this.BtnAgregarCuenta,
+            this.BtnEliminarCuenta});
+            this.kryptonHeaderGroup2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonHeaderGroup2.HeaderVisibleSecondary = false;
+            this.kryptonHeaderGroup2.Location = new System.Drawing.Point(3, 3);
+            this.kryptonHeaderGroup2.Name = "kryptonHeaderGroup2";
             // 
-            // TxtCostoMod
+            // kryptonHeaderGroup2.Panel
             // 
-            this.TxtCostoMod.BackColor = System.Drawing.Color.White;
-            this.TxtCostoMod.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtCostoMod.Enabled = false;
-            this.TxtCostoMod.ForeColor = System.Drawing.Color.Black;
-            this.TxtCostoMod.Location = new System.Drawing.Point(540, 63);
-            this.TxtCostoMod.MaxLength = 4;
-            this.TxtCostoMod.Name = "TxtCostoMod";
-            this.TxtCostoMod.Size = new System.Drawing.Size(111, 20);
-            this.TxtCostoMod.TabIndex = 127;
+            this.kryptonHeaderGroup2.Panel.Controls.Add(this.c1FlexGrid1);
+            this.kryptonHeaderGroup2.Size = new System.Drawing.Size(857, 281);
+            this.kryptonHeaderGroup2.StateNormal.HeaderPrimary.Back.Color1 = System.Drawing.SystemColors.Control;
+            this.kryptonHeaderGroup2.StateNormal.HeaderPrimary.Back.Color2 = System.Drawing.SystemColors.Control;
+            this.kryptonHeaderGroup2.TabIndex = 132;
+            this.kryptonHeaderGroup2.ValuesPrimary.Heading = "";
+            this.kryptonHeaderGroup2.ValuesPrimary.Image = null;
             // 
-            // label1
+            // BtnAgregarCuenta
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(454, 66);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 13);
-            this.label1.TabIndex = 126;
-            this.label1.Text = "Costo MOD";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.BtnAgregarCuenta.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.True;
+            this.BtnAgregarCuenta.Image = global::SSF_NET_Contabilidad.Properties.Resources.add_16x16;
+            this.BtnAgregarCuenta.Style = ComponentFactory.Krypton.Toolkit.PaletteButtonStyle.Standalone;
+            this.BtnAgregarCuenta.Text = "Agregar Cuenta";
+            this.BtnAgregarCuenta.UniqueName = "732F8FBA093C4C7A4FA518682797C959";
+            // 
+            // BtnEliminarCuenta
+            // 
+            this.BtnEliminarCuenta.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.True;
+            this.BtnEliminarCuenta.Image = global::SSF_NET_Contabilidad.Properties.Resources.trash_16x16;
+            this.BtnEliminarCuenta.Style = ComponentFactory.Krypton.Toolkit.PaletteButtonStyle.Standalone;
+            this.BtnEliminarCuenta.Text = "Eliminar Cuenta";
+            this.BtnEliminarCuenta.UniqueName = "21699ADBB6664104808E7FF130F84F81";
+            // 
+            // c1FlexGrid1
+            // 
+            this.c1FlexGrid1.AllowEditing = false;
+            this.c1FlexGrid1.AutoClipboard = true;
+            this.c1FlexGrid1.AutoGenerateColumns = false;
+            this.c1FlexGrid1.AutoResize = true;
+            this.c1FlexGrid1.AutoSearch = C1.Win.C1FlexGrid.AutoSearchEnum.FromTop;
+            this.c1FlexGrid1.BackColor = System.Drawing.Color.White;
+            this.c1FlexGrid1.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
+            this.c1FlexGrid1.ColumnInfo = resources.GetString("c1FlexGrid1.ColumnInfo");
+            this.c1FlexGrid1.DataSource = this.costoProduccionCuesBindingSource;
+            this.c1FlexGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.c1FlexGrid1.ForeColor = System.Drawing.Color.Black;
+            this.c1FlexGrid1.Location = new System.Drawing.Point(0, 0);
+            this.c1FlexGrid1.Name = "c1FlexGrid1";
+            this.c1FlexGrid1.Rows.Count = 1;
+            this.c1FlexGrid1.Rows.DefaultSize = 17;
+            this.c1FlexGrid1.SelectionMode = C1.Win.C1FlexGrid.SelectionModeEnum.Row;
+            this.c1FlexGrid1.Size = new System.Drawing.Size(855, 250);
+            this.c1FlexGrid1.StyleInfo = resources.GetString("c1FlexGrid1.StyleInfo");
+            this.c1FlexGrid1.TabIndex = 12;
+            // 
+            // costoProduccionCuesBindingSource
+            // 
+            this.costoProduccionCuesBindingSource.DataMember = "CostoProduccionCues";
+            this.costoProduccionCuesBindingSource.DataSource = this.costoProduccionBindingSource;
             // 
             // CboMeses
             // 
@@ -878,6 +939,26 @@
             this.ToolSalir.ToolTipText = "Salir";
             this.ToolSalir.Click += new System.EventHandler(this.ToolSalir_Click);
             // 
+            // costoProduccionBindingSource
+            // 
+            this.costoProduccionBindingSource.DataSource = typeof(SIAC_DATOS.Models.Contabilidad.CostoProduccion);
+            // 
+            // CostoProduccionDetBindingSource
+            // 
+            this.CostoProduccionDetBindingSource.DataSource = typeof(SIAC_DATOS.Models.Contabilidad.CostoProduccionDet);
+            // 
+            // costoProduccionDetInsBindingSource
+            // 
+            this.costoProduccionDetInsBindingSource.DataSource = typeof(SIAC_DATOS.Models.Contabilidad.CostoProduccionDetIns);
+            // 
+            // CostoProduccionDetModBindingSource
+            // 
+            this.CostoProduccionDetModBindingSource.DataSource = typeof(SIAC_DATOS.Models.Contabilidad.CostoProduccionDetMod);
+            // 
+            // costoProduccionDetCifBindingSource
+            // 
+            this.costoProduccionDetCifBindingSource.DataSource = typeof(SIAC_DATOS.Models.Contabilidad.CostoProduccionDetCif);
+            // 
             // FrmCostoProduccion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -898,10 +979,11 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicClos1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgLista)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.costoProduccionBindingSource)).EndInit();
             this.c1DockingTabPage2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.tabControl2.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).EndInit();
             this.kryptonGroupBox1.Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).EndInit();
@@ -917,20 +999,29 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer1)).EndInit();
             this.kryptonSplitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.FgItems)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CostoProduccionDetBindingSource)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.FgInsumos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CostoProduccionDetInsBindingSource)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.FgManoObra)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CostoProduccionDetModBindingSource)).EndInit();
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.FgGastoIndirecto)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup2.Panel)).EndInit();
+            this.kryptonHeaderGroup2.Panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup2)).EndInit();
+            this.kryptonHeaderGroup2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.c1FlexGrid1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.costoProduccionCuesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicClos2)).EndInit();
             this.panel3.ResumeLayout(false);
             this.ToolHerramientas.ResumeLayout(false);
             this.ToolHerramientas.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.costoProduccionBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CostoProduccionDetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.costoProduccionDetInsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CostoProduccionDetModBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.costoProduccionDetCifBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -971,14 +1062,15 @@
         private System.Windows.Forms.PictureBox PicClos1;
         private System.Windows.Forms.PictureBox PicClos2;
         private System.Windows.Forms.ComboBox CboConfiguracion;
-        private System.Windows.Forms.TextBox TxtCostoCif;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox TxtCostoMod;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox CboMeses;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label LblTitulo2;
+        private System.Windows.Forms.BindingSource CostoProduccionDetBindingSource;
+        private System.Windows.Forms.BindingSource CostoProduccionDetModBindingSource;
+        private System.Windows.Forms.BindingSource costoProduccionBindingSource;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage tabPage4;
         private ComponentFactory.Krypton.Toolkit.KryptonGroupBox kryptonGroupBox1;
         private ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup kryptonHeaderGroup1;
         private ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup BtnBuscarParte;
@@ -986,8 +1078,6 @@
         private ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup BtnProcesarModCif;
         private ComponentFactory.Krypton.Toolkit.KryptonSplitContainer kryptonSplitContainer1;
         private C1.Win.C1FlexGrid.C1FlexGrid FgItems;
-        private System.Windows.Forms.BindingSource CostoProduccionDetBindingSource;
-        private System.Windows.Forms.BindingSource CostoProduccionDetInsBindingSource;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private C1.Win.C1FlexGrid.C1FlexGrid FgInsumos;
@@ -995,7 +1085,14 @@
         private C1.Win.C1FlexGrid.C1FlexGrid FgManoObra;
         private System.Windows.Forms.TabPage tabPage3;
         private C1.Win.C1FlexGrid.C1FlexGrid FgGastoIndirecto;
-        private System.Windows.Forms.BindingSource CostoProduccionDetModBindingSource;
-        private System.Windows.Forms.BindingSource costoProduccionBindingSource;
+        private System.Windows.Forms.TabPage tabPage5;
+        private ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup kryptonHeaderGroup2;
+        private ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup BtnAgregarCuenta;
+        private ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup BtnEliminarCuenta;
+        private C1.Win.C1FlexGrid.C1FlexGrid c1FlexGrid1;
+        private System.Windows.Forms.BindingSource costoProduccionCuesBindingSource;
+        private System.Windows.Forms.BindingSource costoProduccionDetInsBindingSource;
+        private System.Windows.Forms.BindingSource costoProduccionDetCifBindingSource;
+        private ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup BtnVerErroresMP;
     }
 }

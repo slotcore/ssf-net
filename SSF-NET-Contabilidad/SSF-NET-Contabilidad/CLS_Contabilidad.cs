@@ -112,6 +112,19 @@ namespace SSF_NET_Contabilidad
         public void CostoProduccion()
         {
             Formularios.FrmCostoProduccion Frm = new Formularios.FrmCostoProduccion();
+            Frm.STU_SISTEMA = STU_SISTEMA;
+            Frm.Show();
+        }
+        public void ConfiguracionValorizacion()
+        {
+            Formularios.FrmConfigVal Frm = new Formularios.FrmConfigVal();
+            Frm.mysConec = mysConec;
+            Frm.STU_SISTEMA = STU_SISTEMA;
+            Frm.Show();
+        }
+        public void InventarioInicial()
+        {
+            Formularios.FrmInventarioIni Frm = new Formularios.FrmInventarioIni();
             Frm.mysConec = mysConec;
             Frm.STU_SISTEMA = STU_SISTEMA;
             Frm.Show();

@@ -692,7 +692,10 @@ namespace SSF_NET_Produccion.Formularios
             entTar.c_numser = TxtNumSer.Text;
 
             //Se actualiza el # documento por errores de repetidos
-            TxtNumDoc.Text = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, 82, TxtNumSer.Text);
+            if (n_QueHace == 1)
+            {
+                TxtNumDoc.Text = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, 82, TxtNumSer.Text);
+            }
             entTar.c_numdoc = TxtNumDoc.Text;
 
             entTar.d_fchreg = Convert.ToDateTime(TxtFchReg.Text);

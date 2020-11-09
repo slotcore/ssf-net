@@ -16,6 +16,7 @@ namespace SIAC_DATOS.Models.Contabilidad
         public CostoProduccionDet()
         {
             _IsNew = true;
+            _IsValid = false;
         }
 
         #endregion
@@ -134,6 +135,14 @@ namespace SIAC_DATOS.Models.Contabilidad
             }
         }
 
+        public double n_costoprimo
+        {
+            get
+            {
+                return n_costomp + n_costomod;
+            }
+        }
+
         private double _n_costomod;
         public double n_costomod
         {
@@ -167,6 +176,14 @@ namespace SIAC_DATOS.Models.Contabilidad
                     _n_costocif = value;
                     NotifyPropertyChanged();
                 }
+            }
+        }
+
+        public double n_costototal
+        {
+            get
+            {
+                return n_costoprimo + n_costocif;
             }
         }
 
@@ -321,7 +338,8 @@ namespace SIAC_DATOS.Models.Contabilidad
             {
                 if (_CostoProduccionDetInss == null)
                 {
-                    _CostoProduccionDetInss = CostoProduccionDetIns.FetchList(_n_id);
+                    if (IsValid)
+                        _CostoProduccionDetInss = CostoProduccionDetIns.FetchList(_n_id);
                 }
                 return _CostoProduccionDetInss;
             }
@@ -343,7 +361,8 @@ namespace SIAC_DATOS.Models.Contabilidad
             {
                 if (_CostoProduccionDetMods == null)
                 {
-                    _CostoProduccionDetMods = CostoProduccionDetMod.FetchList(_n_id);
+                    if (IsValid)
+                        _CostoProduccionDetMods = CostoProduccionDetMod.FetchList(_n_id);
                 }
                 return _CostoProduccionDetMods;
             }
@@ -353,6 +372,29 @@ namespace SIAC_DATOS.Models.Contabilidad
                 if (value != _CostoProduccionDetMods)
                 {
                     _CostoProduccionDetMods = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private ObservableListSource<CostoProduccionDetCif> _CostoProduccionDetCifs;
+        public ObservableListSource<CostoProduccionDetCif> CostoProduccionDetCifs
+        {
+            get
+            {
+                if (_CostoProduccionDetCifs == null)
+                {
+                    if (IsValid)
+                        _CostoProduccionDetCifs = CostoProduccionDetCif.FetchList(_n_id);
+                }
+                return _CostoProduccionDetCifs;
+            }
+
+            set
+            {
+                if (value != _CostoProduccionDetCifs)
+                {
+                    _CostoProduccionDetCifs = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -381,6 +423,7 @@ namespace SIAC_DATOS.Models.Contabilidad
                         while (reader.Read())
                         {
                             CostoProduccionDet m_entidad = SetObject(reader);
+                            m_entidad.IsNew = false;
                             m_listentidad.Add(m_entidad);
                         }
                     }
@@ -409,6 +452,7 @@ namespace SIAC_DATOS.Models.Contabilidad
                         if (reader.Read())
                         {
                             m_entidad = SetObject(reader);
+                            m_entidad.IsNew = false;
                         }
                     }
                 }
@@ -424,22 +468,25 @@ namespace SIAC_DATOS.Models.Contabilidad
                 connection.Open();
                 using (MySqlTransaction transaction = connection.BeginTransaction())
                 {
-                    using (MySqlCommand command = connection.CreateCommand())
+                    try
                     {
-                        command.Transaction = transaction;
-                        try
+                        using (MySqlCommand command = connection.CreateCommand())
                         {
+                            command.Transaction = transaction;
                             command.CommandType = System.Data.CommandType.StoredProcedure;
                             command.CommandText = "con_costoproddet_insertar";
                             AddParameters(command);
+                            command.Parameters["@n_id"].Direction = System.Data.ParameterDirection.Output;
                             int rows = command.ExecuteNonQuery();
-                            transaction.Commit();
+                            n_id = Convert.ToInt32(command.Parameters["@n_id"].Value);
                         }
-                        catch (Exception ex)
-                        {
-                            transaction.Rollback();
-                            throw ex;
-                        }
+                        SaveChildren(connection, transaction);
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw ex;
                     }
                 }
             }
@@ -453,8 +500,11 @@ namespace SIAC_DATOS.Models.Contabilidad
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 command.CommandText = "con_costoproddet_insertar";
                 AddParameters(command);
+                command.Parameters["@n_id"].Direction = System.Data.ParameterDirection.Output;
                 int rows = command.ExecuteNonQuery();
+                n_id = Convert.ToInt32(command.Parameters["@n_id"].Value);
             }
+            SaveChildren(connection, transaction);
         }
 
         protected override void Update()
@@ -466,22 +516,29 @@ namespace SIAC_DATOS.Models.Contabilidad
                 connection.Open();
                 using (MySqlTransaction transaction = connection.BeginTransaction())
                 {
-                    using (MySqlCommand command = connection.CreateCommand())
+                    try
                     {
-                        try
+                        if (IsOld)
                         {
-                            command.Transaction = transaction;
-                            command.CommandType = System.Data.CommandType.StoredProcedure;
-                            command.CommandText = "con_costoproddet_actualizar";
-                            AddParameters(command);
-                            int rows = command.ExecuteNonQuery();
-                            transaction.Commit();
+                            using (MySqlCommand command = connection.CreateCommand())
+                            {
+                                command.Transaction = transaction;
+                                command.CommandType = System.Data.CommandType.StoredProcedure;
+                                command.CommandText = "con_costoproddet_actualizar";
+                                AddParameters(command);
+                                int rows = command.ExecuteNonQuery();
+                            }
                         }
-                        catch (Exception ex)
+                        if (HasOldOrNewChildren)
                         {
-                            transaction.Rollback();
-                            throw ex;
+                            SaveChildren(connection, transaction);
                         }
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw ex;
                     }
                 }
             }
@@ -489,13 +546,20 @@ namespace SIAC_DATOS.Models.Contabilidad
 
         protected override void Update(MySqlConnection connection, MySqlTransaction transaction)
         {
-            using (MySqlCommand command = connection.CreateCommand())
+            if (IsOld)
             {
-                command.Transaction = transaction;
-                command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.CommandText = "con_costoproddet_actualizar";
-                AddParameters(command);
-                int rows = command.ExecuteNonQuery();
+                using (MySqlCommand command = connection.CreateCommand())
+                {
+                    command.Transaction = transaction;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.CommandText = "con_costoproddet_actualizar";
+                    AddParameters(command);
+                    int rows = command.ExecuteNonQuery();
+                }
+            }
+            if (HasOldOrNewChildren)
+            {
+                SaveChildren(connection, transaction);
             }
         }
 
@@ -508,24 +572,98 @@ namespace SIAC_DATOS.Models.Contabilidad
                 connection.Open();
                 using (MySqlTransaction transaction = connection.BeginTransaction())
                 {
-                    using (MySqlCommand command = connection.CreateCommand())
+                    try
                     {
-                        try
+                        using (MySqlCommand command = connection.CreateCommand())
                         {
                             command.Transaction = transaction;
                             command.CommandType = System.Data.CommandType.StoredProcedure;
                             command.CommandText = "con_costoproddet_eliminar";
                             command.Parameters.Add(new MySqlParameter("@n_id", n_id));
                             int rows = command.ExecuteNonQuery();
-                            transaction.Commit();
                         }
-                        catch (Exception ex)
-                        {
-                            transaction.Rollback();
-                            throw ex;
-                        }
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw ex;
                     }
                 }
+            }
+        }
+
+        public override void Delete(MySqlConnection connection, MySqlTransaction transaction)
+        {
+            //Se eliminan en primer lugar los hijos
+            //_CostoProduccionDetInss
+            CostoProduccionDetIns.DeleteAll(n_id, connection, transaction);
+
+            //_CostoProduccionDetMods
+            CostoProduccionDetMod.DeleteAll(n_id, connection, transaction);
+
+            //_CostoProduccionDetCifs
+            CostoProduccionDetCif.DeleteAll(n_id, connection, transaction);
+            //
+            try
+            {
+                using (MySqlCommand command = connection.CreateCommand())
+                {
+                    command.Transaction = transaction;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.CommandText = "con_costoproddet_eliminar";
+                    command.Parameters.Add(new MySqlParameter("@n_id", n_id));
+                    int rows = command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void SaveChildren(MySqlConnection connection, MySqlTransaction transaction)
+        {
+            //CostoProduccionDetInss
+            foreach (var hijo in CostoProduccionDetInss)
+            {
+                if (hijo.IsNew)
+                    hijo.n_idcostoproddet = n_id;
+
+                hijo.Save(connection, transaction);
+            }
+            foreach (var hijo in CostoProduccionDetInss.GetRemoveItems())
+            {
+                if (!hijo.IsNew)
+                    hijo.Delete(connection, transaction);
+            }
+
+            //CostoProduccionDetMods
+            foreach (var hijo in CostoProduccionDetMods)
+            {
+                if (hijo.IsNew)
+                    hijo.n_idcostoproddet = n_id;
+
+                hijo.Save(connection, transaction);
+            }
+            foreach (var hijo in CostoProduccionDetMods.GetRemoveItems())
+            {
+                if (!hijo.IsNew)
+                    hijo.Delete(connection, transaction);
+            }
+
+            //CostoProduccionDetCifs
+            foreach (var hijo in CostoProduccionDetCifs)
+            {
+                if (hijo.IsNew)
+                    hijo.n_idcostoproddet = n_id;
+
+                hijo.Save(connection, transaction);
+            }
+            foreach (var hijo in CostoProduccionDetCifs.GetRemoveItems())
+            {
+                if (!hijo.IsNew)
+                    hijo.Delete(connection, transaction);
             }
         }
 

@@ -247,6 +247,7 @@ namespace SIAC_DATOS.Models.Contabilidad
                         while (reader.Read())
                         {
                             CostoProduccionDetMod m_entidad = SetObject(reader);
+                            m_entidad.IsNew = false;
                             m_listentidad.Add(m_entidad);
                         }
                     }
@@ -275,6 +276,7 @@ namespace SIAC_DATOS.Models.Contabilidad
                         if (reader.Read())
                         {
                             m_entidad = SetObject(reader);
+                            m_entidad.IsNew = false;
                         }
                     }
                 }
@@ -290,22 +292,24 @@ namespace SIAC_DATOS.Models.Contabilidad
                 connection.Open();
                 using (MySqlTransaction transaction = connection.BeginTransaction())
                 {
-                    using (MySqlCommand command = connection.CreateCommand())
+                    try
                     {
-                        command.Transaction = transaction;
-                        try
+                        using (MySqlCommand command = connection.CreateCommand())
                         {
+                            command.Transaction = transaction;
                             command.CommandType = System.Data.CommandType.StoredProcedure;
                             command.CommandText = "con_costoproddetmod_insertar";
                             AddParameters(command);
+                            command.Parameters["@n_id"].Direction = System.Data.ParameterDirection.Output;
                             int rows = command.ExecuteNonQuery();
-                            transaction.Commit();
+                            n_id = Convert.ToInt32(command.Parameters["@n_id"].Value);
                         }
-                        catch (Exception ex)
-                        {
-                            transaction.Rollback();
-                            throw ex;
-                        }
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw ex;
                     }
                 }
             }
@@ -319,7 +323,9 @@ namespace SIAC_DATOS.Models.Contabilidad
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 command.CommandText = "con_costoproddetmod_insertar";
                 AddParameters(command);
+                command.Parameters["@n_id"].Direction = System.Data.ParameterDirection.Output;
                 int rows = command.ExecuteNonQuery();
+                n_id = Convert.ToInt32(command.Parameters["@n_id"].Value);
             }
         }
 
@@ -332,22 +338,22 @@ namespace SIAC_DATOS.Models.Contabilidad
                 connection.Open();
                 using (MySqlTransaction transaction = connection.BeginTransaction())
                 {
-                    using (MySqlCommand command = connection.CreateCommand())
+                    try
                     {
-                        try
+                        using (MySqlCommand command = connection.CreateCommand())
                         {
                             command.Transaction = transaction;
                             command.CommandType = System.Data.CommandType.StoredProcedure;
                             command.CommandText = "con_costoproddetmod_actualizar";
                             AddParameters(command);
                             int rows = command.ExecuteNonQuery();
-                            transaction.Commit();
                         }
-                        catch (Exception ex)
-                        {
-                            transaction.Rollback();
-                            throw ex;
-                        }
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw ex;
                     }
                 }
             }
@@ -374,24 +380,48 @@ namespace SIAC_DATOS.Models.Contabilidad
                 connection.Open();
                 using (MySqlTransaction transaction = connection.BeginTransaction())
                 {
-                    using (MySqlCommand command = connection.CreateCommand())
+                    try
                     {
-                        try
+                        using (MySqlCommand command = connection.CreateCommand())
                         {
                             command.Transaction = transaction;
                             command.CommandType = System.Data.CommandType.StoredProcedure;
                             command.CommandText = "con_costoproddetmod_eliminar";
                             command.Parameters.Add(new MySqlParameter("@n_id", n_id));
                             int rows = command.ExecuteNonQuery();
-                            transaction.Commit();
                         }
-                        catch (Exception ex)
-                        {
-                            transaction.Rollback();
-                            throw ex;
-                        }
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw ex;
                     }
                 }
+            }
+        }
+
+        public override void Delete(MySqlConnection connection, MySqlTransaction transaction)
+        {
+            using (MySqlCommand command = connection.CreateCommand())
+            {
+                command.Transaction = transaction;
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.CommandText = "con_costoproddetmod_eliminar";
+                command.Parameters.Add(new MySqlParameter("@n_id", n_id));
+                int rows = command.ExecuteNonQuery();
+            }
+        }
+
+        public static void DeleteAll(int n_idcostoproddet, MySqlConnection connection, MySqlTransaction transaction)
+        {
+            using (MySqlCommand command = connection.CreateCommand())
+            {
+                command.Transaction = transaction;
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.CommandText = "con_costoproddetmod_eliminar_todo";
+                command.Parameters.Add(new MySqlParameter("@n_idcostoproddet", n_idcostoproddet));
+                int rows = command.ExecuteNonQuery();
             }
         }
 

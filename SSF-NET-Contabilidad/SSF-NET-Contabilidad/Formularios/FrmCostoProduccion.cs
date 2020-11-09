@@ -1,99 +1,37 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using SIAC_Entidades.Ventas;
-using SIAC_Entidades.Almacen;
-using SIAC_Entidades.Produccion;
-using SIAC_Entidades.Sistema;
 using SIAC_Negocio.Maestros;
-using SIAC_Negocio.Almacen;
-using SIAC_Negocio.Contabilidad;
 using SIAC_Negocio.Sistema;
-using SIAC_Negocio.Produccion;
 using SIAC_Negocio.Sunat;
 using Helper.Comunes;
 using MySql.Data.MySqlClient;
 using Helper;
 using SIAC_Objetos.Sistema;
 using System.Data.OleDb;
-using System.Configuration;
-using SIAC_Entidades.Logistica;
-using SIAC_Negocio.Logistica;
-using SIAC_Entidades.Contabilidad;
 using SIAC_DATOS.Models.Contabilidad;
+using SIAC_DATOS.Models.Maestros;
+using SIAC_DATOS.Models.Sunat;
+using SIAC_DATOS.Models.Sistema;
 
 namespace SSF_NET_Contabilidad.Formularios
 {
     public partial class FrmCostoProduccion : Form
     {
         // VARIABLES PUBLICAS
-        public MySqlConnection mysConec = new MySqlConnection();
-        public OleDbConnection AccConec = new OleDbConnection();
         public Sistema.STU_SISTEMA STU_SISTEMA = new Sistema.STU_SISTEMA();
-
-        // OBJETOS LOCALES
-        SIAC_Objetos.Funciones obj_fungen = new SIAC_Objetos.Funciones();
-        CN_sun_tipexi objTipoExi = new CN_sun_tipexi();
-        CN_sun_tipdoccom objTipDoc = new CN_sun_tipdoccom();
-        CN_alm_inventariounimed ObjAlmUniMed = new CN_alm_inventariounimed();
-        CN_alm_almacenesdoc ObjAlmDoc = new CN_alm_almacenesdoc();
-        CN_alm_inventariolotes ObjLotes = new CN_alm_inventariolotes();
-        CN_sys_formulariovista objFormVis = new CN_sys_formulariovista();
-        CN_sys_formulario objForm = new CN_sys_formulario();
-        CN_sys_empresa funsys = new CN_sys_empresa();
-        //CN_con_costoproduccion objCostoProduccion = new CN_con_costoproduccion();
-        CN_alm_inventario objItems = new CN_alm_inventario();
-        CN_sun_unimed objUniMed = new CN_sun_unimed();
-        CN_mae_meses objMeses = new CN_mae_meses();
-        CN_alm_inventariolotes objlotes = new CN_alm_inventariolotes();
-        CN_ACC_pro_solicitudmat objSolMar = new CN_ACC_pro_solicitudmat();
-        CN_ACC_pro_producciondet objProPro = new CN_ACC_pro_producciondet();
-        CN_sys_setup o_set = new CN_sys_setup();
-
-        // OBJETOS DE ACCESO A DATOS
-        Cls_FlexGrid funFlex = new Cls_FlexGrid();
-        Funciones funFunciones = new Funciones();
-        Genericas funDatos = new Genericas();
-        Cls_DBGrid funDbGrid = new Cls_DBGrid();
 
         // ENTIDADES LOCALES
         CostoProduccion m_CostoProduccion = new CostoProduccion();
-        BE_SYS_EMPRESA entEmp = new BE_SYS_EMPRESA();
-
-        // DATATABLE LOCALES
-        DataTable dtTipoExis = new DataTable();
-        //DataTable dtCostoProduccion = new DataTable();
-        DataTable dtItems = new DataTable();
-        DataTable dtMoviDetalle = new DataTable();
-        DataTable dtForm = new DataTable();
-        DataTable dtPresentaItem = new DataTable();
-        DataTable dtMeses = new DataTable();
-        DataTable dtDocAlm = new DataTable();
-        DataTable dtLotes = new DataTable();
-        DataTable DtSolMat = new DataTable();
-        DataTable DtDetalleTMP = new DataTable();                                       // EN ESTE DATA TABLE SE ALMACENA EL DETALLE DE LOS DOCUMENTOS JALADOS
-        DataTable dtsetup = new DataTable();
 
         // VARIABLES LOCALES
-        int N_IDALMACEN = 0;
-        int N_IDLOCAL = 0;
-        int N_INGTRAZABALIDAD = 0;                                                       // LE INDICAMOS AL MODULO QUE TIENE QUE PEDIR DATOS DE TRAZABILIDAD
-        int N_INGPRECIO = 0;
-        int n_NumFilasDocumento = 30;                                                   // LE INDICAMOS AL FORMULARIO EL NUMERO MAXIMO DE FILAS PARA EL DETALLE
-        int n_QueHace = 3;                                                              // INDICA EN QUE ESTADO SE ENCUENTRA EL FORMULARIO
-        //string[,] arrCabeceraDg1 = new string[10, 4];                                    // ARRAY PARA MOSTRAR LAS COLUMNAS DEL DATAGRID PRINCIPAL
-        //string[,] arrCabeceraFlex1 = new string[11, 5];
+        // INDICA EN QUE ESTADO SE ENCUENTRA EL FORMULARIO
+        int n_QueHace = 3;
         bool booSeEjecuto = false;
         bool booAgregando = false;
-        string strNumerovalidos = "1234567890." + (char)8;                                        // + (char)8;
-        string strCaracteres = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ1234567890-()º.,/$' !!·%/()=?¿*^" + (char)8;
-        int n_ItemProducido;                                                            // ESTA VARIABLE ALMACENARA EL ID DEL ITEM PRODUCIDO CUANDO SE SELECCIONE UNA ORDEN DE PRODUCCION
+        string strNumerovalidos = "1234567890." + (char)8;
+        int n_idformulario = 99;
         
         public FrmCostoProduccion()
         {
@@ -111,72 +49,31 @@ namespace SSF_NET_Contabilidad.Formularios
         void CargarCombos()
         {
             DataTableCargar();
-            funDatos.ComboBoxCargarDataTable(CboMeses, dtMeses, "n_id", "c_des");
+
+            CboMeses.DataSource = Mes.FetchList();
+            CboMeses.DisplayMember = "c_des";
+            CboMeses.ValueMember = "n_id";
 
             CboResponsable.DataSource = PersonalContabilidad.FetchList(STU_SISTEMA.EMPRESAID, 2);
             CboResponsable.DisplayMember = "c_destra";
             CboResponsable.ValueMember = "n_idtra";
 
-            CboConfiguracion.DataSource = ConfiguracionValorizacion.FetchList(STU_SISTEMA.EMPRESAID);
+            CboConfiguracion.DataSource = ConfigVal.FetchList(STU_SISTEMA.EMPRESAID);
             CboConfiguracion.DisplayMember = "c_des";
             CboConfiguracion.ValueMember = "n_id";
         }
 
         void ConfigurarFormulario()
         {
+            Formulario formulario = Formulario.Fetch(n_idformulario);
             Tab1.SelectedIndex = 0;
-            string c_nomarc = ConfigurationManager.AppSettings["PathIniFile"];
-            N_IDALMACEN = Convert.ToInt32(funDatos.IniLeerSeccion(c_nomarc, "SISTEMA", "ALMACEN").ToString());
-
-            if (dtsetup.Rows.Count != 0)
-            {
-                if (Convert.ToInt32(dtsetup.Rows[0]["n_almtrazabilidad"]) == 1)
-                {
-                    N_INGTRAZABALIDAD = 1;
-                }
-                if (Convert.ToInt32(dtsetup.Rows[0]["n_guipedpre"]) == 1)
-                {
-                    N_INGPRECIO = 1;
-                }
-            }
-
             LblTitulo2.Text = "DETALLE DEL REGISTRO";
-
-            this.Text = dtForm.Rows[0]["c_titfor"].ToString();
+            this.Text = formulario.c_titfor;
             CboMeses.SelectedValue = STU_SISTEMA.MESTRABAJO;
         }
 
         void DataTableCargar()
-        {            
-            o_set.mysConec = mysConec;
-            dtsetup = o_set.TraerRegistro();
-
-            objTipDoc.mysConec = mysConec;
-
-            objTipoExi.mysConec = mysConec;
-            dtTipoExis = objTipoExi.Listar();
-
-            objItems.mysConec = mysConec;
-            dtItems = objItems.ListarTabla(STU_SISTEMA.EMPRESAID);
-
-            objMeses.mysConec = mysConec;
-            dtMeses = objMeses.Listar();
-                        
-            ObjAlmUniMed.mysConec = mysConec;
-            dtPresentaItem = ObjAlmUniMed.Listar();
-
-            objForm.mysConec = mysConec;                                    // CARGAMOS LOS DATOS DEL FORMULARIO
-            dtForm = objForm.TraerRegistro(99);
-
-            ObjAlmDoc.mysConec = mysConec;
-            dtDocAlm = ObjAlmDoc.ListarEmpAlm(STU_SISTEMA.EMPRESAID, 2);               // 1 FILTRAREMOS SOLO LOS ALMACENES QUE PERTENESCAN A LA EMPRESA Y QUE GENEREN MOVIMIENTO DE INGRESO A ALMACEN 
-
-            objlotes.mysConec = mysConec;
-            dtLotes = objlotes.TraerLotesConSaldo(STU_SISTEMA.EMPRESAID);
-            
-            funsys.mysConec = mysConec;
-            funsys.TraerRegistro(STU_SISTEMA.EMPRESAID);
-            entEmp = funsys.e_Empresa;
+        {
         }
 
         void ListarItems()
@@ -187,17 +84,26 @@ namespace SSF_NET_Contabilidad.Formularios
 
         void VerRegistro()
         {
-            m_CostoProduccion = (CostoProduccion)costoProduccionBindingSource.Current;
-            //m_CostoProduccion = CostoProduccion.Fetch(n_IdRegistro);
+            try
+            {
+                int n_id = ((CostoProduccion)costoProduccionBindingSource.Current).n_id;
+                m_CostoProduccion = CostoProduccion.Fetch(n_id);
 
-            TxtNumDoc.Text = m_CostoProduccion.c_numdoc;
-            TxtNumSer.Text = m_CostoProduccion.c_numser;            
-            CboConfiguracion.SelectedValue = m_CostoProduccion.n_idconfigval;
-            TxtObs.Text = m_CostoProduccion.c_obs;            
-            CboResponsable.SelectedValue = m_CostoProduccion.n_idresp;
+                TxtNumDoc.Text = m_CostoProduccion.c_numdoc;
+                TxtNumSer.Text = m_CostoProduccion.c_numser;
+                CboConfiguracion.SelectedValue = m_CostoProduccion.n_idconfigval;
+                TxtObs.Text = m_CostoProduccion.c_obs;
+                CboResponsable.SelectedValue = m_CostoProduccion.n_idresp;
+                CboMeses.SelectedValue = m_CostoProduccion.n_idmes;
 
-            CostoProduccionDetBindingSource.DataSource = m_CostoProduccion.CostoProduccionDets;
+                CostoProduccionDetBindingSource.DataSource = m_CostoProduccion.CostoProduccionDets;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("¡ Ocurrió un error ! " + ex.Message, "Ver Registro", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+            }
         }
+
         void Nuevo()
         {
             booAgregando = true;
@@ -208,11 +114,9 @@ namespace SSF_NET_Contabilidad.Formularios
             ActivarTool();
             LblTitulo2.Text = "Agregando Nuevo Registro";
             Tab1.SelectedIndex = 1;
-            //FgItems.Rows.Count = 2;
             booAgregando = false;
-            FgItems.Cols[2].ComboList = "...";
-            CboConfiguracion.SelectedValue = Convert.ToInt32(N_IDALMACEN);
         }
+
         void Blanquea()
         {
             TxtNumSer.Text = "";
@@ -223,6 +127,7 @@ namespace SSF_NET_Contabilidad.Formularios
             CboResponsable.SelectedValue = 0;
             
         }
+
         void Bloquea()
         {
             TxtNumSer.Enabled = !TxtNumSer.Enabled;
@@ -246,7 +151,18 @@ namespace SSF_NET_Contabilidad.Formularios
                 BtnProcesarModCif.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.False;
             else
                 BtnProcesarModCif.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.True;
+
+            if (BtnAgregarCuenta.Enabled == ComponentFactory.Krypton.Toolkit.ButtonEnabled.True)
+                BtnAgregarCuenta.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.False;
+            else
+                BtnAgregarCuenta.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.True;
+
+            if (BtnEliminarCuenta.Enabled == ComponentFactory.Krypton.Toolkit.ButtonEnabled.True)
+                BtnEliminarCuenta.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.False;
+            else
+                BtnEliminarCuenta.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.True;
         }
+
         void ActivarTool()
         {
             ToolNuevo.Enabled = !ToolNuevo.Enabled;
@@ -259,6 +175,7 @@ namespace SSF_NET_Contabilidad.Formularios
             //ToolExportar.Enabled = !ToolExportar.Enabled;
             ToolSalir.Enabled = !ToolSalir.Enabled;
         }
+
         void Modificar()
         {
             booAgregando = true;
@@ -276,6 +193,7 @@ namespace SSF_NET_Contabilidad.Formularios
             CboMeses.Focus();
             booAgregando = false;
         }
+
         private void EliminarRegistro()
         {
             try
@@ -302,6 +220,7 @@ namespace SSF_NET_Contabilidad.Formularios
                 MessageBox.Show("¡ No se pudo eliminar el registro por el siguiente motivo ! " + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             }
         }
+
         void Cancelar()
         {
             n_QueHace = 3;
@@ -312,22 +231,19 @@ namespace SSF_NET_Contabilidad.Formularios
             Tab1.SelectedIndex = 0;
             DgLista.Focus();
         }
-        bool Grabar()
+
+        private void Grabar()
         {
-            bool booResultado = false;
-            if (CamposOK() == false)
-            {
-                return booResultado;
-            }
+            ValidarCampos();
             AsignarEntidad();
 
             if (n_QueHace == 1)
             {
                 if (CostoProduccion.DocumentoExiste(STU_SISTEMA.EMPRESAID, TxtNumSer.Text, TxtNumDoc.Text) == true)
                 {
-                    MessageBox.Show(" El numero de documento " + TxtNumSer.Text + "-" + TxtNumDoc.Text + " ya existe, ingrese otro ", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                    return booResultado;
+                    throw new Exception(" El numero de documento " + TxtNumSer.Text + "-" + TxtNumDoc.Text + " ya existe, ingrese otro ");
                 }
+
                 m_CostoProduccion.IsNew = true;
             }
 
@@ -335,9 +251,10 @@ namespace SSF_NET_Contabilidad.Formularios
             {
                 m_CostoProduccion.IsOld = true;
             }
+
             m_CostoProduccion.Save();
-            return booResultado;
         }
+
         void AsignarEntidad()
         {
             m_CostoProduccion.n_idemp = STU_SISTEMA.EMPRESAID;
@@ -345,98 +262,37 @@ namespace SSF_NET_Contabilidad.Formularios
             m_CostoProduccion.c_numdoc = TxtNumDoc.Text;
             m_CostoProduccion.n_idconfigval = Convert.ToInt32(CboConfiguracion.SelectedValue);
             m_CostoProduccion.n_anotra = STU_SISTEMA.ANOTRABAJO;
-            m_CostoProduccion.n_idmes = STU_SISTEMA.MESTRABAJO;
+            m_CostoProduccion.n_idmes = Convert.ToInt32(CboMeses.SelectedValue.ToString());
             m_CostoProduccion.c_obs = TxtObs.Text; ;            
             m_CostoProduccion.n_idresp =  Convert.ToInt32(CboResponsable.SelectedValue);
         }
 
-        bool CamposOK()
+        private void ValidarCampos()
         {
-            bool booEstado = true;
-
             if (TxtNumSer.Text == "")
             {
-                MessageBox.Show("¡ No ha especificado el numero de serie !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                TxtNumSer.Focus();
-                booEstado = false;
-                return booEstado;
+                throw new Exception("¡ No ha especificado el numero de serie !");
             }
 
             if (TxtNumDoc.Text == "")
             {
-                MessageBox.Show("¡ No ha especificado el numero de documento !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                TxtNumDoc.Focus();
-                booEstado = false;
-                return booEstado;
+                throw new Exception("¡ No ha especificado el numero de documento !");
             }
 
             if (Convert.ToInt32(CboConfiguracion.SelectedValue) == 0)
             {
-                MessageBox.Show("¡ No ha especificado la configuración de valorización !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                CboConfiguracion.Focus();
-                booEstado = false;
-                return booEstado;
+                throw new Exception("¡ No ha especificado la configuración de valorización !");
             }
 
             if (Convert.ToInt32(CboResponsable.SelectedValue) == 0)
             {
-                MessageBox.Show("¡ No ha especificado el reponsable !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                CboConfiguracion.Focus();
-                booEstado = false;
-                return booEstado;
+                throw new Exception("¡ No ha especificado el reponsable !");
             }
 
-            if (FgItems.Rows.Count != 2)
+            if (costoProduccionBindingSource.Count == 0)
             {
-                int intFila;
-                // VERIFICAMOS QUE LOS DATOS DE LAS PRESENTACIONES ESTEN COMPLETAS
-                for (intFila = 2; intFila <= FgItems.Rows.Count - 1; intFila++)
-                {
-                    if (funFunciones.NulosC(FgItems.GetData(intFila, 1)) != "")
-                    {
-                        if (funFunciones.NulosC(FgItems.GetData(intFila, 2)) == "")
-                        {
-                            MessageBox.Show("¡ No ha especificado la descripcion del item en la fila " + (FgItems.Row - 1).ToString() + " !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                            booEstado = false;
-                            return booEstado;
-                        }
-                        if (funFunciones.NulosC(FgItems.GetData(intFila, 3)) == "")
-                        {
-                            MessageBox.Show("¡ No ha especificado la presentacion del item en la fila " + (FgItems.Row - 1).ToString() + " !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                            booEstado = false;
-                            return booEstado;
-                        }
-                        if (N_INGTRAZABALIDAD == 1)
-                        { 
-                            if (funFunciones.NulosC(FgItems.GetData(intFila, 4)) == "")
-                            {
-                                MessageBox.Show("¡ No ha especificado el numero de lote, en la fila " + (FgItems.Row - 1).ToString() + " !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                                booEstado = false;
-                                return booEstado;
-                            }
-                        }
-                        if (funFunciones.NulosC(FgItems.GetData(intFila, 6)) == "")
-                        {
-                            MessageBox.Show("¡ No ha especificado la cantidad del item que ingresara en la fila " + (FgItems.Row - 1).ToString() + " !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                            booEstado = false;
-                            return booEstado;
-                        }
-                        if (funFunciones.NulosC(FgItems.GetData(intFila, 9)) == "")
-                        {
-                            MessageBox.Show("¡ No ha especificado la hora de salida del item en la fila " + (FgItems.Row - 1).ToString() + " !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                            booEstado = false;
-                            return booEstado;
-                        }
-                    }
-                }
+                throw new Exception("¡ No ha especificado ningun item para este proceso!");
             }
-            else
-            {
-                MessageBox.Show("¡ No ha especificado ningun item para este proceso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                booEstado = false;
-                return booEstado;
-            }
-            return booEstado;
         }
 
         private void FrmCostoProduccion_Activated(object sender, EventArgs e)
@@ -479,12 +335,13 @@ namespace SSF_NET_Contabilidad.Formularios
 
         private void ToolGrabar_Click(object sender, EventArgs e)
         {
-            if (Grabar() == true)
+            try
             {
+                Grabar();
                 // MOSTRAMOS LOS DATOS EN LA GRILLA
                 ListarItems();
 
-                DialogResult Rpta = MessageBox.Show("! El registro se agrego con exito ¡ ¿Desea agregar otro registro? ", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                DialogResult Rpta = MessageBox.Show("! El registro se grabó con éxito ¡ ¿Desea agregar otro registro? ", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
                 if (DialogResult.Yes == Rpta)
                 {
@@ -496,6 +353,10 @@ namespace SSF_NET_Contabilidad.Formularios
                     Cancelar();
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("¡ No se pudo grabar el registro por el siguiente motivo ! " + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ToolCancelar_Click(object sender, EventArgs e)
@@ -505,17 +366,6 @@ namespace SSF_NET_Contabilidad.Formularios
 
         private void ToolSalir_Click(object sender, EventArgs e)
         {
-            objTipoExi = null;
-            dtTipoExis = null;
-
-            objTipDoc = null;
-
-            objTipoExi = null;
-            dtTipoExis = null;
-
-            objFormVis = null;
-            objFormVis = null;
-
             this.Close();
         }
 
@@ -634,11 +484,8 @@ namespace SSF_NET_Contabilidad.Formularios
 
         private void TxtNumSer_Validated(object sender, EventArgs e)
         {
-            if (TxtNumSer.Text == "") { return; }
-
-            string c_numdoc = "";
-            c_numdoc = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, 95, TxtNumSer.Text);
-            TxtNumDoc.Text = c_numdoc;
+            if (TxtNumSer.Text == "") return;
+            TxtNumDoc.Text = TipoDocumento.UltimoNumero(STU_SISTEMA.EMPRESAID, 95, TxtNumSer.Text);
         }
 
         private void TxtNumDoc_Validated(object sender, EventArgs e)
@@ -664,7 +511,7 @@ namespace SSF_NET_Contabilidad.Formularios
             if (Convert.ToInt32(CboResponsable.SelectedValue) == 0) { return; }
             
             TxtNumSer.Text = "0001";
-            TxtNumDoc.Text = objTipDoc.UltimoNumero(STU_SISTEMA.EMPRESAID, 95, TxtNumSer.Text);
+            TxtNumDoc.Text = TipoDocumento.UltimoNumero(STU_SISTEMA.EMPRESAID, 95, TxtNumSer.Text);
             CboConfiguracion.Focus();
             booAgregando = false;
         }
@@ -675,9 +522,24 @@ namespace SSF_NET_Contabilidad.Formularios
             {
                 CargarCabecera();
                 Cursor.Current = Cursors.WaitCursor;
+
+                //CostoProduccionDetBindingSource.Clear();
+                //costoProduccionCuesBindingSource.Clear();
+                //costoProduccionDetInsBindingSource.Clear();
+                //CostoProduccionDetModBindingSource.Clear();
+                //costoProduccionDetCifBindingSource.Clear();
+
+                costoProduccionDetInsBindingSource.DataSource = null;
+                CostoProduccionDetModBindingSource.DataSource = null;
+                costoProduccionDetCifBindingSource.DataSource = null;
+
+                //Se buscan los partes del periodo
                 m_CostoProduccion.ListarPartesdeProduccion(m_CostoProduccion.n_idemp
                     , m_CostoProduccion.n_anotra
                     , m_CostoProduccion.n_idmes);
+
+                //Se distribuye Mod
+                m_CostoProduccion.ProcesarMod();
 
                 CostoProduccionDetBindingSource.DataSource = m_CostoProduccion.CostoProduccionDets;
 
@@ -699,15 +561,36 @@ namespace SSF_NET_Contabilidad.Formularios
             }
         }
 
+        private void BtnProcesarModCif_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CargarCabecera();
+                Cursor.Current = Cursors.WaitCursor;
+                m_CostoProduccion.ProcesarCif();
+
+                costoProduccionCuesBindingSource.DataSource = m_CostoProduccion.CostoProduccionCues;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Ocurrio un error al procesar MP, error: {0}", ex.Message)
+                    , "Procesar MP"
+                    , MessageBoxButtons.OK
+                    , MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
+        }
+
         private void BtnProcesarMP_Click(object sender, EventArgs e)
         {
             try
             {
                 CargarCabecera();
                 Cursor.Current = Cursors.WaitCursor;
-                m_CostoProduccion.ProcesarMp(STU_SISTEMA.EMPRESAID
-                    , m_CostoProduccion.d_fchini
-                    , m_CostoProduccion.d_fchfin);
+                m_CostoProduccion.ProcesarMp();
 
                 if (m_CostoProduccion.CostoProduccionErrors.Count > 0)
                 {
@@ -749,45 +632,40 @@ namespace SSF_NET_Contabilidad.Formularios
             m_CostoProduccion.n_idmes = Convert.ToInt32(CboMeses.SelectedValue.ToString());
         }
 
-
-        //private void ProcesaInsumos(Common.Models.Contabilidad.CostoProduccion costoProduccion, DateTime fechaInicio, DateTime fechaFin)
-        //{
-        //    using (var context = new ApplicationDbContext())
-        //    {
-        //        var tipoMercaderia = context.TipoMercaderias
-        //            .Where(o => o.Codigo == "INS")
-        //            .FirstOrDefault();
-        //        var mercaderias = (from k in context.KardexMovimientos
-        //                           where k.Mercaderia.TipoMercaderiaId == tipoMercaderia.TipoMercaderiaId
-        //                               && k.Fecha >= fechaInicio && k.Fecha <= fechaFin
-        //                           group k by k.MercaderiaId into g
-        //                           select g.FirstOrDefault().Mercaderia).ToList();
-
-        //        foreach (var mercaderia in mercaderias)
-        //        {
-        //            CosteaMercaderia(costoProduccion, mercaderia.MercaderiaId, fechaInicio, fechaFin);
-        //        }
-        //    }
-        //}
-
-        private void ProcesaIntermedios(DateTime fechaInicio, DateTime fechaFin)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void ProcesaTerminados(DateTime fechaInicio, DateTime fechaFin)
-        {
-            throw new NotImplementedException();
-        }
-
         private void FgItems_SelChange(object sender, EventArgs e)
         {
             if (booAgregando) return;
             CostoProduccionDet costoProduccionDet = (CostoProduccionDet)CostoProduccionDetBindingSource.Current;
+
             if (costoProduccionDet != null)
             {
-                CostoProduccionDetInsBindingSource.DataSource = costoProduccionDet.CostoProduccionDetInss;
+                costoProduccionDet.IsValid = true;
+                costoProduccionDetInsBindingSource.DataSource = costoProduccionDet.CostoProduccionDetInss;
                 CostoProduccionDetModBindingSource.DataSource = costoProduccionDet.CostoProduccionDetMods;
+                costoProduccionDetCifBindingSource.DataSource = costoProduccionDet.CostoProduccionDetCifs;
+            }
+        }
+
+        private void BtnVerErroresMP_Click(object sender, EventArgs e)
+        {
+            if(m_CostoProduccion.CostoProduccionErrors == null)
+            {
+                m_CostoProduccion.CostoProduccionErrors 
+                    = new SIAC_Datos.Classes.ObservableListSource<SIAC_DATOS.Classes.Contabilidad.CostoProduccionError>();
+            }
+            if (m_CostoProduccion.CostoProduccionErrors.Count > 0)
+            {
+                using (FrmCostoProduccionError xForm = new FrmCostoProduccionError(m_CostoProduccion.CostoProduccionErrors))
+                {
+                    xForm.ShowDialog(this);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se encontraron errores en el proceso MP"
+                    , "Ver errores MP"
+                    , MessageBoxButtons.OK
+                    , MessageBoxIcon.Information);
             }
         }
     }
