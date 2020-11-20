@@ -10,6 +10,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.OleDb;
 using System.Data.SqlClient;
+using System.Deployment.Application;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -97,6 +98,10 @@ namespace SSF_NET
             STU_SISTEMA.RUTAFOTOEMPLEADOS = "";
 
             STU_SISTEMA.SYS_NOMBRE = c_sysnom;
+            
+            if (ApplicationDeployment.IsNetworkDeployed)
+                c_sysver = ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString();
+
             STU_SISTEMA.SYS_VESION = c_sysver;
             STU_SISTEMA.SYS_NOMBREABREV = c_sysnomabr;
 

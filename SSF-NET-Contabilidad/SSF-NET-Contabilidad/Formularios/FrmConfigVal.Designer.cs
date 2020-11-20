@@ -39,6 +39,7 @@
             this.PicClos1 = new System.Windows.Forms.PictureBox();
             this.label17 = new System.Windows.Forms.Label();
             this.DgLista = new C1.Win.C1TrueDBGrid.C1TrueDBGrid();
+            this.configValBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.c1DockingTabPage2 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.TxtObs = new System.Windows.Forms.TextBox();
@@ -71,13 +72,13 @@
             this.ToolManFun = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolSalir = new System.Windows.Forms.ToolStripButton();
-            this.configValBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Tab1.SuspendLayout();
             this.c1DockingTabPage1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicClos1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgLista)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configValBindingSource)).BeginInit();
             this.c1DockingTabPage2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup2)).BeginInit();
@@ -89,7 +90,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.PicClos2)).BeginInit();
             this.panel3.SuspendLayout();
             this.ToolHerramientas.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.configValBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // Tab1
@@ -222,6 +222,10 @@
             this.DgLista.DoubleClick += new System.EventHandler(this.DgLista_DoubleClick);
             this.DgLista.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DgLista_KeyPress);
             this.DgLista.PropBag = resources.GetString("DgLista.PropBag");
+            // 
+            // configValBindingSource
+            // 
+            this.configValBindingSource.DataSource = typeof(SIAC_DATOS.Models.Contabilidad.ConfigVal);
             // 
             // c1DockingTabPage2
             // 
@@ -405,6 +409,7 @@
             this.PicClos2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PicClos2.TabIndex = 121;
             this.PicClos2.TabStop = false;
+            this.PicClos2.Visible = false;
             // 
             // label9
             // 
@@ -608,10 +613,6 @@
             this.ToolSalir.ToolTipText = "Salir";
             this.ToolSalir.Click += new System.EventHandler(this.ToolSalir_Click);
             // 
-            // configValBindingSource
-            // 
-            this.configValBindingSource.DataSource = typeof(SIAC_DATOS.Models.Contabilidad.ConfigVal);
-            // 
             // FrmConfigVal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -632,6 +633,7 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicClos1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgLista)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configValBindingSource)).EndInit();
             this.c1DockingTabPage2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -645,7 +647,6 @@
             this.panel3.ResumeLayout(false);
             this.ToolHerramientas.ResumeLayout(false);
             this.ToolHerramientas.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.configValBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

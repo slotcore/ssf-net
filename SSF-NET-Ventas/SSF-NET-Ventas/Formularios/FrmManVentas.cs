@@ -2978,9 +2978,50 @@ namespace SSF_NET_Ventas.Formularios
         }
         private void ToolExportar_Click(object sender, EventArgs e)
         {
-            string c_NomArchivo = STU_SISTEMA.EMPRESARUC + "-VTA-VENTAS-" + STU_SISTEMA.ANOTRABAJO.ToString() + Convert.ToInt32(CboMeses.SelectedValue).ToString("00") + ".xls";
-            DgLista.ExportTo(c_NomArchivo);
-            MessageBox.Show("! Se exporto con exito la informacion en el archivo " + c_NomArchivo + " !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+            if (DgLista.RowCount == 0)
+            {
+                MessageBox.Show("¡ No hay datos para imprimir !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);                
+            }
+
+            string[] columnGridNames = { "c_numreg"
+                    , "c_destipdoc"
+                    , "c_numdoc"
+                    , "d_fchdoc"
+                    , "c_nomcli"
+                    , "c_desmon"
+                    , "n_tc"
+                    , "n_impbru"
+                    , "n_impinaf"
+                    , "n_impigv"
+                    , "n_imptotven"
+                    , "n_impsal"
+                    , "n_enviado"
+                    , "n_aceptado"
+                    , "n_anulado"};
+
+            string[] columnHeaderNames = { "N° Registro"
+                    , "T.D."
+                    , "N° Documento"
+                    , "Fch. Doc."
+                    , "Cliente"
+                    , "Mon."
+                    , "T.C."
+                    , "Imp. Bruto"
+                    , "Imp. Inafecto"
+                    , "I.G.V."
+                    , "Importe Total"
+                    , "Saldo"
+                    , "Env."
+                    , "Ace."
+                    , "Anu."};
+
+            System.Windows.Forms.SaveFileDialog saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            funDbGrid.DG_ExporExcel(DgLista, saveFileDialog1, columnGridNames, columnHeaderNames);
+
+
+            //string c_NomArchivo = STU_SISTEMA.EMPRESARUC + "-VTA-VENTAS-" + STU_SISTEMA.ANOTRABAJO.ToString() + Convert.ToInt32(CboMeses.SelectedValue).ToString("00") + ".xls";
+            //DgLista.ExportTo(c_NomArchivo);
+            //MessageBox.Show("! Se exporto con exito la informacion en el archivo " + c_NomArchivo + " !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
         }
         private void CmdGenAsi_Click(object sender, EventArgs e)
         {

@@ -125,7 +125,6 @@ namespace SSF_NET_Contabilidad
         public void InventarioInicial()
         {
             Formularios.FrmInventarioIni Frm = new Formularios.FrmInventarioIni();
-            Frm.mysConec = mysConec;
             Frm.STU_SISTEMA = STU_SISTEMA;
             Frm.Show();
         }

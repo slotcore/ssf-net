@@ -171,6 +171,7 @@
             this.dopcumentosContablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.impuestosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónValorizaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.inventarioInicialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripSeparator();
             this.configuracionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.centroDeCostosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -360,11 +361,15 @@
             this.toolStripStatusLabel8 = new System.Windows.Forms.ToolStripStatusLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
-            this.inventarioInicialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsBarraActualizacion = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.LnkLabelReiniciar = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.TsBarraActualizacion.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -390,7 +395,7 @@
             this.maestrosToolStripMenuItem,
             this.herramientasToolStripMenuItem,
             this.ayudaToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 25);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(994, 24);
             this.menuStrip1.TabIndex = 1;
@@ -1502,6 +1507,13 @@
             this.configuraciónValorizaciónToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
             this.configuraciónValorizaciónToolStripMenuItem.Text = "Configuración Valorización";
             this.configuraciónValorizaciónToolStripMenuItem.Click += new System.EventHandler(this.configuraciónValorizaciónToolStripMenuItem_Click);
+            // 
+            // inventarioInicialToolStripMenuItem
+            // 
+            this.inventarioInicialToolStripMenuItem.Name = "inventarioInicialToolStripMenuItem";
+            this.inventarioInicialToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+            this.inventarioInicialToolStripMenuItem.Text = "Inventario Inicial";
+            this.inventarioInicialToolStripMenuItem.Click += new System.EventHandler(this.inventarioInicialToolStripMenuItem_Click);
             // 
             // toolStripMenuItem13
             // 
@@ -2836,7 +2848,7 @@
             this.TooSep1,
             this.TooBut3,
             this.TooBut4});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 49);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.toolStrip1.Size = new System.Drawing.Size(994, 39);
@@ -3009,12 +3021,39 @@
             // 
             this.kryptonManager1.GlobalPaletteMode = ComponentFactory.Krypton.Toolkit.PaletteModeManager.Office2010Silver;
             // 
-            // inventarioInicialToolStripMenuItem
+            // TsBarraActualizacion
             // 
-            this.inventarioInicialToolStripMenuItem.Name = "inventarioInicialToolStripMenuItem";
-            this.inventarioInicialToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
-            this.inventarioInicialToolStripMenuItem.Text = "Inventario Inicial";
-            this.inventarioInicialToolStripMenuItem.Click += new System.EventHandler(this.inventarioInicialToolStripMenuItem_Click);
+            this.TsBarraActualizacion.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.TsBarraActualizacion.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.TsBarraActualizacion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel1,
+            this.toolStripSeparator1,
+            this.LnkLabelReiniciar});
+            this.TsBarraActualizacion.Location = new System.Drawing.Point(0, 0);
+            this.TsBarraActualizacion.Name = "TsBarraActualizacion";
+            this.TsBarraActualizacion.Size = new System.Drawing.Size(994, 25);
+            this.TsBarraActualizacion.TabIndex = 5;
+            this.TsBarraActualizacion.Text = "TsBarraActualizacion";
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.ForeColor = System.Drawing.Color.Red;
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(367, 22);
+            this.toolStripLabel1.Text = "Se ha publicado una nueva version del aplicativo por favor actualizar";
+            // 
+            // LnkLabelReiniciar
+            // 
+            this.LnkLabelReiniciar.IsLink = true;
+            this.LnkLabelReiniciar.Name = "LnkLabelReiniciar";
+            this.LnkLabelReiniciar.Size = new System.Drawing.Size(111, 22);
+            this.LnkLabelReiniciar.Text = "Reiniciar Aplicación";
+            this.LnkLabelReiniciar.Click += new System.EventHandler(this.LnkLabelReiniciar_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // FrmMenu10
             // 
@@ -3026,6 +3065,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.TsBarraActualizacion);
             this.Name = "FrmMenu10";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmMenu10";
@@ -3038,6 +3078,8 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.TsBarraActualizacion.ResumeLayout(false);
+            this.TsBarraActualizacion.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3376,5 +3418,9 @@
         private System.Windows.Forms.ToolStripMenuItem costoDeProducciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem configuraciónValorizaciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inventarioInicialToolStripMenuItem;
+        private System.Windows.Forms.ToolStrip TsBarraActualizacion;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripLabel LnkLabelReiniciar;
     }
 }

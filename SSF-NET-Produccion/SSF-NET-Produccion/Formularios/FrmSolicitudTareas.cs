@@ -24,6 +24,8 @@ using Helper.Classes;
 using Refit;
 using Helper.Service;
 using SIAC_DATOS.Data;
+using SIAC_DATOS.Models.Produccion;
+using System.Diagnostics;
 
 namespace SSF_NET_Produccion.Formularios
 {
@@ -2267,6 +2269,46 @@ namespace SSF_NET_Produccion.Formularios
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Bajar Registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void TsExportarDetallado_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cls_DBGrid funDbGrid = new Cls_DBGrid();
+
+                var dtTableWithOneColumn = SolicitudTareas.TraerDataTableDetallado(STU_SISTEMA.EMPRESAID,
+                    STU_SISTEMA.ANOTRABAJO,
+                    STU_SISTEMA.MESTRABAJO);
+
+                if (dtTableWithOneColumn.Rows.Count == 0)
+                {
+                    throw new Exception("¡ No hay datos para exportar !");
+                }
+
+                SaveFileDialog objCuadroDialogo = new SaveFileDialog();
+
+                objCuadroDialogo.Filter = "MS Excel (*.xlsx) |*.xlsx;*.xlsx|(*.xlsx) |*.xlsx|(*.*) |*.*";
+
+                if (objCuadroDialogo.ShowDialog() == DialogResult.OK)
+                {
+                    dtTableWithOneColumn.TableName = "Reporte de Solicitud de Tareas";
+                    funDbGrid.DataTable_To_Excel(dtTableWithOneColumn, objCuadroDialogo.FileName);
+                }
+
+                string filename = "Excel.exe";
+
+                Process proc = new Process();
+                proc.EnableRaisingEvents = false;
+                proc.StartInfo.FileName = filename;
+                proc.StartInfo.Arguments = objCuadroDialogo.FileName;
+                proc.Start();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Exportar Excel Detallado", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
         }
     }

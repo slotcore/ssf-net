@@ -12,7 +12,7 @@ namespace Helper
 {
     public class Cls_DBGrid
     {
-        private void DataTable_To_Excel(DataTable pDatos, string pFilePath)
+        public void DataTable_To_Excel(DataTable pDatos, string pFilePath)
         {
             try
             {

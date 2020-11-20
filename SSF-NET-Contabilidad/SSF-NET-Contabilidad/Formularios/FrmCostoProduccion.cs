@@ -31,7 +31,7 @@ namespace SSF_NET_Contabilidad.Formularios
         bool booSeEjecuto = false;
         bool booAgregando = false;
         string strNumerovalidos = "1234567890." + (char)8;
-        int n_idformulario = 99;
+        int n_idformulario = 103;
         
         public FrmCostoProduccion()
         {

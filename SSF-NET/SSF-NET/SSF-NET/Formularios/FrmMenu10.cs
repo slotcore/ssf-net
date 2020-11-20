@@ -13,6 +13,8 @@ using Helper.Comunes;
 using Helper;
 using SIAC_Negocio.Planilla;
 using System.Reflection;
+using System.Deployment.Application;
+using System.Configuration;
 
 namespace SSF_NET.Formularios
 {
@@ -27,6 +29,12 @@ namespace SSF_NET.Formularios
         public FrmMenu10()
         {
             InitializeComponent();
+
+            // Verificar actualizacion
+            Timer Clock = new Timer();
+            Clock.Interval = Convert.ToInt32(ConfigurationManager.AppSettings["ServiceInterval"]);
+            Clock.Start();
+            Clock.Tick += new EventHandler(Timer_Tick);
         }
         private void FrmMenu10_Load(object sender, EventArgs e)
         {
@@ -34,7 +42,7 @@ namespace SSF_NET.Formularios
             objMeses.mysConec = Program.mysConeccion;
             dtMes = objMeses.Listar();
 
-            this.Text = Program.STU_SISTEMA.SYS_NOMBRE;
+            this.Text = string.Format("{0} - {1}", Program.STU_SISTEMA.SYS_NOMBRE, Program.STU_SISTEMA.SYS_VESION);
             Program.STU_SISTEMA.MONEDA = 1;                           // MONEDA POR DEFECTO SOLES 
 
             CN_sys_perfil o_perfil= new CN_sys_perfil();
@@ -63,7 +71,28 @@ namespace SSF_NET.Formularios
                 toolStripStatusLabel6.Text = c_Dato;
                 toolStripStatusLabel8.Text = Program.STU_SISTEMA.USUARIOALIAS; 
             }
+
+            TsBarraActualizacion.Visible = false;
         }
+
+        public void Timer_Tick(object sender, EventArgs eArgs)
+        {
+            try
+            {
+                if (!TsBarraActualizacion.Visible)
+                {
+                    if (VerificarNuevaVersion())
+                    {
+                        TsBarraActualizacion.Visible = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void TooBut4_Click(object sender, EventArgs e)
         {
             Program.GuardarIngreso(2);
@@ -1711,6 +1740,53 @@ namespace SSF_NET.Formularios
             objForm.mysConec = Program.mysConeccion;
             objForm.STU_SISTEMA = Program.STU_SISTEMA;
             objForm.InventarioInicial();
+        }
+
+        private void LnkLabelReiniciar_Click(object sender, EventArgs e)
+        {
+            ReiniciarAplicativo();
+        }
+
+        private bool VerificarNuevaVersion()
+        {
+            bool nuevaVersion = false;
+
+            if (ApplicationDeployment.IsNetworkDeployed)
+            {
+                ApplicationDeployment ad = ApplicationDeployment.CurrentDeployment;
+                UpdateCheckInfo info;
+
+                try
+                {
+                    info = ad.CheckForDetailedUpdate();
+
+                }
+                catch (DeploymentDownloadException dde)
+                {
+                    throw new Exception("La nueva versión de la aplicación no se puede descargar en este momento. \n\nComprueba tu conexión de red o vuelve a intentarlo más tarde. Error: " + dde.Message);
+                }
+                catch (InvalidDeploymentException ide)
+                {
+                    throw new Exception("No se puede buscar una nueva versión de la aplicación. La implementación de ClickOnce está dañada. Vuelva a implementar la aplicación y vuelva a intentarlo. Error: " + ide.Message);
+                }
+                catch (InvalidOperationException ioe)
+                {
+                    throw new Exception("Esta aplicación no se puede actualizar. Probablemente no sea una aplicación ClickOnce. Error: " + ioe.Message);
+                }
+
+                if (info.UpdateAvailable)
+                {
+                    nuevaVersion = true;
+                }
+            }
+
+            return nuevaVersion;
+        }
+
+        private void ReiniciarAplicativo()
+        {
+            Application.ExitThread();
+            Application.Restart();
         }
     }
 }

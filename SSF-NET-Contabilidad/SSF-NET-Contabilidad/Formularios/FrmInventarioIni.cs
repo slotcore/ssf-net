@@ -19,27 +19,17 @@ using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using System.IO;
 using NPOI.XSSF.UserModel;
+using SIAC_DATOS.Models.Sistema;
 
 namespace SSF_NET_Contabilidad.Formularios
 {
     public partial class FrmInventarioIni : Form
     {
         // VARIABLES PUBLICAS
-        public MySqlConnection mysConec = new MySqlConnection();
         public Sistema.STU_SISTEMA STU_SISTEMA = new Sistema.STU_SISTEMA();
-
-        // OBJETOS LOCALES
-        CN_sun_tipdoccom objTipDoc = new CN_sun_tipdoccom();
-        CN_sys_formulario objForm = new CN_sys_formulario();
-
-        // OBJETOS DE ACCESO A DATOS
-        Funciones funFunciones = new Funciones();
 
         // ENTIDADES LOCALES
         InventarioInicial m_InventarioInicial = new InventarioInicial();
-
-        // DATATABLE LOCALES
-        DataTable dtForm = new DataTable();
 
         // VARIABLES LOCALES
         // INDICA EN QUE ESTADO SE ENCUENTRA EL FORMULARIO
@@ -48,7 +38,7 @@ namespace SSF_NET_Contabilidad.Formularios
         bool booAgregando = false;
         string strNumerovalidos = "1234567890." + (char)8;
         string strNumerovalidos2 = "EFGR1234567890" + (char)8;
-        int n_idformulario = 99;
+        int n_idformulario = 101;
         
         public FrmInventarioIni()
         {
@@ -78,18 +68,14 @@ namespace SSF_NET_Contabilidad.Formularios
 
         void ConfigurarFormulario()
         {
+            Formulario formulario = Formulario.Fetch(n_idformulario);
             Tab1.SelectedIndex = 0;
             LblTitulo2.Text = "DETALLE DEL REGISTRO";
-            this.Text = dtForm.Rows[0]["c_titfor"].ToString();
+            this.Text = formulario.c_titfor;
         }
 
         void DataTableCargar()
         {
-            objTipDoc.mysConec = mysConec;
-
-            // CARGAMOS LOS DATOS DEL FORMULARIO
-            objForm.mysConec = mysConec;
-            dtForm = objForm.TraerRegistro(n_idformulario);
         }
 
         void ListarItems()
@@ -375,7 +361,6 @@ namespace SSF_NET_Contabilidad.Formularios
 
         private void ToolSalir_Click(object sender, EventArgs e)
         {
-            objTipDoc = null;
             this.Close();
         }
 
@@ -548,6 +533,7 @@ namespace SSF_NET_Contabilidad.Formularios
 
             TxtNumDoc.Text = TipoDocumento.UltimoNumero(STU_SISTEMA.EMPRESAID, 97, TxtNumSer.Text);
         }
+
         private void TxtNumSer_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (Convert.ToInt32(e.KeyChar) == 13)

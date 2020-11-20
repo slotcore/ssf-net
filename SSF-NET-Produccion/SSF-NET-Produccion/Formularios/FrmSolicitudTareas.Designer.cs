@@ -46,6 +46,9 @@
             this.ToolVisar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolSalir = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
+            this.TsExportarDetallado = new System.Windows.Forms.ToolStripMenuItem();
             this.Tab1 = new System.Windows.Forms.TabControl();
             this.c1DockingTabPage1 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -168,6 +171,8 @@
             this.BtnBajarRegistro,
             this.ToolVisar,
             this.toolStripSeparator3,
+            this.toolStripSplitButton1,
+            this.toolStripSeparator5,
             this.ToolSalir});
             this.ToolHerramientas.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.ToolHerramientas.Location = new System.Drawing.Point(0, 0);
@@ -322,6 +327,29 @@
             this.ToolSalir.Text = "toolStripButton8";
             this.ToolSalir.ToolTipText = "Salir";
             this.ToolSalir.Click += new System.EventHandler(this.ToolSalir_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 39);
+            // 
+            // toolStripSplitButton1
+            // 
+            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripSplitButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TsExportarDetallado});
+            this.toolStripSplitButton1.Image = global::SSF_NET_Produccion.Properties.Resources.exporttoxls_32x32;
+            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
+            this.toolStripSplitButton1.Size = new System.Drawing.Size(48, 36);
+            this.toolStripSplitButton1.Text = "toolStripSplitButton1";
+            // 
+            // TsExportarDetallado
+            // 
+            this.TsExportarDetallado.Name = "TsExportarDetallado";
+            this.TsExportarDetallado.Size = new System.Drawing.Size(180, 22);
+            this.TsExportarDetallado.Text = "Exportar Detallado";
+            this.TsExportarDetallado.Click += new System.EventHandler(this.TsExportarDetallado_Click);
             // 
             // Tab1
             // 
@@ -1467,5 +1495,8 @@
         private System.Windows.Forms.ToolStripButton btnSubirRegistro;
         private System.Windows.Forms.ToolStripButton BtnBajarRegistro;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripMenuItem TsExportarDetallado;
     }
 }

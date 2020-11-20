@@ -1884,12 +1884,12 @@ namespace SSF_NET_Tesoreria.Formularios
         }
         void SumarTotDestino()
         {
-            LblHabTotSol.Text = Math.Round(funFlex.FlexSumarCol(FgDesIng, 3, 2, FgDesIng.Rows.Count - 1), 3).ToString("0.0000");
+            LblHabTotSol.Text = Math.Round(funFlex.FlexSumarCol(FgDesIng, 3, 2, FgDesIng.Rows.Count - 1), 4).ToString("0.0000");
             LblHabTotDol.Text = Math.Round(funFlex.FlexSumarCol(FgDesIng, 4, 2, FgDesIng.Rows.Count - 1), 4).ToString("0.0000");
         }
         void SumarTotOrigen()
         {
-            LblDebTotSol.Text = Math.Round(funFlex.FlexSumarCol(FgOriIng, 3, 2, FgOriIng.Rows.Count - 1), 3).ToString("0.0000");
+            LblDebTotSol.Text = Math.Round(funFlex.FlexSumarCol(FgOriIng, 3, 2, FgOriIng.Rows.Count - 1), 4).ToString("0.0000");
             LblDebTotDol.Text = Math.Round(funFlex.FlexSumarCol(FgOriIng, 4, 2, FgOriIng.Rows.Count - 1), 4).ToString("0.0000");
         }
         void SumarColDocumentos()
@@ -2250,11 +2250,11 @@ namespace SSF_NET_Tesoreria.Formularios
                 c_dato = l_TesDes[n_row].n_iddes.ToString();
                 FgDesIng.SetData(FgDesIng.Rows.Count - 1, 5, c_dato);
             }
-
-            LblDebTotSol.Text = funFlex.FlexSumarCol(FgOriIng, 3, 2, FgOriIng.Rows.Count - 1).ToString("0.00");
-            LblDebTotDol.Text = funFlex.FlexSumarCol(FgOriIng, 4, 2, FgOriIng.Rows.Count - 1).ToString("0.000000"); ;
-            LblHabTotSol.Text = funFlex.FlexSumarCol(FgDesIng, 3, 2, FgDesIng.Rows.Count - 1).ToString("0.00"); ;
-            LblHabTotDol.Text = funFlex.FlexSumarCol(FgDesIng, 4, 2, FgDesIng.Rows.Count - 1).ToString("0.000000"); ;
+            
+            LblDebTotSol.Text = Math.Round(funFlex.FlexSumarCol(FgOriIng, 3, 2, FgOriIng.Rows.Count - 1), 4).ToString("0.0000");
+            LblDebTotDol.Text = Math.Round(funFlex.FlexSumarCol(FgOriIng, 4, 2, FgOriIng.Rows.Count - 1), 4).ToString("0.0000");
+            LblHabTotSol.Text = Math.Round(funFlex.FlexSumarCol(FgDesIng, 3, 2, FgDesIng.Rows.Count - 1), 4).ToString("0.0000");
+            LblHabTotDol.Text = Math.Round(funFlex.FlexSumarCol(FgDesIng, 4, 2, FgDesIng.Rows.Count - 1), 4).ToString("0.0000");
         }
         private void fgDocCli_CellChanged(object sender, C1.Win.C1FlexGrid.RowColEventArgs e)
         {

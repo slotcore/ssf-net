@@ -166,6 +166,7 @@
     <Compile Include="Models\Planillas\Empleado.cs" />
     <Compile Include="Models\Planillas\PeriodoLaboral.cs" />
     <Compile Include="Models\Produccion\ProduccionNotaIng.cs" />
+    <Compile Include="Models\Produccion\SolicitudTareas.cs" />
     <Compile Include="Models\Sistema\Formulario.cs" />
     <Compile Include="Models\Sunat\TipoDocumento.cs" />
     <Compile Include="Models\Sunat\TipoMoneda.cs" />
