@@ -354,22 +354,26 @@ namespace SIAC_DATOS.Models.Almacen
                 connection.Open();
                 using (MySqlTransaction transaction = connection.BeginTransaction())
                 {
-                    using (MySqlCommand command = connection.CreateCommand())
+                    try
                     {
-                        command.Transaction = transaction;
-                        try
+                        using (MySqlCommand command = connection.CreateCommand())
                         {
+                            command.Transaction = transaction;
                             command.CommandType = System.Data.CommandType.StoredProcedure;
                             command.CommandText = "alm_inventarioini_insertar";
                             AddParameters(command);
+                            command.Parameters["@n_id"].Direction = System.Data.ParameterDirection.Output;
                             int rows = command.ExecuteNonQuery();
-                            transaction.Commit();
+                            n_id = Convert.ToInt32(command.Parameters["@n_id"].Value);
                         }
-                        catch (Exception ex)
-                        {
-                            transaction.Rollback();
-                            throw ex;
-                        }
+                        //
+                        SaveChildren(connection, transaction);
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw ex;
                     }
                 }
             }
@@ -383,8 +387,12 @@ namespace SIAC_DATOS.Models.Almacen
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 command.CommandText = "alm_inventarioini_insertar";
                 AddParameters(command);
+                command.Parameters["@n_id"].Direction = System.Data.ParameterDirection.Output;
                 int rows = command.ExecuteNonQuery();
+                n_id = Convert.ToInt32(command.Parameters["@n_id"].Value);
             }
+            //
+            SaveChildren(connection, transaction);
         }
 
         protected override void Update()
@@ -396,39 +404,29 @@ namespace SIAC_DATOS.Models.Almacen
                 connection.Open();
                 using (MySqlTransaction transaction = connection.BeginTransaction())
                 {
-                    using (MySqlCommand command = connection.CreateCommand())
+                    try
                     {
-                        try
+                        if (IsOld)
                         {
-                            command.Transaction = transaction;
-                            command.CommandType = System.Data.CommandType.StoredProcedure;
-                            command.CommandText = "alm_inventarioini_actualizar";
-                            AddParameters(command);
-                            int rows = command.ExecuteNonQuery();
-
-                            foreach (var inventarioInicialDet in InventarioInicialDets)
+                            using (MySqlCommand command = connection.CreateCommand())
                             {
-                                if (inventarioInicialDet.n_id > 0)
-                                {
-                                    inventarioInicialDet.IsNew = false;
-                                    inventarioInicialDet.IsOld = true;
-                                }
-                                else
-                                {
-                                    inventarioInicialDet.IsNew = true;
-                                    inventarioInicialDet.IsOld = false;
-                                }
-
-                                inventarioInicialDet.Save(connection, transaction);
+                                command.Transaction = transaction;
+                                command.CommandType = System.Data.CommandType.StoredProcedure;
+                                command.CommandText = "alm_inventarioini_actualizar";
+                                AddParameters(command);
+                                int rows = command.ExecuteNonQuery();
                             }
-
-                            transaction.Commit();
                         }
-                        catch (Exception ex)
+                        if (HasOldOrNewChildren)
                         {
-                            transaction.Rollback();
-                            throw ex;
+                            SaveChildren(connection, transaction);
                         }
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw ex;
                     }
                 }
             }
@@ -473,6 +471,43 @@ namespace SIAC_DATOS.Models.Almacen
                         }
                     }
                 }
+            }
+        }
+
+        protected override bool CheckHasOldOrNewChildren()
+        {
+            bool isChildOld = false;
+            var childsOld = InventarioInicialDets.Where(o => o.IsNew == true || o.IsOld == true);
+            if (childsOld != null)
+            {
+                if (childsOld.Count() > 0)
+                    isChildOld = true;
+            }
+            if (!isChildOld)
+            {
+                if (InventarioInicialDets.GetRemoveItems().Count > 0)
+                {
+                    isChildOld = true;
+                }
+            }
+
+            return isChildOld;
+        }
+
+        private void SaveChildren(MySqlConnection connection, MySqlTransaction transaction)
+        {
+            foreach (var hijo in InventarioInicialDets)
+            {
+                if (hijo.IsNew)
+                    hijo.n_idinvini = n_id;
+
+                hijo.Save(connection, transaction);
+            }
+
+            foreach (var hijo in InventarioInicialDets.GetRemoveItems())
+            {
+                if (!hijo.IsNew)
+                    hijo.Delete(connection, transaction);
             }
         }
 

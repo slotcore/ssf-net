@@ -175,7 +175,9 @@ namespace SIAC_DATOS.Models.Contabilidad
                             command.CommandType = System.Data.CommandType.StoredProcedure;
                             command.CommandText = "con_configvalcue_insertar";
                             AddParameters(command);
+                            command.Parameters["@n_id"].Direction = System.Data.ParameterDirection.Output;
                             int rows = command.ExecuteNonQuery();
+                            n_id = Convert.ToInt32(command.Parameters["@n_id"].Value);
                             transaction.Commit();
                         }
                         catch (Exception ex)

@@ -152,8 +152,6 @@ namespace SSF_NET_Ventas.Formularios
                 }
             }
 
-            Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
-            Tab_Posicionar(Tab1, 1, 42);
             Tab1.SelectedIndex = 0;
             LblTitulo2.Text = "DETALLE DEL REGISTRO";
 
@@ -278,16 +276,6 @@ namespace SSF_NET_Ventas.Formularios
             LblNumReg.Text = (dtRegistros.Rows.Count).ToString();
             funDbGrid.DG_FormatearGrid(DgLista, arrCabeceraDg1, dtRegistros, true);
             MostrarEstadoMes(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO);
-        }
-        void Tab_Dimensionar(C1.Win.C1Command.C1DockingTab dokTab, int intAlto, int intAncho)
-        {
-            Tab1.Height = intAlto;
-            Tab1.Width = intAncho;
-        }
-        void Tab_Posicionar(C1.Win.C1Command.C1DockingTab dokTab, int intPosX, int intPosY)
-        {
-            dokTab.Left = intPosX;
-            dokTab.Top = intPosY;
         }
         void VerRegistro(int n_IdRegistro)
         {
@@ -666,6 +654,13 @@ namespace SSF_NET_Ventas.Formularios
                 BE_ListaReg.n_iddocref = 0;
             }
 
+            if (OptPedCen.Checked)
+            {
+                BE_ListaReg.n_idtipdocref = 79;
+                BE_ListaReg.n_iddocref = Convert.ToInt32(LblIdOC.Text);
+                BE_ListaReg.c_numdocref = TxtOrdCom.Text;
+            }
+
             if (TxtFchEmiOC.Text != " ")
             {
                 BE_ListaReg.d_fchpeddocref = Convert.ToDateTime(TxtFchEmiOC.Text);
@@ -948,18 +943,21 @@ namespace SSF_NET_Ventas.Formularios
 
             this.Close();
         }
-
-        private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
+        private void Tab1_SelectedIndexChanging(object sender, EventArgs e)
         {
+            TabControl tc = (TabControl)sender;
+
             if (n_QueHace != 3) { return; }
 
-            if (e.NewIndex == 1)
+            if (tc.SelectedIndex == 1)
             {
                 int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
+                    booAgregando = true;
                     VerRegistro(intIdRegistro);
+                    booAgregando = false;
                 }
             }
         }
@@ -982,11 +980,6 @@ namespace SSF_NET_Ventas.Formularios
                 DgLista.DataSource = dtResult;
                 LblNumReg.Text = (dtResult.Rows.Count).ToString();
             }
-        }
-
-        private void FrmManGuiasPrecios_Resize(object sender, EventArgs e)
-        {
-            Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
         }
 
         private void TxtNumSer_KeyPress(object sender, KeyPressEventArgs e)

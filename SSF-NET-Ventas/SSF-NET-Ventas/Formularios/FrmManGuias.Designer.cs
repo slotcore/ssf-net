@@ -49,9 +49,8 @@
             this.guiasFacturadasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guiasPendientesDeFacturacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolSalir = new System.Windows.Forms.ToolStripButton();
-            this.Tab1 = new C1.Win.C1Command.C1DockingTab();
-            this.c1DockingTabPage1 = new C1.Win.C1Command.C1DockingTabPage();
-            this.Sc01 = new C1.Win.C1Sizer.C1Sizer();
+            this.Tab1 = new System.Windows.Forms.TabControl();
+            this.c1DockingTabPage1 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.CboMeses = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -61,9 +60,7 @@
             this.PicClos1 = new System.Windows.Forms.PictureBox();
             this.label17 = new System.Windows.Forms.Label();
             this.DgLista = new C1.Win.C1TrueDBGrid.C1TrueDBGrid();
-            this.c1DockingTabPage2 = new C1.Win.C1Command.C1DockingTabPage();
-            this.Sc02 = new C1.Win.C1Sizer.C1Sizer();
-            this.c1Sizer1 = new C1.Win.C1Sizer.C1Sizer();
+            this.c1DockingTabPage2 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label19 = new System.Windows.Forms.Label();
             this.CboTipPed = new System.Windows.Forms.ComboBox();
@@ -142,20 +139,13 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.ToolHerramientas.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Tab1)).BeginInit();
             this.Tab1.SuspendLayout();
             this.c1DockingTabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Sc01)).BeginInit();
-            this.Sc01.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicClos1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgLista)).BeginInit();
             this.c1DockingTabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Sc02)).BeginInit();
-            this.Sc02.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Sizer1)).BeginInit();
-            this.c1Sizer1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicClos2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FgItems)).BeginInit();
@@ -378,18 +368,15 @@
             this.Tab1.Name = "Tab1";
             this.Tab1.SelectedIndex = 1;
             this.Tab1.Size = new System.Drawing.Size(913, 558);
-            this.Tab1.TabAreaBackColor = System.Drawing.Color.White;
             this.Tab1.TabIndex = 29;
-            this.Tab1.TabsSpacing = -10;
-            this.Tab1.TabStyle = C1.Win.C1Command.TabStyleEnum.Sloping;
-            this.Tab1.VisualStyle = C1.Win.C1Command.VisualStyle.Custom;
-            this.Tab1.VisualStyleBase = C1.Win.C1Command.VisualStyle.OfficeXP;
-            this.Tab1.SelectedIndexChanging += new C1.Win.C1Command.SelectedIndexChangingEventHandler(this.Tab1_SelectedIndexChanging);
+            this.Tab1.SelectedIndexChanged += new System.EventHandler(this.Tab1_SelectedIndexChanging);
             // 
             // c1DockingTabPage1
             // 
             this.c1DockingTabPage1.BackColor = System.Drawing.Color.White;
-            this.c1DockingTabPage1.Controls.Add(this.Sc01);
+            this.c1DockingTabPage1.Controls.Add(this.panel4);
+            this.c1DockingTabPage1.Controls.Add(this.panel2);
+            this.c1DockingTabPage1.Controls.Add(this.DgLista);
             this.c1DockingTabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.c1DockingTabPage1.ForeColor = System.Drawing.Color.Black;
             this.c1DockingTabPage1.Location = new System.Drawing.Point(29, 1);
@@ -397,23 +384,6 @@
             this.c1DockingTabPage1.Size = new System.Drawing.Size(883, 556);
             this.c1DockingTabPage1.TabIndex = 0;
             this.c1DockingTabPage1.Text = "Consulta";
-            // 
-            // Sc01
-            // 
-            this.Sc01.Controls.Add(this.panel4);
-            this.Sc01.Controls.Add(this.panel2);
-            this.Sc01.Controls.Add(this.DgLista);
-            this.Sc01.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Sc01.ForeColor = System.Drawing.Color.Black;
-            this.Sc01.GridDefinition = "5.03597122302158:False:True;88.4892086330935:False:False;5.39568345323741:False:T" +
-    "rue;\t99.7734994337486:False:False;";
-            this.Sc01.Location = new System.Drawing.Point(0, 0);
-            this.Sc01.Name = "Sc01";
-            this.Sc01.Padding = new System.Windows.Forms.Padding(1);
-            this.Sc01.Size = new System.Drawing.Size(883, 556);
-            this.Sc01.SplitterWidth = 2;
-            this.Sc01.TabIndex = 0;
-            this.Sc01.Text = "c1Sizer1";
             // 
             // panel4
             // 
@@ -533,7 +503,8 @@
             // 
             // c1DockingTabPage2
             // 
-            this.c1DockingTabPage2.Controls.Add(this.Sc02);
+            this.c1DockingTabPage2.Controls.Add(this.panel1);
+            this.c1DockingTabPage2.Controls.Add(this.panel3);
             this.c1DockingTabPage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.c1DockingTabPage2.ForeColor = System.Drawing.Color.Black;
             this.c1DockingTabPage2.Location = new System.Drawing.Point(29, 1);
@@ -541,39 +512,6 @@
             this.c1DockingTabPage2.Size = new System.Drawing.Size(883, 556);
             this.c1DockingTabPage2.TabIndex = 1;
             this.c1DockingTabPage2.Text = "Detalle";
-            // 
-            // Sc02
-            // 
-            this.Sc02.Controls.Add(this.c1Sizer1);
-            this.Sc02.Controls.Add(this.panel3);
-            this.Sc02.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Sc02.ForeColor = System.Drawing.Color.Black;
-            this.Sc02.GridDefinition = "5.03597122302158:False:True;94.2446043165468:False:False;0:False:True;\t99.7734994" +
-    "337486:False:False;";
-            this.Sc02.Location = new System.Drawing.Point(0, 0);
-            this.Sc02.Margin = new System.Windows.Forms.Padding(1);
-            this.Sc02.Name = "Sc02";
-            this.Sc02.Padding = new System.Windows.Forms.Padding(1);
-            this.Sc02.Size = new System.Drawing.Size(883, 556);
-            this.Sc02.SplitterWidth = 1;
-            this.Sc02.TabIndex = 0;
-            this.Sc02.Text = "c1Sizer2";
-            // 
-            // c1Sizer1
-            // 
-            this.c1Sizer1.Controls.Add(this.panel1);
-            this.c1Sizer1.ForeColor = System.Drawing.Color.Black;
-            this.c1Sizer1.GridDefinition = "0.763358778625954:False:False;97.7099236641221:False:True;0.763358778625954:False" +
-    ":False;\t1.70261066969353:False:False;96.2542565266742:False:True;1.5891032917139" +
-    "6:False:False;";
-            this.c1Sizer1.Location = new System.Drawing.Point(1, 30);
-            this.c1Sizer1.Margin = new System.Windows.Forms.Padding(1);
-            this.c1Sizer1.Name = "c1Sizer1";
-            this.c1Sizer1.Padding = new System.Windows.Forms.Padding(1);
-            this.c1Sizer1.Size = new System.Drawing.Size(881, 524);
-            this.c1Sizer1.SplitterWidth = 1;
-            this.c1Sizer1.TabIndex = 10;
-            this.c1Sizer1.Text = "c1Sizer1";
             // 
             // panel1
             // 
@@ -1539,14 +1477,10 @@
             this.Text = "FrmManGuias";
             this.Activated += new System.EventHandler(this.FrmManGuias_Activated);
             this.Load += new System.EventHandler(this.FrmManGuias_Load);
-            this.Resize += new System.EventHandler(this.FrmManGuias_Resize);
             this.ToolHerramientas.ResumeLayout(false);
             this.ToolHerramientas.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Tab1)).EndInit();
             this.Tab1.ResumeLayout(false);
             this.c1DockingTabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Sc01)).EndInit();
-            this.Sc01.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -1554,10 +1488,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.PicClos1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgLista)).EndInit();
             this.c1DockingTabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Sc02)).EndInit();
-            this.Sc02.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.c1Sizer1)).EndInit();
-            this.c1Sizer1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicClos2)).EndInit();
@@ -1587,18 +1517,15 @@
         private System.Windows.Forms.ToolStripButton ToolCancelar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton ToolSalir;
-        private C1.Win.C1Command.C1DockingTab Tab1;
-        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage1;
-        private C1.Win.C1Sizer.C1Sizer Sc01;
+        private System.Windows.Forms.TabControl Tab1;
+        private System.Windows.Forms.TabPage c1DockingTabPage1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label LblNumReg;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label17;
         private C1.Win.C1TrueDBGrid.C1TrueDBGrid DgLista;
-        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage2;
-        private C1.Win.C1Sizer.C1Sizer Sc02;
-        private C1.Win.C1Sizer.C1Sizer c1Sizer1;
+        private System.Windows.Forms.TabPage c1DockingTabPage2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox TxtNumPla;

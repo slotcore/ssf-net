@@ -132,7 +132,6 @@ namespace SSF_NET_Contabilidad.Formularios
         void Nuevo()
         {
             booAgregando = true;
-            m_ConfigVal = new ConfigVal();
             n_QueHace = 1;
             Tab1.TabPages[0].Enabled = false;
             Blanquea();
@@ -150,7 +149,8 @@ namespace SSF_NET_Contabilidad.Formularios
             CboMetVal.SelectedValue = 0;
             CboTipDist.SelectedValue = 0;
             CboFactDist.SelectedValue = 0;
-
+            m_ConfigVal = new ConfigVal();
+            configValCuesBindingSource.DataSource = m_ConfigVal.ConfigValCues;
         }
 
         void Bloquea()

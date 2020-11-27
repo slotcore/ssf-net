@@ -167,7 +167,7 @@ namespace SIAC_DATOS.Models.Almacen
                 {
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.CommandText = "alm_inventariounimed_listar";
+                    command.CommandText = "alm_inventariounimed_listar_v2";
                     command.Parameters.Add(new MySqlParameter("@n_idite", n_idite));
                     connection.Open();
                     using (MySqlDataReader reader = command.ExecuteReader())

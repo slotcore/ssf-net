@@ -126,7 +126,8 @@ namespace SSF_NET_Contabilidad.Formularios
             TxtNumDoc.Text = "";
             TxtNumSer.Text = "";
             DtpFchVigencia.Text = "";
-
+            m_InventarioInicial = new InventarioInicial();
+            inventarioInicialDetBindingSource.DataSource = m_InventarioInicial.InventarioInicialDets;
         }
 
         void Bloquea()
