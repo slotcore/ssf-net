@@ -913,7 +913,7 @@ namespace SIAC_DATOS.Models.Contabilidad
 
         public void ProcesarMp()
         {
-            CostoProduccionErrors.Clear();
+            CostoProduccionErrors?.Clear();
 
             CosteaMateriales(n_idemp, d_fchini, d_fchfin);
 

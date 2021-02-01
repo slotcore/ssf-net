@@ -61,6 +61,7 @@ namespace SSF_NET_Produccion.Formularios
         DataTable dtMeses = new DataTable();
         DataTable dtListar = new DataTable();
         DataTable dtTipDoc = new DataTable();
+        DataTable dtTipoDocumento2 = new DataTable();
         DataTable dtNumDocRef = new DataTable();
         DataTable dtItems = new DataTable();
         DataTable dtPerPro = new DataTable();
@@ -99,13 +100,17 @@ namespace SSF_NET_Produccion.Formularios
         }
         void CargarCombos()
         {
+            DataTable dtResul = new DataTable();
             DataTableCargar();
             funDatos.ComboBoxCargarDataTable(CboMeses, dtMeses, "n_id", "c_des");
 
             var lstIdFilter = new List<int>() { 72, 92, 93 };
             var dtTipDocFilter = dtTipDoc.AsEnumerable().Where(r => lstIdFilter.Contains(r.Field<int>("n_id"))).CopyToDataTable();
             funDatos.ComboBoxCargarDataTable(CboTipDoc, dtTipDocFilter, "n_id", "c_des");
-          
+
+            dtResul = funDatos.DataTableFiltrar(dtTipoDocumento2, "n_id IN (73, 76)");
+            funDatos.ComboBoxCargarDataTable(CboDocRef, dtResul, "n_id", "c_des");
+
             funDatos.ComboBoxCargarDataTable(CboSol, dtPerPro, "n_id", "c_apenom");
         }
         void ConfigurarFormulario()
@@ -202,6 +207,8 @@ namespace SSF_NET_Produccion.Formularios
             objTipDoc.mysConec = mysConec;
             dtTipDoc = objTipDoc.Listar();
 
+            dtTipoDocumento2 = objTipDoc.Listar();
+
             // CARGAMOS EL PERSONAL DE PRODUCCION
             objPerPro.mysConec = mysConec;
             if (objPerPro.Listar(STU_SISTEMA.EMPRESAID) == true)
@@ -225,6 +232,7 @@ namespace SSF_NET_Produccion.Formularios
             {
                 dtRecetasInsumos = objRecetasInsumo.dtInsumos;
             }
+
         }
         void ListarItems()
         {
@@ -256,10 +264,16 @@ namespace SSF_NET_Produccion.Formularios
             TxtCanPro2.Text = entSolicitud.n_can.ToString("0.00");
             TxtObs.Text = entSolicitud.c_obs;
 
-            MostrarDatosProducto(entSolicitud.n_idpro);
+            CboDocRef.SelectedValue = entSolicitud.n_docrefidtipdoc;
+            if (entSolicitud.n_docrefidtipdoc == 73) //parte de produccion
+            {
+                MostrarDatosParteProduccion(entSolicitud.n_docrefiddocref);
+            }
+            if (entSolicitud.n_docrefidtipdoc == 76) //orden de produccion
+            {
+                MostrarDatosOrdenProduccion(entSolicitud.n_docrefiddocref);
+            }
 
-            TxtNumSerOP.Text = "";
-            TxtNumDocOP.Text = "";
             funControl.dtpText(TxtFchOP, "");
            
             // MOSTRAMOS EL DETALLE DE LA SOLICITUD
@@ -305,7 +319,38 @@ namespace SSF_NET_Produccion.Formularios
                 FgInsumos.SetData(FgInsumos.Rows.Count - 1, 7, n_valor);                                                      // ID DE LA UNIDAD DE MEDIDA
             }
         }
-        void MostrarDatosProducto(int n_idProduccion)
+        void MostrarDatosOrdenProduccion(int n_idOrdenProduccion)
+        {
+            CN_pro_ordenproduccion objRegistro = new CN_pro_ordenproduccion();
+            objRegistro.mysConec = mysConec;
+            BE_PRO_ORDENPRODUCCION entProd = new BE_PRO_ORDENPRODUCCION();
+            BE_PRO_ORDENPRODUCCIONDET entOrdenProdDet = new BE_PRO_ORDENPRODUCCIONDET();
+
+            objRegistro.TraerRegistro(n_idOrdenProduccion);
+            entProd = objRegistro.entOrdenProd;
+            entOrdenProdDet = objRegistro.lstOrdenProdDet.FirstOrDefault();
+
+            string c_dato = funDatos.DataTableBuscar(dtItems, "n_id", "c_despro", entOrdenProdDet.n_idpro.ToString(), "N").ToString();
+            TxtDesPro.Text = c_dato;
+
+            c_dato = funDatos.DataTableBuscar(dtUniMed, "n_id", "c_despre", entOrdenProdDet.n_idunimed.ToString(), "N").ToString();
+            TxtUniMed.Text = c_dato;
+            TxtCanPro2.Text = entOrdenProdDet.n_can.ToString("0.00");
+
+            funControl.dtpText(TxtFchPro, entProd.d_fchent.ToString());
+
+            //datos documento referencia
+            LblIdDocRef.Text = n_idOrdenProduccion.ToString();
+            TxtSerDocRef.Text = entProd.c_numser;
+            TxtNumDocRef.Text = entProd.c_numdoc;
+
+            c_dato = funDatos.DataTableBuscar(dtRecetas, "n_id", "c_des", entOrdenProdDet.n_idrec.ToString(), "N").ToString();
+            TxtReceta.Text = c_dato;
+
+            LblIdRec.Text = entOrdenProdDet.n_idrec.ToString();
+        }
+
+        void MostrarDatosParteProduccion(int n_idProduccion)
         { 
             objProduccion.mysConec = mysConec;
             BE_PRO_PRODUCCION entProd = new BE_PRO_PRODUCCION();
@@ -313,8 +358,6 @@ namespace SSF_NET_Produccion.Formularios
             {
                 entProd = objProduccion.EntProduccion;
             }
-            LblIdProduccion.Text = entProd.n_id.ToString();
-            TxtNumPro.Text = entProd.c_numser + "-" + entProd.c_numdoc;
 
             string c_dato = funDatos.DataTableBuscar(dtItems, "n_id", "c_despro", entProd.n_idpro.ToString(), "N").ToString();
             TxtDesPro.Text = c_dato;
@@ -324,7 +367,11 @@ namespace SSF_NET_Produccion.Formularios
             TxtCanPro2.Text = entProd.n_canpro.ToString("0.00");
 
             funControl.dtpText(TxtFchPro, entProd.d_fchpro.ToString());
-            LblIdProd.Text = entProd.n_idpro.ToString();
+
+            //
+            LblIdDocRef.Text = n_idProduccion.ToString();
+            TxtSerDocRef.Text = entProd.c_numser;
+            TxtNumDocRef.Text = entProd.c_numdoc;
 
             c_dato = funDatos.DataTableBuscar(dtRecetas, "n_id", "c_des", entProd.n_idrec.ToString(), "N").ToString();
             TxtReceta.Text = c_dato;
@@ -359,16 +406,18 @@ namespace SSF_NET_Produccion.Formularios
             TxtNumSer.Text = "";
             TxtNumDoc.Text = "";
             CboSol.SelectedValue = 0;
-            TxtNumPro.Text = "";
             TxtDesPro.Text = "";
             TxtUniMed.Text = "";
             TxtCanPro2.Text = "";
-            TxtNumSerOP.Text = "";
-            TxtNumDocOP.Text = "";
 
             funControl.dtpBlanquea(TxtFchOP);           
 
             TxtObs.Text = "";
+
+            CboDocRef.SelectedValue = 0;
+            TxtSerDocRef.Text = "";
+            TxtNumDocRef.Text = "";
+            LblIdDocRef.Text = "";
         }
         void Bloquea()
         {
@@ -376,21 +425,22 @@ namespace SSF_NET_Produccion.Formularios
             TxtNumSer.Enabled = !TxtNumSer.Enabled;
             TxtNumDoc.Enabled = !TxtNumDoc.Enabled;
             CboSol.Enabled = !CboSol.Enabled;
-            TxtNumPro.Enabled = !TxtNumPro.Enabled;
             TxtDesPro.Enabled = !TxtDesPro.Enabled;
             TxtUniMed.Enabled = !TxtUniMed.Enabled;
             TxtCanPro2.Enabled = !TxtCanPro2.Enabled;
             TxtReceta.Enabled = !TxtCanPro2.Enabled;
-            TxtNumSerOP.Enabled = !TxtNumSerOP.Enabled;
-            TxtNumDocOP.Enabled = !TxtNumDocOP.Enabled;
             TxtFchOP.Enabled = !TxtFchOP.Enabled;
             TxtObs.Enabled = !TxtObs.Enabled;
-            CmdProPen.Enabled = !CmdProPen.Enabled;
 
             CmdSelTod.Enabled = !CmdSelTod.Enabled;
             CmdDelSel.Enabled = !CmdDelSel.Enabled;
             CmdSel.Enabled = !CmdSel.Enabled;
             CmdAddIte.Enabled = !CmdAddIte.Enabled;
+
+            CboDocRef.Enabled = !CboDocRef.Enabled; ;
+            TxtSerDocRef.Enabled = !TxtSerDocRef.Enabled;
+            TxtNumDocRef.Enabled = !TxtNumDocRef.Enabled;
+            CmdBusDocRef.Enabled = !CmdBusDocRef.Enabled;
         }
         void MostrarEstadoMes(int n_IdEmpresa, int n_IdMes)
         {
@@ -551,8 +601,12 @@ namespace SSF_NET_Produccion.Formularios
             entSolicitud.c_obs = TxtObs.Text;
             entSolicitud.n_anotra = STU_SISTEMA.ANOTRABAJO;
             entSolicitud.n_mestra = STU_SISTEMA.MESTRABAJO;
-            entSolicitud.n_idpro = Convert.ToInt32(LblIdProduccion.Text);
+            entSolicitud.n_idpro = 0; //Convert.ToInt32(LblIdProduccion.Text);
             entSolicitud.n_can = Convert.ToDouble(TxtCanPro2.Text);
+
+            entSolicitud.n_docrefidtipdoc = Convert.ToInt32(CboDocRef.SelectedValue);
+            entSolicitud.n_docrefiddocref = Convert.ToInt32(LblIdDocRef.Text);
+
             lstSolicitudDet.Clear();
 
             // CARGAMOS LA LISTA DE ORDENES DE PRODUCCION
@@ -622,10 +676,18 @@ namespace SSF_NET_Produccion.Formularios
                 return booEstado;
             }
 
-            if (TxtNumPro.Text == "")
+            if (Convert.ToInt32(CboDocRef.SelectedValue) == 0)
             {
-                MessageBox.Show("¡ No ha especificado el producto !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                TxtNumPro.Focus();
+                MessageBox.Show("¡ No ha especificado el tipo de documento de referencia !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                CboDocRef.Focus();
+                booEstado = false;
+                return booEstado;
+            }
+
+            if (Convert.ToInt32(LblIdDocRef.Text) == 0)
+            {
+                MessageBox.Show("¡ No ha especificado el documento de referencia !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                TxtSerDocRef.Focus();
                 booEstado = false;
                 return booEstado;
             }
@@ -809,138 +871,6 @@ namespace SSF_NET_Produccion.Formularios
             Imprimir();
         }
 
-        private void CmdProPen_Click(object sender, EventArgs e)
-        {
-            string[,] arrCabeceraDg1 = new string[6, 4];
-            DataTable dtResult = new DataTable();
-            DataTable dtresulpre = new DataTable();
-            DataTable dtInsEnt = new DataTable();
-            int n_row;
-            int n_fila;
-            double n_canpro = 0;
-
-            objProduccion.mysConec = mysConec;
-            if (Convert.ToInt32(CboTipDoc.SelectedValue) == 72)
-            {
-                if (objProduccion.ConsultaSolMatPendientes(STU_SISTEMA.EMPRESAID) == true)
-                {
-                    dtProduccion = objProduccion.dtListar;
-                }
-            }
-            else
-            {
-                if (objProduccion.ConsultaSolMatProcesadas(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, STU_SISTEMA.MESTRABAJO) == true)
-                {
-                    dtProduccion = objProduccion.dtListar;
-                }
-            }
-
-            arrCabeceraDg1[0, 0] = "Fch. Produccion";
-            arrCabeceraDg1[0, 1] = "80";
-            arrCabeceraDg1[0, 2] = "F";
-            arrCabeceraDg1[0, 3] = "d_fchpro";
-
-            arrCabeceraDg1[1, 0] = "Nº Produccion";
-            arrCabeceraDg1[1, 1] = "120";
-            arrCabeceraDg1[1, 2] = "F";
-            arrCabeceraDg1[1, 3] = "c_numdoc";
-
-            arrCabeceraDg1[2, 0] = "Producto";
-            arrCabeceraDg1[2, 1] = "400";
-            arrCabeceraDg1[2, 2] = "C";
-            arrCabeceraDg1[2, 3] = "c_despro";
-
-            arrCabeceraDg1[3, 0] = "Uni. Med.";
-            arrCabeceraDg1[3, 1] = "60";
-            arrCabeceraDg1[3, 2] = "C";
-            arrCabeceraDg1[3, 3] = "c_despre";
-
-            arrCabeceraDg1[4, 0] = "Cantidad";
-            arrCabeceraDg1[4, 1] = "80";
-            arrCabeceraDg1[4, 2] = "N";
-            arrCabeceraDg1[4, 3] = "n_canpro";
-
-            arrCabeceraDg1[5, 0] = "Id";
-            arrCabeceraDg1[5, 1] = "0";
-            arrCabeceraDg1[5, 2] = "N";
-            arrCabeceraDg1[5, 3] = "n_id";
-
-            Genericas xFun = new Genericas();
-            xFun.Buscar_CampoBusqueda = "n_id";
-            xFun.Buscar_CadFiltro = "";
-            xFun.Buscar_CampoOrden = "c_numdoc";
-            dtResult = xFun.Buscar(arrCabeceraDg1, dtProduccion);
-
-            if (dtResult == null) { return; }
-            if (dtResult.Rows.Count == 0) { return; }
-
-            LblIdProduccion.Text = dtResult.Rows[0]["n_id"].ToString();
-            TxtNumPro.Text = dtResult.Rows[0]["c_numdoc"].ToString();
-            TxtDesPro.Text = dtResult.Rows[0]["c_despro"].ToString();
-            TxtUniMed.Text = dtResult.Rows[0]["c_despre"].ToString();
-            TxtCanPro2.Text = dtResult.Rows[0]["n_canpro"].ToString();
-            n_canpro = Convert.ToDouble(TxtCanPro2.Text);
-
-            TxtFchPro.Text = dtResult.Rows[0]["d_fchpro"].ToString();
-            LblIdProd.Text = dtResult.Rows[0]["n_idpro"].ToString();
-            TxtReceta.Text = dtResult.Rows[0]["c_recdes"].ToString();
-            LblIdRec.Text = dtResult.Rows[0]["n_recid"].ToString();
-            string c_nidpro = dtResult.Rows[0]["n_idpro"].ToString();
-            dtResult = funDatos.DataTableFiltrar(dtRecetasInsumos, "n_idrec = " + LblIdRec.Text + " AND n_idpro = " + c_nidpro + "");                                 // FILTRAMOS LOS INSUMOS DE LA RECETA
-
-            if (Convert.ToInt32(CboTipDoc.SelectedValue) == 72)
-            {
-                objRegistro.Consulta4(Convert.ToInt32(LblIdProduccion.Text));
-            }
-            else
-            {
-                objRegistro.Consulta4(999999);
-            }
-            dtInsEnt = objRegistro.dtLista;
-
-            // CREAMOS EL DETALLE DE LA SOLICITUD               
-            int n_idinsEnt = 0;                   // ID DEL INSUMO ENTREGADO
-            int n_idinsCar = 0;                   // ID DEL INSUMO CARGADO
-            bool b_encontrado = false;
-            lstSolicitudDet.Clear();
-            for (n_row = 0; n_row <= dtResult.Rows.Count - 1; n_row++)
-            {
-                b_encontrado = false;
-                n_idinsCar = Convert.ToInt32(dtResult.Rows[n_row]["n_idite"]);
-
-                for (n_fila = 0; n_fila <= dtInsEnt.Rows.Count - 1; n_fila++)
-                {
-                    n_idinsEnt = Convert.ToInt32(dtInsEnt.Rows[n_fila]["n_idite"]);
-                    if (n_idinsCar == n_idinsEnt)
-                    {
-                        b_encontrado = true;
-                        break;
-                    }
-                }
-                if (b_encontrado == false)
-                {
-                    BE_PRO_SOLICITUDMATERIALESDET entSolicitudDet = new BE_PRO_SOLICITUDMATERIALESDET();
-                    entSolicitudDet.n_idsol = 0;
-                    entSolicitudDet.n_idite = Convert.ToInt32(dtResult.Rows[n_row]["n_idite"]);
-                    entSolicitudDet.n_idunimed = Convert.ToInt32(dtResult.Rows[n_row]["n_idunimed"]);
-                    entSolicitudDet.n_canteo = Convert.ToDouble(dtResult.Rows[n_row]["n_can"]);
-                    if (Convert.ToInt32(CboTipDoc.SelectedValue) == 72)
-                    {
-                        entSolicitudDet.n_canent = Convert.ToDouble(dtResult.Rows[n_row]["n_can"]) * n_canpro;
-                    }
-                    else
-                    {
-                        entSolicitudDet.n_canent = 0;
-                    }
-                    entSolicitudDet.c_numlot = "";
-                    entSolicitudDet.n_impval = 0;
-                    lstSolicitudDet.Add(entSolicitudDet);
-                }
-            }
-
-            MostrarIsumos();
-            booAgregando = false;
-        }
         void MostrarIsumos()
         {
             string c_dato;
@@ -1098,7 +1028,7 @@ namespace SSF_NET_Produccion.Formularios
             xFun.Buscar_CampoBusqueda = "n_id";
             xFun.Buscar_CadFiltro = "";
             xFun.Buscar_CampoOrden = "c_despro";
-            dtResult = funDatos.DataTableFiltrar(dtItems, "n_idtipexi IN (2, 3, 4, 6)");
+            dtResult = funDatos.DataTableFiltrar(dtItems, "n_idtipexi IN (2, 3, 4, 5, 6)");
             dtResult = xFun.Buscar(arrCabeceraDg1, dtResult);
 
             if (dtResult == null) { return; }
@@ -1191,6 +1121,281 @@ namespace SSF_NET_Produccion.Formularios
                     booAgregando = false;
                 }
             }
+        }
+
+        private void CmdBusDocRef_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Convert.ToInt32(CboDocRef.SelectedValue) == 73)
+                {
+                    MostrarParteProduccion();
+                }
+                if (Convert.ToInt32(CboDocRef.SelectedValue) == 76)
+                {
+                    MostrarOrdenProduccion();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Ocurrió un error: {0}", ex.Message), "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void MostrarOrdenProduccion()
+        {
+            string[,] arrCabeceraDg1 = new string[6, 4];
+            DataTable dtResult = new DataTable();
+            DataTable dtresulpre = new DataTable();
+            int n_row;
+            
+            CN_pro_ordenproduccion objOrdProduccion = new CN_pro_ordenproduccion();
+
+            DataTable dtOrdenProdPend = new DataTable();
+
+            objOrdProduccion.mysConec = mysConec;
+            if (objOrdProduccion.TraeOrdenProduccionPendientes(STU_SISTEMA.EMPRESAID, string.Empty) == false)
+            {
+                MessageBox.Show("No se pudieron traer las ordenes de produccion pendiente; por el siguiente motivo : " + objOrdProduccion.StrErrorMensaje, "", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                return;
+            }
+
+            dtOrdenProdPend = objOrdProduccion.dtOrdenProdPendientes;
+
+            arrCabeceraDg1[0, 0] = "Nº Orden Produccion";
+            arrCabeceraDg1[0, 1] = "120";
+            arrCabeceraDg1[0, 2] = "C";
+            arrCabeceraDg1[0, 3] = "c_numdoc";
+
+            arrCabeceraDg1[1, 0] = "Solicitante";
+            arrCabeceraDg1[1, 1] = "300";
+            arrCabeceraDg1[1, 2] = "C";
+            arrCabeceraDg1[1, 3] = "c_resapenom";
+
+            arrCabeceraDg1[2, 0] = "Fecha";
+            arrCabeceraDg1[2, 1] = "80";
+            arrCabeceraDg1[2, 2] = "F";
+            arrCabeceraDg1[2, 3] = "d_fchemi";
+
+            arrCabeceraDg1[3, 0] = "Prioridad";
+            arrCabeceraDg1[3, 1] = "60";
+            arrCabeceraDg1[3, 2] = "C";
+            arrCabeceraDg1[3, 3] = "c_prides";
+
+            arrCabeceraDg1[4, 0] = "Nº Items";
+            arrCabeceraDg1[4, 1] = "60";
+            arrCabeceraDg1[4, 2] = "N";
+            arrCabeceraDg1[4, 3] = "n_numite";
+
+            arrCabeceraDg1[5, 0] = "Id";
+            arrCabeceraDg1[5, 1] = "0";
+            arrCabeceraDg1[5, 2] = "N";
+            arrCabeceraDg1[5, 3] = "n_id";
+
+            Genericas xFun = new Genericas();
+            xFun.Buscar_CampoBusqueda = "n_id";
+            xFun.Buscar_CadFiltro = "";
+            xFun.Buscar_CampoOrden = "c_numdoc";
+            dtResult = xFun.Buscar(arrCabeceraDg1, dtOrdenProdPend);
+
+            if (dtResult == null) { return; }
+            if (dtResult.Rows.Count == 0) { return; }
+
+            List<BE_PRO_ORDENPRODUCCIONDET> lstOrdeProddet = new List<BE_PRO_ORDENPRODUCCIONDET>();
+            BE_PRO_ORDENPRODUCCION entOrdeProd = new BE_PRO_ORDENPRODUCCION();
+
+            objOrdProduccion.TraerRegistro(Convert.ToInt32(dtResult.Rows[0]["n_id"]));
+            if (objOrdProduccion.IntErrorNumber == 0)
+            {
+                entOrdeProd = objOrdProduccion.entOrdenProd;
+                lstOrdeProddet = objOrdProduccion.lstOrdenProdDet;                                       // OBTENEMOS EL DETALLE DE LA ORDEN DE PRODUCCION SELECCIONADA
+            }
+            else
+            {
+                MessageBox.Show("No se pudieron traer las ordenes de produccion pendiente; por el siguiente motivo : " + objOrdProduccion.StrErrorMensaje, "", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                return;
+            }
+
+            //Datos de la orden
+            LblIdDocRef.Text = entOrdeProd.n_id.ToString();
+            TxtSerDocRef.Text = entOrdeProd.c_numser;
+            TxtNumDocRef.Text = entOrdeProd.c_numdoc;
+            var ordProdDet = lstOrdeProddet.FirstOrDefault();
+            TxtDesPro.Text = funDatos.DataTableBuscar(dtItems, "n_id", "c_despro", ordProdDet.n_idpro.ToString(), "N").ToString();
+            TxtUniMed.Text = funDatos.DataTableBuscar(dtUniMed, "n_id", "c_despre", ordProdDet.n_idunimed.ToString(), "N").ToString();
+            TxtCanPro2.Text = ordProdDet.n_can.ToString();
+            TxtFchPro.Text = entOrdeProd.d_fchent.ToString("dd/MM/yyyy");
+            LblIdProd.Text = ordProdDet.n_idpro.ToString();
+            TxtReceta.Text = funDatos.DataTableBuscar(dtRecetas, "n_id", "c_codrec", ordProdDet.n_idrec.ToString(), "N").ToString();
+            LblIdRec.Text = ordProdDet.n_idrec.ToString();
+            //Insumos de la receta
+            dtResult = funDatos.DataTableFiltrar(dtRecetasInsumos, "n_idrec = " + LblIdRec.Text + " AND n_idpro = " + LblIdProd.Text + "");                                 // FILTRAMOS LOS INSUMOS DE LA RECETA
+
+
+            // CREAMOS EL DETALLE DE LA SOLICITUD               
+            lstSolicitudDet.Clear();
+            for (n_row = 0; n_row <= dtResult.Rows.Count - 1; n_row++)
+            {
+                BE_PRO_SOLICITUDMATERIALESDET entSolicitudDet = new BE_PRO_SOLICITUDMATERIALESDET();
+                entSolicitudDet.n_idsol = 0;
+                entSolicitudDet.n_idite = Convert.ToInt32(dtResult.Rows[n_row]["n_idite"]);
+                entSolicitudDet.n_idunimed = Convert.ToInt32(dtResult.Rows[n_row]["n_idunimed"]);
+                entSolicitudDet.n_canteo = Convert.ToDouble(dtResult.Rows[n_row]["n_can"]);
+                if (Convert.ToInt32(CboTipDoc.SelectedValue) == 72)
+                {
+                    entSolicitudDet.n_canent = Convert.ToDouble(dtResult.Rows[n_row]["n_can"]) * ordProdDet.n_can;
+                }
+                else
+                {
+                    entSolicitudDet.n_canent = 0;
+                }
+                entSolicitudDet.c_numlot = "";
+                entSolicitudDet.n_impval = 0;
+                lstSolicitudDet.Add(entSolicitudDet);
+            }
+
+            MostrarIsumos();
+            booAgregando = false;
+        }
+
+        private void MostrarParteProduccion()
+        {
+            string[,] arrCabeceraDg1 = new string[6, 4];
+            DataTable dtResult = new DataTable();
+            DataTable dtresulpre = new DataTable();
+            DataTable dtInsEnt = new DataTable();
+            int n_row;
+            int n_fila;
+            double n_canpro = 0;
+
+            objProduccion.mysConec = mysConec;
+            if (Convert.ToInt32(CboTipDoc.SelectedValue) == 72)
+            {
+                if (objProduccion.ConsultaSolMatPendientes(STU_SISTEMA.EMPRESAID) == true)
+                {
+                    dtProduccion = objProduccion.dtListar;
+                }
+            }
+            else
+            {
+                if (objProduccion.ConsultaSolMatProcesadas(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO, STU_SISTEMA.MESTRABAJO) == true)
+                {
+                    dtProduccion = objProduccion.dtListar;
+                }
+            }
+
+            arrCabeceraDg1[0, 0] = "Fch. Produccion";
+            arrCabeceraDg1[0, 1] = "80";
+            arrCabeceraDg1[0, 2] = "F";
+            arrCabeceraDg1[0, 3] = "d_fchpro";
+
+            arrCabeceraDg1[1, 0] = "Nº Produccion";
+            arrCabeceraDg1[1, 1] = "120";
+            arrCabeceraDg1[1, 2] = "F";
+            arrCabeceraDg1[1, 3] = "c_numdoc";
+
+            arrCabeceraDg1[2, 0] = "Producto";
+            arrCabeceraDg1[2, 1] = "400";
+            arrCabeceraDg1[2, 2] = "C";
+            arrCabeceraDg1[2, 3] = "c_despro";
+
+            arrCabeceraDg1[3, 0] = "Uni. Med.";
+            arrCabeceraDg1[3, 1] = "60";
+            arrCabeceraDg1[3, 2] = "C";
+            arrCabeceraDg1[3, 3] = "c_despre";
+
+            arrCabeceraDg1[4, 0] = "Cantidad";
+            arrCabeceraDg1[4, 1] = "80";
+            arrCabeceraDg1[4, 2] = "N";
+            arrCabeceraDg1[4, 3] = "n_canpro";
+
+            arrCabeceraDg1[5, 0] = "Id";
+            arrCabeceraDg1[5, 1] = "0";
+            arrCabeceraDg1[5, 2] = "N";
+            arrCabeceraDg1[5, 3] = "n_id";
+
+            Genericas xFun = new Genericas();
+            xFun.Buscar_CampoBusqueda = "n_id";
+            xFun.Buscar_CadFiltro = "";
+            xFun.Buscar_CampoOrden = "c_numdoc";
+            dtResult = xFun.Buscar(arrCabeceraDg1, dtProduccion);
+
+            if (dtResult == null) { return; }
+            if (dtResult.Rows.Count == 0) { return; }
+
+            LblIdDocRef.Text = dtResult.Rows[0]["n_id"].ToString();
+
+            var c_numdoc = dtResult.Rows[0]["c_numdoc"].ToString().Split('-');
+            if (c_numdoc.Count() > 0)
+            {
+                TxtSerDocRef.Text = c_numdoc[0];
+                TxtNumDocRef.Text = c_numdoc[1];
+            }
+
+            TxtDesPro.Text = dtResult.Rows[0]["c_despro"].ToString();
+            TxtUniMed.Text = dtResult.Rows[0]["c_despre"].ToString();
+            TxtCanPro2.Text = dtResult.Rows[0]["n_canpro"].ToString();
+            n_canpro = Convert.ToDouble(TxtCanPro2.Text);
+
+            TxtFchPro.Text = dtResult.Rows[0]["d_fchpro"].ToString();
+            LblIdProd.Text = dtResult.Rows[0]["n_idpro"].ToString();
+            TxtReceta.Text = dtResult.Rows[0]["c_recdes"].ToString();
+            LblIdRec.Text = dtResult.Rows[0]["n_recid"].ToString();
+            string c_nidpro = dtResult.Rows[0]["n_idpro"].ToString();
+            dtResult = funDatos.DataTableFiltrar(dtRecetasInsumos, "n_idrec = " + LblIdRec.Text + " AND n_idpro = " + c_nidpro + "");                                 // FILTRAMOS LOS INSUMOS DE LA RECETA
+
+            if (Convert.ToInt32(CboTipDoc.SelectedValue) == 72)
+            {
+                objRegistro.Consulta4(Convert.ToInt32(LblIdDocRef.Text));
+            }
+            else
+            {
+                objRegistro.Consulta4(999999);
+            }
+            dtInsEnt = objRegistro.dtLista;
+
+            // CREAMOS EL DETALLE DE LA SOLICITUD               
+            int n_idinsEnt = 0;                   // ID DEL INSUMO ENTREGADO
+            int n_idinsCar = 0;                   // ID DEL INSUMO CARGADO
+            bool b_encontrado = false;
+            lstSolicitudDet.Clear();
+            for (n_row = 0; n_row <= dtResult.Rows.Count - 1; n_row++)
+            {
+                b_encontrado = false;
+                n_idinsCar = Convert.ToInt32(dtResult.Rows[n_row]["n_idite"]);
+
+                for (n_fila = 0; n_fila <= dtInsEnt.Rows.Count - 1; n_fila++)
+                {
+                    n_idinsEnt = Convert.ToInt32(dtInsEnt.Rows[n_fila]["n_idite"]);
+                    if (n_idinsCar == n_idinsEnt)
+                    {
+                        b_encontrado = true;
+                        break;
+                    }
+                }
+                if (b_encontrado == false)
+                {
+                    BE_PRO_SOLICITUDMATERIALESDET entSolicitudDet = new BE_PRO_SOLICITUDMATERIALESDET();
+                    entSolicitudDet.n_idsol = 0;
+                    entSolicitudDet.n_idite = Convert.ToInt32(dtResult.Rows[n_row]["n_idite"]);
+                    entSolicitudDet.n_idunimed = Convert.ToInt32(dtResult.Rows[n_row]["n_idunimed"]);
+                    entSolicitudDet.n_canteo = Convert.ToDouble(dtResult.Rows[n_row]["n_can"]);
+                    if (Convert.ToInt32(CboTipDoc.SelectedValue) == 72)
+                    {
+                        entSolicitudDet.n_canent = Convert.ToDouble(dtResult.Rows[n_row]["n_can"]) * n_canpro;
+                    }
+                    else
+                    {
+                        entSolicitudDet.n_canent = 0;
+                    }
+                    entSolicitudDet.c_numlot = "";
+                    entSolicitudDet.n_impval = 0;
+                    lstSolicitudDet.Add(entSolicitudDet);
+                }
+            }
+
+            MostrarIsumos();
+            booAgregando = false;
         }
     }
 }

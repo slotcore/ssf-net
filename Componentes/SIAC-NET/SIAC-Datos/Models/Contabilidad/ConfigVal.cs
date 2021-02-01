@@ -389,6 +389,8 @@ namespace SIAC_DATOS.Models.Contabilidad
                     {
                         try
                         {
+                            ConfigValCue.DeleteAll(n_id, connection, transaction);
+
                             command.Transaction = transaction;
                             command.CommandType = System.Data.CommandType.StoredProcedure;
                             command.CommandText = "con_configval_eliminar";

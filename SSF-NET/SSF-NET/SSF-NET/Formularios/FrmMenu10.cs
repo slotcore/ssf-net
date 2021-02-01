@@ -1785,8 +1785,25 @@ namespace SSF_NET.Formularios
 
         private void ReiniciarAplicativo()
         {
-            Application.ExitThread();
-            Application.Restart();
+            Cursor.Current = Cursors.WaitCursor;
+            try
+            {
+                LnkLabelReiniciar.Text = "Actualizando por favor espere...";
+                LnkLabelReiniciar.Enabled = false;
+                ApplicationDeployment ad = ApplicationDeployment.CurrentDeployment;
+                ad.Update();
+                //Application.ExitThread();
+                Application.Restart();
+            }
+            catch (DeploymentDownloadException dde)
+            {
+                MessageBox.Show("No se puede instalar la última versión de la aplicación. \n\nPor favor comprueba tu conexión de red o vuelve a intentarlo más tarde. Error: " + dde);
+                return;
+            }
+            finally 
+            {
+                Cursor.Current = Cursors.Default;
+            }
         }
     }
 }

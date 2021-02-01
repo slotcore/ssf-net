@@ -319,8 +319,30 @@ namespace SIAC_DATOS.Produccion
             }
             return b_result;
         }
-        public bool Consulta4(int n_idProduccion)
+        public bool BuscarPorDocumentoReferencia(int n_docrefidtipdoc, int n_docrefiddocref)
         { 
+            bool b_result = false;
+            string[,] arrParametros = new string[2, 3] {
+                                            {"n_docrefidtipdoc", "System.INT32", n_docrefidtipdoc.ToString()},
+                                            {"n_docrefiddocref", "System.INT32", n_docrefiddocref.ToString()}
+                                      };
+
+            dtLista = xMiFuncion.StoreDTLLenar("pro_solicitudmateriales_consulta_docref", arrParametros, mysConec);
+
+            if (xMiFuncion.IntErrorNumber != 0)
+            {
+                b_OcurrioError = xMiFuncion.booOcurrioError;
+                c_ErrorMensaje = xMiFuncion.StrErrorMensaje;
+                n_ErrorNumber = xMiFuncion.IntErrorNumber;
+            }
+            else
+            {
+                b_result = true;
+            }
+            return b_result;
+        }
+        public bool Consulta4(int n_idProduccion)
+        {
             bool b_result = false;
             string[,] arrParametros = new string[1, 3] {
                                             {"n_idpro", "System.INT32", n_idProduccion.ToString()}
@@ -458,6 +480,30 @@ namespace SIAC_DATOS.Produccion
                                       };
 
             dtListaMatEnt = xMiFuncion.StoreDTLLenar("pro_solicitudmaterialesdet_listar", arrParametros, mysConec);
+
+            if (xMiFuncion.IntErrorNumber != 0)
+            {
+                b_OcurrioError = xMiFuncion.booOcurrioError;
+                c_ErrorMensaje = xMiFuncion.StrErrorMensaje;
+                n_ErrorNumber = xMiFuncion.IntErrorNumber;
+            }
+            else
+            {
+                b_result = true;
+            }
+            return b_result;
+        }
+
+        public bool ListarResumenSolMatGlobal(int n_idpro, int n_idordprod, int n_idemp)
+        {
+            bool b_result = false;
+            string[,] arrParametros = new string[3, 3] {
+                                            {"n_idpro", "System.INT32", n_idpro.ToString()},
+                                            {"n_idordprod", "System.INT32", n_idordprod.ToString()},
+                                            {"n_idemp", "System.INT32", n_idemp.ToString()}
+                                      };
+
+            dtListaMatEnt = xMiFuncion.StoreDTLLenar("pro_solicitudmaterialesdet_listar_global", arrParametros, mysConec);
 
             if (xMiFuncion.IntErrorNumber != 0)
             {

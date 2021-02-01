@@ -133,6 +133,10 @@ namespace SIAC_Negocio.Logistica
                 e_OC.n_imptot = Convert.ToDouble(dtCab.Rows[0]["n_imptot"]);
                 e_OC.n_idconpag = Convert.ToInt32(dtCab.Rows[0]["n_idconpag"]);
                 e_OC.n_impina = Convert.ToDouble(dtCab.Rows[0]["n_impina"]);
+                e_OC.n_docrefidtipdoc = Convert.ToInt32(dtCab.Rows[0]["n_docrefidtipdoc"]);
+                e_OC.n_docrefiddocref = Convert.ToInt32(dtCab.Rows[0]["n_docrefiddocref"]);
+                e_OC.c_docrefnumser = dtCab.Rows[0]["c_docrefnumser"].ToString();
+                e_OC.c_docrefnumdoc = dtCab.Rows[0]["c_docrefnumdoc"].ToString();
 
                 int n_row = 0;
 

@@ -1295,13 +1295,15 @@ namespace SSF_NET_Gestion.Formularios
         private void FgItems_CellChanged(object sender, C1.Win.C1FlexGrid.RowColEventArgs e)
         {
             if (booAgregando == true) { return; }
-            if ((e.Col >= 4) && (e.Col <= 15))
+            if (FgItems.Rows.Count > 2)
             {
-                double n_valor = funFlex.FlexSumarRow(FgItems, e.Row, 4, 15);
-                FgItems.SetData(e.Row, 16, n_valor.ToString("0.00"));
+                if ((e.Col >= 4) && (e.Col <= 15))
+                {
+                    double n_valor = funFlex.FlexSumarRow(FgItems, e.Row, 4, 15);
+                    FgItems.SetData(e.Row, 16, n_valor.ToString("0.00"));
+                }
+                FgItems.Select(e.Row, e.Col);
             }
-
-            FgItems.Select(e.Row - 1, e.Col + 1);
         }
     }
 }

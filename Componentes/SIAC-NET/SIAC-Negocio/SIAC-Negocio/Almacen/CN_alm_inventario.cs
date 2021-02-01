@@ -680,7 +680,9 @@ namespace SIAC_Negocio.Almacen
             string[,] arrCabeceraFlexFil = new string[5, 5];
 
             dtResult = Listar();
-            dtResult = funDatos.DataTableFiltrar(dtResult, "n_id NOT IN(" + c_CadIN + ")");
+            if (!string.IsNullOrEmpty(c_CadIN))
+                dtResult = funDatos.DataTableFiltrar(dtResult, "n_id NOT IN(" + c_CadIN + ")");
+
             // FLEX GRID DE LOS TAREAS
             arrCabeceraFlexFil[0, 0] = "Codigo";
             arrCabeceraFlexFil[0, 1] = "80";

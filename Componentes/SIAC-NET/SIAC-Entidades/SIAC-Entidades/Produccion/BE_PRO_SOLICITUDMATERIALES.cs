@@ -26,6 +26,10 @@ namespace SIAC_Entidades.Produccion
         private double _n_can;
         private DateTime _d_fchent;
         private int _n_idpro;
+
+        private int _n_docrefidtipdoc;
+        private int _n_docrefiddocref;
+
         public int n_idemp
         {
             get { return _n_idemp; }
@@ -115,6 +119,18 @@ namespace SIAC_Entidades.Produccion
         {
             get { return _n_idpro; }
             set { _n_idpro = value; }
+        }
+
+        public int n_docrefidtipdoc
+        {
+            get { return _n_docrefidtipdoc; }
+            set { _n_docrefidtipdoc = value; }
+        }
+
+        public int n_docrefiddocref
+        {
+            get { return _n_docrefiddocref; }
+            set { _n_docrefiddocref = value; }
         }
     }
 }

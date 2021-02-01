@@ -896,6 +896,14 @@ namespace SSF_NET_Almacen.Formularios
                 return booEstado;
             }
 
+            if (Convert.ToInt32(Convert.ToDateTime(TxtFchDoc.Text).ToString("MM")) != Convert.ToInt32(CboMeses.SelectedValue))
+            {
+                MessageBox.Show("¡ La fecha del documento no coincide con el mes de trabajo !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                TxtFchDoc.Focus();
+                booEstado = false;
+                return booEstado;
+            }
+
             if (FgItems.Rows.Count != 2)
             {
                 int intFila;

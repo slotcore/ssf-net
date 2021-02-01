@@ -207,7 +207,7 @@ namespace SSF_NET_Contabilidad.Formularios
         {
             try
             {
-                int intIdRegistro = Convert.ToInt32(DgLista.Columns[9].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+                int intIdRegistro = ((ConfigVal)configValBindingSource.Current).n_id;
 
                 m_ConfigVal = ConfigVal.Fetch(intIdRegistro);
 

@@ -360,6 +360,18 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
+        public static void DeleteAll(int n_idinvini, MySqlConnection connection, MySqlTransaction transaction)
+        {
+            using (MySqlCommand command = connection.CreateCommand())
+            {
+                command.Transaction = transaction;
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.CommandText = "alm_inventarioinidet_eliminar_todo";
+                command.Parameters.Add(new MySqlParameter("@n_idinvini", n_idinvini));
+                int rows = command.ExecuteNonQuery();
+            }
+        }
+
         #endregion
 
         #region metodos privados

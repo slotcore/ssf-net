@@ -276,19 +276,19 @@ namespace SIAC_Negocio.Produccion
             if (booOk == true)
             {
                 
-                // ACTUALIZAMOS EL ESTADO DE LAS ORDENES DE PRODUCCION CARGADAS
-                for (n_fila = 0; n_fila <= lstProgramaDetProU.Count - 1; n_fila++)
-                {
-                    mysConec = FunMysql.ReAbrirConeccion(mysConec);
-                    miOrdPro.mysConec = mysConec;
-                    booOk = miOrdPro.ActualizarEstadoOrdenProduccion(lstProgramaDetProU[n_fila].n_idordpro, 3);                                         // ACTUALIZAMOS EL ESTADO A 3 = PROCESADO                    
-                    if (booOk == false)
-                    {
-                        booOcurrioError = miOrdPro.booOcurrioError;
-                        StrErrorMensaje = miOrdPro.StrErrorMensaje;
-                        IntErrorNumber = miOrdPro.IntErrorNumber;
-                    }
-                }
+                //// ACTUALIZAMOS EL ESTADO DE LAS ORDENES DE PRODUCCION CARGADAS
+                //for (n_fila = 0; n_fila <= lstProgramaDetProU.Count - 1; n_fila++)
+                //{
+                //    mysConec = FunMysql.ReAbrirConeccion(mysConec);
+                //    miOrdPro.mysConec = mysConec;
+                //    booOk = miOrdPro.ActualizarEstadoOrdenProduccion(lstProgramaDetProU[n_fila].n_idordpro, 3);                                         // ACTUALIZAMOS EL ESTADO A 3 = PROCESADO                    
+                //    if (booOk == false)
+                //    {
+                //        booOcurrioError = miOrdPro.booOcurrioError;
+                //        StrErrorMensaje = miOrdPro.StrErrorMensaje;
+                //        IntErrorNumber = miOrdPro.IntErrorNumber;
+                //    }
+                //}
             }
             else
             {
@@ -311,19 +311,19 @@ namespace SIAC_Negocio.Produccion
             if (booOk == true)
             {
                 
-                // ACTUALIZAMOS EL ESTADO DE LAS ORDENES DE PRODUCCION CARGADAS
-                for (n_fila = 0; n_fila <= lstProgramaDetProU.Count - 1; n_fila++)
-                {
-                    mysConec = FunMysql.ReAbrirConeccion(mysConec);
-                    miOrdPro.mysConec = mysConec;
-                    booOk = miOrdPro.ActualizarEstadoOrdenProduccion(lstProgramaDetProU[n_fila].n_idordpro, 3);                                         // ACTUALIZAMOS EL ESTADO A 3 = PROCESADO                    
-                    if (booOk == false)
-                    {
-                        booOcurrioError = miOrdPro.booOcurrioError;
-                        StrErrorMensaje = miOrdPro.StrErrorMensaje;
-                        IntErrorNumber = miOrdPro.IntErrorNumber;
-                    }
-                }
+                //// ACTUALIZAMOS EL ESTADO DE LAS ORDENES DE PRODUCCION CARGADAS
+                //for (n_fila = 0; n_fila <= lstProgramaDetProU.Count - 1; n_fila++)
+                //{
+                //    mysConec = FunMysql.ReAbrirConeccion(mysConec);
+                //    miOrdPro.mysConec = mysConec;
+                //    booOk = miOrdPro.ActualizarEstadoOrdenProduccion(lstProgramaDetProU[n_fila].n_idordpro, 3);                                         // ACTUALIZAMOS EL ESTADO A 3 = PROCESADO                    
+                //    if (booOk == false)
+                //    {
+                //        booOcurrioError = miOrdPro.booOcurrioError;
+                //        StrErrorMensaje = miOrdPro.StrErrorMensaje;
+                //        IntErrorNumber = miOrdPro.IntErrorNumber;
+                //    }
+                //}
             }
             else
             {

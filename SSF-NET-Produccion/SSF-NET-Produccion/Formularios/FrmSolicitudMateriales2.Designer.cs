@@ -43,23 +43,24 @@
             this.c1DockingTabPage2 = new System.Windows.Forms.TabPage();
             this.FgInsumos = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.OptBusProcesado = new System.Windows.Forms.RadioButton();
-            this.OptBusProducto = new System.Windows.Forms.RadioButton();
+            this.LblIdDocRef = new System.Windows.Forms.Label();
+            this.CmdBusDocRef = new System.Windows.Forms.Button();
+            this.TxtNumDocRef = new System.Windows.Forms.TextBox();
+            this.TxtSerDocRef = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.CboDocRef = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.PicClos2 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.CmdAddIte = new System.Windows.Forms.Button();
             this.CmdSel = new System.Windows.Forms.Button();
             this.CmdDelSel = new System.Windows.Forms.Button();
             this.CmdSelTod = new System.Windows.Forms.Button();
-            this.LblIdProduccion = new System.Windows.Forms.Label();
             this.TxtReceta = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.TxtFchPro = new System.Windows.Forms.DateTimePicker();
             this.TxtUniMed = new System.Windows.Forms.TextBox();
             this.TxtDesPro = new System.Windows.Forms.TextBox();
-            this.CmdProPen = new System.Windows.Forms.Button();
-            this.TxtNumPro = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.LblIdProd = new System.Windows.Forms.Label();
             this.LblIdRec = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -67,11 +68,8 @@
             this.CboSol = new System.Windows.Forms.ComboBox();
             this.TxtCanPro2 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.TxtNumDocOP = new System.Windows.Forms.TextBox();
-            this.TxtNumSerOP = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.TxtFchOP = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -124,11 +122,12 @@
             this.Tab1.Controls.Add(this.c1DockingTabPage2);
             this.Tab1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tab1.ForeColor = System.Drawing.Color.Black;
-            this.Tab1.Location = new System.Drawing.Point(0, 41);
+            this.Tab1.Location = new System.Drawing.Point(0, 50);
+            this.Tab1.Margin = new System.Windows.Forms.Padding(4);
             this.Tab1.Multiline = true;
             this.Tab1.Name = "Tab1";
             this.Tab1.SelectedIndex = 1;
-            this.Tab1.Size = new System.Drawing.Size(956, 572);
+            this.Tab1.Size = new System.Drawing.Size(1275, 655);
             this.Tab1.TabIndex = 26;
             this.Tab1.SelectedIndexChanged += new System.EventHandler(this.Tab1_SelectedIndexChanging);
             // 
@@ -140,9 +139,10 @@
             this.c1DockingTabPage1.Controls.Add(this.DgLista);
             this.c1DockingTabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.c1DockingTabPage1.ForeColor = System.Drawing.Color.Black;
-            this.c1DockingTabPage1.Location = new System.Drawing.Point(28, 4);
+            this.c1DockingTabPage1.Location = new System.Drawing.Point(32, 4);
+            this.c1DockingTabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.c1DockingTabPage1.Name = "c1DockingTabPage1";
-            this.c1DockingTabPage1.Size = new System.Drawing.Size(924, 564);
+            this.c1DockingTabPage1.Size = new System.Drawing.Size(1239, 647);
             this.c1DockingTabPage1.TabIndex = 0;
             this.c1DockingTabPage1.Text = "Consulta";
             // 
@@ -156,9 +156,10 @@
             this.panel4.Controls.Add(this.LblNumReg);
             this.panel4.Controls.Add(this.label18);
             this.panel4.ForeColor = System.Drawing.Color.Black;
-            this.panel4.Location = new System.Drawing.Point(1, 533);
+            this.panel4.Location = new System.Drawing.Point(1, 607);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(924, 36);
+            this.panel4.Size = new System.Drawing.Size(1232, 44);
             this.panel4.TabIndex = 2;
             // 
             // CboMeses
@@ -166,9 +167,10 @@
             this.CboMeses.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CboMeses.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CboMeses.FormattingEnabled = true;
-            this.CboMeses.Location = new System.Drawing.Point(677, 3);
+            this.CboMeses.Location = new System.Drawing.Point(903, 4);
+            this.CboMeses.Margin = new System.Windows.Forms.Padding(4);
             this.CboMeses.Name = "CboMeses";
-            this.CboMeses.Size = new System.Drawing.Size(143, 24);
+            this.CboMeses.Size = new System.Drawing.Size(189, 28);
             this.CboMeses.TabIndex = 8;
             this.CboMeses.SelectedValueChanged += new System.EventHandler(this.CboMeses_SelectedValueChanged);
             // 
@@ -178,9 +180,10 @@
             this.label11.BackColor = System.Drawing.Color.White;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(567, 8);
+            this.label11.Location = new System.Drawing.Point(756, 10);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(77, 13);
+            this.label11.Size = new System.Drawing.Size(98, 17);
             this.label11.TabIndex = 7;
             this.label11.Text = "Mes trabajo ";
             // 
@@ -190,9 +193,10 @@
             this.LblNumReg.BackColor = System.Drawing.Color.White;
             this.LblNumReg.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblNumReg.ForeColor = System.Drawing.Color.Black;
-            this.LblNumReg.Location = new System.Drawing.Point(140, 7);
+            this.LblNumReg.Location = new System.Drawing.Point(187, 9);
+            this.LblNumReg.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblNumReg.Name = "LblNumReg";
-            this.LblNumReg.Size = new System.Drawing.Size(72, 13);
+            this.LblNumReg.Size = new System.Drawing.Size(91, 17);
             this.LblNumReg.TabIndex = 1;
             this.LblNumReg.Text = "LblNumReg";
             this.LblNumReg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -203,9 +207,10 @@
             this.label18.BackColor = System.Drawing.Color.White;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.Black;
-            this.label18.Location = new System.Drawing.Point(9, 7);
+            this.label18.Location = new System.Drawing.Point(12, 9);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(86, 13);
+            this.label18.Size = new System.Drawing.Size(109, 17);
             this.label18.TabIndex = 0;
             this.label18.Text = "Nº Registros :";
             // 
@@ -218,14 +223,16 @@
             this.panel2.Controls.Add(this.label17);
             this.panel2.ForeColor = System.Drawing.Color.Black;
             this.panel2.Location = new System.Drawing.Point(1, 1);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(927, 28);
+            this.panel2.Size = new System.Drawing.Size(1236, 34);
             this.panel2.TabIndex = 1;
             // 
             // PicClos1
             // 
             this.PicClos1.Image = ((System.Drawing.Image)(resources.GetObject("PicClos1.Image")));
-            this.PicClos1.Location = new System.Drawing.Point(905, -2);
+            this.PicClos1.Location = new System.Drawing.Point(1207, -2);
+            this.PicClos1.Margin = new System.Windows.Forms.Padding(4);
             this.PicClos1.Name = "PicClos1";
             this.PicClos1.Size = new System.Drawing.Size(32, 32);
             this.PicClos1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -240,8 +247,9 @@
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.Black;
             this.label17.Location = new System.Drawing.Point(0, 0);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(927, 28);
+            this.label17.Size = new System.Drawing.Size(1236, 34);
             this.label17.TabIndex = 0;
             this.label17.Text = "CONSULTA";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -252,16 +260,19 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DgLista.BackColor = System.Drawing.Color.White;
+            this.DgLista.CaptionHeight = 19;
             this.DgLista.ForeColor = System.Drawing.Color.Black;
             this.DgLista.GroupByCaption = "Drag a column header here to group by that column";
             this.DgLista.Images.Add(((System.Drawing.Image)(resources.GetObject("DgLista.Images"))));
-            this.DgLista.Location = new System.Drawing.Point(1, 33);
+            this.DgLista.Location = new System.Drawing.Point(1, 41);
+            this.DgLista.Margin = new System.Windows.Forms.Padding(4);
             this.DgLista.Name = "DgLista";
             this.DgLista.PreviewInfo.Location = new System.Drawing.Point(0, 0);
             this.DgLista.PreviewInfo.Size = new System.Drawing.Size(0, 0);
             this.DgLista.PreviewInfo.ZoomFactor = 75D;
             this.DgLista.PrintInfo.PageSettings = ((System.Drawing.Printing.PageSettings)(resources.GetObject("DgLista.PrintInfo.PageSettings")));
-            this.DgLista.Size = new System.Drawing.Size(924, 500);
+            this.DgLista.RowHeight = 17;
+            this.DgLista.Size = new System.Drawing.Size(1231, 566);
             this.DgLista.TabIndex = 0;
             this.DgLista.Text = "c1TrueDBGrid1";
             this.DgLista.DoubleClick += new System.EventHandler(this.DgLista_DoubleClick);
@@ -275,9 +286,10 @@
             this.c1DockingTabPage2.Controls.Add(this.panel3);
             this.c1DockingTabPage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.c1DockingTabPage2.ForeColor = System.Drawing.Color.Black;
-            this.c1DockingTabPage2.Location = new System.Drawing.Point(28, 4);
+            this.c1DockingTabPage2.Location = new System.Drawing.Point(32, 4);
+            this.c1DockingTabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.c1DockingTabPage2.Name = "c1DockingTabPage2";
-            this.c1DockingTabPage2.Size = new System.Drawing.Size(924, 564);
+            this.c1DockingTabPage2.Size = new System.Drawing.Size(1239, 647);
             this.c1DockingTabPage2.TabIndex = 1;
             this.c1DockingTabPage2.Text = "Detalle";
             // 
@@ -287,11 +299,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FgInsumos.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
-            this.FgInsumos.ColumnInfo = "4,1,0,0,0,85,Columns:0{Width:10;}\t";
-            this.FgInsumos.Location = new System.Drawing.Point(3, 303);
+            this.FgInsumos.ColumnInfo = "4,1,0,0,0,100,Columns:0{Width:10;}\t";
+            this.FgInsumos.Location = new System.Drawing.Point(4, 347);
+            this.FgInsumos.Margin = new System.Windows.Forms.Padding(4);
             this.FgInsumos.Name = "FgInsumos";
-            this.FgInsumos.Rows.DefaultSize = 17;
-            this.FgInsumos.Size = new System.Drawing.Size(918, 256);
+            this.FgInsumos.Rows.DefaultSize = 20;
+            this.FgInsumos.Size = new System.Drawing.Size(1223, 292);
+            this.FgInsumos.StyleInfo = resources.GetString("FgInsumos.StyleInfo");
             this.FgInsumos.TabIndex = 14;
             this.FgInsumos.EnterCell += new System.EventHandler(this.FgInsumos_EnterCell);
             this.FgInsumos.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.FgInsumos_CellChanged);
@@ -299,19 +313,20 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.OptBusProcesado);
-            this.panel1.Controls.Add(this.OptBusProducto);
+            this.panel1.Controls.Add(this.LblIdDocRef);
+            this.panel1.Controls.Add(this.CmdBusDocRef);
+            this.panel1.Controls.Add(this.TxtNumDocRef);
+            this.panel1.Controls.Add(this.TxtSerDocRef);
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Controls.Add(this.CboDocRef);
+            this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.PicClos2);
             this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Controls.Add(this.LblIdProduccion);
             this.panel1.Controls.Add(this.TxtReceta);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.TxtFchPro);
             this.panel1.Controls.Add(this.TxtUniMed);
             this.panel1.Controls.Add(this.TxtDesPro);
-            this.panel1.Controls.Add(this.CmdProPen);
-            this.panel1.Controls.Add(this.TxtNumPro);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.LblIdProd);
             this.panel1.Controls.Add(this.LblIdRec);
             this.panel1.Controls.Add(this.label19);
@@ -319,11 +334,8 @@
             this.panel1.Controls.Add(this.CboSol);
             this.panel1.Controls.Add(this.TxtCanPro2);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.TxtNumDocOP);
-            this.panel1.Controls.Add(this.TxtNumSerOP);
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.TxtFchOP);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label4);
@@ -338,45 +350,110 @@
             this.panel1.Controls.Add(this.TxtNumSer);
             this.panel1.Controls.Add(this.label12);
             this.panel1.ForeColor = System.Drawing.Color.Black;
-            this.panel1.Location = new System.Drawing.Point(3, 32);
+            this.panel1.Location = new System.Drawing.Point(4, 39);
             this.panel1.Margin = new System.Windows.Forms.Padding(1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(918, 267);
+            this.panel1.Size = new System.Drawing.Size(1224, 303);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // OptBusProcesado
+            // LblIdDocRef
             // 
-            this.OptBusProcesado.AutoSize = true;
-            this.OptBusProcesado.Location = new System.Drawing.Point(694, 101);
-            this.OptBusProcesado.Name = "OptBusProcesado";
-            this.OptBusProcesado.Size = new System.Drawing.Size(149, 17);
-            this.OptBusProcesado.TabIndex = 162;
-            this.OptBusProcesado.TabStop = true;
-            this.OptBusProcesado.Text = "Produccion Con Sol. Mat. ";
-            this.OptBusProcesado.UseVisualStyleBackColor = true;
-            this.OptBusProcesado.Visible = false;
-            this.OptBusProcesado.CheckedChanged += new System.EventHandler(this.OptBusProcesado_CheckedChanged);
+            this.LblIdDocRef.AutoSize = true;
+            this.LblIdDocRef.BackColor = System.Drawing.Color.White;
+            this.LblIdDocRef.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblIdDocRef.ForeColor = System.Drawing.Color.Red;
+            this.LblIdDocRef.Location = new System.Drawing.Point(1120, 122);
+            this.LblIdDocRef.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LblIdDocRef.Name = "LblIdDocRef";
+            this.LblIdDocRef.Size = new System.Drawing.Size(96, 17);
+            this.LblIdDocRef.TabIndex = 169;
+            this.LblIdDocRef.Text = "LblIdDocRef";
+            this.LblIdDocRef.Visible = false;
             // 
-            // OptBusProducto
+            // CmdBusDocRef
             // 
-            this.OptBusProducto.AutoSize = true;
-            this.OptBusProducto.Location = new System.Drawing.Point(501, 101);
-            this.OptBusProducto.Name = "OptBusProducto";
-            this.OptBusProducto.Size = new System.Drawing.Size(153, 17);
-            this.OptBusProducto.TabIndex = 161;
-            this.OptBusProducto.TabStop = true;
-            this.OptBusProducto.Text = "Producciones Sin Sol. Mat.";
-            this.OptBusProducto.UseVisualStyleBackColor = true;
-            this.OptBusProducto.Visible = false;
-            this.OptBusProducto.CheckedChanged += new System.EventHandler(this.OptBusProducto_CheckedChanged);
+            this.CmdBusDocRef.Enabled = false;
+            this.CmdBusDocRef.Image = global::SSF_NET_Produccion.Properties.Resources.lookup_reference_16x16;
+            this.CmdBusDocRef.Location = new System.Drawing.Point(1073, 118);
+            this.CmdBusDocRef.Margin = new System.Windows.Forms.Padding(4);
+            this.CmdBusDocRef.Name = "CmdBusDocRef";
+            this.CmdBusDocRef.Size = new System.Drawing.Size(40, 27);
+            this.CmdBusDocRef.TabIndex = 167;
+            this.CmdBusDocRef.UseVisualStyleBackColor = true;
+            this.CmdBusDocRef.Click += new System.EventHandler(this.CmdBusDocRef_Click);
+            // 
+            // TxtNumDocRef
+            // 
+            this.TxtNumDocRef.BackColor = System.Drawing.Color.White;
+            this.TxtNumDocRef.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtNumDocRef.Enabled = false;
+            this.TxtNumDocRef.ForeColor = System.Drawing.Color.Black;
+            this.TxtNumDocRef.Location = new System.Drawing.Point(809, 120);
+            this.TxtNumDocRef.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtNumDocRef.MaxLength = 10;
+            this.TxtNumDocRef.Name = "TxtNumDocRef";
+            this.TxtNumDocRef.Size = new System.Drawing.Size(256, 23);
+            this.TxtNumDocRef.TabIndex = 166;
+            // 
+            // TxtSerDocRef
+            // 
+            this.TxtSerDocRef.BackColor = System.Drawing.Color.White;
+            this.TxtSerDocRef.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtSerDocRef.Enabled = false;
+            this.TxtSerDocRef.ForeColor = System.Drawing.Color.Black;
+            this.TxtSerDocRef.Location = new System.Drawing.Point(714, 120);
+            this.TxtSerDocRef.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtSerDocRef.MaxLength = 4;
+            this.TxtSerDocRef.Name = "TxtSerDocRef";
+            this.TxtSerDocRef.Size = new System.Drawing.Size(87, 23);
+            this.TxtSerDocRef.TabIndex = 165;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.ForeColor = System.Drawing.Color.Black;
+            this.label13.Location = new System.Drawing.Point(571, 122);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(129, 17);
+            this.label13.TabIndex = 168;
+            this.label13.Text = "Nº Documento Ref,";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // CboDocRef
+            // 
+            this.CboDocRef.BackColor = System.Drawing.Color.White;
+            this.CboDocRef.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CboDocRef.Enabled = false;
+            this.CboDocRef.ForeColor = System.Drawing.Color.Black;
+            this.CboDocRef.FormattingEnabled = true;
+            this.CboDocRef.Location = new System.Drawing.Point(151, 118);
+            this.CboDocRef.Margin = new System.Windows.Forms.Padding(4);
+            this.CboDocRef.Name = "CboDocRef";
+            this.CboDocRef.Size = new System.Drawing.Size(399, 25);
+            this.CboDocRef.TabIndex = 163;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(7, 122);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(130, 17);
+            this.label10.TabIndex = 164;
+            this.label10.Text = "Documento de Ref.";
             // 
             // PicClos2
             // 
             this.PicClos2.Image = ((System.Drawing.Image)(resources.GetObject("PicClos2.Image")));
-            this.PicClos2.Location = new System.Drawing.Point(855, 22);
+            this.PicClos2.Location = new System.Drawing.Point(1140, 27);
+            this.PicClos2.Margin = new System.Windows.Forms.Padding(4);
             this.PicClos2.Name = "PicClos2";
-            this.PicClos2.Size = new System.Drawing.Size(57, 54);
+            this.PicClos2.Size = new System.Drawing.Size(76, 66);
             this.PicClos2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PicClos2.TabIndex = 135;
             this.PicClos2.TabStop = false;
@@ -387,9 +464,11 @@
             this.groupBox1.Controls.Add(this.CmdSel);
             this.groupBox1.Controls.Add(this.CmdDelSel);
             this.groupBox1.Controls.Add(this.CmdSelTod);
-            this.groupBox1.Location = new System.Drawing.Point(595, 211);
+            this.groupBox1.Location = new System.Drawing.Point(793, 231);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(315, 52);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(420, 64);
             this.groupBox1.TabIndex = 134;
             this.groupBox1.TabStop = false;
             // 
@@ -397,9 +476,10 @@
             // 
             this.CmdAddIte.Enabled = false;
             this.CmdAddIte.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CmdAddIte.Location = new System.Drawing.Point(44, 7);
+            this.CmdAddIte.Location = new System.Drawing.Point(59, 9);
+            this.CmdAddIte.Margin = new System.Windows.Forms.Padding(4);
             this.CmdAddIte.Name = "CmdAddIte";
-            this.CmdAddIte.Size = new System.Drawing.Size(112, 21);
+            this.CmdAddIte.Size = new System.Drawing.Size(149, 26);
             this.CmdAddIte.TabIndex = 163;
             this.CmdAddIte.Text = "Agregar ";
             this.CmdAddIte.UseVisualStyleBackColor = true;
@@ -409,9 +489,10 @@
             // 
             this.CmdSel.Enabled = false;
             this.CmdSel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CmdSel.Location = new System.Drawing.Point(158, 7);
+            this.CmdSel.Location = new System.Drawing.Point(211, 9);
+            this.CmdSel.Margin = new System.Windows.Forms.Padding(4);
             this.CmdSel.Name = "CmdSel";
-            this.CmdSel.Size = new System.Drawing.Size(112, 21);
+            this.CmdSel.Size = new System.Drawing.Size(149, 26);
             this.CmdSel.TabIndex = 131;
             this.CmdSel.Text = "Seleccionar Todo";
             this.CmdSel.UseVisualStyleBackColor = true;
@@ -421,9 +502,10 @@
             // 
             this.CmdDelSel.Enabled = false;
             this.CmdDelSel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CmdDelSel.Location = new System.Drawing.Point(158, 28);
+            this.CmdDelSel.Location = new System.Drawing.Point(211, 34);
+            this.CmdDelSel.Margin = new System.Windows.Forms.Padding(4);
             this.CmdDelSel.Name = "CmdDelSel";
-            this.CmdDelSel.Size = new System.Drawing.Size(112, 21);
+            this.CmdDelSel.Size = new System.Drawing.Size(149, 26);
             this.CmdDelSel.TabIndex = 130;
             this.CmdDelSel.Text = "Eliminar Seleccion";
             this.CmdDelSel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -434,27 +516,15 @@
             // 
             this.CmdSelTod.Enabled = false;
             this.CmdSelTod.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CmdSelTod.Location = new System.Drawing.Point(44, 28);
+            this.CmdSelTod.Location = new System.Drawing.Point(59, 34);
+            this.CmdSelTod.Margin = new System.Windows.Forms.Padding(4);
             this.CmdSelTod.Name = "CmdSelTod";
-            this.CmdSelTod.Size = new System.Drawing.Size(112, 21);
+            this.CmdSelTod.Size = new System.Drawing.Size(149, 26);
             this.CmdSelTod.TabIndex = 129;
             this.CmdSelTod.Text = "Deseleccionar Todo";
             this.CmdSelTod.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.CmdSelTod.UseVisualStyleBackColor = true;
             this.CmdSelTod.Click += new System.EventHandler(this.CmdSelTod_Click);
-            // 
-            // LblIdProduccion
-            // 
-            this.LblIdProduccion.AutoSize = true;
-            this.LblIdProduccion.BackColor = System.Drawing.Color.White;
-            this.LblIdProduccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblIdProduccion.ForeColor = System.Drawing.Color.Red;
-            this.LblIdProduccion.Location = new System.Drawing.Point(360, 103);
-            this.LblIdProduccion.Name = "LblIdProduccion";
-            this.LblIdProduccion.Size = new System.Drawing.Size(99, 13);
-            this.LblIdProduccion.TabIndex = 133;
-            this.LblIdProduccion.Text = "LblIdProduccion";
-            this.LblIdProduccion.Visible = false;
             // 
             // TxtReceta
             // 
@@ -462,11 +532,12 @@
             this.TxtReceta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtReceta.Enabled = false;
             this.TxtReceta.ForeColor = System.Drawing.Color.Black;
-            this.TxtReceta.Location = new System.Drawing.Point(123, 170);
+            this.TxtReceta.Location = new System.Drawing.Point(152, 210);
+            this.TxtReceta.Margin = new System.Windows.Forms.Padding(4);
             this.TxtReceta.MaxLength = 4;
             this.TxtReceta.Name = "TxtReceta";
             this.TxtReceta.ReadOnly = true;
-            this.TxtReceta.Size = new System.Drawing.Size(466, 20);
+            this.TxtReceta.Size = new System.Drawing.Size(621, 23);
             this.TxtReceta.TabIndex = 10;
             // 
             // label2
@@ -474,18 +545,20 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(628, 149);
+            this.label2.Location = new System.Drawing.Point(581, 184);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 13);
+            this.label2.Size = new System.Drawing.Size(122, 17);
             this.label2.TabIndex = 132;
             this.label2.Text = "Fecha Produccion";
             // 
             // TxtFchPro
             // 
             this.TxtFchPro.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.TxtFchPro.Location = new System.Drawing.Point(728, 146);
+            this.TxtFchPro.Location = new System.Drawing.Point(715, 181);
+            this.TxtFchPro.Margin = new System.Windows.Forms.Padding(4);
             this.TxtFchPro.Name = "TxtFchPro";
-            this.TxtFchPro.Size = new System.Drawing.Size(105, 20);
+            this.TxtFchPro.Size = new System.Drawing.Size(139, 23);
             this.TxtFchPro.TabIndex = 9;
             // 
             // TxtUniMed
@@ -494,11 +567,12 @@
             this.TxtUniMed.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtUniMed.Enabled = false;
             this.TxtUniMed.ForeColor = System.Drawing.Color.Black;
-            this.TxtUniMed.Location = new System.Drawing.Point(123, 146);
+            this.TxtUniMed.Location = new System.Drawing.Point(152, 181);
+            this.TxtUniMed.Margin = new System.Windows.Forms.Padding(4);
             this.TxtUniMed.MaxLength = 4;
             this.TxtUniMed.Name = "TxtUniMed";
             this.TxtUniMed.ReadOnly = true;
-            this.TxtUniMed.Size = new System.Drawing.Size(105, 20);
+            this.TxtUniMed.Size = new System.Drawing.Size(139, 23);
             this.TxtUniMed.TabIndex = 7;
             // 
             // TxtDesPro
@@ -507,50 +581,13 @@
             this.TxtDesPro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtDesPro.Enabled = false;
             this.TxtDesPro.ForeColor = System.Drawing.Color.Black;
-            this.TxtDesPro.Location = new System.Drawing.Point(122, 123);
+            this.TxtDesPro.Location = new System.Drawing.Point(152, 150);
+            this.TxtDesPro.Margin = new System.Windows.Forms.Padding(4);
             this.TxtDesPro.MaxLength = 4;
             this.TxtDesPro.Name = "TxtDesPro";
             this.TxtDesPro.ReadOnly = true;
-            this.TxtDesPro.Size = new System.Drawing.Size(713, 20);
+            this.TxtDesPro.Size = new System.Drawing.Size(960, 23);
             this.TxtDesPro.TabIndex = 6;
-            // 
-            // CmdProPen
-            // 
-            this.CmdProPen.Enabled = false;
-            this.CmdProPen.Image = ((System.Drawing.Image)(resources.GetObject("CmdProPen.Image")));
-            this.CmdProPen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CmdProPen.Location = new System.Drawing.Point(253, 98);
-            this.CmdProPen.Name = "CmdProPen";
-            this.CmdProPen.Size = new System.Drawing.Size(101, 24);
-            this.CmdProPen.TabIndex = 128;
-            this.CmdProPen.Text = "Buscar Prod.";
-            this.CmdProPen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.CmdProPen.UseVisualStyleBackColor = true;
-            this.CmdProPen.Click += new System.EventHandler(this.CmdProPen_Click);
-            // 
-            // TxtNumPro
-            // 
-            this.TxtNumPro.BackColor = System.Drawing.Color.White;
-            this.TxtNumPro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtNumPro.Enabled = false;
-            this.TxtNumPro.ForeColor = System.Drawing.Color.Black;
-            this.TxtNumPro.Location = new System.Drawing.Point(123, 100);
-            this.TxtNumPro.MaxLength = 4;
-            this.TxtNumPro.Name = "TxtNumPro";
-            this.TxtNumPro.ReadOnly = true;
-            this.TxtNumPro.Size = new System.Drawing.Size(129, 20);
-            this.TxtNumPro.TabIndex = 5;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(5, 103);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 13);
-            this.label1.TabIndex = 126;
-            this.label1.Text = "Nº Produccion";
             // 
             // LblIdProd
             // 
@@ -558,9 +595,10 @@
             this.LblIdProd.BackColor = System.Drawing.Color.White;
             this.LblIdProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblIdProd.ForeColor = System.Drawing.Color.Red;
-            this.LblIdProd.Location = new System.Drawing.Point(841, 127);
+            this.LblIdProd.Location = new System.Drawing.Point(1121, 155);
+            this.LblIdProd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblIdProd.Name = "LblIdProd";
-            this.LblIdProd.Size = new System.Drawing.Size(61, 13);
+            this.LblIdProd.Size = new System.Drawing.Size(77, 17);
             this.LblIdProd.TabIndex = 124;
             this.LblIdProd.Text = "LblIdProd";
             this.LblIdProd.Visible = false;
@@ -571,9 +609,10 @@
             this.LblIdRec.BackColor = System.Drawing.Color.White;
             this.LblIdRec.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblIdRec.ForeColor = System.Drawing.Color.Red;
-            this.LblIdRec.Location = new System.Drawing.Point(595, 175);
+            this.LblIdRec.Location = new System.Drawing.Point(781, 213);
+            this.LblIdRec.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblIdRec.Name = "LblIdRec";
-            this.LblIdRec.Size = new System.Drawing.Size(58, 13);
+            this.LblIdRec.Size = new System.Drawing.Size(71, 17);
             this.LblIdRec.TabIndex = 123;
             this.LblIdRec.Text = "LblIdRec";
             this.LblIdRec.Visible = false;
@@ -583,9 +622,10 @@
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label19.Location = new System.Drawing.Point(3, 79);
+            this.label19.Location = new System.Drawing.Point(4, 97);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(218, 13);
+            this.label19.Size = new System.Drawing.Size(280, 17);
             this.label19.TabIndex = 122;
             this.label19.Text = "..:: DATOS DE LA PRODUCCION ::..";
             // 
@@ -594,9 +634,10 @@
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.Color.White;
             this.label16.ForeColor = System.Drawing.Color.Black;
-            this.label16.Location = new System.Drawing.Point(418, 48);
+            this.label16.Location = new System.Drawing.Point(557, 59);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(56, 13);
+            this.label16.Size = new System.Drawing.Size(73, 17);
             this.label16.TabIndex = 121;
             this.label16.Text = "Solicitante";
             // 
@@ -605,9 +646,10 @@
             this.CboSol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CboSol.Enabled = false;
             this.CboSol.FormattingEnabled = true;
-            this.CboSol.Location = new System.Drawing.Point(484, 45);
+            this.CboSol.Location = new System.Drawing.Point(645, 55);
+            this.CboSol.Margin = new System.Windows.Forms.Padding(4);
             this.CboSol.Name = "CboSol";
-            this.CboSol.Size = new System.Drawing.Size(351, 21);
+            this.CboSol.Size = new System.Drawing.Size(467, 25);
             this.CboSol.TabIndex = 4;
             // 
             // TxtCanPro2
@@ -616,11 +658,12 @@
             this.TxtCanPro2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtCanPro2.Enabled = false;
             this.TxtCanPro2.ForeColor = System.Drawing.Color.Black;
-            this.TxtCanPro2.Location = new System.Drawing.Point(484, 146);
+            this.TxtCanPro2.Location = new System.Drawing.Point(441, 181);
+            this.TxtCanPro2.Margin = new System.Windows.Forms.Padding(4);
             this.TxtCanPro2.MaxLength = 4;
             this.TxtCanPro2.Name = "TxtCanPro2";
             this.TxtCanPro2.ReadOnly = true;
-            this.TxtCanPro2.Size = new System.Drawing.Size(105, 20);
+            this.TxtCanPro2.Size = new System.Drawing.Size(139, 23);
             this.TxtCanPro2.TabIndex = 8;
             this.TxtCanPro2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -629,46 +672,22 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.White;
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(383, 149);
+            this.label5.Location = new System.Drawing.Point(307, 184);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(91, 13);
+            this.label5.Size = new System.Drawing.Size(121, 17);
             this.label5.TabIndex = 119;
             this.label5.Text = "Cantidad Producir";
-            // 
-            // TxtNumDocOP
-            // 
-            this.TxtNumDocOP.BackColor = System.Drawing.Color.White;
-            this.TxtNumDocOP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtNumDocOP.Enabled = false;
-            this.TxtNumDocOP.ForeColor = System.Drawing.Color.Black;
-            this.TxtNumDocOP.Location = new System.Drawing.Point(183, 193);
-            this.TxtNumDocOP.MaxLength = 4;
-            this.TxtNumDocOP.Name = "TxtNumDocOP";
-            this.TxtNumDocOP.ReadOnly = true;
-            this.TxtNumDocOP.Size = new System.Drawing.Size(129, 20);
-            this.TxtNumDocOP.TabIndex = 12;
-            // 
-            // TxtNumSerOP
-            // 
-            this.TxtNumSerOP.BackColor = System.Drawing.Color.White;
-            this.TxtNumSerOP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtNumSerOP.Enabled = false;
-            this.TxtNumSerOP.ForeColor = System.Drawing.Color.Black;
-            this.TxtNumSerOP.Location = new System.Drawing.Point(123, 193);
-            this.TxtNumSerOP.MaxLength = 4;
-            this.TxtNumSerOP.Name = "TxtNumSerOP";
-            this.TxtNumSerOP.ReadOnly = true;
-            this.TxtNumSerOP.Size = new System.Drawing.Size(52, 20);
-            this.TxtNumSerOP.TabIndex = 11;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.White;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.ForeColor = System.Drawing.Color.Black;
-            this.label15.Location = new System.Drawing.Point(5, 125);
+            this.label15.Location = new System.Drawing.Point(7, 153);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(50, 13);
+            this.label15.Size = new System.Drawing.Size(65, 17);
             this.label15.TabIndex = 112;
             this.label15.Text = "Producto";
             // 
@@ -677,40 +696,32 @@
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.White;
             this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(348, 197);
+            this.label14.Location = new System.Drawing.Point(893, 185);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(126, 13);
+            this.label14.Size = new System.Drawing.Size(166, 17);
             this.label14.TabIndex = 107;
             this.label14.Text = "Fecha Orden Produccion";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.White;
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(5, 197);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(93, 13);
-            this.label8.TabIndex = 101;
-            this.label8.Text = "Orden Produccion";
-            // 
             // TxtFchOP
             // 
             this.TxtFchOP.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.TxtFchOP.Location = new System.Drawing.Point(484, 193);
+            this.TxtFchOP.Location = new System.Drawing.Point(1074, 181);
+            this.TxtFchOP.Margin = new System.Windows.Forms.Padding(4);
             this.TxtFchOP.Name = "TxtFchOP";
-            this.TxtFchOP.Size = new System.Drawing.Size(105, 20);
+            this.TxtFchOP.Size = new System.Drawing.Size(139, 23);
             this.TxtFchOP.TabIndex = 11;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.White;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(5, 149);
+            this.label7.Location = new System.Drawing.Point(6, 184);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(79, 13);
+            this.label7.Size = new System.Drawing.Size(103, 17);
             this.label7.TabIndex = 99;
             this.label7.Text = "Unidad Medida";
             // 
@@ -719,9 +730,10 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.White;
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(5, 25);
+            this.label4.Location = new System.Drawing.Point(7, 31);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 13);
+            this.label4.Size = new System.Drawing.Size(112, 17);
             this.label4.TabIndex = 95;
             this.label4.Text = "Tipo Documento";
             // 
@@ -730,9 +742,10 @@
             this.CboTipDoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CboTipDoc.Enabled = false;
             this.CboTipDoc.FormattingEnabled = true;
-            this.CboTipDoc.Location = new System.Drawing.Point(123, 22);
+            this.CboTipDoc.Location = new System.Drawing.Point(142, 29);
+            this.CboTipDoc.Margin = new System.Windows.Forms.Padding(4);
             this.CboTipDoc.Name = "CboTipDoc";
-            this.CboTipDoc.Size = new System.Drawing.Size(351, 21);
+            this.CboTipDoc.Size = new System.Drawing.Size(467, 25);
             this.CboTipDoc.TabIndex = 0;
             // 
             // label6
@@ -740,18 +753,20 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.White;
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(628, 25);
+            this.label6.Location = new System.Drawing.Point(837, 31);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(79, 13);
+            this.label6.Size = new System.Drawing.Size(104, 17);
             this.label6.TabIndex = 93;
             this.label6.Text = "Fecha Registro";
             // 
             // TxtFchReg
             // 
             this.TxtFchReg.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.TxtFchReg.Location = new System.Drawing.Point(728, 22);
+            this.TxtFchReg.Location = new System.Drawing.Point(971, 27);
+            this.TxtFchReg.Margin = new System.Windows.Forms.Padding(4);
             this.TxtFchReg.Name = "TxtFchReg";
-            this.TxtFchReg.Size = new System.Drawing.Size(105, 20);
+            this.TxtFchReg.Size = new System.Drawing.Size(139, 23);
             this.TxtFchReg.TabIndex = 1;
             // 
             // TxtNumDoc
@@ -760,32 +775,35 @@
             this.TxtNumDoc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtNumDoc.Enabled = false;
             this.TxtNumDoc.ForeColor = System.Drawing.Color.Black;
-            this.TxtNumDoc.Location = new System.Drawing.Point(180, 45);
+            this.TxtNumDoc.Location = new System.Drawing.Point(218, 57);
+            this.TxtNumDoc.Margin = new System.Windows.Forms.Padding(4);
             this.TxtNumDoc.MaxLength = 4;
             this.TxtNumDoc.Name = "TxtNumDoc";
             this.TxtNumDoc.ReadOnly = true;
-            this.TxtNumDoc.Size = new System.Drawing.Size(129, 20);
+            this.TxtNumDoc.Size = new System.Drawing.Size(171, 23);
             this.TxtNumDoc.TabIndex = 3;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.White;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(5, 219);
+            this.label9.Location = new System.Drawing.Point(7, 241);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(78, 13);
+            this.label9.Size = new System.Drawing.Size(103, 17);
             this.label9.TabIndex = 88;
             this.label9.Text = "Observaciones";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.White;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(5, 172);
+            this.label3.Location = new System.Drawing.Point(6, 213);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 13);
+            this.label3.Size = new System.Drawing.Size(53, 17);
             this.label3.TabIndex = 82;
             this.label3.Text = "Receta";
             // 
@@ -795,11 +813,12 @@
             this.TxtObs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtObs.Enabled = false;
             this.TxtObs.ForeColor = System.Drawing.Color.Black;
-            this.TxtObs.Location = new System.Drawing.Point(123, 217);
+            this.TxtObs.Location = new System.Drawing.Point(153, 238);
+            this.TxtObs.Margin = new System.Windows.Forms.Padding(4);
             this.TxtObs.MaxLength = 250;
             this.TxtObs.Multiline = true;
             this.TxtObs.Name = "TxtObs";
-            this.TxtObs.Size = new System.Drawing.Size(466, 45);
+            this.TxtObs.Size = new System.Drawing.Size(621, 55);
             this.TxtObs.TabIndex = 13;
             this.TxtObs.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtObs_KeyPress);
             // 
@@ -808,9 +827,10 @@
             this.label22.AutoSize = true;
             this.label22.BackColor = System.Drawing.Color.White;
             this.label22.ForeColor = System.Drawing.Color.Black;
-            this.label22.Location = new System.Drawing.Point(5, 48);
+            this.label22.Location = new System.Drawing.Point(7, 59);
+            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(77, 13);
+            this.label22.Size = new System.Drawing.Size(99, 17);
             this.label22.TabIndex = 71;
             this.label22.Text = "Nº Documento";
             // 
@@ -820,11 +840,12 @@
             this.TxtNumSer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtNumSer.Enabled = false;
             this.TxtNumSer.ForeColor = System.Drawing.Color.Black;
-            this.TxtNumSer.Location = new System.Drawing.Point(123, 45);
+            this.TxtNumSer.Location = new System.Drawing.Point(142, 57);
+            this.TxtNumSer.Margin = new System.Windows.Forms.Padding(4);
             this.TxtNumSer.MaxLength = 4;
             this.TxtNumSer.Name = "TxtNumSer";
             this.TxtNumSer.ReadOnly = true;
-            this.TxtNumSer.Size = new System.Drawing.Size(52, 20);
+            this.TxtNumSer.Size = new System.Drawing.Size(69, 23);
             this.TxtNumSer.TabIndex = 2;
             this.TxtNumSer.Validated += new System.EventHandler(this.TxtNumSer_Validated);
             // 
@@ -833,9 +854,10 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label12.Location = new System.Drawing.Point(3, 4);
+            this.label12.Location = new System.Drawing.Point(4, 5);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(205, 13);
+            this.label12.Size = new System.Drawing.Size(262, 17);
             this.label12.TabIndex = 68;
             this.label12.Text = "..:: DATOS DE LA SOLICITUD ::..";
             // 
@@ -847,8 +869,9 @@
             this.panel3.Controls.Add(this.LblTitulo2);
             this.panel3.ForeColor = System.Drawing.Color.Black;
             this.panel3.Location = new System.Drawing.Point(1, 1);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(927, 28);
+            this.panel3.Size = new System.Drawing.Size(1236, 34);
             this.panel3.TabIndex = 8;
             // 
             // LblTitulo2
@@ -859,8 +882,9 @@
             this.LblTitulo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblTitulo2.ForeColor = System.Drawing.Color.Black;
             this.LblTitulo2.Location = new System.Drawing.Point(0, 0);
+            this.LblTitulo2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblTitulo2.Name = "LblTitulo2";
-            this.LblTitulo2.Size = new System.Drawing.Size(927, 28);
+            this.LblTitulo2.Size = new System.Drawing.Size(1236, 34);
             this.LblTitulo2.TabIndex = 0;
             this.LblTitulo2.Text = "DETALLE DEL REGISTRO";
             this.LblTitulo2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -886,7 +910,7 @@
             this.ToolHerramientas.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.ToolHerramientas.Location = new System.Drawing.Point(0, 0);
             this.ToolHerramientas.Name = "ToolHerramientas";
-            this.ToolHerramientas.Size = new System.Drawing.Size(958, 39);
+            this.ToolHerramientas.Size = new System.Drawing.Size(1277, 39);
             this.ToolHerramientas.TabIndex = 25;
             this.ToolHerramientas.Text = "toolStrip1";
             this.ToolHerramientas.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ToolHerramientas_ItemClicked);
@@ -967,14 +991,14 @@
             this.ToolMenuImprimir.Image = ((System.Drawing.Image)(resources.GetObject("ToolMenuImprimir.Image")));
             this.ToolMenuImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ToolMenuImprimir.Name = "ToolMenuImprimir";
-            this.ToolMenuImprimir.Size = new System.Drawing.Size(48, 36);
+            this.ToolMenuImprimir.Size = new System.Drawing.Size(51, 36);
             this.ToolMenuImprimir.Text = "toolStripSplitButton1";
             this.ToolMenuImprimir.ButtonClick += new System.EventHandler(this.ToolMenuImprimir_ButtonClick);
             // 
             // imprimirRecetaToolStripMenuItem
             // 
             this.imprimirRecetaToolStripMenuItem.Name = "imprimirRecetaToolStripMenuItem";
-            this.imprimirRecetaToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.imprimirRecetaToolStripMenuItem.Size = new System.Drawing.Size(305, 26);
             this.imprimirRecetaToolStripMenuItem.Text = "Imprimir Solicitud de Materiales";
             this.imprimirRecetaToolStripMenuItem.Click += new System.EventHandler(this.imprimirRecetaToolStripMenuItem_Click);
             // 
@@ -996,11 +1020,12 @@
             // 
             // FrmSolicitudMateriales2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(958, 617);
+            this.ClientSize = new System.Drawing.Size(1277, 710);
             this.Controls.Add(this.Tab1);
             this.Controls.Add(this.ToolHerramientas);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmSolicitudMateriales2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmSolicitudMateriales2";
@@ -1051,11 +1076,8 @@
         private System.Windows.Forms.ComboBox CboSol;
         private System.Windows.Forms.TextBox TxtCanPro2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox TxtNumDocOP;
-        private System.Windows.Forms.TextBox TxtNumSerOP;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DateTimePicker TxtFchOP;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label4;
@@ -1083,23 +1105,24 @@
         private System.Windows.Forms.ToolStripMenuItem imprimirRecetaToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton ToolSalir;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button CmdProPen;
-        private System.Windows.Forms.TextBox TxtNumPro;
         private System.Windows.Forms.TextBox TxtDesPro;
         private System.Windows.Forms.TextBox TxtUniMed;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker TxtFchPro;
         private System.Windows.Forms.TextBox TxtReceta;
-        private System.Windows.Forms.Label LblIdProduccion;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button CmdDelSel;
         private System.Windows.Forms.Button CmdSelTod;
         private System.Windows.Forms.Button CmdSel;
         private System.Windows.Forms.PictureBox PicClos1;
         private System.Windows.Forms.PictureBox PicClos2;
-        private System.Windows.Forms.RadioButton OptBusProcesado;
-        private System.Windows.Forms.RadioButton OptBusProducto;
         private System.Windows.Forms.Button CmdAddIte;
+        private System.Windows.Forms.ComboBox CboDocRef;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button CmdBusDocRef;
+        private System.Windows.Forms.TextBox TxtNumDocRef;
+        private System.Windows.Forms.TextBox TxtSerDocRef;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label LblIdDocRef;
     }
 }

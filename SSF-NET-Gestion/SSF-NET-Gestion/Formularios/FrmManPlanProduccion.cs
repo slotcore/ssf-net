@@ -193,10 +193,6 @@ namespace SSF_NET_Gestion.Formularios
         }
         void ConfigurarFormulario()
         {
-            this.Height = 600;
-            this.Width = 1000;
-            Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
-            Tab_Posicionar(Tab1, 1, 42);
             Tab1.SelectedIndex = 0;
             LblTitulo2.Text = "DETALLE DEL REGISTRO";
 
@@ -249,16 +245,6 @@ namespace SSF_NET_Gestion.Formularios
         {
             LblNumReg.Text = (dtCabecera.Rows.Count).ToString();
             funDbGrid.DG_FormatearGrid(DgLista, arrCabeceraDg1, dtCabecera, true);
-        }
-        void Tab_Dimensionar(C1.Win.C1Command.C1DockingTab dokTab, int intAlto, int intAncho)
-        {
-            Tab1.Height = intAlto;
-            Tab1.Width = intAncho;
-        }
-        void Tab_Posicionar(C1.Win.C1Command.C1DockingTab dokTab, int intPosX, int intPosY)
-        {
-            dokTab.Left = intPosX;
-            dokTab.Top = intPosY;
         }
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
@@ -373,11 +359,13 @@ namespace SSF_NET_Gestion.Formularios
         //        fg_Control.SetData(fg_Control.Rows.Count - 1, 16, n_valor.ToString("0.00"));
         //    }
         //}
-        private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
+        private void Tab1_SelectedIndexChanging(object sender, EventArgs e)
         {
+            TabControl tc = (TabControl)sender;
+
             if (n_QueHace != 3) { return; }
 
-            if (e.NewIndex == 1)
+            if (tc.SelectedIndex == 1)
             {
                 int n_idreg = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
@@ -590,7 +578,7 @@ namespace SSF_NET_Gestion.Formularios
             BE_CABECERA.d_fchini = Convert.ToDateTime("01/" + Convert.ToInt32(CboMesIni.SelectedValue).ToString() + "/" + STU_SISTEMA.ANOTRABAJO.ToString());             
             BE_CABECERA.d_fchfin = BE_CABECERA.d_fchini.AddMonths(12);            
             BE_CABECERA.n_mesini = Convert.ToInt32(CboMesIni.SelectedValue);
-            BE_CABECERA.n_ano= Convert.ToDateTime(TxtFchIni.Text).Year;
+            BE_CABECERA.n_ano = STU_SISTEMA.ANOTRABAJO; //Convert.ToDateTime(TxtFchIni.Text).Year;
             BE_CABECERA.n_idplaven = Convert.ToInt32(LblIdPlaVen.Text);
             BE_CABECERA.n_activo = 1;
 
@@ -635,21 +623,21 @@ namespace SSF_NET_Gestion.Formularios
         {
             bool booEstado = true;
 
-            if (TxtFchIni.Text == "")
-            {
-                MessageBox.Show("¡ No ha especificado la fecha de inicio !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                booEstado = false;
-                TxtFchIni.Focus();
-                return booEstado;
-            }
+            //if (TxtFchIni.Text == "")
+            //{
+            //    MessageBox.Show("¡ No ha especificado la fecha de inicio !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+            //    booEstado = false;
+            //    TxtFchIni.Focus();
+            //    return booEstado;
+            //}
 
-            if (TxtFchFin.Text == "")
-            {
-                MessageBox.Show("¡ No ha especificado la fecha de termino !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                booEstado = false;
-                TxtFchFin.Focus();
-                return booEstado;
-            }
+            //if (TxtFchFin.Text == "")
+            //{
+            //    MessageBox.Show("¡ No ha especificado la fecha de termino !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+            //    booEstado = false;
+            //    TxtFchFin.Focus();
+            //    return booEstado;
+            //}
 
             if (TxtDes.Text == "")
             {
@@ -752,12 +740,12 @@ namespace SSF_NET_Gestion.Formularios
             do
             {
                 dtresul = funDatos.DataTableFiltrar(dtInter, "n_vuelta = "+ n_vuelta.ToString() +"");
-                n_vuelta = n_vuelta + 1;
                 if (dtresul.Rows.Count != 0)
                 {
                     ProcesarIntermedios(FgInter, ref dtInter, n_vuelta);
                     MostrarIntermedios(dtInter, n_vuelta);
                 }
+                n_vuelta = n_vuelta + 1;
             } while (dtresul.Rows.Count != 0);
             dtInter = funDatos.DataTableFiltrar(dtInter, "n_idtipexi = 2");
             PintarIntermedios(dtInter);
@@ -1162,10 +1150,6 @@ namespace SSF_NET_Gestion.Formularios
             o_recetas.l_RecetaIns = l_recetasins;
             o_recetas.VerRecetar();
             o_recetas = null;
-        }
-        private void FrmManPlanProduccion_Resize(object sender, EventArgs e)
-        {
-            Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
         }
         private void CmdVerEstaciona_Click(object sender, EventArgs e)
         {

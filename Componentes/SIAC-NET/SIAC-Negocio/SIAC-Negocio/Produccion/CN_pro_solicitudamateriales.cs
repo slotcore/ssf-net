@@ -136,6 +136,8 @@ namespace SIAC_Negocio.Produccion
                 entTmp.n_can = Convert.ToDouble(dtResult.Rows[0]["n_can"]);
                 entTmp.d_fchent = Convert.ToDateTime(dtResult.Rows[0]["d_fchent"]);
                 entTmp.n_idpro = Convert.ToInt32(dtResult.Rows[0]["n_idpro"]);
+                entTmp.n_docrefidtipdoc = Convert.ToInt32(dtResult.Rows[0]["n_docrefidtipdoc"]);
+                entTmp.n_docrefiddocref = Convert.ToInt32(dtResult.Rows[0]["n_docrefiddocref"]);
                 entSolicitud = entTmp;
 
                 for(n_row = 0;n_row <= dtResultLis.Rows.Count - 1; n_row++)
@@ -384,6 +386,28 @@ namespace SIAC_Negocio.Produccion
 
             return b_result;
         }
+        public bool BuscarPorDocumentoReferencia(int n_docrefidtipdoc, int n_docrefiddocref)
+        {
+            bool b_result = false;
+
+            CD_pro_solicitudamateriales miFun = new CD_pro_solicitudamateriales();
+            miFun.mysConec = mysConec;
+
+            if (miFun.BuscarPorDocumentoReferencia(n_docrefidtipdoc, n_docrefiddocref) == true)
+            {
+                b_result = true;
+                dtLista = miFun.dtLista;
+                dtlstInsumos = miFun.dtlstInsumos;
+            }
+            else
+            {
+                b_OcurrioError = miFun.b_OcurrioError;
+                c_ErrorMensaje = miFun.c_ErrorMensaje;
+                n_ErrorNumber = miFun.n_ErrorNumber;
+            }
+
+            return b_result;
+        }
         public bool Consulta4(int n_IdEmpresa)
         {
             bool b_result = false;
@@ -446,6 +470,27 @@ namespace SIAC_Negocio.Produccion
                 {
                     b_result = true;       // TRUE INDICA QUE SE ENCONTRO SOLICITUDES DE PRODUCCION REFERENCIADAS A AL PRODUCCION
                 }               
+            }
+            else
+            {
+                b_OcurrioError = miFun.b_OcurrioError;
+                c_ErrorMensaje = miFun.c_ErrorMensaje;
+                n_ErrorNumber = miFun.n_ErrorNumber;
+            }
+
+            return b_result;
+        }
+        public bool ListarResumenSolMatGlobal(int n_idpro, int n_idordprod, int n_idemp)
+        {
+            bool b_result = false;
+
+            CD_pro_solicitudamateriales miFun = new CD_pro_solicitudamateriales();
+            miFun.mysConec = mysConec;
+
+            if (miFun.ListarResumenSolMatGlobal(n_idpro, n_idordprod, n_idemp) == true)
+            {
+                b_result = true;
+                dtListaMatEnt = miFun.dtListaMatEnt;
             }
             else
             {

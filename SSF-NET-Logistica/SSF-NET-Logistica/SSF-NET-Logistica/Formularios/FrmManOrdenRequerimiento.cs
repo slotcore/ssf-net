@@ -680,6 +680,14 @@ namespace SSF_NET_Logistica.Formularios
                 return booEstado;
             }
 
+            if (Convert.ToInt32(Convert.ToDateTime(TxtFchEmiDoc.Text).ToString("MM")) != Convert.ToInt32(CboMeses.SelectedValue))
+            {
+                MessageBox.Show("¡ La fecha del documento no coincide con el mes de trabajo !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                TxtFchEmiDoc.Focus();
+                booEstado = false;
+                return booEstado;
+            }
+
             // Se setea el area destino por defecto a compras
             if (idAreaDestino == 0)
             {

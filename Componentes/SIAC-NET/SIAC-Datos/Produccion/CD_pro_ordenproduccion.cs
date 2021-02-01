@@ -162,10 +162,20 @@ namespace SIAC_DATOS.Produccion
             { 
                 // PARAMETROS PARA ELIMINAR LA CABECERA DE LA ORDEN DE PRODUCCION
                 string[,] arrParametros = new string[1, 3] {
-                                            {"n_id", "System.INT64", n_IdRegistro.ToString()}
+                                            {"n_idordpro", "System.INT64", n_IdRegistro.ToString()}
                                       };
                 mysConec = xMiFuncion.ReAbrirConeccion(mysConec);
-                booResult = xMiFuncion.StoreEjecutar("pro_ordenproduccion_delete", arrParametros, mysConec);
+                booResult = xMiFuncion.StoreEjecutar("pro_programadet_delete_ordprod", arrParametros, mysConec);
+
+                if (booResult == true)                                               // SI EL DETALLE SE ELIMINO CON EXITO, ELIMINAMOS LA CABECERA
+                {
+                    // PARAMETROS PARA ELIMINAR LA CABECERA DE LA ORDEN DE PRODUCCION
+                    arrParametros = new string[1, 3] {
+                                            {"n_id", "System.INT64", n_IdRegistro.ToString()}
+                                      };
+                    mysConec = xMiFuncion.ReAbrirConeccion(mysConec);
+                    booResult = xMiFuncion.StoreEjecutar("pro_ordenproduccion_delete", arrParametros, mysConec);
+                }
             }
 
             if (booResult == false)

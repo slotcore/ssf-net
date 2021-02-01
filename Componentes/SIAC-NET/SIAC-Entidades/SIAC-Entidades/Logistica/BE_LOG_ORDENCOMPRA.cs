@@ -32,6 +32,12 @@ namespace SIAC_Entidades.Logistica
         int _n_idconpag;
         double _n_impina;
 
+        private int _n_docrefidtipdoc;
+        private int _n_docrefiddocref;
+        private string _c_docrefnumser;
+        private string _c_docrefnumdoc;
+
+
         public int n_idemp
         {
             get { return _n_idemp; }
@@ -146,6 +152,30 @@ namespace SIAC_Entidades.Logistica
         {
             get { return _n_impina; }
             set { _n_impina = value; }
+        }
+
+        public int n_docrefidtipdoc
+        {
+            get { return _n_docrefidtipdoc; }
+            set { _n_docrefidtipdoc = value; }
+        }
+
+        public int n_docrefiddocref
+        {
+            get { return _n_docrefiddocref; }
+            set { _n_docrefiddocref = value; }
+        }
+
+        public string c_docrefnumser
+        {
+            get { return _c_docrefnumser; }
+            set { _c_docrefnumser = value; }
+        }
+
+        public string c_docrefnumdoc
+        {
+            get { return _c_docrefnumdoc; }
+            set { _c_docrefnumdoc = value; }
         }
 
     }

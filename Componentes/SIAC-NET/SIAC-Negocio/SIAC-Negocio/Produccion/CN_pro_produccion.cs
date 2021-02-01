@@ -1220,5 +1220,75 @@ namespace SIAC_Negocio.Produccion
 
             return b_result;
         }
+
+        public void ReporteTareas(int n_Idregistro)
+        {
+            DataTable dtResult = new DataTable();
+            int n_numpro = 0;
+            int n_ordpro = 0;
+            int n_idite = 0;
+            string c_fchent = "";
+
+            CD_pro_solicitudamateriales miFun = new CD_pro_solicitudamateriales();
+
+            miFun.mysConec = mysConec;
+            miFun.TraerRegistro(n_Idregistro);
+            dtResult = miFun.dtRegistro;
+
+            if (dtResult.Rows.Count != 0)
+            {
+                n_numpro = Convert.ToInt32(dtResult.Rows[0]["n_idprogra"]);
+                n_ordpro = Convert.ToInt32(dtResult.Rows[0]["n_idordpro"]);
+                n_idite = Convert.ToInt32(dtResult.Rows[0]["n_idite"]);
+                int n_idtipdoc = Convert.ToInt32(dtResult.Rows[0]["n_idtipdoc"]);
+                c_fchent = dtResult.Rows[0]["d_fchent"].ToString().Substring(0, 10);
+
+                string c_NomArchivo = "";
+                string c_Ruta = "";
+                string[,] arrPara = new string[4, 3];
+
+                arrPara[0, 0] = "n_idsol";
+                arrPara[0, 1] = "N";
+                arrPara[0, 2] = n_Idregistro.ToString();
+
+                arrPara[1, 0] = "c_nomemp";
+                arrPara[1, 1] = "C";
+                arrPara[1, 2] = STU_SISTEMA.EMPRESANOMBRE;
+
+                arrPara[2, 0] = "c_numruc";
+                arrPara[2, 1] = "C";
+                arrPara[2, 2] = STU_SISTEMA.EMPRESARUC;
+
+                arrPara[3, 0] = "c_tipdoc";
+                arrPara[3, 1] = "C";
+                if (n_idtipdoc == 72)
+                {
+                    arrPara[3, 2] = "SOLICITUD MATERIALES";
+                }
+                if (n_idtipdoc == 92)
+                {
+                    arrPara[3, 2] = "SOLICITUD ADICIONAL";
+                }
+                if (n_idtipdoc == 93)
+                {
+                    arrPara[3, 2] = "SOLICITUD DEVOLUCIÓN";
+                }
+
+                c_NomArchivo = "RptTareasProduccion.rpt";
+                //c_Ruta = @"D:\Users\jchac\Source\Repos\App\ssf-net\SSF-NET-Produccion\SSF-NET-Produccion\Reportes\" + c_NomArchivo;
+                c_Ruta = "" + STU_SISTEMA.RUTAREPORTES + "produccion\\" + c_NomArchivo;
+
+                Helper.Cls_VisorCrystal xVisor = new Helper.Cls_VisorCrystal();
+                xVisor.c_NombreServidor = STU_SISTEMA.BD_NOMSERVIDOR;
+                xVisor.c_NombreBD = STU_SISTEMA.BD_NOMBASEDATOS;
+                xVisor.c_Usuario = STU_SISTEMA.BD_USUARIO;
+                xVisor.c_Contraseña = STU_SISTEMA.BD_CONTRASEÑA;
+                xVisor.b_VisPrev = true;
+                xVisor.c_Titulo = "PRODUCCION - SOLICITUD DE MATERIALES";
+                xVisor.c_PathRep = c_Ruta;
+                xVisor.arrParametros = arrPara;
+                xVisor.VerCrystal();
+            }
+        }
     }
 }

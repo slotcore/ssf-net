@@ -457,6 +457,8 @@ namespace SIAC_DATOS.Models.Almacen
                     {
                         try
                         {
+                            InventarioInicialDet.DeleteAll(n_id, connection, transaction);
+
                             command.Transaction = transaction;
                             command.CommandType = System.Data.CommandType.StoredProcedure;
                             command.CommandText = "alm_inventarioini_eliminar";

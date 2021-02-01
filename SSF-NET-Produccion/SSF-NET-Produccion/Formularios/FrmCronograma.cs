@@ -115,11 +115,6 @@ namespace SSF_NET_Produccion.Formularios
         }
         void ConfigurarFormulario()
         {
-            this.Height = 651;
-            this.Width = 1214;
-
-            Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
-            Tab_Posicionar(Tab1, 1, 42);
             Tab1.SelectedIndex = 0;
 
             LblTitulo2.Text = "DETALLE DEL REGISTRO";
@@ -527,16 +522,6 @@ namespace SSF_NET_Produccion.Formularios
         {
             LblNumReg.Text = (dtListar.Rows.Count).ToString();
             funDbGrid.DG_FormatearGrid(DgLista, arrCabeceraDg1, dtListar, true);
-        }
-        void Tab_Dimensionar(C1.Win.C1Command.C1DockingTab dokTab, int intAlto, int intAncho)
-        {
-            Tab1.Height = intAlto;
-            Tab1.Width = intAncho;
-        }
-        void Tab_Posicionar(C1.Win.C1Command.C1DockingTab dokTab, int intPosX, int intPosY)
-        {
-            dokTab.Left = intPosX;
-            dokTab.Top = intPosY;
         }
         void VerRegistro(int n_IdRegistro)
         {
@@ -1030,12 +1015,14 @@ namespace SSF_NET_Produccion.Formularios
                 LblNumReg.Text = (dtResult.Rows.Count).ToString();
             }
         }
-        private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
+        private void Tab1_SelectedIndexChanging(object sender, EventArgs e)
         {
-            if (n_QueHace != 3) { return; }
+            TabControl tc = (TabControl)sender;
 
+            if (n_QueHace != 3) { return; }
             if (DgLista.RowCount == 0) { return; }
-            if (e.NewIndex == 1)
+
+            if (tc.SelectedIndex == 1)
             {
                 int intIdRegistro = Convert.ToInt32(DgLista.Columns[4].CellValue(DgLista.Row).ToString());
 
@@ -1048,9 +1035,23 @@ namespace SSF_NET_Produccion.Formularios
                 }
             }
         }
-        private void Tab1_Resize(object sender, EventArgs e)
+        private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
         {
-            Tab_Dimensionar(Tab1, this.Height - 82, this.Width - 18);
+            //if (n_QueHace != 3) { return; }
+
+            //if (DgLista.RowCount == 0) { return; }
+            //if (e.NewIndex == 1)
+            //{
+            //    int intIdRegistro = Convert.ToInt32(DgLista.Columns[4].CellValue(DgLista.Row).ToString());
+
+            //    if (n_QueHace != 1)
+            //    {
+            //        booAgregando = true;
+            //        Tab2.SelectedIndex = 0;
+            //        VerRegistro(intIdRegistro);
+            //        booAgregando = false;
+            //    }
+            //}
         }
         private void TxtNumSer_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -1294,10 +1295,6 @@ namespace SSF_NET_Produccion.Formularios
                 d_fecha = d_fecha.AddDays(1);
             }
             booAgregando = false;
-        }
-        private void FrmCronograma_Resize(object sender, EventArgs e)
-        {
-            Tab_Dimensionar(Tab1, this.Height - 82, this.Width - 18);
         }
         private void CmdAddOP_Click(object sender, EventArgs e)
         {

@@ -101,6 +101,34 @@ namespace SIAC_DATOS.Models.Sunat
 
         #region metodos publicos
 
+        public static List<TipoDocumento> Listar()
+        {
+            List<TipoDocumento> m_listentidad = new List<TipoDocumento>();
+
+            using (MySqlConnection connection
+                = new MySqlConnection(
+                    ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.CommandText = "sun_tipdoccom_select";
+
+                    connection.Open();
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            TipoDocumento m_entidad = SetObject(reader);
+                            m_listentidad.Add(m_entidad);
+                        }
+                    }
+                }
+            }
+            return m_listentidad;
+        }
+
         public static List<TipoDocumento> FetchList(int n_idemp, int n_anotra)
         {
             List<TipoDocumento> m_listentidad = new List<TipoDocumento>();

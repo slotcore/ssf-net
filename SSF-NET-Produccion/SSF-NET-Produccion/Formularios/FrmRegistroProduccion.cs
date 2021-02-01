@@ -1586,11 +1586,11 @@ namespace SSF_NET_Produccion.Formularios
         }
         private void imprimirRecetaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //int intIdRegistro = Convert.ToInt32(DgLista.Columns[2].CellValue(DgLista.Row).ToString());
-            //CN_pro_produccion FunSol = new CN_pro_produccion();
-            //FunSol.mysConec = mysConec;
-            //FunSol.STU_SISTEMA = STU_SISTEMA;
-            //FunSol.ReporteTareas(intIdRegistro);
+            int intIdRegistro = Convert.ToInt32(DgLista.Columns[2].CellValue(DgLista.Row).ToString());
+            CN_pro_produccion FunSol = new CN_pro_produccion();
+            FunSol.mysConec = mysConec;
+            FunSol.STU_SISTEMA = STU_SISTEMA;
+            FunSol.ReporteTareas(intIdRegistro);
         }
         private void CmdAddTar_Click(object sender, EventArgs e)
         {
@@ -1960,7 +1960,8 @@ namespace SSF_NET_Produccion.Formularios
             dtResul = funDatos.DataTableFiltrar(dtRecetasInsumos, "n_idrec = " + Convert.ToInt32(CboRec.SelectedValue).ToString() + "");
 
             objSolMat.mysConec = mysConec;
-            if (objSolMat.ListarResumenSolMat(intIdRegistro, STU_SISTEMA.EMPRESAID) == true)
+
+            if (objSolMat.ListarResumenSolMatGlobal(intIdRegistro, Convert.ToInt32(LblIdOP.Text), STU_SISTEMA.EMPRESAID) == true)
             {
                 dtSolMatRes = objSolMat.dtListaMatEnt;
             }

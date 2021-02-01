@@ -1,0 +1,200 @@
+ALTER TABLE log_ordencompra ADD n_docrefidtipdoc INT(11) NULL;
+ALTER TABLE log_ordencompra ADD c_docrefnumser varchar(4) NULL;
+ALTER TABLE log_ordencompra ADD c_docrefnumdoc varchar(10) NULL;
+ALTER TABLE log_ordencompra ADD n_docrefiddocref INT(11) NULL;
+
+DROP PROCEDURE IF EXISTS log_ordencompra_insertar;
+CREATE PROCEDURE log_ordencompra_insertar(
+	IN n_idemp INT(11),
+	OUT n_id INT(11),
+	IN n_idtipdoc INT(11),
+	IN c_numser CHAR(4),
+	IN c_numdoc CHAR(10),
+	IN n_anotra INT(11),
+	IN n_mestra INT(11),
+	IN d_fchemi DATE,
+	IN d_fchent DATE,
+	IN n_idloc INT(11),
+	IN n_idare INT(11),
+	IN n_idpersol INT(11),
+	IN n_idpri INT(11),
+	IN c_obs VARCHAR(200),
+	IN n_idest INT(11),
+	IN n_idmot INT(11),
+	IN n_idpro INT(11),
+	IN n_idmon INT(11),
+	IN n_impbru DOUBLE(12,2),
+	IN n_impigv DOUBLE(12,2),
+	IN n_imptot DOUBLE(12,2),
+    IN n_idconpag INT(11),
+    IN n_impina DOUBLE(12,2),
+	IN n_docrefidtipdoc INT(11),
+	IN n_docrefiddocref INT(11),
+	IN c_docrefnumser CHAR(4),
+	IN c_docrefnumdoc CHAR(10)
+)
+BEGIN
+	INSERT INTO log_ordencompra
+	(
+		log_ordencompra.n_idemp,
+		log_ordencompra.n_id,
+		log_ordencompra.n_idtipdoc,
+		log_ordencompra.c_numser,
+		log_ordencompra.c_numdoc,
+		log_ordencompra.n_anotra,
+		log_ordencompra.n_mestra,
+		log_ordencompra.d_fchemi,
+		log_ordencompra.d_fchent,
+		log_ordencompra.n_idloc,
+		log_ordencompra.n_idare,
+		log_ordencompra.n_idpersol,
+		log_ordencompra.n_idpri,
+		log_ordencompra.c_obs,
+		log_ordencompra.n_idest,
+		log_ordencompra.n_idmot,
+		log_ordencompra.n_idpro,
+		log_ordencompra.n_idmon,
+		log_ordencompra.n_impbru,
+		log_ordencompra.n_impigv,
+		log_ordencompra.n_imptot,
+        log_ordencompra.n_idconpag,
+        log_ordencompra.n_impina,
+        log_ordencompra.n_docrefidtipdoc,
+        log_ordencompra.n_docrefiddocref,
+        log_ordencompra.c_docrefnumser,
+        log_ordencompra.c_docrefnumdoc
+	)
+	VALUES
+	(
+		n_idemp,
+		n_id,
+		n_idtipdoc,
+		c_numser,
+		c_numdoc,
+		n_anotra,
+		n_mestra,
+		d_fchemi,
+		d_fchent,
+		n_idloc,
+		n_idare,
+		n_idpersol,
+		n_idpri,
+		c_obs,
+		n_idest,
+		n_idmot,
+		n_idpro,
+		n_idmon,
+		n_impbru,
+		n_impigv,
+		n_imptot,
+        n_idconpag,
+        n_impina,
+        n_docrefidtipdoc,
+        n_docrefiddocref,
+        c_docrefnumser,
+        c_docrefnumdoc
+	);
+	SET n_id = @@identity;
+END;
+
+DROP PROCEDURE IF EXISTS log_ordencompra_actualizar;
+CREATE PROCEDURE log_ordencompra_actualizar(
+	IN n_idemp INT(11),
+	IN n_id INT(11),
+	IN n_idtipdoc INT(11),
+	IN c_numser CHAR(4),
+	IN c_numdoc CHAR(10),
+	IN n_anotra INT(11),
+	IN n_mestra INT(11),
+	IN d_fchemi DATE,
+	IN d_fchent DATE,
+	IN n_idloc INT(11),
+	IN n_idare INT(11),
+	IN n_idpersol INT(11),
+	IN n_idpri INT(11),
+	IN c_obs VARCHAR(200),
+	IN n_idest INT(11),
+	IN n_idmot INT(11),
+	IN n_idpro INT(11),
+	IN n_idmon INT(11),
+	IN n_impbru DOUBLE(12,2),
+	IN n_impigv DOUBLE(12,2),
+	IN n_imptot DOUBLE(12,2),
+    IN n_idconpag INT(11),
+    IN n_impina DOUBLE(12,2),
+	IN n_docrefidtipdoc INT(11),
+	IN n_docrefiddocref INT(11),
+	IN c_docrefnumser CHAR(4),
+	IN c_docrefnumdoc CHAR(10)
+)
+BEGIN
+	UPDATE log_ordencompra
+	SET
+		log_ordencompra.n_idemp = n_idemp,
+		log_ordencompra.n_idtipdoc = n_idtipdoc,
+		log_ordencompra.c_numser = c_numser,
+		log_ordencompra.c_numdoc = c_numdoc,
+		log_ordencompra.n_anotra = n_anotra,
+		log_ordencompra.n_mestra = n_mestra,
+		log_ordencompra.d_fchemi = d_fchemi,
+		log_ordencompra.d_fchent = d_fchent,
+		log_ordencompra.n_idloc = n_idloc,
+		log_ordencompra.n_idare = n_idare,
+		log_ordencompra.n_idpersol = n_idpersol,
+		log_ordencompra.n_idpri = n_idpri,
+		log_ordencompra.c_obs = c_obs,
+		log_ordencompra.n_idest = n_idest,
+		log_ordencompra.n_idmot = n_idmot,
+		log_ordencompra.n_idpro = n_idpro,
+		log_ordencompra.n_idmon = n_idmon,
+		log_ordencompra.n_impbru = n_impbru,
+		log_ordencompra.n_impigv = n_impigv,
+		log_ordencompra.n_imptot = n_imptot,
+        log_ordencompra.n_idconpag = n_idconpag,
+        log_ordencompra.n_impina = n_impina,
+        log_ordencompra.n_docrefidtipdoc = n_docrefidtipdoc,
+        log_ordencompra.n_docrefiddocref = n_docrefiddocref,
+        log_ordencompra.c_docrefnumser = c_docrefnumser,
+        log_ordencompra.c_docrefnumdoc = c_docrefnumdoc
+	WHERE
+		(log_ordencompra.n_id = n_id);
+END;
+
+DROP PROCEDURE IF EXISTS log_ordencompra_obtenerregistro;
+CREATE PROCEDURE log_ordencompra_obtenerregistro(
+	IN n_id INT(11)
+)
+BEGIN
+	SELECT 
+		log_ordencompra.n_idemp,
+		log_ordencompra.n_id,
+		log_ordencompra.n_idtipdoc,
+		log_ordencompra.c_numser,
+		log_ordencompra.c_numdoc,
+		log_ordencompra.n_anotra,
+		log_ordencompra.n_mestra,
+		log_ordencompra.d_fchemi,
+		log_ordencompra.d_fchent,
+		log_ordencompra.n_idloc,
+		log_ordencompra.n_idare,
+		log_ordencompra.n_idpersol,
+		log_ordencompra.n_idpri,
+		log_ordencompra.c_obs,
+		log_ordencompra.n_idest,
+		log_ordencompra.n_idmot,
+		log_ordencompra.n_idpro,
+		log_ordencompra.n_idmon,
+		log_ordencompra.n_impbru,
+		log_ordencompra.n_impigv,
+		log_ordencompra.n_imptot,
+        log_ordencompra.n_idconpag,
+        log_ordencompra.n_impina,
+        log_ordencompra.n_docrefidtipdoc,
+        log_ordencompra.n_docrefiddocref,
+        log_ordencompra.c_docrefnumser,
+        log_ordencompra.c_docrefnumdoc
+	FROM 
+		log_ordencompra
+	WHERE
+		(log_ordencompra.n_id = n_id);
+END;

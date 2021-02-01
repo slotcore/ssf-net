@@ -88,7 +88,8 @@ namespace SSF_NET_Contabilidad.Formularios
         {
             try
             {
-                m_InventarioInicial = (InventarioInicial)inventarioInicialBindingSource.Current;
+                int n_id = ((InventarioInicial)inventarioInicialBindingSource.Current).n_id;
+                m_InventarioInicial = InventarioInicial.Fetch(n_id);
 
                 CboAlmacen.SelectedValue = m_InventarioInicial.n_idalm;
                 CboMoneda.SelectedValue = m_InventarioInicial.n_idmon;
@@ -190,7 +191,7 @@ namespace SSF_NET_Contabilidad.Formularios
         {
             try
             {
-                int intIdRegistro = Convert.ToInt32(DgLista.Columns[9].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+                int intIdRegistro = ((InventarioInicial)inventarioInicialBindingSource.Current).n_id;
 
                 m_InventarioInicial = InventarioInicial.Fetch(intIdRegistro);
 
@@ -200,7 +201,7 @@ namespace SSF_NET_Contabilidad.Formularios
                 {
                     //objMovimientos.AccConec = AccConec;
                     m_InventarioInicial.Delete();
-                    MessageBox.Show("¡ El registro se elimino con exito !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    MessageBox.Show("¡ El registro se elimino con éxito !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
 
                     // MOSTRAMOS LOS DATOS EN LA GRILLA
                     ListarItems();

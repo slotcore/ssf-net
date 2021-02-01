@@ -370,7 +370,7 @@ namespace SSF_NET_Ventas.Formularios
                     eGuiaCab.d_fchentdocref = Convert.ToDateTime(c_FchEnt);
                     eGuiaCab.n_anulado = 1;
                     eGuiaCab.c_numordcom = c_numpedido;
-                    eGuiaCab.n_tipgui = 1;
+                    eGuiaCab.n_tipgui = 3;
                     eGuiaCab.n_idpunpar = n_idpunpar;
                     eGuiaCab.n_idpunlle = n_idpunlle;
                     eGuiaCab.n_idmes = STU_SISTEMA.MESTRABAJO;

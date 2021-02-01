@@ -288,6 +288,7 @@
             this.CmdAddFch.TabIndex = 4;
             this.CmdAddFch.Text = "Agregar Item";
             this.CmdAddFch.UseVisualStyleBackColor = true;
+            this.CmdAddFch.Click += new System.EventHandler(this.CmdAddFch_Click);
             // 
             // CmdDelFch
             // 

@@ -129,19 +129,21 @@ namespace SSF_NET_Produccion.Formularios
                 TxtDesUniMed.Text = dtRes.Rows[0]["c_despre"].ToString();
             }
             FgItems.Rows.Count = 3;
-
-            n_val = Convert.ToInt32(dtRes.Rows[0]["n_ene"]); n_pintacelda(2, 1, n_val);
-            n_val = Convert.ToInt32(dtRes.Rows[0]["n_feb"]); n_pintacelda(2, 2, n_val);
-            n_val = Convert.ToInt32(dtRes.Rows[0]["n_mar"]); n_pintacelda(2, 3, n_val);
-            n_val = Convert.ToInt32(dtRes.Rows[0]["n_abr"]); n_pintacelda(2, 4, n_val);
-            n_val = Convert.ToInt32(dtRes.Rows[0]["n_may"]); n_pintacelda(2, 5, n_val);
-            n_val = Convert.ToInt32(dtRes.Rows[0]["n_jun"]); n_pintacelda(2, 6, n_val);
-            n_val = Convert.ToInt32(dtRes.Rows[0]["n_jul"]); n_pintacelda(2, 7, n_val);
-            n_val = Convert.ToInt32(dtRes.Rows[0]["n_ago"]); n_pintacelda(2, 8, n_val);
-            n_val = Convert.ToInt32(dtRes.Rows[0]["n_set"]); n_pintacelda(2, 9, n_val);
-            n_val = Convert.ToInt32(dtRes.Rows[0]["n_oct"]); n_pintacelda(2, 10, n_val);
-            n_val = Convert.ToInt32(dtRes.Rows[0]["n_nov"]); n_pintacelda(2, 11, n_val);
-            n_val = Convert.ToInt32(dtRes.Rows[0]["n_dic"]); n_pintacelda(2, 12, n_val);
+            if (dtRes.Rows.Count != 0)
+            {
+                n_val = Convert.ToInt32(dtRes.Rows[0]["n_ene"]); n_pintacelda(2, 1, n_val);
+                n_val = Convert.ToInt32(dtRes.Rows[0]["n_feb"]); n_pintacelda(2, 2, n_val);
+                n_val = Convert.ToInt32(dtRes.Rows[0]["n_mar"]); n_pintacelda(2, 3, n_val);
+                n_val = Convert.ToInt32(dtRes.Rows[0]["n_abr"]); n_pintacelda(2, 4, n_val);
+                n_val = Convert.ToInt32(dtRes.Rows[0]["n_may"]); n_pintacelda(2, 5, n_val);
+                n_val = Convert.ToInt32(dtRes.Rows[0]["n_jun"]); n_pintacelda(2, 6, n_val);
+                n_val = Convert.ToInt32(dtRes.Rows[0]["n_jul"]); n_pintacelda(2, 7, n_val);
+                n_val = Convert.ToInt32(dtRes.Rows[0]["n_ago"]); n_pintacelda(2, 8, n_val);
+                n_val = Convert.ToInt32(dtRes.Rows[0]["n_set"]); n_pintacelda(2, 9, n_val);
+                n_val = Convert.ToInt32(dtRes.Rows[0]["n_oct"]); n_pintacelda(2, 10, n_val);
+                n_val = Convert.ToInt32(dtRes.Rows[0]["n_nov"]); n_pintacelda(2, 11, n_val);
+                n_val = Convert.ToInt32(dtRes.Rows[0]["n_dic"]); n_pintacelda(2, 12, n_val);
+            }
 
             FgItems.SelectionMode = C1.Win.C1FlexGrid.SelectionModeEnum.Cell;
         }

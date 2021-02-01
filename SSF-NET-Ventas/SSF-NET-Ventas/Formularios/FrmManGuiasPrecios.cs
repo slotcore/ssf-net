@@ -333,7 +333,7 @@ namespace SSF_NET_Ventas.Formularios
 
             if (BE_Registro.n_tipgui == 1) { OptSinDoc.Checked = true; }
             if (BE_Registro.n_tipgui == 2) { OptConDoc.Checked = true; }
-
+            if (BE_Registro.n_tipgui == 3) { OptPedCen.Checked = true; }
 
             funFlex.FlexMostrarDatos(FgItems, arrCabeceraFlex1, dtMoviDetalle, 2, false);
 
@@ -475,7 +475,9 @@ namespace SSF_NET_Ventas.Formularios
             CmdDelIte.Enabled = !CmdDelIte.Enabled;
             CmdBusCli.Enabled = !CmdBusCli.Enabled;
 
-            //CmdDatAdi.Enabled = !CmdDatAdi.Enabled;
+            OptSinDoc.Enabled = !OptSinDoc.Enabled;
+            OptConDoc.Enabled = !OptConDoc.Enabled;
+            OptPedCen.Enabled = !OptPedCen.Enabled;
         }
         void MostrarEstadoMes(int n_IdEmpresa, int n_IdMes)
         {
@@ -643,19 +645,21 @@ namespace SSF_NET_Ventas.Formularios
             BE_ListaReg.n_idmottra = Convert.ToInt32(CboMotTras.SelectedValue);
             BE_ListaReg.c_numordcom = TxtOrdCom.Text;
 
-            if (OptConDoc.Checked == true)
+            if (OptSinDoc.Checked)
             {
-                BE_ListaReg.n_idtipdocref = 1;
-                BE_ListaReg.n_iddocref = Convert.ToInt32(LblIdOC.Text);
-            }
-            else
-            {
+                BE_ListaReg.n_tipgui = 1;
                 BE_ListaReg.n_idtipdocref = 0;
                 BE_ListaReg.n_iddocref = 0;
             }
-
+            if (OptConDoc.Checked == true)
+            {
+                BE_ListaReg.n_tipgui = 2;
+                BE_ListaReg.n_idtipdocref = 1;
+                BE_ListaReg.n_iddocref = Convert.ToInt32(LblIdOC.Text);
+            }
             if (OptPedCen.Checked)
             {
+                BE_ListaReg.n_tipgui = 3;
                 BE_ListaReg.n_idtipdocref = 79;
                 BE_ListaReg.n_iddocref = Convert.ToInt32(LblIdOC.Text);
                 BE_ListaReg.c_numdocref = TxtOrdCom.Text;

@@ -288,6 +288,18 @@ namespace SIAC_DATOS.Models.Contabilidad
             }
         }
 
+        public static void DeleteAll(int n_idconfigval, MySqlConnection connection, MySqlTransaction transaction)
+        {
+            using (MySqlCommand command = connection.CreateCommand())
+            {
+                command.Transaction = transaction;
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.CommandText = "con_configvalcue_eliminar_todo";
+                command.Parameters.Add(new MySqlParameter("@n_idconfigval", n_idconfigval));
+                int rows = command.ExecuteNonQuery();
+            }
+        }
+
         #endregion
 
         #region metodos privados

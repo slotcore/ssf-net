@@ -69,6 +69,7 @@ namespace SSF_NET_Logistica.Formularios
         DataTable dtPresentaItem = new DataTable();
         DataTable dtMeses = new DataTable();
         DataTable dtTipoDocumento = new DataTable();
+        DataTable dtTipoDocumento2 = new DataTable();
         DataTable dtSolicitante = new DataTable();
         DataTable dtArea = new DataTable();
         DataTable dtTipoExis = new DataTable();
@@ -105,6 +106,7 @@ namespace SSF_NET_Logistica.Formularios
         }
         void CargarCombos()
         {
+            DataTable dtResul = new DataTable();
             DataTableCargar();
 
             funDatos.ComboBoxCargarDataTable(CboArea, dtArea, "n_id", "c_des");
@@ -114,13 +116,12 @@ namespace SSF_NET_Logistica.Formularios
             funDatos.ComboBoxCargarDataTable(CboLocal, dtLocal, "n_id", "c_des");
             funDatos.ComboBoxCargarDataTable(CboMotivo, dtmotivo, "n_id", "c_des");
             funDatos.ComboBoxCargarDataTable(CboMoneda,dtMoneda, "n_id", "c_des");
+
+            dtResul = funDatos.DataTableFiltrar(dtTipoDocumento2, "n_id IN (75)");
+            funDatos.ComboBoxCargarDataTable(CboDocRef, dtResul, "n_id", "c_des");
         }
         void ConfigurarFormulario()
         {
-            this.Height = 595;
-            this.Width = 952;
-            Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
-            Tab_Posicionar(Tab1, 1, 42);
             Tab1.SelectedIndex = 0;
             LblTitulo2.Text = "DETALLE DEL REGISTRO";
 
@@ -230,6 +231,8 @@ namespace SSF_NET_Logistica.Formularios
             dtTipoDocumento = objTipDoc.Listar();
             dtTipoDocumento = funDatos.DataTableFiltrar(dtTipoDocumento, "n_essal = 1 AND n_idtipo = 2");
 
+            dtTipoDocumento2 = objTipDoc.Listar();
+
             objPro.mysConec = mysConec;
             dtPro = objPro.ListarProveedor(STU_SISTEMA.EMPRESAID, STU_SISTEMA.SYS_UNIBD);
 
@@ -241,16 +244,6 @@ namespace SSF_NET_Logistica.Formularios
             LblNumReg.Text = "0";
             LblNumReg.Text = funFunciones.NulosN((dtLista.Rows.Count)).ToString();
             funDbGrid.DG_FormatearGrid(DgLista, arrCabeceraDg1, dtLista, true);
-        }
-        void Tab_Dimensionar(C1.Win.C1Command.C1DockingTab dokTab, int intAlto, int intAncho)
-        {
-            Tab1.Height = intAlto;
-            Tab1.Width = intAncho;
-        }
-        void Tab_Posicionar(C1.Win.C1Command.C1DockingTab dokTab, int intPosX, int intPosY)
-        {
-            dokTab.Left = intPosX;
-            dokTab.Top = intPosY;
         }
         void VerRegistro(int n_IdRegistro)
         {
@@ -307,6 +300,14 @@ namespace SSF_NET_Logistica.Formularios
                 TxtInafec.Text = BE_Registro.n_impina.ToString("0.00");
                 TxtIgv.Text = BE_Registro.n_impigv.ToString("0.00");
                 TxtTot.Text = BE_Registro.n_imptot.ToString("0.00");
+
+                if (BE_Registro.n_docrefiddocref != 0)
+                {
+                    CboDocRef.SelectedValue = BE_Registro.n_docrefidtipdoc;
+                    LblIdDocRef.Text = BE_Registro.n_docrefiddocref.ToString();
+                    TxtNumDocRef.Text = BE_Registro.c_docrefnumdoc;
+                    TxtSerDocRef.Text = BE_Registro.c_docrefnumser;
+                }
 
                 //Funciones funFunciones = new Funciones();
                 //Genericas funDatos = new Genericas();
@@ -413,6 +414,11 @@ namespace SSF_NET_Logistica.Formularios
             TxtInafec.Text = "";
             TxtIgv.Text = "";
             TxtImpBru.Text = "";
+
+            CboDocRef.SelectedValue = 0;
+            TxtSerDocRef.Text = "";
+            TxtNumDocRef.Text = "";
+            LblIdDocRef.Text = "";
         }
         void Bloquea()
         {
@@ -434,6 +440,11 @@ namespace SSF_NET_Logistica.Formularios
             CmdAddItem.Enabled = !CmdAddItem.Enabled;
             CmdDelItem.Enabled = !CmdDelItem.Enabled;
             CmdAddNewItem.Enabled = !CmdAddNewItem.Enabled;
+
+            CboDocRef.Enabled = !CboDocRef.Enabled;
+            TxtSerDocRef.Enabled = !TxtSerDocRef.Enabled;
+            TxtNumDocRef.Enabled = !TxtNumDocRef.Enabled;
+            CmdBusDocRef.Enabled = !CmdBusDocRef.Enabled;
         }
         void ActivarTool()
         {
@@ -558,6 +569,17 @@ namespace SSF_NET_Logistica.Formularios
             BE_Registro.n_idconpag = Convert.ToInt32(CboConPag.SelectedValue);
             BE_Registro.n_impina = Convert.ToDouble(funFunciones.NulosN(TxtInafec.Text));
 
+            if (Convert.ToInt32(CboDocRef.SelectedValue) != 0)
+            {
+                if (Convert.ToInt32(LblIdDocRef.Text) != 0)
+                {
+                    BE_Registro.n_docrefidtipdoc = Convert.ToInt32(CboDocRef.SelectedValue);
+                    BE_Registro.n_docrefiddocref = Convert.ToInt32(LblIdDocRef.Text);
+                    BE_Registro.c_docrefnumser = TxtSerDocRef.Text;
+                    BE_Registro.c_docrefnumdoc = TxtNumDocRef.Text;
+                }
+            }
+
             int n_fila = 0;
             DataTable DtFiltro = new DataTable();
             string strCadenaFiltro = "";
@@ -681,6 +703,14 @@ namespace SSF_NET_Logistica.Formularios
                 MessageBox.Show("¡ La orden de compra debe de tener un item como minimo !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 booEstado = false;
                 TxtNumRuc.Focus();
+                return booEstado;
+            }
+
+            if (Convert.ToInt32(Convert.ToDateTime(TxtFchEmiDoc.Text).ToString("MM")) != Convert.ToInt32(CboMeses.SelectedValue))
+            {
+                MessageBox.Show("¡ La fecha del documento no coincide con el mes de trabajo !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                TxtFchEmiDoc.Focus();
+                booEstado = false;
                 return booEstado;
             }
 
@@ -1068,12 +1098,13 @@ namespace SSF_NET_Logistica.Formularios
                 LblNumReg.Text = (dtResult.Rows.Count).ToString();
             }
         }
-
-        private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
+        private void Tab1_SelectedIndexChanging(object sender, EventArgs e)
         {
+            TabControl tc = (TabControl)sender;
+
             if (n_QueHace != 3) { return; }
 
-            if (e.NewIndex == 1)
+            if (tc.SelectedIndex == 1)
             {
                 int intIdRegistro = Convert.ToInt32(DgLista.Columns[0].CellValue(DgLista.Row).ToString());
 
@@ -1219,6 +1250,94 @@ namespace SSF_NET_Logistica.Formularios
                     LblIdPro.Text = "";
                     TxtProv.Text = "";
                     TxtNumRuc.Text = "";
+                }
+            }
+        }
+
+        private void CmdBusDocRef_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Convert.ToInt32(CboDocRef.SelectedValue) == 75)
+                {
+                    MostrarOrdenRequerimiento();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Ocurrió un error: {0}", ex.Message), "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        void MostrarOrdenRequerimiento()
+        {
+            int n_Fila = 0;
+            int n_filaflex = 2;
+            int n_iditem = 0;
+            double n_Cantidad = 0;
+            DataTable dtresult = new DataTable();
+            CN_log_ordenrequerimiento o_pro = new CN_log_ordenrequerimiento();
+            List<BE_LOG_ORDENREQUERIMIENTODET> l_reqcabdet = new List<BE_LOG_ORDENREQUERIMIENTODET>();
+            BE_LOG_ORDENREQUERIMIENTO e_reqcab = new BE_LOG_ORDENREQUERIMIENTO();
+            o_pro.mysConec = mysConec;
+            dtresult = o_pro.OrdenesListarPorArea(STU_SISTEMA.EMPRESAID, 12);
+
+            FgItems.Rows.Count = 2;
+            if (dtresult != null)
+            {
+                if (dtresult.Rows.Count != 0)
+                {
+                    booAgregando = true;
+
+                    o_pro.TraerRegistro(Convert.ToInt32(dtresult.Rows[0]["n_id"]));
+                    e_reqcab = o_pro.entReqCab;
+
+                    TxtNumDocRef.Text = e_reqcab.c_numdoc;
+                    TxtSerDocRef.Text = e_reqcab.c_numser;
+                    LblIdDocRef.Text = e_reqcab.n_id.ToString();
+
+                    l_reqcabdet = o_pro.lstReqDet;
+                    //CmdBusPro.Enabled = false;
+
+                    if (l_reqcabdet.Count != 0)
+                    {
+                        for (n_Fila = 0; n_Fila <= (l_reqcabdet.Count - 1); n_Fila++)
+                        {
+                            FgItems.Rows.Count = FgItems.Rows.Count + 1;
+                            n_iditem = l_reqcabdet[n_Fila].n_idite;
+
+                            dtresult = funDatos.DataTableFiltrar(dtItems, "n_id = " + n_iditem + "");
+
+                            if (dtresult.Rows.Count != 0)
+                            {
+                                // MOSTRAMOS LA DESCRIPCION DEL ITEM
+                                FgItems.SetData(n_filaflex, 2, dtresult.Rows[0]["c_despro"].ToString());
+
+                                // MOSTRAMOS LA DESCRIPCION DEL TIPO DE ITEM
+                                dtresult = funDatos.DataTableFiltrar(dtTipoExis, "n_id = " + Convert.ToInt32(dtresult.Rows[0]["n_idtipexi"]) + "");
+                                FgItems.SetData(n_filaflex, 1, dtresult.Rows[0]["c_des"].ToString());
+                            }
+
+                            //MOSTRAMOS LA PRESENTACION DEL ITEM
+                            dtresult = funDatos.DataTableFiltrar(dtPresentaItem, "n_idite = " + n_iditem + " AND n_default = 1");
+                            if (dtresult.Rows.Count == 1)
+                            {
+                                FgItems.SetData(n_filaflex, 3, dtresult.Rows[0]["c_abrpre"].ToString());
+                            }
+                            else
+                            {
+                                FgItems.SetData(n_filaflex, 3, "");
+                            }
+                            //CANTIDAD
+                            n_Cantidad = Convert.ToDouble(l_reqcabdet[n_Fila].n_can);
+                            FgItems.SetData(n_filaflex, 4, n_Cantidad.ToString("0.00"));
+                            //FgItems.SetData(n_filaflex, 5, n_Cantidad.ToString("0.00"));
+                            //FgItems.SetData(n_filaflex, 7, DateTime.Now.ToString("HH:mm"));
+                            n_filaflex = n_filaflex + 1;
+                        }
+
+                        booAgregando = false;
+                    }
                 }
             }
         }

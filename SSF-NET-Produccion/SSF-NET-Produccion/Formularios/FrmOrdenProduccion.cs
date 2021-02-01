@@ -1125,6 +1125,13 @@ namespace SSF_NET_Produccion.Formularios
 
             if (booAgregando == true) { return; }
 
+            if (FgLisPro.Col == 4)
+            {
+                double n_cansol = Convert.ToDouble(funFunciones.NulosN(FgLisPro.GetData(FgLisPro.Row, 4)));
+                FgLisPro.SetData(FgLisPro.Row, 4, n_cansol.ToString("0.00"));
+                return;
+            }
+
             if (FgLisPro.Col == 6)
             {
                 //FgLisPro.Select(FgLisPro.Row - 1, 2);
@@ -1192,11 +1199,11 @@ namespace SSF_NET_Produccion.Formularios
                 FgLisPro.AllowEditing = false;
                 return;
             }
-            if (FgLisPro.Col == 4)
-            {
-                FgLisPro.AllowEditing = false;
-                return;
-            }
+            //if (FgLisPro.Col == 4) //cantidad
+            //{
+            //    FgLisPro.AllowEditing = false;
+            //    return;
+            //}
             //if (FgLisPro.Col == 5)
             //{
             //    FgLisPro.AllowEditing = false;
@@ -1394,6 +1401,11 @@ namespace SSF_NET_Produccion.Formularios
         }
 
         private void CmdVerDoc_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CmdAddFch_Click(object sender, EventArgs e)
         {
 
         }
