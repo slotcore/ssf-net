@@ -272,7 +272,17 @@ namespace SIAC_Negocio.Ventas
             // CARGAMOS LA CABECERA DEL PEDIDO
             for (n_fil = 0; n_fil <= n_NumeroElementos - 1; n_fil++)
             {
-                if (n_fil == 0) { c_numped = arrDatos[n_fil].ToString().Substring(44, 21); }        // NUMERO DEL PEDIDO
+                if (n_fil == 0)
+                {       // NUMERO DEL PEDIDO
+                    var arrayENC = arrDatos[n_fil].Split(',');
+                    if (arrayENC.Length > 0)
+                    {
+                        c_numped = arrayENC[5];
+                    }
+                    else
+                        c_numped = arrDatos[n_fil].ToString().Substring(44, 21);
+                } 
+
                 if (n_fil == 1)
                 {
                     c_fchemi = arrDatos[n_fil].ToString().Substring(4, 8);                          // FECHA DE EMISION

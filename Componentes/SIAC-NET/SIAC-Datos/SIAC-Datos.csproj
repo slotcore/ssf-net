@@ -141,7 +141,10 @@
     <Compile Include="Mantenimiento\CD_man_equipos.cs" />
     <Compile Include="Models\Almacen\Almacen.cs" />
     <Compile Include="Models\Almacen\Inventario.cs" />
+    <Compile Include="Models\Almacen\InventarioLote.cs" />
     <Compile Include="Models\Almacen\InventarioUnimed.cs" />
+    <Compile Include="Models\Almacen\Movimiento.cs" />
+    <Compile Include="Models\Almacen\MovimientoDet.cs" />
     <Compile Include="Models\Contabilidad\InventarioInicial.cs" />
     <Compile Include="Models\Contabilidad\InventarioInicialDet.cs" />
     <Compile Include="Models\Contabilidad\ConfigVal.cs" />
@@ -166,6 +169,8 @@
     <Compile Include="Models\Planillas\Empleado.cs" />
     <Compile Include="Models\Planillas\PeriodoLaboral.cs" />
     <Compile Include="Models\Produccion\ProduccionNotaIng.cs" />
+    <Compile Include="Models\Produccion\Programacion.cs" />
+    <Compile Include="Models\Produccion\ProgramacionDetPro.cs" />
     <Compile Include="Models\Produccion\SolicitudTareas.cs" />
     <Compile Include="Models\Sistema\Formulario.cs" />
     <Compile Include="Models\Sunat\TipoDocumento.cs" />

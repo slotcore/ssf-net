@@ -73,6 +73,7 @@ namespace SSF_NET.Formularios
             }
 
             TsBarraActualizacion.Visible = false;
+            TsModOffline.Visible = false;
         }
 
         public void Timer_Tick(object sender, EventArgs eArgs)
@@ -89,7 +90,8 @@ namespace SSF_NET.Formularios
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                TsModOffline.Visible = true;
+                TsLabelMensajeOffline.Text = ex.Message;
             }
         }
 
@@ -1750,6 +1752,7 @@ namespace SSF_NET.Formularios
         private bool VerificarNuevaVersion()
         {
             bool nuevaVersion = false;
+            TsModOffline.Visible = false;
 
             if (ApplicationDeployment.IsNetworkDeployed)
             {
@@ -1804,6 +1807,19 @@ namespace SSF_NET.Formularios
             {
                 Cursor.Current = Cursors.Default;
             }
+        }
+
+        private void cronogramaDeProduccionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SSF_NET_Produccion.CLS_Produccion objForm = new SSF_NET_Produccion.CLS_Produccion();
+            objForm.mysConec = Program.mysConeccion;
+            objForm.STU_SISTEMA = Program.STU_SISTEMA;
+            objForm.CronogramaProduccion();
+        }
+
+        private void procesarPedidosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

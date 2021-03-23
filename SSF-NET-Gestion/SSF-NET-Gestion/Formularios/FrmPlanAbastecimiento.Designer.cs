@@ -43,9 +43,8 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolImprimir = new System.Windows.Forms.ToolStripButton();
             this.ToolSalir = new System.Windows.Forms.ToolStripButton();
-            this.Tab1 = new C1.Win.C1Command.C1DockingTab();
-            this.c1DockingTabPage1 = new C1.Win.C1Command.C1DockingTabPage();
-            this.Sc01 = new C1.Win.C1Sizer.C1Sizer();
+            this.Tab1 = new System.Windows.Forms.TabControl();
+            this.c1DockingTabPage1 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.CboMeses = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -54,9 +53,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
             this.DgLista = new C1.Win.C1TrueDBGrid.C1TrueDBGrid();
-            this.c1DockingTabPage2 = new C1.Win.C1Command.C1DockingTabPage();
-            this.Sc02 = new C1.Win.C1Sizer.C1Sizer();
-            this.c1Sizer1 = new C1.Win.C1Sizer.C1Sizer();
+            this.c1DockingTabPage2 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
             this.CmdCompras = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -76,52 +73,36 @@
             this.label1 = new System.Windows.Forms.Label();
             this.TxtFchFin = new System.Windows.Forms.DateTimePicker();
             this.TxtFchIni = new System.Windows.Forms.DateTimePicker();
-            this.Tab2 = new C1.Win.C1Command.C1DockingTab();
-            this.c1DockingTabPage3 = new C1.Win.C1Command.C1DockingTabPage();
-            this.c1Sizer4 = new C1.Win.C1Sizer.C1Sizer();
+            this.Tab2 = new System.Windows.Forms.TabControl();
+            this.c1DockingTabPage3 = new System.Windows.Forms.TabPage();
             this.FgProdIns = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.FgProd = new C1.Win.C1FlexGrid.C1FlexGrid();
-            this.c1DockingTabPage4 = new C1.Win.C1Command.C1DockingTabPage();
-            this.c1Sizer3 = new C1.Win.C1Sizer.C1Sizer();
+            this.c1DockingTabPage4 = new System.Windows.Forms.TabPage();
             this.FgInterIns = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.FgInter = new C1.Win.C1FlexGrid.C1FlexGrid();
-            this.c1DockingTabPage5 = new C1.Win.C1Command.C1DockingTabPage();
-            this.c1Sizer2 = new C1.Win.C1Sizer.C1Sizer();
+            this.c1DockingTabPage5 = new System.Windows.Forms.TabPage();
             this.FgTodoIns = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.FgTodo = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.panel3 = new System.Windows.Forms.Panel();
             this.LblTitulo2 = new System.Windows.Forms.Label();
+            this.BtnExportarExcel = new System.Windows.Forms.Button();
             this.ToolHerramientas.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Tab1)).BeginInit();
             this.Tab1.SuspendLayout();
             this.c1DockingTabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Sc01)).BeginInit();
-            this.Sc01.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgLista)).BeginInit();
             this.c1DockingTabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Sc02)).BeginInit();
-            this.Sc02.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Sizer1)).BeginInit();
-            this.c1Sizer1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Tab2)).BeginInit();
             this.Tab2.SuspendLayout();
             this.c1DockingTabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Sizer4)).BeginInit();
-            this.c1Sizer4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FgProdIns)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FgProd)).BeginInit();
             this.c1DockingTabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Sizer3)).BeginInit();
-            this.c1Sizer3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FgInterIns)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FgInter)).BeginInit();
             this.c1DockingTabPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Sizer2)).BeginInit();
-            this.c1Sizer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FgTodoIns)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FgTodo)).BeginInit();
             this.panel3.SuspendLayout();
@@ -130,6 +111,7 @@
             // ToolHerramientas
             // 
             this.ToolHerramientas.BackColor = System.Drawing.Color.White;
+            this.ToolHerramientas.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ToolHerramientas.ForeColor = System.Drawing.Color.Black;
             this.ToolHerramientas.GripMargin = new System.Windows.Forms.Padding(0);
             this.ToolHerramientas.ImageScalingSize = new System.Drawing.Size(32, 32);
@@ -147,7 +129,7 @@
             this.ToolHerramientas.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.ToolHerramientas.Location = new System.Drawing.Point(0, 0);
             this.ToolHerramientas.Name = "ToolHerramientas";
-            this.ToolHerramientas.Size = new System.Drawing.Size(986, 39);
+            this.ToolHerramientas.Size = new System.Drawing.Size(1315, 39);
             this.ToolHerramientas.TabIndex = 19;
             this.ToolHerramientas.Text = "toolStrip1";
             // 
@@ -184,26 +166,26 @@
             this.ToolEliminar2.Image = ((System.Drawing.Image)(resources.GetObject("ToolEliminar2.Image")));
             this.ToolEliminar2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ToolEliminar2.Name = "ToolEliminar2";
-            this.ToolEliminar2.Size = new System.Drawing.Size(48, 36);
+            this.ToolEliminar2.Size = new System.Drawing.Size(51, 36);
             this.ToolEliminar2.Text = "toolStripSplitButton1";
             this.ToolEliminar2.ToolTipText = "Eliminar registro";
             // 
             // eliminarRegistroToolStripMenuItem
             // 
             this.eliminarRegistroToolStripMenuItem.Name = "eliminarRegistroToolStripMenuItem";
-            this.eliminarRegistroToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
+            this.eliminarRegistroToolStripMenuItem.Size = new System.Drawing.Size(322, 26);
             this.eliminarRegistroToolStripMenuItem.Text = "Eliminar Registro";
             this.eliminarRegistroToolStripMenuItem.Click += new System.EventHandler(this.eliminarRegistroToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(253, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(319, 6);
             // 
             // desactivarPlanDeAbastecimientoToolStripMenuItem
             // 
             this.desactivarPlanDeAbastecimientoToolStripMenuItem.Name = "desactivarPlanDeAbastecimientoToolStripMenuItem";
-            this.desactivarPlanDeAbastecimientoToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
+            this.desactivarPlanDeAbastecimientoToolStripMenuItem.Size = new System.Drawing.Size(322, 26);
             this.desactivarPlanDeAbastecimientoToolStripMenuItem.Text = "Desactivar Plan de Abastecimiento";
             this.desactivarPlanDeAbastecimientoToolStripMenuItem.Click += new System.EventHandler(this.desactivarPlanDeAbastecimientoToolStripMenuItem_Click);
             // 
@@ -277,60 +259,51 @@
             // Tab1
             // 
             this.Tab1.Alignment = System.Windows.Forms.TabAlignment.Left;
+            this.Tab1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Tab1.Controls.Add(this.c1DockingTabPage1);
             this.Tab1.Controls.Add(this.c1DockingTabPage2);
             this.Tab1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tab1.ForeColor = System.Drawing.Color.Black;
-            this.Tab1.Location = new System.Drawing.Point(3, 43);
+            this.Tab1.Location = new System.Drawing.Point(4, 53);
+            this.Tab1.Margin = new System.Windows.Forms.Padding(4);
+            this.Tab1.Multiline = true;
             this.Tab1.Name = "Tab1";
             this.Tab1.SelectedIndex = 1;
-            this.Tab1.Size = new System.Drawing.Size(980, 501);
-            this.Tab1.TabAreaSpacing = 1;
+            this.Tab1.Size = new System.Drawing.Size(1307, 617);
             this.Tab1.TabIndex = 18;
-            this.Tab1.TabsSpacing = -10;
-            this.Tab1.TabStyle = C1.Win.C1Command.TabStyleEnum.Sloping;
-            this.Tab1.VisualStyle = C1.Win.C1Command.VisualStyle.Custom;
-            this.Tab1.VisualStyleBase = C1.Win.C1Command.VisualStyle.OfficeXP;
-            this.Tab1.SelectedIndexChanging += new C1.Win.C1Command.SelectedIndexChangingEventHandler(this.Tab1_SelectedIndexChanging);
+            this.Tab1.SelectedIndexChanged += new System.EventHandler(this.Tab1_SelectedIndexChanging);
             // 
             // c1DockingTabPage1
             // 
             this.c1DockingTabPage1.BackColor = System.Drawing.Color.White;
-            this.c1DockingTabPage1.Controls.Add(this.Sc01);
+            this.c1DockingTabPage1.Controls.Add(this.panel4);
+            this.c1DockingTabPage1.Controls.Add(this.panel2);
+            this.c1DockingTabPage1.Controls.Add(this.DgLista);
             this.c1DockingTabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.c1DockingTabPage1.ForeColor = System.Drawing.Color.Black;
-            this.c1DockingTabPage1.Location = new System.Drawing.Point(28, 1);
+            this.c1DockingTabPage1.Location = new System.Drawing.Point(32, 4);
+            this.c1DockingTabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.c1DockingTabPage1.Name = "c1DockingTabPage1";
-            this.c1DockingTabPage1.Size = new System.Drawing.Size(951, 499);
+            this.c1DockingTabPage1.Size = new System.Drawing.Size(1271, 609);
             this.c1DockingTabPage1.TabIndex = 0;
             this.c1DockingTabPage1.Text = "Consulta";
             // 
-            // Sc01
-            // 
-            this.Sc01.Controls.Add(this.panel4);
-            this.Sc01.Controls.Add(this.panel2);
-            this.Sc01.Controls.Add(this.DgLista);
-            this.Sc01.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Sc01.ForeColor = System.Drawing.Color.Black;
-            this.Sc01.GridDefinition = "5.61122244488978:False:True;85.1703406813627:False:False;6.01202404809619:False:T" +
-    "rue;\t99.1587802313354:False:False;";
-            this.Sc01.Location = new System.Drawing.Point(0, 0);
-            this.Sc01.Name = "Sc01";
-            this.Sc01.Size = new System.Drawing.Size(951, 499);
-            this.Sc01.TabIndex = 0;
-            this.Sc01.Text = "c1Sizer1";
-            // 
             // panel4
             // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.Transparent;
             this.panel4.Controls.Add(this.CboMeses);
             this.panel4.Controls.Add(this.label11);
             this.panel4.Controls.Add(this.LblNumReg);
             this.panel4.Controls.Add(this.label18);
             this.panel4.ForeColor = System.Drawing.Color.Black;
-            this.panel4.Location = new System.Drawing.Point(4, 465);
+            this.panel4.Location = new System.Drawing.Point(5, 573);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(943, 30);
+            this.panel4.Size = new System.Drawing.Size(1263, 36);
             this.panel4.TabIndex = 2;
             // 
             // CboMeses
@@ -338,9 +311,10 @@
             this.CboMeses.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CboMeses.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CboMeses.FormattingEnabled = true;
-            this.CboMeses.Location = new System.Drawing.Point(661, 3);
+            this.CboMeses.Location = new System.Drawing.Point(881, 4);
+            this.CboMeses.Margin = new System.Windows.Forms.Padding(4);
             this.CboMeses.Name = "CboMeses";
-            this.CboMeses.Size = new System.Drawing.Size(143, 24);
+            this.CboMeses.Size = new System.Drawing.Size(189, 28);
             this.CboMeses.TabIndex = 3;
             this.CboMeses.Visible = false;
             // 
@@ -350,9 +324,10 @@
             this.label11.BackColor = System.Drawing.Color.White;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(553, 8);
+            this.label11.Location = new System.Drawing.Point(737, 10);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(81, 13);
+            this.label11.Size = new System.Drawing.Size(103, 17);
             this.label11.TabIndex = 2;
             this.label11.Text = "Mes trabajo :";
             this.label11.Visible = false;
@@ -363,9 +338,10 @@
             this.LblNumReg.BackColor = System.Drawing.Color.White;
             this.LblNumReg.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblNumReg.ForeColor = System.Drawing.Color.Black;
-            this.LblNumReg.Location = new System.Drawing.Point(140, 7);
+            this.LblNumReg.Location = new System.Drawing.Point(187, 9);
+            this.LblNumReg.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblNumReg.Name = "LblNumReg";
-            this.LblNumReg.Size = new System.Drawing.Size(72, 13);
+            this.LblNumReg.Size = new System.Drawing.Size(91, 17);
             this.LblNumReg.TabIndex = 1;
             this.LblNumReg.Text = "LblNumReg";
             this.LblNumReg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -376,20 +352,24 @@
             this.label18.BackColor = System.Drawing.Color.White;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.Black;
-            this.label18.Location = new System.Drawing.Point(9, 7);
+            this.label18.Location = new System.Drawing.Point(12, 9);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(86, 13);
+            this.label18.Size = new System.Drawing.Size(109, 17);
             this.label18.TabIndex = 0;
             this.label18.Text = "Nº Registros :";
             // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
             this.panel2.Controls.Add(this.label17);
             this.panel2.ForeColor = System.Drawing.Color.Black;
-            this.panel2.Location = new System.Drawing.Point(4, 4);
+            this.panel2.Location = new System.Drawing.Point(5, 5);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(943, 28);
+            this.panel2.Size = new System.Drawing.Size(1263, 28);
             this.panel2.TabIndex = 1;
             // 
             // label17
@@ -399,25 +379,32 @@
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.Black;
             this.label17.Location = new System.Drawing.Point(0, 0);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(943, 28);
+            this.label17.Size = new System.Drawing.Size(1263, 28);
             this.label17.TabIndex = 0;
             this.label17.Text = "CONSULTA";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // DgLista
             // 
+            this.DgLista.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DgLista.BackColor = System.Drawing.Color.White;
+            this.DgLista.CaptionHeight = 19;
             this.DgLista.ForeColor = System.Drawing.Color.Black;
             this.DgLista.GroupByCaption = "Drag a column header here to group by that column";
             this.DgLista.Images.Add(((System.Drawing.Image)(resources.GetObject("DgLista.Images"))));
-            this.DgLista.Location = new System.Drawing.Point(4, 36);
+            this.DgLista.Location = new System.Drawing.Point(5, 37);
+            this.DgLista.Margin = new System.Windows.Forms.Padding(4);
             this.DgLista.Name = "DgLista";
             this.DgLista.PreviewInfo.Location = new System.Drawing.Point(0, 0);
             this.DgLista.PreviewInfo.Size = new System.Drawing.Size(0, 0);
             this.DgLista.PreviewInfo.ZoomFactor = 75D;
             this.DgLista.PrintInfo.PageSettings = ((System.Drawing.Printing.PageSettings)(resources.GetObject("DgLista.PrintInfo.PageSettings")));
-            this.DgLista.Size = new System.Drawing.Size(943, 425);
+            this.DgLista.RowHeight = 17;
+            this.DgLista.Size = new System.Drawing.Size(1263, 532);
             this.DgLista.TabIndex = 0;
             this.DgLista.Text = "c1TrueDBGrid1";
             this.DgLista.DoubleClick += new System.EventHandler(this.DgLista_DoubleClick);
@@ -426,64 +413,39 @@
             // 
             // c1DockingTabPage2
             // 
-            this.c1DockingTabPage2.Controls.Add(this.Sc02);
+            this.c1DockingTabPage2.Controls.Add(this.panel1);
+            this.c1DockingTabPage2.Controls.Add(this.Tab2);
+            this.c1DockingTabPage2.Controls.Add(this.panel3);
             this.c1DockingTabPage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.c1DockingTabPage2.ForeColor = System.Drawing.Color.Black;
-            this.c1DockingTabPage2.Location = new System.Drawing.Point(28, 1);
+            this.c1DockingTabPage2.Location = new System.Drawing.Point(32, 4);
+            this.c1DockingTabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.c1DockingTabPage2.Name = "c1DockingTabPage2";
-            this.c1DockingTabPage2.Size = new System.Drawing.Size(951, 499);
+            this.c1DockingTabPage2.Size = new System.Drawing.Size(1271, 609);
             this.c1DockingTabPage2.TabIndex = 1;
             this.c1DockingTabPage2.Text = "Detalle";
             // 
-            // Sc02
-            // 
-            this.Sc02.Controls.Add(this.c1Sizer1);
-            this.Sc02.Controls.Add(this.Tab2);
-            this.Sc02.Controls.Add(this.panel3);
-            this.Sc02.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Sc02.ForeColor = System.Drawing.Color.Black;
-            this.Sc02.GridDefinition = "5.61122244488978:False:True;14.2284569138277:False:True;76.9539078156313:False:Fa" +
-    "lse;\t99.1587802313354:False:False;";
-            this.Sc02.Location = new System.Drawing.Point(0, 0);
-            this.Sc02.Name = "Sc02";
-            this.Sc02.Size = new System.Drawing.Size(951, 499);
-            this.Sc02.TabIndex = 0;
-            this.Sc02.Text = "c1Sizer2";
-            // 
-            // c1Sizer1
-            // 
-            this.c1Sizer1.Controls.Add(this.panel5);
-            this.c1Sizer1.Controls.Add(this.panel1);
-            this.c1Sizer1.ForeColor = System.Drawing.Color.Black;
-            this.c1Sizer1.GridDefinition = "97.1830985915493:False:False;\t72.6405090137858:False:False;27.0413573700954:False" +
-    ":True;";
-            this.c1Sizer1.Location = new System.Drawing.Point(4, 36);
-            this.c1Sizer1.Margin = new System.Windows.Forms.Padding(1);
-            this.c1Sizer1.Name = "c1Sizer1";
-            this.c1Sizer1.Padding = new System.Windows.Forms.Padding(1);
-            this.c1Sizer1.Size = new System.Drawing.Size(943, 71);
-            this.c1Sizer1.SplitterWidth = 1;
-            this.c1Sizer1.TabIndex = 18;
-            this.c1Sizer1.Text = "c1Sizer1";
-            // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.BtnExportarExcel);
             this.panel5.Controls.Add(this.CmdCompras);
             this.panel5.Controls.Add(this.button2);
             this.panel5.Controls.Add(this.CmdVerEstacion);
             this.panel5.Controls.Add(this.CmdVerRec);
             this.panel5.Controls.Add(this.CmdAddValores);
-            this.panel5.Location = new System.Drawing.Point(687, 1);
+            this.panel5.Location = new System.Drawing.Point(844, 13);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(255, 69);
+            this.panel5.Size = new System.Drawing.Size(413, 66);
             this.panel5.TabIndex = 48;
             // 
             // CmdCompras
             // 
             this.CmdCompras.Image = ((System.Drawing.Image)(resources.GetObject("CmdCompras.Image")));
-            this.CmdCompras.Location = new System.Drawing.Point(203, 13);
+            this.CmdCompras.Location = new System.Drawing.Point(271, 8);
+            this.CmdCompras.Margin = new System.Windows.Forms.Padding(4);
             this.CmdCompras.Name = "CmdCompras";
-            this.CmdCompras.Size = new System.Drawing.Size(48, 42);
+            this.CmdCompras.Size = new System.Drawing.Size(64, 52);
             this.CmdCompras.TabIndex = 50;
             this.CmdCompras.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.CmdCompras.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
@@ -493,9 +455,10 @@
             // button2
             // 
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(155, 13);
+            this.button2.Location = new System.Drawing.Point(207, 8);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(48, 42);
+            this.button2.Size = new System.Drawing.Size(64, 52);
             this.button2.TabIndex = 49;
             this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
@@ -505,9 +468,10 @@
             // CmdVerEstacion
             // 
             this.CmdVerEstacion.Image = ((System.Drawing.Image)(resources.GetObject("CmdVerEstacion.Image")));
-            this.CmdVerEstacion.Location = new System.Drawing.Point(102, 13);
+            this.CmdVerEstacion.Location = new System.Drawing.Point(136, 8);
+            this.CmdVerEstacion.Margin = new System.Windows.Forms.Padding(4);
             this.CmdVerEstacion.Name = "CmdVerEstacion";
-            this.CmdVerEstacion.Size = new System.Drawing.Size(48, 42);
+            this.CmdVerEstacion.Size = new System.Drawing.Size(64, 52);
             this.CmdVerEstacion.TabIndex = 48;
             this.CmdVerEstacion.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.CmdVerEstacion.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
@@ -517,9 +481,10 @@
             // CmdVerRec
             // 
             this.CmdVerRec.Image = ((System.Drawing.Image)(resources.GetObject("CmdVerRec.Image")));
-            this.CmdVerRec.Location = new System.Drawing.Point(54, 13);
+            this.CmdVerRec.Location = new System.Drawing.Point(72, 8);
+            this.CmdVerRec.Margin = new System.Windows.Forms.Padding(4);
             this.CmdVerRec.Name = "CmdVerRec";
-            this.CmdVerRec.Size = new System.Drawing.Size(48, 42);
+            this.CmdVerRec.Size = new System.Drawing.Size(64, 52);
             this.CmdVerRec.TabIndex = 47;
             this.CmdVerRec.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.CmdVerRec.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
@@ -530,9 +495,10 @@
             // 
             this.CmdAddValores.Enabled = false;
             this.CmdAddValores.Image = ((System.Drawing.Image)(resources.GetObject("CmdAddValores.Image")));
-            this.CmdAddValores.Location = new System.Drawing.Point(5, 13);
+            this.CmdAddValores.Location = new System.Drawing.Point(7, 8);
+            this.CmdAddValores.Margin = new System.Windows.Forms.Padding(4);
             this.CmdAddValores.Name = "CmdAddValores";
-            this.CmdAddValores.Size = new System.Drawing.Size(48, 42);
+            this.CmdAddValores.Size = new System.Drawing.Size(64, 52);
             this.CmdAddValores.TabIndex = 42;
             this.CmdAddValores.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.CmdAddValores.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
@@ -542,6 +508,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.CboMesIni);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.CmdBusCli);
@@ -555,18 +522,20 @@
             this.panel1.Controls.Add(this.TxtFchFin);
             this.panel1.Controls.Add(this.TxtFchIni);
             this.panel1.ForeColor = System.Drawing.Color.Black;
-            this.panel1.Location = new System.Drawing.Point(1, 1);
+            this.panel1.Location = new System.Drawing.Point(3, 39);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(685, 69);
+            this.panel1.Size = new System.Drawing.Size(1261, 91);
             this.panel1.TabIndex = 0;
             // 
             // CboMesIni
             // 
             this.CboMesIni.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CboMesIni.FormattingEnabled = true;
-            this.CboMesIni.Location = new System.Drawing.Point(94, 25);
+            this.CboMesIni.Location = new System.Drawing.Point(125, 31);
+            this.CboMesIni.Margin = new System.Windows.Forms.Padding(4);
             this.CboMesIni.Name = "CboMesIni";
-            this.CboMesIni.Size = new System.Drawing.Size(150, 21);
+            this.CboMesIni.Size = new System.Drawing.Size(199, 25);
             this.CboMesIni.TabIndex = 1;
             this.CboMesIni.SelectedValueChanged += new System.EventHandler(this.CboMesIni_SelectedValueChanged);
             // 
@@ -575,9 +544,10 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(2, 28);
+            this.label4.Location = new System.Drawing.Point(3, 34);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 13);
+            this.label4.Size = new System.Drawing.Size(90, 17);
             this.label4.TabIndex = 49;
             this.label4.Text = "Mes de Inicio";
             // 
@@ -587,9 +557,10 @@
             this.CmdBusCli.Enabled = false;
             this.CmdBusCli.ForeColor = System.Drawing.Color.Black;
             this.CmdBusCli.Image = ((System.Drawing.Image)(resources.GetObject("CmdBusCli.Image")));
-            this.CmdBusCli.Location = new System.Drawing.Point(642, 0);
+            this.CmdBusCli.Location = new System.Drawing.Point(737, 2);
+            this.CmdBusCli.Margin = new System.Windows.Forms.Padding(4);
             this.CmdBusCli.Name = "CmdBusCli";
-            this.CmdBusCli.Size = new System.Drawing.Size(40, 28);
+            this.CmdBusCli.Size = new System.Drawing.Size(53, 34);
             this.CmdBusCli.TabIndex = 46;
             this.CmdBusCli.UseVisualStyleBackColor = false;
             this.CmdBusCli.Click += new System.EventHandler(this.CmdBusCli_Click);
@@ -600,9 +571,10 @@
             this.LblIdPlaVen.BackColor = System.Drawing.Color.Transparent;
             this.LblIdPlaVen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblIdPlaVen.ForeColor = System.Drawing.Color.Red;
-            this.LblIdPlaVen.Location = new System.Drawing.Point(607, 30);
+            this.LblIdPlaVen.Location = new System.Drawing.Point(696, 61);
+            this.LblIdPlaVen.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblIdPlaVen.Name = "LblIdPlaVen";
-            this.LblIdPlaVen.Size = new System.Drawing.Size(75, 13);
+            this.LblIdPlaVen.Size = new System.Drawing.Size(94, 17);
             this.LblIdPlaVen.TabIndex = 45;
             this.LblIdPlaVen.Text = "LblIdPlaVen";
             this.LblIdPlaVen.Visible = false;
@@ -612,9 +584,10 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(2, 4);
+            this.label3.Location = new System.Drawing.Point(3, 5);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 13);
+            this.label3.Size = new System.Drawing.Size(104, 17);
             this.label3.TabIndex = 44;
             this.label3.Text = "Plan de Ventas";
             // 
@@ -625,10 +598,11 @@
             this.TxtPlaVen.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtPlaVen.Enabled = false;
             this.TxtPlaVen.ForeColor = System.Drawing.Color.Black;
-            this.TxtPlaVen.Location = new System.Drawing.Point(94, 2);
+            this.TxtPlaVen.Location = new System.Drawing.Point(125, 2);
+            this.TxtPlaVen.Margin = new System.Windows.Forms.Padding(4);
             this.TxtPlaVen.Multiline = true;
             this.TxtPlaVen.Name = "TxtPlaVen";
-            this.TxtPlaVen.Size = new System.Drawing.Size(545, 21);
+            this.TxtPlaVen.Size = new System.Drawing.Size(604, 25);
             this.TxtPlaVen.TabIndex = 0;
             // 
             // TxtDes
@@ -638,10 +612,11 @@
             this.TxtDes.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtDes.Enabled = false;
             this.TxtDes.ForeColor = System.Drawing.Color.Black;
-            this.TxtDes.Location = new System.Drawing.Point(94, 48);
+            this.TxtDes.Location = new System.Drawing.Point(125, 59);
+            this.TxtDes.Margin = new System.Windows.Forms.Padding(4);
             this.TxtDes.Multiline = true;
             this.TxtDes.Name = "TxtDes";
-            this.TxtDes.Size = new System.Drawing.Size(545, 21);
+            this.TxtDes.Size = new System.Drawing.Size(665, 25);
             this.TxtDes.TabIndex = 2;
             // 
             // label9
@@ -649,9 +624,10 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(2, 50);
+            this.label9.Location = new System.Drawing.Point(3, 62);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(63, 13);
+            this.label9.Size = new System.Drawing.Size(82, 17);
             this.label9.TabIndex = 37;
             this.label9.Text = "Descripcion";
             // 
@@ -660,9 +636,10 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(477, 23);
+            this.label2.Location = new System.Drawing.Point(561, 34);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 13);
+            this.label2.Size = new System.Drawing.Size(91, 17);
             this.label2.TabIndex = 3;
             this.label2.Text = "Fch. Termino";
             this.label2.Visible = false;
@@ -672,9 +649,10 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(275, 26);
+            this.label1.Location = new System.Drawing.Point(331, 32);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 13);
+            this.label1.Size = new System.Drawing.Size(71, 17);
             this.label1.TabIndex = 2;
             this.label1.Text = "Fch. Inicio";
             this.label1.Visible = false;
@@ -685,9 +663,10 @@
             this.TxtFchFin.Enabled = false;
             this.TxtFchFin.ForeColor = System.Drawing.Color.Black;
             this.TxtFchFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.TxtFchFin.Location = new System.Drawing.Point(557, 23);
+            this.TxtFchFin.Location = new System.Drawing.Point(660, 31);
+            this.TxtFchFin.Margin = new System.Windows.Forms.Padding(4);
             this.TxtFchFin.Name = "TxtFchFin";
-            this.TxtFchFin.Size = new System.Drawing.Size(101, 20);
+            this.TxtFchFin.Size = new System.Drawing.Size(133, 23);
             this.TxtFchFin.TabIndex = 1;
             this.TxtFchFin.Visible = false;
             // 
@@ -697,257 +676,249 @@
             this.TxtFchIni.Enabled = false;
             this.TxtFchIni.ForeColor = System.Drawing.Color.Black;
             this.TxtFchIni.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.TxtFchIni.Location = new System.Drawing.Point(365, 23);
+            this.TxtFchIni.Location = new System.Drawing.Point(410, 32);
+            this.TxtFchIni.Margin = new System.Windows.Forms.Padding(4);
             this.TxtFchIni.Name = "TxtFchIni";
-            this.TxtFchIni.Size = new System.Drawing.Size(101, 20);
+            this.TxtFchIni.Size = new System.Drawing.Size(133, 23);
             this.TxtFchIni.TabIndex = 0;
             this.TxtFchIni.Visible = false;
             // 
             // Tab2
             // 
             this.Tab2.Alignment = System.Windows.Forms.TabAlignment.Bottom;
+            this.Tab2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Tab2.Controls.Add(this.c1DockingTabPage3);
             this.Tab2.Controls.Add(this.c1DockingTabPage4);
             this.Tab2.Controls.Add(this.c1DockingTabPage5);
             this.Tab2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tab2.ForeColor = System.Drawing.Color.Black;
-            this.Tab2.Location = new System.Drawing.Point(4, 111);
+            this.Tab2.Location = new System.Drawing.Point(5, 135);
+            this.Tab2.Margin = new System.Windows.Forms.Padding(4);
             this.Tab2.Name = "Tab2";
             this.Tab2.SelectedIndex = 2;
-            this.Tab2.Size = new System.Drawing.Size(943, 384);
-            this.Tab2.TabAreaSpacing = 1;
+            this.Tab2.Size = new System.Drawing.Size(1263, 471);
             this.Tab2.TabIndex = 36;
-            this.Tab2.TabsSpacing = -10;
-            this.Tab2.TabStyle = C1.Win.C1Command.TabStyleEnum.Sloping;
-            this.Tab2.VisualStyle = C1.Win.C1Command.VisualStyle.Custom;
-            this.Tab2.VisualStyleBase = C1.Win.C1Command.VisualStyle.OfficeXP;
             // 
             // c1DockingTabPage3
             // 
             this.c1DockingTabPage3.BackColor = System.Drawing.SystemColors.Control;
-            this.c1DockingTabPage3.Controls.Add(this.c1Sizer4);
+            this.c1DockingTabPage3.Controls.Add(this.FgProdIns);
+            this.c1DockingTabPage3.Controls.Add(this.FgProd);
             this.c1DockingTabPage3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.c1DockingTabPage3.ForeColor = System.Drawing.Color.Black;
-            this.c1DockingTabPage3.Location = new System.Drawing.Point(1, 1);
+            this.c1DockingTabPage3.Location = new System.Drawing.Point(4, 4);
+            this.c1DockingTabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.c1DockingTabPage3.Name = "c1DockingTabPage3";
-            this.c1DockingTabPage3.Size = new System.Drawing.Size(941, 360);
+            this.c1DockingTabPage3.Size = new System.Drawing.Size(1255, 441);
             this.c1DockingTabPage3.TabIndex = 0;
             this.c1DockingTabPage3.Text = "Terminado";
             // 
-            // c1Sizer4
-            // 
-            this.c1Sizer4.Controls.Add(this.FgProdIns);
-            this.c1Sizer4.Controls.Add(this.FgProd);
-            this.c1Sizer4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.c1Sizer4.GridDefinition = "48.3333333333333:False:False;48.3333333333333:False:False;\t99.1498405951116:False" +
-    ":False;";
-            this.c1Sizer4.Location = new System.Drawing.Point(0, 0);
-            this.c1Sizer4.Name = "c1Sizer4";
-            this.c1Sizer4.Size = new System.Drawing.Size(941, 360);
-            this.c1Sizer4.TabIndex = 21;
-            this.c1Sizer4.Text = "c1Sizer4";
-            // 
             // FgProdIns
             // 
+            this.FgProdIns.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.FgProdIns.BackColor = System.Drawing.Color.White;
             this.FgProdIns.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
-            this.FgProdIns.ColumnInfo = "3,1,0,0,0,85,Columns:0{Width:9;}\t1{Width:217;Caption:\"Unidad Medida\";Style:\"TextA" +
-    "lign:CenterCenter;\";StyleFixed:\"TextAlign:CenterCenter;\";}\t2{Width:30;}\t";
+            this.FgProdIns.ColumnInfo = "3,1,0,0,0,100,Columns:0{Width:9;}\t1{Width:217;Caption:\"Unidad Medida\";Style:\"Text" +
+    "Align:CenterCenter;\";StyleFixed:\"TextAlign:CenterCenter;\";}\t2{Width:30;}\t";
             this.FgProdIns.ForeColor = System.Drawing.Color.Black;
-            this.FgProdIns.Location = new System.Drawing.Point(4, 182);
+            this.FgProdIns.Location = new System.Drawing.Point(5, 237);
+            this.FgProdIns.Margin = new System.Windows.Forms.Padding(4);
             this.FgProdIns.Name = "FgProdIns";
-            this.FgProdIns.Rows.DefaultSize = 17;
-            this.FgProdIns.Size = new System.Drawing.Size(933, 174);
+            this.FgProdIns.Rows.DefaultSize = 20;
+            this.FgProdIns.Size = new System.Drawing.Size(1251, 200);
             this.FgProdIns.StyleInfo = resources.GetString("FgProdIns.StyleInfo");
             this.FgProdIns.TabIndex = 20;
             // 
             // FgProd
             // 
+            this.FgProd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.FgProd.BackColor = System.Drawing.Color.White;
             this.FgProd.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
-            this.FgProd.ColumnInfo = "3,1,0,0,0,85,Columns:0{Width:9;}\t1{Width:217;Caption:\"Unidad Medida\";Style:\"TextA" +
-    "lign:CenterCenter;\";StyleFixed:\"TextAlign:CenterCenter;\";}\t2{Width:30;}\t";
+            this.FgProd.ColumnInfo = "3,1,0,0,0,100,Columns:0{Width:9;}\t1{Width:217;Caption:\"Unidad Medida\";Style:\"Text" +
+    "Align:CenterCenter;\";StyleFixed:\"TextAlign:CenterCenter;\";}\t2{Width:30;}\t";
             this.FgProd.ForeColor = System.Drawing.Color.Black;
-            this.FgProd.Location = new System.Drawing.Point(4, 4);
+            this.FgProd.Location = new System.Drawing.Point(5, 5);
+            this.FgProd.Margin = new System.Windows.Forms.Padding(4);
             this.FgProd.Name = "FgProd";
-            this.FgProd.Rows.DefaultSize = 17;
-            this.FgProd.Size = new System.Drawing.Size(933, 174);
+            this.FgProd.Rows.DefaultSize = 20;
+            this.FgProd.Size = new System.Drawing.Size(1251, 228);
             this.FgProd.StyleInfo = resources.GetString("FgProd.StyleInfo");
             this.FgProd.TabIndex = 13;
             // 
             // c1DockingTabPage4
             // 
-            this.c1DockingTabPage4.Controls.Add(this.c1Sizer3);
+            this.c1DockingTabPage4.Controls.Add(this.FgInterIns);
+            this.c1DockingTabPage4.Controls.Add(this.FgInter);
             this.c1DockingTabPage4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.c1DockingTabPage4.ForeColor = System.Drawing.Color.Black;
-            this.c1DockingTabPage4.Location = new System.Drawing.Point(1, 1);
+            this.c1DockingTabPage4.Location = new System.Drawing.Point(4, 4);
+            this.c1DockingTabPage4.Margin = new System.Windows.Forms.Padding(4);
             this.c1DockingTabPage4.Name = "c1DockingTabPage4";
-            this.c1DockingTabPage4.Size = new System.Drawing.Size(941, 360);
+            this.c1DockingTabPage4.Size = new System.Drawing.Size(1255, 441);
             this.c1DockingTabPage4.TabIndex = 1;
             this.c1DockingTabPage4.Text = "Intermedio";
             // 
-            // c1Sizer3
-            // 
-            this.c1Sizer3.Controls.Add(this.FgInterIns);
-            this.c1Sizer3.Controls.Add(this.FgInter);
-            this.c1Sizer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.c1Sizer3.GridDefinition = "48.3333333333333:False:False;48.3333333333333:False:False;\t99.1498405951116:False" +
-    ":False;";
-            this.c1Sizer3.Location = new System.Drawing.Point(0, 0);
-            this.c1Sizer3.Name = "c1Sizer3";
-            this.c1Sizer3.Size = new System.Drawing.Size(941, 360);
-            this.c1Sizer3.TabIndex = 21;
-            this.c1Sizer3.Text = "c1Sizer3";
-            // 
             // FgInterIns
             // 
+            this.FgInterIns.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.FgInterIns.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.FgInterIns.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
-            this.FgInterIns.ColumnInfo = "3,1,0,0,0,85,Columns:0{Width:9;}\t1{Width:217;Caption:\"Unidad Medida\";Style:\"TextA" +
-    "lign:CenterCenter;\";StyleFixed:\"TextAlign:CenterCenter;\";}\t2{Width:30;}\t";
+            this.FgInterIns.ColumnInfo = "3,1,0,0,0,100,Columns:0{Width:9;}\t1{Width:217;Caption:\"Unidad Medida\";Style:\"Text" +
+    "Align:CenterCenter;\";StyleFixed:\"TextAlign:CenterCenter;\";}\t2{Width:30;}\t";
             this.FgInterIns.ForeColor = System.Drawing.Color.Black;
-            this.FgInterIns.Location = new System.Drawing.Point(4, 182);
+            this.FgInterIns.Location = new System.Drawing.Point(5, 237);
+            this.FgInterIns.Margin = new System.Windows.Forms.Padding(4);
             this.FgInterIns.Name = "FgInterIns";
-            this.FgInterIns.Rows.DefaultSize = 17;
-            this.FgInterIns.Size = new System.Drawing.Size(933, 174);
+            this.FgInterIns.Rows.DefaultSize = 20;
+            this.FgInterIns.Size = new System.Drawing.Size(1251, 200);
             this.FgInterIns.StyleInfo = resources.GetString("FgInterIns.StyleInfo");
             this.FgInterIns.TabIndex = 37;
             // 
             // FgInter
             // 
+            this.FgInter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.FgInter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.FgInter.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
-            this.FgInter.ColumnInfo = "3,1,0,0,0,85,Columns:0{Width:9;}\t1{Width:217;Caption:\"Unidad Medida\";Style:\"TextA" +
-    "lign:CenterCenter;\";StyleFixed:\"TextAlign:CenterCenter;\";}\t2{Width:30;}\t";
+            this.FgInter.ColumnInfo = "3,1,0,0,0,100,Columns:0{Width:9;}\t1{Width:217;Caption:\"Unidad Medida\";Style:\"Text" +
+    "Align:CenterCenter;\";StyleFixed:\"TextAlign:CenterCenter;\";}\t2{Width:30;}\t";
             this.FgInter.ForeColor = System.Drawing.Color.Black;
-            this.FgInter.Location = new System.Drawing.Point(4, 4);
+            this.FgInter.Location = new System.Drawing.Point(5, 5);
+            this.FgInter.Margin = new System.Windows.Forms.Padding(4);
             this.FgInter.Name = "FgInter";
-            this.FgInter.Rows.DefaultSize = 17;
-            this.FgInter.Size = new System.Drawing.Size(933, 174);
+            this.FgInter.Rows.DefaultSize = 20;
+            this.FgInter.Size = new System.Drawing.Size(1251, 228);
             this.FgInter.StyleInfo = resources.GetString("FgInter.StyleInfo");
             this.FgInter.TabIndex = 36;
             // 
             // c1DockingTabPage5
             // 
-            this.c1DockingTabPage5.Controls.Add(this.c1Sizer2);
-            this.c1DockingTabPage5.Location = new System.Drawing.Point(1, 1);
+            this.c1DockingTabPage5.Controls.Add(this.FgTodoIns);
+            this.c1DockingTabPage5.Controls.Add(this.FgTodo);
+            this.c1DockingTabPage5.Location = new System.Drawing.Point(4, 4);
+            this.c1DockingTabPage5.Margin = new System.Windows.Forms.Padding(4);
             this.c1DockingTabPage5.Name = "c1DockingTabPage5";
-            this.c1DockingTabPage5.Size = new System.Drawing.Size(941, 360);
+            this.c1DockingTabPage5.Size = new System.Drawing.Size(1255, 441);
             this.c1DockingTabPage5.TabIndex = 2;
             this.c1DockingTabPage5.Text = "Todos";
             // 
-            // c1Sizer2
-            // 
-            this.c1Sizer2.Controls.Add(this.FgTodoIns);
-            this.c1Sizer2.Controls.Add(this.FgTodo);
-            this.c1Sizer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.c1Sizer2.GridDefinition = "48.3333333333333:False:False;48.3333333333333:False:False;\t99.1498405951116:False" +
-    ":False;";
-            this.c1Sizer2.Location = new System.Drawing.Point(0, 0);
-            this.c1Sizer2.Name = "c1Sizer2";
-            this.c1Sizer2.Size = new System.Drawing.Size(941, 360);
-            this.c1Sizer2.TabIndex = 20;
-            this.c1Sizer2.Text = "c1Sizer2";
-            // 
             // FgTodoIns
             // 
+            this.FgTodoIns.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.FgTodoIns.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.FgTodoIns.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
             this.FgTodoIns.ColumnInfo = "3,1,0,0,0,85,Columns:0{Width:9;}\t1{Width:217;Caption:\"Unidad Medida\";Style:\"TextA" +
     "lign:CenterCenter;\";StyleFixed:\"TextAlign:CenterCenter;\";}\t2{Width:30;}\t";
             this.FgTodoIns.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FgTodoIns.ForeColor = System.Drawing.Color.Black;
-            this.FgTodoIns.Location = new System.Drawing.Point(4, 182);
+            this.FgTodoIns.Location = new System.Drawing.Point(5, 237);
+            this.FgTodoIns.Margin = new System.Windows.Forms.Padding(4);
             this.FgTodoIns.Name = "FgTodoIns";
             this.FgTodoIns.Rows.DefaultSize = 17;
-            this.FgTodoIns.Size = new System.Drawing.Size(933, 174);
+            this.FgTodoIns.Size = new System.Drawing.Size(1251, 200);
             this.FgTodoIns.StyleInfo = resources.GetString("FgTodoIns.StyleInfo");
             this.FgTodoIns.TabIndex = 38;
             // 
             // FgTodo
             // 
+            this.FgTodo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.FgTodo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.FgTodo.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
             this.FgTodo.ColumnInfo = "3,1,0,0,0,85,Columns:0{Width:9;}\t1{Width:217;Caption:\"Unidad Medida\";Style:\"TextA" +
     "lign:CenterCenter;\";StyleFixed:\"TextAlign:CenterCenter;\";}\t2{Width:30;}\t";
             this.FgTodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FgTodo.ForeColor = System.Drawing.Color.Black;
-            this.FgTodo.Location = new System.Drawing.Point(4, 4);
+            this.FgTodo.Location = new System.Drawing.Point(5, 5);
+            this.FgTodo.Margin = new System.Windows.Forms.Padding(4);
             this.FgTodo.Name = "FgTodo";
             this.FgTodo.Rows.DefaultSize = 17;
-            this.FgTodo.Size = new System.Drawing.Size(933, 174);
+            this.FgTodo.Size = new System.Drawing.Size(1251, 228);
             this.FgTodo.StyleInfo = resources.GetString("FgTodo.StyleInfo");
             this.FgTodo.TabIndex = 37;
             // 
             // panel3
             // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
             this.panel3.Controls.Add(this.LblTitulo2);
             this.panel3.ForeColor = System.Drawing.Color.Black;
-            this.panel3.Location = new System.Drawing.Point(4, 4);
+            this.panel3.Location = new System.Drawing.Point(5, 5);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(943, 28);
+            this.panel3.Size = new System.Drawing.Size(1263, 28);
             this.panel3.TabIndex = 8;
             // 
             // LblTitulo2
             // 
             this.LblTitulo2.BackColor = System.Drawing.Color.Transparent;
+            this.LblTitulo2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LblTitulo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblTitulo2.ForeColor = System.Drawing.Color.Black;
-            this.LblTitulo2.Location = new System.Drawing.Point(1, 0);
+            this.LblTitulo2.Location = new System.Drawing.Point(0, 0);
+            this.LblTitulo2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblTitulo2.Name = "LblTitulo2";
-            this.LblTitulo2.Size = new System.Drawing.Size(921, 28);
+            this.LblTitulo2.Size = new System.Drawing.Size(1263, 28);
             this.LblTitulo2.TabIndex = 0;
             this.LblTitulo2.Text = "DETALLE DEL REGISTRO";
             this.LblTitulo2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // BtnExportarExcel
+            // 
+            this.BtnExportarExcel.Image = global::SSF_NET_Gestion.Properties.Resources.exporttoxls_32x32;
+            this.BtnExportarExcel.Location = new System.Drawing.Point(343, 8);
+            this.BtnExportarExcel.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnExportarExcel.Name = "BtnExportarExcel";
+            this.BtnExportarExcel.Size = new System.Drawing.Size(64, 52);
+            this.BtnExportarExcel.TabIndex = 51;
+            this.BtnExportarExcel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnExportarExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.BtnExportarExcel.UseVisualStyleBackColor = true;
+            this.BtnExportarExcel.Click += new System.EventHandler(this.BtnExportarExcel_Click);
+            // 
             // FrmPlanAbastecimiento
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(986, 549);
+            this.ClientSize = new System.Drawing.Size(1315, 676);
             this.Controls.Add(this.ToolHerramientas);
             this.Controls.Add(this.Tab1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmPlanAbastecimiento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmPlanAbastecimiento";
             this.Activated += new System.EventHandler(this.FrmPlanAbastecimiento_Activated);
             this.Load += new System.EventHandler(this.FrmPlanAbastecimiento_Load);
-            this.Resize += new System.EventHandler(this.FrmPlanAbastecimiento_Resize);
             this.ToolHerramientas.ResumeLayout(false);
             this.ToolHerramientas.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Tab1)).EndInit();
             this.Tab1.ResumeLayout(false);
             this.c1DockingTabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Sc01)).EndInit();
-            this.Sc01.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DgLista)).EndInit();
             this.c1DockingTabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Sc02)).EndInit();
-            this.Sc02.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.c1Sizer1)).EndInit();
-            this.c1Sizer1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Tab2)).EndInit();
             this.Tab2.ResumeLayout(false);
             this.c1DockingTabPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.c1Sizer4)).EndInit();
-            this.c1Sizer4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.FgProdIns)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FgProd)).EndInit();
             this.c1DockingTabPage4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.c1Sizer3)).EndInit();
-            this.c1Sizer3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.FgInterIns)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FgInter)).EndInit();
             this.c1DockingTabPage5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.c1Sizer2)).EndInit();
-            this.c1Sizer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.FgTodoIns)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FgTodo)).EndInit();
             this.panel3.ResumeLayout(false);
@@ -968,9 +939,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton ToolImprimir;
         private System.Windows.Forms.ToolStripButton ToolSalir;
-        private C1.Win.C1Command.C1DockingTab Tab1;
-        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage1;
-        private C1.Win.C1Sizer.C1Sizer Sc01;
+        private System.Windows.Forms.TabControl Tab1;
+        private System.Windows.Forms.TabPage c1DockingTabPage1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.ComboBox CboMeses;
         private System.Windows.Forms.Label label11;
@@ -979,9 +949,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label17;
         private C1.Win.C1TrueDBGrid.C1TrueDBGrid DgLista;
-        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage2;
-        private C1.Win.C1Sizer.C1Sizer Sc02;
-        private C1.Win.C1Sizer.C1Sizer c1Sizer1;
+        private System.Windows.Forms.TabPage c1DockingTabPage2;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button CmdVerEstacion;
         private System.Windows.Forms.Button CmdVerRec;
@@ -997,20 +965,17 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker TxtFchFin;
         private System.Windows.Forms.DateTimePicker TxtFchIni;
-        private C1.Win.C1Command.C1DockingTab Tab2;
-        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage3;
+        private System.Windows.Forms.TabControl Tab2;
+        private System.Windows.Forms.TabPage c1DockingTabPage3;
         private C1.Win.C1FlexGrid.C1FlexGrid FgProd;
-        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage4;
+        private System.Windows.Forms.TabPage c1DockingTabPage4;
         private C1.Win.C1FlexGrid.C1FlexGrid FgInter;
-        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage5;
+        private System.Windows.Forms.TabPage c1DockingTabPage5;
         private C1.Win.C1FlexGrid.C1FlexGrid FgTodo;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label LblTitulo2;
-        private C1.Win.C1Sizer.C1Sizer c1Sizer4;
         private C1.Win.C1FlexGrid.C1FlexGrid FgProdIns;
-        private C1.Win.C1Sizer.C1Sizer c1Sizer3;
         private C1.Win.C1FlexGrid.C1FlexGrid FgInterIns;
-        private C1.Win.C1Sizer.C1Sizer c1Sizer2;
         private C1.Win.C1FlexGrid.C1FlexGrid FgTodoIns;
         private System.Windows.Forms.ToolStripSplitButton ToolEliminar2;
         private System.Windows.Forms.ToolStripMenuItem eliminarRegistroToolStripMenuItem;
@@ -1020,5 +985,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox CboMesIni;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button BtnExportarExcel;
     }
 }

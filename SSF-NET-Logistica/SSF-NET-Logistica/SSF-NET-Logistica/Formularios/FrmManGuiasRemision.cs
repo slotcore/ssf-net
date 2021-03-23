@@ -122,11 +122,6 @@ namespace SSF_NET_Logistica.Formularios
         }
         void ConfigurarFormulario()
         {
-            this.Height = 612;
-            this.Width = 1048;
-
-            Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
-            Tab_Posicionar(Tab1, 1, 42);
             Tab1.SelectedIndex = 0;
             LblTitulo2.Text = "DETALLE DEL REGISTRO";
 
@@ -274,16 +269,6 @@ namespace SSF_NET_Logistica.Formularios
         {
             LblNumReg.Text = (dtLista.Rows.Count).ToString();
             funDbGrid.DG_FormatearGrid(DgLista, arrCabeceraDg1, dtLista, true);
-        }
-        void Tab_Dimensionar(C1.Win.C1Command.C1DockingTab dokTab, int intAlto, int intAncho)
-        {
-            Tab1.Height = intAlto;
-            Tab1.Width = intAncho;
-        }
-        void Tab_Posicionar(C1.Win.C1Command.C1DockingTab dokTab, int intPosX, int intPosY)
-        {
-            dokTab.Left = intPosX;
-            dokTab.Top = intPosY;
         }
         void VerRegistro(int n_IdRegistro)
         {
@@ -983,17 +968,21 @@ namespace SSF_NET_Logistica.Formularios
 
             this.Close();
         }
-        private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
+        private void Tab1_SelectedIndexChanging(object sender, EventArgs e)
         {
+            TabControl tc = (TabControl)sender;
+
             if (n_QueHace != 3) { return; }
 
-            if (e.NewIndex == 1)
+            if (tc.SelectedIndex == 1)
             {
                 int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
+                    booAgregando = true;
                     VerRegistro(intIdRegistro);
+                    booAgregando = false;
                 }
             }
         }
@@ -1014,10 +1003,6 @@ namespace SSF_NET_Logistica.Formularios
                 DgLista.DataSource = dtResult;
                 LblNumReg.Text = (dtResult.Rows.Count).ToString();
             }
-        }
-        private void FrmManGuiasRemision_Resize(object sender, EventArgs e)
-        {
-            Tab_Dimensionar(Tab1, this.Height - 110, this.Width - 38);
         }
         private void TxtNumSer_KeyPress(object sender, KeyPressEventArgs e)
         {

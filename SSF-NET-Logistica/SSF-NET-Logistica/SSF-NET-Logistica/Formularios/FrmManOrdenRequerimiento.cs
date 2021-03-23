@@ -469,12 +469,12 @@ namespace SSF_NET_Logistica.Formularios
 
                     if (idAreaDestino == 0)
                     {
-                        dtLista = objRegistros.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO);
+                        dtLista = objRegistros.Listar(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboMeses.SelectedValue), STU_SISTEMA.ANOTRABAJO);
                     }
                     else
                     {
                         dtLista = objRegistros.ListarPorArea(STU_SISTEMA.EMPRESAID
-                            , STU_SISTEMA.MESTRABAJO
+                            , Convert.ToInt32(CboMeses.SelectedValue)
                             , STU_SISTEMA.ANOTRABAJO
                             , idAreaDestino);
                     }
@@ -548,7 +548,7 @@ namespace SSF_NET_Logistica.Formularios
             BE_Registro.c_numser = TxtNumSer.Text;
             BE_Registro.c_numdoc = TxtNumDoc.Text;
             BE_Registro.n_anotra = STU_SISTEMA.ANOTRABAJO;
-            BE_Registro.n_mestra = STU_SISTEMA.MESTRABAJO;
+            BE_Registro.n_mestra = Convert.ToInt32(CboMeses.SelectedValue);
 
             if (TxtFchEmiDoc.Text != " ")
             {
@@ -724,12 +724,12 @@ namespace SSF_NET_Logistica.Formularios
 
                 if (idAreaDestino == 0)
                 {
-                    dtLista = objRegistros.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO);
+                    dtLista = objRegistros.Listar(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboMeses.SelectedValue), STU_SISTEMA.ANOTRABAJO);
                 }
                 else
                 {
                     dtLista = objRegistros.ListarPorArea(STU_SISTEMA.EMPRESAID
-                        , STU_SISTEMA.MESTRABAJO
+                        , Convert.ToInt32(CboMeses.SelectedValue)
                         , STU_SISTEMA.ANOTRABAJO
                         , idAreaDestino);
                 }
@@ -1219,12 +1219,12 @@ namespace SSF_NET_Logistica.Formularios
 
                     if (idAreaDestino == 0)
                     {
-                        dtLista = objRegistros.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO);
+                        dtLista = objRegistros.Listar(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboMeses.SelectedValue), STU_SISTEMA.ANOTRABAJO);
                     }
                     else
                     {
                         dtLista = objRegistros.ListarPorArea(STU_SISTEMA.EMPRESAID
-                            , STU_SISTEMA.MESTRABAJO
+                            , Convert.ToInt32(CboMeses.SelectedValue)
                             , STU_SISTEMA.ANOTRABAJO
                             , idAreaDestino);
                     }
@@ -1269,12 +1269,12 @@ namespace SSF_NET_Logistica.Formularios
 
                     if (idAreaDestino == 0)
                     {
-                        dtLista = objRegistros.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO);
+                        dtLista = objRegistros.Listar(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboMeses.SelectedValue), STU_SISTEMA.ANOTRABAJO);
                     }
                     else
                     {
                         dtLista = objRegistros.ListarPorArea(STU_SISTEMA.EMPRESAID
-                            , STU_SISTEMA.MESTRABAJO
+                            , Convert.ToInt32(CboMeses.SelectedValue)
                             , STU_SISTEMA.ANOTRABAJO
                             , idAreaDestino);
                     }

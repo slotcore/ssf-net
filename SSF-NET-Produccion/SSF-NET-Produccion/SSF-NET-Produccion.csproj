@@ -96,6 +96,9 @@
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms.Calendar">
+      <HintPath>..\..\Dlls\System.Windows.Forms.Calendar.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -162,6 +165,12 @@
     </Compile>
     <Compile Include="Formularios\FrmOrdenProduccion.Designer.cs">
       <DependentUpon>FrmOrdenProduccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmProgramacionProd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmProgramacionProd.Designer.cs">
+      <DependentUpon>FrmProgramacionProd.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\FrmRegistroProduccion.cs">
       <SubType>Form</SubType>
@@ -299,6 +308,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmOrdenProduccion.resx">
       <DependentUpon>FrmOrdenProduccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmProgramacionProd.resx">
+      <DependentUpon>FrmProgramacionProd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmRegistroProduccion.resx">
       <DependentUpon>FrmRegistroProduccion.cs</DependentUpon>

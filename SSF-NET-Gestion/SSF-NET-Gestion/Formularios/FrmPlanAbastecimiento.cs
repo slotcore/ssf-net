@@ -21,6 +21,7 @@ using SIAC_Objetos.Sistema;
 using SSF_NET_Produccion;
 using C1.Win.C1FlexGrid;
 using SIAC_Negocio.Sunat;
+using Newtonsoft.Json;
 
 namespace SSF_NET_Gestion.Formularios
 {
@@ -197,10 +198,6 @@ namespace SSF_NET_Gestion.Formularios
         }       
         void ConfigurarFormulario()
         {
-            this.Height = 600;
-            this.Width = 1000;
-            Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
-            Tab_Posicionar(Tab1, 1, 42);
             Tab1.SelectedIndex = 0;
             LblTitulo2.Text = "DETALLE DEL REGISTRO";
 
@@ -251,16 +248,6 @@ namespace SSF_NET_Gestion.Formularios
         {
             LblNumReg.Text = (dtCabecera.Rows.Count).ToString();
             funDbGrid.DG_FormatearGrid(DgLista, arrCabeceraDg1, dtCabecera, true);
-        }
-        void Tab_Dimensionar(C1.Win.C1Command.C1DockingTab dokTab, int intAlto, int intAncho)
-        {
-            Tab1.Height = intAlto;
-            Tab1.Width = intAncho;
-        }
-        void Tab_Posicionar(C1.Win.C1Command.C1DockingTab dokTab, int intPosX, int intPosY)
-        {
-            dokTab.Left = intPosX;
-            dokTab.Top = intPosY;
         }
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
@@ -400,25 +387,39 @@ namespace SSF_NET_Gestion.Formularios
             //    fg_Control.SetData(fg_Control.Rows.Count - 1, 16, n_valor.ToString("0.00"));
             //}
         }
-        private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
+        //private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
+        //{
+        //    if (n_QueHace != 3) { return; }
+
+        //    if (e.NewIndex == 1)
+        //    {
+        //        int n_idreg = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+
+        //        if (n_QueHace != 1)
+        //        {
+        //            booAgregando = true;
+        //            VerRegistro(n_idreg);
+        //            booAgregando = false;
+        //        }
+        //    }
+        //}
+        private void Tab1_SelectedIndexChanging(object sender, EventArgs e)
         {
+            TabControl tc = (TabControl)sender;
+
             if (n_QueHace != 3) { return; }
 
-            if (e.NewIndex == 1)
+            if (tc.SelectedIndex == 1)
             {
-                int n_idreg = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+                int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
                     booAgregando = true;
-                    VerRegistro(n_idreg);
+                    VerRegistro(intIdRegistro);
                     booAgregando = false;
                 }
             }
-        }
-        private void FrmPlanAbastecimiento_Resize(object sender, EventArgs e)
-        {
-            Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
         }
         void Nuevo()
         {
@@ -965,6 +966,201 @@ namespace SSF_NET_Gestion.Formularios
         private void button2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void BtnExportarExcel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int n_IdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
+
+                objCabecera.mysConec = mysConec;
+                objCabecera.TraerRegistro(n_IdRegistro);
+
+                BE_CABECERA = objCabecera.e_Cabecera;
+                
+                //dtPro
+                var results = objCabecera.dtProducto.AsEnumerable().Select(row => new
+                {
+                    c_codpro = row["c_codpro"],
+                    c_despro = row["c_despro"],
+                    c_abrpre = row["c_abrpre"],
+                    Enero = row["Enero"],
+                    Febrero = row["Febrero"],
+                    Marzo = row["Marzo"],
+                    Abril = row["Abril"],
+                    Mayo = row["Mayo"],
+                    Junio = row["Junio"],
+                    Julio = row["Julio"],
+                    Agosto = row["Agosto"],
+                    Setiembre = row["Setiembre"],
+                    Octubre = row["Octubre"],
+                    Noviembre = row["Noviembre"],
+                    Diciembre = row["Diciembre"],
+                    n_canpro = row["n_canpro"]
+                }).ToList();
+                string jsonResults = JsonConvert.SerializeObject(results);
+                DataTable dtPro = JsonConvert.DeserializeObject<DataTable>(jsonResults);
+                dtPro.Columns[0].ColumnName = "Codigo";
+                dtPro.Columns[1].ColumnName = "Descripcion";
+                dtPro.Columns[2].ColumnName = "Unidad";
+                dtPro.Columns[15].ColumnName = "Total";
+
+                //dtInter
+                var results_dtInter = objCabecera.dtIntermedio.AsEnumerable().Select(row => new
+                {
+                    c_codpro = row["c_codpro"],
+                    c_despro = row["c_despro"],
+                    c_abrpre = row["c_abrpre"],
+                    Enero = row["Enero"],
+                    Febrero = row["Febrero"],
+                    Marzo = row["Marzo"],
+                    Abril = row["Abril"],
+                    Mayo = row["Mayo"],
+                    Junio = row["Junio"],
+                    Julio = row["Julio"],
+                    Agosto = row["Agosto"],
+                    Setiembre = row["Setiembre"],
+                    Octubre = row["Octubre"],
+                    Noviembre = row["Noviembre"],
+                    Diciembre = row["Diciembre"],
+                    n_canpro = row["n_canpro"]
+                }).ToList();
+                string jsonResults_dtInter = JsonConvert.SerializeObject(results_dtInter);
+                DataTable dtInter = JsonConvert.DeserializeObject<DataTable>(jsonResults_dtInter);
+                dtInter.Columns[0].ColumnName = "Codigo";
+                dtInter.Columns[1].ColumnName = "Descripcion";
+                dtInter.Columns[2].ColumnName = "Unidad";
+                dtInter.Columns[15].ColumnName = "Total";
+
+                //dtTodo
+                var results_dtTodo = objCabecera.dtTodo.AsEnumerable().Select(row => new
+                {
+                    c_codpro = row["c_codpro"],
+                    c_despro = row["c_despro"],
+                    c_abrpre = row["c_abrpre"],
+                    Enero = row["Enero"],
+                    Febrero = row["Febrero"],
+                    Marzo = row["Marzo"],
+                    Abril = row["Abril"],
+                    Mayo = row["Mayo"],
+                    Junio = row["Junio"],
+                    Julio = row["Julio"],
+                    Agosto = row["Agosto"],
+                    Setiembre = row["Setiembre"],
+                    Octubre = row["Octubre"],
+                    Noviembre = row["Noviembre"],
+                    Diciembre = row["Diciembre"],
+                    n_canpro = row["n_canpro"]
+                }).ToList();
+                string jsonResults_dtTodo = JsonConvert.SerializeObject(results_dtTodo);
+                DataTable dtTodo = JsonConvert.DeserializeObject<DataTable>(jsonResults_dtTodo);
+                dtTodo.Columns[0].ColumnName = "Codigo";
+                dtTodo.Columns[1].ColumnName = "Descripcion";
+                dtTodo.Columns[2].ColumnName = "Unidad";
+                dtTodo.Columns[15].ColumnName = "Total";
+
+                //dtProIns
+                var results_dtProIns = objCabecera.dtProductoIns.AsEnumerable().Select(i => new
+                    {
+                        c_codpro = i["c_codpro"],
+                        c_despro = i["c_despro"],
+                        c_abrpre = i["c_abrpre"],
+                        Enero = i["Enero"],
+                        Febrero = i["Febrero"],
+                        Marzo = i["Marzo"],
+                        Abril = i["Abril"],
+                        Mayo = i["Mayo"],
+                        Junio = i["Junio"],
+                        Julio = i["Julio"],
+                        Agosto = i["Agosto"],
+                        Setiembre = i["Setiembre"],
+                        Octubre = i["Octubre"],
+                        Noviembre = i["Noviembre"],
+                        Diciembre = i["Diciembre"],
+                        n_canpro = i["n_canpro"]
+                    }).ToList();
+                string jsonResults_dtProIns = JsonConvert.SerializeObject(results_dtProIns);
+                DataTable dtProIns = JsonConvert.DeserializeObject<DataTable>(jsonResults_dtProIns);
+                dtProIns.Columns[0].ColumnName = "Codigo";
+                dtProIns.Columns[1].ColumnName = "Descripcion";
+                dtProIns.Columns[2].ColumnName = "Unidad";
+                dtProIns.Columns[15].ColumnName = "Total";
+
+                //dtInterIns
+                var results_dtInterIns = objCabecera.dtIntermedioIns.AsEnumerable().Select(i => new
+                {
+                    c_codpro = i["c_codpro"],
+                    c_despro = i["c_despro"],
+                    c_abrpre = i["c_abrpre"],
+                    Enero = i["Enero"],
+                    Febrero = i["Febrero"],
+                    Marzo = i["Marzo"],
+                    Abril = i["Abril"],
+                    Mayo = i["Mayo"],
+                    Junio = i["Junio"],
+                    Julio = i["Julio"],
+                    Agosto = i["Agosto"],
+                    Setiembre = i["Setiembre"],
+                    Octubre = i["Octubre"],
+                    Noviembre = i["Noviembre"],
+                    Diciembre = i["Diciembre"],
+                    n_canpro = i["n_canpro"]
+                }).ToList();
+                string jsonResults_dtInterIns = JsonConvert.SerializeObject(results_dtInterIns);
+                DataTable dtInterIns = JsonConvert.DeserializeObject<DataTable>(jsonResults_dtInterIns);
+                dtInterIns.Columns[0].ColumnName = "Codigo";
+                dtInterIns.Columns[1].ColumnName = "Descripcion";
+                dtInterIns.Columns[2].ColumnName = "Unidad";
+                dtInterIns.Columns[15].ColumnName = "Total";
+
+                //dtTodoIns
+                var results_dtTodoIns = objCabecera.dtTodoIns.AsEnumerable().Select(i => new
+                {
+                    c_codpro = i["c_codpro"],
+                    c_despro = i["c_despro"],
+                    c_abrpre = i["c_abrpre"],
+                    Enero = i["Enero"],
+                    Febrero = i["Febrero"],
+                    Marzo = i["Marzo"],
+                    Abril = i["Abril"],
+                    Mayo = i["Mayo"],
+                    Junio = i["Junio"],
+                    Julio = i["Julio"],
+                    Agosto = i["Agosto"],
+                    Setiembre = i["Setiembre"],
+                    Octubre = i["Octubre"],
+                    Noviembre = i["Noviembre"],
+                    Diciembre = i["Diciembre"],
+                    n_canpro = i["n_canpro"]
+                }).ToList();
+                string jsonResults_dtTodoIns = JsonConvert.SerializeObject(results_dtTodoIns);
+                DataTable dtTodoIns = JsonConvert.DeserializeObject<DataTable>(jsonResults_dtTodoIns);
+                dtTodoIns.Columns[0].ColumnName = "Codigo";
+                dtTodoIns.Columns[1].ColumnName = "Descripcion";
+                dtTodoIns.Columns[2].ColumnName = "Unidad";
+                dtTodoIns.Columns[15].ColumnName = "Total";
+
+                List<DataTable> tables = new List<DataTable>();
+                dtPro.TableName = "Terminados";
+                tables.Add(dtPro);
+                dtInter.TableName = "Intermedios";
+                tables.Add(dtInter);
+                dtTodo.TableName = "Todo";
+                tables.Add(dtTodo);
+                dtProIns.TableName = "Insumos Terminados";
+                tables.Add(dtProIns);
+                dtInterIns.TableName = "Insumos Intermedios";
+                tables.Add(dtInterIns);
+                dtTodoIns.TableName = "Insumos Todo";
+                tables.Add(dtTodoIns);
+
+                funDbGrid.DT_List_ExporExcel(tables);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Error el exportar los registros: {0} ", ex.Message), "Exportar Excel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

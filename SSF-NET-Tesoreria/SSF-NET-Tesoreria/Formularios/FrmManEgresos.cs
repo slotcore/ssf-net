@@ -112,11 +112,6 @@ namespace SSF_NET_Tesoreria.Formularios
         }
         void ConfigurarFormulario()
         {
-            this.Height = 579;
-            this.Width = 955;
-
-            Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
-            Tab_Posicionar(Tab1, 1, 42);
             Tab1.SelectedIndex = 0;
             LblTitulo2.Text = "DETALLE DEL REGISTRO";
             CboMeses.SelectedValue = STU_SISTEMA.MESTRABAJO;
@@ -404,16 +399,6 @@ namespace SSF_NET_Tesoreria.Formularios
 
             LblNumReg.Text = (dtLista.Rows.Count).ToString();
             funDbGrid.DG_FormatearGrid(DgLista, arrCabeceraDg1, dtLista, true);
-        }
-        void Tab_Dimensionar(C1.Win.C1Command.C1DockingTab dokTab, int intAlto, int intAncho)
-        {
-            Tab1.Height = intAlto;
-            Tab1.Width = intAncho;
-        }
-        void Tab_Posicionar(C1.Win.C1Command.C1DockingTab dokTab, int intPosX, int intPosY)
-        {
-            dokTab.Left = intPosX;
-            dokTab.Top = intPosY;
         }
         void VerRegistro(int n_IdRegistro)
         {
@@ -765,14 +750,14 @@ namespace SSF_NET_Tesoreria.Formularios
                 //    return booEstado;
                 //}
 
-                if (Math.Round(Convert.ToDouble(LblDebTotSol.Text), 4) != Math.Round(Convert.ToDouble(LblHabTotSol.Text), 4))
+                if (Math.Round(Convert.ToDouble(LblDebTotSol.Text), 4, MidpointRounding.AwayFromZero) != Math.Round(Convert.ToDouble(LblHabTotSol.Text), 4, MidpointRounding.AwayFromZero))
                 {
                     MessageBox.Show("¡ EL importe debe en soles no corresponder al importe haber en soles !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     booEstado = false;
                     FgOriIng.Focus();
                     return booEstado;
                 }
-                if (Math.Round(Convert.ToDouble(LblDebTotDol.Text), 4) != Math.Round(Convert.ToDouble(LblHabTotDol.Text), 4))
+                if (Math.Round(Convert.ToDouble(LblDebTotDol.Text), 4, MidpointRounding.AwayFromZero) != Math.Round(Convert.ToDouble(LblHabTotDol.Text), 4, MidpointRounding.AwayFromZero))
                 {
                     MessageBox.Show("¡ EL importe debe en dolares no corresponder al importe haber en dolares !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     booEstado = false;
@@ -870,18 +855,21 @@ namespace SSF_NET_Tesoreria.Formularios
             objFormVis = null;
             this.Close();
         }
-
-        private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
+        private void Tab1_SelectedIndexChanging(object sender, EventArgs e)
         {
+            TabControl tc = (TabControl)sender;
+
             if (n_QueHace != 3) { return; }
 
-            if (e.NewIndex == 1)
+            if (tc.SelectedIndex == 1)
             {
                 int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
+                    booAgregando = true;
                     VerRegistro(intIdRegistro);
+                    booAgregando = false;
                 }
             }
         }
@@ -904,11 +892,6 @@ namespace SSF_NET_Tesoreria.Formularios
             int intIdRegistro = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());
             Tab1.SelectedIndex = 1;
             VerRegistro(intIdRegistro);
-        }
-
-        private void FrmManEgresos_Resize(object sender, EventArgs e)
-        {
-            Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
         }
 
         private void CboMeses_SelectedValueChanged(object sender, EventArgs e)
@@ -1884,13 +1867,13 @@ namespace SSF_NET_Tesoreria.Formularios
         }
         void SumarTotDestino()
         {
-            LblHabTotSol.Text = Math.Round(funFlex.FlexSumarCol(FgDesIng, 3, 2, FgDesIng.Rows.Count - 1), 4).ToString("0.0000");
-            LblHabTotDol.Text = Math.Round(funFlex.FlexSumarCol(FgDesIng, 4, 2, FgDesIng.Rows.Count - 1), 4).ToString("0.0000");
+            LblHabTotSol.Text = Math.Round(funFlex.FlexSumarCol(FgDesIng, 3, 2, FgDesIng.Rows.Count - 1), 4, MidpointRounding.AwayFromZero).ToString("0.0000");
+            LblHabTotDol.Text = Math.Round(funFlex.FlexSumarCol(FgDesIng, 4, 2, FgDesIng.Rows.Count - 1), 4, MidpointRounding.AwayFromZero).ToString("0.0000");
         }
         void SumarTotOrigen()
         {
-            LblDebTotSol.Text = Math.Round(funFlex.FlexSumarCol(FgOriIng, 3, 2, FgOriIng.Rows.Count - 1), 4).ToString("0.0000");
-            LblDebTotDol.Text = Math.Round(funFlex.FlexSumarCol(FgOriIng, 4, 2, FgOriIng.Rows.Count - 1), 4).ToString("0.0000");
+            LblDebTotSol.Text = Math.Round(funFlex.FlexSumarCol(FgOriIng, 3, 2, FgOriIng.Rows.Count - 1), 4, MidpointRounding.AwayFromZero).ToString("0.0000");
+            LblDebTotDol.Text = Math.Round(funFlex.FlexSumarCol(FgOriIng, 4, 2, FgOriIng.Rows.Count - 1), 4, MidpointRounding.AwayFromZero).ToString("0.0000");
         }
         void SumarColDocumentos()
         {
@@ -2251,10 +2234,10 @@ namespace SSF_NET_Tesoreria.Formularios
                 FgDesIng.SetData(FgDesIng.Rows.Count - 1, 5, c_dato);
             }
             
-            LblDebTotSol.Text = Math.Round(funFlex.FlexSumarCol(FgOriIng, 3, 2, FgOriIng.Rows.Count - 1), 4).ToString("0.0000");
-            LblDebTotDol.Text = Math.Round(funFlex.FlexSumarCol(FgOriIng, 4, 2, FgOriIng.Rows.Count - 1), 4).ToString("0.0000");
-            LblHabTotSol.Text = Math.Round(funFlex.FlexSumarCol(FgDesIng, 3, 2, FgDesIng.Rows.Count - 1), 4).ToString("0.0000");
-            LblHabTotDol.Text = Math.Round(funFlex.FlexSumarCol(FgDesIng, 4, 2, FgDesIng.Rows.Count - 1), 4).ToString("0.0000");
+            LblDebTotSol.Text = Math.Round(funFlex.FlexSumarCol(FgOriIng, 3, 2, FgOriIng.Rows.Count - 1), 4, MidpointRounding.AwayFromZero).ToString("0.0000");
+            LblDebTotDol.Text = Math.Round(funFlex.FlexSumarCol(FgOriIng, 4, 2, FgOriIng.Rows.Count - 1), 4, MidpointRounding.AwayFromZero).ToString("0.0000");
+            LblHabTotSol.Text = Math.Round(funFlex.FlexSumarCol(FgDesIng, 3, 2, FgDesIng.Rows.Count - 1), 4, MidpointRounding.AwayFromZero).ToString("0.0000");
+            LblHabTotDol.Text = Math.Round(funFlex.FlexSumarCol(FgDesIng, 4, 2, FgDesIng.Rows.Count - 1), 4, MidpointRounding.AwayFromZero).ToString("0.0000");
         }
         private void fgDocCli_CellChanged(object sender, C1.Win.C1FlexGrid.RowColEventArgs e)
         {

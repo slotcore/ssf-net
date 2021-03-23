@@ -326,42 +326,45 @@ namespace SSF_NET_Logistica.Formularios
 
                 foreach (BE_LOG_ORDENCOMPRADET element in LstDetalle)
                 {
-                    FgItems.Rows.Count = FgItems.Rows.Count + 1;
-
                     n_idIte = element.n_idite;
                     n_idUniMed = element.n_idunimed;
 
                     // MOSTRAMOS EL ITEM
                     strCadenaFiltro = "n_id = " + n_idIte + "";
                     DtFiltro = funDatos.DataTableFiltrar(dtItems, strCadenaFiltro);
-                    FgItems.SetData(n_fila, 2, DtFiltro.Rows[0]["c_despro"].ToString());
-
-                    // MOSTRAMOS EL TPO DE EXIXTENCIA
-                    n_idTipExi = Convert.ToInt32(DtFiltro.Rows[0]["n_idtipexi"].ToString());
-                    strCadenaFiltro = "n_id = " + n_idTipExi + "";
-                    DtFiltro = funDatos.DataTableFiltrar(dtTipoExis, strCadenaFiltro);
-                    FgItems.SetData(n_fila, 1, DtFiltro.Rows[0]["c_des"].ToString());
-
-                    // MOSTRAMOS LA UNIDAD DE MEDIDA
-                    strCadenaFiltro = "n_idite = " + n_idIte + "";
-                    DtFiltro = funDatos.DataTableFiltrar(dtPresentaItem, strCadenaFiltro);
-                    FgItems.SetData(n_fila, 3, DtFiltro.Rows[0]["c_abrpre"].ToString());
-
-                    FgItems.SetData(n_fila, 4, element.n_can.ToString("0.00"));
-
-                    FgItems.SetData(n_fila, 5, element.n_canat.ToString("0.00"));
-
-                    if (element.n_idtipafeigv == 1)
+                    if (DtFiltro.Rows.Count > 0)
                     {
-                        FgItems.SetData(n_fila, 6, element.n_preuni.ToString("0.000000"));
-                    }
-                    else
-                    {
-                        FgItems.SetData(n_fila, 7, element.n_preuni.ToString("0.000000"));
-                    }
-                    FgItems.SetData(n_fila, 8, element.n_imptot.ToString("0.00"));
+                        FgItems.Rows.Count = FgItems.Rows.Count + 1;
 
-                    n_fila = n_fila + 1;
+                        FgItems.SetData(n_fila, 2, DtFiltro.Rows[0]["c_despro"].ToString());
+
+                        // MOSTRAMOS EL TPO DE EXIXTENCIA
+                        n_idTipExi = Convert.ToInt32(DtFiltro.Rows[0]["n_idtipexi"].ToString());
+                        strCadenaFiltro = "n_id = " + n_idTipExi + "";
+                        DtFiltro = funDatos.DataTableFiltrar(dtTipoExis, strCadenaFiltro);
+                        FgItems.SetData(n_fila, 1, DtFiltro.Rows[0]["c_des"].ToString());
+
+                        // MOSTRAMOS LA UNIDAD DE MEDIDA
+                        strCadenaFiltro = "n_idite = " + n_idIte + "";
+                        DtFiltro = funDatos.DataTableFiltrar(dtPresentaItem, strCadenaFiltro);
+                        FgItems.SetData(n_fila, 3, DtFiltro.Rows[0]["c_abrpre"].ToString());
+
+                        FgItems.SetData(n_fila, 4, element.n_can.ToString("0.00"));
+
+                        FgItems.SetData(n_fila, 5, element.n_canat.ToString("0.00"));
+
+                        if (element.n_idtipafeigv == 1)
+                        {
+                            FgItems.SetData(n_fila, 6, element.n_preuni.ToString("0.000000"));
+                        }
+                        else
+                        {
+                            FgItems.SetData(n_fila, 7, element.n_preuni.ToString("0.000000"));
+                        }
+                        FgItems.SetData(n_fila, 8, element.n_imptot.ToString("0.00"));
+
+                        n_fila = n_fila + 1;
+                    }
                 }
             }
             booAgregando = false;
@@ -487,7 +490,7 @@ namespace SSF_NET_Logistica.Formularios
 
                     // VOLVEMOS A CARGAR EL DATATABLE dtItems CON LOS DATOS DEL SERVIDOR
                     objRegistros.mysConec = mysConec;
-                    objRegistros.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO);
+                    objRegistros.Listar(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboMeses.SelectedValue), STU_SISTEMA.ANOTRABAJO);
                     dtLista = objRegistros.dtLista;
                     // MOSTRAMOS LOS DATOS EN LA GRILLA
                     ListarItems();
@@ -610,7 +613,7 @@ namespace SSF_NET_Logistica.Formularios
                         DtFiltro = funDatos.DataTableFiltrar(dtPresentaItem, strCadenaFiltro);
                         BE_Detalle.n_idunimed = Convert.ToInt32(DtFiltro.Rows[0]["n_id"].ToString());
 
-                        if (Convert.ToDouble(FgItems.GetData(n_fila, 6).ToString())!=0)
+                        if (Convert.ToDouble(funFunciones.NulosN(FgItems.GetData(n_fila, 6)))!=0)
                         {
                             BE_Detalle.n_preuni = Convert.ToDouble(FgItems.GetData(n_fila, 6).ToString());
                             BE_Detalle.n_idtipafeigv = 1;
@@ -738,7 +741,7 @@ namespace SSF_NET_Logistica.Formularios
             {
                 // VOLVEMOS A CARGAR EL DATATABLE dtItems CON LOS DATOS DEL SERVIDOR
                 objRegistros.mysConec = mysConec;
-                objRegistros.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO);
+                objRegistros.Listar(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboMeses.SelectedValue), STU_SISTEMA.ANOTRABAJO);
                 dtLista = objRegistros.dtLista;
                 // MOSTRAMOS LOS DATOS EN LA GRILLA
                 ListarItems();
@@ -1280,7 +1283,7 @@ namespace SSF_NET_Logistica.Formularios
             List<BE_LOG_ORDENREQUERIMIENTODET> l_reqcabdet = new List<BE_LOG_ORDENREQUERIMIENTODET>();
             BE_LOG_ORDENREQUERIMIENTO e_reqcab = new BE_LOG_ORDENREQUERIMIENTO();
             o_pro.mysConec = mysConec;
-            dtresult = o_pro.OrdenesListarPorArea(STU_SISTEMA.EMPRESAID, 12);
+            dtresult = o_pro.OrdenesListarPorArea(STU_SISTEMA.EMPRESAID, 28);
 
             FgItems.Rows.Count = 2;
             if (dtresult != null)

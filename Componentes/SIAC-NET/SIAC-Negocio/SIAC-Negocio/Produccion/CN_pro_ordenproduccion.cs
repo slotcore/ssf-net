@@ -216,11 +216,11 @@ namespace SIAC_Negocio.Produccion
                     miReq.mysConec = mysConec;
                     booOk = miReq.ActualizarEstadoRequerimiento(entOrdenProduccion.n_iddocref, 3);                                  // ACTUALIZAMOS EL ESTADO A 3 = PROCESADO
                 }
-                if (entOrdenProduccion.n_idtipdocref == 77)
-                {
-                    miPed.mysConec = mysConec;
-                    booOk = miPed.ActualizarEstadoPedido(entOrdenProduccion.n_iddocref, 3);                                         // ACTUALIZAMOS EL ESTADO A 3 = PROCESADO
-                }
+                //if (entOrdenProduccion.n_idtipdocref == 77)
+                //{
+                //    miPed.mysConec = mysConec;
+                //    booOk = miPed.ActualizarEstadoPedido(entOrdenProduccion.n_iddocref, 3);                                         // ACTUALIZAMOS EL ESTADO A 3 = PROCESADO
+                //}
 
                 if (booOk == false)
                 {

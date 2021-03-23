@@ -84,7 +84,7 @@ namespace SSF_NET_Produccion.Formularios
         // VARIABLES LOCALES
         int n_QueHace = 3;                                                                // INDICA EN QUE ESTADO SE ENCUENTRA EL FORMULARIO
         string[,] arrCabeceraDg1 = new string[10, 4];                                     // ARRAY PARA MOSTRAR LAS COLUMNAS DEL DATAGRID PRINCIPAL
-        string[,] arrCabeceraFlexLisPro = new string[14, 5];
+        string[,] arrCabeceraFlexLisPro = new string[16, 5];
         string[,] arrCabeceraFlexLisOrdPro = new string[6, 5];
         string[,] arrCabeceraFlexCrono = new string[9, 5];
         string[,] arrCabeceraFlexInt = new string[7, 5];
@@ -241,6 +241,18 @@ namespace SSF_NET_Produccion.Formularios
             arrCabeceraFlexLisPro[13, 2] = "C";
             arrCabeceraFlexLisPro[13, 3] = "";
             arrCabeceraFlexLisPro[13, 4] = "";
+
+            arrCabeceraFlexLisPro[14, 0] = "Hor.Ini.";
+            arrCabeceraFlexLisPro[14, 1] = "50";
+            arrCabeceraFlexLisPro[14, 2] = "H";
+            arrCabeceraFlexLisPro[14, 3] = "HH:mm";
+            arrCabeceraFlexLisPro[14, 4] = "";
+
+            arrCabeceraFlexLisPro[15, 0] = "Hor.Fin";
+            arrCabeceraFlexLisPro[15, 1] = "50";
+            arrCabeceraFlexLisPro[15, 2] = "H";
+            arrCabeceraFlexLisPro[15, 3] = "HH:mm";
+            arrCabeceraFlexLisPro[15, 4] = "";
 
             funFlex.FlexMostrarDatos(FgLisPro, arrCabeceraFlexLisPro, dtListar, 2, false);
             FgLisPro.Cols[1].ComboList = "...";
@@ -984,10 +996,6 @@ namespace SSF_NET_Produccion.Formularios
                     {
                         Nuevo();
                     }
-                    else
-                    {
-                        this.Close();
-                    }
                 }
                 else
                 {
@@ -1180,7 +1188,7 @@ namespace SSF_NET_Produccion.Formularios
             if (TxtFchIni.Text == " ") { return; }
             if (TxtFchFin.Text == " ") { return; }
 
-            if (Convert.ToDateTime(TxtFchIni.Text) > Convert.ToDateTime(TxtFchFin.Text))
+            if (TxtFchIni.Value > TxtFchFin.Value)
             {
                 MessageBox.Show("La fecha final no puede ser menor o igual a la fecha de inicio", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 TxtFchIni.Focus();
@@ -1188,7 +1196,7 @@ namespace SSF_NET_Produccion.Formularios
             }
             int n_col = 0;
             int n_numdia = 0;
-            DateTime d_fecha = Convert.ToDateTime(TxtFchIni.Text);
+            DateTime d_fecha = TxtFchIni.Value;
 
             string c_fchini = "";
             c_fchini = d_fecha.AddDays(-7).ToString("dd/MM/yyyy");
@@ -1528,7 +1536,12 @@ namespace SSF_NET_Produccion.Formularios
 
                     c_dato = lstProgramadetpro[n_row].n_idres.ToString("");
                     c_dato = funDatos.DataTableBuscar(dtPerPro, "n_id", "c_apenom", c_dato, "N").ToString();
-                    FgLisPro.SetData(n_filaflex, 14, c_dato);                                                       // UNIDAD DE MEDIDA
+                    FgLisPro.SetData(n_filaflex, 14, c_dato);                                                       // RESPONSABLE
+
+                    // HORA INICIO
+                    FgLisPro.SetData(n_filaflex, 15, lstProgramadetpro[n_row].h_horini);
+                    // HORA FIN
+                    FgLisPro.SetData(n_filaflex, 16, lstProgramadetpro[n_row].h_horfin);
 
                     n_filaflex = n_filaflex + 1;
                 }
@@ -1894,7 +1907,7 @@ namespace SSF_NET_Produccion.Formularios
                 n_idproducto = Convert.ToInt32(FgPer.GetData(FgPer.Rows.Count - 1, 7));
 
                 n_canreq = Convert.ToDouble(FgPer.GetData(FgPer.Rows.Count - 1, 4));
-                n_canhor = Convert.ToDouble(funDatos.DataTableBuscar(dtItems, "n_id", "n_kilhor", n_idproducto.ToString(), "N").ToString());
+                n_canhor = Convert.ToDouble(funFunciones.NulosN(funDatos.DataTableBuscar(dtItems, "n_id", "n_kilhor", n_idproducto.ToString(), "N").ToString()));
                 
                 FgPer.SetData(FgPer.Rows.Count - 1, 3, n_canhor.ToString("0.00"));
                 FgPer.SetData(FgPer.Rows.Count - 1, 5, n_numdias.ToString("0"));
@@ -2615,6 +2628,7 @@ namespace SSF_NET_Produccion.Formularios
                 int n_IdPro = entPrograma.n_id;
                 int n_IdRec = Convert.ToInt32(FgLisPro.GetData(FgLisPro.Row, 7).ToString());
                 int n_IdLin = Convert.ToInt32(FgLisPro.GetData(FgLisPro.Row, 8).ToString());
+                string c_fchpro = funFunciones.NulosC(FgLisPro.GetData(FgLisPro.Row, 12)).Substring(0, 10);
                 double n_can = Convert.ToInt32(FgLisPro.GetData(FgLisPro.Row, 5).ToString());
                 string c_fchent = "";
                 if (funFunciones.NulosC(FgLisPro.GetData(FgLisPro.Row, 13)) != "")
@@ -2624,15 +2638,39 @@ namespace SSF_NET_Produccion.Formularios
 
                 for (n_row = 0; n_row <= lstProgramadetpro.Count - 1; n_row++)
                 {
-                    //if ((lstProgramadetpro[n_row].n_idite == n_IdItem) && (lstProgramadetpro[n_row].n_idordpro == n_IdOrdPro) &&
-                    //    (lstProgramadetpro[n_row].n_idpro == n_IdPro) && (Convert.ToString(lstProgramadetpro[n_row].d_fchent).Substring(0, 10) == c_fchent))
-                    if ((lstProgramadetpro[n_row].n_idite == n_IdItem) && (lstProgramadetpro[n_row].n_idrec == n_IdRec) &&
-                        (lstProgramadetpro[n_row].n_idlin == n_IdLin) && (Convert.ToString(lstProgramadetpro[n_row].d_fchent).Substring(0, 10) == c_fchent))                    
+                    if ((lstProgramadetpro[n_row].n_idite == n_IdItem) && 
+                        (lstProgramadetpro[n_row].n_idrec == n_IdRec) &&
+                        (lstProgramadetpro[n_row].n_idlin == n_IdLin) && 
+                        (Convert.ToString(lstProgramadetpro[n_row].d_fchpro).Substring(0, 10) == c_fchpro))                    
                     {
                         string c_res = FgLisPro.GetData(FgLisPro.Row, 14).ToString();
                         int n_idres = Convert.ToInt32(funDatos.DataTableBuscar(dtPerPro, "c_apenom", "n_id", c_res, "C"));
                         lstProgramadetpro[n_row].n_idres = n_idres;
                         break;
+                    }
+                }
+            }
+
+
+            if (FgLisPro.Col == 15 || FgLisPro.Col == 16)
+            {
+                int n_IdItem = Convert.ToInt32(FgLisPro.GetData(FgLisPro.Row, 9).ToString());
+                int n_IdOrdPro = Convert.ToInt32(FgLisPro.GetData(FgLisPro.Row, 11).ToString());
+                int n_IdPro = entPrograma.n_id;
+                int n_IdRec = Convert.ToInt32(FgLisPro.GetData(FgLisPro.Row, 7).ToString());
+                int n_IdLin = Convert.ToInt32(FgLisPro.GetData(FgLisPro.Row, 8).ToString());
+                string c_fchpro = funFunciones.NulosC(FgLisPro.GetData(FgLisPro.Row, 12)).Substring(0, 10);
+
+                for (n_row = 0; n_row <= lstProgramadetpro.Count - 1; n_row++)
+                {
+                    if ((lstProgramadetpro[n_row].n_idite == n_IdItem) && (lstProgramadetpro[n_row].n_idrec == n_IdRec) &&
+                        (lstProgramadetpro[n_row].n_idlin == n_IdLin) && (lstProgramadetpro[n_row].n_idordpro == n_IdOrdPro) &&
+                        (Convert.ToString(lstProgramadetpro[n_row].d_fchpro).Substring(0, 10) == c_fchpro))
+                    {
+                        if (FgLisPro.GetData(FgLisPro.Row, 15) != null)
+                            lstProgramadetpro[n_row].h_horini = FgLisPro.GetData(FgLisPro.Row, 15).ToString();
+                        if (FgLisPro.GetData(FgLisPro.Row, 16) != null)
+                            lstProgramadetpro[n_row].h_horfin = FgLisPro.GetData(FgLisPro.Row, 16).ToString();
                     }
                 }
             }
@@ -2913,6 +2951,13 @@ namespace SSF_NET_Produccion.Formularios
                 FgLisPro.AllowEditing = true;
                 funFlex.FlexColumnaCombo(FgLisPro, dtPerPro, "c_apenom", 14);
                 
+            }
+
+            
+            if (FgLisPro.Col == 15 || FgLisPro.Col == 16)
+            {
+                FgLisPro.AllowEditing = true;
+
             }
         }
 

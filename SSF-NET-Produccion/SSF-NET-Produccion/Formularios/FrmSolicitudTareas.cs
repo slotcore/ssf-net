@@ -2294,7 +2294,7 @@ namespace SSF_NET_Produccion.Formularios
                 if (objCuadroDialogo.ShowDialog() == DialogResult.OK)
                 {
                     dtTableWithOneColumn.TableName = "Reporte de Solicitud de Tareas";
-                    funDbGrid.DataTable_To_Excel(dtTableWithOneColumn, objCuadroDialogo.FileName);
+                    Cls_DBGrid.DataTable_To_Excel(dtTableWithOneColumn, objCuadroDialogo.FileName);
                 }
 
                 string filename = "Excel.exe";

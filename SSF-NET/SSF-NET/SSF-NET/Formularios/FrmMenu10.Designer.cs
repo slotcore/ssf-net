@@ -365,11 +365,14 @@
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.LnkLabelReiniciar = new System.Windows.Forms.ToolStripLabel();
+            this.TsModOffline = new System.Windows.Forms.ToolStrip();
+            this.TsLabelMensajeOffline = new System.Windows.Forms.ToolStripLabel();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.TsBarraActualizacion.SuspendLayout();
+            this.TsModOffline.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -396,7 +399,7 @@
             this.maestrosToolStripMenuItem,
             this.herramientasToolStripMenuItem,
             this.ayudaToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 25);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 50);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1325, 28);
             this.menuStrip1.TabIndex = 1;
@@ -1053,6 +1056,7 @@
             this.procesarPedidosToolStripMenuItem.Size = new System.Drawing.Size(237, 26);
             this.procesarPedidosToolStripMenuItem.Text = "Procesar Pedidos";
             this.procesarPedidosToolStripMenuItem.Visible = false;
+            this.procesarPedidosToolStripMenuItem.Click += new System.EventHandler(this.procesarPedidosToolStripMenuItem_Click);
             // 
             // proformaToolStripMenuItem
             // 
@@ -1908,6 +1912,7 @@
             this.cronogramaDeProduccionToolStripMenuItem.Name = "cronogramaDeProduccionToolStripMenuItem";
             this.cronogramaDeProduccionToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
             this.cronogramaDeProduccionToolStripMenuItem.Text = "Cronograma de Produccion";
+            this.cronogramaDeProduccionToolStripMenuItem.Click += new System.EventHandler(this.cronogramaDeProduccionToolStripMenuItem_Click);
             // 
             // toolStripMenuItem31
             // 
@@ -2849,7 +2854,7 @@
             this.TooSep1,
             this.TooBut3,
             this.TooBut4});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 53);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 78);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.toolStrip1.Size = new System.Drawing.Size(1325, 39);
@@ -3063,6 +3068,27 @@
             this.LnkLabelReiniciar.Text = "Actualizar Aplicación";
             this.LnkLabelReiniciar.Click += new System.EventHandler(this.LnkLabelReiniciar_Click);
             // 
+            // TsModOffline
+            // 
+            this.TsModOffline.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.TsModOffline.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.TsModOffline.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.TsModOffline.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TsLabelMensajeOffline});
+            this.TsModOffline.Location = new System.Drawing.Point(0, 25);
+            this.TsModOffline.Name = "TsModOffline";
+            this.TsModOffline.Size = new System.Drawing.Size(1325, 25);
+            this.TsModOffline.TabIndex = 6;
+            this.TsModOffline.Text = "toolStrip2";
+            // 
+            // TsLabelMensajeOffline
+            // 
+            this.TsLabelMensajeOffline.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.TsLabelMensajeOffline.ForeColor = System.Drawing.Color.Red;
+            this.TsLabelMensajeOffline.Name = "TsLabelMensajeOffline";
+            this.TsLabelMensajeOffline.Size = new System.Drawing.Size(158, 22);
+            this.TsLabelMensajeOffline.Text = "TsLabelMensajeOffline";
+            // 
             // FrmMenu10
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -3073,6 +3099,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.TsModOffline);
             this.Controls.Add(this.TsBarraActualizacion);
             this.ForeColor = System.Drawing.Color.Black;
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -3090,6 +3117,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.TsBarraActualizacion.ResumeLayout(false);
             this.TsBarraActualizacion.PerformLayout();
+            this.TsModOffline.ResumeLayout(false);
+            this.TsModOffline.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3432,5 +3461,7 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripLabel LnkLabelReiniciar;
+        private System.Windows.Forms.ToolStrip TsModOffline;
+        private System.Windows.Forms.ToolStripLabel TsLabelMensajeOffline;
     }
 }

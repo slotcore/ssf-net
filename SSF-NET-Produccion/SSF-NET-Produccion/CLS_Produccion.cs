@@ -68,6 +68,13 @@ namespace SSF_NET_Produccion
             FrmMan.STU_SISTEMA = STU_SISTEMA;
             FrmMan.Show();
         }
+        public void CronogramaProduccion()
+        {
+            Formularios.FrmProgramacionProd FrmMan = new Formularios.FrmProgramacionProd();
+            FrmMan.mysConec = mysConec;
+            FrmMan.STU_SISTEMA = STU_SISTEMA;
+            FrmMan.Show();
+        }
         public void MantenimientoProductos()
         {
             Formularios.FrmManProductos FrmMan = new Formularios.FrmManProductos();

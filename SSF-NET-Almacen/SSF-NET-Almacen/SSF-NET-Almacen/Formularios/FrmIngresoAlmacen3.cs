@@ -331,7 +331,7 @@ namespace SSF_NET_Almacen.Formularios
         void ListarItems()
         {
             LblNumReg.Text = (dtMovimientos.Rows.Count).ToString();
-            MostrarEstadoMes(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO);
+            MostrarEstadoMes(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboMeses.SelectedValue));
             funDbGrid.DG_FormatearGrid(DgLista, arrCabeceraDg1, dtMovimientos, true);
         }
         void Tab_Dimensionar(C1.Win.C1Command.C1DockingTab dokTab, int intAlto, int intAncho)
@@ -657,7 +657,7 @@ namespace SSF_NET_Almacen.Formularios
 
                     // VOLVEMOS A CARGAR EL DATATABLE dtItems CON LOS DATOS DEL SERVIDOR
                     objMovimientos.mysConec = mysConec;
-                    dtMovimientos = objMovimientos.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO, 1, 2);
+                    dtMovimientos = objMovimientos.Listar(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboMeses.SelectedValue), STU_SISTEMA.ANOTRABAJO, 1, 2);
                     // MOSTRAMOS LOS DATOS EN LA GRILLA
                     ListarItems();
                 }
@@ -688,7 +688,7 @@ namespace SSF_NET_Almacen.Formularios
             {
                 // VOLVEMOS A CARGAR EL DATATABLE dtItems CON LOS DATOS DEL SERVIDOR
                 objMovimientos.mysConec = mysConec;
-                dtMovimientos = objMovimientos.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.MESTRABAJO, STU_SISTEMA.ANOTRABAJO, 1, 2);
+                dtMovimientos = objMovimientos.Listar(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboMeses.SelectedValue), STU_SISTEMA.ANOTRABAJO, 1, 2);
                 // MOSTRAMOS LOS DATOS EN LA GRILLA
                 ListarItems();
 
@@ -763,7 +763,7 @@ namespace SSF_NET_Almacen.Formularios
             BE_Movimiento.c_numdoc = TxtNumDoc.Text;
             BE_Movimiento.n_idalm = Convert.ToInt32(CboAlmacen.SelectedValue);
             BE_Movimiento.n_anotra = STU_SISTEMA.ANOTRABAJO;
-            BE_Movimiento.n_idmes = STU_SISTEMA.MESTRABAJO;
+            BE_Movimiento.n_idmes = Convert.ToInt32(CboMeses.SelectedValue);
             BE_Movimiento.c_obs = TxtObs.Text; 
             BE_Movimiento.n_idtipope = Convert.ToInt32(CboTipOpe.SelectedValue);
             BE_Movimiento.n_perid = Convert.ToInt32(CboResponsable.SelectedValue);
@@ -1473,7 +1473,6 @@ namespace SSF_NET_Almacen.Formularios
             }
             objMovimientos.mysConec = mysConec;
             dtMovimientos = objMovimientos.Listar(STU_SISTEMA.EMPRESAID, Convert.ToInt32(CboMeses.SelectedValue), STU_SISTEMA.ANOTRABAJO, 1, 2);    // CARGAMOS LOS DATOS DEL FORMULARIO
-            STU_SISTEMA.MESTRABAJO = Convert.ToInt32(CboMeses.SelectedValue);
             ListarItems();
 
             if (dtMovimientos.Rows.Count == 0)

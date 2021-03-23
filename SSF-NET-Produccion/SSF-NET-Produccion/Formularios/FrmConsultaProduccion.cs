@@ -16,6 +16,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace SSF_NET_Produccion.Formularios
 {
@@ -353,9 +354,83 @@ namespace SSF_NET_Produccion.Formularios
         }
         private void ToolExportar_Click(object sender, EventArgs e)
         {
-            funFlex.ExportToExcel_NumFilaCabecera = 2;
-            string c_nomarch = STU_SISTEMA.EMPRESARUC + "-" + STU_SISTEMA.ANOTRABAJO.ToString() + "-" + "-REPORTEPRODUCCION-" + DateTime.Now.ToString("dd-mm-yyyy") + ".xls";
-            funFlex.ExportToExcel(FgDatos, STU_SISTEMA.EMPRESANOMBRE, STU_SISTEMA.EMPRESARUC, "CONSULTA DE PRODUCCION POR PERIODO", "DEL " + TxtFchIni.Text + " AL " + TxtFchFin.Text, c_nomarch);
+            //funFlex.ExportToExcel_NumFilaCabecera = 2;
+            //string c_nomarch = STU_SISTEMA.EMPRESARUC + "-" + STU_SISTEMA.ANOTRABAJO.ToString() + "-" + "-REPORTEPRODUCCION-" + DateTime.Now.ToString("dd-mm-yyyy") + ".xls";
+            //funFlex.ExportToExcel(FgDatos, STU_SISTEMA.EMPRESANOMBRE, STU_SISTEMA.EMPRESARUC, "CONSULTA DE PRODUCCION POR PERIODO", "DEL " + TxtFchIni.Text + " AL " + TxtFchFin.Text, c_nomarch);
+
+            List<string> columnGridNames = new List<string>();
+            List<string> columnHeaderNames = new List<string>();
+            DataTable dtResult = new DataTable();
+
+            if (OptTip1.Checked == true)
+            {
+                var results_dtTodoIns = dtLista.AsEnumerable().Select(i => new
+                {
+                    c_despro = i["c_despro"],
+                    c_codrec = i["c_codrec"],
+                    c_abrpre = i["c_abrpre"],
+                    n_canpropro = i["n_canpropro"],
+                    n_canprorea = i["n_canprorea"],
+                    n_pordespro = i["n_pordespro"],
+                    c_insdespro = i["c_insdespro"],
+                    c_insabrpre = i["c_insabrpre"],
+                    n_canteo = i["n_canteo"],
+                    n_inscanent = i["n_inscanent"],
+                    n_desvio = i["n_desvio"],
+                    n_pordesvio = i["n_pordesvio"]
+                }).ToList();
+                string jsonResults_dtTodoIns = JsonConvert.SerializeObject(results_dtTodoIns);
+                dtResult = JsonConvert.DeserializeObject<DataTable>(jsonResults_dtTodoIns);
+
+                columnHeaderNames.AddRange(new string[]{
+                    "Producto"
+                    , "Receta"
+                    , "Uni. Med. Prod."
+                    , "Can. Teorica Prod."
+                    , "Can. Producida"
+                    , "% Desv."
+                    , "Insumo"
+                    , "Uni. Med."
+                    , "Can. Teorica"
+                    , "Can. Real"
+                    , "Desvio"
+                    , "% Desvio"});
+            }
+            if (OptTip2.Checked == true)
+            {
+                var results_dtTodoIns = dtLista.AsEnumerable().Select(i => new
+                {
+                    d_fchpro = i["d_fchpro"],
+                    c_numdocpro = i["c_numdocpro"],
+                    c_abrpre = i["c_abrpre"],
+                    n_canprorea = i["n_canprorea"],
+                    c_apenomres = i["c_apenomres"],
+                    c_codrec = i["c_codrec"],
+                    c_insdespro = i["c_insdespro"],
+                    c_insabrpre = i["c_insabrpre"],
+                    n_canteo = i["n_canteo"],
+                    n_inscanent = i["n_inscanent"],
+                    n_desvio = i["n_desvio"],
+                    n_pordesvio = i["n_pordesvio"]
+                }).ToList();
+                string jsonResults_dtTodoIns = JsonConvert.SerializeObject(results_dtTodoIns);
+                dtResult = JsonConvert.DeserializeObject<DataTable>(jsonResults_dtTodoIns);
+
+                columnHeaderNames.AddRange(new string[]{
+                    "Dia"
+                    , "Nº Produccion"
+                    , "Uni. Med. Prod."
+                    , "Can. Producida"
+                    , "Responsable"
+                    , "Receta"
+                    , "Insumo"
+                    , "Uni. Med."
+                    , "Can. Teorica"
+                    , "Can. Real"
+                    , "Desvio"
+                    , "% Desvio"});
+            }
+            funFlex.ExportToExcel_v2(dtResult, columnHeaderNames.ToArray());
         }
         private void ToolImprimir_Click(object sender, EventArgs e)
         {

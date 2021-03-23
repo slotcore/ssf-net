@@ -946,6 +946,35 @@ namespace Helper
                 excel = null;
             }
         }
+
+        public void ExportToExcel_v2(DataTable dtLista
+            , string[] columnHeaderNames)
+        {
+            SaveFileDialog objCuadroDialogo = new SaveFileDialog();
+            objCuadroDialogo.Filter = "MS Excel (*.xlsx) |*.xlsx;*.xlsx|(*.xlsx) |*.xlsx|(*.*) |*.*";
+
+            int index = 0;
+            dtLista.TableName = "Hoja 1";
+            foreach (var columnHeaderName in columnHeaderNames)
+            {
+                dtLista.Columns[index].ColumnName = columnHeaderName;
+                index += 1;
+            }
+
+            if (objCuadroDialogo.ShowDialog() == DialogResult.OK)
+            {
+                Cls_DBGrid.DataTable_To_Excel(dtLista, objCuadroDialogo.FileName);
+            }
+
+            string filename = "Excel.exe";
+
+            Process proc = new Process();
+            proc.EnableRaisingEvents = false;
+            proc.StartInfo.FileName = filename;
+            proc.StartInfo.Arguments = objCuadroDialogo.FileName;
+            proc.Start();
+        }
+
         string DevolverLetra(int Columna)
         {
             string c_letra = "";
