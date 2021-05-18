@@ -325,7 +325,8 @@ namespace SSF_NET_Gestion.Formularios
                 dtres = funDatos.DataTableFiltrar(dtMeses, "n_id = " + n_mes.ToString() + "");
                 arrCabeceraFlex1[n_col2, 0] = funFunciones.ConvertirTitulo(dtres.Rows[0]["c_des"].ToString());
                 arrCabeceraFlex1[n_col2, 4] = funFunciones.ConvertirTitulo(dtres.Rows[0]["c_des"].ToString());
-                n_mes = DateTime.Now.AddMonths(n_col).Month;
+                n_mes = n_mes + 1; // DateTime.Now.AddMonths(n_col).Month;
+                if (n_mes > 12) n_mes = 1;
                 n_col2 = n_col2 + 1;
             }
             funFlex.FlexMostrarDatos(fg_Control, arrCabeceraFlex1, dtDatos, 2, true);
@@ -625,7 +626,7 @@ namespace SSF_NET_Gestion.Formularios
             BE_CABECERA.d_fchini = Convert.ToDateTime("01/" + Convert.ToInt32(CboMesIni.SelectedValue).ToString() + "/" +STU_SISTEMA.ANOTRABAJO.ToString());
             BE_CABECERA.d_fchfin = Convert.ToDateTime( BE_CABECERA.d_fchini.AddMonths(12).ToString("dd/MM/yyyy"));
             BE_CABECERA.n_mesini = Convert.ToInt32(CboMesIni.SelectedValue);
-            BE_CABECERA.n_ano = Convert.ToDateTime(TxtFchIni.Text).Year;
+            BE_CABECERA.n_ano = STU_SISTEMA.ANOTRABAJO;
             BE_CABECERA.n_idplapro = Convert.ToInt32(LblIdPlaVen.Text);
             BE_CABECERA.n_activo = 1;
 
@@ -669,22 +670,6 @@ namespace SSF_NET_Gestion.Formularios
         bool CamposOK()
         {
             bool booEstado = true;
-
-            if (TxtFchIni.Text == "")
-            {
-                MessageBox.Show("¡ No ha especificado la fecha de inicio !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                booEstado = false;
-                TxtFchIni.Focus();
-                return booEstado;
-            }
-
-            if (TxtFchFin.Text == "")
-            {
-                MessageBox.Show("¡ No ha especificado la fecha de termino !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                booEstado = false;
-                TxtFchFin.Focus();
-                return booEstado;
-            }
 
             if (TxtDes.Text == "")
             {

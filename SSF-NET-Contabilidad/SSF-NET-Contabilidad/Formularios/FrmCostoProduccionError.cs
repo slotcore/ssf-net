@@ -19,5 +19,10 @@ namespace SSF_NET_Contabilidad.Formularios
             InitializeComponent();
             costoProduccionErrorBindingSource.DataSource = CostoProduccionErrors;
         }
+
+        private void BtnExportarExcel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

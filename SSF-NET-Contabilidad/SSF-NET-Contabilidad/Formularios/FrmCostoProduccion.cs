@@ -630,6 +630,7 @@ namespace SSF_NET_Contabilidad.Formularios
             m_CostoProduccion.n_idemp = STU_SISTEMA.EMPRESAID;
             m_CostoProduccion.n_anotra = STU_SISTEMA.ANOTRABAJO;
             m_CostoProduccion.n_idmes = Convert.ToInt32(CboMeses.SelectedValue.ToString());
+            m_CostoProduccion.n_idconfigval = Convert.ToInt32(CboConfiguracion.SelectedValue.ToString());
         }
 
         private void FgItems_SelChange(object sender, EventArgs e)

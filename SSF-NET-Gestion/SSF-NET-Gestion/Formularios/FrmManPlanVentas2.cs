@@ -440,7 +440,10 @@ namespace SSF_NET_Gestion.Formularios
                 dtres = funDatos.DataTableFiltrar( dtMeses,"n_id = " + n_mes.ToString()  + "");
                 arrCabeceraFlex1[n_col2, 0] = funFunciones.ConvertirTitulo(dtres.Rows[0]["c_des"].ToString());
                 arrCabeceraFlex1[n_col2, 4] = funFunciones.ConvertirTitulo(dtres.Rows[0]["c_des"].ToString());
-                n_mes = DateTime.Now.AddMonths(n_col).Month;
+                //n_mes = DateTime.Now.AddMonths(n_col).Month;
+                n_mes = n_mes + 1;
+                if (n_mes > 12) n_mes = 1;
+
                 n_col2 = n_col2 + 1;
             }
             funFlex.FlexMostrarDatos(FgItems, arrCabeceraFlex1, dtLista, 2, false);
@@ -909,10 +912,7 @@ namespace SSF_NET_Gestion.Formularios
 
                 n_nummes = n_nummes + 1;
                 n_posArray = n_posArray + 1;
-                if (n_nummes == 13)
-                {
-                    n_nummes = 1;
-                }
+                if (n_nummes > 12) n_nummes = 1;
             }
             funFlex.FlexMostrarDatos(FgItems, arrCabeceraFlex1, dtDetalle, 2, false);
         }
@@ -1231,6 +1231,27 @@ namespace SSF_NET_Gestion.Formularios
         {
             DesactivarPlanVentas();
         }
+
+        void ActivarPlanVentas()
+        {
+            int n_idreg = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
+            objCabecera.mysConec = mysConec;
+            objCabecera.CambiarEstadoPlanVentas(n_idreg, 1);
+            if (objCabecera.booOcurrioError == false)
+            {
+                objCabecera.mysConec = mysConec;
+                objCabecera.Listar(STU_SISTEMA.EMPRESAID, STU_SISTEMA.ANOTRABAJO);
+                dtLista = objCabecera.dtLista;
+                ListarItems();
+
+                MessageBox.Show("¡ El plan de ventas se activó con éxito !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+            }
+            else
+            {
+                MessageBox.Show("¡ No se pudo activar el plan de ventas por el siguiente motivo:" + objCabecera.StrErrorMensaje.ToString() + " !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+            }
+        }
+
         void DesactivarPlanVentas()
         {
             int n_idreg = Convert.ToInt32(DgLista.Columns["n_id"].CellValue(DgLista.Row).ToString());       // OBTENEMOS EL ID DEL REGISTRO QUE SE DESEA ELIMINAR
@@ -1304,6 +1325,16 @@ namespace SSF_NET_Gestion.Formularios
                 }
                 FgItems.Select(e.Row, e.Col);
             }
+        }
+
+        private void modificarRegistroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Modificar();
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            ActivarPlanVentas();
         }
     }
 }

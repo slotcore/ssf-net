@@ -275,9 +275,9 @@ namespace SSF_NET_Contabilidad.Formularios
                 throw new Exception("¡ No ha especificado la descripción !");
             }
 
-            if (configValBindingSource.Count == 0)
+            if (m_ConfigVal.ConfigValCues.Count == 0)
             {
-                throw new Exception("¡ No ha especificado ningun item para este proceso!");
+                throw new Exception("¡ No ha especificado ninguna cuenta para este proceso!");
             }
         }
 

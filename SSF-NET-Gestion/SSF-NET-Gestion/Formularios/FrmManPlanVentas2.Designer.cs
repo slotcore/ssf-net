@@ -33,7 +33,10 @@ namespace SSF_NET_Gestion.Formularios
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmManPlanVentas2));
             this.ToolHerramientas = new System.Windows.Forms.ToolStrip();
             this.ToolNuevo = new System.Windows.Forms.ToolStripButton();
-            this.ToolModificar = new System.Windows.Forms.ToolStripButton();
+            this.ToolModificar = new System.Windows.Forms.ToolStripSplitButton();
+            this.modificarRegistroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolEliminar2 = new System.Windows.Forms.ToolStripSplitButton();
             this.eliminarRegistroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
@@ -137,13 +140,34 @@ namespace SSF_NET_Gestion.Formularios
             // ToolModificar
             // 
             this.ToolModificar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ToolModificar.Image = ((System.Drawing.Image)(resources.GetObject("ToolModificar.Image")));
+            this.ToolModificar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.modificarRegistroToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.toolStripMenuItem2});
+            this.ToolModificar.Image = global::SSF_NET_Gestion.Properties.Resources.editar32x32;
             this.ToolModificar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ToolModificar.Name = "ToolModificar";
-            this.ToolModificar.Size = new System.Drawing.Size(36, 36);
-            this.ToolModificar.Text = "toolStripButton2";
-            this.ToolModificar.ToolTipText = "Editar registro";
-            this.ToolModificar.Click += new System.EventHandler(this.ToolModificar_Click);
+            this.ToolModificar.Size = new System.Drawing.Size(51, 36);
+            this.ToolModificar.Text = "toolStripSplitButton1";
+            // 
+            // modificarRegistroToolStripMenuItem
+            // 
+            this.modificarRegistroToolStripMenuItem.Name = "modificarRegistroToolStripMenuItem";
+            this.modificarRegistroToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
+            this.modificarRegistroToolStripMenuItem.Text = "Modificar Registro";
+            this.modificarRegistroToolStripMenuItem.Click += new System.EventHandler(this.modificarRegistroToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(235, 6);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(238, 26);
+            this.toolStripMenuItem2.Text = "Activar Plan de Ventas";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // ToolEliminar2
             // 
@@ -815,7 +839,6 @@ namespace SSF_NET_Gestion.Formularios
 
         private System.Windows.Forms.ToolStrip ToolHerramientas;
         private System.Windows.Forms.ToolStripButton ToolNuevo;
-        private System.Windows.Forms.ToolStripButton ToolModificar;
         private System.Windows.Forms.ToolStripButton ToolEliminar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton ToolGrabar;
@@ -863,5 +886,9 @@ namespace SSF_NET_Gestion.Formularios
         private System.Windows.Forms.ToolStripMenuItem eliminarRegistroToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem desactivarPlanVentasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSplitButton ToolModificar;
+        private System.Windows.Forms.ToolStripMenuItem modificarRegistroToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
     }
 }
