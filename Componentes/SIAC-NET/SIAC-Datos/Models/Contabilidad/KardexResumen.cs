@@ -387,6 +387,41 @@ namespace SIAC_DATOS.Models.Contabilidad
             return m_entidad;
         }
 
+        public static List<KardexResumen> TraerListaPorItem(int n_idemp
+            , int n_idalm
+            , string c_iditem
+            , DateTime d_fchini
+            , DateTime d_fchfin)
+        {
+            List<KardexResumen> l_entidad = new List<KardexResumen>();
+
+            using (MySqlConnection connection
+                = new MySqlConnection(
+                    ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.CommandText = "alm_kardex_resumen_listar_poritem_mov";
+                    command.Parameters.Add(new MySqlParameter("@n_idemp", n_idemp));
+                    command.Parameters.Add(new MySqlParameter("@n_idalm", n_idalm));
+                    command.Parameters.Add(new MySqlParameter("@c_iditem", c_iditem));
+                    command.Parameters.Add(new MySqlParameter("@c_fchini", d_fchini.ToString("dd/MM/yyyy")));
+                    command.Parameters.Add(new MySqlParameter("@c_fchfin", d_fchfin.ToString("dd/MM/yyyy")));
+                    connection.Open();
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            l_entidad.Add(SetObject(reader));
+                        }
+                    }
+                }
+            }
+            return l_entidad;
+        }
+
         protected override void Insert()
         {
             using (MySqlConnection connection = new MySqlConnection(

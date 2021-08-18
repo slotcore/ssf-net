@@ -21,6 +21,7 @@ using SIAC_Objetos.Sistema;
 using SSF_NET_Produccion;
 using C1.Win.C1FlexGrid;
 using SIAC_Negocio.Sunat;
+using SIAC_DATOS.Models.Contabilidad;
 
 namespace SSF_NET_Gestion.Formularios
 {
@@ -66,7 +67,7 @@ namespace SSF_NET_Gestion.Formularios
         // VARIABLES LOCALES
         int n_QueHace = 3;                                                              // INDICA EN QUE ESTADO SE ENCUENTRA EL FORMULARIO
         string[,] arrCabeceraDg1 = new string[6, 4];                                    // ARRAY PARA MOSTRAR LAS COLUMNAS DEL DATAGRID PRINCIPAL
-        string[,] arrCabeceraFlex1 = new string[16, 5];
+        string[,] arrCabeceraFlex1 = new string[18, 5];
         bool booSeEjecuto = false;
         bool booAgregando = false;
         string strNumerovalidos = "1234567890./" + (char)8;                                        // + (char)8;
@@ -181,11 +182,23 @@ namespace SSF_NET_Gestion.Formularios
             arrCabeceraFlex1[14, 3] = "0.00";
             arrCabeceraFlex1[14, 4] = "d_fchven";
 
-            arrCabeceraFlex1[15, 0] = "Total";
+            arrCabeceraFlex1[15, 0] = "Programado";
             arrCabeceraFlex1[15, 1] = "80";
             arrCabeceraFlex1[15, 2] = "D";
             arrCabeceraFlex1[15, 3] = "0.00";
             arrCabeceraFlex1[15, 4] = "n_canpro";
+
+            arrCabeceraFlex1[16, 0] = "Stock";
+            arrCabeceraFlex1[16, 1] = "80";
+            arrCabeceraFlex1[16, 2] = "D";
+            arrCabeceraFlex1[16, 3] = "0.00";
+            arrCabeceraFlex1[16, 4] = "n_stkini";
+
+            arrCabeceraFlex1[17, 0] = "Diferencia";
+            arrCabeceraFlex1[17, 1] = "80";
+            arrCabeceraFlex1[17, 2] = "D";
+            arrCabeceraFlex1[17, 3] = "0.00";
+            arrCabeceraFlex1[17, 4] = "n_canprod";
 
             funFlex.FlexMostrarDatos(FgProd, arrCabeceraFlex1, dtDetalle, 2, false);
             funFlex.FlexMostrarDatos(FgInter, arrCabeceraFlex1, dtDetalle, 2, false);
@@ -256,49 +269,62 @@ namespace SSF_NET_Gestion.Formularios
         }
         void VerRegistro(int n_IdRegistro)
         {
-            DataTable dtPro = new DataTable();
-            DataTable dtInter = new DataTable();
-            DataTable dtTodo = new DataTable();
-            CN_ges_planventas o_plaven = new CN_ges_planventas();
-            DataTable dtres = new DataTable();
+            try
+            {
+                DataTable dtPro = new DataTable();
+                DataTable dtInter = new DataTable();
+                DataTable dtTodo = new DataTable();
+                CN_ges_planventas o_plaven = new CN_ges_planventas();
+                DataTable dtres = new DataTable();
 
-            FgProd.Rows.Count = 2;
-            FgInter.Rows.Count = 2;
-            FgTodo.Rows.Count = 2;
+                FgProd.Rows.Count = 2;
+                FgInter.Rows.Count = 2;
+                FgTodo.Rows.Count = 2;
 
-            objCabecera.mysConec = mysConec;
-            objCabecera.TraerRegistro(n_IdRegistro);
+                objCabecera.mysConec = mysConec;
+                objCabecera.TraerRegistro(n_IdRegistro);
 
-            BE_CABECERA = objCabecera.e_Cabecera;
-            dtPro = objCabecera.dtProducto;
-            dtInter = objCabecera.dtIntermedio;
-            dtTodo = objCabecera.dtTodo;
+                BE_CABECERA = objCabecera.e_Cabecera;
+                dtPro = objCabecera.dtProducto;
+                dtInter = objCabecera.dtIntermedio;
+                dtTodo = objCabecera.dtTodo;
 
-            TxtDes.Text = BE_CABECERA.c_des;
-            TxtFchIni.Text = Convert.ToDateTime(BE_CABECERA.d_fchini).ToString("dd/MM/yyyy");
-            TxtFchFin.Text = Convert.ToDateTime(BE_CABECERA.d_fchfin).ToString("dd/MM/yyyy");
-            LblIdPlaVen.Text = BE_CABECERA.n_idplaven.ToString();
-            CboMesIni.SelectedValue = BE_CABECERA.n_mesini;
+                TxtDes.Text = BE_CABECERA.c_des;
+                TxtFchIni.Text = Convert.ToDateTime(BE_CABECERA.d_fchini).ToString("dd/MM/yyyy");
+                TxtFchFin.Text = Convert.ToDateTime(BE_CABECERA.d_fchfin).ToString("dd/MM/yyyy");
+                LblIdPlaVen.Text = BE_CABECERA.n_idplaven.ToString();
+                CboMesIni.SelectedValue = BE_CABECERA.n_mesini;
 
-            o_plaven.mysConec = mysConec;
-            o_plaven.TraerRegistro(BE_CABECERA.n_idplaven);
-            dtres = o_plaven.dtCabecera;
-            TxtPlaVen.Text = dtres.Rows[0]["c_des"].ToString();
-            o_plaven = null;
+                o_plaven.mysConec = mysConec;
+                o_plaven.TraerRegistro(BE_CABECERA.n_idplaven);
+                dtres = o_plaven.dtCabecera;
 
-            MostrarMeses(BE_CABECERA.n_mesini);
-            FgProd.Rows.Count = 2;
-            FgInter.Rows.Count = 2;
-            FgTodo.Rows.Count = 2;
+                if (dtres.Rows.Count == 0)
+                {
+                    throw new Exception("El plan de ventas asociado no existe");
+                }
 
-            funFlex.FlexMostrarDatos(FgProd, arrCabeceraFlex1, dtPro, 2, true);
-            funFlex.FlexMostrarDatos(FgInter, arrCabeceraFlex1, dtInter, 2, true);
-            funFlex.FlexMostrarDatos(FgTodo, arrCabeceraFlex1, dtTodo, 2, true);
-            
-            //llenarFlex(FgProd, dtPro);
-            //llenarFlex(FgInter, dtInter);
-            //llenarFlex(FgTodo, dtTodo);
-            Tab2.SelectedIndex = 0;
+                TxtPlaVen.Text = dtres.Rows[0]["c_des"].ToString();
+                o_plaven = null;
+
+                MostrarMeses(BE_CABECERA.n_mesini);
+                FgProd.Rows.Count = 2;
+                FgInter.Rows.Count = 2;
+                FgTodo.Rows.Count = 2;
+
+                funFlex.FlexMostrarDatos(FgProd, arrCabeceraFlex1, dtPro, 2, true);
+                funFlex.FlexMostrarDatos(FgInter, arrCabeceraFlex1, dtInter, 2, true);
+                funFlex.FlexMostrarDatos(FgTodo, arrCabeceraFlex1, dtTodo, 2, true);
+
+                //llenarFlex(FgProd, dtPro);
+                //llenarFlex(FgInter, dtInter);
+                //llenarFlex(FgTodo, dtTodo);
+                Tab2.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Ocurrio un error: {0}", ex.Message), "Ver registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         //void llenarFlex(C1.Win.C1FlexGrid.C1FlexGrid fg_Control, DataTable dtDatos)
         //{
@@ -583,7 +609,7 @@ namespace SSF_NET_Gestion.Formularios
             BE_CABECERA.n_activo = 1;
 
             n_numele = FgProd.Rows.Count-1;
-            n_numcol = FgProd.Cols.Count-2;
+            n_numcol = FgProd.Cols.Count-4;
             for (n_fila = 2; n_fila <= n_numele; n_fila++)
             {
                 for (n_col = 4; n_col <= n_numcol; n_col++)
@@ -592,6 +618,10 @@ namespace SSF_NET_Gestion.Formularios
                     e_detalle.n_idplapro = n_id;
                     e_detalle.n_idite = Convert.ToInt32(FgProd.GetData(n_fila,1));
                     e_detalle.n_idmes = Buscarmes(FgProd.GetData(1, n_col).ToString());
+                    if (e_detalle.n_idmes == BE_CABECERA.n_mesini)
+                    {
+                        e_detalle.n_stockini = Convert.ToDouble(FgProd.GetData(n_fila, 17));
+                    }
                     e_detalle.n_idtipite = 1;
                     e_detalle.n_can = Convert.ToDouble(FgProd.GetData(n_fila, n_col));
                     BE_DETALLE.Add(e_detalle);
@@ -599,7 +629,7 @@ namespace SSF_NET_Gestion.Formularios
             }
 
             n_numele = FgInter.Rows.Count - 1;
-            n_numcol = FgInter.Cols.Count - 2;
+            n_numcol = FgInter.Cols.Count - 4;
             for (n_fila = 2; n_fila <= n_numele; n_fila++)
             {
                 for (n_col = 4; n_col <= n_numcol; n_col++)
@@ -608,6 +638,10 @@ namespace SSF_NET_Gestion.Formularios
                     e_detalle.n_idplapro = n_id;
                     e_detalle.n_idite = Convert.ToInt32(FgInter.GetData(n_fila, 1));
                     e_detalle.n_idmes = Buscarmes(FgInter.GetData(1, n_col).ToString());
+                    if (e_detalle.n_idmes == BE_CABECERA.n_mesini)
+                    {
+                        e_detalle.n_stockini = Convert.ToDouble(FgInter.GetData(n_fila, 17));
+                    }
                     e_detalle.n_idtipite = 2;
                     e_detalle.n_can = Convert.ToDouble(FgInter.GetData(n_fila, n_col));
                     BE_DETALLE.Add(e_detalle);
@@ -719,8 +753,11 @@ namespace SSF_NET_Gestion.Formularios
             o_planven.mysConec = mysConec;
             o_planven.Consulta2(n_idreg);
             dtres = o_planven.dtLista;
+            Cursor.Current = Cursors.WaitCursor;
             MostrarPlanVentas(dtres, Convert.ToInt32(CboMesIni.SelectedValue));
-            HallarIntermedios2();
+            MostrarIntermedios(n_idreg, Convert.ToInt32(CboMesIni.SelectedValue));
+            Cursor.Current = Cursors.Default;
+            //HallarIntermedios2();
         }
         void HallarIntermedios2()
         {
@@ -735,7 +772,7 @@ namespace SSF_NET_Gestion.Formularios
             dtInter = funDatos.DataTableAgregarDataTable(dtresul, dtInter, "n_vuelta = 99");
             n_vuelta = 1;
             ProcesarIntermedios(FgProd, ref dtInter, n_vuelta);
-            MostrarIntermedios(dtInter, n_vuelta);
+            MostrarIntermedios2(dtInter, n_vuelta);
             
             do
             {
@@ -743,13 +780,14 @@ namespace SSF_NET_Gestion.Formularios
                 if (dtresul.Rows.Count != 0)
                 {
                     ProcesarIntermedios(FgInter, ref dtInter, n_vuelta);
-                    MostrarIntermedios(dtInter, n_vuelta);
+                    MostrarIntermedios2(dtInter, n_vuelta);
                 }
                 n_vuelta = n_vuelta + 1;
             } while (dtresul.Rows.Count != 0);
             dtInter = funDatos.DataTableFiltrar(dtInter, "n_idtipexi = 2");
             PintarIntermedios(dtInter);
         }
+
         void PintarIntermedios(DataTable dtDatos)
         {
             int n_row = 0;
@@ -895,6 +933,7 @@ namespace SSF_NET_Gestion.Formularios
                 }
             }
         }
+
         void MostrarEstacionalidad(int n_Fila, double n_CantidadMensual, DataTable dtEstacionalidad)
         {
             FgInter.SetData(n_Fila, 4, "0.00");
@@ -942,6 +981,7 @@ namespace SSF_NET_Gestion.Formularios
                 }
             }
         }
+
         int NumMesAbundancia(DataTable dtEstacionalidad)
         {
             int n_nummes = 0;
@@ -959,7 +999,62 @@ namespace SSF_NET_Gestion.Formularios
             if (Convert.ToInt32(funFunciones.NulosN(dtEstacionalidad.Rows[0]["diciembre"])) == 5) { n_nummes = n_nummes + 1; }
             return n_nummes;
         }
-        void MostrarIntermedios(DataTable dtDatos, int n_Vuelta)
+
+        void MostrarIntermedios(int n_idplaven, int n_MesInicio)
+        {
+            CN_ges_planventas o_planven = new CN_ges_planventas();
+            DataTable dtDatos = new DataTable();
+            //int n_row = 0;
+            //string c_dato = "";
+
+            o_planven.mysConec = mysConec;
+            o_planven.ConsultaIntermedios(n_idplaven);
+            dtDatos = o_planven.dtLista;
+
+
+            DataTable dtres = new DataTable();
+            DataTable dtmes = new DataTable();
+            int n_col = 0;
+            int n_col2 = 3;
+            int n_mes = n_MesInicio;
+            dtmes = funDatos.DataTableFiltrar(dtMeses, "n_id NOT IN(0,13)");
+            for (n_col = 1; n_col <= 12; n_col++)
+            {
+                dtres = funDatos.DataTableFiltrar(dtmes, "n_id = " + n_mes.ToString() + "");
+                arrCabeceraFlex1[n_col2, 0] = funFunciones.ConvertirTitulo(dtres.Rows[0]["c_des"].ToString());
+                arrCabeceraFlex1[n_col2, 4] = funFunciones.ConvertirTitulo(dtres.Rows[0]["c_des"].ToString());
+                n_mes = n_mes + 1;
+                if (n_mes > 12) n_mes = 1;
+                n_col2 = n_col2 + 1;
+            }
+            funFlex.FlexMostrarDatos(FgInter, arrCabeceraFlex1, dtDatos, 2, true);
+
+            string c_dato = funFlex.Flex_CadenaIN(FgInter, 1, 2);
+            DateTime fecha = new DateTime(STU_SISTEMA.ANOTRABAJO, n_MesInicio, 1);
+            //List<KardexResumen> kardexResumens = KardexResumen.TraerListaPorItem(STU_SISTEMA.EMPRESAID, 0, c_dato, fecha, fecha);
+
+            for (int n_row = 2; n_row <= FgInter.Rows.Count - 1; n_row++)
+            {
+                int n_iditem = Convert.ToInt32(FgInter.GetData(n_row, 1));
+                KardexResumen kardexResumen = KardexResumen.TraerKardexResumenPorItemMovimiento(STU_SISTEMA.EMPRESAID, 0, n_iditem, fecha.AddDays(-1), fecha.AddDays(-1));
+
+                if (kardexResumen != null)
+                {
+                    c_dato = kardexResumen.n_stkini.ToString("0.00");
+                    FgInter.SetData(n_row, 17, c_dato);
+                }
+                else
+                {
+                    FgInter.SetData(n_row, 17, "0.00");
+                }
+
+                double n_candif = Convert.ToDouble(FgInter.GetData(n_row, 16)) - Convert.ToDouble(FgInter.GetData(n_row, 17));
+                c_dato = n_candif.ToString("0.00");
+                FgInter.SetData(n_row, 18, c_dato);
+            }
+        }
+
+        void MostrarIntermedios2(DataTable dtDatos, int n_Vuelta)
         {
             int n_row = 0;
             string c_dato = "";
@@ -1016,6 +1111,7 @@ namespace SSF_NET_Gestion.Formularios
                 FgInter.SetData(FgInter.Rows.Count - 1, 15, c_dato);
             }
         }
+
         void ProcesarIntermedios(C1.Win.C1FlexGrid.C1FlexGrid fg_Control, ref DataTable dtInter, int n_vuelta)
         {
             DataTable dtres = new DataTable();
@@ -1027,7 +1123,7 @@ namespace SSF_NET_Gestion.Formularios
             {
                 n_idpro = Convert.ToInt32(fg_Control.GetData(n_row, 1));
                 dtres = funDatos.DataTableFiltrar(dtRecetas,"n_idpro = "+ n_idpro.ToString() + "");
-                if (dtres.Rows.Count!=0)
+                if (dtres.Rows.Count != 0)
                 {
                     for (n_fil = 0; n_fil <= dtres.Rows.Count - 1; n_fil++)
                     { 
@@ -1077,10 +1173,33 @@ namespace SSF_NET_Gestion.Formularios
                 dtres = funDatos.DataTableFiltrar(dtmes, "n_id = " + n_mes.ToString() + "");
                 arrCabeceraFlex1[n_col2, 0] = funFunciones.ConvertirTitulo(dtres.Rows[0]["c_des"].ToString());
                 arrCabeceraFlex1[n_col2, 4] = funFunciones.ConvertirTitulo(dtres.Rows[0]["c_des"].ToString());
-                n_mes = DateTime.Now.AddMonths(n_col).Month;
+                n_mes = n_mes + 1;
+                if (n_mes > 12) n_mes = 1;
                 n_col2 = n_col2 + 1;
             }
             funFlex.FlexMostrarDatos(FgProd, arrCabeceraFlex1, dtDatos, 2, true);
+
+            string c_dato = string.Empty;
+            DateTime fecha = new DateTime(STU_SISTEMA.ANOTRABAJO, n_MesInicio, 1);
+            for (int n_row = 2; n_row <= FgProd.Rows.Count - 1; n_row++)
+            {
+                int n_iditem = Convert.ToInt32(FgProd.GetData(n_row, 1));
+                KardexResumen kardexResumen = KardexResumen.TraerKardexResumenPorItemMovimiento(STU_SISTEMA.EMPRESAID, 0, n_iditem, fecha.AddDays(-1), fecha.AddDays(-1));
+
+                if (kardexResumen != null)
+                {
+                    c_dato = kardexResumen.n_stkini.ToString("0.00");
+                    FgProd.SetData(n_row, 17, c_dato);
+                }
+                else
+                {
+                    FgProd.SetData(n_row, 17, "0.00");
+                }
+
+                double n_candif = Convert.ToDouble(FgProd.GetData(n_row, 16)) - Convert.ToDouble(FgProd.GetData(n_row, 17));
+                c_dato = n_candif.ToString("0.00");
+                FgProd.SetData(n_row, 18, c_dato);
+            }
         }
         private void CmdBusCli_Click(object sender, EventArgs e)
         {
@@ -1209,7 +1328,8 @@ namespace SSF_NET_Gestion.Formularios
                 dtres = funDatos.DataTableFiltrar(dtMeses, "n_id = " + n_mes.ToString() + "");
                 arrCabeceraFlex1[n_col2, 0] = funFunciones.ConvertirTitulo(dtres.Rows[0]["c_des"].ToString());
                 arrCabeceraFlex1[n_col2, 4] = funFunciones.ConvertirTitulo(dtres.Rows[0]["c_des"].ToString());
-                n_mes = DateTime.Now.AddMonths(n_col).Month;
+                n_mes = n_mes + 1;
+                if (n_mes > 12) n_mes = 1;
                 n_col2 = n_col2 + 1;
             }
             funFlex.FlexMostrarDatos(FgProd, arrCabeceraFlex1, dtres, 2, false);

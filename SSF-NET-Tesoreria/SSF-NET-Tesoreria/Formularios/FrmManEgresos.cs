@@ -750,14 +750,14 @@ namespace SSF_NET_Tesoreria.Formularios
                 //    return booEstado;
                 //}
 
-                if (Math.Round(Convert.ToDouble(LblDebTotSol.Text), 4, MidpointRounding.AwayFromZero) != Math.Round(Convert.ToDouble(LblHabTotSol.Text), 4, MidpointRounding.AwayFromZero))
+                if (Genericas.Round(Convert.ToDouble(LblDebTotSol.Text), 4) != Genericas.Round(Convert.ToDouble(LblHabTotSol.Text), 4))
                 {
                     MessageBox.Show("¡ EL importe debe en soles no corresponder al importe haber en soles !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     booEstado = false;
                     FgOriIng.Focus();
                     return booEstado;
                 }
-                if (Math.Round(Convert.ToDouble(LblDebTotDol.Text), 4, MidpointRounding.AwayFromZero) != Math.Round(Convert.ToDouble(LblHabTotDol.Text), 4, MidpointRounding.AwayFromZero))
+                if (Genericas.Round(Convert.ToDouble(LblDebTotDol.Text), 4) != Genericas.Round(Convert.ToDouble(LblHabTotDol.Text), 4))
                 {
                     MessageBox.Show("¡ EL importe debe en dolares no corresponder al importe haber en dolares !", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     booEstado = false;
@@ -1867,13 +1867,13 @@ namespace SSF_NET_Tesoreria.Formularios
         }
         void SumarTotDestino()
         {
-            LblHabTotSol.Text = Math.Round(funFlex.FlexSumarCol(FgDesIng, 3, 2, FgDesIng.Rows.Count - 1), 4, MidpointRounding.AwayFromZero).ToString("0.0000");
-            LblHabTotDol.Text = Math.Round(funFlex.FlexSumarCol(FgDesIng, 4, 2, FgDesIng.Rows.Count - 1), 4, MidpointRounding.AwayFromZero).ToString("0.0000");
+            LblHabTotSol.Text = Genericas.Round(funFlex.FlexSumarCol(FgDesIng, 3, 2, FgDesIng.Rows.Count - 1), 4).ToString("0.0000");
+            LblHabTotDol.Text = Genericas.Round(funFlex.FlexSumarCol(FgDesIng, 4, 2, FgDesIng.Rows.Count - 1), 4).ToString("0.0000");
         }
         void SumarTotOrigen()
         {
-            LblDebTotSol.Text = Math.Round(funFlex.FlexSumarCol(FgOriIng, 3, 2, FgOriIng.Rows.Count - 1), 4, MidpointRounding.AwayFromZero).ToString("0.0000");
-            LblDebTotDol.Text = Math.Round(funFlex.FlexSumarCol(FgOriIng, 4, 2, FgOriIng.Rows.Count - 1), 4, MidpointRounding.AwayFromZero).ToString("0.0000");
+            LblDebTotSol.Text = Genericas.Round(funFlex.FlexSumarCol(FgOriIng, 3, 2, FgOriIng.Rows.Count - 1), 4).ToString("0.0000");
+            LblDebTotDol.Text = Genericas.Round(funFlex.FlexSumarCol(FgOriIng, 4, 2, FgOriIng.Rows.Count - 1), 4).ToString("0.0000");
         }
         void SumarColDocumentos()
         {
@@ -2234,10 +2234,10 @@ namespace SSF_NET_Tesoreria.Formularios
                 FgDesIng.SetData(FgDesIng.Rows.Count - 1, 5, c_dato);
             }
             
-            LblDebTotSol.Text = Math.Round(funFlex.FlexSumarCol(FgOriIng, 3, 2, FgOriIng.Rows.Count - 1), 4, MidpointRounding.AwayFromZero).ToString("0.0000");
-            LblDebTotDol.Text = Math.Round(funFlex.FlexSumarCol(FgOriIng, 4, 2, FgOriIng.Rows.Count - 1), 4, MidpointRounding.AwayFromZero).ToString("0.0000");
-            LblHabTotSol.Text = Math.Round(funFlex.FlexSumarCol(FgDesIng, 3, 2, FgDesIng.Rows.Count - 1), 4, MidpointRounding.AwayFromZero).ToString("0.0000");
-            LblHabTotDol.Text = Math.Round(funFlex.FlexSumarCol(FgDesIng, 4, 2, FgDesIng.Rows.Count - 1), 4, MidpointRounding.AwayFromZero).ToString("0.0000");
+            LblDebTotSol.Text = Genericas.Round(funFlex.FlexSumarCol(FgOriIng, 3, 2, FgOriIng.Rows.Count - 1), 4).ToString("0.0000");
+            LblDebTotDol.Text = Genericas.Round(funFlex.FlexSumarCol(FgOriIng, 4, 2, FgOriIng.Rows.Count - 1), 4).ToString("0.0000");
+            LblHabTotSol.Text = Genericas.Round(funFlex.FlexSumarCol(FgDesIng, 3, 2, FgDesIng.Rows.Count - 1), 4).ToString("0.0000");
+            LblHabTotDol.Text = Genericas.Round(funFlex.FlexSumarCol(FgDesIng, 4, 2, FgDesIng.Rows.Count - 1), 4).ToString("0.0000");
         }
         private void fgDocCli_CellChanged(object sender, C1.Win.C1FlexGrid.RowColEventArgs e)
         {

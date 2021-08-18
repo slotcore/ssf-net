@@ -318,6 +318,7 @@ namespace SIAC_Negocio.Gestion
             }
             return;
         }
+
         public void Consulta2(int n_IdPlanVenta)
         {
             objdatos.booOcurrioError = false;
@@ -334,6 +335,24 @@ namespace SIAC_Negocio.Gestion
             }
             return;
         }
+
+        public void ConsultaIntermedios(int n_IdPlanVenta)
+        {
+            objdatos.booOcurrioError = false;
+            objdatos.mysConec = mysConec;
+            objdatos.ConsultaIntermedios(n_IdPlanVenta);
+
+            dtLista = objdatos.dtLista;
+
+            if (objdatos.booOcurrioError == true)
+            {
+                booOcurrioError = xMiFuncion.booOcurrioError;
+                StrErrorMensaje = xMiFuncion.StrErrorMensaje;
+                IntErrorNumber = xMiFuncion.IntErrorNumber;
+            }
+            return;
+        }
+
         public void CambiarEstadoPlanVentas(int n_IdPlanVenta, int n_Estado)
         {
             objdatos.booOcurrioError = false;

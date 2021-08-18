@@ -513,6 +513,26 @@ namespace SIAC_DATOS.Gestion
                 return;
             }
         }
+
+        public void ConsultaIntermedios(int n_IdPlanVenta)
+        {
+            string[,] arrParametros = new string[1, 3] {
+                                            {"n_idplaven", "System.INT16", n_IdPlanVenta.ToString()}
+                                      };
+            try
+            {
+                dtLista = xMiFuncion.StoreDTLLenar("ges_planventasdet_obtenerintermedios", arrParametros, mysConec);
+            }
+            catch (Exception exc)
+            {
+                // SI SUCEDE UN ERROR DEVOLVEMOS FALSO
+                booOcurrioError = xMiFuncion.booOcurrioError;
+                StrErrorMensaje = xMiFuncion.StrErrorMensaje;
+                IntErrorNumber = xMiFuncion.IntErrorNumber;
+                return;
+            }
+        }
+
         public void CambiarEstadoPlanVentas(int n_IdPlanVenta, int n_Estado)
         {
             string[,] arrParametros = new string[2, 3] {

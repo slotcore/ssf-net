@@ -13,6 +13,7 @@ namespace SIAC_Entidades.Gestion
         int _n_idmes;
         int _n_idtipite;
         double _n_can;
+        double _n_stockini;
         public int n_idplapro
         {
             get { return _n_idplapro; }
@@ -37,6 +38,11 @@ namespace SIAC_Entidades.Gestion
         {
             get { return _n_can; }
             set { _n_can = value; }
+        }
+        public double n_stockini
+        {
+            get { return _n_stockini; }
+            set { _n_stockini = value; }
         }
     }
 }

@@ -942,12 +942,12 @@ namespace SSF_NET_Produccion.Formularios
                 arrCabeceraDg1[0, 3] = "c_numdoc";
 
                 arrCabeceraDg1[1, 0] = "Cliente";
-                arrCabeceraDg1[1, 1] = "300";
+                arrCabeceraDg1[1, 1] = "260";
                 arrCabeceraDg1[1, 2] = "C";
                 arrCabeceraDg1[1, 3] = "c_nombre";
 
                 arrCabeceraDg1[2, 0] = "Fecha Reg.";
-                arrCabeceraDg1[2, 1] = "70";
+                arrCabeceraDg1[2, 1] = "90";
                 arrCabeceraDg1[2, 2] = "C";
                 arrCabeceraDg1[2, 3] = "d_fchped";
 
@@ -957,7 +957,7 @@ namespace SSF_NET_Produccion.Formularios
                 arrCabeceraDg1[3, 3] = "c_numordcom";
 
                 arrCabeceraDg1[4, 0] = "Fch. O.C.";
-                arrCabeceraDg1[4, 1] = "70";
+                arrCabeceraDg1[4, 1] = "90";
                 arrCabeceraDg1[4, 2] = "F";
                 arrCabeceraDg1[4, 3] = "d_fchped";
 

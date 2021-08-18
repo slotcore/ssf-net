@@ -537,6 +537,24 @@ namespace Helper
             DataTable dtres = (DataTable)JsonConvert.DeserializeObject(c_Json, (typeof(DataTable)));
             return dtres;
         }
+
+        public static double RoundCorrect(double d, int decimals)
+        {
+            double multiplier = Math.Pow(10, decimals);
+
+            if (d < 0)
+                multiplier *= -1;
+
+            return Math.Floor((d * multiplier) + 0.5) / multiplier;
+
+        }
+        public static decimal Round(double num, int decimals)
+        {
+            decimal d = Convert.ToDecimal(num);
+            decimal factor = Convert.ToDecimal(Math.Pow(10, decimals));
+            int sign = Math.Sign(d);
+            return Decimal.Truncate(d * factor + 0.5m * sign) / factor;
+        }
         //public string[] IniLeerSeccion(string sFileName, string sSection)
         //{
         //    //--------------------------------------------------------------------------

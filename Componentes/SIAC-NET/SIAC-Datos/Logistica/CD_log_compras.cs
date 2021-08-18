@@ -205,21 +205,24 @@ namespace SIAC_DATOS.Logistica
                         int n_iddoccompra = Convert.ToInt32(dtres.Rows[0]["n_iddocmod"]);                                   // OBTENEMOS EL ID DEL DOCUMENTO QUE SE MODIFICA
                         o_compras.TraerRegistro(n_iddoccompra);
                         dtres = o_compras.dtRegistro;
-                        n_salfac = Convert.ToDouble(dtres.Rows[0]["n_impsal"]) + n_valorinc;
+                        if (dtres.Rows.Count > 0)
+                        {
+                            n_salfac = Convert.ToDouble(dtres.Rows[0]["n_impsal"]) + n_valorinc;
 
-                        string[,] arrParam1 = new string[3, 3] {
+                            string[,] arrParam1 = new string[3, 3] {
                                                 {"n_idreg", "System.INT32", n_iddoccompra.ToString()},
                                                 {"n_importe", "System.DOUBLE", n_salfac.ToString()},
                                                 {"n_tipo", "System.INT32", "1"}
                                           };
 
-                        if (xMiFuncion.StoreEjecutar("log_compras_actualizarsaldo", arrParam1, mysConec) == false)
-                        {
-                            b_ocurrioError = xMiFuncion.booOcurrioError;
-                            c_ErrorMensaje = xMiFuncion.StrErrorMensaje;
-                            n_ErrorNumber = xMiFuncion.IntErrorNumber;
-                            trans.Rollback();
-                            return b_result;
+                            if (xMiFuncion.StoreEjecutar("log_compras_actualizarsaldo", arrParam1, mysConec) == false)
+                            {
+                                b_ocurrioError = xMiFuncion.booOcurrioError;
+                                c_ErrorMensaje = xMiFuncion.StrErrorMensaje;
+                                n_ErrorNumber = xMiFuncion.IntErrorNumber;
+                                trans.Rollback();
+                                return b_result;
+                            }
                         }
 
                     }
