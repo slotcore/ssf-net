@@ -122,7 +122,6 @@
     <Compile Include="Classes\Facturador\Cabecera.cs" />
     <Compile Include="Classes\Facturador\Comprobante.cs" />
     <Compile Include="Classes\Facturador\Detalle.cs" />
-    <Compile Include="Classes\Facturador\JsonPropertyAttribute.cs" />
     <Compile Include="Classes\Facturador\Leyenda.cs" />
     <Compile Include="Classes\Facturador\Tributo.cs" />
     <Compile Include="Classes\Facturador\VariablesGlobale.cs" />
