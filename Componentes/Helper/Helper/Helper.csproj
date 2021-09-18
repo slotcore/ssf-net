@@ -118,6 +118,14 @@
     <Compile Include="Classes\DiverseWorkTask.cs" />
     <Compile Include="Classes\DiverseWorkTaskEmployee.cs" />
     <Compile Include="Classes\Employee.cs" />
+    <Compile Include="Classes\Facturador\AdicionalDetalle.cs" />
+    <Compile Include="Classes\Facturador\Cabecera.cs" />
+    <Compile Include="Classes\Facturador\Comprobante.cs" />
+    <Compile Include="Classes\Facturador\Detalle.cs" />
+    <Compile Include="Classes\Facturador\JsonPropertyAttribute.cs" />
+    <Compile Include="Classes\Facturador\Leyenda.cs" />
+    <Compile Include="Classes\Facturador\Tributo.cs" />
+    <Compile Include="Classes\Facturador\VariablesGlobale.cs" />
     <Compile Include="Classes\Product.cs" />
     <Compile Include="Classes\ProductionMethod.cs" />
     <Compile Include="Classes\ProductionOutput.cs" />

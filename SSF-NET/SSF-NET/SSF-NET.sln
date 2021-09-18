@@ -47,6 +47,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helper", "..\..\Componentes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIAC-NET-Estacionamientos", "..\..\Componentes\SIAC-NET\SIAC-NET-Estacionamientos\SIAC-NET-Estacionamientos\SIAC-NET-Estacionamientos.csproj", "{6D040714-C152-445C-AE20-A2E08BE83E68}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSF-NET-Reportes", "..\..\SSF-NET-Reportes\SSF-NET-Reportes.csproj", "{F5CB1EA2-7B06-44DB-A4AD-90B8721F73A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -121,6 +123,10 @@ Global
 		{6D040714-C152-445C-AE20-A2E08BE83E68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D040714-C152-445C-AE20-A2E08BE83E68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D040714-C152-445C-AE20-A2E08BE83E68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5CB1EA2-7B06-44DB-A4AD-90B8721F73A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5CB1EA2-7B06-44DB-A4AD-90B8721F73A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5CB1EA2-7B06-44DB-A4AD-90B8721F73A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5CB1EA2-7B06-44DB-A4AD-90B8721F73A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

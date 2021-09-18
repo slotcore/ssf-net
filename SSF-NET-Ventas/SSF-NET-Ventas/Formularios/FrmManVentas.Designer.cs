@@ -64,9 +64,8 @@
             this.emitirGuiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guiasDelMesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolSalir = new System.Windows.Forms.ToolStripButton();
-            this.Tab1 = new C1.Win.C1Command.C1DockingTab();
-            this.c1DockingTabPage1 = new C1.Win.C1Command.C1DockingTabPage();
-            this.Sc01 = new C1.Win.C1Sizer.C1Sizer();
+            this.Tab1 = new System.Windows.Forms.TabControl();
+            this.c1DockingTabPage1 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.CboMeses = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -76,9 +75,7 @@
             this.PicClos1 = new System.Windows.Forms.PictureBox();
             this.label17 = new System.Windows.Forms.Label();
             this.DgLista = new C1.Win.C1TrueDBGrid.C1TrueDBGrid();
-            this.c1DockingTabPage2 = new C1.Win.C1Command.C1DockingTabPage();
-            this.Sc02 = new C1.Win.C1Sizer.C1Sizer();
-            this.c1Sizer1 = new C1.Win.C1Sizer.C1Sizer();
+            this.c1DockingTabPage2 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.CmdDatAdi = new System.Windows.Forms.Button();
             this.CmdRefDat = new System.Windows.Forms.Button();
@@ -96,7 +93,6 @@
             this.TxtCliente = new System.Windows.Forms.Label();
             this.CmdBusCli = new System.Windows.Forms.Button();
             this.LblidCliente = new System.Windows.Forms.Label();
-            this.c1Sizer2 = new C1.Win.C1Sizer.C1Sizer();
             this.FgDoc = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.FgItems = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.CboTipOpe = new System.Windows.Forms.ComboBox();
@@ -180,24 +176,15 @@
             this.label31 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.ToolHerramientas.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Tab1)).BeginInit();
             this.Tab1.SuspendLayout();
             this.c1DockingTabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Sc01)).BeginInit();
-            this.Sc01.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicClos1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgLista)).BeginInit();
             this.c1DockingTabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Sc02)).BeginInit();
-            this.Sc02.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Sizer1)).BeginInit();
-            this.c1Sizer1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicClos2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Sizer2)).BeginInit();
-            this.c1Sizer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FgDoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FgItems)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -223,9 +210,9 @@
             this.Toolbaja2,
             this.toolStripSeparator1,
             this.ToolGrabar,
+            this.TooEnvSun,
             this.ToolCancelar,
             this.toolStripSeparator2,
-            this.TooEnvSun,
             this.TooRecSun,
             this.TooCorreo,
             this.ToolExportar,
@@ -539,65 +526,51 @@
             // Tab1
             // 
             this.Tab1.Alignment = System.Windows.Forms.TabAlignment.Left;
+            this.Tab1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Tab1.Controls.Add(this.c1DockingTabPage1);
             this.Tab1.Controls.Add(this.c1DockingTabPage2);
             this.Tab1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tab1.ForeColor = System.Drawing.Color.Black;
             this.Tab1.Location = new System.Drawing.Point(1, 48);
-            this.Tab1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tab1.Margin = new System.Windows.Forms.Padding(4);
+            this.Tab1.Multiline = true;
             this.Tab1.Name = "Tab1";
             this.Tab1.SelectedIndex = 1;
             this.Tab1.Size = new System.Drawing.Size(1360, 686);
-            this.Tab1.TabAreaBackColor = System.Drawing.Color.White;
             this.Tab1.TabIndex = 31;
-            this.Tab1.TabsSpacing = -10;
-            this.Tab1.TabStyle = C1.Win.C1Command.TabStyleEnum.Sloping;
-            this.Tab1.VisualStyle = C1.Win.C1Command.VisualStyle.Custom;
-            this.Tab1.VisualStyleBase = C1.Win.C1Command.VisualStyle.OfficeXP;
-            this.Tab1.SelectedIndexChanging += new C1.Win.C1Command.SelectedIndexChangingEventHandler(this.Tab1_SelectedIndexChanging);
+            this.Tab1.SelectedIndexChanged += new System.EventHandler(this.Tab1_SelectedIndexChanging);
             // 
             // c1DockingTabPage1
             // 
             this.c1DockingTabPage1.BackColor = System.Drawing.Color.White;
-            this.c1DockingTabPage1.Controls.Add(this.Sc01);
+            this.c1DockingTabPage1.Controls.Add(this.panel4);
+            this.c1DockingTabPage1.Controls.Add(this.panel2);
+            this.c1DockingTabPage1.Controls.Add(this.DgLista);
             this.c1DockingTabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.c1DockingTabPage1.ForeColor = System.Drawing.Color.Black;
-            this.c1DockingTabPage1.Location = new System.Drawing.Point(34, 1);
-            this.c1DockingTabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.c1DockingTabPage1.Location = new System.Drawing.Point(32, 4);
+            this.c1DockingTabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.c1DockingTabPage1.Name = "c1DockingTabPage1";
-            this.c1DockingTabPage1.Size = new System.Drawing.Size(1325, 684);
+            this.c1DockingTabPage1.Size = new System.Drawing.Size(1324, 678);
             this.c1DockingTabPage1.TabIndex = 0;
             this.c1DockingTabPage1.Text = "Consulta";
             // 
-            // Sc01
-            // 
-            this.Sc01.Controls.Add(this.panel4);
-            this.Sc01.Controls.Add(this.panel2);
-            this.Sc01.Controls.Add(this.DgLista);
-            this.Sc01.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Sc01.ForeColor = System.Drawing.Color.Black;
-            this.Sc01.GridDefinition = "4.09356725146199:False:True;88.8888888888889:False:False;4.3859649122807:False:Tr" +
-    "ue;\t99.2452830188679:False:False;";
-            this.Sc01.Location = new System.Drawing.Point(0, 0);
-            this.Sc01.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Sc01.Name = "Sc01";
-            this.Sc01.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.Sc01.Size = new System.Drawing.Size(1325, 684);
-            this.Sc01.TabIndex = 0;
-            this.Sc01.Text = "c1Sizer1";
-            // 
             // panel4
             // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.Transparent;
             this.panel4.Controls.Add(this.CboMeses);
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.LblNumReg);
             this.panel4.Controls.Add(this.label18);
             this.panel4.ForeColor = System.Drawing.Color.Black;
-            this.panel4.Location = new System.Drawing.Point(5, 649);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Location = new System.Drawing.Point(5, 642);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1315, 30);
+            this.panel4.Size = new System.Drawing.Size(1315, 37);
             this.panel4.TabIndex = 2;
             // 
             // CboMeses
@@ -606,7 +579,7 @@
             this.CboMeses.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CboMeses.FormattingEnabled = true;
             this.CboMeses.Location = new System.Drawing.Point(959, 4);
-            this.CboMeses.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CboMeses.Margin = new System.Windows.Forms.Padding(4);
             this.CboMeses.Name = "CboMeses";
             this.CboMeses.Size = new System.Drawing.Size(189, 28);
             this.CboMeses.TabIndex = 10;
@@ -654,12 +627,14 @@
             // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
             this.panel2.Controls.Add(this.PicClos1);
             this.panel2.Controls.Add(this.label17);
             this.panel2.ForeColor = System.Drawing.Color.Black;
             this.panel2.Location = new System.Drawing.Point(5, 5);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1315, 28);
             this.panel2.TabIndex = 1;
@@ -668,7 +643,7 @@
             // 
             this.PicClos1.Image = ((System.Drawing.Image)(resources.GetObject("PicClos1.Image")));
             this.PicClos1.Location = new System.Drawing.Point(1260, -2);
-            this.PicClos1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PicClos1.Margin = new System.Windows.Forms.Padding(4);
             this.PicClos1.Name = "PicClos1";
             this.PicClos1.Size = new System.Drawing.Size(32, 32);
             this.PicClos1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -691,20 +666,23 @@
             // 
             // DgLista
             // 
+            this.DgLista.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DgLista.BackColor = System.Drawing.Color.White;
             this.DgLista.CaptionHeight = 19;
             this.DgLista.ForeColor = System.Drawing.Color.Black;
             this.DgLista.GroupByCaption = "Drag a column header here to group by that column";
             this.DgLista.Images.Add(((System.Drawing.Image)(resources.GetObject("DgLista.Images"))));
             this.DgLista.Location = new System.Drawing.Point(5, 37);
-            this.DgLista.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DgLista.Margin = new System.Windows.Forms.Padding(4);
             this.DgLista.Name = "DgLista";
             this.DgLista.PreviewInfo.Location = new System.Drawing.Point(0, 0);
             this.DgLista.PreviewInfo.Size = new System.Drawing.Size(0, 0);
             this.DgLista.PreviewInfo.ZoomFactor = 75D;
             this.DgLista.PrintInfo.PageSettings = ((System.Drawing.Printing.PageSettings)(resources.GetObject("DgLista.PrintInfo.PageSettings")));
             this.DgLista.RowHeight = 17;
-            this.DgLista.Size = new System.Drawing.Size(1315, 642);
+            this.DgLista.Size = new System.Drawing.Size(1315, 597);
             this.DgLista.TabIndex = 0;
             this.DgLista.Text = "c1TrueDBGrid1";
             this.DgLista.DoubleClick += new System.EventHandler(this.DgLista_DoubleClick);
@@ -713,51 +691,22 @@
             // 
             // c1DockingTabPage2
             // 
-            this.c1DockingTabPage2.Controls.Add(this.Sc02);
+            this.c1DockingTabPage2.Controls.Add(this.panel1);
+            this.c1DockingTabPage2.Controls.Add(this.panel3);
             this.c1DockingTabPage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.c1DockingTabPage2.ForeColor = System.Drawing.Color.Black;
-            this.c1DockingTabPage2.Location = new System.Drawing.Point(34, 1);
-            this.c1DockingTabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.c1DockingTabPage2.Location = new System.Drawing.Point(32, 4);
+            this.c1DockingTabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.c1DockingTabPage2.Name = "c1DockingTabPage2";
-            this.c1DockingTabPage2.Size = new System.Drawing.Size(1325, 684);
+            this.c1DockingTabPage2.Size = new System.Drawing.Size(1324, 678);
             this.c1DockingTabPage2.TabIndex = 1;
             this.c1DockingTabPage2.Text = "Detalle";
             // 
-            // Sc02
-            // 
-            this.Sc02.Controls.Add(this.c1Sizer1);
-            this.Sc02.Controls.Add(this.panel3);
-            this.Sc02.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Sc02.ForeColor = System.Drawing.Color.Black;
-            this.Sc02.GridDefinition = "4.09356725146199:False:True;95.3216374269006:False:False;0:False:True;\t99.8490566" +
-    "037736:False:False;";
-            this.Sc02.Location = new System.Drawing.Point(0, 0);
-            this.Sc02.Margin = new System.Windows.Forms.Padding(1);
-            this.Sc02.Name = "Sc02";
-            this.Sc02.Padding = new System.Windows.Forms.Padding(1);
-            this.Sc02.Size = new System.Drawing.Size(1325, 684);
-            this.Sc02.SplitterWidth = 1;
-            this.Sc02.TabIndex = 0;
-            this.Sc02.Text = "c1Sizer2";
-            // 
-            // c1Sizer1
-            // 
-            this.c1Sizer1.Controls.Add(this.panel1);
-            this.c1Sizer1.ForeColor = System.Drawing.Color.Black;
-            this.c1Sizer1.GridDefinition = "10.260336906585:False:False;78.8667687595712:False:True;10.260336906585:False:Fal" +
-    "se;\t12.7739984882842:False:False;74.2252456538171:False:True;12.6984126984127:Fa" +
-    "lse:False;";
-            this.c1Sizer1.Location = new System.Drawing.Point(1, 30);
-            this.c1Sizer1.Margin = new System.Windows.Forms.Padding(1);
-            this.c1Sizer1.Name = "c1Sizer1";
-            this.c1Sizer1.Padding = new System.Windows.Forms.Padding(1);
-            this.c1Sizer1.Size = new System.Drawing.Size(1323, 653);
-            this.c1Sizer1.SplitterWidth = 1;
-            this.c1Sizer1.TabIndex = 10;
-            this.c1Sizer1.Text = "c1Sizer1";
-            // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.CmdDatAdi);
             this.panel1.Controls.Add(this.CmdRefDat);
@@ -775,7 +724,8 @@
             this.panel1.Controls.Add(this.TxtCliente);
             this.panel1.Controls.Add(this.CmdBusCli);
             this.panel1.Controls.Add(this.LblidCliente);
-            this.panel1.Controls.Add(this.c1Sizer2);
+            this.panel1.Controls.Add(this.FgDoc);
+            this.panel1.Controls.Add(this.FgItems);
             this.panel1.Controls.Add(this.CboTipOpe);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.TxtPorDes);
@@ -818,20 +768,21 @@
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.ForeColor = System.Drawing.Color.Black;
-            this.panel1.Location = new System.Drawing.Point(171, 69);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Location = new System.Drawing.Point(4, 37);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1151, 583);
+            this.panel1.Size = new System.Drawing.Size(1316, 637);
             this.panel1.TabIndex = 0;
             // 
             // CmdDatAdi
             // 
+            this.CmdDatAdi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CmdDatAdi.BackColor = System.Drawing.Color.White;
             this.CmdDatAdi.Enabled = false;
             this.CmdDatAdi.ForeColor = System.Drawing.Color.Black;
             this.CmdDatAdi.Image = ((System.Drawing.Image)(resources.GetObject("CmdDatAdi.Image")));
             this.CmdDatAdi.Location = new System.Drawing.Point(308, 538);
-            this.CmdDatAdi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdDatAdi.Margin = new System.Windows.Forms.Padding(4);
             this.CmdDatAdi.Name = "CmdDatAdi";
             this.CmdDatAdi.Size = new System.Drawing.Size(56, 47);
             this.CmdDatAdi.TabIndex = 128;
@@ -840,12 +791,13 @@
             // 
             // CmdRefDat
             // 
+            this.CmdRefDat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CmdRefDat.BackColor = System.Drawing.Color.White;
             this.CmdRefDat.Enabled = false;
             this.CmdRefDat.ForeColor = System.Drawing.Color.Black;
             this.CmdRefDat.Image = ((System.Drawing.Image)(resources.GetObject("CmdRefDat.Image")));
             this.CmdRefDat.Location = new System.Drawing.Point(308, 585);
-            this.CmdRefDat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdRefDat.Margin = new System.Windows.Forms.Padding(4);
             this.CmdRefDat.Name = "CmdRefDat";
             this.CmdRefDat.Size = new System.Drawing.Size(56, 47);
             this.CmdRefDat.TabIndex = 127;
@@ -856,7 +808,7 @@
             // 
             this.PicClos2.Image = ((System.Drawing.Image)(resources.GetObject("PicClos2.Image")));
             this.PicClos2.Location = new System.Drawing.Point(965, 42);
-            this.PicClos2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PicClos2.Margin = new System.Windows.Forms.Padding(4);
             this.PicClos2.Name = "PicClos2";
             this.PicClos2.Size = new System.Drawing.Size(76, 66);
             this.PicClos2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -867,7 +819,7 @@
             // 
             this.TxtNumRuc.Enabled = false;
             this.TxtNumRuc.Location = new System.Drawing.Point(151, 32);
-            this.TxtNumRuc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtNumRuc.Margin = new System.Windows.Forms.Padding(4);
             this.TxtNumRuc.MaxLength = 25;
             this.TxtNumRuc.Name = "TxtNumRuc";
             this.TxtNumRuc.Size = new System.Drawing.Size(160, 23);
@@ -879,7 +831,7 @@
             // CmdVerAsiento
             // 
             this.CmdVerAsiento.Location = new System.Drawing.Point(1091, 145);
-            this.CmdVerAsiento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdVerAsiento.Margin = new System.Windows.Forms.Padding(4);
             this.CmdVerAsiento.Name = "CmdVerAsiento";
             this.CmdVerAsiento.Size = new System.Drawing.Size(197, 37);
             this.CmdVerAsiento.TabIndex = 125;
@@ -936,7 +888,7 @@
             this.CboBusDocRef.ForeColor = System.Drawing.Color.Black;
             this.CboBusDocRef.Image = ((System.Drawing.Image)(resources.GetObject("CboBusDocRef.Image")));
             this.CboBusDocRef.Location = new System.Drawing.Point(720, 116);
-            this.CboBusDocRef.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CboBusDocRef.Margin = new System.Windows.Forms.Padding(4);
             this.CboBusDocRef.Name = "CboBusDocRef";
             this.CboBusDocRef.Size = new System.Drawing.Size(53, 34);
             this.CboBusDocRef.TabIndex = 121;
@@ -959,7 +911,7 @@
             // 
             this.TxtNumDocRef.Enabled = false;
             this.TxtNumDocRef.Location = new System.Drawing.Point(552, 122);
-            this.TxtNumDocRef.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtNumDocRef.Margin = new System.Windows.Forms.Padding(4);
             this.TxtNumDocRef.MaxLength = 25;
             this.TxtNumDocRef.Name = "TxtNumDocRef";
             this.TxtNumDocRef.Size = new System.Drawing.Size(160, 23);
@@ -973,7 +925,7 @@
             this.CboTipDocRef.ForeColor = System.Drawing.Color.Black;
             this.CboTipDocRef.FormattingEnabled = true;
             this.CboTipDocRef.Location = new System.Drawing.Point(151, 122);
-            this.CboTipDocRef.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CboTipDocRef.Margin = new System.Windows.Forms.Padding(4);
             this.CboTipDocRef.Name = "CboTipDocRef";
             this.CboTipDocRef.Size = new System.Drawing.Size(315, 25);
             this.CboTipDocRef.TabIndex = 8;
@@ -1011,7 +963,7 @@
             this.CmdBusCli.ForeColor = System.Drawing.Color.Black;
             this.CmdBusCli.Image = ((System.Drawing.Image)(resources.GetObject("CmdBusCli.Image")));
             this.CmdBusCli.Location = new System.Drawing.Point(317, 27);
-            this.CmdBusCli.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdBusCli.Margin = new System.Windows.Forms.Padding(4);
             this.CmdBusCli.Name = "CmdBusCli";
             this.CmdBusCli.Size = new System.Drawing.Size(53, 34);
             this.CmdBusCli.TabIndex = 4;
@@ -1032,30 +984,17 @@
             this.LblidCliente.Text = "LblidCliente";
             this.LblidCliente.Visible = false;
             // 
-            // c1Sizer2
-            // 
-            this.c1Sizer2.Controls.Add(this.FgDoc);
-            this.c1Sizer2.Controls.Add(this.FgItems);
-            this.c1Sizer2.GridDefinition = "99.3377483443709:False:False;\t19.4954128440367:False:False;80.2752293577982:False" +
-    ":False;";
-            this.c1Sizer2.Location = new System.Drawing.Point(1, 236);
-            this.c1Sizer2.Margin = new System.Windows.Forms.Padding(1);
-            this.c1Sizer2.Name = "c1Sizer2";
-            this.c1Sizer2.Padding = new System.Windows.Forms.Padding(1);
-            this.c1Sizer2.Size = new System.Drawing.Size(1308, 302);
-            this.c1Sizer2.SplitterWidth = 1;
-            this.c1Sizer2.TabIndex = 93;
-            this.c1Sizer2.Text = "c1Sizer2";
-            // 
             // FgDoc
             // 
+            this.FgDoc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.FgDoc.BackColor = System.Drawing.Color.White;
             this.FgDoc.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
             this.FgDoc.ColumnInfo = "3,1,0,0,0,100,Columns:0{Width:9;}\t1{Width:217;Caption:\"Unidad Medida\";Style:\"Text" +
     "Align:CenterCenter;\";StyleFixed:\"TextAlign:CenterCenter;\";}\t2{Width:30;}\t";
             this.FgDoc.ForeColor = System.Drawing.Color.Black;
-            this.FgDoc.Location = new System.Drawing.Point(1, 1);
-            this.FgDoc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FgDoc.Location = new System.Drawing.Point(3, 238);
+            this.FgDoc.Margin = new System.Windows.Forms.Padding(4);
             this.FgDoc.Name = "FgDoc";
             this.FgDoc.Rows.DefaultSize = 20;
             this.FgDoc.Size = new System.Drawing.Size(255, 300);
@@ -1068,13 +1007,16 @@
             // FgItems
             // 
             this.FgItems.AllowSorting = C1.Win.C1FlexGrid.AllowSortingEnum.None;
+            this.FgItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.FgItems.BackColor = System.Drawing.Color.White;
             this.FgItems.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
             this.FgItems.ColumnInfo = "3,1,0,0,0,100,Columns:0{Width:9;}\t1{Width:217;Caption:\"Unidad Medida\";Style:\"Text" +
     "Align:CenterCenter;\";StyleFixed:\"TextAlign:CenterCenter;\";}\t2{Width:30;}\t";
             this.FgItems.ForeColor = System.Drawing.Color.Black;
-            this.FgItems.Location = new System.Drawing.Point(257, 1);
-            this.FgItems.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FgItems.Location = new System.Drawing.Point(259, 238);
+            this.FgItems.Margin = new System.Windows.Forms.Padding(4);
             this.FgItems.Name = "FgItems";
             this.FgItems.Rows.DefaultSize = 20;
             this.FgItems.Size = new System.Drawing.Size(1050, 300);
@@ -1097,7 +1039,7 @@
             this.CboTipOpe.ForeColor = System.Drawing.Color.Black;
             this.CboTipOpe.FormattingEnabled = true;
             this.CboTipOpe.Location = new System.Drawing.Point(924, 2);
-            this.CboTipOpe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CboTipOpe.Margin = new System.Windows.Forms.Padding(4);
             this.CboTipOpe.Name = "CboTipOpe";
             this.CboTipOpe.Size = new System.Drawing.Size(361, 25);
             this.CboTipOpe.TabIndex = 2;
@@ -1116,9 +1058,10 @@
             // 
             // TxtPorDes
             // 
+            this.TxtPorDes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.TxtPorDes.Enabled = false;
             this.TxtPorDes.Location = new System.Drawing.Point(511, 582);
-            this.TxtPorDes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtPorDes.Margin = new System.Windows.Forms.Padding(4);
             this.TxtPorDes.MaxLength = 25;
             this.TxtPorDes.Name = "TxtPorDes";
             this.TxtPorDes.Size = new System.Drawing.Size(117, 23);
@@ -1130,6 +1073,7 @@
             // 
             // label10
             // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1143,6 +1087,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1156,6 +1101,7 @@
             // 
             // LblSubTot
             // 
+            this.LblSubTot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.LblSubTot.BackColor = System.Drawing.Color.White;
             this.LblSubTot.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.LblSubTot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1182,6 +1128,7 @@
             // 
             // label23
             // 
+            this.label23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label23.AutoSize = true;
             this.label23.BackColor = System.Drawing.Color.Transparent;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1195,6 +1142,7 @@
             // 
             // LblImpBru
             // 
+            this.LblImpBru.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.LblImpBru.BackColor = System.Drawing.Color.White;
             this.LblImpBru.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.LblImpBru.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1208,6 +1156,7 @@
             // 
             // label22
             // 
+            this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label22.AutoSize = true;
             this.label22.BackColor = System.Drawing.Color.Transparent;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1221,6 +1170,7 @@
             // 
             // label21
             // 
+            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label21.AutoSize = true;
             this.label21.BackColor = System.Drawing.Color.Transparent;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1234,6 +1184,7 @@
             // 
             // label16
             // 
+            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1247,6 +1198,7 @@
             // 
             // label15
             // 
+            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1260,6 +1212,7 @@
             // 
             // LblImpIna
             // 
+            this.LblImpIna.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.LblImpIna.BackColor = System.Drawing.Color.White;
             this.LblImpIna.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.LblImpIna.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1273,6 +1226,7 @@
             // 
             // LblImpIgv
             // 
+            this.LblImpIgv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.LblImpIgv.BackColor = System.Drawing.Color.White;
             this.LblImpIgv.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.LblImpIgv.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1286,6 +1240,7 @@
             // 
             // LblImpIsc
             // 
+            this.LblImpIsc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.LblImpIsc.BackColor = System.Drawing.Color.White;
             this.LblImpIsc.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.LblImpIsc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1299,6 +1254,7 @@
             // 
             // LblImpTot
             // 
+            this.LblImpTot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.LblImpTot.BackColor = System.Drawing.Color.White;
             this.LblImpTot.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.LblImpTot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1326,7 +1282,7 @@
             // 
             this.TxtGlosa.Enabled = false;
             this.TxtGlosa.Location = new System.Drawing.Point(151, 207);
-            this.TxtGlosa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtGlosa.Margin = new System.Windows.Forms.Padding(4);
             this.TxtGlosa.MaxLength = 200;
             this.TxtGlosa.Name = "TxtGlosa";
             this.TxtGlosa.Size = new System.Drawing.Size(561, 23);
@@ -1353,7 +1309,7 @@
             this.CboVend.ForeColor = System.Drawing.Color.Black;
             this.CboVend.FormattingEnabled = true;
             this.CboVend.Location = new System.Drawing.Point(151, 178);
-            this.CboVend.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CboVend.Margin = new System.Windows.Forms.Padding(4);
             this.CboVend.Name = "CboVend";
             this.CboVend.Size = new System.Drawing.Size(561, 25);
             this.CboVend.TabIndex = 13;
@@ -1363,7 +1319,7 @@
             this.TxtFchVen.Enabled = false;
             this.TxtFchVen.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.TxtFchVen.Location = new System.Drawing.Point(924, 150);
-            this.TxtFchVen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtFchVen.Margin = new System.Windows.Forms.Padding(4);
             this.TxtFchVen.Name = "TxtFchVen";
             this.TxtFchVen.Size = new System.Drawing.Size(133, 23);
             this.TxtFchVen.TabIndex = 12;
@@ -1400,7 +1356,7 @@
             this.CboTipDoc.ForeColor = System.Drawing.Color.Black;
             this.CboTipDoc.FormattingEnabled = true;
             this.CboTipDoc.Location = new System.Drawing.Point(151, 64);
-            this.CboTipDoc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CboTipDoc.Margin = new System.Windows.Forms.Padding(4);
             this.CboTipDoc.Name = "CboTipDoc";
             this.CboTipDoc.Size = new System.Drawing.Size(561, 25);
             this.CboTipDoc.TabIndex = 5;
@@ -1414,7 +1370,7 @@
             this.CboTipExi.ForeColor = System.Drawing.Color.Black;
             this.CboTipExi.FormattingEnabled = true;
             this.CboTipExi.Location = new System.Drawing.Point(924, 122);
-            this.CboTipExi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CboTipExi.Margin = new System.Windows.Forms.Padding(4);
             this.CboTipExi.Name = "CboTipExi";
             this.CboTipExi.Size = new System.Drawing.Size(361, 25);
             this.CboTipExi.TabIndex = 10;
@@ -1452,7 +1408,7 @@
             this.CboMon.ForeColor = System.Drawing.Color.Black;
             this.CboMon.FormattingEnabled = true;
             this.CboMon.Location = new System.Drawing.Point(552, 2);
-            this.CboMon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CboMon.Margin = new System.Windows.Forms.Padding(4);
             this.CboMon.Name = "CboMon";
             this.CboMon.Size = new System.Drawing.Size(160, 25);
             this.CboMon.TabIndex = 1;
@@ -1488,9 +1444,9 @@
             this.groupBox1.Controls.Add(this.OptConGuia);
             this.groupBox1.Controls.Add(this.OptSinGuia);
             this.groupBox1.Location = new System.Drawing.Point(779, 178);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(508, 52);
             this.groupBox1.TabIndex = 63;
             this.groupBox1.TabStop = false;
@@ -1501,7 +1457,7 @@
             this.OptOtros.AutoSize = true;
             this.OptOtros.Enabled = false;
             this.OptOtros.Location = new System.Drawing.Point(407, 23);
-            this.OptOtros.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OptOtros.Margin = new System.Windows.Forms.Padding(4);
             this.OptOtros.Name = "OptOtros";
             this.OptOtros.Size = new System.Drawing.Size(64, 21);
             this.OptOtros.TabIndex = 18;
@@ -1515,7 +1471,7 @@
             this.OptOrdPed.AutoSize = true;
             this.OptOrdPed.Enabled = false;
             this.OptOrdPed.Location = new System.Drawing.Point(257, 23);
-            this.OptOrdPed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OptOrdPed.Margin = new System.Windows.Forms.Padding(4);
             this.OptOrdPed.Name = "OptOrdPed";
             this.OptOrdPed.Size = new System.Drawing.Size(117, 21);
             this.OptOrdPed.TabIndex = 17;
@@ -1529,7 +1485,7 @@
             this.OptConGuia.AutoSize = true;
             this.OptConGuia.Enabled = false;
             this.OptConGuia.Location = new System.Drawing.Point(135, 23);
-            this.OptConGuia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OptConGuia.Margin = new System.Windows.Forms.Padding(4);
             this.OptConGuia.Name = "OptConGuia";
             this.OptConGuia.Size = new System.Drawing.Size(88, 21);
             this.OptConGuia.TabIndex = 16;
@@ -1543,7 +1499,7 @@
             this.OptSinGuia.AutoSize = true;
             this.OptSinGuia.Enabled = false;
             this.OptSinGuia.Location = new System.Drawing.Point(17, 23);
-            this.OptSinGuia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OptSinGuia.Margin = new System.Windows.Forms.Padding(4);
             this.OptSinGuia.Name = "OptSinGuia";
             this.OptSinGuia.Size = new System.Drawing.Size(83, 21);
             this.OptSinGuia.TabIndex = 15;
@@ -1569,7 +1525,7 @@
             this.TxtFchEmiDoc.Enabled = false;
             this.TxtFchEmiDoc.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.TxtFchEmiDoc.Location = new System.Drawing.Point(151, 2);
-            this.TxtFchEmiDoc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtFchEmiDoc.Margin = new System.Windows.Forms.Padding(4);
             this.TxtFchEmiDoc.Name = "TxtFchEmiDoc";
             this.TxtFchEmiDoc.Size = new System.Drawing.Size(133, 23);
             this.TxtFchEmiDoc.TabIndex = 0;
@@ -1579,7 +1535,7 @@
             // 
             this.TxtNumDoc.Enabled = false;
             this.TxtNumDoc.Location = new System.Drawing.Point(216, 94);
-            this.TxtNumDoc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtNumDoc.Margin = new System.Windows.Forms.Padding(4);
             this.TxtNumDoc.MaxLength = 10;
             this.TxtNumDoc.Name = "TxtNumDoc";
             this.TxtNumDoc.Size = new System.Drawing.Size(160, 23);
@@ -1603,7 +1559,7 @@
             // 
             this.TxtNumSer.Enabled = false;
             this.TxtNumSer.Location = new System.Drawing.Point(151, 94);
-            this.TxtNumSer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtNumSer.Margin = new System.Windows.Forms.Padding(4);
             this.TxtNumSer.MaxLength = 4;
             this.TxtNumSer.Name = "TxtNumSer";
             this.TxtNumSer.Size = new System.Drawing.Size(57, 23);
@@ -1620,7 +1576,7 @@
             this.CboConPag.ForeColor = System.Drawing.Color.Black;
             this.CboConPag.FormattingEnabled = true;
             this.CboConPag.Location = new System.Drawing.Point(151, 150);
-            this.CboConPag.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CboConPag.Margin = new System.Windows.Forms.Padding(4);
             this.CboConPag.Name = "CboConPag";
             this.CboConPag.Size = new System.Drawing.Size(315, 25);
             this.CboConPag.TabIndex = 11;
@@ -1652,14 +1608,15 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox2.Controls.Add(this.OptOtrPro);
             this.groupBox2.Controls.Add(this.OptDelPro);
             this.groupBox2.Controls.Add(this.CmdVerDoc);
             this.groupBox2.Controls.Add(this.CmdDelDoc);
             this.groupBox2.Location = new System.Drawing.Point(5, 534);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(289, 95);
             this.groupBox2.TabIndex = 113;
             this.groupBox2.TabStop = false;
@@ -1668,7 +1625,7 @@
             // 
             this.OptOtrPro.Enabled = false;
             this.OptOtrPro.Location = new System.Drawing.Point(164, 60);
-            this.OptOtrPro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OptOtrPro.Margin = new System.Windows.Forms.Padding(4);
             this.OptOtrPro.Name = "OptOtrPro";
             this.OptOtrPro.Size = new System.Drawing.Size(104, 21);
             this.OptOtrPro.TabIndex = 14;
@@ -1680,7 +1637,7 @@
             // 
             this.OptDelPro.Enabled = false;
             this.OptDelPro.Location = new System.Drawing.Point(164, 21);
-            this.OptDelPro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OptDelPro.Margin = new System.Windows.Forms.Padding(4);
             this.OptDelPro.Name = "OptDelPro";
             this.OptDelPro.Size = new System.Drawing.Size(127, 21);
             this.OptDelPro.TabIndex = 13;
@@ -1693,7 +1650,7 @@
             this.CmdVerDoc.BackColor = System.Drawing.Color.White;
             this.CmdVerDoc.ForeColor = System.Drawing.Color.Black;
             this.CmdVerDoc.Location = new System.Drawing.Point(7, 50);
-            this.CmdVerDoc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdVerDoc.Margin = new System.Windows.Forms.Padding(4);
             this.CmdVerDoc.Name = "CmdVerDoc";
             this.CmdVerDoc.Size = new System.Drawing.Size(145, 39);
             this.CmdVerDoc.TabIndex = 12;
@@ -1706,7 +1663,7 @@
             this.CmdDelDoc.Enabled = false;
             this.CmdDelDoc.ForeColor = System.Drawing.Color.Black;
             this.CmdDelDoc.Location = new System.Drawing.Point(7, 12);
-            this.CmdDelDoc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdDelDoc.Margin = new System.Windows.Forms.Padding(4);
             this.CmdDelDoc.Name = "CmdDelDoc";
             this.CmdDelDoc.Size = new System.Drawing.Size(145, 39);
             this.CmdDelDoc.TabIndex = 11;
@@ -1716,11 +1673,13 @@
             // 
             // panel3
             // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
             this.panel3.Controls.Add(this.LblTitulo2);
             this.panel3.ForeColor = System.Drawing.Color.Black;
             this.panel3.Location = new System.Drawing.Point(1, 1);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1323, 28);
             this.panel3.TabIndex = 8;
@@ -1742,7 +1701,7 @@
             // CmdGenAsi
             // 
             this.CmdGenAsi.Location = new System.Drawing.Point(1065, 5);
-            this.CmdGenAsi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdGenAsi.Margin = new System.Windows.Forms.Padding(4);
             this.CmdGenAsi.Name = "CmdGenAsi";
             this.CmdGenAsi.Size = new System.Drawing.Size(197, 37);
             this.CmdGenAsi.TabIndex = 37;
@@ -1767,7 +1726,7 @@
             this.panel6.Controls.Add(this.label28);
             this.panel6.Controls.Add(this.label29);
             this.panel6.Location = new System.Drawing.Point(1376, 256);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(595, 215);
             this.panel6.TabIndex = 75;
@@ -1806,7 +1765,7 @@
             this.CboTipDocAnu.ForeColor = System.Drawing.Color.Black;
             this.CboTipDocAnu.FormattingEnabled = true;
             this.CboTipDocAnu.Location = new System.Drawing.Point(128, 49);
-            this.CboTipDocAnu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CboTipDocAnu.Margin = new System.Windows.Forms.Padding(4);
             this.CboTipDocAnu.Name = "CboTipDocAnu";
             this.CboTipDocAnu.Size = new System.Drawing.Size(453, 24);
             this.CboTipDocAnu.TabIndex = 78;
@@ -1817,7 +1776,7 @@
             this.CmdSalPan6.Image = ((System.Drawing.Image)(resources.GetObject("CmdSalPan6.Image")));
             this.CmdSalPan6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.CmdSalPan6.Location = new System.Drawing.Point(297, 148);
-            this.CmdSalPan6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdSalPan6.Margin = new System.Windows.Forms.Padding(4);
             this.CmdSalPan6.Name = "CmdSalPan6";
             this.CmdSalPan6.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
             this.CmdSalPan6.Size = new System.Drawing.Size(149, 52);
@@ -1833,7 +1792,7 @@
             this.CmdAcePan6.Image = ((System.Drawing.Image)(resources.GetObject("CmdAcePan6.Image")));
             this.CmdAcePan6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.CmdAcePan6.Location = new System.Drawing.Point(144, 148);
-            this.CmdAcePan6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdAcePan6.Margin = new System.Windows.Forms.Padding(4);
             this.CmdAcePan6.Name = "CmdAcePan6";
             this.CmdAcePan6.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
             this.CmdAcePan6.Size = new System.Drawing.Size(149, 52);
@@ -1859,7 +1818,7 @@
             // 
             this.TxtFchEmiOC.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.TxtFchEmiOC.Location = new System.Drawing.Point(128, 111);
-            this.TxtFchEmiOC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtFchEmiOC.Margin = new System.Windows.Forms.Padding(4);
             this.TxtFchEmiOC.Name = "TxtFchEmiOC";
             this.TxtFchEmiOC.Size = new System.Drawing.Size(115, 22);
             this.TxtFchEmiOC.TabIndex = 81;
@@ -1869,7 +1828,7 @@
             // TxtAnuNumDoc
             // 
             this.TxtAnuNumDoc.Location = new System.Drawing.Point(195, 80);
-            this.TxtAnuNumDoc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtAnuNumDoc.Margin = new System.Windows.Forms.Padding(4);
             this.TxtAnuNumDoc.MaxLength = 10;
             this.TxtAnuNumDoc.Name = "TxtAnuNumDoc";
             this.TxtAnuNumDoc.Size = new System.Drawing.Size(160, 22);
@@ -1882,7 +1841,7 @@
             // TxtAnuNumSer
             // 
             this.TxtAnuNumSer.Location = new System.Drawing.Point(128, 80);
-            this.TxtAnuNumSer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtAnuNumSer.Margin = new System.Windows.Forms.Padding(4);
             this.TxtAnuNumSer.MaxLength = 4;
             this.TxtAnuNumSer.Name = "TxtAnuNumSer";
             this.TxtAnuNumSer.Size = new System.Drawing.Size(57, 22);
@@ -1936,7 +1895,7 @@
             this.PanDatAdi.Controls.Add(this.label34);
             this.PanDatAdi.Controls.Add(this.label35);
             this.PanDatAdi.Location = new System.Drawing.Point(1373, 480);
-            this.PanDatAdi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PanDatAdi.Margin = new System.Windows.Forms.Padding(4);
             this.PanDatAdi.Name = "PanDatAdi";
             this.PanDatAdi.Size = new System.Drawing.Size(663, 215);
             this.PanDatAdi.TabIndex = 76;
@@ -1948,7 +1907,7 @@
             this.CmdCanPanAdi.Image = ((System.Drawing.Image)(resources.GetObject("CmdCanPanAdi.Image")));
             this.CmdCanPanAdi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.CmdCanPanAdi.Location = new System.Drawing.Point(332, 156);
-            this.CmdCanPanAdi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdCanPanAdi.Margin = new System.Windows.Forms.Padding(4);
             this.CmdCanPanAdi.Name = "CmdCanPanAdi";
             this.CmdCanPanAdi.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
             this.CmdCanPanAdi.Size = new System.Drawing.Size(149, 52);
@@ -1964,7 +1923,7 @@
             this.CmdAceDatAdi.Image = ((System.Drawing.Image)(resources.GetObject("CmdAceDatAdi.Image")));
             this.CmdAceDatAdi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.CmdAceDatAdi.Location = new System.Drawing.Point(179, 156);
-            this.CmdAceDatAdi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdAceDatAdi.Margin = new System.Windows.Forms.Padding(4);
             this.CmdAceDatAdi.Name = "CmdAceDatAdi";
             this.CmdAceDatAdi.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
             this.CmdAceDatAdi.Size = new System.Drawing.Size(149, 52);
@@ -1977,7 +1936,7 @@
             // TxtDatAdi
             // 
             this.TxtDatAdi.Location = new System.Drawing.Point(4, 44);
-            this.TxtDatAdi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtDatAdi.Margin = new System.Windows.Forms.Padding(4);
             this.TxtDatAdi.MaxLength = 500;
             this.TxtDatAdi.Multiline = true;
             this.TxtDatAdi.Name = "TxtDatAdi";
@@ -2021,7 +1980,7 @@
             this.panel5.Controls.Add(this.label31);
             this.panel5.Controls.Add(this.label32);
             this.panel5.Location = new System.Drawing.Point(1392, 59);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(663, 189);
             this.panel5.TabIndex = 77;
@@ -2046,7 +2005,7 @@
             this.CboTipDocExp.ForeColor = System.Drawing.Color.Black;
             this.CboTipDocExp.FormattingEnabled = true;
             this.CboTipDocExp.Location = new System.Drawing.Point(128, 52);
-            this.CboTipDocExp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CboTipDocExp.Margin = new System.Windows.Forms.Padding(4);
             this.CboTipDocExp.Name = "CboTipDocExp";
             this.CboTipDocExp.Size = new System.Drawing.Size(453, 24);
             this.CboTipDocExp.TabIndex = 85;
@@ -2067,7 +2026,7 @@
             // 
             this.TxtFchGenDoc.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.TxtFchGenDoc.Location = new System.Drawing.Point(128, 82);
-            this.TxtFchGenDoc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtFchGenDoc.Margin = new System.Windows.Forms.Padding(4);
             this.TxtFchGenDoc.Name = "TxtFchGenDoc";
             this.TxtFchGenDoc.Size = new System.Drawing.Size(115, 22);
             this.TxtFchGenDoc.TabIndex = 87;
@@ -2078,7 +2037,7 @@
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(332, 122);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
             this.button1.Size = new System.Drawing.Size(149, 52);
@@ -2094,7 +2053,7 @@
             this.CmdExpArch.Image = ((System.Drawing.Image)(resources.GetObject("CmdExpArch.Image")));
             this.CmdExpArch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.CmdExpArch.Location = new System.Drawing.Point(179, 122);
-            this.CmdExpArch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdExpArch.Margin = new System.Windows.Forms.Padding(4);
             this.CmdExpArch.Name = "CmdExpArch";
             this.CmdExpArch.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
             this.CmdExpArch.Size = new System.Drawing.Size(149, 52);
@@ -2140,7 +2099,7 @@
             this.Controls.Add(this.ToolHerramientas);
             this.Controls.Add(this.Tab1);
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmManVentas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmManVentas";
@@ -2150,11 +2109,8 @@
             this.Resize += new System.EventHandler(this.FrmManVentas_Resize);
             this.ToolHerramientas.ResumeLayout(false);
             this.ToolHerramientas.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Tab1)).EndInit();
             this.Tab1.ResumeLayout(false);
             this.c1DockingTabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Sc01)).EndInit();
-            this.Sc01.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -2162,15 +2118,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.PicClos1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgLista)).EndInit();
             this.c1DockingTabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Sc02)).EndInit();
-            this.Sc02.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.c1Sizer1)).EndInit();
-            this.c1Sizer1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicClos2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Sizer2)).EndInit();
-            this.c1Sizer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.FgDoc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FgItems)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -2201,9 +2151,8 @@
         private System.Windows.Forms.ToolStripMenuItem emitirGuiaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem guiasDelMesToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton ToolSalir;
-        private C1.Win.C1Command.C1DockingTab Tab1;
-        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage1;
-        private C1.Win.C1Sizer.C1Sizer Sc01;
+        private System.Windows.Forms.TabControl Tab1;
+        private System.Windows.Forms.TabPage c1DockingTabPage1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.ComboBox CboMeses;
         private System.Windows.Forms.Label label1;
@@ -2212,9 +2161,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label17;
         private C1.Win.C1TrueDBGrid.C1TrueDBGrid DgLista;
-        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage2;
-        private C1.Win.C1Sizer.C1Sizer Sc02;
-        private C1.Win.C1Sizer.C1Sizer c1Sizer1;
+        private System.Windows.Forms.TabPage c1DockingTabPage2;
         private System.Windows.Forms.Panel panel1;
         private C1.Win.C1FlexGrid.C1FlexGrid FgItems;
         private System.Windows.Forms.Label label14;
@@ -2274,7 +2221,6 @@
         private System.Windows.Forms.ToolStripMenuItem eliminarDocumentoToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem anularDocumentoToolStripMenuItem;
-        private C1.Win.C1Sizer.C1Sizer c1Sizer2;
         private C1.Win.C1FlexGrid.C1FlexGrid FgDoc;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton OptOtrPro;

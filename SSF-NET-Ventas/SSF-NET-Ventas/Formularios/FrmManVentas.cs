@@ -55,6 +55,7 @@ namespace SSF_NET_Ventas.Formularios
         CN_mae_cliproitems o_itecli = new CN_mae_cliproitems();
         CN_con_pcitems o_pcite = new CN_con_pcitems();
         CN_con_pcitems o_pcitem = new CN_con_pcitems();
+        const string c_numdecimp = "0.0000";
 
         SIAC_Objetos.Funciones objFunciones = new SIAC_Objetos.Funciones();
 
@@ -142,12 +143,12 @@ namespace SSF_NET_Ventas.Formularios
         }
         void ConfigurarFormulario()
         {
-            this.Height = 627;
-            this.Width = 1040;
+            //this.Height = 627;
+            //this.Width = 1040;
             
             VerTool();
-            Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
-            Tab_Posicionar(Tab1, 1, 42);
+            //Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
+            //Tab_Posicionar(Tab1, 1, 42);
             Tab1.SelectedIndex = 0;
             LblTitulo2.Text = "DETALLE DEL REGISTRO";
 
@@ -172,25 +173,25 @@ namespace SSF_NET_Ventas.Formularios
             arrCabeceraFlex1[3, 0] = "Precio Unitario";
             arrCabeceraFlex1[3, 1] = "80";
             arrCabeceraFlex1[3, 2] = "D";
-            arrCabeceraFlex1[3, 3] = "0.000000";
+            arrCabeceraFlex1[3, 3] = c_numdecimp;
             arrCabeceraFlex1[3, 4] = "c_itepredes";
 
             arrCabeceraFlex1[4, 0] = "Descuento";
             arrCabeceraFlex1[4, 1] = "73";
             arrCabeceraFlex1[4, 2] = "D";
-            arrCabeceraFlex1[4, 3] = "0.000000";
+            arrCabeceraFlex1[4, 3] = c_numdecimp;
             arrCabeceraFlex1[4, 4] = "n_can";
 
             arrCabeceraFlex1[5, 0] = "Precio Neto";
             arrCabeceraFlex1[5, 1] = "80";
             arrCabeceraFlex1[5, 2] = "D";
-            arrCabeceraFlex1[5, 3] = "0.000000";
+            arrCabeceraFlex1[5, 3] = c_numdecimp;
             arrCabeceraFlex1[5, 4] = "n_numlot";
 
             arrCabeceraFlex1[6, 0] = "Importe Total";
             arrCabeceraFlex1[6, 1] = "80";
             arrCabeceraFlex1[6, 2] = "D";
-            arrCabeceraFlex1[6, 3] = "0.00";
+            arrCabeceraFlex1[6, 3] = c_numdecimp;
             arrCabeceraFlex1[6, 4] = "n_numlot";
 
             arrCabeceraFlex1[7, 0] = "Tipo Venta";
@@ -360,16 +361,6 @@ namespace SSF_NET_Ventas.Formularios
                 DgLista.Splits[0].DisplayColumns[5].Width = 200;
             }
         }
-        void Tab_Dimensionar(C1.Win.C1Command.C1DockingTab dokTab, int intAlto, int intAncho)
-        {
-            Tab1.Height = intAlto;
-            Tab1.Width = intAncho;
-        }
-        void Tab_Posicionar(C1.Win.C1Command.C1DockingTab dokTab, int intPosX, int intPosY)
-        {
-            dokTab.Left = intPosX;
-            dokTab.Top = intPosY;
-        }
         void VerRegistro(int n_IdRegistro)
         {
             booAgregando = true;
@@ -400,13 +391,13 @@ namespace SSF_NET_Ventas.Formularios
             TxtFchVen.Text = BE_Registro.d_fchven.ToString();
             TxtGlosa.Text = BE_Registro.c_glosa;
 
-            LblSubTot.Text = BE_Registro.n_impsubtot.ToString("0.00");
+            LblSubTot.Text = BE_Registro.n_impsubtot.ToString(c_numdecimp);
             TxtPorDes.Text = BE_Registro.n_pordsc.ToString("0.00");
-            LblImpBru.Text = BE_Registro.n_impbru.ToString("0.00");
-            LblImpIna.Text = BE_Registro.n_impinaf.ToString("0.00");
-            LblImpIgv.Text = BE_Registro.n_impigv.ToString("0.00");
-            LblImpIsc.Text = BE_Registro.n_impisc.ToString("0.00");
-            LblImpTot.Text = BE_Registro.n_imptotven.ToString("0.00");
+            LblImpBru.Text = BE_Registro.n_impbru.ToString(c_numdecimp);
+            LblImpIna.Text = BE_Registro.n_impinaf.ToString(c_numdecimp);
+            LblImpIgv.Text = BE_Registro.n_impigv.ToString(c_numdecimp);
+            LblImpIsc.Text = BE_Registro.n_impisc.ToString(c_numdecimp);
+            LblImpTot.Text = BE_Registro.n_imptotven.ToString(c_numdecimp);
 
             CboTipDocRef.SelectedValue = BE_Registro.n_idtipdocref;
             LblIdDocRef.Text = BE_Registro.n_iddocref.ToString();
@@ -1402,22 +1393,42 @@ namespace SSF_NET_Ventas.Formularios
 
             this.Close();
         }
-        private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
+        private void Tab1_SelectedIndexChanging(object sender, EventArgs e)
         {
-            if (n_QueHace != 3) { return; }
-            
-            if (e.NewIndex == 1)
-            {
-                if (DgLista.RowCount == 0) { e.Cancel = true; return; }
+            TabControl tc = (TabControl)sender;
 
+            if (n_QueHace != 3) { return; }
+
+            if (tc.SelectedIndex == 1)
+            {
                 int intIdRegistro = Convert.ToInt32(DgLista.Columns[17].CellValue(DgLista.Row).ToString());
 
                 if (n_QueHace != 1)
                 {
+                    booAgregando = true;
                     VerRegistro(intIdRegistro);
+                    booAgregando = false;
                 }
             }
         }
+        //private void Tab1_SelectedIndexChanging(object sender, C1.Win.C1Command.SelectedIndexChangingEventArgs e)
+        //{
+        //    if (n_QueHace != 3) { return; }
+            
+        //    if (e.NewIndex == 1)
+        //    {
+        //        if (DgLista.RowCount == 0) { e.Cancel = true; return; }
+
+        //        int intIdRegistro = Convert.ToInt32(DgLista.Columns[17].CellValue(DgLista.Row).ToString());
+
+        //        if (n_QueHace != 1)
+        //        {
+        //            booAgregando = true;
+        //            VerRegistro(intIdRegistro);
+        //            booAgregando = false;
+        //        }
+        //    }
+        //}
         private void DgLista_DoubleClick(object sender, EventArgs e)
         {
             if (DgLista.Row == 0) { return; }
@@ -1439,7 +1450,7 @@ namespace SSF_NET_Ventas.Formularios
         }
         private void FrmManVentas_Resize(object sender, EventArgs e)
         {
-            Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
+            //Tab_Dimensionar(Tab1, this.Height - 83, this.Width - 18);
         }
         private void FgItems_CellChanged(object sender, C1.Win.C1FlexGrid.RowColEventArgs e)
         {
@@ -1488,7 +1499,7 @@ namespace SSF_NET_Ventas.Formularios
             {
                 booAgregando = true;
                 double n_preuni = Convert.ToDouble(funFunciones.NulosN(FgItems.GetData(e.Row, 4)));
-                FgItems.SetData(e.Row, 4, n_preuni.ToString("0.000000"));
+                FgItems.SetData(e.Row, 4, n_preuni.ToString(c_numdecimp));
                 FgItems.Select(e.Row - 1, 5);
                 Calcularfila(e.Row);
                 booAgregando = false;
@@ -1497,7 +1508,7 @@ namespace SSF_NET_Ventas.Formularios
             if (FgItems.Col == 5)
             {
                 double n_dscto = Convert.ToDouble(funFunciones.NulosN(FgItems.GetData(e.Row, 5)));
-                FgItems.SetData(e.Row, 5, n_dscto.ToString("0.00"));
+                FgItems.SetData(e.Row, 5, n_dscto.ToString(c_numdecimp));
                 FgItems.Select(e.Row, 1);
                 Calcularfila(e.Row);
                 return;
@@ -1528,8 +1539,8 @@ namespace SSF_NET_Ventas.Formularios
             n_imptot = n_preneto * n_cantidad;
 
             //FgItems.SetData(n_Fila, 5, n_valdsc.ToString("0.00"));
-            FgItems.SetData(n_Fila, 6, n_preneto.ToString("0.000000"));
-            FgItems.SetData(n_Fila, 7, n_imptot.ToString("0.00"));
+            FgItems.SetData(n_Fila, 6, n_preneto.ToString(c_numdecimp));
+            FgItems.SetData(n_Fila, 7, n_imptot.ToString(c_numdecimp));
             SumarItems();
         }
         private void SumarItems()
@@ -1585,7 +1596,7 @@ namespace SSF_NET_Ventas.Formularios
                 }
             }
 
-            LblSubTot.Text = n_totimpbru.ToString("0.00");
+            LblSubTot.Text = n_totimpbru.ToString(c_numdecimp);
 
             if (Convert.ToDouble(funFunciones.NulosN(TxtPorDes.Text)) != 0)
             {
@@ -1594,31 +1605,31 @@ namespace SSF_NET_Ventas.Formularios
                 // CALCULAMOS EL BRUTO
                 n_val = n_totimpbru * ((n_pordsc / 100) + 1);
                 n_val = n_val - n_totimpbru;
-                LblImpBru.Text = (n_totimpbru - n_val).ToString("0.00");
+                LblImpBru.Text = (n_totimpbru - n_val).ToString(c_numdecimp);
 
                 // CALCULAMOS ELNUEVO INAFECTO
                 n_val = n_totimpina * ((n_pordsc / 100) + 1);
                 n_val = n_val - n_totimpina;
-                LblImpIna.Text = (n_totimpina - n_val).ToString("0.00");
+                LblImpIna.Text = (n_totimpina - n_val).ToString(c_numdecimp);
 
                 // CALCULAMOS ELNUEVO IGV
                 n_val = n_totimpigv * ((n_pordsc / 100) + 1);
                 n_val = n_val - n_totimpigv;
-                LblImpIgv.Text = (n_totimpigv - n_val).ToString("0.00");
+                LblImpIgv.Text = (n_totimpigv - n_val).ToString(c_numdecimp);
             }
             else
             {
                 TxtPorDes.Text = "0.00";
-                LblImpIna.Text = n_totimpina.ToString("0.00");
-                LblImpBru.Text = n_totimpbru.ToString("0.00");
-                LblImpIgv.Text = n_totimpigv.ToString("0.00");
+                LblImpIna.Text = n_totimpina.ToString(c_numdecimp);
+                LblImpBru.Text = n_totimpbru.ToString(c_numdecimp);
+                LblImpIgv.Text = n_totimpigv.ToString(c_numdecimp);
             }
 
-            LblSubTot.Text = n_totsubtot.ToString("0.00");
-            LblImpIsc.Text = n_totimpisc.ToString("0.00");
+            LblSubTot.Text = n_totsubtot.ToString(c_numdecimp);
+            LblImpIsc.Text = n_totimpisc.ToString(c_numdecimp);
 
             n_val = Convert.ToDouble(LblImpBru.Text) + Convert.ToDouble(LblImpIna.Text) + Convert.ToDouble(LblImpIgv.Text);
-            LblImpTot.Text = n_val.ToString("0.00");   // n_totimptot.ToString("0.00");
+            LblImpTot.Text = n_val.ToString(c_numdecimp);   // n_totimptot.ToString("0.00");
         }
         private void FgItems_EnterCell(object sender, EventArgs e)
         {
@@ -2048,14 +2059,14 @@ namespace SSF_NET_Ventas.Formularios
                         if (dtResul.Rows.Count != 0)
                         {
                             FgItems.SetData(FgItems.Row, 4, dtResul.Rows[0]["n_prebru"].ToString());
-                            FgItems.SetData(FgItems.Row, 5, "0.00");
+                            FgItems.SetData(FgItems.Row, 5, c_numdecimp);
                             FgItems.SetData(FgItems.Row, 6, dtResul.Rows[0]["n_prebru"].ToString());
                         }
                         else
                         {
-                            FgItems.SetData(FgItems.Row, 4, "0.00");
-                            FgItems.SetData(FgItems.Row, 5, "0.00");
-                            FgItems.SetData(FgItems.Row, 6, "0.00");
+                            FgItems.SetData(FgItems.Row, 4, c_numdecimp);
+                            FgItems.SetData(FgItems.Row, 5, c_numdecimp);
+                            FgItems.SetData(FgItems.Row, 6, c_numdecimp);
                         }
                     }
                 }
