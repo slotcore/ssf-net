@@ -63,7 +63,8 @@ namespace SSF_NET_Contabilidad.Formularios
 
             var MetVals = new List<KeyValuePair<string, string>>
             {
-                new KeyValuePair<string, string>("CP", "Costo Promedio")
+                new KeyValuePair<string, string>("CP", "Costo Promedio"),
+                new KeyValuePair<string, string>("UC", "Ultimo Costo")
             };
             CboMetVal.DataSource = MetVals;
             CboMetVal.DisplayMember = "value";

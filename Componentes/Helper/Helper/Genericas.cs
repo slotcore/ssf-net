@@ -11,6 +11,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Net.Http;
 using Newtonsoft.Json;
+using MySql.Data.MySqlClient;
 
 namespace Helper
 {
@@ -49,6 +50,36 @@ namespace Helper
         public bool Grafico_Pie;
 
         Comunes.Funciones o_fun = new Comunes.Funciones();
+
+        public static string GetString(MySqlDataReader reader, string key)
+        {
+            string value = string.Empty;
+
+            if (reader[key] != DBNull.Value)
+                value = reader.GetString(key);
+
+            return value;
+        }
+
+        public static DateTime GetDateTime(MySqlDataReader reader, string key)
+        {
+            DateTime value = new DateTime();
+
+            if (reader[key] != DBNull.Value)
+                value = Convert.ToDateTime(GetString(reader, key));
+
+            return value;
+        }
+
+        public static int GetInt(MySqlDataReader reader, string key)
+        {
+            int value = 0;
+
+            if (reader[key] != DBNull.Value)
+                value = reader.GetInt32(key);
+
+            return value;
+        }
 
         [DllImport("kernel32")]
         private static extern long WritePrivateProfileString(string section,

@@ -107,6 +107,12 @@
     <Compile Include="Formularios\FrmCostoProduccion.Designer.cs">
       <DependentUpon>FrmCostoProduccion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FrmCostoProduccionInsumoDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmCostoProduccionInsumoDetalle.Designer.cs">
+      <DependentUpon>FrmCostoProduccionInsumoDetalle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FrmCostoProduccionError.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -247,6 +253,9 @@
     <EmbeddedResource Include="Formularios\FrmCostoProduccion.resx">
       <DependentUpon>FrmCostoProduccion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmCostoProduccionInsumoDetalle.resx">
+      <DependentUpon>FrmCostoProduccionInsumoDetalle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmCostoProduccionError.resx">
       <DependentUpon>FrmCostoProduccionError.cs</DependentUpon>
     </EmbeddedResource>
@@ -335,6 +344,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\SIAC_DATOS.Classes.Contabilidad.CostoProduccionError.datasource" />
+    <None Include="Properties\DataSources\SIAC_DATOS.Classes.Contabilidad.CostoProduccionInsumoDetalle.datasource" />
     <None Include="Properties\DataSources\SIAC_DATOS.Models.Contabilidad.ConfigVal.datasource" />
     <None Include="Properties\DataSources\SIAC_DATOS.Models.Contabilidad.CostoProduccion.datasource" />
     <None Include="Properties\DataSources\SIAC_DATOS.Models.Contabilidad.CostoProduccionCue.datasource" />

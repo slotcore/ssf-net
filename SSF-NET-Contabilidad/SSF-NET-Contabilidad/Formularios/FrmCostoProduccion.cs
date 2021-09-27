@@ -14,6 +14,9 @@ using SIAC_DATOS.Models.Contabilidad;
 using SIAC_DATOS.Models.Maestros;
 using SIAC_DATOS.Models.Sunat;
 using SIAC_DATOS.Models.Sistema;
+using System.Collections.Generic;
+using SIAC_DATOS.Classes.Contabilidad;
+using SIAC_DATOS.Models.Almacen;
 
 namespace SSF_NET_Contabilidad.Formularios
 {
@@ -667,6 +670,41 @@ namespace SSF_NET_Contabilidad.Formularios
                     , "Ver errores MP"
                     , MessageBoxButtons.OK
                     , MessageBoxIcon.Information);
+            }
+        }
+
+        private void BtnVerDetalleCostoInsumo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CostoProduccionDetIns costoProduccionDetIns = (CostoProduccionDetIns)costoProduccionDetInsBindingSource.Current;
+                Movimiento movimiento = Movimiento.Fetch(costoProduccionDetIns.n_idmov);
+                var costoProduccionInsumoDetalles = CostoProduccion.ObtieneCostoDetalleInsumo(m_CostoProduccion.n_idemp, 
+                                                        costoProduccionDetIns.n_idite, 
+                                                        costoProduccionDetIns.n_can, 
+                                                        movimiento.d_fching);
+
+                if (costoProduccionInsumoDetalles.Count > 0)
+                {
+                    using (FrmCostoProduccionInsumoDetalle xForm = new FrmCostoProduccionInsumoDetalle(costoProduccionInsumoDetalles))
+                    {
+                        xForm.ShowDialog(this);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No se encontraron detalles en el insumo"
+                        , "Costo Insumo Detalle"
+                        , MessageBoxButtons.OK
+                        , MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Ocurrio un error al ver detalle, error: {0}", ex.Message)
+                    , "Procesar MP"
+                    , MessageBoxButtons.OK
+                    , MessageBoxIcon.Error);
             }
         }
     }

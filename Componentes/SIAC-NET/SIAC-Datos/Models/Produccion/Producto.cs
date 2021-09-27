@@ -8,13 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SIAC_DATOS.Models.Almacen
+namespace SIAC_DATOS.Models.Produccion
 {
 
-    public class Movimiento : ObjectBase
+    public class Producto : ObjectBase
     {
         #region constructor
-        public Movimiento()
+        public Producto()
         {
             _IsNew = true;
         }
@@ -27,9 +27,9 @@ namespace SIAC_DATOS.Models.Almacen
 
         private int _n_idemp;
 
-        private int _n_idtipmov;
+        private string _c_cod;
 
-        private int _n_idclipro;
+        private string _c_despro;
 
         public int n_id
         {
@@ -65,179 +65,125 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        public int n_idtipmov
+        public string c_cod
         {
             get
             {
-                return _n_idtipmov;
+                return _c_cod;
             }
 
             set
             {
-                if (value != _n_idtipmov)
+                if (value != _c_cod)
                 {
-                    _n_idtipmov = value;
+                    _c_cod = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        public int n_idclipro
+        public string c_despro
         {
             get
             {
-                return _n_idclipro;
+                return _c_despro;
             }
 
             set
             {
-                if (value != _n_idclipro)
+                if (value != _c_despro)
                 {
-                    _n_idclipro = value;
+                    _c_despro = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        private DateTime _d_fchdoc;
-        public DateTime d_fchdoc
+        private int _n_idunimed;
+        public int n_idunimed
         {
             get
             {
-                return _d_fchdoc;
+                return _n_idunimed;
             }
 
             set
             {
-                if (value != _d_fchdoc)
+                if (value != _n_idunimed)
                 {
-                    _d_fchdoc = value;
+                    _n_idunimed = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        private DateTime _d_fching;
-        public DateTime d_fching
+        private int _n_idfam;
+        public int n_idfam
         {
             get
             {
-                return _d_fching;
+                return _n_idfam;
             }
 
             set
             {
-                if (value != _d_fching)
+                if (value != _n_idfam)
                 {
-                    _d_fching = value;
+                    _n_idfam = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        private int _n_idtipdoc;
-        public int n_idtipdoc
+        private int _n_idcla;
+        public int n_idcla
         {
             get
             {
-                return _n_idtipdoc;
+                return _n_idcla;
             }
 
             set
             {
-                if (value != _n_idtipdoc)
+                if (value != _n_idcla)
                 {
-                    _n_idtipdoc = value;
+                    _n_idcla = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        private string _c_numser;
-        public string c_numser
+        private int _n_idsubcla;
+        public int n_idsubcla
         {
             get
             {
-                return _c_numser;
+                return _n_idsubcla;
             }
 
             set
             {
-                if (value != _c_numser)
+                if (value != _n_idsubcla)
                 {
-                    _c_numser = value;
+                    _n_idsubcla = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        private string _c_numdoc;
-        public string c_numdoc
+        private int _n_idtip;
+        public int n_idtip
         {
             get
             {
-                return _c_numdoc;
+                return _n_idtip;
             }
 
             set
             {
-                if (value != _c_numdoc)
+                if (value != _n_idtip)
                 {
-                    _c_numdoc = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private int _n_idalm;
-        public int n_idalm
-        {
-            get
-            {
-                return _n_idalm;
-            }
-
-            set
-            {
-                if (value != _n_idalm)
-                {
-                    _n_idalm = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private int _n_anotra;
-        public int n_anotra
-        {
-            get
-            {
-                return _n_anotra;
-            }
-
-            set
-            {
-                if (value != _n_anotra)
-                {
-                    _n_anotra = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private int _n_idmes;
-        public int n_idmes
-        {
-            get
-            {
-                return _n_idmes;
-            }
-
-            set
-            {
-                if (value != _n_idmes)
-                {
-                    _n_idmes = value;
+                    _n_idtip = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -261,207 +207,77 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private int _n_idtipope;
-        public int n_idtipope
+        private int _n_act;
+        public int n_act
         {
             get
             {
-                return _n_idtipope;
+                return _n_act;
             }
 
             set
             {
-                if (value != _n_idtipope)
+                if (value != _n_act)
                 {
-                    _n_idtipope = value;
+                    _n_act = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        private int _n_tipite;
-        public int n_tipite
+        private double _n_kilhor;
+        public double n_kilhor
         {
             get
             {
-                return _n_tipite;
+                return _n_kilhor;
             }
 
             set
             {
-                if (value != _n_tipite)
+                if (value != _n_kilhor)
                 {
-                    _n_tipite = value;
+                    _n_kilhor = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        private int _n_docrefidtipdoc;
-        public int n_docrefidtipdoc
+        private int _n_idmatpri;
+        public int n_idmatpri
         {
             get
             {
-                return _n_docrefidtipdoc;
+                return _n_idmatpri;
             }
 
             set
             {
-                if (value != _n_docrefidtipdoc)
+                if (value != _n_idmatpri)
                 {
-                    _n_docrefidtipdoc = value;
+                    _n_idmatpri = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        private string _c_docrefnumser;
-        public string c_docrefnumser
+        private ObservableListSource<ProductoReceta> _ProductoRecetas;
+        public ObservableListSource<ProductoReceta> ProductoRecetas
         {
             get
             {
-                return _c_docrefnumser;
+                if (_ProductoRecetas == null)
+                {
+                    _ProductoRecetas = ProductoReceta.FetchList(_n_id);
+                }
+                return _ProductoRecetas;
             }
 
             set
             {
-                if (value != _c_docrefnumser)
+                if (value != _ProductoRecetas)
                 {
-                    _c_docrefnumser = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private string _c_docrefnumdoc;
-        public string c_docrefnumdoc
-        {
-            get
-            {
-                return _c_docrefnumdoc;
-            }
-
-            set
-            {
-                if (value != _c_docrefnumdoc)
-                {
-                    _c_docrefnumdoc = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private int _n_docrefiddocref;
-        public int n_docrefiddocref
-        {
-            get
-            {
-                return _n_docrefiddocref;
-            }
-
-            set
-            {
-                if (value != _n_docrefiddocref)
-                {
-                    _n_docrefiddocref = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private int _n_perid;
-        public int n_perid
-        {
-            get
-            {
-                return _n_perid;
-            }
-
-            set
-            {
-                if (value != _n_perid)
-                {
-                    _n_perid = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private int _n_prolog;
-        public int n_prolog
-        {
-            get
-            {
-                return _n_prolog;
-            }
-
-            set
-            {
-                if (value != _n_prolog)
-                {
-                    _n_prolog = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private int _n_iddoclog;
-        public int n_iddoclog
-        {
-            get
-            {
-                return _n_iddoclog;
-            }
-
-            set
-            {
-                if (value != _n_iddoclog)
-                {
-                    _n_iddoclog = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private ObservableListSource<MovimientoDet> _MovimientoDets;
-        public ObservableListSource<MovimientoDet> MovimientoDets
-        {
-            get
-            {
-                if (_MovimientoDets == null)
-                {
-                    _MovimientoDets = MovimientoDet.FetchList(_n_id);
-                }
-                return _MovimientoDets;
-            }
-
-            set
-            {
-                if (value != _MovimientoDets)
-                {
-                    _MovimientoDets = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private ObservableListSource<InventarioLote> _InventarioLotes;
-        public ObservableListSource<InventarioLote> InventarioLotes
-        {
-            get
-            {
-                if (_InventarioLotes == null)
-                {
-                    _InventarioLotes = InventarioLote.FetchList(_n_id);
-                }
-                return _InventarioLotes;
-            }
-
-            set
-            {
-                if (value != _InventarioLotes)
-                {
-                    _InventarioLotes = value;
+                    _ProductoRecetas = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -470,9 +286,9 @@ namespace SIAC_DATOS.Models.Almacen
 
         #region metodos publicos
 
-        public static List<Movimiento> FetchList(int n_idemp, int n_anotra)
+        public static List<Producto> FetchList(int n_idemp, int n_anotra)
         {
-            List<Movimiento> m_listentidad = new List<Movimiento>();
+            List<Producto> m_listentidad = new List<Producto>();
 
             using (MySqlConnection connection
                 = new MySqlConnection(
@@ -482,7 +298,7 @@ namespace SIAC_DATOS.Models.Almacen
                 {
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.CommandText = "alm_movimientos_listar";
+                    command.CommandText = "pro_productos_listar";
                     command.Parameters.Add(new MySqlParameter("@n_idemp", n_idemp));
                     command.Parameters.Add(new MySqlParameter("@n_anotra", n_anotra));
                     connection.Open();
@@ -490,7 +306,7 @@ namespace SIAC_DATOS.Models.Almacen
                     {
                         while (reader.Read())
                         {
-                            Movimiento m_entidad = SetObject(reader);
+                            Producto m_entidad = SetObject(reader);
                             m_listentidad.Add(m_entidad);
                         }
                     }
@@ -499,9 +315,9 @@ namespace SIAC_DATOS.Models.Almacen
             return m_listentidad;
         }
 
-        public static Movimiento Fetch(int id)
+        public static Producto Fetch(int id)
         {
-            Movimiento m_entidad = new Movimiento();
+            Producto m_entidad = null;
 
             using (MySqlConnection connection
                 = new MySqlConnection(
@@ -511,7 +327,7 @@ namespace SIAC_DATOS.Models.Almacen
                 {
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.CommandText = "alm_movimientos_traerregistro";
+                    command.CommandText = "pro_productos_traerregistro";
                     command.Parameters.Add(new MySqlParameter("@n_id", id));
                     connection.Open();
                     using (MySqlDataReader reader = command.ExecuteReader())
@@ -540,7 +356,7 @@ namespace SIAC_DATOS.Models.Almacen
                         try
                         {
                             command.CommandType = System.Data.CommandType.StoredProcedure;
-                            command.CommandText = "alm_movimientos_insertar";
+                            command.CommandText = "pro_productos_insertar";
                             AddParameters(command);
                             int rows = command.ExecuteNonQuery();
                             transaction.Commit();
@@ -561,7 +377,7 @@ namespace SIAC_DATOS.Models.Almacen
             {
                 command.Transaction = transaction;
                 command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.CommandText = "alm_movimientos_insertar";
+                command.CommandText = "pro_productos_insertar";
                 AddParameters(command);
                 int rows = command.ExecuteNonQuery();
             }
@@ -582,7 +398,7 @@ namespace SIAC_DATOS.Models.Almacen
                         {
                             command.Transaction = transaction;
                             command.CommandType = System.Data.CommandType.StoredProcedure;
-                            command.CommandText = "alm_movimientos_actualizar";
+                            command.CommandText = "pro_productos_actualizar";
                             AddParameters(command);
                             int rows = command.ExecuteNonQuery();
                             transaction.Commit();
@@ -603,7 +419,7 @@ namespace SIAC_DATOS.Models.Almacen
             {
                 command.Transaction = transaction;
                 command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.CommandText = "alm_movimientos_actualizar";
+                command.CommandText = "pro_productos_actualizar";
                 AddParameters(command);
                 int rows = command.ExecuteNonQuery();
             }
@@ -624,7 +440,7 @@ namespace SIAC_DATOS.Models.Almacen
                         {
                             command.Transaction = transaction;
                             command.CommandType = System.Data.CommandType.StoredProcedure;
-                            command.CommandText = "alm_movimientos_eliminar";
+                            command.CommandText = "pro_productos_eliminar";
                             command.Parameters.Add(new MySqlParameter("@n_id", n_id));
                             int rows = command.ExecuteNonQuery();
                             transaction.Commit();
@@ -643,32 +459,23 @@ namespace SIAC_DATOS.Models.Almacen
 
         #region metodos privados
 
-        private static Movimiento SetObject(MySqlDataReader reader)
+        private static Producto SetObject(MySqlDataReader reader)
         {
-            return new Movimiento
+            return new Producto
             {
-                n_id = reader.GetInt32("n_id"),
-                n_idemp = reader.GetInt32("n_idemp"),
-                n_idtipmov = reader.GetInt32("n_idtipmov"),
-                n_idclipro = reader.GetInt32("n_idclipro"),
-                d_fchdoc = Genericas.GetDateTime(reader, "d_fchdoc"),
-                d_fching = Genericas.GetDateTime(reader, "d_fching"),
-                n_idtipdoc = Genericas.GetInt(reader, "n_idtipdoc"),
-                c_numser = Genericas.GetString(reader, "c_numser"),
-                c_numdoc = Genericas.GetString(reader, "c_numdoc"),
-                n_idalm = Genericas.GetInt(reader, "n_idalm"),
-                n_anotra = Genericas.GetInt(reader, "n_anotra"),
-                n_idmes = Genericas.GetInt(reader, "n_idmes"),
+                n_id = Genericas.GetInt(reader, "n_id"),
+                n_idemp = Genericas.GetInt(reader, "n_idemp"),
+                c_cod = Genericas.GetString(reader, "c_cod"),
+                c_despro = Genericas.GetString(reader, "c_despro"),
+                n_idunimed = Genericas.GetInt(reader, "n_idunimed"),
+                n_idfam = Genericas.GetInt(reader, "n_idfam"),
+                n_idcla = Genericas.GetInt(reader, "n_idcla"),
+                n_idsubcla = Genericas.GetInt(reader, "n_idsubcla"),
+                n_idtip = Genericas.GetInt(reader, "n_idtip"),
                 c_obs = Genericas.GetString(reader, "c_obs"),
-                n_idtipope = Genericas.GetInt(reader, "n_idtipope"),
-                n_tipite = Genericas.GetInt(reader, "n_tipite"),
-                n_docrefidtipdoc = Genericas.GetInt(reader, "n_docrefidtipdoc"),
-                c_docrefnumser = Genericas.GetString(reader, "c_docrefnumser"),
-                c_docrefnumdoc = Genericas.GetString(reader, "c_docrefnumdoc"),
-                n_docrefiddocref = Genericas.GetInt(reader, "n_docrefiddocref"),
-                n_perid = Genericas.GetInt(reader, "n_perid"),
-                n_prolog = Genericas.GetInt(reader, "n_prolog"),
-                n_iddoclog = Genericas.GetInt(reader, "n_iddoclog")
+                n_act = Genericas.GetInt(reader, "n_act"),
+                n_kilhor = reader.GetDouble("n_kilhor"),
+                n_idmatpri = Genericas.GetInt(reader, "n_idmatpri")
             };
         }
 
@@ -676,8 +483,17 @@ namespace SIAC_DATOS.Models.Almacen
         {
             command.Parameters.Add(new MySqlParameter("@n_id", n_id));
             command.Parameters.Add(new MySqlParameter("@n_idemp", n_idemp));
-            command.Parameters.Add(new MySqlParameter("@n_idtipmov", n_idtipmov));
-            command.Parameters.Add(new MySqlParameter("@n_idclipro", n_idclipro));
+            command.Parameters.Add(new MySqlParameter("@c_cod", c_cod));
+            command.Parameters.Add(new MySqlParameter("@c_despro", c_despro));
+            command.Parameters.Add(new MySqlParameter("@n_idunimed", n_idunimed));
+            command.Parameters.Add(new MySqlParameter("@n_idfam", n_idfam));
+            command.Parameters.Add(new MySqlParameter("@n_idcla", n_idcla));
+            command.Parameters.Add(new MySqlParameter("@n_idsubcla", n_idsubcla));
+            command.Parameters.Add(new MySqlParameter("@n_idtip", n_idtip));
+            command.Parameters.Add(new MySqlParameter("@c_obs", c_obs));
+            command.Parameters.Add(new MySqlParameter("@n_act", n_act));
+            command.Parameters.Add(new MySqlParameter("@n_kilhor", n_kilhor));
+            command.Parameters.Add(new MySqlParameter("@n_idmatpri", n_idmatpri));
         }
 
         #endregion

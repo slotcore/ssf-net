@@ -3,6 +3,8 @@ using SIAC_Datos.Classes;
 using SIAC_DATOS.Classes.Contabilidad;
 using SIAC_DATOS.Models.Almacen;
 using SIAC_DATOS.Models.Logistica;
+using SIAC_DATOS.Models.Produccion;
+using SIAC_DATOS.Models.Sunat;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -731,6 +733,21 @@ namespace SIAC_DATOS.Models.Contabilidad
             }
         }
 
+        private void CosteaMaterialesCostoPromedio()
+        {
+            CosteaMateriales(n_idemp, d_fchini, d_fchfin);
+
+            if (CostoProduccionErrors.Count == 0)
+            {
+                CosteaProductosIntermedios(n_idemp, d_fchini, d_fchfin);
+
+                if (CostoProduccionErrors.Count == 0)
+                {
+                    CosteaProductosTerminados(n_idemp, d_fchini, d_fchfin);
+                }
+            }
+        }
+
         private void CosteaMateriales(int n_idemp, DateTime d_fchini, DateTime d_fchfin)
         {
             // Validar movimientos anteriores sin costear
@@ -914,18 +931,216 @@ namespace SIAC_DATOS.Models.Contabilidad
         public void ProcesarMp()
         {
             CostoProduccionErrors?.Clear();
+            ConfigVal configVal = ConfigVal.Fetch(n_idconfigval);
 
-            CosteaMateriales(n_idemp, d_fchini, d_fchfin);
+            if (configVal.c_metval.Equals("CP"))
+            {
+                CosteaMaterialesCostoPromedio();
+            }
+            else
+            {
+                CosteaMaterialesUltimoCosto();
+            }
 
+            ActualizarCostosPostProceso();
+        }
+
+        private void ActualizarCostosPostProceso()
+        {
             if (CostoProduccionErrors.Count == 0)
             {
-                CosteaProductosIntermedios(n_idemp, d_fchini, d_fchfin);
-
-                if (CostoProduccionErrors.Count == 0)
+                if (CostoProduccionMovimientos.Count > 0)
                 {
-                    CosteaProductosTerminados(n_idemp, d_fchini, d_fchfin);
+                    foreach (var costoProduccionDet in CostoProduccionDets)
+                    {
+                        foreach (var costoProduccionDetIns in costoProduccionDet.CostoProduccionDetInss)
+                        {
+                            var costoProduccionMovimiento = CostoProduccionMovimientos
+                                .Where(c => c.n_idite == costoProduccionDetIns.n_idite 
+                                    && c.n_idmov == costoProduccionDetIns.n_idmov)
+                                .FirstOrDefault();
+
+                            if (costoProduccionMovimiento != null)
+                            {
+                                costoProduccionDetIns.n_costoprom = costoProduccionMovimiento.n_costounitprom * costoProduccionDetIns.n_can;
+                            }
+                        }
+                        costoProduccionDet.n_costomp = costoProduccionDet.CostoProduccionDetInss.Sum(d => d.n_costoprom);
+                    }
                 }
             }
+        }
+
+        public static List<CostoProduccionInsumoDetalle> ObtieneCostoDetalleInsumo(int n_idemp, int n_idite, double n_can, DateTime d_fching)
+        {
+            List<CostoProduccionInsumoDetalle> costoProduccionInsumoDetalles = new List<CostoProduccionInsumoDetalle>();
+               //Se verifica si el item tiene receta
+            Producto producto = Producto.Fetch(n_idite);
+            int n_iteracion = 0;
+
+            if (producto != null)
+            {
+                var recetaActiva = producto.ProductoRecetas.Where(r => r.n_act == 1).FirstOrDefault();
+                if (recetaActiva != null)
+                {
+                    foreach (var item in recetaActiva.ProductoRecetaInsumos)
+                    {
+                        if (item.n_idite != n_idite)
+                        {
+                            Inventario inventario = Inventario.Fetch(item.n_idite);
+                            UnidadMedida unidadMedida = UnidadMedida.Fetch(item.n_idunimed);
+
+                            CostoProduccionInsumoDetalle costoProduccionInsumoDetalle = new CostoProduccionInsumoDetalle();
+                            costoProduccionInsumoDetalle.n_idemp = n_idemp;
+                            costoProduccionInsumoDetalle.n_idite = n_idite;
+                            costoProduccionInsumoDetalle.FechMov = d_fching;
+                            costoProduccionInsumoDetalle.CodItem = inventario.c_codpro;
+                            costoProduccionInsumoDetalle.DesItem = inventario.c_despro;
+                            costoProduccionInsumoDetalle.Unidad = unidadMedida.c_abr;
+
+                            n_iteracion += 1;
+                            if (n_iteracion > 20)
+                            {
+                                throw new Exception(string.Format("Se ha encontrado insumos ciclicos en la receta, producto:{0}", producto.c_cod));
+                            }
+                            double utlimoCosto = ObtenerCostoUnitarioUltimaCompra(n_iteracion, n_idemp, item.n_idite, d_fching);
+
+                            costoProduccionInsumoDetalle.Cantidad = item.n_can * n_can;
+                            costoProduccionInsumoDetalle.CostoUnitario = utlimoCosto;
+                            costoProduccionInsumoDetalle.CostoTotal = utlimoCosto * item.n_can * n_can;
+
+                            costoProduccionInsumoDetalles.Add(costoProduccionInsumoDetalle);
+                        }
+                    }
+                }
+            }
+
+            return costoProduccionInsumoDetalles;
+        }
+
+        private void CosteaMaterialesUltimoCosto()
+        {
+            //Se limpia la lista de errores
+            if (CostoProduccionErrors == null)
+            {
+                CostoProduccionErrors = new ObservableListSource<CostoProduccionError>();
+            }
+            CostoProduccionErrors.Clear();
+
+            foreach (var costoProduccionDet in CostoProduccionDets)
+            {
+                double cantidadTotal = costoProduccionDet.CostoProduccionDetInss.Sum(d => d.n_can);
+
+                foreach (var costoProduccionDetIns in costoProduccionDet.CostoProduccionDetInss)
+                {
+                    try
+                    {
+                        Movimiento movimiento = Movimiento.Fetch(costoProduccionDetIns.n_idmov);
+                        int n_iteracion = 0;
+                        double ultCosto = ObtenerCostoUnitarioUltimaCompra(n_iteracion, n_idemp, costoProduccionDetIns.n_idite, movimiento.d_fching);
+
+                        if (costoProduccionDetIns.c_destipmov.Equals("E"))
+                        {
+                            ultCosto *= -1;
+                        }
+
+                        GrabaCostoMovimiento(costoProduccionDetIns.n_idite,
+                            costoProduccionDetIns.n_idmov,
+                            costoProduccionDetIns.n_can,
+                            ultCosto,
+                            ultCosto,
+                            ultCosto,
+                            0,
+                            0);
+                    }
+                    catch (CosteoProdException ex)
+                    {
+                        CostoProduccionErrors.Add(new CostoProduccionError()
+                        {
+                            CodItem = ex.CodItem,
+                            DesItem = ex.DesItem,
+                            DesFechMov = ex.Fecha.ToString("dd/MM/yyyy"),
+                            DesAlm = ex.Almacen,
+                            DesMov = ex.NumeroMovimiento,
+                            Error = ex.Message
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+            }
+        }
+
+        private static double ObtenerCostoUnitarioUltimaCompra(int n_iteracion, int n_idemp, int n_idite, DateTime d_fchmov)
+        {
+            double utlimoCosto = 0;
+
+            //Se verifica si el item tiene receta
+            Producto producto = Producto.Fetch(n_idite);
+            if (producto != null)
+            {
+                var recetaActiva = producto.ProductoRecetas.Where(r => r.n_act == 1).FirstOrDefault();
+                if (recetaActiva != null)
+                {
+                    foreach (var item in recetaActiva.ProductoRecetaInsumos)
+                    {
+                        if (item.n_idite != n_idite)
+                        {
+                            n_iteracion += 1;
+                            if (n_iteracion > 20)
+                            {
+                                throw new Exception(string.Format("Se ha encontrado insumos ciclicos en la receta, producto:{0}", producto.c_cod));
+                            }
+                            utlimoCosto += (ObtenerCostoUnitarioUltimaCompra(n_iteracion, n_idemp, item.n_idite, d_fchmov) * item.n_can);
+                        }
+                    }
+                }
+                else
+                {
+                    Inventario inventario = Inventario.Fetch(n_idite);
+                    throw new CosteoProdException(inventario.c_codpro, 
+                        inventario.c_despro, 
+                        d_fchmov, "", "", 
+                        "Producto no cuenta con receta activa");
+                }
+            }
+            else
+            {
+                using (MySqlConnection connection
+                    = new MySqlConnection(
+                        ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+                {
+                    using (MySqlCommand command = new MySqlCommand())
+                    {
+                        command.Connection = connection;
+                        command.CommandType = System.Data.CommandType.StoredProcedure;
+                        command.CommandText = "log_compras_ultimocostoitem";
+                        command.Parameters.Add(new MySqlParameter("@n_idemp", n_idemp));
+                        command.Parameters.Add(new MySqlParameter("@n_idite", n_idite));
+                        command.Parameters.Add(new MySqlParameter("@d_fchmov", d_fchmov));
+                        connection.Open();
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                utlimoCosto = reader.GetDouble("n_preuni");
+                            }
+                            else
+                            {
+                                Inventario inventario = Inventario.Fetch(n_idite);
+                                throw new CosteoProdException(inventario.c_codpro,
+                                    inventario.c_despro,
+                                    d_fchmov, "", "",
+                                    "No se puede encontrar ultima compra insumo a la fecha del movimiento");
+                            }
+                        }
+                    }
+                }
+            }
+
+            return utlimoCosto;
         }
 
         public void ProcesarMod()
@@ -998,6 +1213,39 @@ namespace SIAC_DATOS.Models.Contabilidad
             costoProduccionMovimiento.n_costomp = MovimientoItem.n_costomp;
             costoProduccionMovimiento.n_costomod = MovimientoItem.n_costomod;
             costoProduccionMovimiento.n_costocif = MovimientoItem.n_costocif;
+        }
+
+        public void GrabaCostoMovimiento(int n_idite
+            , int n_idmov
+            , double n_can
+            , double n_costounit
+            , double n_costounitprom
+            , double n_costomp
+            , double n_costomod
+            , double n_costocif)
+        {
+            if (CostoProduccionMovimientos == null)
+                CostoProduccionMovimientos = new ObservableListSource<CostoProduccionMovimiento>();
+
+            CostoProduccionMovimiento costoProduccionMovimiento
+                = CostoProduccionMovimientos
+                .Where(o => o.n_idite == n_idite && o.n_idmov == n_idmov)
+                .FirstOrDefault();
+
+            if (costoProduccionMovimiento == null)
+            {
+                costoProduccionMovimiento = new CostoProduccionMovimiento();
+                costoProduccionMovimiento.n_idmov = n_idmov;
+                costoProduccionMovimiento.n_idite = n_idite;
+                CostoProduccionMovimientos.Add(costoProduccionMovimiento);
+            }
+            //Se actualizan los valores actuales
+            costoProduccionMovimiento.n_can = n_can;
+            costoProduccionMovimiento.n_costounit = n_costounit;
+            costoProduccionMovimiento.n_costounitprom = n_costounitprom;
+            costoProduccionMovimiento.n_costomp = n_costomp;
+            costoProduccionMovimiento.n_costomod = n_costomod;
+            costoProduccionMovimiento.n_costocif = n_costocif;
         }
 
         public double ObtenerCostoMovimiento(int n_idite, int n_idmov)

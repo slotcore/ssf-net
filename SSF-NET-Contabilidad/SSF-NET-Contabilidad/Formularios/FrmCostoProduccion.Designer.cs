@@ -36,38 +36,27 @@
             this.LblNumReg = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.PicClos1 = new System.Windows.Forms.PictureBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.DgLista = new C1.Win.C1TrueDBGrid.C1TrueDBGrid();
             this.c1DockingTabPage2 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.kryptonGroupBox1 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.kryptonHeaderGroup1 = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
-            this.BtnBuscarParte = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
-            this.BtnProcesarModCif = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
-            this.BtnProcesarMP = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
-            this.BtnVerErroresMP = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
             this.kryptonSplitContainer1 = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
             this.FgItems = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.FgInsumos = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.FgManoObra = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.FgGastoIndirecto = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.kryptonHeaderGroup2 = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
-            this.BtnAgregarCuenta = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
-            this.BtnEliminarCuenta = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
             this.c1FlexGrid1 = new C1.Win.C1FlexGrid.C1FlexGrid();
-            this.costoProduccionCuesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.CboMeses = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.CboConfiguracion = new System.Windows.Forms.ComboBox();
-            this.PicClos2 = new System.Windows.Forms.PictureBox();
             this.TxtObs = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -79,28 +68,39 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.LblTitulo2 = new System.Windows.Forms.Label();
             this.ToolHerramientas = new System.Windows.Forms.ToolStrip();
-            this.ToolNuevo = new System.Windows.Forms.ToolStripButton();
-            this.ToolModificar = new System.Windows.Forms.ToolStripButton();
-            this.ToolEliminar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolGrabar = new System.Windows.Forms.ToolStripButton();
-            this.ToolCancelar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolImprimir = new System.Windows.Forms.ToolStripButton();
-            this.ToolManFun = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolSalir = new System.Windows.Forms.ToolStripButton();
+            this.PicClos1 = new System.Windows.Forms.PictureBox();
+            this.DgLista = new C1.Win.C1TrueDBGrid.C1TrueDBGrid();
             this.costoProduccionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.BtnBuscarParte = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
+            this.BtnProcesarModCif = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
+            this.BtnProcesarMP = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
+            this.BtnVerErroresMP = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
             this.CostoProduccionDetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.costoProduccionDetInsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.CostoProduccionDetModBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.costoProduccionDetCifBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.BtnAgregarCuenta = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
+            this.BtnEliminarCuenta = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
+            this.costoProduccionCuesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.PicClos2 = new System.Windows.Forms.PictureBox();
+            this.ToolNuevo = new System.Windows.Forms.ToolStripButton();
+            this.ToolModificar = new System.Windows.Forms.ToolStripButton();
+            this.ToolEliminar = new System.Windows.Forms.ToolStripButton();
+            this.ToolGrabar = new System.Windows.Forms.ToolStripButton();
+            this.ToolCancelar = new System.Windows.Forms.ToolStripButton();
+            this.ToolImprimir = new System.Windows.Forms.ToolStripButton();
+            this.ToolManFun = new System.Windows.Forms.ToolStripButton();
+            this.ToolSalir = new System.Windows.Forms.ToolStripButton();
+            this.kryptonHeaderGroup3 = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
+            this.FgInsumos = new C1.Win.C1FlexGrid.C1FlexGrid();
+            this.BtnVerDetalleCostoInsumo = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
             this.Tab1.SuspendLayout();
             this.c1DockingTabPage1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PicClos1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DgLista)).BeginInit();
             this.c1DockingTabPage2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -122,7 +122,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.FgItems)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.FgInsumos)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FgManoObra)).BeginInit();
             this.tabPage3.SuspendLayout();
@@ -133,15 +132,22 @@
             this.kryptonHeaderGroup2.Panel.SuspendLayout();
             this.kryptonHeaderGroup2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1FlexGrid1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.costoProduccionCuesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicClos2)).BeginInit();
             this.panel3.SuspendLayout();
             this.ToolHerramientas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicClos1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgLista)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.costoProduccionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CostoProduccionDetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.costoProduccionDetInsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CostoProduccionDetModBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.costoProduccionDetCifBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.costoProduccionCuesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicClos2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup3.Panel)).BeginInit();
+            this.kryptonHeaderGroup3.Panel.SuspendLayout();
+            this.kryptonHeaderGroup3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FgInsumos)).BeginInit();
             this.SuspendLayout();
             // 
             // Tab1
@@ -154,11 +160,12 @@
             this.Tab1.Controls.Add(this.c1DockingTabPage2);
             this.Tab1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tab1.ForeColor = System.Drawing.Color.Black;
-            this.Tab1.Location = new System.Drawing.Point(1, 41);
+            this.Tab1.Location = new System.Drawing.Point(1, 50);
+            this.Tab1.Margin = new System.Windows.Forms.Padding(4);
             this.Tab1.Multiline = true;
             this.Tab1.Name = "Tab1";
             this.Tab1.SelectedIndex = 1;
-            this.Tab1.Size = new System.Drawing.Size(912, 503);
+            this.Tab1.Size = new System.Drawing.Size(1216, 619);
             this.Tab1.TabIndex = 13;
             this.Tab1.SelectedIndexChanged += new System.EventHandler(this.Tab1_SelectedIndexChanging);
             // 
@@ -170,9 +177,10 @@
             this.c1DockingTabPage1.Controls.Add(this.DgLista);
             this.c1DockingTabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.c1DockingTabPage1.ForeColor = System.Drawing.Color.Black;
-            this.c1DockingTabPage1.Location = new System.Drawing.Point(28, 4);
+            this.c1DockingTabPage1.Location = new System.Drawing.Point(32, 4);
+            this.c1DockingTabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.c1DockingTabPage1.Name = "c1DockingTabPage1";
-            this.c1DockingTabPage1.Size = new System.Drawing.Size(880, 495);
+            this.c1DockingTabPage1.Size = new System.Drawing.Size(1180, 611);
             this.c1DockingTabPage1.TabIndex = 0;
             this.c1DockingTabPage1.Text = "Consulta";
             // 
@@ -184,9 +192,10 @@
             this.panel4.Controls.Add(this.LblNumReg);
             this.panel4.Controls.Add(this.label18);
             this.panel4.ForeColor = System.Drawing.Color.Black;
-            this.panel4.Location = new System.Drawing.Point(4, 463);
+            this.panel4.Location = new System.Drawing.Point(5, 570);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(874, 30);
+            this.panel4.Size = new System.Drawing.Size(1165, 37);
             this.panel4.TabIndex = 2;
             // 
             // LblNumReg
@@ -195,9 +204,10 @@
             this.LblNumReg.BackColor = System.Drawing.Color.White;
             this.LblNumReg.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblNumReg.ForeColor = System.Drawing.Color.Black;
-            this.LblNumReg.Location = new System.Drawing.Point(140, 7);
+            this.LblNumReg.Location = new System.Drawing.Point(187, 9);
+            this.LblNumReg.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblNumReg.Name = "LblNumReg";
-            this.LblNumReg.Size = new System.Drawing.Size(72, 13);
+            this.LblNumReg.Size = new System.Drawing.Size(91, 17);
             this.LblNumReg.TabIndex = 1;
             this.LblNumReg.Text = "LblNumReg";
             this.LblNumReg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -208,9 +218,10 @@
             this.label18.BackColor = System.Drawing.Color.White;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.Black;
-            this.label18.Location = new System.Drawing.Point(9, 7);
+            this.label18.Location = new System.Drawing.Point(12, 9);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(86, 13);
+            this.label18.Size = new System.Drawing.Size(109, 17);
             this.label18.TabIndex = 0;
             this.label18.Text = "Nº Registros :";
             // 
@@ -222,20 +233,11 @@
             this.panel2.Controls.Add(this.PicClos1);
             this.panel2.Controls.Add(this.label17);
             this.panel2.ForeColor = System.Drawing.Color.Black;
-            this.panel2.Location = new System.Drawing.Point(4, 4);
+            this.panel2.Location = new System.Drawing.Point(5, 5);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(874, 28);
+            this.panel2.Size = new System.Drawing.Size(1165, 34);
             this.panel2.TabIndex = 1;
-            // 
-            // PicClos1
-            // 
-            this.PicClos1.Image = ((System.Drawing.Image)(resources.GetObject("PicClos1.Image")));
-            this.PicClos1.Location = new System.Drawing.Point(838, -2);
-            this.PicClos1.Name = "PicClos1";
-            this.PicClos1.Size = new System.Drawing.Size(32, 32);
-            this.PicClos1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.PicClos1.TabIndex = 5;
-            this.PicClos1.TabStop = false;
             // 
             // label17
             // 
@@ -244,36 +246,12 @@
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.Black;
             this.label17.Location = new System.Drawing.Point(0, 0);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(874, 28);
+            this.label17.Size = new System.Drawing.Size(1165, 34);
             this.label17.TabIndex = 0;
             this.label17.Text = "CONSULTA";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // DgLista
-            // 
-            this.DgLista.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DgLista.BackColor = System.Drawing.Color.White;
-            this.DgLista.DataSource = this.costoProduccionBindingSource;
-            this.DgLista.FilterBar = true;
-            this.DgLista.FlatStyle = C1.Win.C1TrueDBGrid.FlatModeEnum.Popup;
-            this.DgLista.ForeColor = System.Drawing.Color.Black;
-            this.DgLista.GroupByCaption = "Drag a column header here to group by that column";
-            this.DgLista.Images.Add(((System.Drawing.Image)(resources.GetObject("DgLista.Images"))));
-            this.DgLista.Location = new System.Drawing.Point(4, 36);
-            this.DgLista.Name = "DgLista";
-            this.DgLista.PreviewInfo.Location = new System.Drawing.Point(0, 0);
-            this.DgLista.PreviewInfo.Size = new System.Drawing.Size(0, 0);
-            this.DgLista.PreviewInfo.ZoomFactor = 75D;
-            this.DgLista.PrintInfo.PageSettings = ((System.Drawing.Printing.PageSettings)(resources.GetObject("DgLista.PrintInfo.PageSettings")));
-            this.DgLista.Size = new System.Drawing.Size(874, 423);
-            this.DgLista.TabIndex = 0;
-            this.DgLista.Text = "c1TrueDBGrid1";
-            this.DgLista.DoubleClick += new System.EventHandler(this.DgLista_DoubleClick);
-            this.DgLista.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DgLista_KeyPress);
-            this.DgLista.PropBag = resources.GetString("DgLista.PropBag");
             // 
             // c1DockingTabPage2
             // 
@@ -281,9 +259,10 @@
             this.c1DockingTabPage2.Controls.Add(this.panel3);
             this.c1DockingTabPage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.c1DockingTabPage2.ForeColor = System.Drawing.Color.Black;
-            this.c1DockingTabPage2.Location = new System.Drawing.Point(28, 4);
+            this.c1DockingTabPage2.Location = new System.Drawing.Point(32, 4);
+            this.c1DockingTabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.c1DockingTabPage2.Name = "c1DockingTabPage2";
-            this.c1DockingTabPage2.Size = new System.Drawing.Size(880, 495);
+            this.c1DockingTabPage2.Size = new System.Drawing.Size(1180, 611);
             this.c1DockingTabPage2.TabIndex = 1;
             this.c1DockingTabPage2.Text = "Detalle";
             // 
@@ -307,9 +286,10 @@
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label5);
             this.panel1.ForeColor = System.Drawing.Color.Black;
-            this.panel1.Location = new System.Drawing.Point(2, 33);
+            this.panel1.Location = new System.Drawing.Point(3, 41);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(877, 461);
+            this.panel1.Size = new System.Drawing.Size(1169, 567);
             this.panel1.TabIndex = 0;
             // 
             // tabControl2
@@ -319,36 +299,37 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl2.Controls.Add(this.tabPage4);
             this.tabControl2.Controls.Add(this.tabPage5);
-            this.tabControl2.Location = new System.Drawing.Point(3, 146);
+            this.tabControl2.Location = new System.Drawing.Point(4, 180);
+            this.tabControl2.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(871, 313);
+            this.tabControl2.Size = new System.Drawing.Size(1161, 385);
             this.tabControl2.TabIndex = 131;
             // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.kryptonGroupBox1);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Location = new System.Drawing.Point(4, 26);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(863, 287);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage4.Size = new System.Drawing.Size(1153, 355);
             this.tabPage4.TabIndex = 0;
             this.tabPage4.Text = "Listado de Partes de Producción";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // kryptonGroupBox1
             // 
-            this.kryptonGroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.kryptonGroupBox1.CaptionVisible = false;
-            this.kryptonGroupBox1.Location = new System.Drawing.Point(-4, 0);
+            this.kryptonGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonGroupBox1.Location = new System.Drawing.Point(4, 4);
+            this.kryptonGroupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonGroupBox1.Name = "kryptonGroupBox1";
             // 
             // kryptonGroupBox1.Panel
             // 
             this.kryptonGroupBox1.Panel.Controls.Add(this.kryptonHeaderGroup1);
-            this.kryptonGroupBox1.Size = new System.Drawing.Size(871, 302);
+            this.kryptonGroupBox1.Size = new System.Drawing.Size(1145, 347);
             this.kryptonGroupBox1.StateNormal.Back.Color1 = System.Drawing.Color.Transparent;
             this.kryptonGroupBox1.TabIndex = 131;
             this.kryptonGroupBox1.Values.Heading = "Listado de Partes de Producción";
@@ -364,17 +345,471 @@
             this.kryptonHeaderGroup1.GroupBorderStyle = ComponentFactory.Krypton.Toolkit.PaletteBorderStyle.ButtonForm;
             this.kryptonHeaderGroup1.HeaderVisibleSecondary = false;
             this.kryptonHeaderGroup1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonHeaderGroup1.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonHeaderGroup1.Name = "kryptonHeaderGroup1";
             // 
             // kryptonHeaderGroup1.Panel
             // 
             this.kryptonHeaderGroup1.Panel.Controls.Add(this.kryptonSplitContainer1);
-            this.kryptonHeaderGroup1.Size = new System.Drawing.Size(867, 298);
+            this.kryptonHeaderGroup1.Size = new System.Drawing.Size(1141, 343);
             this.kryptonHeaderGroup1.StateNormal.HeaderPrimary.Back.Color1 = System.Drawing.SystemColors.Control;
             this.kryptonHeaderGroup1.StateNormal.HeaderPrimary.Back.Color2 = System.Drawing.SystemColors.Control;
             this.kryptonHeaderGroup1.TabIndex = 131;
             this.kryptonHeaderGroup1.ValuesPrimary.Heading = "";
             this.kryptonHeaderGroup1.ValuesPrimary.Image = null;
+            // 
+            // kryptonSplitContainer1
+            // 
+            this.kryptonSplitContainer1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.kryptonSplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonSplitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonSplitContainer1.Margin = new System.Windows.Forms.Padding(4);
+            this.kryptonSplitContainer1.Name = "kryptonSplitContainer1";
+            this.kryptonSplitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // kryptonSplitContainer1.Panel1
+            // 
+            this.kryptonSplitContainer1.Panel1.Controls.Add(this.FgItems);
+            this.kryptonSplitContainer1.Panel1.StateNormal.Color1 = System.Drawing.SystemColors.Control;
+            // 
+            // kryptonSplitContainer1.Panel2
+            // 
+            this.kryptonSplitContainer1.Panel2.Controls.Add(this.tabControl1);
+            this.kryptonSplitContainer1.Panel2.StateNormal.Color1 = System.Drawing.SystemColors.Control;
+            this.kryptonSplitContainer1.Panel2MinSize = 100;
+            this.kryptonSplitContainer1.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile;
+            this.kryptonSplitContainer1.Size = new System.Drawing.Size(1137, 307);
+            this.kryptonSplitContainer1.SplitterDistance = 145;
+            this.kryptonSplitContainer1.TabIndex = 11;
+            // 
+            // FgItems
+            // 
+            this.FgItems.AllowEditing = false;
+            this.FgItems.AutoClipboard = true;
+            this.FgItems.AutoGenerateColumns = false;
+            this.FgItems.AutoResize = true;
+            this.FgItems.AutoSearch = C1.Win.C1FlexGrid.AutoSearchEnum.FromTop;
+            this.FgItems.BackColor = System.Drawing.Color.White;
+            this.FgItems.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
+            this.FgItems.ColumnInfo = resources.GetString("FgItems.ColumnInfo");
+            this.FgItems.DataSource = this.CostoProduccionDetBindingSource;
+            this.FgItems.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FgItems.ForeColor = System.Drawing.Color.Black;
+            this.FgItems.Location = new System.Drawing.Point(0, 0);
+            this.FgItems.Margin = new System.Windows.Forms.Padding(4);
+            this.FgItems.Name = "FgItems";
+            this.FgItems.Rows.Count = 1;
+            this.FgItems.Rows.DefaultSize = 20;
+            this.FgItems.SelectionMode = C1.Win.C1FlexGrid.SelectionModeEnum.Row;
+            this.FgItems.Size = new System.Drawing.Size(1137, 145);
+            this.FgItems.StyleInfo = resources.GetString("FgItems.StyleInfo");
+            this.FgItems.TabIndex = 11;
+            this.FgItems.SelChange += new System.EventHandler(this.FgItems_SelChange);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.Padding = new System.Drawing.Point(10, 3);
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1137, 157);
+            this.tabControl1.TabIndex = 0;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.kryptonHeaderGroup3);
+            this.tabPage1.Location = new System.Drawing.Point(4, 26);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage1.Size = new System.Drawing.Size(1129, 127);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Insumos";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.FgManoObra);
+            this.tabPage2.Location = new System.Drawing.Point(4, 26);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage2.Size = new System.Drawing.Size(1129, 127);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Mano de Obra";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // FgManoObra
+            // 
+            this.FgManoObra.AllowEditing = false;
+            this.FgManoObra.AllowFiltering = true;
+            this.FgManoObra.AutoClipboard = true;
+            this.FgManoObra.AutoGenerateColumns = false;
+            this.FgManoObra.AutoResize = true;
+            this.FgManoObra.BackColor = System.Drawing.Color.White;
+            this.FgManoObra.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
+            this.FgManoObra.ColumnInfo = resources.GetString("FgManoObra.ColumnInfo");
+            this.FgManoObra.DataSource = this.CostoProduccionDetModBindingSource;
+            this.FgManoObra.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FgManoObra.ForeColor = System.Drawing.Color.Black;
+            this.FgManoObra.Location = new System.Drawing.Point(4, 4);
+            this.FgManoObra.Margin = new System.Windows.Forms.Padding(4);
+            this.FgManoObra.Name = "FgManoObra";
+            this.FgManoObra.Rows.Count = 1;
+            this.FgManoObra.Rows.DefaultSize = 20;
+            this.FgManoObra.Size = new System.Drawing.Size(1121, 119);
+            this.FgManoObra.StyleInfo = resources.GetString("FgManoObra.StyleInfo");
+            this.FgManoObra.TabIndex = 14;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.FgGastoIndirecto);
+            this.tabPage3.Location = new System.Drawing.Point(4, 26);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1129, 127);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Gastos Indirectos";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // FgGastoIndirecto
+            // 
+            this.FgGastoIndirecto.AllowSorting = C1.Win.C1FlexGrid.AllowSortingEnum.None;
+            this.FgGastoIndirecto.AutoGenerateColumns = false;
+            this.FgGastoIndirecto.AutoResize = true;
+            this.FgGastoIndirecto.BackColor = System.Drawing.Color.White;
+            this.FgGastoIndirecto.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
+            this.FgGastoIndirecto.ColumnInfo = resources.GetString("FgGastoIndirecto.ColumnInfo");
+            this.FgGastoIndirecto.DataSource = this.costoProduccionDetCifBindingSource;
+            this.FgGastoIndirecto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FgGastoIndirecto.ForeColor = System.Drawing.Color.Black;
+            this.FgGastoIndirecto.Location = new System.Drawing.Point(0, 0);
+            this.FgGastoIndirecto.Margin = new System.Windows.Forms.Padding(4);
+            this.FgGastoIndirecto.Name = "FgGastoIndirecto";
+            this.FgGastoIndirecto.Rows.Count = 1;
+            this.FgGastoIndirecto.Rows.DefaultSize = 20;
+            this.FgGastoIndirecto.Size = new System.Drawing.Size(1129, 127);
+            this.FgGastoIndirecto.StyleInfo = resources.GetString("FgGastoIndirecto.StyleInfo");
+            this.FgGastoIndirecto.TabIndex = 14;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.kryptonHeaderGroup2);
+            this.tabPage5.Location = new System.Drawing.Point(4, 26);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage5.Size = new System.Drawing.Size(1153, 355);
+            this.tabPage5.TabIndex = 1;
+            this.tabPage5.Text = "Listado de Cuentas";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // kryptonHeaderGroup2
+            // 
+            this.kryptonHeaderGroup2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.kryptonHeaderGroup2.ButtonSpecs.AddRange(new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup[] {
+            this.BtnAgregarCuenta,
+            this.BtnEliminarCuenta});
+            this.kryptonHeaderGroup2.HeaderVisibleSecondary = false;
+            this.kryptonHeaderGroup2.Location = new System.Drawing.Point(4, 4);
+            this.kryptonHeaderGroup2.Margin = new System.Windows.Forms.Padding(4);
+            this.kryptonHeaderGroup2.Name = "kryptonHeaderGroup2";
+            // 
+            // kryptonHeaderGroup2.Panel
+            // 
+            this.kryptonHeaderGroup2.Panel.Controls.Add(this.c1FlexGrid1);
+            this.kryptonHeaderGroup2.Size = new System.Drawing.Size(1145, 347);
+            this.kryptonHeaderGroup2.StateNormal.HeaderPrimary.Back.Color1 = System.Drawing.SystemColors.Control;
+            this.kryptonHeaderGroup2.StateNormal.HeaderPrimary.Back.Color2 = System.Drawing.SystemColors.Control;
+            this.kryptonHeaderGroup2.TabIndex = 132;
+            this.kryptonHeaderGroup2.ValuesPrimary.Heading = "";
+            this.kryptonHeaderGroup2.ValuesPrimary.Image = null;
+            // 
+            // c1FlexGrid1
+            // 
+            this.c1FlexGrid1.AllowEditing = false;
+            this.c1FlexGrid1.AutoClipboard = true;
+            this.c1FlexGrid1.AutoGenerateColumns = false;
+            this.c1FlexGrid1.AutoResize = true;
+            this.c1FlexGrid1.AutoSearch = C1.Win.C1FlexGrid.AutoSearchEnum.FromTop;
+            this.c1FlexGrid1.BackColor = System.Drawing.Color.White;
+            this.c1FlexGrid1.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
+            this.c1FlexGrid1.ColumnInfo = resources.GetString("c1FlexGrid1.ColumnInfo");
+            this.c1FlexGrid1.DataSource = this.costoProduccionCuesBindingSource;
+            this.c1FlexGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.c1FlexGrid1.ForeColor = System.Drawing.Color.Black;
+            this.c1FlexGrid1.Location = new System.Drawing.Point(0, 0);
+            this.c1FlexGrid1.Margin = new System.Windows.Forms.Padding(4);
+            this.c1FlexGrid1.Name = "c1FlexGrid1";
+            this.c1FlexGrid1.Rows.Count = 1;
+            this.c1FlexGrid1.Rows.DefaultSize = 20;
+            this.c1FlexGrid1.SelectionMode = C1.Win.C1FlexGrid.SelectionModeEnum.Row;
+            this.c1FlexGrid1.Size = new System.Drawing.Size(1143, 312);
+            this.c1FlexGrid1.StyleInfo = resources.GetString("c1FlexGrid1.StyleInfo");
+            this.c1FlexGrid1.TabIndex = 12;
+            // 
+            // CboMeses
+            // 
+            this.CboMeses.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CboMeses.Enabled = false;
+            this.CboMeses.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CboMeses.FormattingEnabled = true;
+            this.CboMeses.Location = new System.Drawing.Point(161, 11);
+            this.CboMeses.Margin = new System.Windows.Forms.Padding(4);
+            this.CboMeses.Name = "CboMeses";
+            this.CboMeses.Size = new System.Drawing.Size(397, 25);
+            this.CboMeses.TabIndex = 125;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.Location = new System.Drawing.Point(11, 15);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(34, 17);
+            this.label11.TabIndex = 124;
+            this.label11.Text = "Mes";
+            // 
+            // CboConfiguracion
+            // 
+            this.CboConfiguracion.BackColor = System.Drawing.Color.White;
+            this.CboConfiguracion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CboConfiguracion.Enabled = false;
+            this.CboConfiguracion.ForeColor = System.Drawing.Color.Black;
+            this.CboConfiguracion.FormattingEnabled = true;
+            this.CboConfiguracion.Location = new System.Drawing.Point(161, 78);
+            this.CboConfiguracion.Margin = new System.Windows.Forms.Padding(4);
+            this.CboConfiguracion.Name = "CboConfiguracion";
+            this.CboConfiguracion.Size = new System.Drawing.Size(397, 25);
+            this.CboConfiguracion.TabIndex = 123;
+            // 
+            // TxtObs
+            // 
+            this.TxtObs.BackColor = System.Drawing.Color.White;
+            this.TxtObs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtObs.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtObs.Enabled = false;
+            this.TxtObs.ForeColor = System.Drawing.Color.Black;
+            this.TxtObs.Location = new System.Drawing.Point(161, 111);
+            this.TxtObs.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtObs.Multiline = true;
+            this.TxtObs.Name = "TxtObs";
+            this.TxtObs.Size = new System.Drawing.Size(993, 61);
+            this.TxtObs.TabIndex = 15;
+            this.TxtObs.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtObs_KeyPress);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(9, 113);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(103, 17);
+            this.label9.TabIndex = 37;
+            this.label9.Text = "Observaciones";
+            // 
+            // label8
+            // 
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(9, 49);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(105, 25);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Encargado";
+            // 
+            // CboResponsable
+            // 
+            this.CboResponsable.BackColor = System.Drawing.Color.White;
+            this.CboResponsable.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CboResponsable.Enabled = false;
+            this.CboResponsable.ForeColor = System.Drawing.Color.Black;
+            this.CboResponsable.FormattingEnabled = true;
+            this.CboResponsable.Location = new System.Drawing.Point(161, 44);
+            this.CboResponsable.Margin = new System.Windows.Forms.Padding(4);
+            this.CboResponsable.Name = "CboResponsable";
+            this.CboResponsable.Size = new System.Drawing.Size(397, 25);
+            this.CboResponsable.TabIndex = 13;
+            this.CboResponsable.SelectedValueChanged += new System.EventHandler(this.CboResponsable_SelectedValueChanged);
+            // 
+            // TxtNumDoc
+            // 
+            this.TxtNumDoc.BackColor = System.Drawing.Color.White;
+            this.TxtNumDoc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtNumDoc.Enabled = false;
+            this.TxtNumDoc.ForeColor = System.Drawing.Color.Black;
+            this.TxtNumDoc.Location = new System.Drawing.Point(799, 43);
+            this.TxtNumDoc.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtNumDoc.MaxLength = 10;
+            this.TxtNumDoc.Name = "TxtNumDoc";
+            this.TxtNumDoc.Size = new System.Drawing.Size(178, 23);
+            this.TxtNumDoc.TabIndex = 9;
+            this.TxtNumDoc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNumDoc_KeyPress);
+            this.TxtNumDoc.Validated += new System.EventHandler(this.TxtNumDoc_Validated);
+            // 
+            // TxtNumSer
+            // 
+            this.TxtNumSer.BackColor = System.Drawing.Color.White;
+            this.TxtNumSer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtNumSer.Enabled = false;
+            this.TxtNumSer.ForeColor = System.Drawing.Color.Black;
+            this.TxtNumSer.Location = new System.Drawing.Point(720, 43);
+            this.TxtNumSer.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtNumSer.MaxLength = 4;
+            this.TxtNumSer.Name = "TxtNumSer";
+            this.TxtNumSer.Size = new System.Drawing.Size(70, 23);
+            this.TxtNumSer.TabIndex = 8;
+            this.TxtNumSer.TextChanged += new System.EventHandler(this.TxtNumSer_TextChanged);
+            this.TxtNumSer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNumSer_KeyPress);
+            this.TxtNumSer.Validated += new System.EventHandler(this.TxtNumSer_Validated);
+            // 
+            // label7
+            // 
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(11, 81);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(133, 22);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "Configuración";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(605, 48);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(99, 17);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Nº Documento";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.panel3.Controls.Add(this.LblTitulo2);
+            this.panel3.ForeColor = System.Drawing.Color.Black;
+            this.panel3.Location = new System.Drawing.Point(1, 1);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1171, 34);
+            this.panel3.TabIndex = 8;
+            // 
+            // LblTitulo2
+            // 
+            this.LblTitulo2.BackColor = System.Drawing.Color.Transparent;
+            this.LblTitulo2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LblTitulo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblTitulo2.ForeColor = System.Drawing.Color.Black;
+            this.LblTitulo2.Location = new System.Drawing.Point(0, 0);
+            this.LblTitulo2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LblTitulo2.Name = "LblTitulo2";
+            this.LblTitulo2.Size = new System.Drawing.Size(1171, 34);
+            this.LblTitulo2.TabIndex = 0;
+            this.LblTitulo2.Text = "DETALLE DEL REGISTRO";
+            this.LblTitulo2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ToolHerramientas
+            // 
+            this.ToolHerramientas.BackColor = System.Drawing.Color.White;
+            this.ToolHerramientas.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ToolHerramientas.ForeColor = System.Drawing.Color.Black;
+            this.ToolHerramientas.GripMargin = new System.Windows.Forms.Padding(0);
+            this.ToolHerramientas.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.ToolHerramientas.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolNuevo,
+            this.ToolModificar,
+            this.ToolEliminar,
+            this.toolStripSeparator1,
+            this.ToolGrabar,
+            this.ToolCancelar,
+            this.toolStripSeparator2,
+            this.ToolImprimir,
+            this.ToolManFun,
+            this.toolStripSeparator3,
+            this.ToolSalir});
+            this.ToolHerramientas.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.ToolHerramientas.Location = new System.Drawing.Point(0, 0);
+            this.ToolHerramientas.Name = "ToolHerramientas";
+            this.ToolHerramientas.Size = new System.Drawing.Size(1220, 39);
+            this.ToolHerramientas.TabIndex = 12;
+            this.ToolHerramientas.Text = "toolStrip1";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 39);
+            // 
+            // PicClos1
+            // 
+            this.PicClos1.Image = ((System.Drawing.Image)(resources.GetObject("PicClos1.Image")));
+            this.PicClos1.Location = new System.Drawing.Point(1117, -2);
+            this.PicClos1.Margin = new System.Windows.Forms.Padding(4);
+            this.PicClos1.Name = "PicClos1";
+            this.PicClos1.Size = new System.Drawing.Size(32, 32);
+            this.PicClos1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.PicClos1.TabIndex = 5;
+            this.PicClos1.TabStop = false;
+            // 
+            // DgLista
+            // 
+            this.DgLista.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DgLista.BackColor = System.Drawing.Color.White;
+            this.DgLista.CaptionHeight = 19;
+            this.DgLista.DataSource = this.costoProduccionBindingSource;
+            this.DgLista.FilterBar = true;
+            this.DgLista.FlatStyle = C1.Win.C1TrueDBGrid.FlatModeEnum.Popup;
+            this.DgLista.ForeColor = System.Drawing.Color.Black;
+            this.DgLista.GroupByCaption = "Drag a column header here to group by that column";
+            this.DgLista.Images.Add(((System.Drawing.Image)(resources.GetObject("DgLista.Images"))));
+            this.DgLista.Location = new System.Drawing.Point(5, 44);
+            this.DgLista.Margin = new System.Windows.Forms.Padding(4);
+            this.DgLista.Name = "DgLista";
+            this.DgLista.PreviewInfo.Location = new System.Drawing.Point(0, 0);
+            this.DgLista.PreviewInfo.Size = new System.Drawing.Size(0, 0);
+            this.DgLista.PreviewInfo.ZoomFactor = 75D;
+            this.DgLista.PrintInfo.PageSettings = ((System.Drawing.Printing.PageSettings)(resources.GetObject("DgLista.PrintInfo.PageSettings")));
+            this.DgLista.RowHeight = 17;
+            this.DgLista.Size = new System.Drawing.Size(1165, 520);
+            this.DgLista.TabIndex = 0;
+            this.DgLista.Text = "c1TrueDBGrid1";
+            this.DgLista.DoubleClick += new System.EventHandler(this.DgLista_DoubleClick);
+            this.DgLista.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DgLista_KeyPress);
+            this.DgLista.PropBag = resources.GetString("DgLista.PropBag");
+            // 
+            // costoProduccionBindingSource
+            // 
+            this.costoProduccionBindingSource.DataSource = typeof(SIAC_DATOS.Models.Contabilidad.CostoProduccion);
             // 
             // BtnBuscarParte
             // 
@@ -411,189 +846,21 @@
             this.BtnVerErroresMP.UniqueName = "3E3CDDC5CF8E4E394181AF06202E30A3";
             this.BtnVerErroresMP.Click += new System.EventHandler(this.BtnVerErroresMP_Click);
             // 
-            // kryptonSplitContainer1
+            // CostoProduccionDetBindingSource
             // 
-            this.kryptonSplitContainer1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.kryptonSplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonSplitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonSplitContainer1.Name = "kryptonSplitContainer1";
-            this.kryptonSplitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.CostoProduccionDetBindingSource.DataSource = typeof(SIAC_DATOS.Models.Contabilidad.CostoProduccionDet);
             // 
-            // kryptonSplitContainer1.Panel1
+            // costoProduccionDetInsBindingSource
             // 
-            this.kryptonSplitContainer1.Panel1.Controls.Add(this.FgItems);
-            this.kryptonSplitContainer1.Panel1.StateNormal.Color1 = System.Drawing.SystemColors.Control;
+            this.costoProduccionDetInsBindingSource.DataSource = typeof(SIAC_DATOS.Models.Contabilidad.CostoProduccionDetIns);
             // 
-            // kryptonSplitContainer1.Panel2
+            // CostoProduccionDetModBindingSource
             // 
-            this.kryptonSplitContainer1.Panel2.Controls.Add(this.tabControl1);
-            this.kryptonSplitContainer1.Panel2.StateNormal.Color1 = System.Drawing.SystemColors.Control;
-            this.kryptonSplitContainer1.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile;
-            this.kryptonSplitContainer1.Size = new System.Drawing.Size(863, 266);
-            this.kryptonSplitContainer1.SplitterDistance = 127;
-            this.kryptonSplitContainer1.TabIndex = 11;
+            this.CostoProduccionDetModBindingSource.DataSource = typeof(SIAC_DATOS.Models.Contabilidad.CostoProduccionDetMod);
             // 
-            // FgItems
+            // costoProduccionDetCifBindingSource
             // 
-            this.FgItems.AllowEditing = false;
-            this.FgItems.AutoClipboard = true;
-            this.FgItems.AutoGenerateColumns = false;
-            this.FgItems.AutoResize = true;
-            this.FgItems.AutoSearch = C1.Win.C1FlexGrid.AutoSearchEnum.FromTop;
-            this.FgItems.BackColor = System.Drawing.Color.White;
-            this.FgItems.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
-            this.FgItems.ColumnInfo = resources.GetString("FgItems.ColumnInfo");
-            this.FgItems.DataSource = this.CostoProduccionDetBindingSource;
-            this.FgItems.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FgItems.ForeColor = System.Drawing.Color.Black;
-            this.FgItems.Location = new System.Drawing.Point(0, 0);
-            this.FgItems.Name = "FgItems";
-            this.FgItems.Rows.Count = 1;
-            this.FgItems.Rows.DefaultSize = 17;
-            this.FgItems.SelectionMode = C1.Win.C1FlexGrid.SelectionModeEnum.Row;
-            this.FgItems.Size = new System.Drawing.Size(863, 127);
-            this.FgItems.StyleInfo = resources.GetString("FgItems.StyleInfo");
-            this.FgItems.TabIndex = 11;
-            this.FgItems.SelChange += new System.EventHandler(this.FgItems_SelChange);
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(2, 3);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.Padding = new System.Drawing.Point(10, 3);
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(859, 128);
-            this.tabControl1.TabIndex = 0;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.FgInsumos);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(851, 102);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Insumos";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // FgInsumos
-            // 
-            this.FgInsumos.AllowEditing = false;
-            this.FgInsumos.AllowFiltering = true;
-            this.FgInsumos.AutoClipboard = true;
-            this.FgInsumos.AutoGenerateColumns = false;
-            this.FgInsumos.AutoResize = true;
-            this.FgInsumos.BackColor = System.Drawing.Color.White;
-            this.FgInsumos.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
-            this.FgInsumos.ColumnInfo = resources.GetString("FgInsumos.ColumnInfo");
-            this.FgInsumos.DataSource = this.costoProduccionDetInsBindingSource;
-            this.FgInsumos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FgInsumos.ForeColor = System.Drawing.Color.Black;
-            this.FgInsumos.Location = new System.Drawing.Point(3, 3);
-            this.FgInsumos.Name = "FgInsumos";
-            this.FgInsumos.Rows.Count = 1;
-            this.FgInsumos.Rows.DefaultSize = 17;
-            this.FgInsumos.Size = new System.Drawing.Size(845, 96);
-            this.FgInsumos.StyleInfo = resources.GetString("FgInsumos.StyleInfo");
-            this.FgInsumos.TabIndex = 13;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.FgManoObra);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(851, 102);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Mano de Obra";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // FgManoObra
-            // 
-            this.FgManoObra.AllowEditing = false;
-            this.FgManoObra.AllowFiltering = true;
-            this.FgManoObra.AutoClipboard = true;
-            this.FgManoObra.AutoGenerateColumns = false;
-            this.FgManoObra.AutoResize = true;
-            this.FgManoObra.BackColor = System.Drawing.Color.White;
-            this.FgManoObra.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
-            this.FgManoObra.ColumnInfo = resources.GetString("FgManoObra.ColumnInfo");
-            this.FgManoObra.DataSource = this.CostoProduccionDetModBindingSource;
-            this.FgManoObra.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FgManoObra.ForeColor = System.Drawing.Color.Black;
-            this.FgManoObra.Location = new System.Drawing.Point(3, 3);
-            this.FgManoObra.Name = "FgManoObra";
-            this.FgManoObra.Rows.Count = 1;
-            this.FgManoObra.Rows.DefaultSize = 17;
-            this.FgManoObra.Size = new System.Drawing.Size(845, 96);
-            this.FgManoObra.StyleInfo = resources.GetString("FgManoObra.StyleInfo");
-            this.FgManoObra.TabIndex = 14;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.FgGastoIndirecto);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(851, 102);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Gastos Indirectos";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // FgGastoIndirecto
-            // 
-            this.FgGastoIndirecto.AllowSorting = C1.Win.C1FlexGrid.AllowSortingEnum.None;
-            this.FgGastoIndirecto.AutoGenerateColumns = false;
-            this.FgGastoIndirecto.AutoResize = true;
-            this.FgGastoIndirecto.BackColor = System.Drawing.Color.White;
-            this.FgGastoIndirecto.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
-            this.FgGastoIndirecto.ColumnInfo = resources.GetString("FgGastoIndirecto.ColumnInfo");
-            this.FgGastoIndirecto.DataSource = this.costoProduccionDetCifBindingSource;
-            this.FgGastoIndirecto.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FgGastoIndirecto.ForeColor = System.Drawing.Color.Black;
-            this.FgGastoIndirecto.Location = new System.Drawing.Point(0, 0);
-            this.FgGastoIndirecto.Name = "FgGastoIndirecto";
-            this.FgGastoIndirecto.Rows.Count = 1;
-            this.FgGastoIndirecto.Rows.DefaultSize = 17;
-            this.FgGastoIndirecto.Size = new System.Drawing.Size(851, 102);
-            this.FgGastoIndirecto.StyleInfo = resources.GetString("FgGastoIndirecto.StyleInfo");
-            this.FgGastoIndirecto.TabIndex = 14;
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.Controls.Add(this.kryptonHeaderGroup2);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(863, 287);
-            this.tabPage5.TabIndex = 1;
-            this.tabPage5.Text = "Listado de Cuentas";
-            this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // kryptonHeaderGroup2
-            // 
-            this.kryptonHeaderGroup2.ButtonSpecs.AddRange(new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup[] {
-            this.BtnAgregarCuenta,
-            this.BtnEliminarCuenta});
-            this.kryptonHeaderGroup2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonHeaderGroup2.HeaderVisibleSecondary = false;
-            this.kryptonHeaderGroup2.Location = new System.Drawing.Point(3, 3);
-            this.kryptonHeaderGroup2.Name = "kryptonHeaderGroup2";
-            // 
-            // kryptonHeaderGroup2.Panel
-            // 
-            this.kryptonHeaderGroup2.Panel.Controls.Add(this.c1FlexGrid1);
-            this.kryptonHeaderGroup2.Size = new System.Drawing.Size(857, 281);
-            this.kryptonHeaderGroup2.StateNormal.HeaderPrimary.Back.Color1 = System.Drawing.SystemColors.Control;
-            this.kryptonHeaderGroup2.StateNormal.HeaderPrimary.Back.Color2 = System.Drawing.SystemColors.Control;
-            this.kryptonHeaderGroup2.TabIndex = 132;
-            this.kryptonHeaderGroup2.ValuesPrimary.Heading = "";
-            this.kryptonHeaderGroup2.ValuesPrimary.Image = null;
+            this.costoProduccionDetCifBindingSource.DataSource = typeof(SIAC_DATOS.Models.Contabilidad.CostoProduccionDetCif);
             // 
             // BtnAgregarCuenta
             // 
@@ -611,227 +878,21 @@
             this.BtnEliminarCuenta.Text = "Eliminar Cuenta";
             this.BtnEliminarCuenta.UniqueName = "21699ADBB6664104808E7FF130F84F81";
             // 
-            // c1FlexGrid1
-            // 
-            this.c1FlexGrid1.AllowEditing = false;
-            this.c1FlexGrid1.AutoClipboard = true;
-            this.c1FlexGrid1.AutoGenerateColumns = false;
-            this.c1FlexGrid1.AutoResize = true;
-            this.c1FlexGrid1.AutoSearch = C1.Win.C1FlexGrid.AutoSearchEnum.FromTop;
-            this.c1FlexGrid1.BackColor = System.Drawing.Color.White;
-            this.c1FlexGrid1.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
-            this.c1FlexGrid1.ColumnInfo = resources.GetString("c1FlexGrid1.ColumnInfo");
-            this.c1FlexGrid1.DataSource = this.costoProduccionCuesBindingSource;
-            this.c1FlexGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.c1FlexGrid1.ForeColor = System.Drawing.Color.Black;
-            this.c1FlexGrid1.Location = new System.Drawing.Point(0, 0);
-            this.c1FlexGrid1.Name = "c1FlexGrid1";
-            this.c1FlexGrid1.Rows.Count = 1;
-            this.c1FlexGrid1.Rows.DefaultSize = 17;
-            this.c1FlexGrid1.SelectionMode = C1.Win.C1FlexGrid.SelectionModeEnum.Row;
-            this.c1FlexGrid1.Size = new System.Drawing.Size(855, 250);
-            this.c1FlexGrid1.StyleInfo = resources.GetString("c1FlexGrid1.StyleInfo");
-            this.c1FlexGrid1.TabIndex = 12;
-            // 
             // costoProduccionCuesBindingSource
             // 
             this.costoProduccionCuesBindingSource.DataMember = "CostoProduccionCues";
             this.costoProduccionCuesBindingSource.DataSource = this.costoProduccionBindingSource;
             // 
-            // CboMeses
-            // 
-            this.CboMeses.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CboMeses.Enabled = false;
-            this.CboMeses.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CboMeses.FormattingEnabled = true;
-            this.CboMeses.Location = new System.Drawing.Point(121, 9);
-            this.CboMeses.Name = "CboMeses";
-            this.CboMeses.Size = new System.Drawing.Size(299, 21);
-            this.CboMeses.TabIndex = 125;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(8, 12);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(27, 13);
-            this.label11.TabIndex = 124;
-            this.label11.Text = "Mes";
-            // 
-            // CboConfiguracion
-            // 
-            this.CboConfiguracion.BackColor = System.Drawing.Color.White;
-            this.CboConfiguracion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CboConfiguracion.Enabled = false;
-            this.CboConfiguracion.ForeColor = System.Drawing.Color.Black;
-            this.CboConfiguracion.FormattingEnabled = true;
-            this.CboConfiguracion.Location = new System.Drawing.Point(121, 63);
-            this.CboConfiguracion.Name = "CboConfiguracion";
-            this.CboConfiguracion.Size = new System.Drawing.Size(299, 21);
-            this.CboConfiguracion.TabIndex = 123;
-            // 
             // PicClos2
             // 
             this.PicClos2.Image = ((System.Drawing.Image)(resources.GetObject("PicClos2.Image")));
-            this.PicClos2.Location = new System.Drawing.Point(810, 6);
+            this.PicClos2.Location = new System.Drawing.Point(1080, 7);
+            this.PicClos2.Margin = new System.Windows.Forms.Padding(4);
             this.PicClos2.Name = "PicClos2";
-            this.PicClos2.Size = new System.Drawing.Size(57, 54);
+            this.PicClos2.Size = new System.Drawing.Size(76, 66);
             this.PicClos2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PicClos2.TabIndex = 121;
             this.PicClos2.TabStop = false;
-            // 
-            // TxtObs
-            // 
-            this.TxtObs.BackColor = System.Drawing.Color.White;
-            this.TxtObs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtObs.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtObs.Enabled = false;
-            this.TxtObs.ForeColor = System.Drawing.Color.Black;
-            this.TxtObs.Location = new System.Drawing.Point(121, 90);
-            this.TxtObs.Multiline = true;
-            this.TxtObs.Name = "TxtObs";
-            this.TxtObs.Size = new System.Drawing.Size(745, 50);
-            this.TxtObs.TabIndex = 15;
-            this.TxtObs.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtObs_KeyPress);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(7, 92);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(78, 13);
-            this.label9.TabIndex = 37;
-            this.label9.Text = "Observaciones";
-            // 
-            // label8
-            // 
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(7, 40);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(79, 20);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "Encargado";
-            // 
-            // CboResponsable
-            // 
-            this.CboResponsable.BackColor = System.Drawing.Color.White;
-            this.CboResponsable.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CboResponsable.Enabled = false;
-            this.CboResponsable.ForeColor = System.Drawing.Color.Black;
-            this.CboResponsable.FormattingEnabled = true;
-            this.CboResponsable.Location = new System.Drawing.Point(121, 36);
-            this.CboResponsable.Name = "CboResponsable";
-            this.CboResponsable.Size = new System.Drawing.Size(299, 21);
-            this.CboResponsable.TabIndex = 13;
-            this.CboResponsable.SelectedValueChanged += new System.EventHandler(this.CboResponsable_SelectedValueChanged);
-            // 
-            // TxtNumDoc
-            // 
-            this.TxtNumDoc.BackColor = System.Drawing.Color.White;
-            this.TxtNumDoc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtNumDoc.Enabled = false;
-            this.TxtNumDoc.ForeColor = System.Drawing.Color.Black;
-            this.TxtNumDoc.Location = new System.Drawing.Point(599, 35);
-            this.TxtNumDoc.MaxLength = 10;
-            this.TxtNumDoc.Name = "TxtNumDoc";
-            this.TxtNumDoc.Size = new System.Drawing.Size(134, 20);
-            this.TxtNumDoc.TabIndex = 9;
-            this.TxtNumDoc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNumDoc_KeyPress);
-            this.TxtNumDoc.Validated += new System.EventHandler(this.TxtNumDoc_Validated);
-            // 
-            // TxtNumSer
-            // 
-            this.TxtNumSer.BackColor = System.Drawing.Color.White;
-            this.TxtNumSer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtNumSer.Enabled = false;
-            this.TxtNumSer.ForeColor = System.Drawing.Color.Black;
-            this.TxtNumSer.Location = new System.Drawing.Point(540, 35);
-            this.TxtNumSer.MaxLength = 4;
-            this.TxtNumSer.Name = "TxtNumSer";
-            this.TxtNumSer.Size = new System.Drawing.Size(53, 20);
-            this.TxtNumSer.TabIndex = 8;
-            this.TxtNumSer.TextChanged += new System.EventHandler(this.TxtNumSer_TextChanged);
-            this.TxtNumSer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNumSer_KeyPress);
-            this.TxtNumSer.Validated += new System.EventHandler(this.TxtNumSer_Validated);
-            // 
-            // label7
-            // 
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(8, 66);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(100, 18);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Configuración";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(454, 39);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(77, 13);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Nº Documento";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // panel3
-            // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.panel3.Controls.Add(this.LblTitulo2);
-            this.panel3.ForeColor = System.Drawing.Color.Black;
-            this.panel3.Location = new System.Drawing.Point(1, 1);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(878, 28);
-            this.panel3.TabIndex = 8;
-            // 
-            // LblTitulo2
-            // 
-            this.LblTitulo2.BackColor = System.Drawing.Color.Transparent;
-            this.LblTitulo2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LblTitulo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTitulo2.ForeColor = System.Drawing.Color.Black;
-            this.LblTitulo2.Location = new System.Drawing.Point(0, 0);
-            this.LblTitulo2.Name = "LblTitulo2";
-            this.LblTitulo2.Size = new System.Drawing.Size(878, 28);
-            this.LblTitulo2.TabIndex = 0;
-            this.LblTitulo2.Text = "DETALLE DEL REGISTRO";
-            this.LblTitulo2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ToolHerramientas
-            // 
-            this.ToolHerramientas.BackColor = System.Drawing.Color.White;
-            this.ToolHerramientas.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.ToolHerramientas.ForeColor = System.Drawing.Color.Black;
-            this.ToolHerramientas.GripMargin = new System.Windows.Forms.Padding(0);
-            this.ToolHerramientas.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.ToolHerramientas.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolNuevo,
-            this.ToolModificar,
-            this.ToolEliminar,
-            this.toolStripSeparator1,
-            this.ToolGrabar,
-            this.ToolCancelar,
-            this.toolStripSeparator2,
-            this.ToolImprimir,
-            this.ToolManFun,
-            this.toolStripSeparator3,
-            this.ToolSalir});
-            this.ToolHerramientas.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.ToolHerramientas.Location = new System.Drawing.Point(0, 0);
-            this.ToolHerramientas.Name = "ToolHerramientas";
-            this.ToolHerramientas.Size = new System.Drawing.Size(915, 39);
-            this.ToolHerramientas.TabIndex = 12;
-            this.ToolHerramientas.Text = "toolStrip1";
             // 
             // ToolNuevo
             // 
@@ -867,11 +928,6 @@
             this.ToolEliminar.ToolTipText = "Eliminar registro";
             this.ToolEliminar.Click += new System.EventHandler(this.ToolEliminar_Click);
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
-            // 
             // ToolGrabar
             // 
             this.ToolGrabar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -896,11 +952,6 @@
             this.ToolCancelar.ToolTipText = "Cancelar";
             this.ToolCancelar.Click += new System.EventHandler(this.ToolCancelar_Click);
             // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
-            // 
             // ToolImprimir
             // 
             this.ToolImprimir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -923,11 +974,6 @@
             this.ToolManFun.ToolTipText = "Manual Funciones";
             this.ToolManFun.Click += new System.EventHandler(this.ToolManFun_Click);
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 39);
-            // 
             // ToolSalir
             // 
             this.ToolSalir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -939,33 +985,62 @@
             this.ToolSalir.ToolTipText = "Salir";
             this.ToolSalir.Click += new System.EventHandler(this.ToolSalir_Click);
             // 
-            // costoProduccionBindingSource
+            // kryptonHeaderGroup3
             // 
-            this.costoProduccionBindingSource.DataSource = typeof(SIAC_DATOS.Models.Contabilidad.CostoProduccion);
+            this.kryptonHeaderGroup3.ButtonSpecs.AddRange(new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup[] {
+            this.BtnVerDetalleCostoInsumo});
+            this.kryptonHeaderGroup3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonHeaderGroup3.HeaderStylePrimary = ComponentFactory.Krypton.Toolkit.HeaderStyle.Secondary;
+            this.kryptonHeaderGroup3.HeaderVisibleSecondary = false;
+            this.kryptonHeaderGroup3.Location = new System.Drawing.Point(4, 4);
+            this.kryptonHeaderGroup3.Name = "kryptonHeaderGroup3";
+            this.kryptonHeaderGroup3.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             // 
-            // CostoProduccionDetBindingSource
+            // kryptonHeaderGroup3.Panel
             // 
-            this.CostoProduccionDetBindingSource.DataSource = typeof(SIAC_DATOS.Models.Contabilidad.CostoProduccionDet);
+            this.kryptonHeaderGroup3.Panel.Controls.Add(this.FgInsumos);
+            this.kryptonHeaderGroup3.Size = new System.Drawing.Size(1121, 119);
+            this.kryptonHeaderGroup3.TabIndex = 0;
+            this.kryptonHeaderGroup3.ValuesPrimary.Heading = "";
+            this.kryptonHeaderGroup3.ValuesPrimary.Image = null;
             // 
-            // costoProduccionDetInsBindingSource
+            // FgInsumos
             // 
-            this.costoProduccionDetInsBindingSource.DataSource = typeof(SIAC_DATOS.Models.Contabilidad.CostoProduccionDetIns);
+            this.FgInsumos.AllowEditing = false;
+            this.FgInsumos.AllowFiltering = true;
+            this.FgInsumos.AutoClipboard = true;
+            this.FgInsumos.AutoGenerateColumns = false;
+            this.FgInsumos.AutoResize = true;
+            this.FgInsumos.BackColor = System.Drawing.Color.White;
+            this.FgInsumos.BorderStyle = C1.Win.C1FlexGrid.Util.BaseControls.BorderStyleEnum.FixedSingle;
+            this.FgInsumos.ColumnInfo = resources.GetString("FgInsumos.ColumnInfo");
+            this.FgInsumos.DataSource = this.costoProduccionDetInsBindingSource;
+            this.FgInsumos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FgInsumos.ForeColor = System.Drawing.Color.Black;
+            this.FgInsumos.Location = new System.Drawing.Point(0, 0);
+            this.FgInsumos.Margin = new System.Windows.Forms.Padding(4);
+            this.FgInsumos.Name = "FgInsumos";
+            this.FgInsumos.Rows.Count = 1;
+            this.FgInsumos.Rows.DefaultSize = 20;
+            this.FgInsumos.Size = new System.Drawing.Size(1119, 84);
+            this.FgInsumos.StyleInfo = resources.GetString("FgInsumos.StyleInfo");
+            this.FgInsumos.TabIndex = 14;
             // 
-            // CostoProduccionDetModBindingSource
+            // BtnVerDetalleCostoInsumo
             // 
-            this.CostoProduccionDetModBindingSource.DataSource = typeof(SIAC_DATOS.Models.Contabilidad.CostoProduccionDetMod);
-            // 
-            // costoProduccionDetCifBindingSource
-            // 
-            this.costoProduccionDetCifBindingSource.DataSource = typeof(SIAC_DATOS.Models.Contabilidad.CostoProduccionDetCif);
+            this.BtnVerDetalleCostoInsumo.Style = ComponentFactory.Krypton.Toolkit.PaletteButtonStyle.Standalone;
+            this.BtnVerDetalleCostoInsumo.Text = "Ver Detalle";
+            this.BtnVerDetalleCostoInsumo.UniqueName = "E1065FE1AAC148EBDA9715B4A3E7E159";
+            this.BtnVerDetalleCostoInsumo.Click += new System.EventHandler(this.BtnVerDetalleCostoInsumo_Click);
             // 
             // FrmCostoProduccion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(915, 548);
+            this.ClientSize = new System.Drawing.Size(1220, 674);
             this.Controls.Add(this.Tab1);
             this.Controls.Add(this.ToolHerramientas);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmCostoProduccion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmSalidaAlmacen3";
@@ -977,8 +1052,6 @@
             this.panel4.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PicClos1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DgLista)).EndInit();
             this.c1DockingTabPage2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -1001,7 +1074,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.FgItems)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.FgInsumos)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.FgManoObra)).EndInit();
             this.tabPage3.ResumeLayout(false);
@@ -1012,16 +1084,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup2)).EndInit();
             this.kryptonHeaderGroup2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.c1FlexGrid1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.costoProduccionCuesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicClos2)).EndInit();
             this.panel3.ResumeLayout(false);
             this.ToolHerramientas.ResumeLayout(false);
             this.ToolHerramientas.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicClos1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgLista)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.costoProduccionBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CostoProduccionDetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.costoProduccionDetInsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CostoProduccionDetModBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.costoProduccionDetCifBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.costoProduccionCuesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicClos2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup3.Panel)).EndInit();
+            this.kryptonHeaderGroup3.Panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup3)).EndInit();
+            this.kryptonHeaderGroup3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.FgInsumos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1080,7 +1159,6 @@
         private C1.Win.C1FlexGrid.C1FlexGrid FgItems;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private C1.Win.C1FlexGrid.C1FlexGrid FgInsumos;
         private System.Windows.Forms.TabPage tabPage2;
         private C1.Win.C1FlexGrid.C1FlexGrid FgManoObra;
         private System.Windows.Forms.TabPage tabPage3;
@@ -1094,5 +1172,8 @@
         private System.Windows.Forms.BindingSource costoProduccionDetInsBindingSource;
         private System.Windows.Forms.BindingSource costoProduccionDetCifBindingSource;
         private ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup BtnVerErroresMP;
+        private ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup kryptonHeaderGroup3;
+        private ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup BtnVerDetalleCostoInsumo;
+        private C1.Win.C1FlexGrid.C1FlexGrid FgInsumos;
     }
 }

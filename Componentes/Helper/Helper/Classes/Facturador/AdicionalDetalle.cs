@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Helper.Classes.Facturador
 {
-    class AdicionalDetalle
+    public class AdicionalDetalle
     {
     }
 }

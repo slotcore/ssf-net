@@ -8,13 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SIAC_DATOS.Models.Almacen
+namespace SIAC_DATOS.Models.Produccion
 {
 
-    public class Movimiento : ObjectBase
+    public class ProductoRecetaLinea : ObjectBase
     {
         #region constructor
-        public Movimiento()
+        public ProductoRecetaLinea()
         {
             _IsNew = true;
         }
@@ -25,11 +25,11 @@ namespace SIAC_DATOS.Models.Almacen
 
         private int _n_id;
 
-        private int _n_idemp;
+        private int _n_idpro;
 
-        private int _n_idtipmov;
+        private int _n_idrec;
 
-        private int _n_idclipro;
+        private string _c_codlin;
 
         public int n_id
         {
@@ -48,196 +48,214 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        public int n_idemp
+        public int n_idpro
         {
             get
             {
-                return _n_idemp;
+                return _n_idpro;
             }
 
             set
             {
-                if (value != _n_idemp)
+                if (value != _n_idpro)
                 {
-                    _n_idemp = value;
+                    _n_idpro = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        public int n_idtipmov
+        public int n_idrec
         {
             get
             {
-                return _n_idtipmov;
+                return _n_idrec;
             }
 
             set
             {
-                if (value != _n_idtipmov)
+                if (value != _n_idrec)
                 {
-                    _n_idtipmov = value;
+                    _n_idrec = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        public int n_idclipro
+        public string c_codlin
         {
             get
             {
-                return _n_idclipro;
+                return _c_codlin;
             }
 
             set
             {
-                if (value != _n_idclipro)
+                if (value != _c_codlin)
                 {
-                    _n_idclipro = value;
+                    _c_codlin = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        private DateTime _d_fchdoc;
-        public DateTime d_fchdoc
+        private string _c_deslin;
+        public string c_deslin
         {
             get
             {
-                return _d_fchdoc;
+                return _c_deslin;
             }
 
             set
             {
-                if (value != _d_fchdoc)
+                if (value != _c_deslin)
                 {
-                    _d_fchdoc = value;
+                    _c_deslin = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        private DateTime _d_fching;
-        public DateTime d_fching
+        private int _n_idunimed;
+        public int n_idunimed
         {
             get
             {
-                return _d_fching;
+                return _n_idunimed;
             }
 
             set
             {
-                if (value != _d_fching)
+                if (value != _n_idunimed)
                 {
-                    _d_fching = value;
+                    _n_idunimed = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        private int _n_idtipdoc;
-        public int n_idtipdoc
+        private int _n_idite;
+        public int n_idite
         {
             get
             {
-                return _n_idtipdoc;
+                return _n_idite;
             }
 
             set
             {
-                if (value != _n_idtipdoc)
+                if (value != _n_idite)
                 {
-                    _n_idtipdoc = value;
+                    _n_idite = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        private string _c_numser;
-        public string c_numser
+        private double _n_can;
+        public double n_can
         {
             get
             {
-                return _c_numser;
+                return _n_can;
             }
 
             set
             {
-                if (value != _c_numser)
+                if (value != _n_can)
                 {
-                    _c_numser = value;
+                    _n_can = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        private string _c_numdoc;
-        public string c_numdoc
+        private double _n_numope;
+        public double n_numope
         {
             get
             {
-                return _c_numdoc;
+                return _n_numope;
             }
 
             set
             {
-                if (value != _c_numdoc)
+                if (value != _n_numope)
                 {
-                    _c_numdoc = value;
+                    _n_numope = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        private int _n_idalm;
-        public int n_idalm
+        private double _n_efi;
+        public double n_efi
         {
             get
             {
-                return _n_idalm;
+                return _n_efi;
             }
 
             set
             {
-                if (value != _n_idalm)
+                if (value != _n_efi)
                 {
-                    _n_idalm = value;
+                    _n_efi = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        private int _n_anotra;
-        public int n_anotra
+        private double _n_tiepro;
+        public double n_tiepro
         {
             get
             {
-                return _n_anotra;
+                return _n_tiepro;
             }
 
             set
             {
-                if (value != _n_anotra)
+                if (value != _n_tiepro)
                 {
-                    _n_anotra = value;
+                    _n_tiepro = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        private int _n_idmes;
-        public int n_idmes
+        private double _n_prehorjor;
+        public double n_prehorjor
         {
             get
             {
-                return _n_idmes;
+                return _n_prehorjor;
             }
 
             set
             {
-                if (value != _n_idmes)
+                if (value != _n_prehorjor)
                 {
-                    _n_idmes = value;
+                    _n_prehorjor = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private int _n_act;
+        public int n_act
+        {
+            get
+            {
+                return _n_act;
+            }
+
+            set
+            {
+                if (value != _n_act)
+                {
+                    _n_act = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -261,207 +279,23 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private int _n_idtipope;
-        public int n_idtipope
+        private ObservableListSource<ProductoRecetaLineaTarea> _ProductoRecetaLineaTareas;
+        public ObservableListSource<ProductoRecetaLineaTarea> ProductoRecetaLineaTareas
         {
             get
             {
-                return _n_idtipope;
+                if (_ProductoRecetaLineaTareas == null)
+                {
+                    _ProductoRecetaLineaTareas = ProductoRecetaLineaTarea.FetchList(_n_idpro);
+                }
+                return _ProductoRecetaLineaTareas;
             }
 
             set
             {
-                if (value != _n_idtipope)
+                if (value != _ProductoRecetaLineaTareas)
                 {
-                    _n_idtipope = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private int _n_tipite;
-        public int n_tipite
-        {
-            get
-            {
-                return _n_tipite;
-            }
-
-            set
-            {
-                if (value != _n_tipite)
-                {
-                    _n_tipite = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private int _n_docrefidtipdoc;
-        public int n_docrefidtipdoc
-        {
-            get
-            {
-                return _n_docrefidtipdoc;
-            }
-
-            set
-            {
-                if (value != _n_docrefidtipdoc)
-                {
-                    _n_docrefidtipdoc = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private string _c_docrefnumser;
-        public string c_docrefnumser
-        {
-            get
-            {
-                return _c_docrefnumser;
-            }
-
-            set
-            {
-                if (value != _c_docrefnumser)
-                {
-                    _c_docrefnumser = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private string _c_docrefnumdoc;
-        public string c_docrefnumdoc
-        {
-            get
-            {
-                return _c_docrefnumdoc;
-            }
-
-            set
-            {
-                if (value != _c_docrefnumdoc)
-                {
-                    _c_docrefnumdoc = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private int _n_docrefiddocref;
-        public int n_docrefiddocref
-        {
-            get
-            {
-                return _n_docrefiddocref;
-            }
-
-            set
-            {
-                if (value != _n_docrefiddocref)
-                {
-                    _n_docrefiddocref = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private int _n_perid;
-        public int n_perid
-        {
-            get
-            {
-                return _n_perid;
-            }
-
-            set
-            {
-                if (value != _n_perid)
-                {
-                    _n_perid = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private int _n_prolog;
-        public int n_prolog
-        {
-            get
-            {
-                return _n_prolog;
-            }
-
-            set
-            {
-                if (value != _n_prolog)
-                {
-                    _n_prolog = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private int _n_iddoclog;
-        public int n_iddoclog
-        {
-            get
-            {
-                return _n_iddoclog;
-            }
-
-            set
-            {
-                if (value != _n_iddoclog)
-                {
-                    _n_iddoclog = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private ObservableListSource<MovimientoDet> _MovimientoDets;
-        public ObservableListSource<MovimientoDet> MovimientoDets
-        {
-            get
-            {
-                if (_MovimientoDets == null)
-                {
-                    _MovimientoDets = MovimientoDet.FetchList(_n_id);
-                }
-                return _MovimientoDets;
-            }
-
-            set
-            {
-                if (value != _MovimientoDets)
-                {
-                    _MovimientoDets = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private ObservableListSource<InventarioLote> _InventarioLotes;
-        public ObservableListSource<InventarioLote> InventarioLotes
-        {
-            get
-            {
-                if (_InventarioLotes == null)
-                {
-                    _InventarioLotes = InventarioLote.FetchList(_n_id);
-                }
-                return _InventarioLotes;
-            }
-
-            set
-            {
-                if (value != _InventarioLotes)
-                {
-                    _InventarioLotes = value;
+                    _ProductoRecetaLineaTareas = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -470,9 +304,9 @@ namespace SIAC_DATOS.Models.Almacen
 
         #region metodos publicos
 
-        public static List<Movimiento> FetchList(int n_idemp, int n_anotra)
+        public static ObservableListSource<ProductoRecetaLinea> FetchList(int n_idpro)
         {
-            List<Movimiento> m_listentidad = new List<Movimiento>();
+            ObservableListSource<ProductoRecetaLinea> m_listentidad = new ObservableListSource<ProductoRecetaLinea>();
 
             using (MySqlConnection connection
                 = new MySqlConnection(
@@ -482,15 +316,14 @@ namespace SIAC_DATOS.Models.Almacen
                 {
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.CommandText = "alm_movimientos_listar";
-                    command.Parameters.Add(new MySqlParameter("@n_idemp", n_idemp));
-                    command.Parameters.Add(new MySqlParameter("@n_anotra", n_anotra));
+                    command.CommandText = "pro_productosrecetaslineas_listar";
+                    command.Parameters.Add(new MySqlParameter("@n_idpro", n_idpro));
                     connection.Open();
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            Movimiento m_entidad = SetObject(reader);
+                            ProductoRecetaLinea m_entidad = SetObject(reader);
                             m_listentidad.Add(m_entidad);
                         }
                     }
@@ -499,9 +332,9 @@ namespace SIAC_DATOS.Models.Almacen
             return m_listentidad;
         }
 
-        public static Movimiento Fetch(int id)
+        public static ProductoRecetaLinea Fetch(int id)
         {
-            Movimiento m_entidad = new Movimiento();
+            ProductoRecetaLinea m_entidad = new ProductoRecetaLinea();
 
             using (MySqlConnection connection
                 = new MySqlConnection(
@@ -511,7 +344,7 @@ namespace SIAC_DATOS.Models.Almacen
                 {
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.CommandText = "alm_movimientos_traerregistro";
+                    command.CommandText = "pro_productosrecetaslineas_traerregistro";
                     command.Parameters.Add(new MySqlParameter("@n_id", id));
                     connection.Open();
                     using (MySqlDataReader reader = command.ExecuteReader())
@@ -540,7 +373,7 @@ namespace SIAC_DATOS.Models.Almacen
                         try
                         {
                             command.CommandType = System.Data.CommandType.StoredProcedure;
-                            command.CommandText = "alm_movimientos_insertar";
+                            command.CommandText = "pro_productosrecetaslineas_insertar";
                             AddParameters(command);
                             int rows = command.ExecuteNonQuery();
                             transaction.Commit();
@@ -561,7 +394,7 @@ namespace SIAC_DATOS.Models.Almacen
             {
                 command.Transaction = transaction;
                 command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.CommandText = "alm_movimientos_insertar";
+                command.CommandText = "pro_productosrecetaslineas_insertar";
                 AddParameters(command);
                 int rows = command.ExecuteNonQuery();
             }
@@ -582,7 +415,7 @@ namespace SIAC_DATOS.Models.Almacen
                         {
                             command.Transaction = transaction;
                             command.CommandType = System.Data.CommandType.StoredProcedure;
-                            command.CommandText = "alm_movimientos_actualizar";
+                            command.CommandText = "pro_productosrecetaslineas_actualizar";
                             AddParameters(command);
                             int rows = command.ExecuteNonQuery();
                             transaction.Commit();
@@ -603,7 +436,7 @@ namespace SIAC_DATOS.Models.Almacen
             {
                 command.Transaction = transaction;
                 command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.CommandText = "alm_movimientos_actualizar";
+                command.CommandText = "pro_productosrecetaslineas_actualizar";
                 AddParameters(command);
                 int rows = command.ExecuteNonQuery();
             }
@@ -624,7 +457,7 @@ namespace SIAC_DATOS.Models.Almacen
                         {
                             command.Transaction = transaction;
                             command.CommandType = System.Data.CommandType.StoredProcedure;
-                            command.CommandText = "alm_movimientos_eliminar";
+                            command.CommandText = "pro_productosrecetaslineas_eliminar";
                             command.Parameters.Add(new MySqlParameter("@n_id", n_id));
                             int rows = command.ExecuteNonQuery();
                             transaction.Commit();
@@ -643,41 +476,43 @@ namespace SIAC_DATOS.Models.Almacen
 
         #region metodos privados
 
-        private static Movimiento SetObject(MySqlDataReader reader)
+        private static ProductoRecetaLinea SetObject(MySqlDataReader reader)
         {
-            return new Movimiento
+            return new ProductoRecetaLinea
             {
-                n_id = reader.GetInt32("n_id"),
-                n_idemp = reader.GetInt32("n_idemp"),
-                n_idtipmov = reader.GetInt32("n_idtipmov"),
-                n_idclipro = reader.GetInt32("n_idclipro"),
-                d_fchdoc = Genericas.GetDateTime(reader, "d_fchdoc"),
-                d_fching = Genericas.GetDateTime(reader, "d_fching"),
-                n_idtipdoc = Genericas.GetInt(reader, "n_idtipdoc"),
-                c_numser = Genericas.GetString(reader, "c_numser"),
-                c_numdoc = Genericas.GetString(reader, "c_numdoc"),
-                n_idalm = Genericas.GetInt(reader, "n_idalm"),
-                n_anotra = Genericas.GetInt(reader, "n_anotra"),
-                n_idmes = Genericas.GetInt(reader, "n_idmes"),
-                c_obs = Genericas.GetString(reader, "c_obs"),
-                n_idtipope = Genericas.GetInt(reader, "n_idtipope"),
-                n_tipite = Genericas.GetInt(reader, "n_tipite"),
-                n_docrefidtipdoc = Genericas.GetInt(reader, "n_docrefidtipdoc"),
-                c_docrefnumser = Genericas.GetString(reader, "c_docrefnumser"),
-                c_docrefnumdoc = Genericas.GetString(reader, "c_docrefnumdoc"),
-                n_docrefiddocref = Genericas.GetInt(reader, "n_docrefiddocref"),
-                n_perid = Genericas.GetInt(reader, "n_perid"),
-                n_prolog = Genericas.GetInt(reader, "n_prolog"),
-                n_iddoclog = Genericas.GetInt(reader, "n_iddoclog")
+                n_id = Genericas.GetInt(reader, "n_id"),
+                n_idpro = Genericas.GetInt(reader, "n_idpro"),
+                n_idrec = Genericas.GetInt(reader, "n_idrec"),
+                c_codlin = Genericas.GetString(reader, "c_codlin"),
+                c_deslin = Genericas.GetString(reader, "c_deslin"),
+                n_idunimed = Genericas.GetInt(reader, "n_idunimed"),
+                n_idite = Genericas.GetInt(reader, "n_idite"),
+                n_can = reader.GetDouble("n_can"),
+                n_numope = reader.GetDouble("n_numope"),
+                n_efi = reader.GetDouble("n_efi"),
+                n_tiepro = reader.GetDouble("n_tiepro"),
+                n_prehorjor = reader.GetDouble("n_prehorjor"),
+                n_act = Genericas.GetInt(reader, "n_act"),
+                c_obs = Genericas.GetString(reader, "c_obs")
             };
         }
 
         private void AddParameters(MySqlCommand command)
         {
             command.Parameters.Add(new MySqlParameter("@n_id", n_id));
-            command.Parameters.Add(new MySqlParameter("@n_idemp", n_idemp));
-            command.Parameters.Add(new MySqlParameter("@n_idtipmov", n_idtipmov));
-            command.Parameters.Add(new MySqlParameter("@n_idclipro", n_idclipro));
+            command.Parameters.Add(new MySqlParameter("@n_idpro", n_idpro));
+            command.Parameters.Add(new MySqlParameter("@n_idrec", n_idrec));
+            command.Parameters.Add(new MySqlParameter("@c_codlin", c_codlin));
+            command.Parameters.Add(new MySqlParameter("@c_deslin", c_deslin));
+            command.Parameters.Add(new MySqlParameter("@n_idunimed", n_idunimed));
+            command.Parameters.Add(new MySqlParameter("@n_idite", n_idite));
+            command.Parameters.Add(new MySqlParameter("@n_can", n_can));
+            command.Parameters.Add(new MySqlParameter("@n_numope", n_numope));
+            command.Parameters.Add(new MySqlParameter("@n_efi", n_efi));
+            command.Parameters.Add(new MySqlParameter("@n_tiepro", n_tiepro));
+            command.Parameters.Add(new MySqlParameter("@n_prehorjor", n_prehorjor));
+            command.Parameters.Add(new MySqlParameter("@n_act", n_act));
+            command.Parameters.Add(new MySqlParameter("@c_obs", c_obs));
         }
 
         #endregion

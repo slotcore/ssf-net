@@ -72,6 +72,7 @@
     <Compile Include="Almacen\CD_alm_personal.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Classes\Contabilidad\CosteoProdException.cs" />
+    <Compile Include="Classes\Contabilidad\CostoProduccionInsumoDetalle.cs" />
     <Compile Include="Classes\Contabilidad\ItemProceso.cs" />
     <Compile Include="Classes\ObjectBase.cs" />
     <Compile Include="Classes\ObservableListSource.cs" />
@@ -169,12 +170,18 @@
     <Compile Include="Models\Planillas\Empleado.cs" />
     <Compile Include="Models\Planillas\PeriodoLaboral.cs" />
     <Compile Include="Models\Produccion\ProduccionNotaIng.cs" />
+    <Compile Include="Models\Produccion\Producto.cs" />
+    <Compile Include="Models\Produccion\ProductoReceta.cs" />
+    <Compile Include="Models\Produccion\ProductoRecetaInsumo.cs" />
+    <Compile Include="Models\Produccion\ProductoRecetaLinea.cs" />
+    <Compile Include="Models\Produccion\ProductoRecetaLineaTarea.cs" />
     <Compile Include="Models\Produccion\Programacion.cs" />
     <Compile Include="Models\Produccion\ProgramacionDetPro.cs" />
     <Compile Include="Models\Produccion\SolicitudTareas.cs" />
     <Compile Include="Models\Sistema\Formulario.cs" />
     <Compile Include="Models\Sunat\TipoDocumento.cs" />
     <Compile Include="Models\Sunat\TipoMoneda.cs" />
+    <Compile Include="Models\Sunat\UnidadMedida.cs" />
     <Compile Include="Planilla\CD_pla_cargos.cs" />
     <Compile Include="Planilla\CD_pla_destajo.cs" />
     <Compile Include="Planilla\CD_pla_destajouni.cs" />
