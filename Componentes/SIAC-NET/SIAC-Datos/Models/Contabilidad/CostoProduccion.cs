@@ -1157,9 +1157,14 @@ namespace SIAC_DATOS.Models.Contabilidad
 
         public void ProcesarCif()
         {
-            //Se llena las cuentas
+            ////Se llena las cuentas
+            //CostoProduccionCues = CostoProduccionCue
+            //    .TraerListaPorConfiguracion(n_idemp, n_anotra, n_idmes, n_idmes, n_idconfigval);
+
+
+            //Por requerimiento se pondra en duro los ultimos 7 meses
             CostoProduccionCues = CostoProduccionCue
-                .TraerListaPorConfiguracion(n_idemp, n_anotra, n_idmes, n_idconfigval);
+                .TraerListaPorConfiguracion(n_idemp, n_anotra, 1, 7, n_idconfigval);
 
             //Se realiza el prorrateo segun configuracion
             ConfigVal configVal = ConfigVal.Fetch(n_idconfigval);

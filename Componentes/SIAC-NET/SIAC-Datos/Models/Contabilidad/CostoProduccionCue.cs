@@ -148,7 +148,8 @@ namespace SIAC_DATOS.Models.Contabilidad
 
         public static ObservableListSource<CostoProduccionCue> TraerListaPorConfiguracion(int n_idemp
             , int n_anotra
-            , int n_mes
+            , int n_mesini
+            , int n_mesfin
             , int n_idconfigval)
         {
             // Se trae la lista de cuenta de la configuracion
@@ -167,8 +168,8 @@ namespace SIAC_DATOS.Models.Contabilidad
                     command.CommandText = "con_diario_balancecomprobacion_v2";
                     command.Parameters.Add(new MySqlParameter("@n_idemp", n_idemp));
                     command.Parameters.Add(new MySqlParameter("@n_anotra", n_anotra));
-                    command.Parameters.Add(new MySqlParameter("@n_mesini", n_mes));
-                    command.Parameters.Add(new MySqlParameter("@n_mesfin", n_mes));
+                    command.Parameters.Add(new MySqlParameter("@n_mesini", n_mesini));
+                    command.Parameters.Add(new MySqlParameter("@n_mesfin", n_mesfin));
                     command.Parameters.Add(new MySqlParameter("@n_idlib", 0));
                     connection.Open();
 
@@ -190,7 +191,8 @@ namespace SIAC_DATOS.Models.Contabilidad
                 {
                     CostoProduccionCue m_entidad = new CostoProduccionCue();
                     m_entidad.n_idcue = Convert.ToInt32(row["n_idcue"]);
-                    m_entidad.n_impt = Convert.ToDouble(row["n_movperhab"]);
+                    //m_entidad.n_impt = Convert.ToDouble(row["n_movperhab"]);
+                    m_entidad.n_impt = Convert.ToDouble(row["n_movperdeb"]) / 7; //Se pone en duro debido a lo solicitado por Agrovado
                     m_entidad.c_descue = configValCue.c_descue;
 
                     m_listentidad.Add(m_entidad);
