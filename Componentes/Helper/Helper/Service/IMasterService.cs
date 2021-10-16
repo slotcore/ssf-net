@@ -17,6 +17,6 @@ namespace Helper.Service
         Task<Employee> EmployeeGet(string id);
 
         [Post("/api/master/employee/")]
-        Task<Employee> EmployeeCreate([Body] Employee employee);
+        Task<Employee> EmployeeCreate([Body] Employee employee, [Header("Authorization")] string token);
     }
 }

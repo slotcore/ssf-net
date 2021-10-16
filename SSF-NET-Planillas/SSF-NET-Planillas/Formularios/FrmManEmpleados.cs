@@ -24,6 +24,7 @@ using Helper.Classes;
 using Helper.Service;
 using Refit;
 using System.Configuration;
+using Helper.Classes.Login;
 
 namespace SSF_NET_Planillas.Formularios
 {
@@ -507,8 +508,17 @@ namespace SSF_NET_Planillas.Formularios
                     EmailAddress = entRegistro.c_email
                 };
 
+                Login login = new Login
+                {
+                    UserName = ConfigurationManager.AppSettings["ApiHostUser"],
+                    Password = ConfigurationManager.AppSettings["ApiHostPassword"]
+                };
+                var accountService = RestService.For<IAccountService>(ConfigurationManager.AppSettings["ApiHostUrl"]);
+                var tokenResult = await accountService.Login(login);
+
                 var masterService = RestService.For<IMasterService>(ConfigurationManager.AppSettings["ApiHostUrl"]);
-                var employeeResult = await masterService.EmployeeCreate(employee);
+                var token = string.Format("Bearer {0}", tokenResult.Token);
+                var employeeResult = await masterService.EmployeeCreate(employee, token);
 
                 MessageBox.Show(string.Format("¡Se subió el empleado: {0} correctamente! ", employeeResult.FullName), "Subir Empleado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
