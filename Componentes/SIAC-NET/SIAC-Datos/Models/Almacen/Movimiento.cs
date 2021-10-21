@@ -24,12 +24,27 @@ namespace SIAC_DATOS.Models.Almacen
         #region propiedades
 
         private int _n_id;
-
         private int _n_idemp;
-
         private int _n_idtipmov;
-
         private int _n_idclipro;
+        private DateTime _d_fchdoc;
+        private DateTime _d_fching;
+        private int _n_idtipdoc;
+        private string _c_numser;
+        private string _c_numdoc;
+        private int _n_idalm;
+        private int _n_anotra;
+        private int _n_idmes;
+        private string _c_obs;
+        private int _n_idtipope;
+        private int _n_tipite;
+        private int _n_docrefidtipdoc;
+        private string _c_docrefnumser;
+        private string _c_docrefnumdoc;
+        private int _n_docrefiddocref;
+        private int _n_perid;
+        private int _n_prolog;
+        private int _n_iddoclog;
 
         public int n_id
         {
@@ -99,7 +114,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private DateTime _d_fchdoc;
         public DateTime d_fchdoc
         {
             get
@@ -117,7 +131,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private DateTime _d_fching;
         public DateTime d_fching
         {
             get
@@ -135,7 +148,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private int _n_idtipdoc;
         public int n_idtipdoc
         {
             get
@@ -153,7 +165,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private string _c_numser;
         public string c_numser
         {
             get
@@ -171,7 +182,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private string _c_numdoc;
         public string c_numdoc
         {
             get
@@ -189,7 +199,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private int _n_idalm;
         public int n_idalm
         {
             get
@@ -207,7 +216,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private int _n_anotra;
         public int n_anotra
         {
             get
@@ -225,7 +233,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private int _n_idmes;
         public int n_idmes
         {
             get
@@ -243,7 +250,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private string _c_obs;
         public string c_obs
         {
             get
@@ -261,7 +267,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private int _n_idtipope;
         public int n_idtipope
         {
             get
@@ -279,7 +284,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private int _n_tipite;
         public int n_tipite
         {
             get
@@ -297,7 +301,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private int _n_docrefidtipdoc;
         public int n_docrefidtipdoc
         {
             get
@@ -315,7 +318,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private string _c_docrefnumser;
         public string c_docrefnumser
         {
             get
@@ -333,7 +335,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private string _c_docrefnumdoc;
         public string c_docrefnumdoc
         {
             get
@@ -351,7 +352,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private int _n_docrefiddocref;
         public int n_docrefiddocref
         {
             get
@@ -369,7 +369,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private int _n_perid;
         public int n_perid
         {
             get
@@ -387,7 +386,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private int _n_prolog;
         public int n_prolog
         {
             get
@@ -405,7 +403,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private int _n_iddoclog;
         public int n_iddoclog
         {
             get
@@ -526,6 +523,33 @@ namespace SIAC_DATOS.Models.Almacen
             return m_entidad;
         }
 
+        public static Movimiento FetchPorInventario(int n_idinvini)
+        {
+            Movimiento m_entidad = null;
+
+            using (MySqlConnection connection
+                = new MySqlConnection(
+                    ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.CommandText = "alm_movimientos_traerregistro_por_inventario";
+                    command.Parameters.Add(new MySqlParameter("@n_idinvini", n_idinvini));
+                    connection.Open();
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            m_entidad = SetObject(reader);
+                        }
+                    }
+                }
+            }
+            return m_entidad;
+        }
+
         protected override void Insert()
         {
             using (MySqlConnection connection = new MySqlConnection(
@@ -534,22 +558,26 @@ namespace SIAC_DATOS.Models.Almacen
                 connection.Open();
                 using (MySqlTransaction transaction = connection.BeginTransaction())
                 {
-                    using (MySqlCommand command = connection.CreateCommand())
+                    try
                     {
-                        command.Transaction = transaction;
-                        try
+                        using (MySqlCommand command = connection.CreateCommand())
                         {
+                            command.Transaction = transaction;
                             command.CommandType = System.Data.CommandType.StoredProcedure;
                             command.CommandText = "alm_movimientos_insertar";
                             AddParameters(command);
+                            command.Parameters["@n_id"].Direction = System.Data.ParameterDirection.Output;
                             int rows = command.ExecuteNonQuery();
-                            transaction.Commit();
+                            n_id = Convert.ToInt32(command.Parameters["@n_id"].Value);
                         }
-                        catch (Exception ex)
-                        {
-                            transaction.Rollback();
-                            throw ex;
-                        }
+                        //
+                        SaveChildren(connection, transaction);
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw ex;
                     }
                 }
             }
@@ -563,8 +591,12 @@ namespace SIAC_DATOS.Models.Almacen
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 command.CommandText = "alm_movimientos_insertar";
                 AddParameters(command);
+                command.Parameters["@n_id"].Direction = System.Data.ParameterDirection.Output;
                 int rows = command.ExecuteNonQuery();
+                n_id = Convert.ToInt32(command.Parameters["@n_id"].Value);
             }
+            //
+            SaveChildren(connection, transaction);
         }
 
         protected override void Update()
@@ -609,6 +641,23 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
+        private void SaveChildren(MySqlConnection connection, MySqlTransaction transaction)
+        {
+            foreach (var hijo in MovimientoDets)
+            {
+                if (hijo.IsNew)
+                    hijo.n_idmov = n_id;
+
+                hijo.Save(connection, transaction);
+            }
+
+            foreach (var hijo in MovimientoDets.GetRemoveItems())
+            {
+                if (!hijo.IsNew)
+                    hijo.Delete(connection, transaction);
+            }
+        }
+
         public override void Delete()
         {
             using (MySqlConnection connection
@@ -622,6 +671,8 @@ namespace SIAC_DATOS.Models.Almacen
                     {
                         try
                         {
+                            MovimientoDet.DeleteAll(n_id, connection, transaction);
+
                             command.Transaction = transaction;
                             command.CommandType = System.Data.CommandType.StoredProcedure;
                             command.CommandText = "alm_movimientos_eliminar";
@@ -678,6 +729,24 @@ namespace SIAC_DATOS.Models.Almacen
             command.Parameters.Add(new MySqlParameter("@n_idemp", n_idemp));
             command.Parameters.Add(new MySqlParameter("@n_idtipmov", n_idtipmov));
             command.Parameters.Add(new MySqlParameter("@n_idclipro", n_idclipro));
+            command.Parameters.Add(new MySqlParameter("@d_fchdoc", d_fchdoc));
+            command.Parameters.Add(new MySqlParameter("@d_fching", d_fching));
+            command.Parameters.Add(new MySqlParameter("@n_idtipdoc", n_idtipdoc));
+            command.Parameters.Add(new MySqlParameter("@c_numser", c_numser));
+            command.Parameters.Add(new MySqlParameter("@c_numdoc", c_numdoc));
+            command.Parameters.Add(new MySqlParameter("@n_idalm", n_idalm));
+            command.Parameters.Add(new MySqlParameter("@n_anotra", n_anotra));
+            command.Parameters.Add(new MySqlParameter("@n_idmes", n_idmes));
+            command.Parameters.Add(new MySqlParameter("@c_obs", c_obs));
+            command.Parameters.Add(new MySqlParameter("@n_idtipope", n_idtipope));
+            command.Parameters.Add(new MySqlParameter("@n_tipite", n_tipite));
+            command.Parameters.Add(new MySqlParameter("@n_docrefidtipdoc", n_docrefidtipdoc));
+            command.Parameters.Add(new MySqlParameter("@c_docrefnumser", c_docrefnumser));
+            command.Parameters.Add(new MySqlParameter("@c_docrefnumdoc", c_docrefnumdoc));
+            command.Parameters.Add(new MySqlParameter("@n_docrefiddocref", n_docrefiddocref));
+            command.Parameters.Add(new MySqlParameter("@n_perid", n_perid));
+            command.Parameters.Add(new MySqlParameter("@n_prolog", n_prolog));
+            command.Parameters.Add(new MySqlParameter("@n_iddoclog", n_iddoclog));
         }
 
         #endregion

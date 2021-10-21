@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using SIAC_Datos.Classes;
+using SIAC_DATOS.Models.Sunat;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -368,6 +369,8 @@ namespace SIAC_DATOS.Models.Almacen
                         }
                         //
                         SaveChildren(connection, transaction);
+                        //
+                        GrabarMovimiento(connection, transaction, true);
                         transaction.Commit();
                     }
                     catch (Exception ex)
@@ -393,6 +396,8 @@ namespace SIAC_DATOS.Models.Almacen
             }
             //
             SaveChildren(connection, transaction);
+            //
+            GrabarMovimiento(connection, transaction, true);
         }
 
         protected override void Update()
@@ -421,6 +426,8 @@ namespace SIAC_DATOS.Models.Almacen
                         {
                             SaveChildren(connection, transaction);
                         }
+                        //
+                        GrabarMovimiento(connection, transaction, false);
                         transaction.Commit();
                     }
                     catch (Exception ex)
@@ -442,6 +449,12 @@ namespace SIAC_DATOS.Models.Almacen
                 AddParameters(command);
                 int rows = command.ExecuteNonQuery();
             }
+            if (HasOldOrNewChildren)
+            {
+                SaveChildren(connection, transaction);
+            }
+            //
+            GrabarMovimiento(connection, transaction, false);
         }
 
         public override void Delete()
@@ -511,6 +524,54 @@ namespace SIAC_DATOS.Models.Almacen
                 if (!hijo.IsNew)
                     hijo.Delete(connection, transaction);
             }
+        }
+
+
+        private void GrabarMovimiento(MySqlConnection connection, MySqlTransaction transaction, bool isNew)
+        {
+            if (!isNew)
+            {
+                Movimiento movimientoAnterior = Movimiento.FetchPorInventario(this.n_id);
+                if (movimientoAnterior != null)
+                    movimientoAnterior.Delete(connection, transaction);
+            }
+
+            Movimiento movimientoNuevo = new Movimiento();
+            movimientoNuevo.d_fchdoc = this.d_fchvig;
+            movimientoNuevo.d_fching = this.d_fchvig;
+            movimientoNuevo.n_idemp = this.n_idemp;
+            movimientoNuevo.n_idtipmov = 1;
+            movimientoNuevo.n_idclipro = 10293;
+            movimientoNuevo.n_idtipdoc = 49;
+            movimientoNuevo.c_numser = "0001";
+            movimientoNuevo.c_numdoc = TipoDocumento.UltimoNumero(this.n_idemp, 49, movimientoNuevo.c_numser);
+            movimientoNuevo.n_idalm = this.n_idalm;
+            movimientoNuevo.n_anotra = this.d_fchvig.Year;
+            movimientoNuevo.n_idmes = this.d_fchvig.Month;
+            movimientoNuevo.n_idtipope = 2;
+            movimientoNuevo.n_tipite = 2;
+            movimientoNuevo.n_docrefidtipdoc = 97;
+            movimientoNuevo.n_docrefiddocref = this.n_id;
+            movimientoNuevo.c_docrefnumser = this.c_numser;
+            movimientoNuevo.c_docrefnumdoc = this._c_numdoc;
+            movimientoNuevo.n_perid = 0;
+            movimientoNuevo.n_prolog = 1;
+
+            movimientoNuevo.MovimientoDets = new ObservableListSource<MovimientoDet>();
+
+            foreach (var hijo in InventarioInicialDets)
+            {
+                MovimientoDet movimientoDet = new MovimientoDet();
+                movimientoDet.n_idite = hijo.n_idite;
+                movimientoDet.n_idpre = hijo.n_idunimed;
+                movimientoDet.n_can = hijo.n_can;
+                movimientoDet.c_numlot = "SIN LOTE";
+                movimientoDet.n_idtippro = 6;
+
+                movimientoNuevo.MovimientoDets.Add(movimientoDet);
+            }
+
+            movimientoNuevo.Save();
         }
 
         #endregion

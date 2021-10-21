@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Helper;
+using MySql.Data.MySqlClient;
 using SIAC_Datos.Classes;
 using System;
 using System.Collections.Generic;
@@ -23,12 +24,24 @@ namespace SIAC_DATOS.Models.Almacen
         #region propiedades
 
         private int _n_idmov;
-
         private int _n_idite;
-
         private int _n_idpre;
-
         private double _n_can;
+        private int _n_idalm;
+        private string _c_numlot;
+        private int _n_idtippro;
+        private DateTime _d_fchpro;
+        private DateTime _d_fchven;
+        private int _n_iddep;
+        private int _n_idpro;
+        private int _n_iddis;
+        private string _c_desori;
+        private string _c_marca;
+        private DateTime _h_horing;
+        private DateTime _h_horsal;
+        private int _n_estpro;
+        private double _n_preuni;
+        private double _n_pretot;
 
         public int n_idmov
         {
@@ -98,7 +111,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private int _n_idalm;
         public int n_idalm
         {
             get
@@ -116,7 +128,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private string _c_numlot;
         public string c_numlot
         {
             get
@@ -134,7 +145,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private int _n_idtippro;
         public int n_idtippro
         {
             get
@@ -152,7 +162,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private DateTime _d_fchpro;
         public DateTime d_fchpro
         {
             get
@@ -170,7 +179,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private DateTime _d_fchven;
         public DateTime d_fchven
         {
             get
@@ -188,7 +196,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private int _n_iddep;
         public int n_iddep
         {
             get
@@ -206,7 +213,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private int _n_idpro;
         public int n_idpro
         {
             get
@@ -224,7 +230,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private int _n_iddis;
         public int n_iddis
         {
             get
@@ -242,7 +247,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private string _c_desori;
         public string c_desori
         {
             get
@@ -260,7 +264,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private string _c_marca;
         public string c_marca
         {
             get
@@ -278,7 +281,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private DateTime _h_horing;
         public DateTime h_horing
         {
             get
@@ -296,7 +298,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private DateTime _h_horsal;
         public DateTime h_horsal
         {
             get
@@ -314,7 +315,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private int _n_estpro;
         public int n_estpro
         {
             get
@@ -332,7 +332,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private double _n_preuni;
         public double n_preuni
         {
             get
@@ -350,7 +349,6 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
-        private double _n_pretot;
         public double n_pretot
         {
             get
@@ -434,22 +432,22 @@ namespace SIAC_DATOS.Models.Almacen
                 connection.Open();
                 using (MySqlTransaction transaction = connection.BeginTransaction())
                 {
-                    using (MySqlCommand command = connection.CreateCommand())
+                    try
                     {
-                        command.Transaction = transaction;
-                        try
+                        using (MySqlCommand command = connection.CreateCommand())
                         {
+                            command.Transaction = transaction;
                             command.CommandType = System.Data.CommandType.StoredProcedure;
                             command.CommandText = "alm_movimientosdet_insertar";
                             AddParameters(command);
                             int rows = command.ExecuteNonQuery();
-                            transaction.Commit();
                         }
-                        catch (Exception ex)
-                        {
-                            transaction.Rollback();
-                            throw ex;
-                        }
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw ex;
                     }
                 }
             }
@@ -539,6 +537,18 @@ namespace SIAC_DATOS.Models.Almacen
             }
         }
 
+        public static void DeleteAll(int n_idmov, MySqlConnection connection, MySqlTransaction transaction)
+        {
+            using (MySqlCommand command = connection.CreateCommand())
+            {
+                command.Transaction = transaction;
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.CommandText = "alm_movimientosdet_eliminar_todo";
+                command.Parameters.Add(new MySqlParameter("@n_idmov", n_idmov));
+                int rows = command.ExecuteNonQuery();
+            }
+        }
+
         #endregion
 
         #region metodos privados
@@ -550,7 +560,22 @@ namespace SIAC_DATOS.Models.Almacen
                 n_idmov = reader.GetInt32("n_id"),
                 n_idite = reader.GetInt32("n_idite"),
                 n_idpre = reader.GetInt32("n_idpre"),
-                n_can = reader.GetInt32("n_can")
+                n_can = reader.GetDouble("n_can"),
+                n_idalm = reader.GetInt32("n_idalm"),
+                c_numlot = Genericas.GetString(reader, "c_numlot"),
+                n_idtippro = reader.GetInt32("n_idtippro"),
+                d_fchpro = Genericas.GetDateTime(reader, "d_fchpro"),
+                d_fchven = Genericas.GetDateTime(reader, "d_fchven"),
+                n_iddep = reader.GetInt32("n_iddep"),
+                n_idpro = reader.GetInt32("n_idpro"),
+                n_iddis = reader.GetInt32("n_iddis"),
+                c_desori = Genericas.GetString(reader, "c_desori"),
+                c_marca = Genericas.GetString(reader, "c_marca"),
+                h_horing = Genericas.GetDateTime(reader, "h_horing"),
+                h_horsal = Genericas.GetDateTime(reader, "h_horsal"),
+                n_estpro = reader.GetInt32("n_estpro"),
+                n_preuni = reader.GetDouble("n_preuni"),
+                n_pretot = reader.GetDouble("n_pretot")
             };
         }
 
@@ -560,6 +585,21 @@ namespace SIAC_DATOS.Models.Almacen
             command.Parameters.Add(new MySqlParameter("@n_idite", n_idite));
             command.Parameters.Add(new MySqlParameter("@n_idpre", n_idpre));
             command.Parameters.Add(new MySqlParameter("@n_can", n_can));
+            command.Parameters.Add(new MySqlParameter("@n_idalm", n_idalm));
+            command.Parameters.Add(new MySqlParameter("@c_numlot", c_numlot));
+            command.Parameters.Add(new MySqlParameter("@n_idtippro", n_idtippro));
+            command.Parameters.Add(new MySqlParameter("@d_fchpro", d_fchpro));
+            command.Parameters.Add(new MySqlParameter("@d_fchven", d_fchven));
+            command.Parameters.Add(new MySqlParameter("@n_iddep", n_iddep));
+            command.Parameters.Add(new MySqlParameter("@n_idpro", n_idpro));
+            command.Parameters.Add(new MySqlParameter("@n_iddis", n_iddis));
+            command.Parameters.Add(new MySqlParameter("@c_desori", c_desori));
+            command.Parameters.Add(new MySqlParameter("@c_marca", c_marca));
+            command.Parameters.Add(new MySqlParameter("@h_horing", h_horing.ToString("HH:mm:ss")));
+            command.Parameters.Add(new MySqlParameter("@h_horsal", h_horsal.ToString("HH:mm:ss")));
+            command.Parameters.Add(new MySqlParameter("@n_estpro", n_estpro));
+            command.Parameters.Add(new MySqlParameter("@n_preuni", n_preuni));
+            command.Parameters.Add(new MySqlParameter("@n_pretot", n_pretot));
         }
 
         #endregion
