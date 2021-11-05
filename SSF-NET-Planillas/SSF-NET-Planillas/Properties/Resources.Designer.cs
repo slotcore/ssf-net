@@ -73,6 +73,16 @@ namespace SSF_NET_Planillas.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bodepartment_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("bodepartment_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap documento_de_archivo_icono_4983_48 {
             get {
                 object obj = ResourceManager.GetObject("documento-de-archivo-icono-4983-48", resourceCulture);
@@ -86,6 +96,26 @@ namespace SSF_NET_Planillas.Properties {
         internal static System.Drawing.Bitmap edit_16x16 {
             get {
                 object obj = ResourceManager.GetObject("edit_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap exporttoxls_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("exporttoxls_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap lookup_reference_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("lookup&reference_16x16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

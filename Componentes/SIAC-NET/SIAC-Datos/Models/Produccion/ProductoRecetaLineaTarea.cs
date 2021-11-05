@@ -24,10 +24,26 @@ namespace SIAC_DATOS.Models.Produccion
         #region propiedades
 
         private int _n_idpro;
-
         private int _n_idrec;
-
         private int _n_idlin;
+        private int _n_idtar;
+        private double _n_porefi;
+        private double _n_cankilpro;
+        private int _n_numpertar;
+        private int _n_idequipo;
+        private int _n_canequi;
+        private int _n_numpertarequ;
+        private double _n_capkilporper;
+        private double _n_capkilporhorlin;
+        private double _n_capkilporlintietra;
+        private double _n_numpercal;
+        private double _n_totprotietra;
+        private double _n_porefiuni;
+        private double _n_porefitot;
+        private double _n_costar;
+        private int _n_ord;
+        private double _n_kghper;
+        private string _c_destar;
 
         public int n_idpro
         {
@@ -80,7 +96,6 @@ namespace SIAC_DATOS.Models.Produccion
             }
         }
 
-        private int _n_idtar;
         public int n_idtar
         {
             get
@@ -98,7 +113,6 @@ namespace SIAC_DATOS.Models.Produccion
             }
         }
 
-        private double _n_porefi;
         public double n_porefi
         {
             get
@@ -116,7 +130,6 @@ namespace SIAC_DATOS.Models.Produccion
             }
         }
 
-        private double _n_cankilpro;
         public double n_cankilpro
         {
             get
@@ -134,7 +147,6 @@ namespace SIAC_DATOS.Models.Produccion
             }
         }
 
-        private int _n_numpertar;
         public int n_numpertar
         {
             get
@@ -152,7 +164,6 @@ namespace SIAC_DATOS.Models.Produccion
             }
         }
 
-        private int _n_idequipo;
         public int n_idequipo
         {
             get
@@ -170,7 +181,6 @@ namespace SIAC_DATOS.Models.Produccion
             }
         }
 
-        private int _n_canequi;
         public int n_canequi
         {
             get
@@ -188,7 +198,6 @@ namespace SIAC_DATOS.Models.Produccion
             }
         }
 
-        private int _n_numpertarequ;
         public int n_numpertarequ
         {
             get
@@ -206,7 +215,6 @@ namespace SIAC_DATOS.Models.Produccion
             }
         }
 
-        private double _n_capkilporper;
         public double n_capkilporper
         {
             get
@@ -224,7 +232,6 @@ namespace SIAC_DATOS.Models.Produccion
             }
         }
 
-        private double _n_capkilporhorlin;
         public double n_capkilporhorlin
         {
             get
@@ -242,7 +249,6 @@ namespace SIAC_DATOS.Models.Produccion
             }
         }
 
-        private double _n_capkilporlintietra;
         public double n_capkilporlintietra
         {
             get
@@ -260,7 +266,6 @@ namespace SIAC_DATOS.Models.Produccion
             }
         }
 
-        private double _n_numpercal;
         public double n_numpercal
         {
             get
@@ -278,7 +283,6 @@ namespace SIAC_DATOS.Models.Produccion
             }
         }
 
-        private double _n_totprotietra;
         public double n_totprotietra
         {
             get
@@ -296,7 +300,6 @@ namespace SIAC_DATOS.Models.Produccion
             }
         }
 
-        private double _n_porefiuni;
         public double n_porefiuni
         {
             get
@@ -314,7 +317,6 @@ namespace SIAC_DATOS.Models.Produccion
             }
         }
 
-        private double _n_porefitot;
         public double n_porefitot
         {
             get
@@ -332,7 +334,6 @@ namespace SIAC_DATOS.Models.Produccion
             }
         }
 
-        private double _n_costar;
         public double n_costar
         {
             get
@@ -350,7 +351,6 @@ namespace SIAC_DATOS.Models.Produccion
             }
         }
 
-        private int _n_ord;
         public int n_ord
         {
             get
@@ -368,7 +368,6 @@ namespace SIAC_DATOS.Models.Produccion
             }
         }
 
-        private double _n_kghper;
         public double n_kghper
         {
             get
@@ -385,11 +384,28 @@ namespace SIAC_DATOS.Models.Produccion
                 }
             }
         }
+
+        public string c_destar
+        {
+            get
+            {
+                return _c_destar;
+            }
+
+            set
+            {
+                if (value != _c_destar)
+                {
+                    _c_destar = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
         #endregion
 
         #region metodos publicos
 
-        public static ObservableListSource<ProductoRecetaLineaTarea> FetchList(int n_idpro)
+        public static ObservableListSource<ProductoRecetaLineaTarea> FetchList(int n_idpro, int n_idrec, int n_idlin)
         {
             ObservableListSource<ProductoRecetaLineaTarea> m_listentidad = new ObservableListSource<ProductoRecetaLineaTarea>();
 
@@ -401,8 +417,10 @@ namespace SIAC_DATOS.Models.Produccion
                 {
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.CommandText = "pro_productosrecetaslineastareas_listar";
+                    command.CommandText = "pro_productosrecetaslineastareas_listar_v2";
                     command.Parameters.Add(new MySqlParameter("@n_idpro", n_idpro));
+                    command.Parameters.Add(new MySqlParameter("@n_idrec", n_idrec));
+                    command.Parameters.Add(new MySqlParameter("@n_idlin", n_idlin));
                     connection.Open();
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
@@ -584,7 +602,8 @@ namespace SIAC_DATOS.Models.Produccion
                 n_porefitot = reader.GetDouble("n_porefitot"),
                 n_costar = reader.GetDouble("n_costar"),
                 n_ord = Genericas.GetInt(reader, "n_ord"),
-                n_kghper = reader.GetDouble("n_kghper")
+                n_kghper = reader.GetDouble("n_kghper"),
+                c_destar = Genericas.GetString(reader, "c_destar")
             };
         }
 

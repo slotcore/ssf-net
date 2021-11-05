@@ -284,6 +284,26 @@ namespace SIAC_Negocio.Planilla
 
             return b_result;
         }
+        public bool ConsultaSelTodos(int n_IdEmpresa, string c_CondicionIN)
+        {
+            bool b_result = false;
+            //CD_pla_empleados miFun = new CD_pla_empleados();
+            //miFun.mysConec = mysConec;
+
+            if (miFun.ConsultaSelTodos(n_IdEmpresa, c_CondicionIN) == true)
+            {
+                b_result = true;
+                dtLista = miFun.dtLista;
+            }
+            else
+            {
+                b_OcurrioError = miFun.b_OcurrioError;
+                c_ErrorMensaje = miFun.c_ErrorMensaje;
+                n_ErrorNumber = miFun.n_ErrorNumber;
+            }
+
+            return b_result;
+        }
         public void Reporte1()
         {
             string c_NomArchivo = "";

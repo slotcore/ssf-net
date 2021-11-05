@@ -76,6 +76,7 @@
     <Compile Include="Classes\Contabilidad\ItemProceso.cs" />
     <Compile Include="Classes\ObjectBase.cs" />
     <Compile Include="Classes\ObservableListSource.cs" />
+    <Compile Include="Classes\Planilla\EmpleadoAvance.cs" />
     <Compile Include="Contabilidad\CD_con_cerrarmes.cs" />
     <Compile Include="Contabilidad\CD_con_destinoinforme.cs" />
     <Compile Include="Contabilidad\CD_con_detraccion.cs" />

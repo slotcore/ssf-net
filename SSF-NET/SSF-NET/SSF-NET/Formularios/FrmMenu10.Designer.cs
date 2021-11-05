@@ -367,6 +367,7 @@
             this.LnkLabelReiniciar = new System.Windows.Forms.ToolStripLabel();
             this.TsModOffline = new System.Windows.Forms.ToolStrip();
             this.TsLabelMensajeOffline = new System.Windows.Forms.ToolStripLabel();
+            this.reporteDeAvancesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -2024,7 +2025,7 @@
             this.maestrosToolStripMenuItem5.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.maestroDeEmpleadosToolStripMenuItem});
             this.maestrosToolStripMenuItem5.Name = "maestrosToolStripMenuItem5";
-            this.maestrosToolStripMenuItem5.Size = new System.Drawing.Size(216, 26);
+            this.maestrosToolStripMenuItem5.Size = new System.Drawing.Size(224, 26);
             this.maestrosToolStripMenuItem5.Text = "Maestros";
             // 
             // maestroDeEmpleadosToolStripMenuItem
@@ -2053,7 +2054,7 @@
             // toolStripMenuItem24
             // 
             this.toolStripMenuItem24.Name = "toolStripMenuItem24";
-            this.toolStripMenuItem24.Size = new System.Drawing.Size(213, 6);
+            this.toolStripMenuItem24.Size = new System.Drawing.Size(221, 6);
             // 
             // registrarTareasProduccionToolStripMenuItem
             // 
@@ -2061,7 +2062,7 @@
             this.tareasDeProduccionToolStripMenuItem1,
             this.tareasDiversasToolStripMenuItem1});
             this.registrarTareasProduccionToolStripMenuItem.Name = "registrarTareasProduccionToolStripMenuItem";
-            this.registrarTareasProduccionToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.registrarTareasProduccionToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.registrarTareasProduccionToolStripMenuItem.Text = "Solicitud de Tareas";
             this.registrarTareasProduccionToolStripMenuItem.Click += new System.EventHandler(this.registrarTareasProduccionToolStripMenuItem_Click);
             // 
@@ -2082,7 +2083,7 @@
             // toolStripMenuItem29
             // 
             this.toolStripMenuItem29.Name = "toolStripMenuItem29";
-            this.toolStripMenuItem29.Size = new System.Drawing.Size(213, 6);
+            this.toolStripMenuItem29.Size = new System.Drawing.Size(221, 6);
             // 
             // marcacionToolStripMenuItem
             // 
@@ -2093,7 +2094,7 @@
             this.formato1ToolStripMenuItem,
             this.formato2ToolStripMenuItem});
             this.marcacionToolStripMenuItem.Name = "marcacionToolStripMenuItem";
-            this.marcacionToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.marcacionToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.marcacionToolStripMenuItem.Text = "Marcacion";
             this.marcacionToolStripMenuItem.Click += new System.EventHandler(this.marcacionToolStripMenuItem_Click);
             // 
@@ -2141,7 +2142,7 @@
             this.jornalesToolStripMenuItem,
             this.jornalesUnificadoToolStripMenuItem});
             this.generarPlanillaToolStripMenuItem.Name = "generarPlanillaToolStripMenuItem";
-            this.generarPlanillaToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.generarPlanillaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.generarPlanillaToolStripMenuItem.Text = "Planilla";
             this.generarPlanillaToolStripMenuItem.Click += new System.EventHandler(this.generarPlanillaToolStripMenuItem_Click);
             // 
@@ -2162,15 +2163,16 @@
             // toolStripMenuItem25
             // 
             this.toolStripMenuItem25.Name = "toolStripMenuItem25";
-            this.toolStripMenuItem25.Size = new System.Drawing.Size(213, 6);
+            this.toolStripMenuItem25.Size = new System.Drawing.Size(221, 6);
             this.toolStripMenuItem25.Click += new System.EventHandler(this.toolStripMenuItem25_Click);
             // 
             // pesrsonalToolStripMenuItem
             // 
             this.pesrsonalToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.reporteDeCumpleañosToolStripMenuItem});
+            this.reporteDeCumpleañosToolStripMenuItem,
+            this.reporteDeAvancesToolStripMenuItem});
             this.pesrsonalToolStripMenuItem.Name = "pesrsonalToolStripMenuItem";
-            this.pesrsonalToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.pesrsonalToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.pesrsonalToolStripMenuItem.Text = "Pesrsonal";
             // 
             // reporteDeCumpleañosToolStripMenuItem
@@ -2183,7 +2185,7 @@
             // consultaDeTareaToolStripMenuItem
             // 
             this.consultaDeTareaToolStripMenuItem.Name = "consultaDeTareaToolStripMenuItem";
-            this.consultaDeTareaToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.consultaDeTareaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.consultaDeTareaToolStripMenuItem.Text = "Consulta de Tarea";
             this.consultaDeTareaToolStripMenuItem.Click += new System.EventHandler(this.consultaDeTareaToolStripMenuItem_Click);
             // 
@@ -3089,6 +3091,13 @@
             this.TsLabelMensajeOffline.Size = new System.Drawing.Size(158, 22);
             this.TsLabelMensajeOffline.Text = "TsLabelMensajeOffline";
             // 
+            // reporteDeAvancesToolStripMenuItem
+            // 
+            this.reporteDeAvancesToolStripMenuItem.Name = "reporteDeAvancesToolStripMenuItem";
+            this.reporteDeAvancesToolStripMenuItem.Size = new System.Drawing.Size(252, 26);
+            this.reporteDeAvancesToolStripMenuItem.Text = "Reporte de Avances";
+            this.reporteDeAvancesToolStripMenuItem.Click += new System.EventHandler(this.reporteDeAvancesToolStripMenuItem_Click);
+            // 
             // FrmMenu10
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -3463,5 +3472,6 @@
         private System.Windows.Forms.ToolStripLabel LnkLabelReiniciar;
         private System.Windows.Forms.ToolStrip TsModOffline;
         private System.Windows.Forms.ToolStripLabel TsLabelMensajeOffline;
+        private System.Windows.Forms.ToolStripMenuItem reporteDeAvancesToolStripMenuItem;
     }
 }

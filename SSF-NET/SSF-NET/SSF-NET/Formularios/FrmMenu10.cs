@@ -1821,5 +1821,13 @@ namespace SSF_NET.Formularios
         {
 
         }
+
+        private void reporteDeAvancesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SSF_NET_Planillas.CLS_Planillas objForm = new SSF_NET_Planillas.CLS_Planillas();
+            objForm.mysConec = Program.mysConeccion;
+            objForm.STU_SISTEMA = Program.STU_SISTEMA;
+            objForm.ConsultaAvances();
+        }
     }
 }

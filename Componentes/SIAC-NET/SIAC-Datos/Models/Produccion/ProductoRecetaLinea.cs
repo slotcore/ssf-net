@@ -286,7 +286,7 @@ namespace SIAC_DATOS.Models.Produccion
             {
                 if (_ProductoRecetaLineaTareas == null)
                 {
-                    _ProductoRecetaLineaTareas = ProductoRecetaLineaTarea.FetchList(_n_idpro);
+                    _ProductoRecetaLineaTareas = ProductoRecetaLineaTarea.FetchList(_n_idpro, _n_idrec, _n_id);
                 }
                 return _ProductoRecetaLineaTareas;
             }
@@ -304,7 +304,7 @@ namespace SIAC_DATOS.Models.Produccion
 
         #region metodos publicos
 
-        public static ObservableListSource<ProductoRecetaLinea> FetchList(int n_idpro)
+        public static ObservableListSource<ProductoRecetaLinea> FetchList(int n_idpro, int n_idrec)
         {
             ObservableListSource<ProductoRecetaLinea> m_listentidad = new ObservableListSource<ProductoRecetaLinea>();
 
@@ -316,8 +316,9 @@ namespace SIAC_DATOS.Models.Produccion
                 {
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.CommandText = "pro_productosrecetaslineas_listar";
+                    command.CommandText = "pro_productosrecetaslineas_listar_v2";
                     command.Parameters.Add(new MySqlParameter("@n_idpro", n_idpro));
+                    command.Parameters.Add(new MySqlParameter("@n_idrec", n_idrec));
                     connection.Open();
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {

@@ -1,5 +1,7 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Helper;
+using MySql.Data.MySqlClient;
 using SIAC_Datos.Classes;
+using SIAC_DATOS.Classes.Planilla;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -600,6 +602,80 @@ namespace SIAC_Datos.Models.Planillas
             }
         }
 
+        public static Empleado Fetch(int id)
+        {
+            Empleado m_entidad = new Empleado();
+
+            using (MySqlConnection connection
+                = new MySqlConnection(
+                    ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.CommandText = "pla_empleados_obtenerregistro";
+                    command.Parameters.Add(new MySqlParameter("@n_id", id));
+                    connection.Open();
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            m_entidad = SetObject(reader);
+                        }
+                    }
+                }
+            }
+            return m_entidad;
+        }
+
+        public static List<EmpleadoAvance> FetchEmpleadosAvance(int n_idpro
+            , int n_idemp
+            , string n_idtraIn
+            , int n_idtar
+            , DateTime d_fchini
+            , DateTime d_fchfin)
+        {
+            string c_fchini = d_fchini.ToString("yyyy-MM-dd");
+            string c_fchfin = d_fchfin.ToString("yyyy-MM-dd");
+            List<EmpleadoAvance> m_listaentidad = new List<EmpleadoAvance>();
+
+            using (MySqlConnection connection
+                = new MySqlConnection(
+                    ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.CommandText = "pla_empleados_listaravance";
+                    command.Parameters.Add(new MySqlParameter("@n_idpro", n_idpro));
+                    command.Parameters.Add(new MySqlParameter("@n_idemp", n_idemp));
+                    command.Parameters.Add(new MySqlParameter("@n_idtraIn", n_idtraIn));
+                    command.Parameters.Add(new MySqlParameter("@n_idtar", n_idtar));
+                    command.Parameters.Add(new MySqlParameter("@c_fchini", c_fchini));
+                    command.Parameters.Add(new MySqlParameter("@c_fchfin", c_fchfin));
+                    connection.Open();
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            m_listaentidad.Add(new EmpleadoAvance
+                            {
+                                n_idper = Genericas.GetInt(reader, "n_idper"),
+                                c_apenom = Genericas.GetString(reader, "c_apenom"),
+                                d_fchtra = Genericas.GetDateTime(reader, "d_fchtra"),
+                                n_can = Genericas.GetDouble(reader, "n_can"),
+                                c_horini = Genericas.GetString(reader, "c_horini"),
+                                c_horter = Genericas.GetString(reader, "c_horter")
+                            });
+                        }
+                    }
+                }
+            }
+            return m_listaentidad;
+        }
+
         protected override void Insert()
         {
             using (MySqlConnection connection = new MySqlConnection(
@@ -647,6 +723,43 @@ namespace SIAC_Datos.Models.Planillas
                     }
                 }
             }
+        }
+
+        private static Empleado SetObject(MySqlDataReader reader)
+        {
+            return new Empleado
+            {
+                n_id = reader.GetInt32("n_id"),
+                n_idemp = reader.GetInt32("n_idemp"),
+                n_idtipdocide = reader.GetInt32("n_idtipdocide"),
+                c_numdocide = reader.GetString("c_numdocide"),
+                c_ape1 = Genericas.GetString(reader, "c_ape1"),
+                c_ape2 = Genericas.GetString(reader, "c_ape2"),
+                c_nom1 = Genericas.GetString(reader, "c_nom1"),
+                c_nom2 = Genericas.GetString(reader, "c_nom2"),
+                d_fchnac = Genericas.GetDateTime(reader, "d_fchnac"),
+                n_idsex = Genericas.GetInt(reader, "n_idsex"),
+                c_numtel = Genericas.GetString(reader, "c_numtel"),
+                c_numesa = Genericas.GetString(reader, "c_numesa"),
+                d_fching = Genericas.GetDateTime(reader, "d_fching"),
+                n_asigfam = Genericas.GetInt(reader, "n_asigfam"),
+                n_suebas = Genericas.GetDouble(reader, "n_suebas"),
+                n_bon = Genericas.GetInt(reader, "n_bon"),
+                n_imphornor = Genericas.GetDouble(reader, "n_imphornor"),
+                n_imphorext = Genericas.GetDouble(reader, "n_imphorext"),
+                n_activo = Genericas.GetInt(reader, "n_activo"),
+                n_destajo = Genericas.GetInt(reader, "n_destajo"),
+                c_dir = Genericas.GetString(reader, "c_dir"),
+                c_email = Genericas.GetString(reader, "c_email"),
+                n_idnacpro = Genericas.GetInt(reader, "n_idnacpro"),
+                n_idnacdep = Genericas.GetInt(reader, "n_idnacdep"),
+                n_idnacdis = Genericas.GetInt(reader, "n_idnacdis"),
+                n_idrespro = Genericas.GetInt(reader, "n_idrespro"),
+                n_idresdep = Genericas.GetInt(reader, "n_idresdep"),
+                n_idresdis = Genericas.GetInt(reader, "n_idresdis"),
+                n_destacado = Genericas.GetInt(reader, "n_destacado"),
+                d_fchbaj = Genericas.GetDateTime(reader, "d_fchbaj")
+            };
         }
 
         public void AddParameters(MySqlCommand command)

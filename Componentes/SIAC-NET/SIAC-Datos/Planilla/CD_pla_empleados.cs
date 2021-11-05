@@ -263,6 +263,27 @@ namespace SIAC_DATOS.Planilla
             }
             return b_result;
         }
+        public bool ConsultaSelTodos(int n_IdEmpresa, string c_CondicionIN)
+        {
+            bool b_result = false;
+            string[,] arrParametros = new string[2, 3] {
+                                            {"n_idemp", "System.INT32",n_IdEmpresa.ToString()},
+                                            {"c_con", "System.STRING",c_CondicionIN.ToString()},
+                                      };
+            dtLista = xMiFuncion.StoreDTLLenar("pla_empleados_consulta_seltodos", arrParametros, mysConec);
+
+            if (xMiFuncion.IntErrorNumber != 0)
+            {
+                b_OcurrioError = xMiFuncion.booOcurrioError;
+                c_ErrorMensaje = xMiFuncion.StrErrorMensaje;
+                n_ErrorNumber = xMiFuncion.IntErrorNumber;
+            }
+            else
+            {
+                b_result = true;
+            }
+            return b_result;
+        }
         public bool Desactivar(int n_IdRegistro, int n_Estado)
         {
             bool booResult = false;

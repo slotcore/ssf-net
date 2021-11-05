@@ -27,6 +27,13 @@ namespace SSF_NET_Planillas
             FrmFrmCon.STU_SISTEMA = STU_SISTEMA;
             FrmFrmCon.ShowDialog();
         }
+        public void ConsultaAvances()
+        {
+            Formularios.FrmRepAvancePersonal FrmFrmCon = new Formularios.FrmRepAvancePersonal();
+            FrmFrmCon.mysConec = mysConec;
+            FrmFrmCon.STU_SISTEMA = STU_SISTEMA;
+            FrmFrmCon.Show();
+        }
         public void ConsultaCumpleanos()
         {
             Formularios.FrmRepCumpleaños FrmFrmCon = new Formularios.FrmRepCumpleaños();

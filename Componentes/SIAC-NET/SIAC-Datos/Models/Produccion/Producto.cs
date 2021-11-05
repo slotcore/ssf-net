@@ -24,12 +24,18 @@ namespace SIAC_DATOS.Models.Produccion
         #region propiedades
 
         private int _n_id;
-
         private int _n_idemp;
-
         private string _c_cod;
-
         private string _c_despro;
+        private int _n_idunimed;
+        private int _n_idfam;
+        private int _n_idcla;
+        private int _n_idsubcla;
+        private int _n_idtip;
+        private string _c_obs;
+        private int _n_act;
+        private double _n_kilhor;
+        private int _n_idmatpri;
 
         public int n_id
         {
@@ -99,7 +105,6 @@ namespace SIAC_DATOS.Models.Produccion
             }
         }
 
-        private int _n_idunimed;
         public int n_idunimed
         {
             get
@@ -117,7 +122,6 @@ namespace SIAC_DATOS.Models.Produccion
             }
         }
 
-        private int _n_idfam;
         public int n_idfam
         {
             get
@@ -135,7 +139,6 @@ namespace SIAC_DATOS.Models.Produccion
             }
         }
 
-        private int _n_idcla;
         public int n_idcla
         {
             get
@@ -153,7 +156,6 @@ namespace SIAC_DATOS.Models.Produccion
             }
         }
 
-        private int _n_idsubcla;
         public int n_idsubcla
         {
             get
@@ -171,7 +173,6 @@ namespace SIAC_DATOS.Models.Produccion
             }
         }
 
-        private int _n_idtip;
         public int n_idtip
         {
             get
@@ -189,7 +190,6 @@ namespace SIAC_DATOS.Models.Produccion
             }
         }
 
-        private string _c_obs;
         public string c_obs
         {
             get
@@ -207,7 +207,6 @@ namespace SIAC_DATOS.Models.Produccion
             }
         }
 
-        private int _n_act;
         public int n_act
         {
             get
@@ -225,7 +224,6 @@ namespace SIAC_DATOS.Models.Produccion
             }
         }
 
-        private double _n_kilhor;
         public double n_kilhor
         {
             get
@@ -243,7 +241,6 @@ namespace SIAC_DATOS.Models.Produccion
             }
         }
 
-        private int _n_idmatpri;
         public int n_idmatpri
         {
             get

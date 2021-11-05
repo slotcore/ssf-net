@@ -147,7 +147,7 @@ namespace SSF_NET.Formularios
             CN_sys_empresa objEmpresa = new CN_sys_empresa();
             string c_nomarc = ConfigurationManager.AppSettings["PathIniFile"];
             
-            string c_nombd = miFun.IniLeerSeccion(c_nomarc, "INFORMACION", "DATO6").ToString();
+            string c_nombd = miFun.IniLeerSeccion(c_nomarc, "INFORMACION", "DATO2").ToString();
             c_nombd = objSeg.Desencriptar(c_nombd);
                         
             c_usu = miFun.IniLeerSeccion(c_nomarc, "INFORMACION", "DATO3").ToString();

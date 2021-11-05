@@ -80,6 +80,12 @@
     <Compile Include="Formularios\FrmConsultaAsistencia2.Designer.cs">
       <DependentUpon>FrmConsultaAsistencia2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FrmRepAvancePersonal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmRepAvancePersonal.Designer.cs">
+      <DependentUpon>FrmRepAvancePersonal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FrmManAsistencia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,6 +226,9 @@
     <EmbeddedResource Include="Formularios\FrmConsultaAsistencia2.resx">
       <DependentUpon>FrmConsultaAsistencia2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmRepAvancePersonal.resx">
+      <DependentUpon>FrmRepAvancePersonal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmManAsistencia.resx">
       <DependentUpon>FrmManAsistencia.cs</DependentUpon>
     </EmbeddedResource>
@@ -326,6 +335,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\SIAC_Datos.Models.Planillas.Empleado.datasource" />
+    <None Include="Properties\DataSources\SIAC_DATOS.Models.Produccion.ProductoRecetaLineaTarea.datasource" />
     <None Include="Properties\DataSources\SIAC_Entidades.Models.Maestros.Categoria.datasource" />
     <None Include="Properties\DataSources\SIAC_Entidades.Models.Maestros.FinPeriodo.datasource" />
     <None Include="Properties\DataSources\SIAC_Entidades.Models.Planillas.PeriodoLaboral.datasource" />
@@ -342,6 +353,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\publish_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exporttoxls_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bodepartment_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lookup&amp;reference_16x16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\SSF-NET\SSF-NET\packages\Refit.4.4.17\build\net45\refit.targets" Condition="Exists('..\..\SSF-NET\SSF-NET\packages\Refit.4.4.17\build\net45\refit.targets')" />

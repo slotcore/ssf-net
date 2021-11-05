@@ -218,7 +218,7 @@ namespace SIAC_DATOS.Models.Produccion
             {
                 if (_ProductoRecetaLineas == null)
                 {
-                    _ProductoRecetaLineas = ProductoRecetaLinea.FetchList(_n_idpro);
+                    _ProductoRecetaLineas = ProductoRecetaLinea.FetchList(_n_idpro, _n_id);
                 }
                 return _ProductoRecetaLineas;
             }
