@@ -1949,7 +1949,7 @@ namespace SSF_NET_Almacen.Formularios
             List<BE_LOG_ORDENREQUERIMIENTODET> l_reqcabdet = new List<BE_LOG_ORDENREQUERIMIENTODET>();
             BE_LOG_ORDENREQUERIMIENTO e_reqcab = new BE_LOG_ORDENREQUERIMIENTO();
             o_pro.mysConec = mysConec;
-            dtresult = o_pro.OrdenesListarPorArea(STU_SISTEMA.EMPRESAID, 12);
+            dtresult = o_pro.OrdenesListarPendientesPorArea(STU_SISTEMA.EMPRESAID, 12);
 
             FgItems.Rows.Count = 2;
             if (dtresult != null)

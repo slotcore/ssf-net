@@ -1654,8 +1654,6 @@ namespace SIAC_DATOS.Models.Contabilidad
             command.Parameters.Add(new MySqlParameter("@c_numdoc", c_numdoc));
             command.Parameters.Add(new MySqlParameter("@c_des", c_des));
             command.Parameters.Add(new MySqlParameter("@c_obs", c_obs));
-            command.Parameters.Add(new MySqlParameter("@n_costomod", c_obs));
-            command.Parameters.Add(new MySqlParameter("@n_costocif", c_obs));
         }
 
         private static CostoProduccion SetObject(MySqlDataReader reader)

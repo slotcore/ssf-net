@@ -292,7 +292,7 @@ namespace SSF_NET_Contabilidad.Formularios
                 throw new Exception("¡ No ha especificado el reponsable !");
             }
 
-            if (costoProduccionBindingSource.Count == 0)
+            if (CostoProduccionDetBindingSource.Count == 0)
             {
                 throw new Exception("¡ No ha especificado ningun item para este proceso!");
             }

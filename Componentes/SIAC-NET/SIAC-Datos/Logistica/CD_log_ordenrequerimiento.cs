@@ -73,7 +73,6 @@ namespace SIAC_DATOS.Logistica
             return b_result;
         }
 
-
         public bool ListarRequerimientosPorArea(int n_IdEmpresa, int n_IdAreaDest)
         {
             bool b_result = false;
@@ -97,6 +96,31 @@ namespace SIAC_DATOS.Logistica
             }
             return b_result;
         }
+
+        public bool ListarRequerimientosPendientesPorArea(int n_IdEmpresa, int n_IdAreaDest)
+        {
+            bool b_result = false;
+
+            string[,] arrParametros = new string[2, 3] {
+                                            {"n_idemp", "System.INT64",n_IdEmpresa.ToString()},
+                                            {"n_idareadest", "System.INT64",n_IdAreaDest.ToString()}
+                                      };
+
+            dtListaOrdenReq = xMiFuncion.StoreDTLLenar("log_ordenrequerimiento_pendientes_listarporarea", arrParametros, mysConec);
+
+            if (xMiFuncion.IntErrorNumber != 0)
+            {
+                booOcurrioError = xMiFuncion.booOcurrioError;
+                StrErrorMensaje = xMiFuncion.StrErrorMensaje;
+                IntErrorNumber = xMiFuncion.IntErrorNumber;
+            }
+            else
+            {
+                b_result = true;
+            }
+            return b_result;
+        }
+
         public bool ActualizarEstadoRequerimiento(int n_IdRegistro, int n_IdEstado)
         { 
             bool b_result = false;
