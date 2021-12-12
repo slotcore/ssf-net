@@ -59,7 +59,7 @@ namespace SSF_NET_Contabilidad.Formularios
 
             CboResponsable.DataSource = PersonalContabilidad.FetchList(STU_SISTEMA.EMPRESAID, 2);
             CboResponsable.DisplayMember = "c_destra";
-            CboResponsable.ValueMember = "n_idtra";
+            CboResponsable.ValueMember = "n_id";
 
             CboConfiguracion.DataSource = ConfigVal.FetchList(STU_SISTEMA.EMPRESAID);
             CboConfiguracion.DisplayMember = "c_des";
@@ -292,7 +292,7 @@ namespace SSF_NET_Contabilidad.Formularios
                 throw new Exception("¡ No ha especificado el reponsable !");
             }
 
-            if (costoProduccionBindingSource.Count == 0)
+            if (CostoProduccionDetBindingSource.Count == 0)
             {
                 throw new Exception("¡ No ha especificado ningun item para este proceso!");
             }
