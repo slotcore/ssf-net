@@ -653,17 +653,20 @@ namespace SIAC_DATOS.Models.Contabilidad
             }
 
             //CostoProduccionDetCifs
-            foreach (var hijo in CostoProduccionDetCifs)
+            if (CostoProduccionDetCifs != null)
             {
-                if (hijo.IsNew)
-                    hijo.n_idcostoproddet = n_id;
+                foreach (var hijo in CostoProduccionDetCifs)
+                {
+                    if (hijo.IsNew)
+                        hijo.n_idcostoproddet = n_id;
 
-                hijo.Save(connection, transaction);
-            }
-            foreach (var hijo in CostoProduccionDetCifs.GetRemoveItems())
-            {
-                if (!hijo.IsNew)
-                    hijo.Delete(connection, transaction);
+                    hijo.Save(connection, transaction);
+                }
+                foreach (var hijo in CostoProduccionDetCifs.GetRemoveItems())
+                {
+                    if (!hijo.IsNew)
+                        hijo.Delete(connection, transaction);
+                }
             }
         }
 

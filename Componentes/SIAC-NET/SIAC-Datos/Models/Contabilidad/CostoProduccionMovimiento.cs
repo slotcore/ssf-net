@@ -476,22 +476,24 @@ namespace SIAC_DATOS.Models.Contabilidad
                 connection.Open();
                 using (MySqlTransaction transaction = connection.BeginTransaction())
                 {
-                    using (MySqlCommand command = connection.CreateCommand())
+                    try
                     {
-                        command.Transaction = transaction;
-                        try
+                        using (MySqlCommand command = connection.CreateCommand())
                         {
+                            command.Transaction = transaction;
                             command.CommandType = System.Data.CommandType.StoredProcedure;
                             command.CommandText = "con_costoprodmov_insertar";
                             AddParameters(command);
+                            command.Parameters["@n_id"].Direction = System.Data.ParameterDirection.Output;
                             int rows = command.ExecuteNonQuery();
-                            transaction.Commit();
+                            n_id = Convert.ToInt32(command.Parameters["@n_id"].Value);
                         }
-                        catch (Exception ex)
-                        {
-                            transaction.Rollback();
-                            throw ex;
-                        }
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw ex;
                     }
                 }
             }
@@ -505,7 +507,9 @@ namespace SIAC_DATOS.Models.Contabilidad
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 command.CommandText = "con_costoprodmov_insertar";
                 AddParameters(command);
+                command.Parameters["@n_id"].Direction = System.Data.ParameterDirection.Output;
                 int rows = command.ExecuteNonQuery();
+                n_id = Convert.ToInt32(command.Parameters["@n_id"].Value);
             }
         }
 

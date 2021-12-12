@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Helper;
+using MySql.Data.MySqlClient;
 using SIAC_Datos.Classes;
 using SIAC_DATOS.Classes.Contabilidad;
 using SIAC_DATOS.Models.Almacen;
@@ -446,7 +447,9 @@ namespace SIAC_DATOS.Models.Contabilidad
                             command.CommandType = System.Data.CommandType.StoredProcedure;
                             command.CommandText = "con_costoprod_insertar";
                             AddParameters(command);
+                            command.Parameters["@n_id"].Direction = System.Data.ParameterDirection.Output;
                             int rows = command.ExecuteNonQuery();
+                            n_id = Convert.ToInt32(command.Parameters["@n_id"].Value);
                         }
                         //
                         SaveChildren(connection, transaction);
@@ -947,6 +950,9 @@ namespace SIAC_DATOS.Models.Contabilidad
 
         private void ActualizarCostosPostProceso()
         {
+            if (CostoProduccionMovimientos == null)
+                CostoProduccionMovimientos = new ObservableListSource<CostoProduccionMovimiento>();
+
             if (CostoProduccionErrors.Count == 0)
             {
                 if (CostoProduccionMovimientos.Count > 0)
@@ -1029,45 +1035,48 @@ namespace SIAC_DATOS.Models.Contabilidad
 
             foreach (var costoProduccionDet in CostoProduccionDets)
             {
-                double cantidadTotal = costoProduccionDet.CostoProduccionDetInss.Sum(d => d.n_can);
-
-                foreach (var costoProduccionDetIns in costoProduccionDet.CostoProduccionDetInss)
+                if (costoProduccionDet.CostoProduccionDetInss != null)
                 {
-                    try
-                    {
-                        Movimiento movimiento = Movimiento.Fetch(costoProduccionDetIns.n_idmov);
-                        int n_iteracion = 0;
-                        double ultCosto = ObtenerCostoUnitarioUltimaCompra(n_iteracion, n_idemp, costoProduccionDetIns.n_idite, movimiento.d_fching);
+                    double cantidadTotal = costoProduccionDet.CostoProduccionDetInss.Sum(d => d.n_can);
 
-                        if (costoProduccionDetIns.c_destipmov.Equals("E"))
+                    foreach (var costoProduccionDetIns in costoProduccionDet.CostoProduccionDetInss)
+                    {
+                        try
                         {
-                            ultCosto *= -1;
+                            Movimiento movimiento = Movimiento.Fetch(costoProduccionDetIns.n_idmov);
+                            int n_iteracion = 0;
+                            double ultCosto = ObtenerCostoUnitarioUltimaCompra(n_iteracion, n_idemp, costoProduccionDetIns.n_idite, movimiento.d_fching);
+
+                            if (costoProduccionDetIns.c_destipmov.Equals("E"))
+                            {
+                                ultCosto *= -1;
+                            }
+
+                            GrabaCostoMovimiento(costoProduccionDetIns.n_idite,
+                                costoProduccionDetIns.n_idmov,
+                                costoProduccionDetIns.n_can,
+                                ultCosto,
+                                ultCosto,
+                                ultCosto,
+                                0,
+                                0);
                         }
-
-                        GrabaCostoMovimiento(costoProduccionDetIns.n_idite,
-                            costoProduccionDetIns.n_idmov,
-                            costoProduccionDetIns.n_can,
-                            ultCosto,
-                            ultCosto,
-                            ultCosto,
-                            0,
-                            0);
-                    }
-                    catch (CosteoProdException ex)
-                    {
-                        CostoProduccionErrors.Add(new CostoProduccionError()
+                        catch (CosteoProdException ex)
                         {
-                            CodItem = ex.CodItem,
-                            DesItem = ex.DesItem,
-                            DesFechMov = ex.Fecha.ToString("dd/MM/yyyy"),
-                            DesAlm = ex.Almacen,
-                            DesMov = ex.NumeroMovimiento,
-                            Error = ex.Message
-                        });
-                    }
-                    catch (Exception ex)
-                    {
-                        throw ex;
+                            CostoProduccionErrors.Add(new CostoProduccionError()
+                            {
+                                CodItem = ex.CodItem,
+                                DesItem = ex.DesItem,
+                                DesFechMov = ex.Fecha.ToString("dd/MM/yyyy"),
+                                DesAlm = ex.Almacen,
+                                DesMov = ex.NumeroMovimiento,
+                                Error = ex.Message
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            throw ex;
+                        }
                     }
                 }
             }
@@ -1666,16 +1675,16 @@ namespace SIAC_DATOS.Models.Contabilidad
                 n_idmes = reader.GetInt32("n_idmes"),
                 n_idconfigval = reader.GetInt32("n_idconfigval"),
                 n_idresp = reader.GetInt32("n_idresp"),
-                c_numser = reader.GetString("c_numser"),
-                c_numdoc = reader.GetString("c_numdoc"),
-                c_des = reader.GetString("c_des"),
-                c_obs = reader.GetString("c_obs"),
-                n_costomod = reader.GetDouble("n_costomod"),
-                n_costocif = reader.GetDouble("n_costocif"),
-                c_desmes = reader.GetString("c_desmes"),
-                c_numdocvis = reader.GetString("c_numdocvis"),
-                c_desconfigval = reader.GetString("c_desconfigval"),
-                c_desresp = reader.GetString("c_desresp")
+                c_numser = Genericas.GetString(reader, "c_numser"),
+                c_numdoc = Genericas.GetString(reader, "c_numdoc"),
+                c_des = Genericas.GetString(reader, "c_des"),
+                c_obs = Genericas.GetString(reader, "c_obs"),
+                n_costomod = Genericas.GetDouble(reader, "n_costomod"),
+                n_costocif = Genericas.GetDouble(reader, "n_costocif"),
+                c_desmes = Genericas.GetString(reader, "c_desmes"),
+                c_numdocvis = Genericas.GetString(reader, "c_numdocvis"),
+                c_desconfigval = Genericas.GetString(reader, "c_desconfigval"),
+                c_desresp = Genericas.GetString(reader, "c_desresp")
             };
         }
 

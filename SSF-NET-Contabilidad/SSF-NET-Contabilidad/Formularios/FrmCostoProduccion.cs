@@ -59,7 +59,7 @@ namespace SSF_NET_Contabilidad.Formularios
 
             CboResponsable.DataSource = PersonalContabilidad.FetchList(STU_SISTEMA.EMPRESAID, 2);
             CboResponsable.DisplayMember = "c_destra";
-            CboResponsable.ValueMember = "n_idtra";
+            CboResponsable.ValueMember = "n_id";
 
             CboConfiguracion.DataSource = ConfigVal.FetchList(STU_SISTEMA.EMPRESAID);
             CboConfiguracion.DisplayMember = "c_des";
